@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# logs
+*.log
+
+# temp
+*.tmp
+*.swp
+
+# editor
+.vscode/
+.idea/
