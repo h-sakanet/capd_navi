@@ -196,6 +196,12 @@ export function HomeAProcedureBoard() {
       return;
     }
 
+    if (confirmMode === "view") {
+      setConfirmSlotIndex(null);
+      router.push("/ui-preview/session-a?mode=preview");
+      return;
+    }
+
     const currentActive = readActiveSession();
     const isResume = targetSlot.status === "実施中";
     const sessionId =
@@ -425,7 +431,9 @@ export function HomeAProcedureBoard() {
             <Button variant="outline" onClick={() => setConfirmSlotIndex(null)}>
               閉じる
             </Button>
-            <Button onClick={startOrResumeSession}>{confirmSlot.status === "実施中" ? "再開" : "開始"}</Button>
+            <Button onClick={startOrResumeSession}>
+              {confirmMode === "view" ? "手順を表示（保存なし）" : confirmSlot.status === "実施中" ? "再開" : "開始"}
+            </Button>
           </div>
         </ModalShell>
       )}

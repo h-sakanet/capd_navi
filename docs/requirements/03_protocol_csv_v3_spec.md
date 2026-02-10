@@ -122,21 +122,22 @@ protocol_package/
 9. 正規化JSON生成
 10. テンプレート版として保存
 
-## 11. 取り込みAPI
-- エンドポイント: `POST /protocols/import-package`
-- 入力: `multipart/form-data`
-  - `protocolCsv`: CSV本体
-  - `assets[]`: 画像ファイル群
-  - `basePath`: 取り込み元ディレクトリ識別子（監査ログ用途）
+## 11. ローカル取り込みI/F（公開APIなし）
+- v1 のCSV取り込みは公開HTTP APIを持たず、Macローカル処理で完結します。
+- 取り込みI/Fは次を公開契約とします。
+  - `ProtocolImportService.importFromDirectory(input: { basePath: string }): Promise<ImportResult>`
 
-## 12. 取り込み結果レスポンス
-- `status`: `success` / `failed`
-- `errors[]`: 取り込み停止要因
-- `warnings[]`: 品質警告
-- `summary`: ステップ数、タイマー数、アラーム数、記録イベント数
+```ts
+type ImportResult = {
+  status: "success" | "failed";
+  errors: Array<{ row?: number; field?: string; message: string }>;
+  warnings: Array<{ row?: number; field?: string; message: string }>;
+  summary: { stepCount: number; timerCount: number; alarmCount: number; recordEventCount: number };
+};
+```
 
-## 13. 開始時スナップショット固定（実行契約）
-- `POST /sessions` 実行時は、取り込み済み `ProtocolPackage` から以下を `SessionProtocolSnapshot` に固定コピーします。
+## 12. 開始時スナップショット固定（実行契約）
+- `SessionService.startSession` 実行時は、取り込み済み `ProtocolPackage` から以下を `SessionProtocolSnapshot` に固定コピーします。
   - `meta`: `protocol_id`, `protocol_version`, `importedAt`
   - `step` 行: `通し番号`, `step_id`, `next_step_id`, `フェーズ`, `状態`, `タイトル`, `表示テキスト`, `警告テキスト`, `必須チェック`
   - `timer` 指示: `timer_id`, `timer_event`, `timer_exchange_no`, `timer_segment`

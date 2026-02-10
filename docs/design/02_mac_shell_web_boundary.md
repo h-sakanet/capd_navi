@@ -21,7 +21,7 @@
 | Mac再通知（T+2分 / T+5分以降3分） | 要求発行 | 実行 |
 | 画面スリープ抑止 | 状態表示 | 実行 |
 | CSV+画像ローカル読み取り | UI起点のみ | 実行 |
-| 取り込みアップロード | API呼び出し制御 | ファイル提供 |
+| CSVローカル取り込み | `ProtocolImportService.importFromDirectory` 呼び出し | ファイル提供 |
 
 ## 2.1 iPhone PWA運用責務
 - Push受信後、通知タップで該当セッション画面へ復帰します。
@@ -84,25 +84,7 @@
 }
 ```
 
-### 3.7 `uploadProtocolPackage`
-- 入力:
-```json
-{
-  "basePath": "protocol_package",
-  "csvPath": "protocol_package/protocol.csv",
-  "assetPaths": ["protocol_package/v3/handwash.png"]
-}
-```
-- 出力:
-```json
-{
-  "status": "success",
-  "errors": [],
-  "warnings": []
-}
-```
-
-### 3.8 `fireDailyNotificationTest`
+### 3.7 `fireDailyNotificationTest`
 - 目的: 通知設定変更時・OS更新後・通知不調時に30秒テスト通知を手動実施
 - 入力:
 ```json
@@ -124,7 +106,7 @@
 - `requestNotificationPermission`: Web Notification APIへフォールバック
 - `scheduleLocalAlarm`: Macネイティブ未利用時はWeb通知を試行し、不可ならアプリ内強調のみ（iPhoneはPush補助のみ）
 - `startKeepAwake`: Screen Wake Lock APIを試行、不可なら注意表示
-- `pickProtocolDirectory` / `uploadProtocolPackage`: iPhoneでは無効化し「Macのみ対応」表示
+- `pickProtocolDirectory`: iPhoneでは無効化し「Macのみ対応」表示
 
 ## 5. エラーハンドリング
 - ブリッジ呼び出しはすべて `{ code, message }` を返す

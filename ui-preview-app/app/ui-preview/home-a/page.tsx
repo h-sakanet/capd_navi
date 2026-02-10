@@ -35,7 +35,6 @@ export default function HomeAPage() {
             </Link>
           </Button>
           <Button variant="outline">CSV取り込み(Mac)</Button>
-          <Button variant="outline">手動エクスポート</Button>
         </CardContent>
       </Card>
     </PreviewShell>

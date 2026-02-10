@@ -26,7 +26,7 @@
 ## 4. iPhone実装
 - PWA Push購読を管理し、補助通知のみ担当
 - Push受信時は通知タップで該当セッションへ復帰
-- ACK操作はWeb UIで実施し、`POST /sessions/{id}/alarms/{alarmId}/ack` を呼び出し
+- ACK操作はWeb UIで実施し、ローカル `AlarmService.ack(sessionId, alarmId)` を呼び出し（同期時にクラウドへ反映）
 - Push未許可/未対応時でもアプリ内未確認アラート表示は維持
 
 ## 5. 手動30秒テスト運用
@@ -52,10 +52,10 @@
 - `failed`: 試行失敗
 - `missed`: `T+30分` 未ACKの見逃し状態
 
-## 8. 監視項目
-- 通知許可率（Mac/iPhone）
-- 通知送信成功率（T0/T+2/T+5以降）
-- アラーム確認遅延時間
-- 見逃し件数（`status=missed`）
-- 手動30秒テスト成功率（必要時実施）
-- スリープ抑止失敗率
+## 8. 運用状態表示（v1）
+- UI表示は現在値のみとし、履歴メトリクスは保持しません。
+- 表示対象:
+  - 通知権限状態（許可/未許可）
+  - 直近アラーム状態（`pending` / `acknowledged` / `missed`）
+  - スリープ抑止状態（`active` / `inactive` / `unsupported` / `failed`）
+- 障害調査は実行時の再現手順と端末ログの手動記録で補完します。

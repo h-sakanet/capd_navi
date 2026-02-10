@@ -60,6 +60,9 @@
 - ProcedureConfirmModal: 手技内容の閲覧専用。確認モードの「開始/再開」は手順表示のみで、記録保存/タイマー開始/通知生成/状態更新/DB更新を行わない
 - NotificationTestAction: 30秒通知テストは手動実行（通知設定変更時/OS更新後/通知不調時）とし、毎日必須運用にはしない
 - SessionSummaryModal: 最初完了セッションでは血圧上/下・体重・脈拍・体温・出口部状態を必須にする。出口部状態は複数選択チェックボックス（`正常/赤み/痛み/はれ/かさぶた/じゅくじゅく/出血/膿`）で入力する
+- ExitSitePhotoAction: `session_summary.payload.exit_site_photo` を編集する操作行。表示状態は `未登録=登録`、`登録済み=変更/削除` とし、1枚固定で扱う
+- ExitSitePhotoActionVisibility: 表示条件は当日 `summaryScope=both` または `summaryScope=first_of_day` の `session_summary` 入力完了後。対象レコードは `both` 優先、次に `first_of_day`、同値時は `completedAt` 昇順、さらに同値時は `recordId` 昇順で決定する
+- ExitSitePhotoActionPlatform: iPhoneホーム全体サマリとiPhone記録詳細のみ `登録/変更/削除` を許可し、Macは閲覧のみ許可する
 - SessionStateBadge: Compact Badge（Pattern A）を採用。`お腹-独立=slate`、`お腹-接続=emerald`、`お腹→廃液バッグ=amber`、`お腹←透析液バッグ=sky` とする
 - SessionStepTitle: タイトルは `#通し番号 + タイトル` 形式（例: `#21 お腹のチューブのクランプを開ける`）
 - SessionNavButtons: 「戻る」「次へ」はiPhone/Macとも横並び同幅で配置する
@@ -85,6 +88,8 @@
 - 透析液濃度欄はCSVタイトル（例: `レギニュール1.5`）を表示する
 - 貯留時間は `timer_segment=dwell` の `start-end`、排液時間は `timer_segment=drain` の `start-end` を表示する
 - 排液量/注液量/排液確認は `record_event`（`drain_weight_g` / `bag_weight_g` / `drain_appearance`）を表示する
+- `手順画像` はセッション手順表示で使用する `imageAssetKey` 由来の正方形表示画像を指す
+- `記録写真` は記録データに紐づく写真を指し、`排液写真(drain)` と `出口部写真(exit_site)` を含む
 - セッション実行タイトルは `#通し番号 + タイトル` の形式で表示する
 - 時刻は `YYYY-MM-DD HH:mm` 形式
 - 未入力は `未入力` で統一
@@ -103,6 +108,7 @@
 - セッション画面: iPhoneは1カラム、Macは2カラム固定
 - セッション画像: 1:1正方形を必須とし、`object-fit: cover` で表示
 - セッション操作ボタン: iPhone/Macとも「戻る」「次へ」を横並び同幅で表示する
+- 出口部写真操作: iPhoneのみ登録/変更/削除を表示し、Macは閲覧リンクのみ表示する
 
 ## 8. UI変更レビュー手順
 1. 変更対象コンポーネントを列挙
