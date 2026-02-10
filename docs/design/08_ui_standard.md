@@ -57,7 +57,8 @@
 - DailyCapdNoteTableUFRules: 交換#1の除水量は `未計算`、交換#2以降は `排液量-前回注液量`、総除水量は計算可能分のみ合算
 - ProcedureSetupModal: CSV選択、推奨実施時間を1モーダルで編集
 - ProcedureStartConfirmModal: 「手技の開始」確認用。開始確定前の確認用途
-- ProcedureConfirmModal: 手技内容の閲覧専用。記録/タイマー/アラーム設定を含めない
+- ProcedureConfirmModal: 手技内容の閲覧専用。確認モードの「開始/再開」は手順表示のみで、記録保存/タイマー開始/通知生成/状態更新/DB更新を行わない
+- NotificationTestAction: 30秒通知テストは手動実行（通知設定変更時/OS更新後/通知不調時）とし、毎日必須運用にはしない
 - SessionSummaryModal: 最初完了セッションでは血圧上/下・体重・脈拍・体温・出口部状態を必須にする。出口部状態は複数選択チェックボックス（`正常/赤み/痛み/はれ/かさぶた/じゅくじゅく/出血/膿`）で入力する
 - SessionStateBadge: Compact Badge（Pattern A）を採用。`お腹-独立=slate`、`お腹-接続=emerald`、`お腹→廃液バッグ=amber`、`お腹←透析液バッグ=sky` とする
 - SessionStepTitle: タイトルは `#通し番号 + タイトル` 形式（例: `#21 お腹のチューブのクランプを開ける`）

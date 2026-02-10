@@ -103,11 +103,11 @@
 ```
 
 ### 3.8 `fireDailyNotificationTest`
-- 目的: 毎日最初のタイマー運用前に30秒テスト通知を実施
+- 目的: 通知設定変更時・OS更新後・通知不調時に30秒テスト通知を手動実施
 - 入力:
 ```json
 {
-  "testId": "daily-test-2026-02-10",
+  "testId": "manual-test-2026-02-10",
   "fireAfterSec": 30,
   "title": "CAPD通知テスト",
   "body": "通知テストです"

@@ -20,7 +20,7 @@
 - 権限: `UNUserNotificationCenter` で許可確認
 - 通知登録: `scheduleLocalAlarm(alarmId, fireAt, attemptNo, title, body)`
 - 通知取消: `cancelLocalAlarm(alarmId)`
-- 毎日テスト: `fireDailyNotificationTest(testId, fireAfterSec=30, title, body)`
+- 手動テスト: `fireDailyNotificationTest(testId, fireAfterSec=30, title, body)`
 - `UNNotificationRequest.identifier` は `alarmId` を使用し、同一ID再登録時は上書き
 
 ## 4. iPhone実装
@@ -29,8 +29,8 @@
 - ACK操作はWeb UIで実施し、`POST /sessions/{id}/alarms/{alarmId}/ack` を呼び出し
 - Push未許可/未対応時でもアプリ内未確認アラート表示は維持
 
-## 5. 毎日30秒テスト運用
-- 当日最初のタイマー運用前にテスト通知を1回実施
+## 5. 手動30秒テスト運用
+- 通知設定変更時、OS更新後、通知不調時にテスト通知を1回実施
 - 失敗時は当日を「iPhone補助なし」として扱い、Mac主導運用へ切替
 
 ## 6. スリープ抑止
@@ -57,5 +57,5 @@
 - 通知送信成功率（T0/T+2/T+5以降）
 - アラーム確認遅延時間
 - 見逃し件数（`status=missed`）
-- 毎日30秒テスト成功率
+- 手動30秒テスト成功率（必要時実施）
 - スリープ抑止失敗率
