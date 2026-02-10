@@ -63,7 +63,8 @@
   - `getSyncState()`
 
 ## 5. UIスパイク成果物
-- ルート: `/ui-preview/home-a`, `/ui-preview/history-list`, `/ui-preview/session-a`, `/ui-preview/status-patterns`
+- 本番ルート: `/capd/home`, `/capd/history-list`, `/capd/session`
+- 参考ルート: `/ui-preview`（アーカイブ案内のみ）
 - UI仕様は `08_ui_standard.md` を正とし、ローカルファースト化で画面要件は変更しない
 
 ## 6. 未確定事項

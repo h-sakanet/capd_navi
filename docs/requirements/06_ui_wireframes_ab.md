@@ -162,11 +162,10 @@ flowchart LR
 - 「戻る」「次へ」は iPhone/Mac ともに横並び同幅で表示します。
 - セッション中断は右上 `•••` からのみ実行し、確認ダイアログを挟みます。
 
-## 8. UIプレビュールート
-- `/ui-preview/home-a`
-- `/ui-preview/history-list`
-- `/ui-preview/session-a`
-- `/ui-preview/status-patterns`
+## 8. UI本番ルート
+- `/capd/home`
+- `/capd/history-list`
+- `/capd/session`
 
 ## 9. 採用基準（5段階）
 - 安全性視認

@@ -5,10 +5,9 @@
 `playwright-visual-regression` の運用に従い、`baseline -> check -> diff` のループを固定します。
 
 ## 2. 対象ルート
-- `/ui-preview/home-a`
-- `/ui-preview/session-a`
-- `/ui-preview/history-list`
-- `/ui-preview/status-patterns`
+- `/capd/home`
+- `/capd/session`
+- `/capd/history-list`
 
 ## 3. 撮影条件（固定）
 - ビューポート:
@@ -22,17 +21,16 @@
 ## 4. スナップショットケース一覧
 | VR ID | 画面 | 状態 | Viewport | 期待 |
 |---|---|---|---|---|
-| VR-HOME-001 | Home A | 初期表示（#1-#4スロット表示） | Desktop | レイアウト崩れなし |
-| VR-HOME-002 | Home A | スロット設定モーダル表示 | Desktop | モーダル位置/幅が安定 |
-| VR-HOME-003 | Home A | 開始確認モーダル表示 | Mobile | ボタン配置が仕様どおり |
-| VR-HOME-004 | Home A | 左未完了で右開始不可表示 | Desktop | ブロック文言が視認可能 |
-| VR-SESSION-001 | Session A | 初期ステップ表示 | Desktop | 2カラム表示維持 |
-| VR-SESSION-002 | Session A | 初期ステップ表示 | Mobile | 1カラム表示維持 |
-| VR-SESSION-003 | Session A | 記録モーダル表示 | Mobile | 入力UIが表示崩れしない |
-| VR-SESSION-004 | Session A | 非常中断確認ダイアログ表示 | Desktop | ダイアログ表示安定 |
+| VR-HOME-001 | Home | 初期表示（#1-#4スロット表示） | Desktop | レイアウト崩れなし |
+| VR-HOME-002 | Home | スロット設定モーダル表示 | Desktop | モーダル位置/幅が安定 |
+| VR-HOME-003 | Home | 開始確認モーダル表示 | Mobile | ボタン配置が仕様どおり |
+| VR-HOME-004 | Home | 左未完了で右開始不可表示 | Desktop | ブロック文言が視認可能 |
+| VR-SESSION-001 | Session | 初期ステップ表示 | Desktop | 2カラム表示維持 |
+| VR-SESSION-002 | Session | 初期ステップ表示 | Mobile | 1カラム表示維持 |
+| VR-SESSION-003 | Session | 記録モーダル表示 | Mobile | 入力UIが表示崩れしない |
+| VR-SESSION-004 | Session | 非常中断確認ダイアログ表示 | Desktop | ダイアログ表示安定 |
 | VR-HISTORY-001 | History | 記録一覧表示 | Desktop | 列崩れなし |
 | VR-HISTORY-002 | History | 記録一覧表示 | Mobile | 横スクロール時表示崩れなし |
-| VR-STATUS-001 | Status Patterns | 一覧表示 | Desktop | 全パターン表示維持 |
 
 ## 5. baseline運用ルール
 - baseline更新は「意図したUI変更」のみ許可します。

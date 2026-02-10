@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UI Preview Session</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="card header">
+        <div>
+          <h1>セッション実行</h1>
+          <p class="kicker">Session: 安全フォーカス / 警告帯固定</p>
+        </div>
+        <div class="badges">
+          <span class="badge">フェーズ: 廃液</span>
+          <span class="badge">状態: お腹→廃液バッグ</span>
+          <span class="badge">スリープ抑止: active</span>
+        </div>
+      </section>
+
+      <section class="card session-grid">
+        <div class="square">正方形画像 (1:1)</div>
+        <div class="right-stack">
+          <h2>お腹のチューブのクランプを開ける</h2>
+          <p>表示テキスト: 片手でチューブを固定し、もう片方でゆっくり開けてください。</p>
+          <div class="notice">警告: クランプ解除忘れは排液不良につながります。</div>
+          <div class="card" style="padding:12px; box-shadow:none;">
+            <strong>必須チェック</strong>
+            <p><input type="checkbox" /> クランプを開けた</p>
+          </div>
+          <div class="alarm">待機アラーム: 10分経過 [確認する]</div>
+          <div class="actions">
+            <button class="btn btn-disabled">次へ（条件未達）</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

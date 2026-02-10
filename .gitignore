@@ -12,6 +12,6 @@
 .vscode/
 .idea/
 
-# ui preview app
-ui-preview-app/node_modules/
-ui-preview-app/.next/
+# capd app
+capd-app/node_modules/
+capd-app/.next/

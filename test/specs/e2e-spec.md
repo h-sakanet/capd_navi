@@ -6,10 +6,10 @@
 
 ## 2. スコープ
 - 対象導線:
-  - Home A（`/ui-preview/home-a`）
-  - Session A（`/ui-preview/session-a`）
-  - History（`/ui-preview/history-list`）
-  - History Photo（`/ui-preview/history-photo/:photoId`）
+  - Home（`/capd/home`）
+  - Session（`/capd/session`）
+  - History（`/capd/history-list`）
+  - History Photo（`/capd/history-photo/:photoId`）
 - 対象要件群:
   - `AT-CSV-*`
   - `AT-FLOW-*`
@@ -39,15 +39,35 @@
 - `Executable` / `Implemented` は `test:e2e` 実行対象とし、`skip/disable` を禁止します。
 - `Deferred` は仕様とトレーサビリティで管理し、通常スイートには含めません。
 
+### 3.3 初回実装必須ゲート（Deferred禁止）
+初回実装では、以下のE2Eケースを必須対象とし `Deferred` を禁止します。
+- `E2E-CSV-001`〜`E2E-CSV-004`
+- `E2E-API-001`, `E2E-API-004`
+- `E2E-API-002`
+- `E2E-SYNC-001`〜`E2E-SYNC-006`
+- `E2E-RECOVERY-001`〜`E2E-RECOVERY-003`
+- `E2E-ALARM-001`〜`E2E-ALARM-004`
+
+運用:
+- 着手時は `Planned` で管理し、依存I/F実装後に `Executable` 化します。
+- 初回実装完了時点で、上記はすべて `Implemented` である必要があります。
+
+### 3.4 Phase2対象（初回対象外）
+以下はPhase2対象とし、初回実装では `Deferred` を許可します。
+- `E2E-CSV-005`
+- `E2E-PLAT-001`, `E2E-PLAT-002`, `E2E-SLEEP-001`
+- `E2E-EXIT-001`〜`E2E-EXIT-007`
+- `E2E-PHOTO-001`, `E2E-BACKUP-001`
+
 ## 4. シナリオ定義（初版）
 
 ### 4.1 CSV取込（Mac）
 | E2E ID | 対応AT | 前提 | 操作 | 期待結果 | 優先度 | 状態 |
 |---|---|---|---|---|---|---|
-| E2E-CSV-001 | AT-CSV-001 | 正常CSV v3 + 画像 | 取込実行 | 成功しテンプレート登録 | P0 | Deferred |
-| E2E-CSV-002 | AT-CSV-002 | `step_id` 重複CSV | 取込実行 | エラーで中止 | P0 | Deferred |
-| E2E-CSV-003 | AT-CSV-003 | `next_step_id` 不整合CSV | 取込実行 | エラーで中止 | P0 | Deferred |
-| E2E-CSV-004 | AT-CSV-004 | 画像不足CSV | 取込実行 | エラーで中止 | P0 | Deferred |
+| E2E-CSV-001 | AT-CSV-001 | 正常CSV v3 + 画像 | 取込実行 | 成功しテンプレート登録 | P0 | Planned |
+| E2E-CSV-002 | AT-CSV-002 | `step_id` 重複CSV | 取込実行 | エラーで中止 | P0 | Planned |
+| E2E-CSV-003 | AT-CSV-003 | `next_step_id` 不整合CSV | 取込実行 | エラーで中止 | P0 | Planned |
+| E2E-CSV-004 | AT-CSV-004 | 画像不足CSV | 取込実行 | エラーで中止 | P0 | Planned |
 | E2E-CSV-005 | AT-CSV-005 | `xx分` を含むCSV | 取込実行 | 取込成功 + 警告表示 | P1 | Deferred |
 
 ### 4.2 Home / Flow
@@ -64,35 +84,35 @@
 ### 4.3 API境界
 | E2E ID | 対応AT | 前提 | 操作 | 期待結果 | 優先度 | 状態 |
 |---|---|---|---|---|---|---|
-| E2E-API-001 | AT-API-001 | ルート一覧取得可能 | ルーティング確認 | 公開APIが `sync/push`, `sync/pull` のみ | P0 | Deferred |
-| E2E-API-002 | AT-API-003 | CSV取込導線あり | 取込実行 | `POST /protocols/import-package` を呼ばない | P0 | Deferred |
-| E2E-API-003 | AT-API-002 | Home A表示可能 | UI確認 | 手動エクスポート導線が表示されない | P0 | Executable |
-| E2E-API-004 | AT-API-004 | 同期済みデータあり | Blobキー確認 | `.enc` なしで保存 | P1 | Deferred |
+| E2E-API-001 | AT-API-001 | ルート一覧取得可能 | ルーティング確認 | 公開APIが `sync/push`, `sync/pull` のみ | P0 | Planned |
+| E2E-API-002 | AT-API-003 | CSV取込導線あり | 取込実行 | `POST /protocols/import-package` を呼ばない | P0 | Planned |
+| E2E-API-003 | AT-API-002 | Home表示可能 | UI確認 | 手動エクスポート導線が表示されない | P0 | Executable |
+| E2E-API-004 | AT-API-004 | 同期済みデータあり | Blobキー確認 | `.enc` なしで保存 | P0 | Planned |
 
 ### 4.4 同期契約
 | E2E ID | 対応AT | 前提 | 操作 | 期待結果 | 優先度 | 状態 |
 |---|---|---|---|---|---|---|
-| E2E-SYNC-001 | AT-SYNC-001 | 端末Aに未同期データ | 端末B起動 | pull復元成立 | P0 | Deferred |
-| E2E-SYNC-002 | AT-SYNC-005 | outbox pendingあり | 手動同期 | outbox消し込み | P0 | Deferred |
-| E2E-SYNC-003 | AT-SYNC-002 | 端末Aでセッション完了 | 同期後に端末B復帰 | 完了記録が端末Bへ反映 | P0 | Deferred |
-| E2E-SYNC-004 | AT-SYNC-003 | 同一エンティティを2端末更新 | 双方同期 | LWW勝者に一意収束 | P0 | Deferred |
-| E2E-SYNC-005 | AT-SYNC-004 | 同日同スロットを2端末更新 | 双方同期 | 重複セッション保持 + スロット収束 | P0 | Deferred |
-| E2E-SYNC-006 | AT-SYNC-006 | ネットワーク失敗注入 | アプリ復帰で同期実行 | 失敗バナー + 再試行導線表示 | P0 | Deferred |
+| E2E-SYNC-001 | AT-SYNC-001 | 端末Aに未同期データ | 端末B起動 | pull復元成立 | P0 | Planned |
+| E2E-SYNC-002 | AT-SYNC-005 | outbox pendingあり | 手動同期 | outbox消し込み | P0 | Planned |
+| E2E-SYNC-003 | AT-SYNC-002 | 端末Aでセッション完了 | 同期後に端末B復帰 | 完了記録が端末Bへ反映 | P0 | Planned |
+| E2E-SYNC-004 | AT-SYNC-003 | 同一エンティティを2端末更新 | 双方同期 | LWW勝者に一意収束 | P0 | Planned |
+| E2E-SYNC-005 | AT-SYNC-004 | 同日同スロットを2端末更新 | 双方同期 | 重複セッション保持 + スロット収束 | P0 | Planned |
+| E2E-SYNC-006 | AT-SYNC-006 | ネットワーク失敗注入 | アプリ復帰で同期実行 | 失敗バナー + 再試行導線表示 | P0 | Planned |
 
 ### 4.5 復旧
 | E2E ID | 対応AT | 前提 | 操作 | 期待結果 | 優先度 | 状態 |
 |---|---|---|---|---|---|---|
-| E2E-RECOVERY-001 | AT-RECOVERY-001 | DB消去済み | 起動 | クラウドからフル復元 | P0 | Deferred |
-| E2E-RECOVERY-002 | AT-RECOVERY-002 | Blobs欠損 | 手動同期 | `cloudState=missing` -> `full_reseed` 成功 | P0 | Deferred |
-| E2E-RECOVERY-003 | AT-RECOVERY-003 | `full_reseed` 失敗注入 | 手動同期 | `failed` 状態表示 + ローカル保全 | P0 | Deferred |
+| E2E-RECOVERY-001 | AT-RECOVERY-001 | DB消去済み | 起動 | クラウドからフル復元 | P0 | Planned |
+| E2E-RECOVERY-002 | AT-RECOVERY-002 | Blobs欠損 | 手動同期 | `cloudState=missing` -> `full_reseed` 成功 | P0 | Planned |
+| E2E-RECOVERY-003 | AT-RECOVERY-003 | `full_reseed` 失敗注入 | 手動同期 | `failed` 状態表示 + ローカル保全 | P0 | Planned |
 
 ### 4.6 タイマー / アラーム
 | E2E ID | 対応AT | 前提 | 操作 | 期待結果 | 優先度 | 状態 |
 |---|---|---|---|---|---|---|
-| E2E-ALARM-001 | AT-ALARM-001 | タイマー終了時刻到達 | 待機 | Mac通知 + アプリ内アラート | P0 | Deferred |
-| E2E-ALARM-002 | AT-ALARM-002 | 終了後未確認 | T+2分 / T+5分以降経過 | 段階再通知が仕様どおり動作 | P0 | Deferred |
-| E2E-ALARM-003 | AT-ALARM-003 | 通知中 | ACK実行 | 通知停止 + `acked_at` 記録 | P0 | Deferred |
-| E2E-ALARM-004 | AT-ALARM-004 | 終了後30分未ACK | 状態確認 | `status=missed` 永続化 + 警告継続 | P0 | Deferred |
+| E2E-ALARM-001 | AT-ALARM-001 | タイマー終了時刻到達 | 待機 | Mac通知 + アプリ内アラート | P0 | Planned |
+| E2E-ALARM-002 | AT-ALARM-002 | 終了後未確認 | T+2分 / T+5分以降経過 | 段階再通知が仕様どおり動作 | P0 | Planned |
+| E2E-ALARM-003 | AT-ALARM-003 | 通知中 | ACK実行 | 通知停止 + `acked_at` 記録 | P0 | Planned |
+| E2E-ALARM-004 | AT-ALARM-004 | 終了後30分未ACK | 状態確認 | `status=missed` 永続化 + 警告継続 | P0 | Planned |
 
 ### 4.7 プラットフォーム / スリープ
 | E2E ID | 対応AT | 前提 | 操作 | 期待結果 | 優先度 | 状態 |
@@ -131,9 +151,10 @@
 fixture の可変更新は禁止し、ケース単位で読み取り専用にします。
 
 ## 6. 実行順序（推奨）
-1. `状態=Executable` の `E2E-FLOW-*`
-2. `状態=Executable` の `E2E-API-003`
-3. `状態=Deferred` は依存I/F実装後に `Deferred -> Executable` へ変更し、優先度順に着手
+1. 初回実装必須ゲート（3.3）の `Planned` ケースを依存I/F実装と合わせて `Executable` 化
+2. `状態=Executable` の `E2E-FLOW-*` と `E2E-API-003` を実装
+3. 初回実装必須ゲート（3.3）を `Implemented` まで完了
+4. Phase2対象（3.4）はフェーズ開始時に `Deferred -> Planned -> Executable` へ変更して着手
 
 ## 7. 証跡
 - 失敗時:
@@ -144,5 +165,6 @@ fixture の可変更新は禁止し、ケース単位で読み取り専用にし
   - 実行ログ（実行ケースID、所要時間、Pass数）
 
 ## 8. 注意事項
-- `Deferred` ケースは「雛形の skip テスト」を作成せず、仕様書と `traceability-matrix` のみで管理します。
+- 3.3 の初回実装必須ゲートは `Deferred` 禁止です。
+- 3.4 のPhase2対象は「雛形の skip テスト」を作成せず、仕様書と `traceability-matrix` のみで管理します。
 - 依存I/F（同期API、MacネイティブI/F、通知I/F、バックアップI/F）実装後に `Executable` 化して着手します。

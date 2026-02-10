@@ -38,7 +38,7 @@
   - baseline更新は意図変更時のみ許可します。
 
 ## 6. テスト運用I/F契約（実行場所固定）
-テスト実行の作業ディレクトリは `/Users/sakanet/capd_navi/ui-preview-app` とし、同ディレクトリの `package.json` を唯一の実行I/Fとします。  
+テスト実行の作業ディレクトリは `/Users/sakanet/capd_navi/capd-app` とし、同ディレクトリの `package.json` を唯一の実行I/Fとします。  
 実装フェーズで以下 script 名を必須契約とします。
 
 - `test:unit`
@@ -69,6 +69,32 @@ TDD開始前ゲート:
 - `Deferred` はテストコードを無理に作成せず、仕様書と `traceability-matrix` で管理します。
 - 依存条件が満たされたら `Deferred -> Executable` へ更新してから着手します。
 
+### 7.1 Phase1（初回実装必須・Deferred禁止）
+初回実装では、以下の受入IDに紐づくE2Eケースを必須実装対象とします。  
+本範囲は `Deferred` を禁止し、`Planned -> Executable -> Implemented` で進めます。
+
+- 同期/復旧: `AT-SYNC-001`〜`AT-SYNC-006`, `AT-RECOVERY-001`〜`AT-RECOVERY-003`
+- 同期API/Blob保存形式: `AT-API-001`, `AT-API-004`
+- タイマー/アラーム: `AT-ALARM-001`〜`AT-ALARM-004`
+- CSV取込の成立性: `AT-CSV-001`〜`AT-CSV-004`, `AT-API-003`
+
+運用ルール:
+- 初回実装着手時に、上記ケースを `Planned` として `traceability-matrix` に明示します。
+- 実装中に必要I/F（Netlify Blobs同期、通知、CSV取込I/F）を追加し、順次 `Executable` に上げます。
+- 初回実装の完了時点で、上記ケースはすべて `Implemented` かつ `test:e2e` でPassしている必要があります。
+
+### 7.2 Phase2（初回対象外・Deferred許可）
+以下は初回実装対象外とし、Phase2着手まで `Deferred` を許可します。
+
+- CSV警告強化: `AT-CSV-005`
+- 出口部写真: `AT-EXIT-001`〜`AT-EXIT-012`
+- 写真容量/バックアップ: `AT-PHOTO-001`, `AT-BACKUP-001`
+- プラットフォーム拡張: `AT-PLAT-001`, `AT-PLAT-002`, `AT-SLEEP-001`
+
+運用ルール:
+- Phase2開始時に対象ケースを `Planned` へ更新してから実装着手します。
+- Phase1の完了判定には 7.2 は含めません。
+
 ## 8. テストID契約
 - Unit: `UT-*`
 - E2E: `E2E-*`（`AT-*` と必ず紐付ける）
@@ -93,12 +119,14 @@ TDD開始前ゲート:
 - 要件にないアサーションの追加
 - 仕様と無関係な大規模リファクタを同時混在
 - `AT-*` 未接続のE2Eケース追加
+- 7.1 のPhase1必須範囲を `Deferred` のまま放置すること
 
 ## 11. 完了条件（DoD）
 - 変更対象のUnitテストがすべて通過していること
 - 該当するE2Eケースが通過していること
 - Visual差分が意図変更として説明可能であること
 - `traceability-matrix` が「1行1ケース」「正しい状態遷移（Planned/Executable/Implemented/Deferred）」で更新されていること
+- 7.1 のPhase1必須範囲がすべて `Implemented` であること
 - テスト実行結果と未解決事項を作業報告に明記していること
 
 ## 12. 実装担当の報告フォーマット
@@ -106,3 +134,8 @@ TDD開始前ゲート:
 - 追加/更新したテストケースID一覧（UT/E2E/VR）
 - 実行コマンドと結果（Pass/Fail）
 - 未対応ケース（理由と次アクション）
+
+## 13. 実装進捗記録（正本）
+- 実装進捗の正本は `/Users/sakanet/capd_navi/test/specs/traceability-matrix.md` とします。
+- 各テストIDの進捗は `状態`（`Planned/Executable/Implemented/Deferred`）で管理します。
+- Phase情報は `備考` に `Phase1必須` / `Phase2` と明記して追跡します。

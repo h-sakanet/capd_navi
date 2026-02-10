@@ -5,9 +5,9 @@
 対象は純粋ロジックとローカル永続化境界に限定し、UI描画差分は扱いません。
 
 ## 2. 対象モジュール（固定）
-1. `/Users/sakanet/capd_navi/ui-preview-app/lib/protocol-csv.ts`
-2. `/Users/sakanet/capd_navi/ui-preview-app/components/preview/session-slot-store.ts`
-3. `/Users/sakanet/capd_navi/ui-preview-app/components/preview/mock-data.ts`
+1. `/Users/sakanet/capd_navi/capd-app/lib/protocol-csv.ts`
+2. `/Users/sakanet/capd_navi/capd-app/components/capd/session-slot-store.ts`
+3. `/Users/sakanet/capd_navi/capd-app/components/capd/mock-data.ts`
 
 実装順序:
 1. `protocol-csv.ts`
@@ -49,7 +49,7 @@
 | UT-SLOT-007 | `readActiveSession` | `slotIndex` が範囲外（-1, 4, 999） | `null` |
 | UT-SLOT-008 | `writeActiveSession` + `readActiveSession` | 正常値を書き込み後に読み取り | 同一内容が復元される |
 | UT-SLOT-009 | `clearActiveSession` | active session あり | 削除後 `readActiveSession() === null` |
-| UT-SLOT-010 | `createPreviewSessionId` | `slotIndex=0` | `ses_preview_1_<timestamp>` 形式 |
+| UT-SLOT-010 | `createSessionId` | `slotIndex=0` | `ses_1_<timestamp>` 形式 |
 | UT-SLOT-011 | `readProcedureSlots` | `window` 未定義（SSR相当） | 例外を投げず `defaultProcedureSlots` を返す |
 | UT-SLOT-012 | `readActiveSession` | `window` 未定義（SSR相当） | `null` |
 
