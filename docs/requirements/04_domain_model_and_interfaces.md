@@ -429,11 +429,13 @@ export interface SyncChangeSet {
 - ヘッダ: `X-Execution-Token` 必須
 - 入力: `recordEvent`, `recordExchangeNo`, `payload`, `recordedAt`
 - `recordEvent=session_summary` の `payload.summaryScope` はクライアント入力必須にしません（省略可）。
+- `payload.summaryScope` が未指定/空文字/enum外値/型不正でも `POST /sessions/{id}/records` は `422` を返さず、`summaryScope` の入力値を破棄して受理します。
+- `payload.summaryScope` 以外の `session_summary` 項目（血圧・体重・脈拍など）は通常どおり形式検証し、妥当な値は保存します。
 - `POST /sessions/{id}/records` では `session_summary` の型/語彙/単位などの形式検証のみを行い、`first_of_day/last_of_day` の必須判定は行いません。
 - `summaryScope`（`first_of_day` / `last_of_day` / `both`）は最終ステップ完了処理（`POST /sessions/{id}/steps/{stepId}/complete`）でサーバー算出し保存します。
 - エラー:
   - `403` トークン不正
-  - `422` 必須項目不足
+  - `422` 入力形式不正（`payload.summaryScope` 以外）
 
 ### 3.6.1 交換列マッピング仕様（記録ノート）
 - `recordExchangeNo` は `1..5` の交換列番号です（`1` が最左列）。
