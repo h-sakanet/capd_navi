@@ -15,15 +15,16 @@ export default function HomeAPage() {
 
   return (
     <PreviewShell>
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-xl">{`${todayNote.date} (${todayNote.weekdayJp})`}</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6 pt-0">
-          <HomeAProcedureBoard />
-          <TodayCapdNoteTable note={todayNote} />
-        </CardContent>
-      </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-xl">{`${todayNote.date} (${todayNote.weekdayJp})`}</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6 pt-0">
+            <p className="text-sm text-muted-foreground">手技開始通知は外部アラーム運用です（時計アプリ等）。</p>
+            <HomeAProcedureBoard />
+            <TodayCapdNoteTable note={todayNote} />
+          </CardContent>
+        </Card>
 
       <Card>
         <CardContent className="flex flex-wrap gap-2 pt-6">

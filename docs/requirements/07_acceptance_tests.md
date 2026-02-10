@@ -15,6 +15,9 @@
 | AT-CSV-003 | 直列整合 | `next_step_id`不整合CSV | 取込実行 | エラーで中止 |
 | AT-CSV-004 | 画像存在 | 画像不足CSV | 取込実行 | エラーで中止 |
 | AT-CSV-005 | 警告検知 | `xx分`含有CSV | 取込実行 | 取込成功 + 警告表示 |
+| AT-CSV-006 | `alarm_id` 必須 | `timer_event=end` かつ `timer_segment=dwell/drain` で `alarm_id` 空 | 取込実行 | エラーで中止 |
+| AT-CSV-007 | `alarm_id` 重複 | 通知対象行で同一 `alarm_id` が重複 | 取込実行 | エラーで中止 |
+| AT-CSV-008 | 対象外 `alarm_id` 警告 | 通知対象外行に `alarm_id` 設定 | 取込実行 | 取込成功 + 警告表示 |
 
 ### 2.2 進行制御
 | ID | 観点 | 前提 | 操作 | 期待結果 |
@@ -55,6 +58,9 @@
 | AT-ALARM-006 | ACK停止 | Mac/iPhone通知中 | ACK実行 | Mac/iPhone通知ジョブが停止し `acked_at` が記録される |
 | AT-ALARM-007 | 離席高リスク表示 | iPhone補助なし + 離席想定 | タイマー運用開始 | 見逃し高リスク警告が表示される |
 | AT-ALARM-008 | Push購読無効時挙動 | iPhone Push購読が無効 | タイマー終了後未確認 | iPhone補助通知は送信されず、Mac再通知 + アプリ内警告で継続する |
+| AT-ALARM-009 | missed遷移永続化 | タイマー終了後30分未ACK | 状態確認 | 対象 `alarm_id` が `status=missed` で永続化される |
+| AT-ALARM-010 | pendingAlarm選定 | 未ACKの複数 `alarmDispatches` あり | `GET /sessions/{id}` | `due_at` 最古（同着は `alarm_id` 昇順）の1件が `pendingAlarm` に選定される |
+| AT-ALARM-011 | 見逃し状態遷移 | タイマー終了後30分未ACK | 画面表示/復帰 | `missed`（見逃し状態）が表示され、警告が継続する |
 
 ### 2.5 記録
 | ID | 観点 | 前提 | 操作 | 期待結果 |
@@ -68,6 +74,7 @@
 | AT-REC-007 | 最後セッション必須 | 当日最後に完了するセッション | 飲水量/尿量/排便回数欠落で完了 | 完了拒否（必須不足） |
 | AT-REC-008 | 同日1セッション | 当日1件のみ実施 | 最初/最後必須群の一部欠落で完了 | 完了拒否（両群要求） |
 | AT-REC-009 | 出口部状態語彙 | `session_summary` 入力時 | enum外の値を送信 | `422` で拒否 |
+| AT-REC-010 | summaryScope算出 | `session_summary` 保存 | `payload.summaryScope` 未指定または不正値で保存 | サーバーが `first_of_day/last_of_day/both` を再計算して保存する |
 
 ### 2.6 写真容量/バックアップ/エクスポート
 | ID | 観点 | 前提 | 操作 | 期待結果 |
@@ -118,6 +125,7 @@
 | AT-UI-HOME-015 | Home A実施中表示 | セッション進行中のスロットあり | 画面確認 | スロット表示が `実施中` になる |
 | AT-UI-HOME-016 | Home A再開導線 | `実施中` スロットあり | カード本体タップ | 再開確認後に同一セッションへ戻る |
 | AT-UI-HOME-017 | 中断バッジ非表示 | 中断後にホームへ戻る | 画面確認 | `前回中断あり` の表示は出ない |
+| AT-UI-HOME-018 | 外部アラーム注記 | Home A表示中 | 画面確認 | 「手技開始通知は外部アラーム運用」の注記が表示される |
 | AT-UI-SESSION-001 | Session A表示確認 | プレビュー画面あり | 画面確認 | A案確定仕様と一致する |
 | AT-UI-LAYOUT-001 | レスポンシブ | iPhone/Macで表示 | セッション画面表示 | iPhone=1カラム, Mac=2カラム |
 | AT-UI-LAYOUT-002 | 画像比率 | セッション画面 | 画像表示 | 正方形(1:1)で表示 |

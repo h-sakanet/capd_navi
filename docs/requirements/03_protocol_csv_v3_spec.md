@@ -56,6 +56,7 @@ protocol_package/
 
 - `必須チェック`: 改行区切りで複数定義可
 - `timer_id` 使用時は `timer_event` も必須
+- `timer_segment` は、貯留/廃液の時刻表示または通知対象判定が必要な行で使用します（非対象タイマーは空欄可）
 - `timer_event=end` かつ `timer_segment=dwell/drain` の行では `alarm_id` を必須
 - `alarm_trigger`, `alarm_duration_min`, `alarm_related_timer_id` は互換維持のため受理しますが、v1運用では未使用です
 - `record_event` 使用時は必要に応じて `record_exchange_no`, `record_unit` を併用
@@ -80,7 +81,7 @@ protocol_package/
 
 ## 8. 値ドメイン（v1固定）
 - `timer_event`: `start` / `end`
-- `timer_segment`: `dwell` / `drain`（通知対象セグメント）
+- `timer_segment`: `dwell` / `drain`（定義時。通知/ノート表示の対象セグメント。非対象タイマーは空欄可）
 - `alarm_id`: 文字列（同一セッション内で重複不可）
 - `record_event`: `drain_appearance` / `drain_weight_g` / `bag_weight_g` / `session_summary`
 - `record_unit`（v1実績）: `g`
@@ -95,9 +96,10 @@ protocol_package/
 - `step_id` 重複
 - `next_step_id` 不整合（完全シリアル違反）
 - `timer_event` が `start/end` 以外
+- `timer_segment` が空欄以外で `dwell/drain` 以外
 - 同一 `timer_id` の整合違反（start/end不備）
 - `timer_event=end` かつ `timer_segment=dwell/drain` の行で `alarm_id` が空
-- 同一セッション内で `alarm_id` が重複
+- 同一セッション内で、通知対象行（`timer_event=end` かつ `timer_segment=dwell/drain`）の `alarm_id` が重複
 - `record_event` が定義外値
 - `画像` 指定ファイルが存在しない
 
@@ -106,6 +108,7 @@ protocol_package/
 - `(これはなんだろう)` など未確定文言
 - ダミー電話番号等のプレースホルダ
 - `alarm_trigger`, `alarm_duration_min`, `alarm_related_timer_id` が設定されている（v1では未使用）
+- 通知対象外行（`timer_event=end` かつ `timer_segment=dwell/drain` 以外）に `alarm_id` が設定されている
 
 ## 10. 取り込み処理手順
 1. Macでディレクトリ選択

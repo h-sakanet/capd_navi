@@ -8,15 +8,16 @@
 - 一貫実装: コンポーネントは `shadcn/ui` を基盤に構成する
 
 ## 2. デザイントークン
+- トークン正本は `/Users/sakanet/bp_navi/ui-preview-app/app/globals.css` の `:root` とします。差分がある場合は実装版を優先します。
 
 ### 2.1 カラー
-- `--color-bg`: `#f4f7f8`
-- `--color-surface`: `#ffffff`
-- `--color-text`: `#14222b`
-- `--color-primary`: `#0c6b58`
-- `--color-warning`: `#b24516`
-- `--color-danger`: `#9d1c1c`
-- `--color-info`: `#1f5f9b`
+- `--color-bg`: `hsl(240 4.8% 95.9% / 0.3)`（ページ背景）
+- `--color-surface`: `hsl(0 0% 100%)`
+- `--color-text`: `hsl(240 10% 3.9%)`
+- `--color-primary`: `hsl(240 5.9% 10%)`
+- `--color-warning`: `hsl(38 92% 50%)`（警告バナー等のセマンティック色）
+- `--color-danger`: `hsl(0 84.2% 60.2%)`
+- `--color-info`: `hsl(210 66% 42%)`（補助情報のセマンティック色）
 
 ### 2.2 余白
 - `--space-1`: 4px
@@ -27,16 +28,16 @@
 - `--space-6`: 32px
 
 ### 2.3 タイポ
-- Font: `"Hiragino Sans", "Noto Sans JP", sans-serif`
+- Font: `"Inter", "Hiragino Sans", "Noto Sans JP", sans-serif`
 - `--font-title`: 24px/700
 - `--font-h2`: 20px/700
 - `--font-body`: 16px/500
 - `--font-caption`: 13px/500
 
 ### 2.4 形状
-- `--radius-card`: 14px
-- `--radius-button`: 10px
-- `--shadow-card`: `0 8px 18px rgba(20,34,43,0.08)`
+- `--radius-card`: `0.5rem`
+- `--radius-button`: `0.5rem`
+- `--shadow-card`: `0 1px 2px rgba(0,0,0,0.05)`（`shadow-sm` 相当）
 
 ## 3. コンポーネント規約
 - Header: 画面タイトル + 同期状態を表示

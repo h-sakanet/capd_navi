@@ -12,8 +12,9 @@
   - `T0`: Macローカル通知（音+バナー） + アプリ内未確認アラート固定表示
   - `T+2分` 未ACK: iPhone Pushを1回送信 + Mac再通知
   - `T+5分以降` 未ACK: 3分間隔でMac+iPhoneを再通知
-  - `T+30分` 未ACK: `missed` として見逃し状態を表示し、次回表示時も警告継続
+  - `T+30分` 未ACK: `status=missed` を永続化し、見逃し状態を表示（再通知はACKまで継続）
 - ACK時は再通知ジョブを停止し `acked_at` を記録
+- `pendingAlarm` は未ACKジョブから `due_at` 最古を1件返却（同着は `alarm_id` 昇順）
 
 ## 3. Mac実装
 - 権限: `UNUserNotificationCenter` で許可確認

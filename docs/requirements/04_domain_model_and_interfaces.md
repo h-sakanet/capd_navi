@@ -189,7 +189,7 @@ export interface DailyProcedureSlot {
 }
 
 export interface SessionSummaryPayload {
-  summaryScope: SessionSummaryScope;
+  summaryScope?: SessionSummaryScope;
   bp_sys?: number;
   bp_dia?: number;
   body_weight_kg?: number;
@@ -267,8 +267,11 @@ export interface SessionRuntimeState {
   alarmDispatches: AlarmDispatchState[];
   pendingAlarm?: {
     alarmId: string;
-    triggeredAt: string;
-    acknowledged: boolean;
+    segment: TimerSegment;
+    dueAt: string;
+    status: Exclude<AlarmDispatchStatus, "acknowledged">;
+    attemptNo: number;
+    lastNotifiedAt?: string;
   };
   isEditableOnThisDevice: boolean;
 }
@@ -376,6 +379,11 @@ export interface SyncChangeSet {
   - レンダリング用の手順定義は `session_protocol_snapshots` のみを使用し、現行テンプレート版へフォールバックしない
   - `session_protocol_snapshots` 欠落、または `snapshotHash` 再計算不一致時は `409 SESSION_SNAPSHOT_INTEGRITY_ERROR`
 - 出力: 進行状態、記録済みデータ、タイマー状態、アラーム状態、`slotNo`、`scheduledDateLocal`、`wakeLockState`、`alarmDispatches[]`、`pendingAlarm`、`isEditableOnThisDevice`、`protocolSnapshot`
+- `pendingAlarm` 選定規則:
+  - 対象: `acked_at IS NULL` かつ `status IN (pending, notified, missed)`
+  - 優先順位: `due_at` 昇順（最古優先）
+  - 同着時: `alarm_id` 昇順
+  - 対象なし時: `pendingAlarm` は省略
 
 ### 3.4.1 `POST /sessions/{id}/steps/{stepId}/enter`
 - 目的: ステップ到達時の副作用（`timer_event` 記録 / 通知ジョブ生成）を1回だけ確定
@@ -400,24 +408,32 @@ export interface SyncChangeSet {
 - ヘッダ: `X-Execution-Token` 必須
 - 入力: `checkedItems[]`, `completedAt`
 - 前提: 対象ステップで `POST /sessions/{id}/steps/{stepId}/enter` が成功済みであること
+- 最終ステップ完了時の追加処理:
+  - 同一セッションの `recordEvent=session_summary` 最新レコードを取得し、未登録なら `422 SESSION_SUMMARY_REQUIRED_MISSING`
+  - `completedAt` を確定時刻として同日完了セッション順を算出し、`summaryScope` をサーバー決定:
+    - 最初のみ該当: `first_of_day`
+    - 最後のみ該当: `last_of_day`
+    - 最初かつ最後（同日1セッション）: `both`
+  - `summaryScope` に応じて必須項目を検証:
+    - `first_of_day`: `bp_sys`, `bp_dia`, `body_weight_kg`, `pulse`, `body_temp_c`, `exit_site_statuses(1件以上)`
+    - `last_of_day`: `fluid_intake_ml`, `urine_ml`, `stool_count_per_day`
+    - `both`: 上記両方
+  - 検証成功時のみ `sessions.status=completed` / `completed_at=completedAt` を確定し、`session_summary.summaryScope` を保存
 - エラー:
   - `403` トークン不正
   - `409` 必須未完了/端末不一致
+  - `422` `SESSION_SUMMARY_REQUIRED_MISSING`（最終完了時の必須不足）
 
 ### 3.6 `POST /sessions/{id}/records`
 - 目的: `record_event` 入力保存
 - ヘッダ: `X-Execution-Token` 必須
 - 入力: `recordEvent`, `recordExchangeNo`, `payload`, `recordedAt`
+- `recordEvent=session_summary` の `payload.summaryScope` はクライアント入力必須にしません（省略可）。
+- `POST /sessions/{id}/records` では `session_summary` の型/語彙/単位などの形式検証のみを行い、`first_of_day/last_of_day` の必須判定は行いません。
+- `summaryScope`（`first_of_day` / `last_of_day` / `both`）は最終ステップ完了処理（`POST /sessions/{id}/steps/{stepId}/complete`）でサーバー算出し保存します。
 - エラー:
   - `403` トークン不正
   - `422` 必須項目不足
-
-`recordEvent=session_summary` の必須判定:
-- 同一日内で最初に完了したセッション（`completedAt` 最小）:
-  - `bp_sys`, `bp_dia`, `body_weight_kg`, `pulse`, `body_temp_c`, `exit_site_statuses(1件以上)`
-- 同一日内で最後に完了したセッション（`completedAt` 最大）:
-  - `fluid_intake_ml`, `urine_ml`, `stool_count_per_day`
-- 同一日に1セッションのみの場合は両方の必須項目を要求
 
 ### 3.6.1 交換列マッピング仕様（記録ノート）
 - `recordExchangeNo` は `1..5` の交換列番号です（`1` が最左列）。
@@ -450,6 +466,18 @@ export interface SyncChangeSet {
   - 既に確認済みの場合は状態を変更せず `alreadyAcknowledged=true` を返却
 - 処理: ACK時に該当 `alarmId` の再通知ジョブを停止し `acked_at` を記録
 - 出力: `alarmId`, `acknowledged=true`, `alreadyAcknowledged`, `stopped=true`
+
+### 3.8.1 通知ディスパッチャ（バックグラウンド）
+- 対象: `session_alarm_dispatches` の `acked_at IS NULL` かつ `status IN (pending, notified, missed)`
+- 段階通知:
+  - `now >= due_at` かつ `attempt_no=0`: `T0` 通知送信、`attempt_no=1`, `status=notified`, `last_notified_at=now`
+  - `now >= due_at + 2分` かつ `attempt_no=1`: 再通知送信、`attempt_no=2`, `status=notified`
+  - `now >= due_at + 5分` かつ `last_notified_at + 3分 <= now`: 再通知送信、`attempt_no += 1`, `status=notified`
+- 見逃し遷移:
+  - `now >= due_at + 30分` かつ未ACKで `status != missed` の場合、`status=missed` を永続化
+  - `status=missed` 遷移後も、ACKまで3分間隔の再通知を継続
+- 停止条件:
+  - `POST /sessions/{id}/alarms/{alarmId}/ack` 成功時に `status=acknowledged`, `acked_at` を保存し、以後の再通知を停止
 
 ### 3.9 `POST /sessions/{id}/abort`
 - 目的: 非常手段としてセッションを明示中断
@@ -580,7 +608,8 @@ export interface SyncChangeSet {
 1. `session_step_enters` に `(session_id, step_id)` を挿入（既存時は副作用スキップ）
 2. `timer_event=start/end` があれば未記録時のみ保存
 3. `timer_event=end` + `timer_segment=dwell/drain` + `alarm_id` がある場合 `session_alarm_dispatches` を `due_at=entered_at` で作成（既存時は既存値返却）
-4. コミット後に通知スケジューラへ引き渡し、`T0/T+2分/T+5分以降3分` の段階通知を実行
+4. コミット後に通知ディスパッチャへ引き渡し、`attempt_no/status/last_notified_at` を更新しながら `T0/T+2分/T+5分以降3分` の段階通知を実行
+5. `due_at+30分` 未ACK時は `status=missed` を永続化し、ACKまで再通知継続
 
 ## 6. 写真保存ポリシー
 - 画像はJPEG再圧縮（長辺1600px / quality 85）

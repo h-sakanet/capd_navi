@@ -72,12 +72,14 @@
   - 任意: 症状メモ、備考
 - FR-044A: 同一日に1セッションのみ完了した場合は、最初/最後の両条件を同時適用し、必須項目をすべて満たす必要があります。
 - FR-044B: 出口部状態は複数選択チェックボックスで入力し、語彙は `正常/赤み/痛み/はれ/かさぶた/じゅくじゅく/出血/膿` とします。追加の自由記述は備考欄に入力します。
+- FR-044C: `session_summary.summaryScope`（`first_of_day` / `last_of_day` / `both`）は、最終ステップ完了処理でサーバーが同日 `completedAt` 順に算出して保存し、クライアント入力値は採用しません。
 
 ## 6. タイマー/アラーム機能
 - FR-050: `timer_event` と `timer_segment` から、CSV設定に従ってタイマー終了通知ジョブを生成します。
 - FR-050A: 通知対象は `timer_event=end` の終了イベントとし、`timer_segment=dwell/drain` を同一ルールで扱います。
 - FR-050B: 同一セッション内の通知ジョブは `alarm_id` 単位で独立管理します。
 - FR-050C: 通知ジョブは最低限 `alarm_id / segment / due_at / acked_at / attempt_no / status` を保持します。
+- FR-050D: `pendingAlarm` は未ACKジョブ（`pending/notified/missed`）から `due_at` 最小を優先して1件選択し、同値時は `alarm_id` 昇順を採用します。
 - FR-051: 終了時刻 `T0` で Mac ローカル通知（音+バナー）を発火し、同時にアプリ内未確認アラートを固定表示します。
 - FR-052: 未確認時は段階再通知を行います。
 - FR-052A: 再通知間隔は `T+2分`（iPhone補助通知1回 + Mac再通知）、`T+5分以降`（3分間隔でMac+iPhone再通知）とします。
@@ -89,7 +91,9 @@
 - FR-055B: iPhone補助通知の利用可否は Push購読状態（登録/無効化）で管理します。
 - FR-056: 「戻る」操作、過去ステップ再表示、アプリ再開、通信リトライでは、`timer_event(start/end)`・`record_event`・通知ジョブ生成を再発火しません。
 - FR-057: 毎日最初のタイマー運用前に30秒テスト通知を実施し、失敗時は当日を「iPhone補助なし（Mac主導）」として扱います。
-- FR-058: `T+30分` 未確認時は「見逃し状態」を表示し、次回画面表示時も警告を継続します。
+- FR-058: `T+30分` 未確認時は `status=missed` を永続化し、「見逃し状態」を表示します。
+- FR-058A: `status=missed` になった後も、ACKまで3分間隔の再通知を継続します。
+- FR-058B: `status=missed` は `POST /sessions/{id}/alarms/{alarmId}/ack` 成功時に `acknowledged` へ遷移し、通知停止と `acked_at` 記録を行います。
 
 ## 7. 異常判定機能
 - FR-060: 見た目分類ベースの簡易判定を行います。
