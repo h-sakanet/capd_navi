@@ -11,3 +11,7 @@
 # editor
 .vscode/
 .idea/
+
+# ui preview app
+ui-preview-app/node_modules/
+ui-preview-app/.next/

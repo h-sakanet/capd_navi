@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UI Preview History List</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="card header">
+        <div>
+          <h1>記録一覧</h1>
+          <p class="kicker">ホームから遷移して確認・編集する専用画面</p>
+        </div>
+        <div class="badges">
+          <span class="badge">期間: 直近30日</span>
+          <span class="badge">同期: 最新</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>日付</th>
+              <th>テンプレート</th>
+              <th>状態</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2026-02-09</td>
+              <td>ワンバッグ</td>
+              <td>完了</td>
+              <td>
+                <div class="actions">
+                  <button class="btn">詳細</button>
+                  <button class="btn btn-secondary">編集</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>2026-02-08</td>
+              <td>ワンバッグ</td>
+              <td>完了</td>
+              <td>
+                <div class="actions">
+                  <button class="btn">詳細</button>
+                  <button class="btn btn-secondary">編集</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>2026-02-07</td>
+              <td>夜間排液</td>
+              <td>完了</td>
+              <td>
+                <div class="actions">
+                  <button class="btn">詳細</button>
+                  <button class="btn btn-secondary">編集</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="card">
+        <div class="actions">
+          <button class="btn">ホームへ戻る</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
