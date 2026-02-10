@@ -8,7 +8,7 @@
 - 一貫実装: コンポーネントは `shadcn/ui` を基盤に構成する
 
 ## 2. デザイントークン
-- トークン正本は `/Users/sakanet/bp_navi/ui-preview-app/app/globals.css` の `:root` とします。差分がある場合は実装版を優先します。
+- トークン正本は `/Users/sakanet/capd_navi/ui-preview-app/app/globals.css` の `:root` とします。差分がある場合は実装版を優先します。
 
 ### 2.1 カラー
 - `--color-bg`: `hsl(240 4.8% 95.9% / 0.3)`（ページ背景）

@@ -12,10 +12,10 @@
 9. `99_impl_handoff.md`
 
 ## UIスパイク実装版（推奨）
-`/Users/sakanet/bp_navi/ui-preview-app` に Next.js + shadcn/ui の実装版を配置しています。
+`/Users/sakanet/capd_navi/ui-preview-app` に Next.js + shadcn/ui の実装版を配置しています。
 
 起動:
-`cd /Users/sakanet/bp_navi/ui-preview-app && npm install && npm run dev -- -p 5181`
+`cd /Users/sakanet/capd_navi/ui-preview-app && npm install && npm run dev -- -p 5181`
 
 Preview:
 - `http://localhost:5181/ui-preview/home-a`
@@ -31,5 +31,5 @@ Preview:
 - `ui-preview/session-a.html`
 
 注記:
-- UIの最新仕様は Next.js 実装版（`/Users/sakanet/bp_navi/ui-preview-app`）を正とします。
+- UIの最新仕様は Next.js 実装版（`/Users/sakanet/capd_navi/ui-preview-app`）を正とします。
 - `docs/design/ui-preview/*.html` は参考用の旧モックを含むため、差分がある場合は Next.js 実装版を優先します。
