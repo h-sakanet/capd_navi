@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>docs/requirements/README.md ソース表示</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f6f8fb; color: #1f2937; }
+    .top-nav { display: flex; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #d7deea; background: #ffffff; }
+    .top-nav a { color: #0f4acb; text-decoration: none; font-weight: 600; }
+    .top-nav a:hover { text-decoration: underline; }
+    main { max-width: 1180px; margin: 0 auto; padding: 24px 20px 40px; }
+    h1 { margin: 0 0 12px; font-size: 1.6rem; }
+    h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    .lead { margin: 0 0 18px; color: #4b5563; }
+    .card { background: #ffffff; border: 1px solid #d7deea; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+    ul { margin: 8px 0 0; padding-left: 1.2rem; }
+    ol { margin: 8px 0 0; padding-left: 1.4rem; }
+    li { margin: 4px 0; }
+    a { color: #0f4acb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #eef3ff; border-radius: 4px; padding: 1px 4px; }
+    .muted { color: #6b7280; font-size: 0.92rem; }
+    .source-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    .source-table td { border-bottom: 1px solid #e5e7eb; vertical-align: top; padding: 2px 8px; }
+    .source-table .line { width: 82px; text-align: right; color: #6b7280; background: #ffffff; }
+    .source-table .line a { color: #6b7280; }
+    .source-table .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; overflow-wrap: anywhere; }
+    .pill { display: inline-block; border: 1px solid #d7deea; border-radius: 999px; padding: 2px 8px; font-size: 0.78rem; color: #475569; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <nav class="top-nav"><a href="../../../index.html">HTML Index</a><a href="../../../../index.md">Markdown Index</a></nav>
+  <main>
+    <h1>docs/requirements/README.md ソース表示</h1>
+    <p class="lead">行番号とIDアンカー付きで参照できます。</p>
+    <section class="card">
+  <h2><code>docs/requirements/README.md</code></h2>
+  <table class="source-table">
+<tr id="L1">
+  <td class="line"><a href="#L1">1</a></td>
+  <td class="code"># CAPD支援アプリ 要件定義ドキュメント</td>
+</tr>
+<tr id="L2">
+  <td class="line"><a href="#L2">2</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L3">
+  <td class="line"><a href="#L3">3</a></td>
+  <td class="code">## 1. 目的</td>
+</tr>
+<tr id="L4">
+  <td class="line"><a href="#L4">4</a></td>
+  <td class="code">本ディレクトリは、実装エージェントが設計判断を追加せずに着手できる要件を定義します。</td>
+</tr>
+<tr id="L5">
+  <td class="line"><a href="#L5">5</a></td>
+  <td class="code">本版では、共通Webアプリに加えて Mac ネイティブシェルを前提に固定し、データ基盤を `IndexedDB（端末正本） + Netlify Blobs（共有/バックアップ）` として確定します。</td>
+</tr>
+<tr id="L6">
+  <td class="line"><a href="#L6">6</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L7">
+  <td class="line"><a href="#L7">7</a></td>
+  <td class="code">中核方針は次の5点です。</td>
+</tr>
+<tr id="L8">
+  <td class="line"><a href="#L8">8</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L9">
+  <td class="line"><a href="#L9">9</a></td>
+  <td class="code">- CSV設定駆動で手技を実行すること</td>
+</tr>
+<tr id="L10">
+  <td class="line"><a href="#L10">10</a></td>
+  <td class="code">- 安全上重要な工程で進行ブロックを行うこと</td>
+</tr>
+<tr id="L11">
+  <td class="line"><a href="#L11">11</a></td>
+  <td class="code">- セッション開始時スナップショットで再現性を守ること</td>
+</tr>
+<tr id="L12">
+  <td class="line"><a href="#L12">12</a></td>
+  <td class="code">- ローカル正本 + 最終的整合の同期モデルを固定すること</td>
+</tr>
+<tr id="L13">
+  <td class="line"><a href="#L13">13</a></td>
+  <td class="code">- Web共通 + Macネイティブシェルの責務分割を明確化すること</td>
+</tr>
+<tr id="L14">
+  <td class="line"><a href="#L14">14</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L15">
+  <td class="line"><a href="#L15">15</a></td>
+  <td class="code">全体の関係図から確認する場合は、先に `/Users/sakanet/capd_navi/docs/00_navigation.md` を参照してください。</td>
+</tr>
+<tr id="L16">
+  <td class="line"><a href="#L16">16</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L17">
+  <td class="line"><a href="#L17">17</a></td>
+  <td class="code">## 2. ドキュメント構成</td>
+</tr>
+<tr id="L18">
+  <td class="line"><a href="#L18">18</a></td>
+  <td class="code">1. `01_scope_and_success.md`: スコープ、対象、成功基準</td>
+</tr>
+<tr id="L19">
+  <td class="line"><a href="#L19">19</a></td>
+  <td class="code">2. `02_operational_flow.md`: 日次運用、同期、運用フロー</td>
+</tr>
+<tr id="L20">
+  <td class="line"><a href="#L20">20</a></td>
+  <td class="code">3. `03_protocol_csv_v3_spec.md`: CSV v3仕様とMac取り込み</td>
+</tr>
+<tr id="L21">
+  <td class="line"><a href="#L21">21</a></td>
+  <td class="code">4. `04_domain_model_and_interfaces.md`: ドメインモデル、公開I/F</td>
+</tr>
+<tr id="L22">
+  <td class="line"><a href="#L22">22</a></td>
+  <td class="code">5. `05_functional_requirements.md`: 機能要件一覧</td>
+</tr>
+<tr id="L23">
+  <td class="line"><a href="#L23">23</a></td>
+  <td class="code">6. `06_ui_wireframes_ab.md`: UIワイヤー（A案確定）と遷移</td>
+</tr>
+<tr id="L24">
+  <td class="line"><a href="#L24">24</a></td>
+  <td class="code">7. `07_acceptance_tests.md`: 受入テスト</td>
+</tr>
+<tr id="L25">
+  <td class="line"><a href="#L25">25</a></td>
+  <td class="code">8. `08_risks_and_constraints.md`: リスクと制約</td>
+</tr>
+<tr id="L26">
+  <td class="line"><a href="#L26">26</a></td>
+  <td class="code">9. `09_user_journeys.md`: ユーザー動線定義（JRN）</td>
+</tr>
+<tr id="L27">
+  <td class="line"><a href="#L27">27</a></td>
+  <td class="code">10. `10_screen_transition_and_actions.md`: 画面遷移/操作契約（SCR/ACT）</td>
+</tr>
+<tr id="L28">
+  <td class="line"><a href="#L28">28</a></td>
+  <td class="code">11. `11_form_contracts.md`: フォーム契約（FC）</td>
+</tr>
+<tr id="L29">
+  <td class="line"><a href="#L29">29</a></td>
+  <td class="code">12. `12_ui_data_binding_matrix.md`: 画面表示とデータI/Fの対応表</td>
+</tr>
+<tr id="L30">
+  <td class="line"><a href="#L30">30</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L31">
+  <td class="line"><a href="#L31">31</a></td>
+  <td class="code">設計詳細は `docs/design` 配下を参照します。</td>
+</tr>
+<tr id="L32">
+  <td class="line"><a href="#L32">32</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L33">
+  <td class="line"><a href="#L33">33</a></td>
+  <td class="code">## 2.1 優先順位（正本ルール）</td>
+</tr>
+<tr id="L34">
+  <td class="line"><a href="#L34">34</a></td>
+  <td class="code">実装・試験時の解釈優先順位は以下とします。</td>
+</tr>
+<tr id="L35">
+  <td class="line"><a href="#L35">35</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L36">
+  <td class="line"><a href="#L36">36</a></td>
+  <td class="code">1. `05_functional_requirements.md`（FR）</td>
+</tr>
+<tr id="L37">
+  <td class="line"><a href="#L37">37</a></td>
+  <td class="code">2. `09_user_journeys.md`（JRN）</td>
+</tr>
+<tr id="L38">
+  <td class="line"><a href="#L38">38</a></td>
+  <td class="code">3. `10_screen_transition_and_actions.md`（SCR/ACT）</td>
+</tr>
+<tr id="L39">
+  <td class="line"><a href="#L39">39</a></td>
+  <td class="code">4. `11_form_contracts.md`（FC）</td>
+</tr>
+<tr id="L40">
+  <td class="line"><a href="#L40">40</a></td>
+  <td class="code">5. `12_ui_data_binding_matrix.md`（UI/データ対応）</td>
+</tr>
+<tr id="L41">
+  <td class="line"><a href="#L41">41</a></td>
+  <td class="code">6. `07_acceptance_tests.md`（AT）</td>
+</tr>
+<tr id="L42">
+  <td class="line"><a href="#L42">42</a></td>
+  <td class="code">7. `06_ui_wireframes_ab.md`（視覚レイアウト参考）</td>
+</tr>
+<tr id="L43">
+  <td class="line"><a href="#L43">43</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L44">
+  <td class="line"><a href="#L44">44</a></td>
+  <td class="code">補足:</td>
+</tr>
+<tr id="L45">
+  <td class="line"><a href="#L45">45</a></td>
+  <td class="code">- `06_ui_wireframes_ab.md` は「画面の見た目・配置」を確定する文書です。</td>
+</tr>
+<tr id="L46">
+  <td class="line"><a href="#L46">46</a></td>
+  <td class="code">- 画面操作の副作用、保存先、ガード条件は `10` `11` `12` を正本とします。</td>
+</tr>
+<tr id="L47">
+  <td class="line"><a href="#L47">47</a></td>
+  <td class="code">- 正本間で矛盾がある場合、番号の小さい文書を優先します。</td>
+</tr>
+<tr id="L48">
+  <td class="line"><a href="#L48">48</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L49">
+  <td class="line"><a href="#L49">49</a></td>
+  <td class="code">## 3. 用語集</td>
+</tr>
+<tr id="L50">
+  <td class="line"><a href="#L50">50</a></td>
+  <td class="code">- 手技テンプレート: 1回のセッションで実行する一連ステップ定義（CSV取り込み単位）</td>
+</tr>
+<tr id="L51">
+  <td class="line"><a href="#L51">51</a></td>
+  <td class="code">- セッション: 手技テンプレートを1回実行する実績単位</td>
+</tr>
+<tr id="L52">
+  <td class="line"><a href="#L52">52</a></td>
+  <td class="code">- 手順スナップショット: セッション開始時点の手技定義を固定保存したもの</td>
+</tr>
+<tr id="L53">
+  <td class="line"><a href="#L53">53</a></td>
+  <td class="code">- スナップショットハッシュ: 手順スナップショット本文の整合性確認に使う `sha256` 値</td>
+</tr>
+<tr id="L54">
+  <td class="line"><a href="#L54">54</a></td>
+  <td class="code">- outbox: ローカル更新をクラウド同期待ちとして保持するキュー</td>
+</tr>
+<tr id="L55">
+  <td class="line"><a href="#L55">55</a></td>
+  <td class="code">- cloudRevision: Blobs 側の共有リビジョン</td>
+</tr>
+<tr id="L56">
+  <td class="line"><a href="#L56">56</a></td>
+  <td class="code">- mutationId: 同期反映単位の一意識別子</td>
+</tr>
+<tr id="L57">
+  <td class="line"><a href="#L57">57</a></td>
+  <td class="code">- `record_event`: 手動入力モーダルを起動するイベント識別子</td>
+</tr>
+<tr id="L58">
+  <td class="line"><a href="#L58">58</a></td>
+  <td class="code">- `timer_id`: 自動時刻記録の論理タイマー識別子</td>
+</tr>
+<tr id="L59">
+  <td class="line"><a href="#L59">59</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L60">
+  <td class="line"><a href="#L60">60</a></td>
+  <td class="code">## 4. 前提（確定事項）</td>
+</tr>
+<tr id="L61">
+  <td class="line"><a href="#L61">61</a></td>
+  <td class="code">- 要件書は日本語のみで作成します。</td>
+</tr>
+<tr id="L62">
+  <td class="line"><a href="#L62">62</a></td>
+  <td class="code">- アプリ利用は本人のみを想定します。</td>
+</tr>
+<tr id="L63">
+  <td class="line"><a href="#L63">63</a></td>
+  <td class="code">- 利用端末は iPhone と MacBook を想定します。</td>
+</tr>
+<tr id="L64">
+  <td class="line"><a href="#L64">64</a></td>
+  <td class="code">- 提供形態は共通Web + Macネイティブシェル（WKWebView）です。</td>
+</tr>
+<tr id="L65">
+  <td class="line"><a href="#L65">65</a></td>
+  <td class="code">- Macはネイティブシェルを主端末として利用します。</td>
+</tr>
+<tr id="L66">
+  <td class="line"><a href="#L66">66</a></td>
+  <td class="code">- iPhoneは代替端末として、手技確認と記録、履歴閲覧を可能にします。</td>
+</tr>
+<tr id="L67">
+  <td class="line"><a href="#L67">67</a></td>
+  <td class="code">- 同期は起動/復帰・セッション完了・手動同期の契機で実行します。</td>
+</tr>
+<tr id="L68">
+  <td class="line"><a href="#L68">68</a></td>
+  <td class="code">- 同一端末中の同時実行セッションは1件のみです。</td>
+</tr>
+<tr id="L69">
+  <td class="line"><a href="#L69">69</a></td>
+  <td class="code">- データ正本は端末ローカル（IndexedDB）です。</td>
+</tr>
+<tr id="L70">
+  <td class="line"><a href="#L70">70</a></td>
+  <td class="code">- クラウド（Netlify Blobs）は共有・バックアップ用途です。</td>
+</tr>
+<tr id="L71">
+  <td class="line"><a href="#L71">71</a></td>
+  <td class="code">- 競合解決はエンティティ単位LWWです（内部適用のみ）。</td>
+</tr>
+<tr id="L72">
+  <td class="line"><a href="#L72">72</a></td>
+  <td class="code">- アプリ内認証は行いません（公開URL運用、受容済みリスク）。</td>
+</tr>
+<tr id="L73">
+  <td class="line"><a href="#L73">73</a></td>
+  <td class="code">- 同期データは非暗号化で保存します（HTTPS通信前提）。</td>
+</tr>
+<tr id="L74">
+  <td class="line"><a href="#L74">74</a></td>
+  <td class="code">- 医療免責文の常設表示は行いません。</td>
+</tr>
+<tr id="L75">
+  <td class="line"><a href="#L75">75</a></td>
+  <td class="code">- 異常時導線は警告表示のみ（連絡ボタン等はv1対象外）です。</td>
+</tr>
+<tr id="L76">
+  <td class="line"><a href="#L76">76</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L77">
+  <td class="line"><a href="#L77">77</a></td>
+  <td class="code">## 5. 現状ベースライン</td>
+</tr>
+<tr id="L78">
+  <td class="line"><a href="#L78">78</a></td>
+  <td class="code">現状分析のベースCSV:</td>
+</tr>
+<tr id="L79">
+  <td class="line"><a href="#L79">79</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L80">
+  <td class="line"><a href="#L80">80</a></td>
+  <td class="code">- `/Users/sakanet/Downloads/手技マニュアル_ワンバッグ_v2 - 手技マニュアル_v2 (1).csv`</td>
+</tr>
+<tr id="L81">
+  <td class="line"><a href="#L81">81</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L82">
+  <td class="line"><a href="#L82">82</a></td>
+  <td class="code">確認済み事実:</td>
+</tr>
+<tr id="L83">
+  <td class="line"><a href="#L83">83</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L84">
+  <td class="line"><a href="#L84">84</a></td>
+  <td class="code">- ステップ数: 76</td>
+</tr>
+<tr id="L85">
+  <td class="line"><a href="#L85">85</a></td>
+  <td class="code">- フェーズ数: 7（事前準備、接続、廃液、注液、切り離し、透析中、終了）</td>
+</tr>
+<tr id="L86">
+  <td class="line"><a href="#L86">86</a></td>
+  <td class="code">- 状態数: 4（お腹-独立、お腹-接続、お腹→廃液バッグ、お腹←透析液バッグ）</td>
+</tr>
+<tr id="L87">
+  <td class="line"><a href="#L87">87</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L88">
+  <td class="line"><a href="#L88">88</a></td>
+  <td class="code">## 6. 意思決定ログ（2026-02-10）</td>
+</tr>
+<tr id="L89">
+  <td class="line"><a href="#L89">89</a></td>
+  <td class="code">| 項目 | 決定 |</td>
+</tr>
+<tr id="L90">
+  <td class="line"><a href="#L90">90</a></td>
+  <td class="code">|---|---|</td>
+</tr>
+<tr id="L91">
+  <td class="line"><a href="#L91">91</a></td>
+  <td class="code">| CSVフォーマット | v3のみ対応 |</td>
+</tr>
+<tr id="L92">
+  <td class="line"><a href="#L92">92</a></td>
+  <td class="code">| 分岐 | 不可（完全シリアル遷移のみ） |</td>
+</tr>
+<tr id="L93">
+  <td class="line"><a href="#L93">93</a></td>
+  <td class="code">| 進行制御 | 重要工程と `record_event` でブロック |</td>
+</tr>
+<tr id="L94">
+  <td class="line"><a href="#L94">94</a></td>
+  <td class="code">| Mac技術 | SwiftUI + WKWebView + UNUserNotificationCenter + IOPM Assertion |</td>
+</tr>
+<tr id="L95">
+  <td class="line"><a href="#L95">95</a></td>
+  <td class="code">| Web技術 | Next.js + Netlify Functions（最小） + IndexedDB + Netlify Blobs |</td>
+</tr>
+<tr id="L96">
+  <td class="line"><a href="#L96">96</a></td>
+  <td class="code">| 同期 | 起動/復帰・完了・手動同期の遅延同期（最終的整合） |</td>
+</tr>
+<tr id="L97">
+  <td class="line"><a href="#L97">97</a></td>
+  <td class="code">| 公開API | `POST /sync/push`, `POST /sync/pull` の2本のみ |</td>
+</tr>
+<tr id="L98">
+  <td class="line"><a href="#L98">98</a></td>
+  <td class="code">| 競合解決 | LWW（`updatedAt`, `updatedByDeviceId`, `mutationId` 降順） |</td>
+</tr>
+<tr id="L99">
+  <td class="line"><a href="#L99">99</a></td>
+  <td class="code">| 暗号化 | v1では実施しない（非暗号化保存、HTTPS通信前提） |</td>
+</tr>
+<tr id="L100">
+  <td class="line"><a href="#L100">100</a></td>
+  <td class="code">| 通知 | MacはOS通知、iPhoneは条件付きOS通知 + アプリ内強調 |</td>
+</tr>
+<tr id="L101">
+  <td class="line"><a href="#L101">101</a></td>
+  <td class="code">| 画面スリープ対策 | Macネイティブ制御を優先、iPhoneはベストエフォート |</td>
+</tr>
+<tr id="L102">
+  <td class="line"><a href="#L102">102</a></td>
+  <td class="code">| 認証 | アプリ内認証なし（公開URLのみ） |</td>
+</tr>
+<tr id="L103">
+  <td class="line"><a href="#L103">103</a></td>
+  <td class="code">| 写真保存 | 上限1GB、超過時に古い順削除 |</td>
+</tr>
+<tr id="L104">
+  <td class="line"><a href="#L104">104</a></td>
+  <td class="code">| バックアップ | 日次スナップショット（保持30日） |</td>
+</tr>
+<tr id="L105">
+  <td class="line"><a href="#L105">105</a></td>
+  <td class="code">| クラウド欠損復旧 | `cloudState=missing` 検知時に `syncMode=full_reseed` でローカル全量再シード |</td>
+</tr>
+<tr id="L106">
+  <td class="line"><a href="#L106">106</a></td>
+  <td class="code">| エクスポート | v1対象外（提供しない） |</td>
+</tr>
+<tr id="L107">
+  <td class="line"><a href="#L107">107</a></td>
+  <td class="code">| UIスパイク対象 | ホーム / セッション実行（A案）+ 記録一覧（構成確認） |</td>
+</tr>
+<tr id="L108">
+  <td class="line"><a href="#L108">108</a></td>
+  <td class="code">| UIコンポーネント基盤 | shadcn/ui を採用 |</td>
+</tr>
+<tr id="L109">
+  <td class="line"><a href="#L109">109</a></td>
+  <td class="code">| UI標準 | トークン + コンポーネント規約 + 運用チェックリスト |</td>
+</tr>
+<tr id="L110">
+  <td class="line"><a href="#L110">110</a></td>
+  <td class="code">| ホームスロット | 左から右の実行順序を強制、推奨時刻は厳密昇順で登録 |</td>
+</tr>
+<tr id="L111">
+  <td class="line"><a href="#L111">111</a></td>
+  <td class="code">| スロット永続化 | `dateLocal` 単位で4スロットをローカル保存し、同期時に共有 |</td>
+</tr>
+<tr id="L112">
+  <td class="line"><a href="#L112">112</a></td>
+  <td class="code">| スロット表示状態 | `未登録` / `未実施` / `実施中` / `実施済み` |</td>
+</tr>
+<tr id="L113">
+  <td class="line"><a href="#L113">113</a></td>
+  <td class="code">| 予期せぬ離脱 | `active` を保持し、ホームの `実施中` スロットから再開 |</td>
+</tr>
+<tr id="L114">
+  <td class="line"><a href="#L114">114</a></td>
+  <td class="code">| 明示中断 | セッション画面 `•••` の非常用操作のみ許可。中断後はスロットを `未実施` へ戻す |</td>
+</tr>
+<tr id="L115">
+  <td class="line"><a href="#L115">115</a></td>
+  <td class="code">| 日次サマリ必須入力 | 最初完了セッションで血圧/体重/脈拍/体温/出口部状態、最後完了セッションで飲水量/尿量/排便回数 |</td>
+</tr>
+<tr id="L116">
+  <td class="line"><a href="#L116">116</a></td>
+  <td class="code">| 除水量計算 | 交換#1は未計算、交換#2以降のみ `排液量-前回注液量` を計算 |</td>
+</tr>
+<tr id="L117">
+  <td class="line"><a href="#L117">117</a></td>
+  <td class="code">| 開始時スナップショット契約 | セッション開始時に `sessions` + `session_protocol_snapshots` をローカル原子的保存。再開時は固定版のみ参照 |</td>
+</tr>
+<tr id="L118">
+  <td class="line"><a href="#L118">118</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L119">
+  <td class="line"><a href="#L119">119</a></td>
+  <td class="code">## 7. 実装者向け注意</td>
+</tr>
+<tr id="L120">
+  <td class="line"><a href="#L120">120</a></td>
+  <td class="code">- ローカル更新は必ず outbox へ追記し、同期可能な状態にします。</td>
+</tr>
+<tr id="L121">
+  <td class="line"><a href="#L121">121</a></td>
+  <td class="code">- `Netlify Blobs` へ直接ブラウザ書き込みは行わず、Functions経由で資格情報を秘匿します。</td>
+</tr>
+<tr id="L122">
+  <td class="line"><a href="#L122">122</a></td>
+  <td class="code">- iOSストレージ回収対策として `storage.persist()` 要求と復元導線を実装します。</td>
+</tr>
+<tr id="L123">
+  <td class="line"><a href="#L123">123</a></td>
+  <td class="code">- Blobs欠損時はローカル正本から全量再シードし、ローカル初期化を行いません。</td>
+</tr>
+<tr id="L124">
+  <td class="line"><a href="#L124">124</a></td>
+  <td class="code">- 写真容量の上限監視と削除処理はローカル/クラウド両方で整合させます。</td>
+</tr>
+<tr id="L125">
+  <td class="line"><a href="#L125">125</a></td>
+  <td class="code">- 同時編集を避けるため、更新前に手動同期を推奨します。</td>
+</tr>
+<tr id="L126">
+  <td class="line"><a href="#L126">126</a></td>
+  <td class="code">- UIスパイク資産は参照専用として保持し、本番実装は `/capd/*` 系ルートで進めます。</td>
+</tr>
+<tr id="L127">
+  <td class="line"><a href="#L127">127</a></td>
+  <td class="code">- `/capd/*` 本番導線でモックデータを直接参照してはいけません。fixture は `test/fixtures` のみで使用します。</td>
+</tr>
+<tr id="L128">
+  <td class="line"><a href="#L128">128</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+  </table>
+</section>
+  </main>
+</body>
+</html>

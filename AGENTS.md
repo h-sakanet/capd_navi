@@ -12,7 +12,12 @@
 ## 3. 必読ドキュメント
 - `/Users/sakanet/capd_navi/docs/requirements/05_functional_requirements.md`
 - `/Users/sakanet/capd_navi/docs/requirements/07_acceptance_tests.md`
+- `/Users/sakanet/capd_navi/docs/requirements/09_user_journeys.md`
+- `/Users/sakanet/capd_navi/docs/requirements/10_screen_transition_and_actions.md`
+- `/Users/sakanet/capd_navi/docs/requirements/11_form_contracts.md`
+- `/Users/sakanet/capd_navi/docs/requirements/12_ui_data_binding_matrix.md`
 - `/Users/sakanet/capd_navi/docs/design/04_sync_conflict_policy.md`
+- `/Users/sakanet/capd_navi/docs/design/11_state_machines.md`
 - `/Users/sakanet/capd_navi/test/specs/unit-spec.md`
 - `/Users/sakanet/capd_navi/test/specs/e2e-spec.md`
 - `/Users/sakanet/capd_navi/test/specs/visual-spec.md`
@@ -120,6 +125,7 @@ TDD開始前ゲート:
 - 仕様と無関係な大規模リファクタを同時混在
 - `AT-*` 未接続のE2Eケース追加
 - 7.1 のPhase1必須範囲を `Deferred` のまま放置すること
+- `/capd/*` 本番ルートで `mock-data.ts` を正本データとして利用すること
 
 ## 11. 完了条件（DoD）
 - 変更対象のUnitテストがすべて通過していること

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JRN-001-CSV 詳細</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f6f8fb; color: #1f2937; }
+    .top-nav { display: flex; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #d7deea; background: #ffffff; }
+    .top-nav a { color: #0f4acb; text-decoration: none; font-weight: 600; }
+    .top-nav a:hover { text-decoration: underline; }
+    main { max-width: 1180px; margin: 0 auto; padding: 24px 20px 40px; }
+    h1 { margin: 0 0 12px; font-size: 1.6rem; }
+    h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    .lead { margin: 0 0 18px; color: #4b5563; }
+    .card { background: #ffffff; border: 1px solid #d7deea; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+    ul { margin: 8px 0 0; padding-left: 1.2rem; }
+    ol { margin: 8px 0 0; padding-left: 1.4rem; }
+    li { margin: 4px 0; }
+    a { color: #0f4acb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #eef3ff; border-radius: 4px; padding: 1px 4px; }
+    .muted { color: #6b7280; font-size: 0.92rem; }
+    .source-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    .source-table td { border-bottom: 1px solid #e5e7eb; vertical-align: top; padding: 2px 8px; }
+    .source-table .line { width: 82px; text-align: right; color: #6b7280; background: #ffffff; }
+    .source-table .line a { color: #6b7280; }
+    .source-table .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; overflow-wrap: anywhere; }
+    .pill { display: inline-block; border: 1px solid #d7deea; border-radius: 999px; padding: 2px 8px; font-size: 0.78rem; color: #475569; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <nav class="top-nav"><a href="../index.html">HTML Index</a><a href="../../index.md">Markdown Index</a></nav>
+  <main>
+    <h1>JRN-001-CSV 詳細</h1>
+    <p class="lead">JRN-001-CSV CSV取込（Mac）</p>
+    <section class="card">
+  <h2>対応FR</h2>
+<ul>
+<li><a href="../ids/FR-020.html"><code>FR-020</code></a> <span class="muted">- FR-020: MacネイティブシェルでCSV+画像ディレクトリを選択できます。</span></li>
+<li><a href="../ids/FR-021.html"><code>FR-021</code></a> <span class="muted">- FR-021: CSV v3フォーマットのみ受け付けます。</span></li>
+<li><a href="../ids/FR-022.html"><code>FR-022</code></a> <span class="muted">- FR-022: 検証エラー1件以上で取り込みを中止します。</span></li>
+<li><a href="../ids/FR-023.html"><code>FR-023</code></a> <span class="muted">- FR-023: 警告は取り込み結果画面で一覧表示します。</span></li>
+<li><a href="../ids/FR-024.html"><code>FR-024</code></a> <span class="muted">- FR-024: 画像相対パスを protocol.csv ディレクトリ基準で解決します。</span></li>
+<li><a href="../ids/FR-070.html"><code>FR-070</code></a> <span class="muted">- FR-070: 新版取り込み後、テンプレート版として保存します。</span></li>
+<li><a href="../ids/FR-082A.html"><code>FR-082A</code></a> <span class="muted">- FR-082A: 公開HTTP APIは POST /sync/push と POST /sync/pull のみとし、CSV取り込みはローカルI/F（ProtocolImportService.importFromDirectory）で実行します。</span></li>
+</ul>
+</section>
+<section class="card">
+  <h2>対応AT</h2>
+<ul>
+<li><a href="../ids/AT-API-003.html"><code>AT-API-003</code></a> <span class="muted">CSVローカル完結</span></li>
+<li><a href="../ids/AT-CSV-001.html"><code>AT-CSV-001</code></a> <span class="muted">正常取込</span></li>
+<li><a href="../ids/AT-CSV-002.html"><code>AT-CSV-002</code></a> <span class="muted">重複検出</span></li>
+<li><a href="../ids/AT-CSV-003.html"><code>AT-CSV-003</code></a> <span class="muted">直列整合</span></li>
+<li><a href="../ids/AT-CSV-004.html"><code>AT-CSV-004</code></a> <span class="muted">画像存在</span></li>
+</ul>
+</section>
+<section class="card">
+  <h2>画面と操作</h2>
+  <h3>SCR</h3>
+<ul>
+<li><a href="../screens/SCR-001-HOME.html"><code>SCR-001-HOME</code></a> <span class="muted">Home</span></li>
+<li><a href="../screens/SCR-012-MAC-IMPORT.html"><code>SCR-012-MAC-IMPORT</code></a> <span class="muted">CSV取込I/F</span></li>
+</ul>
+  <h3>ACT</h3>
+<ul>
+<li><a href="../ids/ACT-HOME-007.html"><code>ACT-HOME-007</code></a> <span class="muted">CSV取り込み</span></li>
+</ul>
+</section>
+<section class="card">
+  <h2>定義位置</h2>
+<ul>
+<li><a href="../sources/docs/requirements/09_user_journeys.html#JRN-001-CSV"><code>docs/requirements/09_user_journeys.md:16</code></a> <span class="muted">| JRN-001-CSV | CSV取込（Mac） | Mac | Home表示済み、取込ディレクトリあり | テンプレート版が保存される | FR-020〜FR-024, FR-082A | AT-CSV-001〜AT-CSV-004, AT-API-003 | Phase1 |</span></li>
+<li><a href="../sources/docs/requirements/09_user_journeys.html#JRN-001-CSV--L28"><code>docs/requirements/09_user_journeys.md:28</code></a> <span class="muted">### JRN-001-CSV CSV取込（Mac）</span></li>
+<li><a href="../sources/docs/spec/10_journeys/journeys.html#JRN-001-CSV--L23"><code>docs/spec/10_journeys/journeys.md:23</code></a> <span class="muted">| JRN-001-CSV | CSV取込（Mac） | テンプレート取込 | SCR-001-HOME, SCR-012-MAC-IMPORT | テンプレート版保存 | [link](./JRN-001-CSV.md) |</span></li>
+<li><a href="../sources/docs/spec/10_journeys/JRN-001-CSV.html#JRN-001-CSV--L1"><code>docs/spec/10_journeys/JRN-001-CSV.md:1</code></a> <span class="muted"># JRN-001-CSV</span></li>
+</ul>
+</section>
+<section class="card">
+  <h2>補助リンク</h2>
+  <ul><li><a href="../../journeys/JRN-001-CSV.md">JRN-001-CSV.md</a></li></ul>
+</section>
+  </main>
+</body>
+</html>

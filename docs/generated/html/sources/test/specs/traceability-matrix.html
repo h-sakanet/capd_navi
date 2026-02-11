@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>test/specs/traceability-matrix.md ソース表示</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f6f8fb; color: #1f2937; }
+    .top-nav { display: flex; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #d7deea; background: #ffffff; }
+    .top-nav a { color: #0f4acb; text-decoration: none; font-weight: 600; }
+    .top-nav a:hover { text-decoration: underline; }
+    main { max-width: 1180px; margin: 0 auto; padding: 24px 20px 40px; }
+    h1 { margin: 0 0 12px; font-size: 1.6rem; }
+    h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    .lead { margin: 0 0 18px; color: #4b5563; }
+    .card { background: #ffffff; border: 1px solid #d7deea; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+    ul { margin: 8px 0 0; padding-left: 1.2rem; }
+    ol { margin: 8px 0 0; padding-left: 1.4rem; }
+    li { margin: 4px 0; }
+    a { color: #0f4acb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #eef3ff; border-radius: 4px; padding: 1px 4px; }
+    .muted { color: #6b7280; font-size: 0.92rem; }
+    .source-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    .source-table td { border-bottom: 1px solid #e5e7eb; vertical-align: top; padding: 2px 8px; }
+    .source-table .line { width: 82px; text-align: right; color: #6b7280; background: #ffffff; }
+    .source-table .line a { color: #6b7280; }
+    .source-table .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; overflow-wrap: anywhere; }
+    .pill { display: inline-block; border: 1px solid #d7deea; border-radius: 999px; padding: 2px 8px; font-size: 0.78rem; color: #475569; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <nav class="top-nav"><a href="../../../index.html">HTML Index</a><a href="../../../../index.md">Markdown Index</a></nav>
+  <main>
+    <h1>test/specs/traceability-matrix.md ソース表示</h1>
+    <p class="lead">行番号とIDアンカー付きで参照できます。</p>
+    <section class="card">
+  <h2><code>test/specs/traceability-matrix.md</code></h2>
+  <table class="source-table">
+<tr id="L1">
+  <td class="line"><a href="#L1">1</a></td>
+  <td class="code"># Traceability Matrix</td>
+</tr>
+<tr id="L2">
+  <td class="line"><a href="#L2">2</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L3">
+  <td class="line"><a href="#L3">3</a></td>
+  <td class="code">## 1. 目的</td>
+</tr>
+<tr id="L4">
+  <td class="line"><a href="#L4">4</a></td>
+  <td class="code">要件（`FR-*`）・受入（`AT-*`）・テスト仕様（`UT-*` / `E2E-*` / `VR-*`）の対応関係を固定します。  </td>
+</tr>
+<tr id="L5">
+  <td class="line"><a href="#L5">5</a></td>
+  <td class="code">本表は「1行1ケース（1テストID）」で更新し、未実装は `状態=Deferred` で明示します。</td>
+</tr>
+<tr id="L6">
+  <td class="line"><a href="#L6">6</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L7">
+  <td class="line"><a href="#L7">7</a></td>
+  <td class="code">## 2. 対応表</td>
+</tr>
+<tr id="L8">
+  <td class="line"><a href="#L8">8</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L9">
+  <td class="line"><a href="#L9">9</a></td>
+  <td class="code">### 2.1 Unit</td>
+</tr>
+<tr id="L10">
+  <td class="line"><a href="#L10">10</a></td>
+  <td class="code">| 要件ID | 受入ID | テストID | 対象 | 状態 | 備考 |</td>
+</tr>
+<tr id="L11">
+  <td class="line"><a href="#L11">11</a></td>
+  <td class="code">|---|---|---|---|---|---|</td>
+</tr>
+<tr id="L12">
+  <td class="line"><a href="#L12">12</a></td>
+  <td class="code"><a id="FR-021--L12"></a>| <a href="../../../ids/FR-021.html">FR-021</a> | <a href="../../../ids/AT-CSV-001.html">AT-CSV-001</a> | <a href="../../../ids/UT-CSV-001.html">UT-CSV-001</a> | `protocol-csv.ts` | Executable | 正常CSVの基本パース |</td>
+</tr>
+<tr id="L13">
+  <td class="line"><a href="#L13">13</a></td>
+  <td class="code"><a id="FR-022--L13"></a>| <a href="../../../ids/FR-022.html">FR-022</a> | - | <a href="../../../ids/UT-CSV-002.html">UT-CSV-002</a> | `protocol-csv.ts` | Executable | ヘッダー/データ不足 |</td>
+</tr>
+<tr id="L14">
+  <td class="line"><a href="#L14">14</a></td>
+  <td class="code"><a id="FR-021--L14"></a>| <a href="../../../ids/FR-021.html">FR-021</a> | - | <a href="../../../ids/UT-CSV-003.html">UT-CSV-003</a> | `protocol-csv.ts` | Executable | `row_type` 必須列検証 |</td>
+</tr>
+<tr id="L15">
+  <td class="line"><a href="#L15">15</a></td>
+  <td class="code"><a id="FR-021--L15"></a>| <a href="../../../ids/FR-021.html">FR-021</a> | - | <a href="../../../ids/UT-CSV-004.html">UT-CSV-004</a> | `protocol-csv.ts` | Executable | 必須meta_key検証 |</td>
+</tr>
+<tr id="L16">
+  <td class="line"><a href="#L16">16</a></td>
+  <td class="code"><a id="FR-021--L16"></a>| <a href="../../../ids/FR-021.html">FR-021</a> | - | <a href="../../../ids/UT-CSV-005.html">UT-CSV-005</a> | `protocol-csv.ts` | Executable | `format_version=3` 固定検証 |</td>
+</tr>
+<tr id="L17">
+  <td class="line"><a href="#L17">17</a></td>
+  <td class="code"><a id="FR-022--L17"></a>| <a href="../../../ids/FR-022.html">FR-022</a> | - | <a href="../../../ids/UT-CSV-006.html">UT-CSV-006</a> | `protocol-csv.ts` | Executable | step行欠落時の中止 |</td>
+</tr>
+<tr id="L18">
+  <td class="line"><a href="#L18">18</a></td>
+  <td class="code"><a id="FR-023--L18"></a>| <a href="../../../ids/FR-023.html">FR-023</a> | <a href="../../../ids/AT-CSV-005.html">AT-CSV-005</a> | <a href="../../../ids/UT-CSV-007.html">UT-CSV-007</a> | `protocol-csv.ts` | Executable | 警告系入力（改行分割） |</td>
+</tr>
+<tr id="L19">
+  <td class="line"><a href="#L19">19</a></td>
+  <td class="code"><a id="FR-021--L19"></a>| <a href="../../../ids/FR-021.html">FR-021</a> | - | <a href="../../../ids/UT-CSV-008.html">UT-CSV-008</a> | `protocol-csv.ts` | Executable | エスケープ引用符復元 |</td>
+</tr>
+<tr id="L20">
+  <td class="line"><a href="#L20">20</a></td>
+  <td class="code"><a id="FR-021--L20"></a>| <a href="../../../ids/FR-021.html">FR-021</a> | - | <a href="../../../ids/UT-CSV-009.html">UT-CSV-009</a> | `protocol-csv.ts` | Executable | `alarm_duration_min` 空欄 |</td>
+</tr>
+<tr id="L21">
+  <td class="line"><a href="#L21">21</a></td>
+  <td class="code"><a id="FR-021--L21"></a>| <a href="../../../ids/FR-021.html">FR-021</a> | - | <a href="../../../ids/UT-CSV-010.html">UT-CSV-010</a> | `protocol-csv.ts` | Executable | `alarm_duration_min` 非数値 |</td>
+</tr>
+<tr id="L22">
+  <td class="line"><a href="#L22">22</a></td>
+  <td class="code"><a id="FR-022--L22"></a>| <a href="../../../ids/FR-022.html">FR-022</a> | - | <a href="../../../ids/UT-CSV-011.html">UT-CSV-011</a> | `protocol-csv.ts` | Executable | 無効step行の無視 |</td>
+</tr>
+<tr id="L23">
+  <td class="line"><a href="#L23">23</a></td>
+  <td class="code"><a id="FR-009E--L23"></a>| <a href="../../../ids/FR-009E.html">FR-009E</a> | - | <a href="../../../ids/UT-SLOT-001.html">UT-SLOT-001</a> | `session-slot-store.ts` | Executable | localStorage未設定復帰 |</td>
+</tr>
+<tr id="L24">
+  <td class="line"><a href="#L24">24</a></td>
+  <td class="code"><a id="FR-009E--L24"></a>| <a href="../../../ids/FR-009E.html">FR-009E</a> | - | <a href="../../../ids/UT-SLOT-002.html">UT-SLOT-002</a> | `session-slot-store.ts` | Executable | 不正JSON復帰 |</td>
+</tr>
+<tr id="L25">
+  <td class="line"><a href="#L25">25</a></td>
+  <td class="code"><a id="FR-009E--L25"></a>| <a href="../../../ids/FR-009E.html">FR-009E</a> | - | <a href="../../../ids/UT-SLOT-003.html">UT-SLOT-003</a> | `session-slot-store.ts` | Executable | 配列長不正復帰 |</td>
+</tr>
+<tr id="L26">
+  <td class="line"><a href="#L26">26</a></td>
+  <td class="code"><a id="FR-009E--L26"></a>| <a href="../../../ids/FR-009E.html">FR-009E</a> | - | <a href="../../../ids/UT-SLOT-004.html">UT-SLOT-004</a> | `session-slot-store.ts` | Executable | 要素型不正の正規化 |</td>
+</tr>
+<tr id="L27">
+  <td class="line"><a href="#L27">27</a></td>
+  <td class="code"><a id="FR-009E--L27"></a>| <a href="../../../ids/FR-009E.html">FR-009E</a> | - | <a href="../../../ids/UT-SLOT-005.html">UT-SLOT-005</a> | `session-slot-store.ts` | Executable | 書込/復元の整合 |</td>
+</tr>
+<tr id="L28">
+  <td class="line"><a href="#L28">28</a></td>
+  <td class="code"><a id="FR-009G--L28"></a>| <a href="../../../ids/FR-009G.html">FR-009G</a> | - | <a href="../../../ids/UT-SLOT-006.html">UT-SLOT-006</a> | `session-slot-store.ts` | Executable | active session未設定 |</td>
+</tr>
+<tr id="L29">
+  <td class="line"><a href="#L29">29</a></td>
+  <td class="code"><a id="FR-009G--L29"></a>| <a href="../../../ids/FR-009G.html">FR-009G</a> | - | <a href="../../../ids/UT-SLOT-007.html">UT-SLOT-007</a> | `session-slot-store.ts` | Executable | `slotIndex` 範囲外 |</td>
+</tr>
+<tr id="L30">
+  <td class="line"><a href="#L30">30</a></td>
+  <td class="code"><a id="FR-009G--L30"></a>| <a href="../../../ids/FR-009G.html">FR-009G</a> | - | <a href="../../../ids/UT-SLOT-008.html">UT-SLOT-008</a> | `session-slot-store.ts` | Executable | active session書込/復元 |</td>
+</tr>
+<tr id="L31">
+  <td class="line"><a href="#L31">31</a></td>
+  <td class="code"><a id="FR-039F--L31"></a>| <a href="../../../ids/FR-039F.html">FR-039F</a> | - | <a href="../../../ids/UT-SLOT-009.html">UT-SLOT-009</a> | `session-slot-store.ts` | Executable | active session削除 |</td>
+</tr>
+<tr id="L32">
+  <td class="line"><a href="#L32">32</a></td>
+  <td class="code"><a id="FR-009G--L32"></a>| <a href="../../../ids/FR-009G.html">FR-009G</a> | - | <a href="../../../ids/UT-SLOT-010.html">UT-SLOT-010</a> | `session-slot-store.ts` | Executable | preview sessionId生成 |</td>
+</tr>
+<tr id="L33">
+  <td class="line"><a href="#L33">33</a></td>
+  <td class="code"><a id="FR-009E--L33"></a>| <a href="../../../ids/FR-009E.html">FR-009E</a> | - | <a href="../../../ids/UT-SLOT-011.html">UT-SLOT-011</a> | `session-slot-store.ts` | Executable | SSR時 `readProcedureSlots` |</td>
+</tr>
+<tr id="L34">
+  <td class="line"><a href="#L34">34</a></td>
+  <td class="code"><a id="FR-009E--L34"></a>| <a href="../../../ids/FR-009E.html">FR-009E</a> | - | <a href="../../../ids/UT-SLOT-012.html">UT-SLOT-012</a> | `session-slot-store.ts` | Executable | SSR時 `readActiveSession` |</td>
+</tr>
+<tr id="L35">
+  <td class="line"><a href="#L35">35</a></td>
+  <td class="code"><a id="FR-015A--L35"></a>| <a href="../../../ids/FR-015A.html">FR-015A</a> | - | <a href="../../../ids/UT-UF-001.html">UT-UF-001</a> | `mock-data.ts` | Executable | 初回交換は未計算 |</td>
+</tr>
+<tr id="L36">
+  <td class="line"><a href="#L36">36</a></td>
+  <td class="code"><a id="FR-015--L36"></a>| <a href="../../../ids/FR-015.html">FR-015</a> | - | <a href="../../../ids/UT-UF-002.html">UT-UF-002</a> | `mock-data.ts` | Executable | 交換除水量計算 |</td>
+</tr>
+<tr id="L37">
+  <td class="line"><a href="#L37">37</a></td>
+  <td class="code"><a id="FR-015--L37"></a>| <a href="../../../ids/FR-015.html">FR-015</a> | - | <a href="../../../ids/UT-UF-003.html">UT-UF-003</a> | `mock-data.ts` | Executable | 範囲外index |</td>
+</tr>
+<tr id="L38">
+  <td class="line"><a href="#L38">38</a></td>
+  <td class="code"><a id="FR-015B--L38"></a>| <a href="../../../ids/FR-015B.html">FR-015B</a> | - | <a href="../../../ids/UT-UF-004.html">UT-UF-004</a> | `mock-data.ts` | Executable | 1日総除水量計算 |</td>
+</tr>
+<tr id="L39">
+  <td class="line"><a href="#L39">39</a></td>
+  <td class="code"><a id="FR-013--L39"></a>| <a href="../../../ids/FR-013.html">FR-013</a> | - | <a href="../../../ids/UT-UF-005.html">UT-UF-005</a> | `mock-data.ts` | Executable | 1日総排液量計算 |</td>
+</tr>
+<tr id="L40">
+  <td class="line"><a href="#L40">40</a></td>
+  <td class="code"><a id="FR-013--L40"></a>| <a href="../../../ids/FR-013.html">FR-013</a> | - | <a href="../../../ids/UT-UF-006.html">UT-UF-006</a> | `mock-data.ts` | Executable | 1日総注液量計算 |</td>
+</tr>
+<tr id="L41">
+  <td class="line"><a href="#L41">41</a></td>
+  <td class="code"><a id="FR-014--L41"></a>| <a href="../../../ids/FR-014.html">FR-014</a> | - | <a href="../../../ids/UT-UF-007.html">UT-UF-007</a> | `mock-data.ts` | Executable | 最初の写真ID取得 |</td>
+</tr>
+<tr id="L42">
+  <td class="line"><a href="#L42">42</a></td>
+  <td class="code"><a id="FR-014--L42"></a>| <a href="../../../ids/FR-014.html">FR-014</a> | - | <a href="../../../ids/UT-UF-008.html">UT-UF-008</a> | `mock-data.ts` | Executable | 写真なし時 `null` |</td>
+</tr>
+<tr id="L43">
+  <td class="line"><a href="#L43">43</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L44">
+  <td class="line"><a href="#L44">44</a></td>
+  <td class="code">### 2.2 E2E / Acceptance</td>
+</tr>
+<tr id="L45">
+  <td class="line"><a href="#L45">45</a></td>
+  <td class="code">| 要件ID | 受入ID | テストID | 対象 | 状態 | 備考 |</td>
+</tr>
+<tr id="L46">
+  <td class="line"><a href="#L46">46</a></td>
+  <td class="code">|---|---|---|---|---|---|</td>
+</tr>
+<tr id="L47">
+  <td class="line"><a href="#L47">47</a></td>
+  <td class="code"><a id="FR-020--L47"></a><a id="FR-021--L47"></a>| <a href="../../../ids/FR-020.html">FR-020</a>, <a href="../../../ids/FR-021.html">FR-021</a> | <a href="../../../ids/AT-CSV-001.html">AT-CSV-001</a> | <a href="../../../ids/E2E-CSV-001.html">E2E-CSV-001</a> | CSV取込 | Planned | Phase1必須（取込成立） |</td>
+</tr>
+<tr id="L48">
+  <td class="line"><a href="#L48">48</a></td>
+  <td class="code"><a id="FR-022--L48"></a>| <a href="../../../ids/FR-022.html">FR-022</a> | <a href="../../../ids/AT-CSV-002.html">AT-CSV-002</a> | <a href="../../../ids/E2E-CSV-002.html">E2E-CSV-002</a> | CSV取込 | Planned | Phase1必須（重複検知） |</td>
+</tr>
+<tr id="L49">
+  <td class="line"><a href="#L49">49</a></td>
+  <td class="code"><a id="FR-022--L49"></a>| <a href="../../../ids/FR-022.html">FR-022</a> | <a href="../../../ids/AT-CSV-003.html">AT-CSV-003</a> | <a href="../../../ids/E2E-CSV-003.html">E2E-CSV-003</a> | CSV取込 | Planned | Phase1必須（直列整合） |</td>
+</tr>
+<tr id="L50">
+  <td class="line"><a href="#L50">50</a></td>
+  <td class="code"><a id="FR-022--L50"></a><a id="FR-024--L50"></a>| <a href="../../../ids/FR-022.html">FR-022</a>, <a href="../../../ids/FR-024.html">FR-024</a> | <a href="../../../ids/AT-CSV-004.html">AT-CSV-004</a> | <a href="../../../ids/E2E-CSV-004.html">E2E-CSV-004</a> | CSV取込 | Planned | Phase1必須（画像存在） |</td>
+</tr>
+<tr id="L51">
+  <td class="line"><a href="#L51">51</a></td>
+  <td class="code"><a id="FR-023--L51"></a>| <a href="../../../ids/FR-023.html">FR-023</a> | <a href="../../../ids/AT-CSV-005.html">AT-CSV-005</a> | <a href="../../../ids/E2E-CSV-005.html">E2E-CSV-005</a> | CSV取込 | Deferred | Phase2（警告強化） |</td>
+</tr>
+<tr id="L52">
+  <td class="line"><a href="#L52">52</a></td>
+  <td class="code"><a id="FR-009D--L52"></a>| <a href="../../../ids/FR-009D.html">FR-009D</a> | <a href="../../../ids/AT-FLOW-005.html">AT-FLOW-005</a> | <a href="../../../ids/E2E-FLOW-001.html">E2E-FLOW-001</a> | Home | Executable | 左優先制約 |</td>
+</tr>
+<tr id="L53">
+  <td class="line"><a href="#L53">53</a></td>
+  <td class="code"><a id="FR-009F--L53"></a><a id="FR-036--L53"></a>| <a href="../../../ids/FR-036.html">FR-036</a>, <a href="../../../ids/FR-009F.html">FR-009F</a> | <a href="../../../ids/AT-FLOW-004.html">AT-FLOW-004</a> | <a href="../../../ids/E2E-FLOW-002.html">E2E-FLOW-002</a> | Home | Executable | 同時実行制限 |</td>
+</tr>
+<tr id="L54">
+  <td class="line"><a href="#L54">54</a></td>
+  <td class="code"><a id="FR-009G--L54"></a>| <a href="../../../ids/FR-009G.html">FR-009G</a> | <a href="../../../ids/AT-FLOW-006.html">AT-FLOW-006</a> | <a href="../../../ids/E2E-FLOW-003.html">E2E-FLOW-003</a> | Home / Session | Executable | 離脱再開 |</td>
+</tr>
+<tr id="L55">
+  <td class="line"><a href="#L55">55</a></td>
+  <td class="code"><a id="FR-039D--L55"></a><a id="FR-039E--L55"></a><a id="FR-039F--L55"></a>| <a href="../../../ids/FR-039D.html">FR-039D</a>, <a href="../../../ids/FR-039E.html">FR-039E</a>, <a href="../../../ids/FR-039F.html">FR-039F</a> | <a href="../../../ids/AT-FLOW-007.html">AT-FLOW-007</a> | <a href="../../../ids/E2E-FLOW-004.html">E2E-FLOW-004</a> | Session | Executable | 非常中断 |</td>
+</tr>
+<tr id="L56">
+  <td class="line"><a href="#L56">56</a></td>
+  <td class="code"><a id="FR-031--L56"></a>| <a href="../../../ids/FR-031.html">FR-031</a> | <a href="../../../ids/AT-FLOW-001.html">AT-FLOW-001</a> | <a href="../../../ids/E2E-FLOW-005.html">E2E-FLOW-005</a> | Session | Executable | 必須チェックゲート |</td>
+</tr>
+<tr id="L57">
+  <td class="line"><a href="#L57">57</a></td>
+  <td class="code"><a id="FR-032--L57"></a>| <a href="../../../ids/FR-032.html">FR-032</a> | <a href="../../../ids/AT-FLOW-002.html">AT-FLOW-002</a> | <a href="../../../ids/E2E-FLOW-006.html">E2E-FLOW-006</a> | Session | Executable | `record_event` ゲート |</td>
+</tr>
+<tr id="L58">
+  <td class="line"><a href="#L58">58</a></td>
+  <td class="code"><a id="FR-033--L58"></a>| <a href="../../../ids/FR-033.html">FR-033</a> | <a href="../../../ids/AT-FLOW-003.html">AT-FLOW-003</a> | <a href="../../../ids/E2E-FLOW-007.html">E2E-FLOW-007</a> | Session | Executable | `next_step_id` 遷移 |</td>
+</tr>
+<tr id="L59">
+  <td class="line"><a href="#L59">59</a></td>
+  <td class="code"><a id="FR-082A--L59"></a>| <a href="../../../ids/FR-082A.html">FR-082A</a> | <a href="../../../ids/AT-API-001.html">AT-API-001</a> | <a href="../../../ids/E2E-API-001.html">E2E-API-001</a> | API境界 | Planned | Phase1必須（公開API最小化） |</td>
+</tr>
+<tr id="L60">
+  <td class="line"><a href="#L60">60</a></td>
+  <td class="code"><a id="FR-082A--L60"></a>| <a href="../../../ids/FR-082A.html">FR-082A</a> | <a href="../../../ids/AT-API-003.html">AT-API-003</a> | <a href="../../../ids/E2E-API-002.html">E2E-API-002</a> | API境界 | Planned | Phase1必須（CSVローカル完結） |</td>
+</tr>
+<tr id="L61">
+  <td class="line"><a href="#L61">61</a></td>
+  <td class="code"><a id="FR-093--L61"></a>| <a href="../../../ids/FR-093.html">FR-093</a> | <a href="../../../ids/AT-API-002.html">AT-API-002</a> | <a href="../../../ids/E2E-API-003.html">E2E-API-003</a> | Home | Executable | 手動エクスポート非表示 |</td>
+</tr>
+<tr id="L62">
+  <td class="line"><a href="#L62">62</a></td>
+  <td class="code"><a id="FR-104--L62"></a>| <a href="../../../ids/FR-104.html">FR-104</a> | <a href="../../../ids/AT-API-004.html">AT-API-004</a> | <a href="../../../ids/E2E-API-004.html">E2E-API-004</a> | Blob保存形式 | Planned | Phase1必須（非暗号化キー形式） |</td>
+</tr>
+<tr id="L63">
+  <td class="line"><a href="#L63">63</a></td>
+  <td class="code"><a id="FR-080--L63"></a><a id="FR-082--L63"></a>| <a href="../../../ids/FR-080.html">FR-080</a>, <a href="../../../ids/FR-082.html">FR-082</a> | <a href="../../../ids/AT-SYNC-001.html">AT-SYNC-001</a> | <a href="../../../ids/E2E-SYNC-001.html">E2E-SYNC-001</a> | Sync | Planned | Phase1必須（起動時pull復元） |</td>
+</tr>
+<tr id="L64">
+  <td class="line"><a href="#L64">64</a></td>
+  <td class="code"><a id="FR-081--L64"></a><a id="FR-086--L64"></a>| <a href="../../../ids/FR-081.html">FR-081</a>, <a href="../../../ids/FR-086.html">FR-086</a> | <a href="../../../ids/AT-SYNC-005.html">AT-SYNC-005</a> | <a href="../../../ids/E2E-SYNC-002.html">E2E-SYNC-002</a> | Sync | Planned | Phase1必須（outbox消し込み） |</td>
+</tr>
+<tr id="L65">
+  <td class="line"><a href="#L65">65</a></td>
+  <td class="code"><a id="FR-080--L65"></a><a id="FR-081--L65"></a>| <a href="../../../ids/FR-080.html">FR-080</a>, <a href="../../../ids/FR-081.html">FR-081</a> | <a href="../../../ids/AT-SYNC-002.html">AT-SYNC-002</a> | <a href="../../../ids/E2E-SYNC-003.html">E2E-SYNC-003</a> | Sync | Planned | Phase1必須（完了時push反映） |</td>
+</tr>
+<tr id="L66">
+  <td class="line"><a href="#L66">66</a></td>
+  <td class="code"><a id="FR-083--L66"></a>| <a href="../../../ids/FR-083.html">FR-083</a> | <a href="../../../ids/AT-SYNC-003.html">AT-SYNC-003</a> | <a href="../../../ids/E2E-SYNC-004.html">E2E-SYNC-004</a> | Sync | Planned | Phase1必須（LWW内部適用） |</td>
+</tr>
+<tr id="L67">
+  <td class="line"><a href="#L67">67</a></td>
+  <td class="code"><a id="FR-083--L67"></a><a id="FR-084--L67"></a>| <a href="../../../ids/FR-083.html">FR-083</a>, <a href="../../../ids/FR-084.html">FR-084</a> | <a href="../../../ids/AT-SYNC-004.html">AT-SYNC-004</a> | <a href="../../../ids/E2E-SYNC-005.html">E2E-SYNC-005</a> | Sync | Planned | Phase1必須（同日同スロット競合） |</td>
+</tr>
+<tr id="L68">
+  <td class="line"><a href="#L68">68</a></td>
+  <td class="code"><a id="FR-088--L68"></a>| <a href="../../../ids/FR-088.html">FR-088</a> | <a href="../../../ids/AT-SYNC-006.html">AT-SYNC-006</a> | <a href="../../../ids/E2E-SYNC-006.html">E2E-SYNC-006</a> | Sync | Planned | Phase1必須（再試行導線） |</td>
+</tr>
+<tr id="L69">
+  <td class="line"><a href="#L69">69</a></td>
+  <td class="code"><a id="FR-087--L69"></a>| <a href="../../../ids/FR-087.html">FR-087</a> | <a href="../../../ids/AT-RECOVERY-001.html">AT-RECOVERY-001</a> | <a href="../../../ids/E2E-RECOVERY-001.html">E2E-RECOVERY-001</a> | Recovery | Planned | Phase1必須（DB消失復元） |</td>
+</tr>
+<tr id="L70">
+  <td class="line"><a href="#L70">70</a></td>
+  <td class="code"><a id="FR-087A--L70"></a><a id="FR-087B--L70"></a><a id="FR-087C--L70"></a>| <a href="../../../ids/FR-087A.html">FR-087A</a>, <a href="../../../ids/FR-087B.html">FR-087B</a>, <a href="../../../ids/FR-087C.html">FR-087C</a> | <a href="../../../ids/AT-RECOVERY-002.html">AT-RECOVERY-002</a> | <a href="../../../ids/E2E-RECOVERY-002.html">E2E-RECOVERY-002</a> | Recovery | Planned | Phase1必須（欠損再シード） |</td>
+</tr>
+<tr id="L71">
+  <td class="line"><a href="#L71">71</a></td>
+  <td class="code"><a id="FR-087D--L71"></a>| <a href="../../../ids/FR-087D.html">FR-087D</a> | <a href="../../../ids/AT-RECOVERY-003.html">AT-RECOVERY-003</a> | <a href="../../../ids/E2E-RECOVERY-003.html">E2E-RECOVERY-003</a> | Recovery | Planned | Phase1必須（失敗時保全） |</td>
+</tr>
+<tr id="L72">
+  <td class="line"><a href="#L72">72</a></td>
+  <td class="code"><a id="FR-050A--L72"></a><a id="FR-051--L72"></a>| <a href="../../../ids/FR-050A.html">FR-050A</a>, <a href="../../../ids/FR-051.html">FR-051</a> | <a href="../../../ids/AT-ALARM-001.html">AT-ALARM-001</a> | <a href="../../../ids/E2E-ALARM-001.html">E2E-ALARM-001</a> | Alarm | Planned | Phase1必須（T0通知） |</td>
+</tr>
+<tr id="L73">
+  <td class="line"><a href="#L73">73</a></td>
+  <td class="code"><a id="FR-052A--L73"></a><a id="FR-052B--L73"></a>| <a href="../../../ids/FR-052A.html">FR-052A</a>, <a href="../../../ids/FR-052B.html">FR-052B</a> | <a href="../../../ids/AT-ALARM-002.html">AT-ALARM-002</a> | <a href="../../../ids/E2E-ALARM-002.html">E2E-ALARM-002</a> | Alarm | Planned | Phase1必須（段階再通知） |</td>
+</tr>
+<tr id="L74">
+  <td class="line"><a href="#L74">74</a></td>
+  <td class="code"><a id="FR-053--L74"></a><a id="FR-054--L74"></a>| <a href="../../../ids/FR-053.html">FR-053</a>, <a href="../../../ids/FR-054.html">FR-054</a> | <a href="../../../ids/AT-ALARM-003.html">AT-ALARM-003</a> | <a href="../../../ids/E2E-ALARM-003.html">E2E-ALARM-003</a> | Alarm | Planned | Phase1必須（ACK停止） |</td>
+</tr>
+<tr id="L75">
+  <td class="line"><a href="#L75">75</a></td>
+  <td class="code"><a id="FR-058--L75"></a><a id="FR-058A--L75"></a><a id="FR-058B--L75"></a>| <a href="../../../ids/FR-058.html">FR-058</a>, <a href="../../../ids/FR-058A.html">FR-058A</a>, <a href="../../../ids/FR-058B.html">FR-058B</a> | <a href="../../../ids/AT-ALARM-004.html">AT-ALARM-004</a> | <a href="../../../ids/E2E-ALARM-004.html">E2E-ALARM-004</a> | Alarm | Planned | Phase1必須（見逃し状態） |</td>
+</tr>
+<tr id="L76">
+  <td class="line"><a href="#L76">76</a></td>
+  <td class="code"><a id="FR-109--L76"></a><a id="FR-112--L76"></a>| <a href="../../../ids/FR-109.html">FR-109</a>, <a href="../../../ids/FR-112.html">FR-112</a> | <a href="../../../ids/AT-PLAT-001.html">AT-PLAT-001</a> | <a href="../../../ids/E2E-PLAT-001.html">E2E-PLAT-001</a> | Platform | Deferred | Phase2（iPhone利用） |</td>
+</tr>
+<tr id="L77">
+  <td class="line"><a href="#L77">77</a></td>
+  <td class="code"><a id="FR-109--L77"></a><a id="FR-110--L77"></a><a id="FR-111--L77"></a>| <a href="../../../ids/FR-109.html">FR-109</a>, <a href="../../../ids/FR-110.html">FR-110</a>, <a href="../../../ids/FR-111.html">FR-111</a> | <a href="../../../ids/AT-PLAT-002.html">AT-PLAT-002</a> | <a href="../../../ids/E2E-PLAT-002.html">E2E-PLAT-002</a> | Platform | Deferred | Phase2（Macネイティブ） |</td>
+</tr>
+<tr id="L78">
+  <td class="line"><a href="#L78">78</a></td>
+  <td class="code"><a id="FR-111--L78"></a><a id="FR-113--L78"></a>| <a href="../../../ids/FR-111.html">FR-111</a>, <a href="../../../ids/FR-113.html">FR-113</a> | <a href="../../../ids/AT-SLEEP-001.html">AT-SLEEP-001</a> | <a href="../../../ids/E2E-SLEEP-001.html">E2E-SLEEP-001</a> | Sleep | Deferred | Phase2（スリープ抑止） |</td>
+</tr>
+<tr id="L79">
+  <td class="line"><a href="#L79">79</a></td>
+  <td class="code"><a id="FR-042B--L79"></a><a id="FR-042C--L79"></a>| <a href="../../../ids/FR-042B.html">FR-042B</a>, <a href="../../../ids/FR-042C.html">FR-042C</a> | <a href="../../../ids/AT-EXIT-001.html">AT-EXIT-001</a>, <a href="../../../ids/AT-EXIT-002.html">AT-EXIT-002</a> | <a href="../../../ids/E2E-EXIT-001.html">E2E-EXIT-001</a> | Exit Site Photo | Deferred | Phase2（表示前提） |</td>
+</tr>
+<tr id="L80">
+  <td class="line"><a href="#L80">80</a></td>
+  <td class="code"><a id="FR-042D--L80"></a>| <a href="../../../ids/FR-042D.html">FR-042D</a> | <a href="../../../ids/AT-EXIT-003.html">AT-EXIT-003</a> | <a href="../../../ids/E2E-EXIT-002.html">E2E-EXIT-002</a> | Exit Site Photo | Deferred | Phase2（両導線一貫性） |</td>
+</tr>
+<tr id="L81">
+  <td class="line"><a href="#L81">81</a></td>
+  <td class="code"><a id="FR-042D--L81"></a>| <a href="../../../ids/FR-042D.html">FR-042D</a> | <a href="../../../ids/AT-EXIT-004.html">AT-EXIT-004</a> | <a href="../../../ids/E2E-EXIT-003.html">E2E-EXIT-003</a> | Exit Site Photo | Deferred | Phase2（端末制約） |</td>
+</tr>
+<tr id="L82">
+  <td class="line"><a href="#L82">82</a></td>
+  <td class="code"><a id="FR-042E--L82"></a><a id="FR-042H--L82"></a>| <a href="../../../ids/FR-042E.html">FR-042E</a>, <a href="../../../ids/FR-042H.html">FR-042H</a> | <a href="../../../ids/AT-EXIT-005.html">AT-EXIT-005</a>, <a href="../../../ids/AT-EXIT-006.html">AT-EXIT-006</a>, <a href="../../../ids/AT-EXIT-007.html">AT-EXIT-007</a>, <a href="../../../ids/AT-EXIT-008.html">AT-EXIT-008</a> | <a href="../../../ids/E2E-EXIT-004.html">E2E-EXIT-004</a> | Exit Site Photo | Deferred | Phase2（1枚固定状態遷移） |</td>
+</tr>
+<tr id="L83">
+  <td class="line"><a href="#L83">83</a></td>
+  <td class="code"><a id="FR-042A--L83"></a><a id="FR-089A--L83"></a>| <a href="../../../ids/FR-042A.html">FR-042A</a>, <a href="../../../ids/FR-089A.html">FR-089A</a> | <a href="../../../ids/AT-EXIT-009.html">AT-EXIT-009</a>, <a href="../../../ids/AT-EXIT-010.html">AT-EXIT-010</a> | <a href="../../../ids/E2E-EXIT-005.html">E2E-EXIT-005</a> | Exit Site Photo / Sync | Deferred | Phase2（部分更新保全） |</td>
+</tr>
+<tr id="L84">
+  <td class="line"><a href="#L84">84</a></td>
+  <td class="code"><a id="FR-042B--L84"></a><a id="FR-044C--L84"></a>| <a href="../../../ids/FR-042B.html">FR-042B</a>, <a href="../../../ids/FR-044C.html">FR-044C</a> | <a href="../../../ids/AT-EXIT-011.html">AT-EXIT-011</a> | <a href="../../../ids/E2E-EXIT-006.html">E2E-EXIT-006</a> | Exit Site Photo | Deferred | Phase2（`both` 対応） |</td>
+</tr>
+<tr id="L85">
+  <td class="line"><a href="#L85">85</a></td>
+  <td class="code"><a id="FR-091--L85"></a>| <a href="../../../ids/FR-091.html">FR-091</a> | <a href="../../../ids/AT-EXIT-012.html">AT-EXIT-012</a> | <a href="../../../ids/E2E-EXIT-007.html">E2E-EXIT-007</a> | Exit Site Photo | Deferred | Phase2（容量制御共通化） |</td>
+</tr>
+<tr id="L86">
+  <td class="line"><a href="#L86">86</a></td>
+  <td class="code"><a id="FR-091--L86"></a>| <a href="../../../ids/FR-091.html">FR-091</a> | <a href="../../../ids/AT-PHOTO-001.html">AT-PHOTO-001</a> | <a href="../../../ids/E2E-PHOTO-001.html">E2E-PHOTO-001</a> | Photo容量 | Deferred | Phase2（1GB上限） |</td>
+</tr>
+<tr id="L87">
+  <td class="line"><a href="#L87">87</a></td>
+  <td class="code"><a id="FR-092--L87"></a>| <a href="../../../ids/FR-092.html">FR-092</a> | <a href="../../../ids/AT-BACKUP-001.html">AT-BACKUP-001</a> | <a href="../../../ids/E2E-BACKUP-001.html">E2E-BACKUP-001</a> | Backup | Deferred | Phase2（日次バックアップ） |</td>
+</tr>
+<tr id="L88">
+  <td class="line"><a href="#L88">88</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L89">
+  <td class="line"><a href="#L89">89</a></td>
+  <td class="code">### 2.3 Visual Regression</td>
+</tr>
+<tr id="L90">
+  <td class="line"><a href="#L90">90</a></td>
+  <td class="code">| 要件ID | 受入ID | テストID | 対象 | 状態 | 備考 |</td>
+</tr>
+<tr id="L91">
+  <td class="line"><a href="#L91">91</a></td>
+  <td class="code">|---|---|---|---|---|---|</td>
+</tr>
+<tr id="L92">
+  <td class="line"><a href="#L92">92</a></td>
+  <td class="code"><a id="FR-005A--L92"></a><a id="FR-009A--L92"></a><a id="FR-009B--L92"></a>| <a href="../../../ids/FR-009A.html">FR-009A</a>, <a href="../../../ids/FR-009B.html">FR-009B</a>, <a href="../../../ids/FR-005A.html">FR-005A</a> | <a href="../../../ids/AT-UI-HOME-001.html">AT-UI-HOME-001</a> | <a href="../../../ids/VR-HOME-001.html">VR-HOME-001</a> | Home | Executable | 初期表示 |</td>
+</tr>
+<tr id="L93">
+  <td class="line"><a href="#L93">93</a></td>
+  <td class="code"><a id="FR-009A--L93"></a><a id="FR-009B--L93"></a>| <a href="../../../ids/FR-009A.html">FR-009A</a>, <a href="../../../ids/FR-009B.html">FR-009B</a> | - | <a href="../../../ids/VR-HOME-002.html">VR-HOME-002</a> | Home | Executable | スロット設定モーダル |</td>
+</tr>
+<tr id="L94">
+  <td class="line"><a href="#L94">94</a></td>
+  <td class="code"><a id="FR-009A--L94"></a><a id="FR-009B--L94"></a>| <a href="../../../ids/FR-009A.html">FR-009A</a>, <a href="../../../ids/FR-009B.html">FR-009B</a> | - | <a href="../../../ids/VR-HOME-003.html">VR-HOME-003</a> | Home | Executable | 開始確認モーダル |</td>
+</tr>
+<tr id="L95">
+  <td class="line"><a href="#L95">95</a></td>
+  <td class="code"><a id="FR-009D--L95"></a>| <a href="../../../ids/FR-009D.html">FR-009D</a> | <a href="../../../ids/AT-UI-HOME-002.html">AT-UI-HOME-002</a> | <a href="../../../ids/VR-HOME-004.html">VR-HOME-004</a> | Home | Executable | 開始不可表示 |</td>
+</tr>
+<tr id="L96">
+  <td class="line"><a href="#L96">96</a></td>
+  <td class="code"><a id="FR-030--L96"></a><a id="FR-038--L96"></a>| <a href="../../../ids/FR-030.html">FR-030</a>, <a href="../../../ids/FR-038.html">FR-038</a> | <a href="../../../ids/AT-UI-SESSION-001.html">AT-UI-SESSION-001</a> | <a href="../../../ids/VR-SESSION-001.html">VR-SESSION-001</a> | Session | Executable | Desktop初期表示 |</td>
+</tr>
+<tr id="L97">
+  <td class="line"><a href="#L97">97</a></td>
+  <td class="code"><a id="FR-030--L97"></a><a id="FR-038--L97"></a>| <a href="../../../ids/FR-030.html">FR-030</a>, <a href="../../../ids/FR-038.html">FR-038</a> | - | <a href="../../../ids/VR-SESSION-002.html">VR-SESSION-002</a> | Session | Executable | Mobile初期表示 |</td>
+</tr>
+<tr id="L98">
+  <td class="line"><a href="#L98">98</a></td>
+  <td class="code"><a id="FR-032--L98"></a>| <a href="../../../ids/FR-032.html">FR-032</a> | - | <a href="../../../ids/VR-SESSION-003.html">VR-SESSION-003</a> | Session | Executable | 記録モーダル |</td>
+</tr>
+<tr id="L99">
+  <td class="line"><a href="#L99">99</a></td>
+  <td class="code"><a id="FR-039D--L99"></a><a id="FR-039E--L99"></a>| <a href="../../../ids/FR-039D.html">FR-039D</a>, <a href="../../../ids/FR-039E.html">FR-039E</a> | - | <a href="../../../ids/VR-SESSION-004.html">VR-SESSION-004</a> | Session | Executable | 非常中断ダイアログ |</td>
+</tr>
+<tr id="L100">
+  <td class="line"><a href="#L100">100</a></td>
+  <td class="code"><a id="FR-010--L100"></a><a id="FR-013--L100"></a><a id="FR-014--L100"></a>| <a href="../../../ids/FR-010.html">FR-010</a>, <a href="../../../ids/FR-013.html">FR-013</a>, <a href="../../../ids/FR-014.html">FR-014</a> | - | <a href="../../../ids/VR-HISTORY-001.html">VR-HISTORY-001</a> | History | Executable | Desktop一覧 |</td>
+</tr>
+<tr id="L101">
+  <td class="line"><a href="#L101">101</a></td>
+  <td class="code"><a id="FR-010--L101"></a><a id="FR-013--L101"></a><a id="FR-014--L101"></a>| <a href="../../../ids/FR-010.html">FR-010</a>, <a href="../../../ids/FR-013.html">FR-013</a>, <a href="../../../ids/FR-014.html">FR-014</a> | - | <a href="../../../ids/VR-HISTORY-002.html">VR-HISTORY-002</a> | History | Executable | Mobile一覧 |</td>
+</tr>
+<tr id="L102">
+  <td class="line"><a href="#L102">102</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L103">
+  <td class="line"><a href="#L103">103</a></td>
+  <td class="code">## 3. 更新ルール</td>
+</tr>
+<tr id="L104">
+  <td class="line"><a href="#L104">104</a></td>
+  <td class="code">- 追加したテストコードは、同時に本表へ追記します。</td>
+</tr>
+<tr id="L105">
+  <td class="line"><a href="#L105">105</a></td>
+  <td class="code">- `状態` は `Planned -&gt; Executable -&gt; Implemented` を基本遷移とし、実行環境未整備のみ `Deferred` を使用します。</td>
+</tr>
+<tr id="L106">
+  <td class="line"><a href="#L106">106</a></td>
+  <td class="code">- 受入ID（`AT-*`）は、範囲記法（`~`）を使わず単独IDで記載します。</td>
+</tr>
+<tr id="L107">
+  <td class="line"><a href="#L107">107</a></td>
+  <td class="code">- `AGENTS.md` 7.1 のPhase1必須範囲は `Deferred` を使用しません。</td>
+</tr>
+<tr id="L108">
+  <td class="line"><a href="#L108">108</a></td>
+  <td class="code">- Phase2対象は `備考` に `Phase2` を明記して追跡します。</td>
+</tr>
+<tr id="L109">
+  <td class="line"><a href="#L109">109</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+  </table>
+</section>
+  </main>
+</body>
+</html>

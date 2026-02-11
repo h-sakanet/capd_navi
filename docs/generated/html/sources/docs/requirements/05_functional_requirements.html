@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>docs/requirements/05_functional_requirements.md ソース表示</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f6f8fb; color: #1f2937; }
+    .top-nav { display: flex; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #d7deea; background: #ffffff; }
+    .top-nav a { color: #0f4acb; text-decoration: none; font-weight: 600; }
+    .top-nav a:hover { text-decoration: underline; }
+    main { max-width: 1180px; margin: 0 auto; padding: 24px 20px 40px; }
+    h1 { margin: 0 0 12px; font-size: 1.6rem; }
+    h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    .lead { margin: 0 0 18px; color: #4b5563; }
+    .card { background: #ffffff; border: 1px solid #d7deea; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+    ul { margin: 8px 0 0; padding-left: 1.2rem; }
+    ol { margin: 8px 0 0; padding-left: 1.4rem; }
+    li { margin: 4px 0; }
+    a { color: #0f4acb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #eef3ff; border-radius: 4px; padding: 1px 4px; }
+    .muted { color: #6b7280; font-size: 0.92rem; }
+    .source-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    .source-table td { border-bottom: 1px solid #e5e7eb; vertical-align: top; padding: 2px 8px; }
+    .source-table .line { width: 82px; text-align: right; color: #6b7280; background: #ffffff; }
+    .source-table .line a { color: #6b7280; }
+    .source-table .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; overflow-wrap: anywhere; }
+    .pill { display: inline-block; border: 1px solid #d7deea; border-radius: 999px; padding: 2px 8px; font-size: 0.78rem; color: #475569; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <nav class="top-nav"><a href="../../../index.html">HTML Index</a><a href="../../../../index.md">Markdown Index</a></nav>
+  <main>
+    <h1>docs/requirements/05_functional_requirements.md ソース表示</h1>
+    <p class="lead">行番号とIDアンカー付きで参照できます。</p>
+    <section class="card">
+  <h2><code>docs/requirements/05_functional_requirements.md</code></h2>
+  <table class="source-table">
+<tr id="L1">
+  <td class="line"><a href="#L1">1</a></td>
+  <td class="code"># 05. 機能要件</td>
+</tr>
+<tr id="L2">
+  <td class="line"><a href="#L2">2</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L3">
+  <td class="line"><a href="#L3">3</a></td>
+  <td class="code">## 1. ホーム機能</td>
+</tr>
+<tr id="L4">
+  <td class="line"><a href="#L4">4</a></td>
+  <td class="code"><a id="FR-001--L4"></a><a id="FR-001"></a>- <a href="../../../ids/FR-001.html">FR-001</a>: 複数手技テンプレート一覧を表示します。</td>
+</tr>
+<tr id="L5">
+  <td class="line"><a href="#L5">5</a></td>
+  <td class="code"><a id="FR-002--L5"></a><a id="FR-002"></a>- <a href="../../../ids/FR-002.html">FR-002</a>: テンプレートごとに名称、版、有効開始日を表示します。</td>
+</tr>
+<tr id="L6">
+  <td class="line"><a href="#L6">6</a></td>
+  <td class="code"><a id="FR-003--L6"></a><a id="FR-003"></a>- <a href="../../../ids/FR-003.html">FR-003</a>: 選択した1手技でセッションを開始します。</td>
+</tr>
+<tr id="L7">
+  <td class="line"><a href="#L7">7</a></td>
+  <td class="code"><a id="FR-004--L7"></a><a id="FR-004"></a>- <a href="../../../ids/FR-004.html">FR-004</a>: 手技開始通知は本アプリ対象外とし、Mac/iPhoneの時計アプリ等の外部アラームで運用します。</td>
+</tr>
+<tr id="L8">
+  <td class="line"><a href="#L8">8</a></td>
+  <td class="code"><a id="FR-004A--L8"></a><a id="FR-004A"></a>- <a href="../../../ids/FR-004A.html">FR-004A</a>: ホームに「手技開始通知は外部アラーム運用」の注記を表示します。</td>
+</tr>
+<tr id="L9">
+  <td class="line"><a href="#L9">9</a></td>
+  <td class="code"><a id="FR-005--L9"></a><a id="FR-005"></a>- <a href="../../../ids/FR-005.html">FR-005</a>: ホームには手技開始情報に加え、当日分のみCAPD記録ノート互換表を表示します（過去分は一覧画面で表示）。</td>
+</tr>
+<tr id="L10">
+  <td class="line"><a href="#L10">10</a></td>
+  <td class="code"><a id="FR-005A--L10"></a><a id="FR-005A"></a>- <a href="../../../ids/FR-005A.html">FR-005A</a>: ホームAの先頭見出しは日付と曜日を表示し、手技スロットと当日ノート表は同一パネル内に配置します。</td>
+</tr>
+<tr id="L11">
+  <td class="line"><a href="#L11">11</a></td>
+  <td class="code"><a id="FR-006--L11"></a><a id="FR-006"></a>- <a href="../../../ids/FR-006.html">FR-006</a>: ホームから「記録一覧」画面へ遷移できる導線を提供します。</td>
+</tr>
+<tr id="L12">
+  <td class="line"><a href="#L12">12</a></td>
+  <td class="code"><a id="FR-007--L12"></a><a id="FR-007"></a>- <a href="../../../ids/FR-007.html">FR-007</a>: ホームAスパイクでは、1日あたり4件の手技スロットを横並びで表示します。</td>
+</tr>
+<tr id="L13">
+  <td class="line"><a href="#L13">13</a></td>
+  <td class="code"><a id="FR-008--L13"></a><a id="FR-008"></a>- <a href="../../../ids/FR-008.html">FR-008</a>: 手技スロットの初期状態は「`+` のみ表示」とし、`+` 押下で手技設定モーダル（CSV選択、推奨実施時間）を開きます。</td>
+</tr>
+<tr id="L14">
+  <td class="line"><a href="#L14">14</a></td>
+  <td class="code"><a id="FR-009--L14"></a><a id="FR-009"></a>- <a href="../../../ids/FR-009.html">FR-009</a>: 手技設定後は「カード本体タップ=開始」とし、開始前に「手技の開始」確認ダイアログを表示します。</td>
+</tr>
+<tr id="L15">
+  <td class="line"><a href="#L15">15</a></td>
+  <td class="code"><a id="FR-009A--L15"></a><a id="FR-009A"></a>- <a href="../../../ids/FR-009A.html">FR-009A</a>: 右上 `•••` メニューから「確認/編集」を開きます。確認モーダルは閲覧専用とし、ここからの「開始/再開」は手順表示のみ（確認モード）とします。確認モードでは記録保存、タイマー開始、通知ジョブ生成、アラーム設定、スロット/セッション状態更新、同期対象更新を行いません。</td>
+</tr>
+<tr id="L16">
+  <td class="line"><a href="#L16">16</a></td>
+  <td class="code"><a id="FR-009B--L16"></a><a id="FR-009B"></a>- <a href="../../../ids/FR-009B.html">FR-009B</a>: 手技スロットの表示状態は `未登録(+)` / `未実施` / `実施中` / `実施済み` とします。`実施済み` のカード本体タップは無効化します。</td>
+</tr>
+<tr id="L17">
+  <td class="line"><a href="#L17">17</a></td>
+  <td class="code"><a id="FR-009C--L17"></a><a id="FR-009C"></a>- <a href="../../../ids/FR-009C.html">FR-009C</a>: スロット登録時は、右隣スロットほど推奨実施時間が遅くなるように検証します（左から右へ厳密昇順、同時刻不可）。</td>
+</tr>
+<tr id="L18">
+  <td class="line"><a href="#L18">18</a></td>
+  <td class="code"><a id="FR-009D--L18"></a><a id="FR-009D"></a>- <a href="../../../ids/FR-009D.html">FR-009D</a>: 右側スロットの開始時は、左側スロットがすべて `実施済み` であることを必須条件にします（未登録/未実施が1件でもあれば開始不可）。</td>
+</tr>
+<tr id="L19">
+  <td class="line"><a href="#L19">19</a></td>
+  <td class="code"><a id="FR-009E--L19"></a><a id="FR-009E"></a>- <a href="../../../ids/FR-009E.html">FR-009E</a>: 4スロット設定は `dateLocal` 単位でローカル永続化し、同期時に `localRevision` と `cloudRevision` を更新します。</td>
+</tr>
+<tr id="L20">
+  <td class="line"><a href="#L20">20</a></td>
+  <td class="code"><a id="FR-009F--L20"></a><a id="FR-009F"></a>- <a href="../../../ids/FR-009F.html">FR-009F</a>: `実施済み` スロットは編集/削除不可とします。同一端末で進行中セッションがある間は全スロット編集を禁止します。</td>
+</tr>
+<tr id="L21">
+  <td class="line"><a href="#L21">21</a></td>
+  <td class="code"><a id="FR-009G--L21"></a><a id="FR-009G"></a>- <a href="../../../ids/FR-009G.html">FR-009G</a>: `実施中` スロットをタップした場合は新規開始せず、進行中セッションを再開します。</td>
+</tr>
+<tr id="L22">
+  <td class="line"><a href="#L22">22</a></td>
+  <td class="code"><a id="FR-009H--L22"></a><a id="FR-009H"></a>- <a href="../../../ids/FR-009H.html">FR-009H</a>: 記録やタイマーを伴う実運用セッション開始/再開はカード本体タップ導線で実行し、`••• &gt; 確認` 導線は閲覧専用（確認モード）とします。</td>
+</tr>
+<tr id="L23">
+  <td class="line"><a href="#L23">23</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L24">
+  <td class="line"><a href="#L24">24</a></td>
+  <td class="code">## 2. 記録一覧/編集機能</td>
+</tr>
+<tr id="L25">
+  <td class="line"><a href="#L25">25</a></td>
+  <td class="code"><a id="FR-010--L25"></a><a id="FR-010"></a>- <a href="../../../ids/FR-010.html">FR-010</a>: 記録一覧画面で日々の手技記録を一覧表示します。</td>
+</tr>
+<tr id="L26">
+  <td class="line"><a href="#L26">26</a></td>
+  <td class="code"><a id="FR-011--L26"></a><a id="FR-011"></a>- <a href="../../../ids/FR-011.html">FR-011</a>: 記録一覧画面で詳細表示と編集導線を提供します。</td>
+</tr>
+<tr id="L27">
+  <td class="line"><a href="#L27">27</a></td>
+  <td class="code"><a id="FR-012--L27"></a><a id="FR-012"></a>- <a href="../../../ids/FR-012.html">FR-012</a>: 記録編集はLWWメタ（`updatedAt`, `updatedByDeviceId`, `mutationId`）を保持して競合解決可能な状態にします。</td>
+</tr>
+<tr id="L28">
+  <td class="line"><a href="#L28">28</a></td>
+  <td class="code"><a id="FR-013--L28"></a><a id="FR-013"></a>- <a href="../../../ids/FR-013.html">FR-013</a>: 記録一覧にはCAPDノート準拠項目（貯留時間、透析液濃度、排液量、注液量、排液時間、排液の確認、除水量、尿量、飲水量、体重、排便、血圧、出口部状態、備考）を表示します。</td>
+</tr>
+<tr id="L29">
+  <td class="line"><a href="#L29">29</a></td>
+  <td class="code"><a id="FR-014--L29"></a><a id="FR-014"></a>- <a href="../../../ids/FR-014.html">FR-014</a>: 写真はサムネイル固定表示ではなく、リンク押下で写真詳細画面へ遷移します。</td>
+</tr>
+<tr id="L30">
+  <td class="line"><a href="#L30">30</a></td>
+  <td class="code"><a id="FR-014A--L30"></a><a id="FR-014A"></a>- <a href="../../../ids/FR-014A.html">FR-014A</a>: 記録一覧には既存写真列とは別に `出口部写真` 列を追加し、`未登録` / `表示` を切り替えます。</td>
+</tr>
+<tr id="L31">
+  <td class="line"><a href="#L31">31</a></td>
+  <td class="code"><a id="FR-015--L31"></a><a id="FR-015"></a>- <a href="../../../ids/FR-015.html">FR-015</a>: 交換ごとの除水量と1日の総除水量は、`排液量 - 前回注液量` の差し引きで自動計算表示します。</td>
+</tr>
+<tr id="L32">
+  <td class="line"><a href="#L32">32</a></td>
+  <td class="code"><a id="FR-015A--L32"></a><a id="FR-015A"></a>- <a href="../../../ids/FR-015A.html">FR-015A</a>: 初回交換（#1列）は前回注液量が存在しないため、除水量は `未計算` 表示とします。</td>
+</tr>
+<tr id="L33">
+  <td class="line"><a href="#L33">33</a></td>
+  <td class="code"><a id="FR-015B--L33"></a><a id="FR-015B"></a>- <a href="../../../ids/FR-015B.html">FR-015B</a>: 1日の総除水量は、計算可能な交換（#2列以降で前回注液量が存在する交換）のみを合算します。</td>
+</tr>
+<tr id="L34">
+  <td class="line"><a href="#L34">34</a></td>
+  <td class="code"><a id="FR-015C--L34"></a><a id="FR-015C"></a>- <a href="../../../ids/FR-015C.html">FR-015C</a>: `opening_infuse_weight_g`（初期注液量）は v1 では空欄許容とし、除水量計算に使用しません。</td>
+</tr>
+<tr id="L35">
+  <td class="line"><a href="#L35">35</a></td>
+  <td class="code"><a id="FR-016--L35"></a><a id="FR-016"></a>- <a href="../../../ids/FR-016.html">FR-016</a>: 当日ノート表と記録一覧の交換列は `#1〜#5` の5列固定とし、列位置は `*_exchange_no` で決定します。</td>
+</tr>
+<tr id="L36">
+  <td class="line"><a href="#L36">36</a></td>
+  <td class="code"><a id="FR-017--L36"></a><a id="FR-017"></a>- <a href="../../../ids/FR-017.html">FR-017</a>: 透析液濃度欄は、取り込みCSVのタイトル（例: `レギニュール1.5`）を表示します。</td>
+</tr>
+<tr id="L37">
+  <td class="line"><a href="#L37">37</a></td>
+  <td class="code"><a id="FR-018--L37"></a><a id="FR-018"></a>- <a href="../../../ids/FR-018.html">FR-018</a>: `record_event` の値は `record_exchange_no` で列マッピングし、`drain_weight_g` は排液量、`bag_weight_g` は注液量、`drain_appearance` は排液の確認に表示します。</td>
+</tr>
+<tr id="L38">
+  <td class="line"><a href="#L38">38</a></td>
+  <td class="code"><a id="FR-019--L38"></a><a id="FR-019"></a>- <a href="../../../ids/FR-019.html">FR-019</a>: `timer_event` の値は `timer_exchange_no` で列マッピングし、`timer_segment=dwell` の `start/end` は貯留時間、`timer_segment=drain` の `start/end` は排液時間に表示します。</td>
+</tr>
+<tr id="L39">
+  <td class="line"><a href="#L39">39</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L40">
+  <td class="line"><a href="#L40">40</a></td>
+  <td class="code">## 3. CSV取り込み機能（Mac限定）</td>
+</tr>
+<tr id="L41">
+  <td class="line"><a href="#L41">41</a></td>
+  <td class="code"><a id="FR-020--L41"></a><a id="FR-020"></a>- <a href="../../../ids/FR-020.html">FR-020</a>: MacネイティブシェルでCSV+画像ディレクトリを選択できます。</td>
+</tr>
+<tr id="L42">
+  <td class="line"><a href="#L42">42</a></td>
+  <td class="code"><a id="FR-021--L42"></a><a id="FR-021"></a>- <a href="../../../ids/FR-021.html">FR-021</a>: CSV v3フォーマットのみ受け付けます。</td>
+</tr>
+<tr id="L43">
+  <td class="line"><a href="#L43">43</a></td>
+  <td class="code"><a id="FR-022--L43"></a><a id="FR-022"></a>- <a href="../../../ids/FR-022.html">FR-022</a>: 検証エラー1件以上で取り込みを中止します。</td>
+</tr>
+<tr id="L44">
+  <td class="line"><a href="#L44">44</a></td>
+  <td class="code"><a id="FR-023--L44"></a><a id="FR-023"></a>- <a href="../../../ids/FR-023.html">FR-023</a>: 警告は取り込み結果画面で一覧表示します。</td>
+</tr>
+<tr id="L45">
+  <td class="line"><a href="#L45">45</a></td>
+  <td class="code"><a id="FR-024--L45"></a><a id="FR-024"></a>- <a href="../../../ids/FR-024.html">FR-024</a>: 画像相対パスを `protocol.csv` ディレクトリ基準で解決します。</td>
+</tr>
+<tr id="L46">
+  <td class="line"><a href="#L46">46</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L47">
+  <td class="line"><a href="#L47">47</a></td>
+  <td class="code">## 4. セッション進行機能</td>
+</tr>
+<tr id="L48">
+  <td class="line"><a href="#L48">48</a></td>
+  <td class="code"><a id="FR-030--L48"></a><a id="FR-030"></a>- <a href="../../../ids/FR-030.html">FR-030</a>: 現在ステップのフェーズと状態を常時表示し、タイトルは通し番号付き（例: `#21 お腹のチューブのクランプを開ける`）で表示します。</td>
+</tr>
+<tr id="L49">
+  <td class="line"><a href="#L49">49</a></td>
+  <td class="code"><a id="FR-031--L49"></a><a id="FR-031"></a>- <a href="../../../ids/FR-031.html">FR-031</a>: 必須チェック未完了時に次ステップ遷移を禁止します。</td>
+</tr>
+<tr id="L50">
+  <td class="line"><a href="#L50">50</a></td>
+  <td class="code"><a id="FR-032--L50"></a><a id="FR-032"></a>- <a href="../../../ids/FR-032.html">FR-032</a>: `record_event` 未完了時に次ステップ遷移を禁止します。</td>
+</tr>
+<tr id="L51">
+  <td class="line"><a href="#L51">51</a></td>
+  <td class="code"><a id="FR-033--L51"></a><a id="FR-033"></a>- <a href="../../../ids/FR-033.html">FR-033</a>: `next_step_id` に従い完全シリアルで遷移します。</td>
+</tr>
+<tr id="L52">
+  <td class="line"><a href="#L52">52</a></td>
+  <td class="code"><a id="FR-034--L52"></a><a id="FR-034"></a>- <a href="../../../ids/FR-034.html">FR-034</a>: 最終ステップ完了時にセッション完了状態へ遷移します。</td>
+</tr>
+<tr id="L53">
+  <td class="line"><a href="#L53">53</a></td>
+  <td class="code"><a id="FR-035--L53"></a><a id="FR-035"></a>- <a href="../../../ids/FR-035.html">FR-035</a>: セッション開始端末のみ進行更新できます。</td>
+</tr>
+<tr id="L54">
+  <td class="line"><a href="#L54">54</a></td>
+  <td class="code"><a id="FR-036--L54"></a><a id="FR-036"></a>- <a href="../../../ids/FR-036.html">FR-036</a>: 同時実行セッションを端末ごとに1件へ制限します。</td>
+</tr>
+<tr id="L55">
+  <td class="line"><a href="#L55">55</a></td>
+  <td class="code"><a id="FR-037--L55"></a><a id="FR-037"></a>- <a href="../../../ids/FR-037.html">FR-037</a>: セッション画面の手順画像は1:1正方形領域で表示します。</td>
+</tr>
+<tr id="L56">
+  <td class="line"><a href="#L56">56</a></td>
+  <td class="code"><a id="FR-038--L56"></a><a id="FR-038"></a>- <a href="../../../ids/FR-038.html">FR-038</a>: セッション画面は iPhoneで1カラム、Macで2カラム表示に切り替えます。</td>
+</tr>
+<tr id="L57">
+  <td class="line"><a href="#L57">57</a></td>
+  <td class="code"><a id="FR-039--L57"></a><a id="FR-039"></a>- <a href="../../../ids/FR-039.html">FR-039</a>: セッション画面に「戻る」操作を提供し、直前ステップへ表示遷移できます。</td>
+</tr>
+<tr id="L58">
+  <td class="line"><a href="#L58">58</a></td>
+  <td class="code"><a id="FR-039A--L58"></a><a id="FR-039A"></a>- <a href="../../../ids/FR-039A.html">FR-039A</a>: セッション画面の「戻る」と「次へ」は、iPhone/Macの双方で横並び・同幅で表示します。</td>
+</tr>
+<tr id="L59">
+  <td class="line"><a href="#L59">59</a></td>
+  <td class="code"><a id="FR-039B--L59"></a><a id="FR-039B"></a>- <a href="../../../ids/FR-039B.html">FR-039B</a>: 「次へ」「戻る」押下時、および Enter キーによる次ステップ遷移時は、メインパネルを左右スライドで遷移表示します。</td>
+</tr>
+<tr id="L60">
+  <td class="line"><a href="#L60">60</a></td>
+  <td class="code"><a id="FR-039C--L60"></a><a id="FR-039C"></a>- <a href="../../../ids/FR-039C.html">FR-039C</a>: セッション画面のカルーセルは、左右ナビゲーションボタンを表示しません。</td>
+</tr>
+<tr id="L61">
+  <td class="line"><a href="#L61">61</a></td>
+  <td class="code"><a id="FR-039D--L61"></a><a id="FR-039D"></a>- <a href="../../../ids/FR-039D.html">FR-039D</a>: セッション画面右上 `•••` メニューに `セッションを中断（非常用）` を配置します。</td>
+</tr>
+<tr id="L62">
+  <td class="line"><a href="#L62">62</a></td>
+  <td class="code"><a id="FR-039E--L62"></a><a id="FR-039E"></a>- <a href="../../../ids/FR-039E.html">FR-039E</a>: `セッションを中断（非常用）` は確認ダイアログを経て実行し、中断後はホームへ戻します。</td>
+</tr>
+<tr id="L63">
+  <td class="line"><a href="#L63">63</a></td>
+  <td class="code"><a id="FR-039F--L63"></a><a id="FR-039F"></a>- <a href="../../../ids/FR-039F.html">FR-039F</a>: 明示中断時はセッションを `aborted` で終了し、対応スロットの表示状態を `未実施` へ戻します。</td>
+</tr>
+<tr id="L64">
+  <td class="line"><a href="#L64">64</a></td>
+  <td class="code"><a id="FR-039G--L64"></a><a id="FR-039G"></a>- <a href="../../../ids/FR-039G.html">FR-039G</a>: ホームのスロットには `前回中断あり` の表示を出しません（履歴は記録一覧で確認）。</td>
+</tr>
+<tr id="L65">
+  <td class="line"><a href="#L65">65</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L66">
+  <td class="line"><a href="#L66">66</a></td>
+  <td class="code">## 5. 記録機能</td>
+</tr>
+<tr id="L67">
+  <td class="line"><a href="#L67">67</a></td>
+  <td class="code"><a id="FR-040--L67"></a><a id="FR-040"></a>- <a href="../../../ids/FR-040.html">FR-040</a>: `drain_appearance` 入力モーダルを提供します。</td>
+</tr>
+<tr id="L68">
+  <td class="line"><a href="#L68">68</a></td>
+  <td class="code"><a id="FR-041--L68"></a><a id="FR-041"></a>- <a href="../../../ids/FR-041.html">FR-041</a>: 見た目分類は `透明/やや混濁/混濁/血性/その他` を提供します。</td>
+</tr>
+<tr id="L69">
+  <td class="line"><a href="#L69">69</a></td>
+  <td class="code"><a id="FR-042--L69"></a><a id="FR-042"></a>- <a href="../../../ids/FR-042.html">FR-042</a>: 廃液の記録写真（`drain`）は任意入力です。</td>
+</tr>
+<tr id="L70">
+  <td class="line"><a href="#L70">70</a></td>
+  <td class="code"><a id="FR-042A--L70"></a><a id="FR-042A"></a>- <a href="../../../ids/FR-042A.html">FR-042A</a>: 出口部の記録写真（`exit_site`）は `session_summary.payload.exit_site_photo` に保存します（`record_event` は追加しません）。</td>
+</tr>
+<tr id="L71">
+  <td class="line"><a href="#L71">71</a></td>
+  <td class="code"><a id="FR-042B--L71"></a><a id="FR-042B"></a>- <a href="../../../ids/FR-042B.html">FR-042B</a>: 出口部写真の対象レコードは当日 `summaryScope=both` を最優先し、次に `summaryScope=first_of_day` を採用します。同値時は `completedAt` 昇順、さらに同値時は `recordId` 昇順で決定します。</td>
+</tr>
+<tr id="L72">
+  <td class="line"><a href="#L72">72</a></td>
+  <td class="code"><a id="FR-042C--L72"></a><a id="FR-042C"></a>- <a href="../../../ids/FR-042C.html">FR-042C</a>: 出口部写真の登録導線は、対象 `session_summary` の入力完了後に表示します。</td>
+</tr>
+<tr id="L73">
+  <td class="line"><a href="#L73">73</a></td>
+  <td class="code"><a id="FR-042D--L73"></a><a id="FR-042D"></a>- <a href="../../../ids/FR-042D.html">FR-042D</a>: 出口部写真の操作導線は `iPhoneホーム全体サマリ` と `iPhone記録詳細` の両方に表示します。Macは閲覧リンクのみ表示し、登録/変更/削除操作は許可しません。</td>
+</tr>
+<tr id="L74">
+  <td class="line"><a href="#L74">74</a></td>
+  <td class="code"><a id="FR-042E--L74"></a><a id="FR-042E"></a>- <a href="../../../ids/FR-042E.html">FR-042E</a>: 出口部写真は1レコード1枚固定とし、登録後は `変更` と `削除` を許可します。</td>
+</tr>
+<tr id="L75">
+  <td class="line"><a href="#L75">75</a></td>
+  <td class="code"><a id="FR-042F--L75"></a><a id="FR-042F"></a>- <a href="../../../ids/FR-042F.html">FR-042F</a>: 出口部写真の入力手段は iPhone の `カメラ撮影` と `ファイル選択` の両方を許可します。</td>
+</tr>
+<tr id="L76">
+  <td class="line"><a href="#L76">76</a></td>
+  <td class="code"><a id="FR-042G--L76"></a><a id="FR-042G"></a>- <a href="../../../ids/FR-042G.html">FR-042G</a>: 出口部写真は任意入力であり、未登録でも手技完了を阻害しません。</td>
+</tr>
+<tr id="L77">
+  <td class="line"><a href="#L77">77</a></td>
+  <td class="code"><a id="FR-042H--L77"></a><a id="FR-042H"></a>- <a href="../../../ids/FR-042H.html">FR-042H</a>: 出口部写真の削除時は `session_summary.payload.exit_site_photo=null` を保存し、対応画像は tombstone 化します。</td>
+</tr>
+<tr id="L78">
+  <td class="line"><a href="#L78">78</a></td>
+  <td class="code"><a id="FR-043--L78"></a><a id="FR-043"></a>- <a href="../../../ids/FR-043.html">FR-043</a>: `drain_weight_g` と `bag_weight_g` を g単位で保存します。</td>
+</tr>
+<tr id="L79">
+  <td class="line"><a href="#L79">79</a></td>
+  <td class="code"><a id="FR-044--L79"></a><a id="FR-044"></a>- <a href="../../../ids/FR-044.html">FR-044</a>: `session_summary` で以下を収集します。</td>
+</tr>
+<tr id="L80">
+  <td class="line"><a href="#L80">80</a></td>
+  <td class="code">  - 最初に完了したセッション（同一日内の `completedAt` 最小）で必須: 血圧上、血圧下、体重、脈拍、体温、出口部状態</td>
+</tr>
+<tr id="L81">
+  <td class="line"><a href="#L81">81</a></td>
+  <td class="code">  - 最後に完了したセッション（同一日内の `completedAt` 最大）で必須: 飲水量、尿量、排便回数</td>
+</tr>
+<tr id="L82">
+  <td class="line"><a href="#L82">82</a></td>
+  <td class="code">  - 任意: 症状メモ、備考</td>
+</tr>
+<tr id="L83">
+  <td class="line"><a href="#L83">83</a></td>
+  <td class="code"><a id="FR-044A--L83"></a><a id="FR-044A"></a>- <a href="../../../ids/FR-044A.html">FR-044A</a>: 同一日に1セッションのみ完了した場合は、最初/最後の両条件を同時適用し、必須項目をすべて満たす必要があります。</td>
+</tr>
+<tr id="L84">
+  <td class="line"><a href="#L84">84</a></td>
+  <td class="code"><a id="FR-044B--L84"></a><a id="FR-044B"></a>- <a href="../../../ids/FR-044B.html">FR-044B</a>: 出口部状態は複数選択チェックボックスで入力し、語彙は `正常/赤み/痛み/はれ/かさぶた/じゅくじゅく/出血/膿` とします。追加の自由記述は備考欄に入力します。</td>
+</tr>
+<tr id="L85">
+  <td class="line"><a href="#L85">85</a></td>
+  <td class="code"><a id="FR-044C--L85"></a><a id="FR-044C"></a>- <a href="../../../ids/FR-044C.html">FR-044C</a>: `session_summary.summaryScope`（`first_of_day` / `last_of_day` / `both`）は最終ステップ完了時にローカルで算出し、同期時に共有します。</td>
+</tr>
+<tr id="L86">
+  <td class="line"><a href="#L86">86</a></td>
+  <td class="code"><a id="FR-044D--L86"></a><a id="FR-044D"></a>- <a href="../../../ids/FR-044D.html">FR-044D</a>: `summaryScope` が未指定または不正値でも保存拒否せず、`summaryScope` のみ破棄して他の妥当な入力値を保存します。</td>
+</tr>
+<tr id="L87">
+  <td class="line"><a href="#L87">87</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L88">
+  <td class="line"><a href="#L88">88</a></td>
+  <td class="code">## 6. タイマー/アラーム機能</td>
+</tr>
+<tr id="L89">
+  <td class="line"><a href="#L89">89</a></td>
+  <td class="code"><a id="FR-050--L89"></a><a id="FR-050"></a>- <a href="../../../ids/FR-050.html">FR-050</a>: `timer_event` と `timer_segment` から、CSV設定に従ってタイマー終了通知ジョブを生成します。</td>
+</tr>
+<tr id="L90">
+  <td class="line"><a href="#L90">90</a></td>
+  <td class="code"><a id="FR-050A--L90"></a><a id="FR-050A"></a>- <a href="../../../ids/FR-050A.html">FR-050A</a>: 通知対象は `timer_event=end` の終了イベントとし、`timer_segment=dwell/drain` を同一ルールで扱います。</td>
+</tr>
+<tr id="L91">
+  <td class="line"><a href="#L91">91</a></td>
+  <td class="code"><a id="FR-050B--L91"></a><a id="FR-050B"></a>- <a href="../../../ids/FR-050B.html">FR-050B</a>: 同一セッション内の通知ジョブは `alarm_id` 単位で独立管理します。</td>
+</tr>
+<tr id="L92">
+  <td class="line"><a href="#L92">92</a></td>
+  <td class="code"><a id="FR-050C--L92"></a><a id="FR-050C"></a>- <a href="../../../ids/FR-050C.html">FR-050C</a>: 通知ジョブは最低限 `alarm_id / segment / due_at / acked_at / attempt_no / status` を保持します。</td>
+</tr>
+<tr id="L93">
+  <td class="line"><a href="#L93">93</a></td>
+  <td class="code"><a id="FR-050D--L93"></a><a id="FR-050D"></a>- <a href="../../../ids/FR-050D.html">FR-050D</a>: `pendingAlarm` は未ACKジョブ（`pending/notified/missed`）から `due_at` 最小を優先して1件選択し、同値時は `alarm_id` 昇順を採用します。</td>
+</tr>
+<tr id="L94">
+  <td class="line"><a href="#L94">94</a></td>
+  <td class="code"><a id="FR-051--L94"></a><a id="FR-051"></a>- <a href="../../../ids/FR-051.html">FR-051</a>: 終了時刻 `T0` で Mac ローカル通知（音+バナー）を発火し、同時にアプリ内未確認アラートを固定表示します。</td>
+</tr>
+<tr id="L95">
+  <td class="line"><a href="#L95">95</a></td>
+  <td class="code"><a id="FR-052--L95"></a><a id="FR-052"></a>- <a href="../../../ids/FR-052.html">FR-052</a>: 未確認時は段階再通知を行います。</td>
+</tr>
+<tr id="L96">
+  <td class="line"><a href="#L96">96</a></td>
+  <td class="code"><a id="FR-052A--L96"></a><a id="FR-052A"></a>- <a href="../../../ids/FR-052A.html">FR-052A</a>: 再通知間隔は `T+2分`（iPhone補助通知1回 + Mac再通知）、`T+5分以降`（3分間隔でMac+iPhone再通知）とします。</td>
+</tr>
+<tr id="L97">
+  <td class="line"><a href="#L97">97</a></td>
+  <td class="code"><a id="FR-052B--L97"></a><a id="FR-052B"></a>- <a href="../../../ids/FR-052B.html">FR-052B</a>: 段階再通知の対象は「貯留終了（`dwell`）」「廃液終了（`drain`）」に限定します。</td>
+</tr>
+<tr id="L98">
+  <td class="line"><a href="#L98">98</a></td>
+  <td class="code"><a id="FR-053--L98"></a><a id="FR-053"></a>- <a href="../../../ids/FR-053.html">FR-053</a>: ACK時は Mac/iPhone の通知ジョブをすべて停止し、`acked_at` を記録します。</td>
+</tr>
+<tr id="L99">
+  <td class="line"><a href="#L99">99</a></td>
+  <td class="code"><a id="FR-054--L99"></a><a id="FR-054"></a>- <a href="../../../ids/FR-054.html">FR-054</a>: アプリ内アラートは ACK まで継続表示し、通知再送も ACK まで継続します。</td>
+</tr>
+<tr id="L100">
+  <td class="line"><a href="#L100">100</a></td>
+  <td class="code"><a id="FR-055--L100"></a><a id="FR-055"></a>- <a href="../../../ids/FR-055.html">FR-055</a>: 通知チャネルは `Mac主チャネル固定 + iPhone補助` とします。</td>
+</tr>
+<tr id="L101">
+  <td class="line"><a href="#L101">101</a></td>
+  <td class="code"><a id="FR-055A--L101"></a><a id="FR-055A"></a>- <a href="../../../ids/FR-055A.html">FR-055A</a>: iPhone未利用かつ離席想定時は「見逃し高リスク」警告を必須表示します。</td>
+</tr>
+<tr id="L102">
+  <td class="line"><a href="#L102">102</a></td>
+  <td class="code"><a id="FR-055B--L102"></a><a id="FR-055B"></a>- <a href="../../../ids/FR-055B.html">FR-055B</a>: iPhone補助通知の利用可否は Push購読状態（登録/無効化）で管理します。</td>
+</tr>
+<tr id="L103">
+  <td class="line"><a href="#L103">103</a></td>
+  <td class="code"><a id="FR-056--L103"></a><a id="FR-056"></a>- <a href="../../../ids/FR-056.html">FR-056</a>: 「戻る」操作、過去ステップ再表示、アプリ再開、通信リトライでは、`timer_event(start/end)`・`record_event`・通知ジョブ生成を再発火しません。</td>
+</tr>
+<tr id="L104">
+  <td class="line"><a href="#L104">104</a></td>
+  <td class="code"><a id="FR-057--L104"></a><a id="FR-057"></a>- <a href="../../../ids/FR-057.html">FR-057</a>: 30秒テスト通知は手動実行とし、通知設定変更時・OS更新後・通知不調時に実施できること。</td>
+</tr>
+<tr id="L105">
+  <td class="line"><a href="#L105">105</a></td>
+  <td class="code"><a id="FR-057A--L105"></a><a id="FR-057A"></a>- <a href="../../../ids/FR-057A.html">FR-057A</a>: 手動30秒テストに失敗した場合は、当日を「iPhone補助なし（Mac主導）」として扱います。</td>
+</tr>
+<tr id="L106">
+  <td class="line"><a href="#L106">106</a></td>
+  <td class="code"><a id="FR-058--L106"></a><a id="FR-058"></a>- <a href="../../../ids/FR-058.html">FR-058</a>: `T+30分` 未確認時は `status=missed` を永続化し、「見逃し状態」を表示します。</td>
+</tr>
+<tr id="L107">
+  <td class="line"><a href="#L107">107</a></td>
+  <td class="code"><a id="FR-058A--L107"></a><a id="FR-058A"></a>- <a href="../../../ids/FR-058A.html">FR-058A</a>: `status=missed` になった後も、ACKまで3分間隔の再通知を継続します。</td>
+</tr>
+<tr id="L108">
+  <td class="line"><a href="#L108">108</a></td>
+  <td class="code"><a id="FR-058B--L108"></a><a id="FR-058B"></a>- <a href="../../../ids/FR-058B.html">FR-058B</a>: `status=missed` は ACK 成功時に `acknowledged` へ遷移し、通知停止と `acked_at` 記録を行います。</td>
+</tr>
+<tr id="L109">
+  <td class="line"><a href="#L109">109</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L110">
+  <td class="line"><a href="#L110">110</a></td>
+  <td class="code">## 7. 異常判定機能</td>
+</tr>
+<tr id="L111">
+  <td class="line"><a href="#L111">111</a></td>
+  <td class="code"><a id="FR-060--L111"></a><a id="FR-060"></a>- <a href="../../../ids/FR-060.html">FR-060</a>: 見た目分類ベースの簡易判定を行います。</td>
+</tr>
+<tr id="L112">
+  <td class="line"><a href="#L112">112</a></td>
+  <td class="code"><a id="FR-061--L112"></a><a id="FR-061"></a>- <a href="../../../ids/FR-061.html">FR-061</a>: 異常時は警告表示のみ行います。</td>
+</tr>
+<tr id="L113">
+  <td class="line"><a href="#L113">113</a></td>
+  <td class="code"><a id="FR-062--L113"></a><a id="FR-062"></a>- <a href="../../../ids/FR-062.html">FR-062</a>: 連絡ボタン等の導線はv1対象外とします。</td>
+</tr>
+<tr id="L114">
+  <td class="line"><a href="#L114">114</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L115">
+  <td class="line"><a href="#L115">115</a></td>
+  <td class="code">## 8. 版管理機能</td>
+</tr>
+<tr id="L116">
+  <td class="line"><a href="#L116">116</a></td>
+  <td class="code"><a id="FR-070--L116"></a><a id="FR-070"></a>- <a href="../../../ids/FR-070.html">FR-070</a>: 新版取り込み後、テンプレート版として保存します。</td>
+</tr>
+<tr id="L117">
+  <td class="line"><a href="#L117">117</a></td>
+  <td class="code"><a id="FR-071--L117"></a><a id="FR-071"></a>- <a href="../../../ids/FR-071.html">FR-071</a>: セッション開始時は `SessionProtocolSnapshot` をローカル同一トランザクションで保存し、保存失敗時は開始自体を失敗させます。</td>
+</tr>
+<tr id="L118">
+  <td class="line"><a href="#L118">118</a></td>
+  <td class="code"><a id="FR-072--L118"></a><a id="FR-072"></a>- <a href="../../../ids/FR-072.html">FR-072</a>: スナップショットには `sourceProtocol(meta)`、step定義本文（通し番号/タイトル/文言/必須チェック/timer/alarm/record）、画像 `assetKey`、`assetManifest`、`snapshotHash` を含めます。</td>
+</tr>
+<tr id="L119">
+  <td class="line"><a href="#L119">119</a></td>
+  <td class="code"><a id="FR-073--L119"></a><a id="FR-073"></a>- <a href="../../../ids/FR-073.html">FR-073</a>: セッション表示/再開時は開始時スナップショットを常に優先し、現行テンプレート版へフォールバックしません。</td>
+</tr>
+<tr id="L120">
+  <td class="line"><a href="#L120">120</a></td>
+  <td class="code"><a id="FR-074--L120"></a><a id="FR-074"></a>- <a href="../../../ids/FR-074.html">FR-074</a>: スナップショット欠落またはハッシュ不整合は整合性エラーとして扱い、セッション表示を停止します。</td>
+</tr>
+<tr id="L121">
+  <td class="line"><a href="#L121">121</a></td>
+  <td class="code"><a id="FR-075--L121"></a><a id="FR-075"></a>- <a href="../../../ids/FR-075.html">FR-075</a>: テンプレート新版の取り込み後も、開始済みセッションの表示内容は開始時スナップショットから変化しません。</td>
+</tr>
+<tr id="L122">
+  <td class="line"><a href="#L122">122</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L123">
+  <td class="line"><a href="#L123">123</a></td>
+  <td class="code">## 9. 同期機能</td>
+</tr>
+<tr id="L124">
+  <td class="line"><a href="#L124">124</a></td>
+  <td class="code"><a id="FR-080--L124"></a><a id="FR-080"></a>- <a href="../../../ids/FR-080.html">FR-080</a>: 同期は `startup` / `resume` / `session_complete` / `manual` の4契機で実行します。</td>
+</tr>
+<tr id="L125">
+  <td class="line"><a href="#L125">125</a></td>
+  <td class="code"><a id="FR-081--L125"></a><a id="FR-081"></a>- <a href="../../../ids/FR-081.html">FR-081</a>: すべてのローカル更新は `outbox` に追記し、push成功時に消し込みます。</td>
+</tr>
+<tr id="L126">
+  <td class="line"><a href="#L126">126</a></td>
+  <td class="code"><a id="FR-082--L126"></a><a id="FR-082"></a>- <a href="../../../ids/FR-082.html">FR-082</a>: 差分取得は `cloudRevision` と `dayRefs` に基づき実行します。</td>
+</tr>
+<tr id="L127">
+  <td class="line"><a href="#L127">127</a></td>
+  <td class="code"><a id="FR-082A--L127"></a><a id="FR-082A"></a>- <a href="../../../ids/FR-082A.html">FR-082A</a>: 公開HTTP APIは `POST /sync/push` と `POST /sync/pull` のみとし、CSV取り込みはローカルI/F（`ProtocolImportService.importFromDirectory`）で実行します。</td>
+</tr>
+<tr id="L128">
+  <td class="line"><a href="#L128">128</a></td>
+  <td class="code"><a id="FR-083--L128"></a><a id="FR-083"></a>- <a href="../../../ids/FR-083.html">FR-083</a>: 競合解決はエンティティ単位LWW（`updatedAt`, `updatedByDeviceId`, `mutationId` 降順）で固定します。</td>
+</tr>
+<tr id="L129">
+  <td class="line"><a href="#L129">129</a></td>
+  <td class="code"><a id="FR-084--L129"></a><a id="FR-084"></a>- <a href="../../../ids/FR-084.html">FR-084</a>: tombstone（削除）もLWW同一ルールで解決します。</td>
+</tr>
+<tr id="L130">
+  <td class="line"><a href="#L130">130</a></td>
+  <td class="code"><a id="FR-085--L130"></a><a id="FR-085"></a>- <a href="../../../ids/FR-085.html">FR-085</a>: 競合解決は内部適用のみとし、競合件数バナーや詳細一覧は提供しません。</td>
+</tr>
+<tr id="L131">
+  <td class="line"><a href="#L131">131</a></td>
+  <td class="code"><a id="FR-086--L131"></a><a id="FR-086"></a>- <a href="../../../ids/FR-086.html">FR-086</a>: 手動同期ボタンを提供し、失敗時は再試行導線を表示します。</td>
+</tr>
+<tr id="L132">
+  <td class="line"><a href="#L132">132</a></td>
+  <td class="code"><a id="FR-087--L132"></a><a id="FR-087"></a>- <a href="../../../ids/FR-087.html">FR-087</a>: IndexedDB消失検知時はクラウドからフルリストアを実行します。</td>
+</tr>
+<tr id="L133">
+  <td class="line"><a href="#L133">133</a></td>
+  <td class="code"><a id="FR-087A--L133"></a><a id="FR-087A"></a>- <a href="../../../ids/FR-087A.html">FR-087A</a>: `POST /sync/pull` が `cloudState=missing` を返した場合、クラウド欠損と判定します。</td>
+</tr>
+<tr id="L134">
+  <td class="line"><a href="#L134">134</a></td>
+  <td class="code"><a id="FR-087B--L134"></a><a id="FR-087B"></a>- <a href="../../../ids/FR-087B.html">FR-087B</a>: クラウド欠損判定時はローカルデータを正本として `syncMode=full_reseed` で全量再シードを実行し、ローカルデータは削除/初期化しません。</td>
+</tr>
+<tr id="L135">
+  <td class="line"><a href="#L135">135</a></td>
+  <td class="code"><a id="FR-087C--L135"></a><a id="FR-087C"></a>- <a href="../../../ids/FR-087C.html">FR-087C</a>: 全量再シード成功後は再度 `POST /sync/pull` を実行し、`cloudState=ok` と `cloudRevision` 更新を確認して同期完了とします。</td>
+</tr>
+<tr id="L136">
+  <td class="line"><a href="#L136">136</a></td>
+  <td class="code"><a id="FR-087D--L136"></a><a id="FR-087D"></a>- <a href="../../../ids/FR-087D.html">FR-087D</a>: 全量再シード失敗時はローカルデータを不変のまま保持し、`lastSyncStatus=failed` と再試行導線を表示します。</td>
+</tr>
+<tr id="L137">
+  <td class="line"><a href="#L137">137</a></td>
+  <td class="code"><a id="FR-088--L137"></a><a id="FR-088"></a>- <a href="../../../ids/FR-088.html">FR-088</a>: 同期失敗時は直近同期状態（成功/失敗）を更新し、再試行導線を表示します。</td>
+</tr>
+<tr id="L138">
+  <td class="line"><a href="#L138">138</a></td>
+  <td class="code"><a id="FR-089--L138"></a><a id="FR-089"></a>- <a href="../../../ids/FR-089.html">FR-089</a>: `120秒ポーリング` は実装しません。</td>
+</tr>
+<tr id="L139">
+  <td class="line"><a href="#L139">139</a></td>
+  <td class="code"><a id="FR-089A--L139"></a><a id="FR-089A"></a>- <a href="../../../ids/FR-089A.html">FR-089A</a>: `session_summary.payload.exit_site_photo` の更新は部分パッチ（`patch_path=payload.exit_site_photo`）で同期し、同一record内の他フィールドを上書きしません。</td>
+</tr>
+<tr id="L140">
+  <td class="line"><a href="#L140">140</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L141">
+  <td class="line"><a href="#L141">141</a></td>
+  <td class="code">## 10. 写真/バックアップ機能</td>
+</tr>
+<tr id="L142">
+  <td class="line"><a href="#L142">142</a></td>
+  <td class="code"><a id="FR-090--L142"></a><a id="FR-090"></a>- <a href="../../../ids/FR-090.html">FR-090</a>: 記録写真（`drain` / `exit_site`）はJPEG再圧縮して保存します（長辺1600px/quality 85）。</td>
+</tr>
+<tr id="L143">
+  <td class="line"><a href="#L143">143</a></td>
+  <td class="code"><a id="FR-090A--L143"></a><a id="FR-090A"></a>- <a href="../../../ids/FR-090A.html">FR-090A</a>: 写真参照メタには `photo_kind`（`drain` / `exit_site`）を保持します。</td>
+</tr>
+<tr id="L144">
+  <td class="line"><a href="#L144">144</a></td>
+  <td class="code"><a id="FR-091--L144"></a><a id="FR-091"></a>- <a href="../../../ids/FR-091.html">FR-091</a>: 写真総量は1GB上限とし、超過時は古い順削除します。</td>
+</tr>
+<tr id="L145">
+  <td class="line"><a href="#L145">145</a></td>
+  <td class="code"><a id="FR-092--L145"></a><a id="FR-092"></a>- <a href="../../../ids/FR-092.html">FR-092</a>: 日次バックアップを1日1回実行し、30日保持します。</td>
+</tr>
+<tr id="L146">
+  <td class="line"><a href="#L146">146</a></td>
+  <td class="code"><a id="FR-093--L146"></a><a id="FR-093"></a>- <a href="../../../ids/FR-093.html">FR-093</a>: 手動エクスポート機能は v1 対象外とします。</td>
+</tr>
+<tr id="L147">
+  <td class="line"><a href="#L147">147</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L148">
+  <td class="line"><a href="#L148">148</a></td>
+  <td class="code">## 11. セキュリティ/接続要件</td>
+</tr>
+<tr id="L149">
+  <td class="line"><a href="#L149">149</a></td>
+  <td class="code"><a id="FR-100--L149"></a><a id="FR-100"></a>- <a href="../../../ids/FR-100.html">FR-100</a>: アプリ内認証は行いません（公開URL運用）。</td>
+</tr>
+<tr id="L150">
+  <td class="line"><a href="#L150">150</a></td>
+  <td class="code"><a id="FR-101--L150"></a><a id="FR-101"></a>- <a href="../../../ids/FR-101.html">FR-101</a>: オンライン接続は推奨とし、通信断中もローカル操作を継続可能とします。</td>
+</tr>
+<tr id="L151">
+  <td class="line"><a href="#L151">151</a></td>
+  <td class="code"><a id="FR-102--L151"></a><a id="FR-102"></a>- <a href="../../../ids/FR-102.html">FR-102</a>: 記録データの正本は端末ローカル保存とし、クラウドは共有/バックアップ用途とします。</td>
+</tr>
+<tr id="L152">
+  <td class="line"><a href="#L152">152</a></td>
+  <td class="code"><a id="FR-103--L152"></a><a id="FR-103"></a>- <a href="../../../ids/FR-103.html">FR-103</a>: iOSネイティブアプリ配布はv1対象外とします。</td>
+</tr>
+<tr id="L153">
+  <td class="line"><a href="#L153">153</a></td>
+  <td class="code"><a id="FR-104--L153"></a><a id="FR-104"></a>- <a href="../../../ids/FR-104.html">FR-104</a>: 同期データはHTTPS通信を前提に扱い、端末側暗号化は v1 で実装しません。</td>
+</tr>
+<tr id="L154">
+  <td class="line"><a href="#L154">154</a></td>
+  <td class="code"><a id="FR-105--L154"></a><a id="FR-105"></a>- <a href="../../../ids/FR-105.html">FR-105</a>: 公開URL運用リスクを受容し、URL管理手順（共有範囲制限・漏えい時の再発行）を運用要件とします。</td>
+</tr>
+<tr id="L155">
+  <td class="line"><a href="#L155">155</a></td>
+  <td class="code"><a id="FR-106--L155"></a><a id="FR-106"></a>- <a href="../../../ids/FR-106.html">FR-106</a>: 機微データを扱う運用時は、将来版での暗号化再導入を前提にします（v1では非対応）。</td>
+</tr>
+<tr id="L156">
+  <td class="line"><a href="#L156">156</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L157">
+  <td class="line"><a href="#L157">157</a></td>
+  <td class="code">## 12. プラットフォーム要件</td>
+</tr>
+<tr id="L158">
+  <td class="line"><a href="#L158">158</a></td>
+  <td class="code"><a id="FR-109--L158"></a><a id="FR-109"></a>- <a href="../../../ids/FR-109.html">FR-109</a>: 提供形態は `Web本体 + Mac薄型ネイティブシェル（WKWebView）` で固定します。</td>
+</tr>
+<tr id="L159">
+  <td class="line"><a href="#L159">159</a></td>
+  <td class="code"><a id="FR-110--L159"></a><a id="FR-110"></a>- <a href="../../../ids/FR-110.html">FR-110</a>: MacネイティブシェルはOS通知連携を提供します。</td>
+</tr>
+<tr id="L160">
+  <td class="line"><a href="#L160">160</a></td>
+  <td class="code"><a id="FR-111--L160"></a><a id="FR-111"></a>- <a href="../../../ids/FR-111.html">FR-111</a>: Macネイティブシェルは画面スリープ抑止を提供します。</td>
+</tr>
+<tr id="L161">
+  <td class="line"><a href="#L161">161</a></td>
+  <td class="code"><a id="FR-112--L161"></a><a id="FR-112"></a>- <a href="../../../ids/FR-112.html">FR-112</a>: iPhoneはPWA通知対応時のみOS通知を利用します。</td>
+</tr>
+<tr id="L162">
+  <td class="line"><a href="#L162">162</a></td>
+  <td class="code"><a id="FR-113--L162"></a><a id="FR-113"></a>- <a href="../../../ids/FR-113.html">FR-113</a>: スリープ抑止が未対応/失敗の場合、注意表示と対処ガイダンスを表示します。</td>
+</tr>
+<tr id="L163">
+  <td class="line"><a href="#L163">163</a></td>
+  <td class="code"><a id="FR-114--L163"></a><a id="FR-114"></a>- <a href="../../../ids/FR-114.html">FR-114</a>: Web UIコンポーネント基盤は `shadcn/ui` を採用します。</td>
+</tr>
+<tr id="L164">
+  <td class="line"><a href="#L164">164</a></td>
+  <td class="code"><a id="FR-115--L164"></a><a id="FR-115"></a>- <a href="../../../ids/FR-115.html">FR-115</a>: Web UIのアイコンセットは `MynaUI Icons`（`@mynaui/icons-react`）を採用します。</td>
+</tr>
+<tr id="L165">
+  <td class="line"><a href="#L165">165</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L166">
+  <td class="line"><a href="#L166">166</a></td>
+  <td class="code">## 13. 非機能要件</td>
+</tr>
+<tr id="L167">
+  <td class="line"><a href="#L167">167</a></td>
+  <td class="code"><a id="NFR-001--L167"></a><a id="NFR-001"></a>- <a href="../../../ids/NFR-001.html">NFR-001</a>: CSV取り込み結果はエラー/警告箇所を特定できること。</td>
+</tr>
+<tr id="L168">
+  <td class="line"><a href="#L168">168</a></td>
+  <td class="code"><a id="NFR-002--L168"></a><a id="NFR-002"></a>- <a href="../../../ids/NFR-002.html">NFR-002</a>: セッション再開時に最後の進行位置を復元できること。</td>
+</tr>
+<tr id="L169">
+  <td class="line"><a href="#L169">169</a></td>
+  <td class="code"><a id="NFR-003--L169"></a><a id="NFR-003"></a>- <a href="../../../ids/NFR-003.html">NFR-003</a>: 画面文言は日本語で統一すること。</td>
+</tr>
+<tr id="L170">
+  <td class="line"><a href="#L170">170</a></td>
+  <td class="code"><a id="NFR-004--L170"></a><a id="NFR-004"></a>- <a href="../../../ids/NFR-004.html">NFR-004</a>: アラーム表示は通常ステップ表示より高い視認性を持つこと。</td>
+</tr>
+<tr id="L171">
+  <td class="line"><a href="#L171">171</a></td>
+  <td class="code"><a id="NFR-005--L171"></a><a id="NFR-005"></a>- <a href="../../../ids/NFR-005.html">NFR-005</a>: 同期失敗時に再試行導線を提供すること。</td>
+</tr>
+<tr id="L172">
+  <td class="line"><a href="#L172">172</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+  </table>
+</section>
+  </main>
+</body>
+</html>

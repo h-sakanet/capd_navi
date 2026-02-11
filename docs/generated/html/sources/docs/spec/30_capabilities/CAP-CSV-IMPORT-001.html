@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>docs/spec/30_capabilities/CAP-CSV-IMPORT-001.md ソース表示</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f6f8fb; color: #1f2937; }
+    .top-nav { display: flex; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #d7deea; background: #ffffff; }
+    .top-nav a { color: #0f4acb; text-decoration: none; font-weight: 600; }
+    .top-nav a:hover { text-decoration: underline; }
+    main { max-width: 1180px; margin: 0 auto; padding: 24px 20px 40px; }
+    h1 { margin: 0 0 12px; font-size: 1.6rem; }
+    h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    .lead { margin: 0 0 18px; color: #4b5563; }
+    .card { background: #ffffff; border: 1px solid #d7deea; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+    ul { margin: 8px 0 0; padding-left: 1.2rem; }
+    ol { margin: 8px 0 0; padding-left: 1.4rem; }
+    li { margin: 4px 0; }
+    a { color: #0f4acb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #eef3ff; border-radius: 4px; padding: 1px 4px; }
+    .muted { color: #6b7280; font-size: 0.92rem; }
+    .source-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    .source-table td { border-bottom: 1px solid #e5e7eb; vertical-align: top; padding: 2px 8px; }
+    .source-table .line { width: 82px; text-align: right; color: #6b7280; background: #ffffff; }
+    .source-table .line a { color: #6b7280; }
+    .source-table .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; overflow-wrap: anywhere; }
+    .pill { display: inline-block; border: 1px solid #d7deea; border-radius: 999px; padding: 2px 8px; font-size: 0.78rem; color: #475569; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <nav class="top-nav"><a href="../../../../index.html">HTML Index</a><a href="../../../../../index.md">Markdown Index</a></nav>
+  <main>
+    <h1>docs/spec/30_capabilities/CAP-CSV-IMPORT-001.md ソース表示</h1>
+    <p class="lead">行番号とIDアンカー付きで参照できます。</p>
+    <section class="card">
+  <h2><code>docs/spec/30_capabilities/CAP-CSV-IMPORT-001.md</code></h2>
+  <table class="source-table">
+<tr id="L1">
+  <td class="line"><a href="#L1">1</a></td>
+  <td class="code"># CAP-CSV-IMPORT-001</td>
+</tr>
+<tr id="L2">
+  <td class="line"><a href="#L2">2</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L3">
+  <td class="line"><a href="#L3">3</a></td>
+  <td class="code">## 1. メタ情報（CAP ID, 名称, Owner, 対象Phase）</td>
+</tr>
+<tr id="L4">
+  <td class="line"><a href="#L4">4</a></td>
+  <td class="code">- CAP ID: CAP-CSV-IMPORT-001</td>
+</tr>
+<tr id="L5">
+  <td class="line"><a href="#L5">5</a></td>
+  <td class="code">- 名称: CSV取込</td>
+</tr>
+<tr id="L6">
+  <td class="line"><a href="#L6">6</a></td>
+  <td class="code">- Owner: App Core / Import</td>
+</tr>
+<tr id="L7">
+  <td class="line"><a href="#L7">7</a></td>
+  <td class="code">- 対象Phase: Phase1</td>
+</tr>
+<tr id="L8">
+  <td class="line"><a href="#L8">8</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L9">
+  <td class="line"><a href="#L9">9</a></td>
+  <td class="code">## 2. 目的 / 非目的</td>
+</tr>
+<tr id="L10">
+  <td class="line"><a href="#L10">10</a></td>
+  <td class="code">- 目的: `protocol.csv` と関連画像を検証し、テンプレート版（ProtocolPackage）として保存します。</td>
+</tr>
+<tr id="L11">
+  <td class="line"><a href="#L11">11</a></td>
+  <td class="code">- 非目的: セッション進行、記録編集、公開HTTP API経由の取込。</td>
+</tr>
+<tr id="L12">
+  <td class="line"><a href="#L12">12</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L13">
+  <td class="line"><a href="#L13">13</a></td>
+  <td class="code">## 3. 境界（対象画面あり/なし、責務分割）</td>
+</tr>
+<tr id="L14">
+  <td class="line"><a href="#L14">14</a></td>
+  <td class="code">- 対象画面あり: `../20_screens/<a href="../../../../screens/SCR-012-MAC-IMPORT.html">SCR-012-MAC-IMPORT</a>.md`</td>
+</tr>
+<tr id="L15">
+  <td class="line"><a href="#L15">15</a></td>
+  <td class="code">- 画面責務: ディレクトリ選択、実行トリガー、結果表示。</td>
+</tr>
+<tr id="L16">
+  <td class="line"><a href="#L16">16</a></td>
+  <td class="code">- CAP責務: CSV v3検証、画像存在検証、正規化JSON化、保存、outbox追記。</td>
+</tr>
+<tr id="L17">
+  <td class="line"><a href="#L17">17</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L18">
+  <td class="line"><a href="#L18">18</a></td>
+  <td class="code">## 4. ドメインモデルと不変条件</td>
+</tr>
+<tr id="L19">
+  <td class="line"><a href="#L19">19</a></td>
+  <td class="code">- 入力モデル: CSV v3 + 画像ファイル群。</td>
+</tr>
+<tr id="L20">
+  <td class="line"><a href="#L20">20</a></td>
+  <td class="code">- 出力モデル: `ProtocolPackage`。</td>
+</tr>
+<tr id="L21">
+  <td class="line"><a href="#L21">21</a></td>
+  <td class="code">- 不変条件:</td>
+</tr>
+<tr id="L22">
+  <td class="line"><a href="#L22">22</a></td>
+  <td class="code">  - `format_version=3` 固定。</td>
+</tr>
+<tr id="L23">
+  <td class="line"><a href="#L23">23</a></td>
+  <td class="code">  - `step_id` 一意。</td>
+</tr>
+<tr id="L24">
+  <td class="line"><a href="#L24">24</a></td>
+  <td class="code">  - `next_step_id` 整合。</td>
+</tr>
+<tr id="L25">
+  <td class="line"><a href="#L25">25</a></td>
+  <td class="code">  - 画像パスは `protocol.csv` 基準で解決。</td>
+</tr>
+<tr id="L26">
+  <td class="line"><a href="#L26">26</a></td>
+  <td class="code">  - エラー1件以上で保存中止。</td>
+</tr>
+<tr id="L27">
+  <td class="line"><a href="#L27">27</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L28">
+  <td class="line"><a href="#L28">28</a></td>
+  <td class="code">## 5. 入出力I/F（Service, API, Event）</td>
+</tr>
+<tr id="L29">
+  <td class="line"><a href="#L29">29</a></td>
+  <td class="code">- Service: `ProtocolImportService.importFromDirectory(input: { basePath: string })`</td>
+</tr>
+<tr id="L30">
+  <td class="line"><a href="#L30">30</a></td>
+  <td class="code">- 入力: `basePath`</td>
+</tr>
+<tr id="L31">
+  <td class="line"><a href="#L31">31</a></td>
+  <td class="code">- 出力: `{ status, errors[], warnings[], summary }`</td>
+</tr>
+<tr id="L32">
+  <td class="line"><a href="#L32">32</a></td>
+  <td class="code">- Event: `protocol.imported`, `protocol.import_failed`</td>
+</tr>
+<tr id="L33">
+  <td class="line"><a href="#L33">33</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L34">
+  <td class="line"><a href="#L34">34</a></td>
+  <td class="code">## 6. 状態遷移（正常 / 禁止 / 再試行 / 復旧）</td>
+</tr>
+<tr id="L35">
+  <td class="line"><a href="#L35">35</a></td>
+  <td class="code">- 正常: `idle -&gt; validating -&gt; succeeded`</td>
+</tr>
+<tr id="L36">
+  <td class="line"><a href="#L36">36</a></td>
+  <td class="code">- 警告成功: `idle -&gt; validating -&gt; succeeded_with_warnings`</td>
+</tr>
+<tr id="L37">
+  <td class="line"><a href="#L37">37</a></td>
+  <td class="code">- 失敗: `idle -&gt; validating -&gt; failed`</td>
+</tr>
+<tr id="L38">
+  <td class="line"><a href="#L38">38</a></td>
+  <td class="code">- 禁止: `basePath` 未選択で実行</td>
+</tr>
+<tr id="L39">
+  <td class="line"><a href="#L39">39</a></td>
+  <td class="code">- 再試行: `failed -&gt; validating`</td>
+</tr>
+<tr id="L40">
+  <td class="line"><a href="#L40">40</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L41">
+  <td class="line"><a href="#L41">41</a></td>
+  <td class="code">## 7. 失敗モードと回復方針</td>
+</tr>
+<tr id="L42">
+  <td class="line"><a href="#L42">42</a></td>
+  <td class="code">- 形式不正/参照不整合/画像欠損: 保存せずエラー一覧返却。</td>
+</tr>
+<tr id="L43">
+  <td class="line"><a href="#L43">43</a></td>
+  <td class="code">- 警告のみ: 保存実施 + 警告表示。</td>
+</tr>
+<tr id="L44">
+  <td class="line"><a href="#L44">44</a></td>
+  <td class="code">- I/F失敗: 画面側で再試行導線を表示。</td>
+</tr>
+<tr id="L45">
+  <td class="line"><a href="#L45">45</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L46">
+  <td class="line"><a href="#L46">46</a></td>
+  <td class="code">## 8. セキュリティ・監査・保持</td>
+</tr>
+<tr id="L47">
+  <td class="line"><a href="#L47">47</a></td>
+  <td class="code">- 取込元の任意コード実行を禁止。</td>
+</tr>
+<tr id="L48">
+  <td class="line"><a href="#L48">48</a></td>
+  <td class="code">- 監査: 実行端末、実行時刻、errors/warnings件数。</td>
+</tr>
+<tr id="L49">
+  <td class="line"><a href="#L49">49</a></td>
+  <td class="code">- 直近有効テンプレート版をローカル保持。</td>
+</tr>
+<tr id="L50">
+  <td class="line"><a href="#L50">50</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L51">
+  <td class="line"><a href="#L51">51</a></td>
+  <td class="code">## 9. 受入条件（GWT）</td>
+</tr>
+<tr id="L52">
+  <td class="line"><a href="#L52">52</a></td>
+  <td class="code">- Given 正常CSV v3と画像群がある</td>
+</tr>
+<tr id="L53">
+  <td class="line"><a href="#L53">53</a></td>
+  <td class="code">- When 取込実行する</td>
+</tr>
+<tr id="L54">
+  <td class="line"><a href="#L54">54</a></td>
+  <td class="code">- Then テンプレート版が保存される</td>
+</tr>
+<tr id="L55">
+  <td class="line"><a href="#L55">55</a></td>
+  <td class="code">- Given `step_id` 重複CSV</td>
+</tr>
+<tr id="L56">
+  <td class="line"><a href="#L56">56</a></td>
+  <td class="code">- When 取込実行する</td>
+</tr>
+<tr id="L57">
+  <td class="line"><a href="#L57">57</a></td>
+  <td class="code">- Then エラーで中止し保存しない</td>
+</tr>
+<tr id="L58">
+  <td class="line"><a href="#L58">58</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L59">
+  <td class="line"><a href="#L59">59</a></td>
+  <td class="code">## 10. トレーサビリティ（FR, AT, SCR, JRN）</td>
+</tr>
+<tr id="L60">
+  <td class="line"><a href="#L60">60</a></td>
+  <td class="code">- FR: <a href="../../../../ids/FR-020.html">FR-020</a>, <a href="../../../../ids/FR-021.html">FR-021</a>, <a href="../../../../ids/FR-022.html">FR-022</a>, <a href="../../../../ids/FR-023.html">FR-023</a>, <a href="../../../../ids/FR-024.html">FR-024</a>, <a href="../../../../ids/FR-070.html">FR-070</a>, <a href="../../../../ids/FR-082A.html">FR-082A</a></td>
+</tr>
+<tr id="L61">
+  <td class="line"><a href="#L61">61</a></td>
+  <td class="code">- AT: <a href="../../../../ids/AT-CSV-001.html">AT-CSV-001</a>, <a href="../../../../ids/AT-CSV-002.html">AT-CSV-002</a>, <a href="../../../../ids/AT-CSV-003.html">AT-CSV-003</a>, <a href="../../../../ids/AT-CSV-004.html">AT-CSV-004</a>, <a href="../../../../ids/AT-API-003.html">AT-API-003</a></td>
+</tr>
+<tr id="L62">
+  <td class="line"><a href="#L62">62</a></td>
+  <td class="code">- SCR: <a href="../../../../screens/SCR-001-HOME.html">SCR-001-HOME</a>, <a href="../../../../screens/SCR-012-MAC-IMPORT.html">SCR-012-MAC-IMPORT</a></td>
+</tr>
+<tr id="L63">
+  <td class="line"><a href="#L63">63</a></td>
+  <td class="code">- JRN: <a href="../../../../journeys/JRN-001-CSV.html">JRN-001-CSV</a></td>
+</tr>
+<tr id="L64">
+  <td class="line"><a href="#L64">64</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+  </table>
+</section>
+  </main>
+</body>
+</html>

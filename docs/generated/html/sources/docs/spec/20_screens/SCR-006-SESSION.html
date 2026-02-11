@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>docs/spec/20_screens/SCR-006-SESSION.md ソース表示</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f6f8fb; color: #1f2937; }
+    .top-nav { display: flex; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #d7deea; background: #ffffff; }
+    .top-nav a { color: #0f4acb; text-decoration: none; font-weight: 600; }
+    .top-nav a:hover { text-decoration: underline; }
+    main { max-width: 1180px; margin: 0 auto; padding: 24px 20px 40px; }
+    h1 { margin: 0 0 12px; font-size: 1.6rem; }
+    h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    .lead { margin: 0 0 18px; color: #4b5563; }
+    .card { background: #ffffff; border: 1px solid #d7deea; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+    ul { margin: 8px 0 0; padding-left: 1.2rem; }
+    ol { margin: 8px 0 0; padding-left: 1.4rem; }
+    li { margin: 4px 0; }
+    a { color: #0f4acb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #eef3ff; border-radius: 4px; padding: 1px 4px; }
+    .muted { color: #6b7280; font-size: 0.92rem; }
+    .source-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    .source-table td { border-bottom: 1px solid #e5e7eb; vertical-align: top; padding: 2px 8px; }
+    .source-table .line { width: 82px; text-align: right; color: #6b7280; background: #ffffff; }
+    .source-table .line a { color: #6b7280; }
+    .source-table .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; overflow-wrap: anywhere; }
+    .pill { display: inline-block; border: 1px solid #d7deea; border-radius: 999px; padding: 2px 8px; font-size: 0.78rem; color: #475569; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <nav class="top-nav"><a href="../../../../index.html">HTML Index</a><a href="../../../../../index.md">Markdown Index</a></nav>
+  <main>
+    <h1>docs/spec/20_screens/SCR-006-SESSION.md ソース表示</h1>
+    <p class="lead">行番号とIDアンカー付きで参照できます。</p>
+    <section class="card">
+  <h2><code>docs/spec/20_screens/SCR-006-SESSION.md</code></h2>
+  <table class="source-table">
+<tr id="L1">
+  <td class="line"><a href="#L1">1</a></td>
+  <td class="code"><a id="SCR-006-SESSION--L1"></a># <a href="../../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a></td>
+</tr>
+<tr id="L2">
+  <td class="line"><a href="#L2">2</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L3">
+  <td class="line"><a href="#L3">3</a></td>
+  <td class="code">## 1. メタ情報</td>
+</tr>
+<tr id="L4">
+  <td class="line"><a href="#L4">4</a></td>
+  <td class="code">- SCR ID: <a href="../../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a></td>
+</tr>
+<tr id="L5">
+  <td class="line"><a href="#L5">5</a></td>
+  <td class="code">- 画面名: Session</td>
+</tr>
+<tr id="L6">
+  <td class="line"><a href="#L6">6</a></td>
+  <td class="code">- Route/I/F: `/capd/session`</td>
+</tr>
+<tr id="L7">
+  <td class="line"><a href="#L7">7</a></td>
+  <td class="code">- 主JRN: <a href="../../../../journeys/JRN-003-SESSION.html">JRN-003-SESSION</a>, <a href="../../../../journeys/JRN-004-ABORT.html">JRN-004-ABORT</a>, <a href="../../../../journeys/JRN-007-ALARM.html">JRN-007-ALARM</a></td>
+</tr>
+<tr id="L8">
+  <td class="line"><a href="#L8">8</a></td>
+  <td class="code">- Phase: Phase1</td>
+</tr>
+<tr id="L9">
+  <td class="line"><a href="#L9">9</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L10">
+  <td class="line"><a href="#L10">10</a></td>
+  <td class="code">## 2. 目的と責務境界</td>
+</tr>
+<tr id="L11">
+  <td class="line"><a href="#L11">11</a></td>
+  <td class="code">- この画面で決めること: ステップ進行、必須チェックゲート、記録ゲート、アラームACK、非常中断導線。</td>
+</tr>
+<tr id="L12">
+  <td class="line"><a href="#L12">12</a></td>
+  <td class="code">- この画面で決めないこと: CSV取込、一覧編集、クラウド同期競合解決。</td>
+</tr>
+<tr id="L13">
+  <td class="line"><a href="#L13">13</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L14">
+  <td class="line"><a href="#L14">14</a></td>
+  <td class="code">## 3. UIワイヤー・レイアウト制約</td>
+</tr>
+<tr id="L15">
+  <td class="line"><a href="#L15">15</a></td>
+  <td class="code">- 参照: `../../../requirements/06_ui_wireframes_ab.md` 7章。</td>
+</tr>
+<tr id="L16">
+  <td class="line"><a href="#L16">16</a></td>
+  <td class="code">- 画像領域は常に1:1正方形。</td>
+</tr>
+<tr id="L17">
+  <td class="line"><a href="#L17">17</a></td>
+  <td class="code">- iPhoneは1カラム、Macは2カラム。</td>
+</tr>
+<tr id="L18">
+  <td class="line"><a href="#L18">18</a></td>
+  <td class="code">- `戻る/次へ` は横並び同幅。</td>
+</tr>
+<tr id="L19">
+  <td class="line"><a href="#L19">19</a></td>
+  <td class="code">- `••• &gt; セッションを中断（非常用）` を右上固定配置。</td>
+</tr>
+<tr id="L20">
+  <td class="line"><a href="#L20">20</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L21">
+  <td class="line"><a href="#L21">21</a></td>
+  <td class="code">## 4. UI要素一覧</td>
+</tr>
+<tr id="L22">
+  <td class="line"><a href="#L22">22</a></td>
+  <td class="code">| UI ID | 要素 | 表示条件 | 入力制約 | セレクタ方針 |</td>
+</tr>
+<tr id="L23">
+  <td class="line"><a href="#L23">23</a></td>
+  <td class="code">|---|---|---|---|---|</td>
+</tr>
+<tr id="L24">
+  <td class="line"><a href="#L24">24</a></td>
+  <td class="code"><a id="UI-001-SESSION--L24"></a><a id="UI-001-SESSION"></a>| <a href="../../../../ids/UI-001-SESSION.html">UI-001-SESSION</a> | ステップタイトル/本文 | 常時 | `#通し番号` 付き表示 | role/heading |</td>
+</tr>
+<tr id="L25">
+  <td class="line"><a href="#L25">25</a></td>
+  <td class="code"><a id="UI-002-SESSION--L25"></a><a id="UI-002-SESSION"></a>| <a href="../../../../ids/UI-002-SESSION.html">UI-002-SESSION</a> | 必須チェック一覧 | `requiredChecks` あり | すべて完了で次へ有効化 | role/checkbox |</td>
+</tr>
+<tr id="L26">
+  <td class="line"><a href="#L26">26</a></td>
+  <td class="code"><a id="UI-003-SESSION--L26"></a><a id="UI-003-SESSION"></a>| <a href="../../../../ids/UI-003-SESSION.html">UI-003-SESSION</a> | 次へボタン | 常時 | ゲート未達時disabled | role/button + name |</td>
+</tr>
+<tr id="L27">
+  <td class="line"><a href="#L27">27</a></td>
+  <td class="code"><a id="UI-004-SESSION--L27"></a><a id="UI-004-SESSION"></a>| <a href="../../../../ids/UI-004-SESSION.html">UI-004-SESSION</a> | 記録入力導線 | `record_event` あり | `FC-*` 完了まで次へ不可 | role/button + name |</td>
+</tr>
+<tr id="L28">
+  <td class="line"><a href="#L28">28</a></td>
+  <td class="code"><a id="UI-005-SESSION--L28"></a><a id="UI-005-SESSION"></a>| <a href="../../../../ids/UI-005-SESSION.html">UI-005-SESSION</a> | 非常中断メニュー | 常時 | 確認ダイアログ必須 | role/menuitem |</td>
+</tr>
+<tr id="L29">
+  <td class="line"><a href="#L29">29</a></td>
+  <td class="code"><a id="UI-006-SESSION--L29"></a><a id="UI-006-SESSION"></a>| <a href="../../../../ids/UI-006-SESSION.html">UI-006-SESSION</a> | アラームバナー/ACK | 未ACKジョブあり | ACKまで継続表示 | role/alert |</td>
+</tr>
+<tr id="L30">
+  <td class="line"><a href="#L30">30</a></td>
+  <td class="code"><a id="UI-007-SESSION--L30"></a><a id="UI-007-SESSION"></a>| <a href="../../../../ids/UI-007-SESSION.html">UI-007-SESSION</a> | 戻るボタン | 先頭ステップ以外 | 前ステップ表示のみ（副作用なし） | role/button + name |</td>
+</tr>
+<tr id="L31">
+  <td class="line"><a href="#L31">31</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L32">
+  <td class="line"><a href="#L32">32</a></td>
+  <td class="code">## 5. 操作契約</td>
+</tr>
+<tr id="L33">
+  <td class="line"><a href="#L33">33</a></td>
+  <td class="code">| ACT ID | Guard | Side Effect | Success遷移 | Failure表示 |</td>
+</tr>
+<tr id="L34">
+  <td class="line"><a href="#L34">34</a></td>
+  <td class="code">|---|---|---|---|---|</td>
+</tr>
+<tr id="L35">
+  <td class="line"><a href="#L35">35</a></td>
+  <td class="code"><a id="ACT-SESSION-001--L35"></a>| <a href="../../../../ids/ACT-SESSION-001.html">ACT-SESSION-001</a> | 必須チェック完了かつ`record_event`完了 | `currentStepId` 更新 | 同一画面で次ステップ表示 | ブロック理由表示 |</td>
+</tr>
+<tr id="L36">
+  <td class="line"><a href="#L36">36</a></td>
+  <td class="code"><a id="ACT-SESSION-002--L36"></a>| <a href="../../../../ids/ACT-SESSION-002.html">ACT-SESSION-002</a> | 先頭ステップ以外 | 表示遷移のみ（再発火禁止） | 同一画面で前ステップ表示 | 該当なし |</td>
+</tr>
+<tr id="L37">
+  <td class="line"><a href="#L37">37</a></td>
+  <td class="code"><a id="ACT-SESSION-004--L37"></a>| <a href="../../../../ids/ACT-SESSION-004.html">ACT-SESSION-004</a> | 最終ステップ到達 | `Session.completed` + スロット更新 + 同期契機 | <a href="../../../../screens/SCR-001-HOME.html">SCR-001-HOME</a> | 完了失敗エラー |</td>
+</tr>
+<tr id="L38">
+  <td class="line"><a href="#L38">38</a></td>
+  <td class="code"><a id="ACT-SESSION-006--L38"></a>| <a href="../../../../ids/ACT-SESSION-006.html">ACT-SESSION-006</a> | 確認ダイアログ承認 | `Session.aborted` + スロットを`未実施`へ戻す | <a href="../../../../screens/SCR-001-HOME.html">SCR-001-HOME</a> | 中断失敗エラー |</td>
+</tr>
+<tr id="L39">
+  <td class="line"><a href="#L39">39</a></td>
+  <td class="code"><a id="ACT-ALARM-001--L39"></a>| <a href="../../../../ids/ACT-ALARM-001.html">ACT-ALARM-001</a> | 未ACKジョブあり | 通知停止 + `acked_at` 記録 | 同一画面維持 | ACK失敗表示 |</td>
+</tr>
+<tr id="L40">
+  <td class="line"><a href="#L40">40</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L41">
+  <td class="line"><a href="#L41">41</a></td>
+  <td class="code">## 6. データバインディング</td>
+</tr>
+<tr id="L42">
+  <td class="line"><a href="#L42">42</a></td>
+  <td class="code">| 区分 | Read | Write | Outbox | 反映タイミング |</td>
+</tr>
+<tr id="L43">
+  <td class="line"><a href="#L43">43</a></td>
+  <td class="code">|---|---|---|---|---|</td>
+</tr>
+<tr id="L44">
+  <td class="line"><a href="#L44">44</a></td>
+  <td class="code">| ステップ表示 | `SessionProtocolSnapshot.steps[*]` | - | - | on load / on step change |</td>
+</tr>
+<tr id="L45">
+  <td class="line"><a href="#L45">45</a></td>
+  <td class="code">| 進行更新 | `requiredChecks`, `record完了状態` | `Session.currentStepId`, `Session.status` | `session_progress`, `session` | on next/final |</td>
+</tr>
+<tr id="L46">
+  <td class="line"><a href="#L46">46</a></td>
+  <td class="code">| 非常中断 | `Session.status=active` | `Session.status=aborted`, `slot.status=pending` | `session`, `daily_plan` | on abort confirm |</td>
+</tr>
+<tr id="L47">
+  <td class="line"><a href="#L47">47</a></td>
+  <td class="code">| ACK | `AlarmDispatchJob.pendingAlarm` | `acked_at`, `status` | `alarm_ack` | on ack |</td>
+</tr>
+<tr id="L48">
+  <td class="line"><a href="#L48">48</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L49">
+  <td class="line"><a href="#L49">49</a></td>
+  <td class="code">## 7. バリデーション / エラー文言 / 空状態</td>
+</tr>
+<tr id="L50">
+  <td class="line"><a href="#L50">50</a></td>
+  <td class="code">- バリデーション:</td>
+</tr>
+<tr id="L51">
+  <td class="line"><a href="#L51">51</a></td>
+  <td class="code">  - `requiredChecks` 未完了時は次へ禁止。</td>
+</tr>
+<tr id="L52">
+  <td class="line"><a href="#L52">52</a></td>
+  <td class="code">  - `record_event` 未保存時は次へ禁止。</td>
+</tr>
+<tr id="L53">
+  <td class="line"><a href="#L53">53</a></td>
+  <td class="code">  - `next_step_id` に従い直列遷移。</td>
+</tr>
+<tr id="L54">
+  <td class="line"><a href="#L54">54</a></td>
+  <td class="code">  - 先頭ステップでは `<a href="../../../../ids/ACT-SESSION-002.html">ACT-SESSION-002</a>` を禁止。</td>
+</tr>
+<tr id="L55">
+  <td class="line"><a href="#L55">55</a></td>
+  <td class="code">- エラー文言:</td>
+</tr>
+<tr id="L56">
+  <td class="line"><a href="#L56">56</a></td>
+  <td class="code">  - `必須チェックが未完了です。`</td>
+</tr>
+<tr id="L57">
+  <td class="line"><a href="#L57">57</a></td>
+  <td class="code">  - `記録を保存してから次へ進んでください。`</td>
+</tr>
+<tr id="L58">
+  <td class="line"><a href="#L58">58</a></td>
+  <td class="code">- 空状態: スナップショット欠落時は表示停止し整合性エラーを表示。</td>
+</tr>
+<tr id="L59">
+  <td class="line"><a href="#L59">59</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L60">
+  <td class="line"><a href="#L60">60</a></td>
+  <td class="code">## 8. 権限・端末差分・フォールバック</td>
+</tr>
+<tr id="L61">
+  <td class="line"><a href="#L61">61</a></td>
+  <td class="code">- 進行更新は開始端末のみ許可。</td>
+</tr>
+<tr id="L62">
+  <td class="line"><a href="#L62">62</a></td>
+  <td class="code">- iPhoneでWake Lock未対応時は `unsupported/failed` 表示と対処ガイダンスを出します。</td>
+</tr>
+<tr id="L63">
+  <td class="line"><a href="#L63">63</a></td>
+  <td class="code">- 通信断時もローカル進行は継続し、同期は後送。</td>
+</tr>
+<tr id="L64">
+  <td class="line"><a href="#L64">64</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L65">
+  <td class="line"><a href="#L65">65</a></td>
+  <td class="code">## 9. アクセシビリティ / キーボード</td>
+</tr>
+<tr id="L66">
+  <td class="line"><a href="#L66">66</a></td>
+  <td class="code">- Enterで次へ遷移。</td>
+</tr>
+<tr id="L67">
+  <td class="line"><a href="#L67">67</a></td>
+  <td class="code">- アラームバナーは通常ステップより高視認（<a href="../../../../ids/NFR-004.html">NFR-004</a>）で表示。</td>
+</tr>
+<tr id="L68">
+  <td class="line"><a href="#L68">68</a></td>
+  <td class="code">- スライド遷移中でもフォーカスの喪失を防止。</td>
+</tr>
+<tr id="L69">
+  <td class="line"><a href="#L69">69</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L70">
+  <td class="line"><a href="#L70">70</a></td>
+  <td class="code">## 10. 受入条件（GWT）</td>
+</tr>
+<tr id="L71">
+  <td class="line"><a href="#L71">71</a></td>
+  <td class="code">- Given 必須チェック未完了ステップ</td>
+</tr>
+<tr id="L72">
+  <td class="line"><a href="#L72">72</a></td>
+  <td class="code">- When 次へを実行する</td>
+</tr>
+<tr id="L73">
+  <td class="line"><a href="#L73">73</a></td>
+  <td class="code">- Then 遷移せずブロック理由を表示する</td>
+</tr>
+<tr id="L74">
+  <td class="line"><a href="#L74">74</a></td>
+  <td class="code">- Given セッション進行中</td>
+</tr>
+<tr id="L75">
+  <td class="line"><a href="#L75">75</a></td>
+  <td class="code">- When `••• &gt; 中断 &gt; 確認` を実行する</td>
+</tr>
+<tr id="L76">
+  <td class="line"><a href="#L76">76</a></td>
+  <td class="code">- Then `aborted` で終了しHomeへ戻る</td>
+</tr>
+<tr id="L77">
+  <td class="line"><a href="#L77">77</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L78">
+  <td class="line"><a href="#L78">78</a></td>
+  <td class="code">## 11. 参照リンク</td>
+</tr>
+<tr id="L79">
+  <td class="line"><a href="#L79">79</a></td>
+  <td class="code">- FR: <a href="../../../../ids/FR-030.html">FR-030</a>〜<a href="../../../../ids/FR-039G.html">FR-039G</a>, <a href="../../../../ids/FR-050A.html">FR-050A</a>〜<a href="../../../../ids/FR-058B.html">FR-058B</a>, <a href="../../../../ids/FR-071.html">FR-071</a>〜<a href="../../../../ids/FR-074.html">FR-074</a></td>
+</tr>
+<tr id="L80">
+  <td class="line"><a href="#L80">80</a></td>
+  <td class="code">- AT: <a href="../../../../ids/AT-FLOW-001.html">AT-FLOW-001</a>, <a href="../../../../ids/AT-FLOW-002.html">AT-FLOW-002</a>, <a href="../../../../ids/AT-FLOW-003.html">AT-FLOW-003</a>, <a href="../../../../ids/AT-FLOW-007.html">AT-FLOW-007</a>, <a href="../../../../ids/AT-ALARM-001.html">AT-ALARM-001</a>〜<a href="../../../../ids/AT-ALARM-004.html">AT-ALARM-004</a></td>
+</tr>
+<tr id="L81">
+  <td class="line"><a href="#L81">81</a></td>
+  <td class="code">- E2E/UT/VR: <a href="../../../../ids/E2E-FLOW-004.html">E2E-FLOW-004</a>〜<a href="../../../../ids/E2E-FLOW-007.html">E2E-FLOW-007</a>, <a href="../../../../ids/E2E-ALARM-001.html">E2E-ALARM-001</a>〜<a href="../../../../ids/E2E-ALARM-004.html">E2E-ALARM-004</a>, <a href="../../../../ids/VR-SESSION-001.html">VR-SESSION-001</a>〜<a href="../../../../ids/VR-SESSION-004.html">VR-SESSION-004</a>（`../50_quality/test-link-index.md` 参照）</td>
+</tr>
+<tr id="L82">
+  <td class="line"><a href="#L82">82</a></td>
+  <td class="code">- CAP: `../30_capabilities/CAP-SNAPSHOT-001.md`, `../30_capabilities/CAP-ALARM-001.md`</td>
+</tr>
+<tr id="L83">
+  <td class="line"><a href="#L83">83</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+  </table>
+</section>
+  </main>
+</body>
+</html>

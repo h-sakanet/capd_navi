@@ -12,6 +12,8 @@
 - ローカル正本 + 最終的整合の同期モデルを固定すること
 - Web共通 + Macネイティブシェルの責務分割を明確化すること
 
+全体の関係図から確認する場合は、先に `/Users/sakanet/capd_navi/docs/00_navigation.md` を参照してください。
+
 ## 2. ドキュメント構成
 1. `01_scope_and_success.md`: スコープ、対象、成功基準
 2. `02_operational_flow.md`: 日次運用、同期、運用フロー
@@ -21,8 +23,28 @@
 6. `06_ui_wireframes_ab.md`: UIワイヤー（A案確定）と遷移
 7. `07_acceptance_tests.md`: 受入テスト
 8. `08_risks_and_constraints.md`: リスクと制約
+9. `09_user_journeys.md`: ユーザー動線定義（JRN）
+10. `10_screen_transition_and_actions.md`: 画面遷移/操作契約（SCR/ACT）
+11. `11_form_contracts.md`: フォーム契約（FC）
+12. `12_ui_data_binding_matrix.md`: 画面表示とデータI/Fの対応表
 
 設計詳細は `docs/design` 配下を参照します。
+
+## 2.1 優先順位（正本ルール）
+実装・試験時の解釈優先順位は以下とします。
+
+1. `05_functional_requirements.md`（FR）
+2. `09_user_journeys.md`（JRN）
+3. `10_screen_transition_and_actions.md`（SCR/ACT）
+4. `11_form_contracts.md`（FC）
+5. `12_ui_data_binding_matrix.md`（UI/データ対応）
+6. `07_acceptance_tests.md`（AT）
+7. `06_ui_wireframes_ab.md`（視覚レイアウト参考）
+
+補足:
+- `06_ui_wireframes_ab.md` は「画面の見た目・配置」を確定する文書です。
+- 画面操作の副作用、保存先、ガード条件は `10` `11` `12` を正本とします。
+- 正本間で矛盾がある場合、番号の小さい文書を優先します。
 
 ## 3. 用語集
 - 手技テンプレート: 1回のセッションで実行する一連ステップ定義（CSV取り込み単位）
@@ -102,3 +124,4 @@
 - 写真容量の上限監視と削除処理はローカル/クラウド両方で整合させます。
 - 同時編集を避けるため、更新前に手動同期を推奨します。
 - UIスパイク資産は参照専用として保持し、本番実装は `/capd/*` 系ルートで進めます。
+- `/capd/*` 本番導線でモックデータを直接参照してはいけません。fixture は `test/fixtures` のみで使用します。

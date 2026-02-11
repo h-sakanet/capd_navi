@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JRN-009-EXITPHOTO 詳細</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f6f8fb; color: #1f2937; }
+    .top-nav { display: flex; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #d7deea; background: #ffffff; }
+    .top-nav a { color: #0f4acb; text-decoration: none; font-weight: 600; }
+    .top-nav a:hover { text-decoration: underline; }
+    main { max-width: 1180px; margin: 0 auto; padding: 24px 20px 40px; }
+    h1 { margin: 0 0 12px; font-size: 1.6rem; }
+    h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    .lead { margin: 0 0 18px; color: #4b5563; }
+    .card { background: #ffffff; border: 1px solid #d7deea; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+    ul { margin: 8px 0 0; padding-left: 1.2rem; }
+    ol { margin: 8px 0 0; padding-left: 1.4rem; }
+    li { margin: 4px 0; }
+    a { color: #0f4acb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #eef3ff; border-radius: 4px; padding: 1px 4px; }
+    .muted { color: #6b7280; font-size: 0.92rem; }
+    .source-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    .source-table td { border-bottom: 1px solid #e5e7eb; vertical-align: top; padding: 2px 8px; }
+    .source-table .line { width: 82px; text-align: right; color: #6b7280; background: #ffffff; }
+    .source-table .line a { color: #6b7280; }
+    .source-table .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; overflow-wrap: anywhere; }
+    .pill { display: inline-block; border: 1px solid #d7deea; border-radius: 999px; padding: 2px 8px; font-size: 0.78rem; color: #475569; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <nav class="top-nav"><a href="../index.html">HTML Index</a><a href="../../index.md">Markdown Index</a></nav>
+  <main>
+    <h1>JRN-009-EXITPHOTO 詳細</h1>
+    <p class="lead">JRN-009-EXITPHOTO 出口部写真登録/変更/削除</p>
+    <section class="card">
+  <h2>対応FR</h2>
+<ul>
+<li><a href="../ids/FR-042A.html"><code>FR-042A</code></a> <span class="muted">- FR-042A: 出口部の記録写真（exit_site）は session_summary.payload.exit_site_photo に保存します（record_event は追加しません）。</span></li>
+<li><a href="../ids/FR-042B.html"><code>FR-042B</code></a> <span class="muted">- FR-042B: 出口部写真の対象レコードは当日 summaryScope=both を最優先し、次に summaryScope=first_of_day を採用します。同値時は completedAt 昇順、さらに同値時は recordId 昇順で決定します。</span></li>
+<li><a href="../ids/FR-042C.html"><code>FR-042C</code></a> <span class="muted">- FR-042C: 出口部写真の登録導線は、対象 session_summary の入力完了後に表示します。</span></li>
+<li><a href="../ids/FR-042D.html"><code>FR-042D</code></a> <span class="muted">- FR-042D: 出口部写真の操作導線は iPhoneホーム全体サマリ と iPhone記録詳細 の両方に表示します。Macは閲覧リンクのみ表示し、登録/変更/削除操作は許可しません。</span></li>
+<li><a href="../ids/FR-042E.html"><code>FR-042E</code></a> <span class="muted">- FR-042E: 出口部写真は1レコード1枚固定とし、登録後は 変更 と 削除 を許可します。</span></li>
+<li><a href="../ids/FR-042F.html"><code>FR-042F</code></a> <span class="muted">- FR-042F: 出口部写真の入力手段は iPhone の カメラ撮影 と ファイル選択 の両方を許可します。</span></li>
+<li><a href="../ids/FR-042G.html"><code>FR-042G</code></a> <span class="muted">- FR-042G: 出口部写真は任意入力であり、未登録でも手技完了を阻害しません。</span></li>
+<li><a href="../ids/FR-042H.html"><code>FR-042H</code></a> <span class="muted">- FR-042H: 出口部写真の削除時は session_summary.payload.exit_site_photo=null を保存し、対応画像は tombstone 化します。</span></li>
+<li><a href="../ids/FR-044C.html"><code>FR-044C</code></a> <span class="muted">- FR-044C: session_summary.summaryScope（first_of_day / last_of_day / both）は最終ステップ完了時にローカルで算出し、同期時に共有します。</span></li>
+<li><a href="../ids/FR-089A.html"><code>FR-089A</code></a> <span class="muted">- FR-089A: session_summary.payload.exit_site_photo の更新は部分パッチ（patch_path=payload.exit_site_photo）で同期し、同一record内の他フィールドを上書きしません。</span></li>
+<li><a href="../ids/FR-090.html"><code>FR-090</code></a> <span class="muted">- FR-090: 記録写真（drain / exit_site）はJPEG再圧縮して保存します（長辺1600px/quality 85）。</span></li>
+<li><a href="../ids/FR-090A.html"><code>FR-090A</code></a> <span class="muted">- FR-090A: 写真参照メタには photo_kind（drain / exit_site）を保持します。</span></li>
+<li><a href="../ids/FR-091.html"><code>FR-091</code></a> <span class="muted">- FR-091: 写真総量は1GB上限とし、超過時は古い順削除します。</span></li>
+<li><a href="../ids/FR-092.html"><code>FR-092</code></a> <span class="muted">- FR-092: 日次バックアップを1日1回実行し30日保持。</span></li>
+</ul>
+</section>
+<section class="card">
+  <h2>対応AT</h2>
+<ul>
+<li><a href="../ids/AT-BACKUP-001.html"><code>AT-BACKUP-001</code></a> <span class="muted">日次バックアップ</span></li>
+<li><a href="../ids/AT-EXIT-001.html"><code>AT-EXIT-001</code></a> <span class="muted">表示前提（未完了）</span></li>
+<li><a href="../ids/AT-EXIT-002.html"><code>AT-EXIT-002</code></a> <span class="muted">表示前提（完了後）</span></li>
+<li><a href="../ids/AT-EXIT-003.html"><code>AT-EXIT-003</code></a> <span class="muted">両導線一貫性</span></li>
+<li><a href="../ids/AT-EXIT-004.html"><code>AT-EXIT-004</code></a> <span class="muted">端末制約</span></li>
+<li><a href="../ids/AT-EXIT-005.html"><code>AT-EXIT-005</code></a> <span class="muted">状態遷移（登録後）</span></li>
+<li><a href="../ids/AT-EXIT-006.html"><code>AT-EXIT-006</code></a> <span class="muted">1枚固定置換</span></li>
+<li><a href="../ids/AT-EXIT-007.html"><code>AT-EXIT-007</code></a> <span class="muted">削除挙動</span></li>
+<li><a href="../ids/AT-EXIT-008.html"><code>AT-EXIT-008</code></a> <span class="muted">保存後表示</span></li>
+<li><a href="../ids/AT-EXIT-009.html"><code>AT-EXIT-009</code></a> <span class="muted">同期反映</span></li>
+<li><a href="../ids/AT-EXIT-010.html"><code>AT-EXIT-010</code></a> <span class="muted">部分更新競合</span></li>
+<li><a href="../ids/AT-EXIT-011.html"><code>AT-EXIT-011</code></a> <span class="muted">both 対応</span></li>
+<li><a href="../ids/AT-EXIT-012.html"><code>AT-EXIT-012</code></a> <span class="muted">容量制御共通化</span></li>
+<li><a href="../ids/AT-PHOTO-001.html"><code>AT-PHOTO-001</code></a> <span class="muted">容量上限</span></li>
+</ul>
+</section>
+<section class="card">
+  <h2>画面と操作</h2>
+  <h3>SCR</h3>
+<ul>
+<li><a href="../screens/SCR-005-HOME-SUMMARY.html"><code>SCR-005-HOME-SUMMARY</code></a> <span class="muted">全体サマリ</span></li>
+<li><a href="../screens/SCR-009-HISTORY-DETAIL.html"><code>SCR-009-HISTORY-DETAIL</code></a> <span class="muted">記録詳細</span></li>
+<li><a href="../screens/SCR-010-HISTORY-PHOTO.html"><code>SCR-010-HISTORY-PHOTO</code></a> <span class="muted">写真詳細</span></li>
+</ul>
+  <h3>ACT</h3>
+<ul>
+<li><a href="../ids/ACT-EXIT-001.html"><code>ACT-EXIT-001</code></a> <span class="muted">出口部写真登録</span></li>
+<li><a href="../ids/ACT-EXIT-002.html"><code>ACT-EXIT-002</code></a> <span class="muted">出口部写真変更</span></li>
+<li><a href="../ids/ACT-EXIT-003.html"><code>ACT-EXIT-003</code></a> <span class="muted">出口部写真削除</span></li>
+</ul>
+</section>
+<section class="card">
+  <h2>定義位置</h2>
+<ul>
+<li><a href="../sources/docs/requirements/09_user_journeys.html#JRN-009-EXITPHOTO"><code>docs/requirements/09_user_journeys.md:24</code></a> <span class="muted">| JRN-009-EXITPHOTO | 出口部写真登録/変更/削除 | iPhone（更新）/Mac（閲覧） | `summaryScope=both` または `first_of_day` 完了 | `payload.exit_site_photo` が更新され同期される | FR-042A〜FR-042H, FR-089A | AT-EXIT-...</span></li>
+<li><a href="../sources/docs/requirements/09_user_journeys.html#JRN-009-EXITPHOTO--L72"><code>docs/requirements/09_user_journeys.md:72</code></a> <span class="muted">### JRN-009-EXITPHOTO 出口部写真登録/変更/削除（Phase2）</span></li>
+<li><a href="../sources/docs/spec/10_journeys/journeys.html#JRN-009-EXITPHOTO--L31"><code>docs/spec/10_journeys/journeys.md:31</code></a> <span class="muted">| JRN-009-EXITPHOTO | 出口部写真登録/変更/削除 | 出口部写真運用 | SCR-005-HOME-SUMMARY, SCR-009-HISTORY-DETAIL, SCR-010-HISTORY-PHOTO | `exit_site_photo` 同期更新 | [link](./JRN-009-EXITPHOTO.md) |</span></li>
+<li><a href="../sources/docs/spec/10_journeys/JRN-009-EXITPHOTO.html#JRN-009-EXITPHOTO--L1"><code>docs/spec/10_journeys/JRN-009-EXITPHOTO.md:1</code></a> <span class="muted"># JRN-009-EXITPHOTO</span></li>
+</ul>
+</section>
+<section class="card">
+  <h2>補助リンク</h2>
+  <ul><li><a href="../../journeys/JRN-009-EXITPHOTO.md">JRN-009-EXITPHOTO.md</a></li></ul>
+</section>
+  </main>
+</body>
+</html>

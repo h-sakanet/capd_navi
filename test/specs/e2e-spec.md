@@ -21,6 +21,11 @@
   - `AT-SLEEP-*`
   - `AT-EXIT-*`
 
+## 2.1 参照契約
+- 動線定義は `/Users/sakanet/capd_navi/docs/requirements/09_user_journeys.md`（`JRN-*`）を正本とします。
+- 画面遷移/操作は `/Users/sakanet/capd_navi/docs/requirements/10_screen_transition_and_actions.md`（`SCR-*`, `ACT-*`）を正本とします。
+- フォーム項目は `/Users/sakanet/capd_navi/docs/requirements/11_form_contracts.md`（`FC-*`）を正本とします。
+
 ## 3. 共通実装ポリシー
 - テストIDは `E2E-*` を使用し、`AT-*` と1:1または1:Nで紐付けます。
 - セレクタは `getByRole` / `getByLabel` / `getByText` を優先します。

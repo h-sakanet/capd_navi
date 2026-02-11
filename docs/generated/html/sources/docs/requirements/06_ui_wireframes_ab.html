@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>docs/requirements/06_ui_wireframes_ab.md ソース表示</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f6f8fb; color: #1f2937; }
+    .top-nav { display: flex; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #d7deea; background: #ffffff; }
+    .top-nav a { color: #0f4acb; text-decoration: none; font-weight: 600; }
+    .top-nav a:hover { text-decoration: underline; }
+    main { max-width: 1180px; margin: 0 auto; padding: 24px 20px 40px; }
+    h1 { margin: 0 0 12px; font-size: 1.6rem; }
+    h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    .lead { margin: 0 0 18px; color: #4b5563; }
+    .card { background: #ffffff; border: 1px solid #d7deea; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+    ul { margin: 8px 0 0; padding-left: 1.2rem; }
+    ol { margin: 8px 0 0; padding-left: 1.4rem; }
+    li { margin: 4px 0; }
+    a { color: #0f4acb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #eef3ff; border-radius: 4px; padding: 1px 4px; }
+    .muted { color: #6b7280; font-size: 0.92rem; }
+    .source-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    .source-table td { border-bottom: 1px solid #e5e7eb; vertical-align: top; padding: 2px 8px; }
+    .source-table .line { width: 82px; text-align: right; color: #6b7280; background: #ffffff; }
+    .source-table .line a { color: #6b7280; }
+    .source-table .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; overflow-wrap: anywhere; }
+    .pill { display: inline-block; border: 1px solid #d7deea; border-radius: 999px; padding: 2px 8px; font-size: 0.78rem; color: #475569; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <nav class="top-nav"><a href="../../../index.html">HTML Index</a><a href="../../../../index.md">Markdown Index</a></nav>
+  <main>
+    <h1>docs/requirements/06_ui_wireframes_ab.md ソース表示</h1>
+    <p class="lead">行番号とIDアンカー付きで参照できます。</p>
+    <section class="card">
+  <h2><code>docs/requirements/06_ui_wireframes_ab.md</code></h2>
+  <table class="source-table">
+<tr id="L1">
+  <td class="line"><a href="#L1">1</a></td>
+  <td class="code"># 06. UIワイヤーフレーム（A案確定）</td>
+</tr>
+<tr id="L2">
+  <td class="line"><a href="#L2">2</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L3">
+  <td class="line"><a href="#L3">3</a></td>
+  <td class="code">## 1. 目的</td>
+</tr>
+<tr id="L4">
+  <td class="line"><a href="#L4">4</a></td>
+  <td class="code">実装前にUI仕様を固定し、画面解釈のズレを抑えるためにホーム/セッションのA案を確定します。  </td>
+</tr>
+<tr id="L5">
+  <td class="line"><a href="#L5">5</a></td>
+  <td class="code">ホームは「手技開始ハブ + 当日CAPDノート表示」に限定し、過去記録は別画面へ分離します。</td>
+</tr>
+<tr id="L6">
+  <td class="line"><a href="#L6">6</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L7">
+  <td class="line"><a href="#L7">7</a></td>
+  <td class="code">本書は「見た目と配置」の仕様を定義します。  </td>
+</tr>
+<tr id="L8">
+  <td class="line"><a href="#L8">8</a></td>
+  <td class="code">画面遷移・操作副作用は `10_screen_transition_and_actions.md`、フォーム項目順は `11_form_contracts.md`、表示データの入出力は `12_ui_data_binding_matrix.md` を正本とします。</td>
+</tr>
+<tr id="L9">
+  <td class="line"><a href="#L9">9</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L10">
+  <td class="line"><a href="#L10">10</a></td>
+  <td class="code">## 2. スパイク前提</td>
+</tr>
+<tr id="L11">
+  <td class="line"><a href="#L11">11</a></td>
+  <td class="code">- UI専用（ダミーデータ、API/DB更新なし）</td>
+</tr>
+<tr id="L12">
+  <td class="line"><a href="#L12">12</a></td>
+  <td class="code">- 実装コンポーネント基盤は `shadcn/ui`</td>
+</tr>
+<tr id="L13">
+  <td class="line"><a href="#L13">13</a></td>
+  <td class="code">- 対象はホームA/セッションA/記録一覧（構成確認）</td>
+</tr>
+<tr id="L14">
+  <td class="line"><a href="#L14">14</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L15">
+  <td class="line"><a href="#L15">15</a></td>
+  <td class="code">## 3. 対象画面</td>
+</tr>
+<tr id="L16">
+  <td class="line"><a href="#L16">16</a></td>
+  <td class="code">- ホーム（手技テンプレート選択、当日ノート、記録一覧導線）</td>
+</tr>
+<tr id="L17">
+  <td class="line"><a href="#L17">17</a></td>
+  <td class="code">- 記録一覧（履歴表示/編集導線）</td>
+</tr>
+<tr id="L18">
+  <td class="line"><a href="#L18">18</a></td>
+  <td class="code">- セッション実行</td>
+</tr>
+<tr id="L19">
+  <td class="line"><a href="#L19">19</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L20">
+  <td class="line"><a href="#L20">20</a></td>
+  <td class="code">## 4. 共通遷移</td>
+</tr>
+<tr id="L21">
+  <td class="line"><a href="#L21">21</a></td>
+  <td class="code">```mermaid</td>
+</tr>
+<tr id="L22">
+  <td class="line"><a href="#L22">22</a></td>
+  <td class="code">flowchart LR</td>
+</tr>
+<tr id="L23">
+  <td class="line"><a href="#L23">23</a></td>
+  <td class="code">  H[ホーム] --&gt; S[セッション開始]</td>
+</tr>
+<tr id="L24">
+  <td class="line"><a href="#L24">24</a></td>
+  <td class="code">  H --&gt; L[記録一覧]</td>
+</tr>
+<tr id="L25">
+  <td class="line"><a href="#L25">25</a></td>
+  <td class="code">  L --&gt; E[記録編集]</td>
+</tr>
+<tr id="L26">
+  <td class="line"><a href="#L26">26</a></td>
+  <td class="code">  E --&gt; L</td>
+</tr>
+<tr id="L27">
+  <td class="line"><a href="#L27">27</a></td>
+  <td class="code">  S --&gt; P[ステップ進行]</td>
+</tr>
+<tr id="L28">
+  <td class="line"><a href="#L28">28</a></td>
+  <td class="code">  P --&gt; H</td>
+</tr>
+<tr id="L29">
+  <td class="line"><a href="#L29">29</a></td>
+  <td class="code">```</td>
+</tr>
+<tr id="L30">
+  <td class="line"><a href="#L30">30</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L31">
+  <td class="line"><a href="#L31">31</a></td>
+  <td class="code">## 5. ホームA（確定）</td>
+</tr>
+<tr id="L32">
+  <td class="line"><a href="#L32">32</a></td>
+  <td class="code">```text</td>
+</tr>
+<tr id="L33">
+  <td class="line"><a href="#L33">33</a></td>
+  <td class="code">+------------------------------------------------+</td>
+</tr>
+<tr id="L34">
+  <td class="line"><a href="#L34">34</a></td>
+  <td class="code">| 02/10 (火)                                      |</td>
+</tr>
+<tr id="L35">
+  <td class="line"><a href="#L35">35</a></td>
+  <td class="code">| 手技開始通知は外部アラーム運用（時計アプリ等）   |</td>
+</tr>
+<tr id="L36">
+  <td class="line"><a href="#L36">36</a></td>
+  <td class="code">+------------------------------------------------+</td>
+</tr>
+<tr id="L37">
+  <td class="line"><a href="#L37">37</a></td>
+  <td class="code">| [ + ] [ + ] [ + ] [ + ]                         |</td>
+</tr>
+<tr id="L38">
+  <td class="line"><a href="#L38">38</a></td>
+  <td class="code">+------------------------------------------------+</td>
+</tr>
+<tr id="L39">
+  <td class="line"><a href="#L39">39</a></td>
+  <td class="code">| #1 登録後                                  [•••]|</td>
+</tr>
+<tr id="L40">
+  <td class="line"><a href="#L40">40</a></td>
+  <td class="code">| レギニュール1.5                                  |</td>
+</tr>
+<tr id="L41">
+  <td class="line"><a href="#L41">41</a></td>
+  <td class="code">| ステータス：未実施 / 実施中 / 実施済み          |</td>
+</tr>
+<tr id="L42">
+  <td class="line"><a href="#L42">42</a></td>
+  <td class="code">| 推奨実施 20:00                                  |</td>
+</tr>
+<tr id="L43">
+  <td class="line"><a href="#L43">43</a></td>
+  <td class="code">| （カード本体タップで開始/再開ダイアログを表示）  |</td>
+</tr>
+<tr id="L44">
+  <td class="line"><a href="#L44">44</a></td>
+  <td class="code">+------------------------------------------------+</td>
+</tr>
+<tr id="L45">
+  <td class="line"><a href="#L45">45</a></td>
+  <td class="code">| 交換列 | #1 | #2 | #3 | #4 | #5                 |</td>
+</tr>
+<tr id="L46">
+  <td class="line"><a href="#L46">46</a></td>
+  <td class="code">| 貯留時間(timer:dwell start-end)                  |</td>
+</tr>
+<tr id="L47">
+  <td class="line"><a href="#L47">47</a></td>
+  <td class="code">| 透析液濃度(CSVタイトル: レギニュール1.5)         |</td>
+</tr>
+<tr id="L48">
+  <td class="line"><a href="#L48">48</a></td>
+  <td class="code">| 排液量(record:drain_weight_g)                    |</td>
+</tr>
+<tr id="L49">
+  <td class="line"><a href="#L49">49</a></td>
+  <td class="code">| 注液量(record:bag_weight_g)                      |</td>
+</tr>
+<tr id="L50">
+  <td class="line"><a href="#L50">50</a></td>
+  <td class="code">| 除水量(自動) / 排液時間(timer:drain start-end)   |</td>
+</tr>
+<tr id="L51">
+  <td class="line"><a href="#L51">51</a></td>
+  <td class="code">| 排液の確認(record:drain_appearance)              |</td>
+</tr>
+<tr id="L52">
+  <td class="line"><a href="#L52">52</a></td>
+  <td class="code">| 1日の総除水量(自動), 尿量, 飲水量, 体重, 排便,    |</td>
+</tr>
+<tr id="L53">
+  <td class="line"><a href="#L53">53</a></td>
+  <td class="code">| 血圧, 出口部状態, 出口部写真(記録写真), 備考       |</td>
+</tr>
+<tr id="L54">
+  <td class="line"><a href="#L54">54</a></td>
+  <td class="code">+------------------------------------------------+</td>
+</tr>
+<tr id="L55">
+  <td class="line"><a href="#L55">55</a></td>
+  <td class="code">| [CSV取り込み(Mac)]                              |</td>
+</tr>
+<tr id="L56">
+  <td class="line"><a href="#L56">56</a></td>
+  <td class="code">| [記録一覧を開く]                                |</td>
+</tr>
+<tr id="L57">
+  <td class="line"><a href="#L57">57</a></td>
+  <td class="code">+------------------------------------------------+</td>
+</tr>
+<tr id="L58">
+  <td class="line"><a href="#L58">58</a></td>
+  <td class="code">```</td>
+</tr>
+<tr id="L59">
+  <td class="line"><a href="#L59">59</a></td>
+  <td class="code">- スロット登録時は、左から右へ推奨実施時間が厳密昇順（同時刻不可）になるように検証します。</td>
+</tr>
+<tr id="L60">
+  <td class="line"><a href="#L60">60</a></td>
+  <td class="code">- 右側スロットを開始するには、左側スロットがすべて `実施済み` である必要があります。</td>
+</tr>
+<tr id="L61">
+  <td class="line"><a href="#L61">61</a></td>
+  <td class="code">- `実施済み` スロットは編集/削除できません。対象日に進行中セッションがある間はスロット編集を行えません。</td>
+</tr>
+<tr id="L62">
+  <td class="line"><a href="#L62">62</a></td>
+  <td class="code">- `実施中` スロットは本体タップで進行中セッションを再開します（新規開始しません）。</td>
+</tr>
+<tr id="L63">
+  <td class="line"><a href="#L63">63</a></td>
+  <td class="code">- `••• &gt; 確認` からの手順表示は確認モードとし、記録・タイマー・通知・状態更新の副作用を持たせません。</td>
+</tr>
+<tr id="L64">
+  <td class="line"><a href="#L64">64</a></td>
+  <td class="code">- ホーム全体サマリの `出口部写真` 操作は、当日 `summaryScope=both` または `summaryScope=first_of_day` の `session_summary` 入力完了後に表示します。</td>
+</tr>
+<tr id="L65">
+  <td class="line"><a href="#L65">65</a></td>
+  <td class="code">- 対象レコード選択は `both` 優先、次に `first_of_day`、同値時は `completedAt` 昇順、さらに同値時は `recordId` 昇順の決定論で固定します。</td>
+</tr>
+<tr id="L66">
+  <td class="line"><a href="#L66">66</a></td>
+  <td class="code">- iPhoneは `出口部写真` の `登録/変更/削除` を表示し、Macは閲覧リンクのみ表示します。</td>
+</tr>
+<tr id="L67">
+  <td class="line"><a href="#L67">67</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L68">
+  <td class="line"><a href="#L68">68</a></td>
+  <td class="code">### 5.1 ホームA 手技設定モーダル</td>
+</tr>
+<tr id="L69">
+  <td class="line"><a href="#L69">69</a></td>
+  <td class="code">```text</td>
+</tr>
+<tr id="L70">
+  <td class="line"><a href="#L70">70</a></td>
+  <td class="code">+-----------------------------------------------+</td>
+</tr>
+<tr id="L71">
+  <td class="line"><a href="#L71">71</a></td>
+  <td class="code">| #1 手技設定                                   |</td>
+</tr>
+<tr id="L72">
+  <td class="line"><a href="#L72">72</a></td>
+  <td class="code">| CSV選択: [レギニュール1.5 v]                  |</td>
+</tr>
+<tr id="L73">
+  <td class="line"><a href="#L73">73</a></td>
+  <td class="code">| 推奨実施時間: [20:00]                           |</td>
+</tr>
+<tr id="L74">
+  <td class="line"><a href="#L74">74</a></td>
+  <td class="code">|                          [キャンセル] [保存]   |</td>
+</tr>
+<tr id="L75">
+  <td class="line"><a href="#L75">75</a></td>
+  <td class="code">+-----------------------------------------------+</td>
+</tr>
+<tr id="L76">
+  <td class="line"><a href="#L76">76</a></td>
+  <td class="code">```</td>
+</tr>
+<tr id="L77">
+  <td class="line"><a href="#L77">77</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L78">
+  <td class="line"><a href="#L78">78</a></td>
+  <td class="code">### 5.2 ホームA 手技開始確認モーダル</td>
+</tr>
+<tr id="L79">
+  <td class="line"><a href="#L79">79</a></td>
+  <td class="code">```text</td>
+</tr>
+<tr id="L80">
+  <td class="line"><a href="#L80">80</a></td>
+  <td class="code">+-----------------------------------------------+</td>
+</tr>
+<tr id="L81">
+  <td class="line"><a href="#L81">81</a></td>
+  <td class="code">| 手技の開始                                     |</td>
+</tr>
+<tr id="L82">
+  <td class="line"><a href="#L82">82</a></td>
+  <td class="code">| 手技: レギニュール1.5                          |</td>
+</tr>
+<tr id="L83">
+  <td class="line"><a href="#L83">83</a></td>
+  <td class="code">| ステータス：未実施 or 実施中                   |</td>
+</tr>
+<tr id="L84">
+  <td class="line"><a href="#L84">84</a></td>
+  <td class="code">| 推奨実施: 20:00                                |</td>
+</tr>
+<tr id="L85">
+  <td class="line"><a href="#L85">85</a></td>
+  <td class="code">|                        [閉じる] [開始/再開]    |</td>
+</tr>
+<tr id="L86">
+  <td class="line"><a href="#L86">86</a></td>
+  <td class="code">+-----------------------------------------------+</td>
+</tr>
+<tr id="L87">
+  <td class="line"><a href="#L87">87</a></td>
+  <td class="code">```</td>
+</tr>
+<tr id="L88">
+  <td class="line"><a href="#L88">88</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L89">
+  <td class="line"><a href="#L89">89</a></td>
+  <td class="code">### 5.3 ホームA 手技内容確認モーダル（閲覧専用）</td>
+</tr>
+<tr id="L90">
+  <td class="line"><a href="#L90">90</a></td>
+  <td class="code">```text</td>
+</tr>
+<tr id="L91">
+  <td class="line"><a href="#L91">91</a></td>
+  <td class="code">+-----------------------------------------------+</td>
+</tr>
+<tr id="L92">
+  <td class="line"><a href="#L92">92</a></td>
+  <td class="code">| 手技内容の確認                                 |</td>
+</tr>
+<tr id="L93">
+  <td class="line"><a href="#L93">93</a></td>
+  <td class="code">| 手技: レギニュール1.5                          |</td>
+</tr>
+<tr id="L94">
+  <td class="line"><a href="#L94">94</a></td>
+  <td class="code">| ステータス：未実施                             |</td>
+</tr>
+<tr id="L95">
+  <td class="line"><a href="#L95">95</a></td>
+  <td class="code">| 推奨実施: 20:00                                |</td>
+</tr>
+<tr id="L96">
+  <td class="line"><a href="#L96">96</a></td>
+  <td class="code">| ※この導線は手順閲覧専用（確認モード）。記録保存/タイマー開始/通知生成/状態更新は行わない |</td>
+</tr>
+<tr id="L97">
+  <td class="line"><a href="#L97">97</a></td>
+  <td class="code">|                 [閉じる] [手順を表示（保存なし）]|</td>
+</tr>
+<tr id="L98">
+  <td class="line"><a href="#L98">98</a></td>
+  <td class="code">+-----------------------------------------------+</td>
+</tr>
+<tr id="L99">
+  <td class="line"><a href="#L99">99</a></td>
+  <td class="code">```</td>
+</tr>
+<tr id="L100">
+  <td class="line"><a href="#L100">100</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L101">
+  <td class="line"><a href="#L101">101</a></td>
+  <td class="code">### 5.4 ホームA 右上メニュー（•••）</td>
+</tr>
+<tr id="L102">
+  <td class="line"><a href="#L102">102</a></td>
+  <td class="code">```text</td>
+</tr>
+<tr id="L103">
+  <td class="line"><a href="#L103">103</a></td>
+  <td class="code">+-----------------------------------------------+</td>
+</tr>
+<tr id="L104">
+  <td class="line"><a href="#L104">104</a></td>
+  <td class="code">| [確認]                                         |</td>
+</tr>
+<tr id="L105">
+  <td class="line"><a href="#L105">105</a></td>
+  <td class="code">| [編集]                                         |</td>
+</tr>
+<tr id="L106">
+  <td class="line"><a href="#L106">106</a></td>
+  <td class="code">+-----------------------------------------------+</td>
+</tr>
+<tr id="L107">
+  <td class="line"><a href="#L107">107</a></td>
+  <td class="code">```</td>
+</tr>
+<tr id="L108">
+  <td class="line"><a href="#L108">108</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L109">
+  <td class="line"><a href="#L109">109</a></td>
+  <td class="code">### 5.5 ホームA 全体サマリ内の出口部写真操作（iPhone）</td>
+</tr>
+<tr id="L110">
+  <td class="line"><a href="#L110">110</a></td>
+  <td class="code">```text</td>
+</tr>
+<tr id="L111">
+  <td class="line"><a href="#L111">111</a></td>
+  <td class="code">+-----------------------------------------------+</td>
+</tr>
+<tr id="L112">
+  <td class="line"><a href="#L112">112</a></td>
+  <td class="code">| 出口部写真（記録写真）                          |</td>
+</tr>
+<tr id="L113">
+  <td class="line"><a href="#L113">113</a></td>
+  <td class="code">| 未登録: [登録]                                  |</td>
+</tr>
+<tr id="L114">
+  <td class="line"><a href="#L114">114</a></td>
+  <td class="code">| 登録済み: [変更] [削除]                         |</td>
+</tr>
+<tr id="L115">
+  <td class="line"><a href="#L115">115</a></td>
+  <td class="code">+-----------------------------------------------+</td>
+</tr>
+<tr id="L116">
+  <td class="line"><a href="#L116">116</a></td>
+  <td class="code">```</td>
+</tr>
+<tr id="L117">
+  <td class="line"><a href="#L117">117</a></td>
+  <td class="code">- 入力手段は `カメラ撮影` と `ファイル選択` を提供します。</td>
+</tr>
+<tr id="L118">
+  <td class="line"><a href="#L118">118</a></td>
+  <td class="code">- 削除時は `未登録` へ戻ります。</td>
+</tr>
+<tr id="L119">
+  <td class="line"><a href="#L119">119</a></td>
+  <td class="code">- 保存は `payload.exit_site_photo` への部分パッチとして同期されます。</td>
+</tr>
+<tr id="L120">
+  <td class="line"><a href="#L120">120</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L121">
+  <td class="line"><a href="#L121">121</a></td>
+  <td class="code">## 6. 記録一覧（共通構成）</td>
+</tr>
+<tr id="L122">
+  <td class="line"><a href="#L122">122</a></td>
+  <td class="code">```text</td>
+</tr>
+<tr id="L123">
+  <td class="line"><a href="#L123">123</a></td>
+  <td class="code">+------------------------------------------------+</td>
+</tr>
+<tr id="L124">
+  <td class="line"><a href="#L124">124</a></td>
+  <td class="code">| 記録一覧                                         |</td>
+</tr>
+<tr id="L125">
+  <td class="line"><a href="#L125">125</a></td>
+  <td class="code">| 期間: [直近30日 v]  [検索]                      |</td>
+</tr>
+<tr id="L126">
+  <td class="line"><a href="#L126">126</a></td>
+  <td class="code">+------------------------------------------------+</td>
+</tr>
+<tr id="L127">
+  <td class="line"><a href="#L127">127</a></td>
+  <td class="code">| 日付 | 透析液濃度(#1-#5) | 貯留時間(#1-#5) | 排液量(#1-#5) |</td>
+</tr>
+<tr id="L128">
+  <td class="line"><a href="#L128">128</a></td>
+  <td class="code">| 注液量(#1-#5) | 排液時間(#1-#5) | 排液確認(#1-#5)        |</td>
+</tr>
+<tr id="L129">
+  <td class="line"><a href="#L129">129</a></td>
+  <td class="code">| 除水量(#1は未計算、#2以降は排液量-前回注液量)     |</td>
+</tr>
+<tr id="L130">
+  <td class="line"><a href="#L130">130</a></td>
+  <td class="code">| 総除水量(自動) | 尿量/飲水量 | 体重 | 血圧 | 排液写真 | 出口部写真 |</td>
+</tr>
+<tr id="L131">
+  <td class="line"><a href="#L131">131</a></td>
+  <td class="code">| 2026-02-09 | レギニュール1.5 | ... | ... | ... | ...    |</td>
+</tr>
+<tr id="L132">
+  <td class="line"><a href="#L132">132</a></td>
+  <td class="code">+------------------------------------------------+</td>
+</tr>
+<tr id="L133">
+  <td class="line"><a href="#L133">133</a></td>
+  <td class="code">| [ホームへ戻る]                                   |</td>
+</tr>
+<tr id="L134">
+  <td class="line"><a href="#L134">134</a></td>
+  <td class="code">+------------------------------------------------+</td>
+</tr>
+<tr id="L135">
+  <td class="line"><a href="#L135">135</a></td>
+  <td class="code">```</td>
+</tr>
+<tr id="L136">
+  <td class="line"><a href="#L136">136</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L137">
+  <td class="line"><a href="#L137">137</a></td>
+  <td class="code">### 6.1 記録詳細（対象 `session_summary`）の出口部写真操作</td>
+</tr>
+<tr id="L138">
+  <td class="line"><a href="#L138">138</a></td>
+  <td class="code">- iPhone記録詳細にもホーム全体サマリと同じ `登録/変更/削除` 行を表示します。</td>
+</tr>
+<tr id="L139">
+  <td class="line"><a href="#L139">139</a></td>
+  <td class="code">- Mac記録詳細は写真閲覧のみ許可し、更新操作は表示しません。</td>
+</tr>
+<tr id="L140">
+  <td class="line"><a href="#L140">140</a></td>
+  <td class="code">- ホーム導線と記録詳細導線は同一レコード状態を参照し、表示を一致させます。</td>
+</tr>
+<tr id="L141">
+  <td class="line"><a href="#L141">141</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L142">
+  <td class="line"><a href="#L142">142</a></td>
+  <td class="code">## 7. セッションA（レスポンシブ確定）</td>
+</tr>
+<tr id="L143">
+  <td class="line"><a href="#L143">143</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L144">
+  <td class="line"><a href="#L144">144</a></td>
+  <td class="code">### 7.1 共通レイアウト規則</td>
+</tr>
+<tr id="L145">
+  <td class="line"><a href="#L145">145</a></td>
+  <td class="code">- 画像表示領域は常に 1:1 正方形</td>
+</tr>
+<tr id="L146">
+  <td class="line"><a href="#L146">146</a></td>
+  <td class="code">- iPhone: 1カラム（画像→手順→チェック/アラーム）</td>
+</tr>
+<tr id="L147">
+  <td class="line"><a href="#L147">147</a></td>
+  <td class="code">- Mac: 2カラム（左: 正方形画像、右: 手順/チェック/操作）</td>
+</tr>
+<tr id="L148">
+  <td class="line"><a href="#L148">148</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L149">
+  <td class="line"><a href="#L149">149</a></td>
+  <td class="code">### 7.2 セッションA（安全フォーカス）</td>
+</tr>
+<tr id="L150">
+  <td class="line"><a href="#L150">150</a></td>
+  <td class="code">```text</td>
+</tr>
+<tr id="L151">
+  <td class="line"><a href="#L151">151</a></td>
+  <td class="code">+------------------------------------------------+</td>
+</tr>
+<tr id="L152">
+  <td class="line"><a href="#L152">152</a></td>
+  <td class="code">| フェーズ: 廃液 / 状態: お腹→廃液バッグ           |</td>
+</tr>
+<tr id="L153">
+  <td class="line"><a href="#L153">153</a></td>
+  <td class="code">+----------------------+-------------------------+</td>
+</tr>
+<tr id="L154">
+  <td class="line"><a href="#L154">154</a></td>
+  <td class="code">| [正方形画像]          | #21 タイトル/表示テキスト |</td>
+</tr>
+<tr id="L155">
+  <td class="line"><a href="#L155">155</a></td>
+  <td class="code">|                      | ! 警告帯(固定表示)       |</td>
+</tr>
+<tr id="L156">
+  <td class="line"><a href="#L156">156</a></td>
+  <td class="code">|                      | 必須チェック              |</td>
+</tr>
+<tr id="L157">
+  <td class="line"><a href="#L157">157</a></td>
+  <td class="code">|                      | ! 待機アラーム            |</td>
+</tr>
+<tr id="L158">
+  <td class="line"><a href="#L158">158</a></td>
+  <td class="code">|                      | [••• &gt; セッションを中断（非常用）] |</td>
+</tr>
+<tr id="L159">
+  <td class="line"><a href="#L159">159</a></td>
+  <td class="code">|                      | [戻る] [次へ（条件未達で無効）] |</td>
+</tr>
+<tr id="L160">
+  <td class="line"><a href="#L160">160</a></td>
+  <td class="code">+----------------------+-------------------------+</td>
+</tr>
+<tr id="L161">
+  <td class="line"><a href="#L161">161</a></td>
+  <td class="code">```</td>
+</tr>
+<tr id="L162">
+  <td class="line"><a href="#L162">162</a></td>
+  <td class="code">- 次へ/戻る押下（またはEnterで次へ）時に、メインパネルは左右スライドで遷移します。</td>
+</tr>
+<tr id="L163">
+  <td class="line"><a href="#L163">163</a></td>
+  <td class="code">- カルーセルの左右ナビゲーションボタンは表示しません。</td>
+</tr>
+<tr id="L164">
+  <td class="line"><a href="#L164">164</a></td>
+  <td class="code">- 状態表示は `Compact Badge`（MynaUI icon + 色）で表示します。</td>
+</tr>
+<tr id="L165">
+  <td class="line"><a href="#L165">165</a></td>
+  <td class="code">- 「戻る」「次へ」は iPhone/Mac ともに横並び同幅で表示します。</td>
+</tr>
+<tr id="L166">
+  <td class="line"><a href="#L166">166</a></td>
+  <td class="code">- セッション中断は右上 `•••` からのみ実行し、確認ダイアログを挟みます。</td>
+</tr>
+<tr id="L167">
+  <td class="line"><a href="#L167">167</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L168">
+  <td class="line"><a href="#L168">168</a></td>
+  <td class="code">## 8. UI本番ルート</td>
+</tr>
+<tr id="L169">
+  <td class="line"><a href="#L169">169</a></td>
+  <td class="code">- `/capd/home`</td>
+</tr>
+<tr id="L170">
+  <td class="line"><a href="#L170">170</a></td>
+  <td class="code">- `/capd/history-list`</td>
+</tr>
+<tr id="L171">
+  <td class="line"><a href="#L171">171</a></td>
+  <td class="code">- `/capd/session`</td>
+</tr>
+<tr id="L172">
+  <td class="line"><a href="#L172">172</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L173">
+  <td class="line"><a href="#L173">173</a></td>
+  <td class="code">## 9. 採用基準（5段階）</td>
+</tr>
+<tr id="L174">
+  <td class="line"><a href="#L174">174</a></td>
+  <td class="code">- 安全性視認</td>
+</tr>
+<tr id="L175">
+  <td class="line"><a href="#L175">175</a></td>
+  <td class="code">- 次操作明確性</td>
+</tr>
+<tr id="L176">
+  <td class="line"><a href="#L176">176</a></td>
+  <td class="code">- 片手操作可読性</td>
+</tr>
+<tr id="L177">
+  <td class="line"><a href="#L177">177</a></td>
+  <td class="code">- 情報過不足</td>
+</tr>
+<tr id="L178">
+  <td class="line"><a href="#L178">178</a></td>
+  <td class="code">- 疲労感</td>
+</tr>
+<tr id="L179">
+  <td class="line"><a href="#L179">179</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L180">
+  <td class="line"><a href="#L180">180</a></td>
+  <td class="code">## 10. 次の1修正ポイント</td>
+</tr>
+<tr id="L181">
+  <td class="line"><a href="#L181">181</a></td>
+  <td class="code">- UIスパイクの主要調整は完了。実装フェーズで実データ連携時の微調整のみ実施します。</td>
+</tr>
+<tr id="L182">
+  <td class="line"><a href="#L182">182</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+  </table>
+</section>
+  </main>
+</body>
+</html>

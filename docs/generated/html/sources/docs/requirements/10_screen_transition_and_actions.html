@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>docs/requirements/10_screen_transition_and_actions.md ソース表示</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f6f8fb; color: #1f2937; }
+    .top-nav { display: flex; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #d7deea; background: #ffffff; }
+    .top-nav a { color: #0f4acb; text-decoration: none; font-weight: 600; }
+    .top-nav a:hover { text-decoration: underline; }
+    main { max-width: 1180px; margin: 0 auto; padding: 24px 20px 40px; }
+    h1 { margin: 0 0 12px; font-size: 1.6rem; }
+    h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    .lead { margin: 0 0 18px; color: #4b5563; }
+    .card { background: #ffffff; border: 1px solid #d7deea; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+    ul { margin: 8px 0 0; padding-left: 1.2rem; }
+    ol { margin: 8px 0 0; padding-left: 1.4rem; }
+    li { margin: 4px 0; }
+    a { color: #0f4acb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #eef3ff; border-radius: 4px; padding: 1px 4px; }
+    .muted { color: #6b7280; font-size: 0.92rem; }
+    .source-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    .source-table td { border-bottom: 1px solid #e5e7eb; vertical-align: top; padding: 2px 8px; }
+    .source-table .line { width: 82px; text-align: right; color: #6b7280; background: #ffffff; }
+    .source-table .line a { color: #6b7280; }
+    .source-table .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; overflow-wrap: anywhere; }
+    .pill { display: inline-block; border: 1px solid #d7deea; border-radius: 999px; padding: 2px 8px; font-size: 0.78rem; color: #475569; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <nav class="top-nav"><a href="../../../index.html">HTML Index</a><a href="../../../../index.md">Markdown Index</a></nav>
+  <main>
+    <h1>docs/requirements/10_screen_transition_and_actions.md ソース表示</h1>
+    <p class="lead">行番号とIDアンカー付きで参照できます。</p>
+    <section class="card">
+  <h2><code>docs/requirements/10_screen_transition_and_actions.md</code></h2>
+  <table class="source-table">
+<tr id="L1">
+  <td class="line"><a href="#L1">1</a></td>
+  <td class="code"># 10. 画面遷移と操作契約（SCR/ACT）</td>
+</tr>
+<tr id="L2">
+  <td class="line"><a href="#L2">2</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L3">
+  <td class="line"><a href="#L3">3</a></td>
+  <td class="code">## 1. 目的</td>
+</tr>
+<tr id="L4">
+  <td class="line"><a href="#L4">4</a></td>
+  <td class="code">本書は、本番導線 `/capd/*` における画面遷移と操作副作用を固定する実装契約です。  </td>
+</tr>
+<tr id="L5">
+  <td class="line"><a href="#L5">5</a></td>
+  <td class="code">画面レイアウトは `06_ui_wireframes_ab.md` を参照し、動作仕様は本書を正とします。</td>
+</tr>
+<tr id="L6">
+  <td class="line"><a href="#L6">6</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L7">
+  <td class="line"><a href="#L7">7</a></td>
+  <td class="code">## 2. ID規約</td>
+</tr>
+<tr id="L8">
+  <td class="line"><a href="#L8">8</a></td>
+  <td class="code">- 画面ID: `SCR-*`</td>
+</tr>
+<tr id="L9">
+  <td class="line"><a href="#L9">9</a></td>
+  <td class="code">- 操作ID: `ACT-*`</td>
+</tr>
+<tr id="L10">
+  <td class="line"><a href="#L10">10</a></td>
+  <td class="code">- 本書は `09_user_journeys.md` の `JRN-*` に必ず接続します。</td>
+</tr>
+<tr id="L11">
+  <td class="line"><a href="#L11">11</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L12">
+  <td class="line"><a href="#L12">12</a></td>
+  <td class="code">## 3. 画面一覧</td>
+</tr>
+<tr id="L13">
+  <td class="line"><a href="#L13">13</a></td>
+  <td class="code">| SCR ID | 画面名 | Route / I/F | 主目的 | 関連JRN |</td>
+</tr>
+<tr id="L14">
+  <td class="line"><a href="#L14">14</a></td>
+  <td class="code">|---|---|---|---|---|</td>
+</tr>
+<tr id="L15">
+  <td class="line"><a href="#L15">15</a></td>
+  <td class="code"><a id="SCR-001-HOME--L15"></a><a id="SCR-001-HOME"></a>| <a href="../../../screens/SCR-001-HOME.html">SCR-001-HOME</a> | Home | `/capd/home` | 当日スロット、当日ノート、主要導線 | <a href="../../../journeys/JRN-001-CSV.html">JRN-001-CSV</a>, <a href="../../../journeys/JRN-002-SLOT.html">JRN-002-SLOT</a>, <a href="../../../journeys/JRN-004-ABORT.html">JRN-004-ABORT</a>, <a href="../../../journeys/JRN-005-SYNC.html">JRN-005-SYNC</a>, <a href="../../../journeys/JRN-008-HISTORY.html">JRN-008-HISTORY</a> |</td>
+</tr>
+<tr id="L16">
+  <td class="line"><a href="#L16">16</a></td>
+  <td class="code"><a id="SCR-002-HOME-SETUP--L16"></a><a id="SCR-002-HOME-SETUP"></a>| <a href="../../../screens/SCR-002-HOME-SETUP.html">SCR-002-HOME-SETUP</a> | 手技設定モーダル | Home内Dialog | スロット登録/編集 | <a href="../../../journeys/JRN-002-SLOT.html">JRN-002-SLOT</a> |</td>
+</tr>
+<tr id="L17">
+  <td class="line"><a href="#L17">17</a></td>
+  <td class="code"><a id="SCR-003-HOME-START-CONFIRM--L17"></a><a id="SCR-003-HOME-START-CONFIRM"></a>| <a href="../../../screens/SCR-003-HOME-START-CONFIRM.html">SCR-003-HOME-START-CONFIRM</a> | 開始確認モーダル | Home内Dialog | 開始/再開の最終確認 | <a href="../../../journeys/JRN-002-SLOT.html">JRN-002-SLOT</a> |</td>
+</tr>
+<tr id="L18">
+  <td class="line"><a href="#L18">18</a></td>
+  <td class="code"><a id="SCR-004-HOME-VIEW-CONFIRM--L18"></a><a id="SCR-004-HOME-VIEW-CONFIRM"></a>| <a href="../../../screens/SCR-004-HOME-VIEW-CONFIRM.html">SCR-004-HOME-VIEW-CONFIRM</a> | 手技内容確認モーダル | Home内Dialog | 閲覧専用確認モード | <a href="../../../journeys/JRN-002-SLOT.html">JRN-002-SLOT</a> |</td>
+</tr>
+<tr id="L19">
+  <td class="line"><a href="#L19">19</a></td>
+  <td class="code"><a id="SCR-005-HOME-SUMMARY--L19"></a><a id="SCR-005-HOME-SUMMARY"></a>| <a href="../../../screens/SCR-005-HOME-SUMMARY.html">SCR-005-HOME-SUMMARY</a> | Home全体サマリ | Home内セクション | `session_summary`/出口部写真操作 | <a href="../../../journeys/JRN-009-EXITPHOTO.html">JRN-009-EXITPHOTO</a> |</td>
+</tr>
+<tr id="L20">
+  <td class="line"><a href="#L20">20</a></td>
+  <td class="code"><a id="SCR-006-SESSION--L20"></a><a id="SCR-006-SESSION"></a>| <a href="../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a> | Session | `/capd/session` | ステップ進行、記録、アラーム | <a href="../../../journeys/JRN-003-SESSION.html">JRN-003-SESSION</a>, <a href="../../../journeys/JRN-004-ABORT.html">JRN-004-ABORT</a>, <a href="../../../journeys/JRN-007-ALARM.html">JRN-007-ALARM</a> |</td>
+</tr>
+<tr id="L21">
+  <td class="line"><a href="#L21">21</a></td>
+  <td class="code"><a id="SCR-007-SESSION-RECORD--L21"></a><a id="SCR-007-SESSION-RECORD"></a>| <a href="../../../screens/SCR-007-SESSION-RECORD.html">SCR-007-SESSION-RECORD</a> | 記録モーダル | Session内Dialog | `record_event` 入力 | <a href="../../../journeys/JRN-003-SESSION.html">JRN-003-SESSION</a> |</td>
+</tr>
+<tr id="L22">
+  <td class="line"><a href="#L22">22</a></td>
+  <td class="code"><a id="SCR-008-HISTORY--L22"></a><a id="SCR-008-HISTORY"></a>| <a href="../../../screens/SCR-008-HISTORY.html">SCR-008-HISTORY</a> | 記録一覧 | `/capd/history-list` | 記録参照と編集導線 | <a href="../../../journeys/JRN-008-HISTORY.html">JRN-008-HISTORY</a> |</td>
+</tr>
+<tr id="L23">
+  <td class="line"><a href="#L23">23</a></td>
+  <td class="code"><a id="SCR-009-HISTORY-DETAIL--L23"></a><a id="SCR-009-HISTORY-DETAIL"></a>| <a href="../../../screens/SCR-009-HISTORY-DETAIL.html">SCR-009-HISTORY-DETAIL</a> | 記録詳細 | 履歴詳細画面（実装対象） | `session_summary` 詳細と出口部写真操作 | <a href="../../../journeys/JRN-008-HISTORY.html">JRN-008-HISTORY</a>, <a href="../../../journeys/JRN-009-EXITPHOTO.html">JRN-009-EXITPHOTO</a> |</td>
+</tr>
+<tr id="L24">
+  <td class="line"><a href="#L24">24</a></td>
+  <td class="code"><a id="SCR-010-HISTORY-PHOTO--L24"></a><a id="SCR-010-HISTORY-PHOTO"></a>| <a href="../../../screens/SCR-010-HISTORY-PHOTO.html">SCR-010-HISTORY-PHOTO</a> | 写真詳細 | `/capd/history-photo/:photoId` | 写真閲覧 | <a href="../../../journeys/JRN-008-HISTORY.html">JRN-008-HISTORY</a> |</td>
+</tr>
+<tr id="L25">
+  <td class="line"><a href="#L25">25</a></td>
+  <td class="code"><a id="SCR-011-SYNC-STATUS--L25"></a><a id="SCR-011-SYNC-STATUS"></a>| <a href="../../../screens/SCR-011-SYNC-STATUS.html">SCR-011-SYNC-STATUS</a> | 同期状態表示 | Header/バナー | 同期成功/失敗と再試行 | <a href="../../../journeys/JRN-005-SYNC.html">JRN-005-SYNC</a>, <a href="../../../journeys/JRN-006-RECOVERY.html">JRN-006-RECOVERY</a> |</td>
+</tr>
+<tr id="L26">
+  <td class="line"><a href="#L26">26</a></td>
+  <td class="code"><a id="SCR-012-MAC-IMPORT--L26"></a><a id="SCR-012-MAC-IMPORT"></a>| <a href="../../../screens/SCR-012-MAC-IMPORT.html">SCR-012-MAC-IMPORT</a> | CSV取込I/F | `ProtocolImportService.importFromDirectory` | Macディレクトリ取込 | <a href="../../../journeys/JRN-001-CSV.html">JRN-001-CSV</a> |</td>
+</tr>
+<tr id="L27">
+  <td class="line"><a href="#L27">27</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L28">
+  <td class="line"><a href="#L28">28</a></td>
+  <td class="code">## 4. 操作契約（ACT）</td>
+</tr>
+<tr id="L29">
+  <td class="line"><a href="#L29">29</a></td>
+  <td class="code">| ACT ID | 操作 | 発火画面 | ガード条件 | 副作用（保存・通知） | 成功遷移 | 失敗時表示 | 関連JRN/FR |</td>
+</tr>
+<tr id="L30">
+  <td class="line"><a href="#L30">30</a></td>
+  <td class="code">|---|---|---|---|---|---|---|---|</td>
+</tr>
+<tr id="L31">
+  <td class="line"><a href="#L31">31</a></td>
+  <td class="code"><a id="ACT-HOME-001--L31"></a><a id="ACT-HOME-001"></a>| <a href="../../../ids/ACT-HOME-001.html">ACT-HOME-001</a> | `+` で手技設定を開く | <a href="../../../screens/SCR-001-HOME.html">SCR-001-HOME</a> | 進行中セッションなし | なし | <a href="../../../screens/SCR-002-HOME-SETUP.html">SCR-002-HOME-SETUP</a> | 「実施中セッションがあるため編集不可」 | <a href="../../../journeys/JRN-002-SLOT.html">JRN-002-SLOT</a> / <a href="../../../ids/FR-009F.html">FR-009F</a> |</td>
+</tr>
+<tr id="L32">
+  <td class="line"><a href="#L32">32</a></td>
+  <td class="code"><a id="ACT-HOME-002--L32"></a><a id="ACT-HOME-002"></a>| <a href="../../../ids/ACT-HOME-002.html">ACT-HOME-002</a> | 手技設定を保存 | <a href="../../../screens/SCR-002-HOME-SETUP.html">SCR-002-HOME-SETUP</a> | 推奨時刻が左から右で厳密昇順 | `DailyProcedurePlan.slots` 更新 + outbox追記 | <a href="../../../screens/SCR-001-HOME.html">SCR-001-HOME</a> | 順序違反エラー文言 | <a href="../../../journeys/JRN-002-SLOT.html">JRN-002-SLOT</a> / <a href="../../../ids/FR-009C.html">FR-009C</a>, <a href="../../../ids/FR-009E.html">FR-009E</a> |</td>
+</tr>
+<tr id="L33">
+  <td class="line"><a href="#L33">33</a></td>
+  <td class="code"><a id="ACT-HOME-003--L33"></a><a id="ACT-HOME-003"></a>| <a href="../../../ids/ACT-HOME-003.html">ACT-HOME-003</a> | `••• &gt; 確認` | <a href="../../../screens/SCR-001-HOME.html">SCR-001-HOME</a> | 登録済みスロット | なし | <a href="../../../screens/SCR-004-HOME-VIEW-CONFIRM.html">SCR-004-HOME-VIEW-CONFIRM</a> | 該当なし | <a href="../../../journeys/JRN-002-SLOT.html">JRN-002-SLOT</a> / <a href="../../../ids/FR-009A.html">FR-009A</a>, <a href="../../../ids/FR-009H.html">FR-009H</a> |</td>
+</tr>
+<tr id="L34">
+  <td class="line"><a href="#L34">34</a></td>
+  <td class="code"><a id="ACT-HOME-004--L34"></a><a id="ACT-HOME-004"></a>| <a href="../../../ids/ACT-HOME-004.html">ACT-HOME-004</a> | `••• &gt; 編集` | <a href="../../../screens/SCR-001-HOME.html">SCR-001-HOME</a> | `実施済み` ではない、進行中セッションなし | なし | <a href="../../../screens/SCR-002-HOME-SETUP.html">SCR-002-HOME-SETUP</a> | 「実施済みは編集不可」 | <a href="../../../journeys/JRN-002-SLOT.html">JRN-002-SLOT</a> / <a href="../../../ids/FR-009F.html">FR-009F</a> |</td>
+</tr>
+<tr id="L35">
+  <td class="line"><a href="#L35">35</a></td>
+  <td class="code"><a id="ACT-HOME-005--L35"></a><a id="ACT-HOME-005"></a>| <a href="../../../ids/ACT-HOME-005.html">ACT-HOME-005</a> | カード本体タップ | <a href="../../../screens/SCR-001-HOME.html">SCR-001-HOME</a> | 右側開始時は左側すべて `実施済み` | なし（確認モーダル表示のみ） | <a href="../../../screens/SCR-003-HOME-START-CONFIRM.html">SCR-003-HOME-START-CONFIRM</a> | 開始不可理由文言 | <a href="../../../journeys/JRN-002-SLOT.html">JRN-002-SLOT</a> / <a href="../../../ids/FR-009D.html">FR-009D</a>, <a href="../../../ids/FR-009G.html">FR-009G</a> |</td>
+</tr>
+<tr id="L36">
+  <td class="line"><a href="#L36">36</a></td>
+  <td class="code"><a id="ACT-HOME-008--L36"></a><a id="ACT-HOME-008"></a>| <a href="../../../ids/ACT-HOME-008.html">ACT-HOME-008</a> | 開始/再開を確定 | <a href="../../../screens/SCR-003-HOME-START-CONFIRM.html">SCR-003-HOME-START-CONFIRM</a> | 開始不可条件に該当しない | `Session` 開始または再開。`activeSession` 更新 | <a href="../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a> | セッション開始失敗エラー | <a href="../../../journeys/JRN-002-SLOT.html">JRN-002-SLOT</a> / <a href="../../../ids/FR-009.html">FR-009</a>, <a href="../../../ids/FR-009G.html">FR-009G</a> |</td>
+</tr>
+<tr id="L37">
+  <td class="line"><a href="#L37">37</a></td>
+  <td class="code"><a id="ACT-HOME-006--L37"></a><a id="ACT-HOME-006"></a>| <a href="../../../ids/ACT-HOME-006.html">ACT-HOME-006</a> | 確認モードで手順表示 | <a href="../../../screens/SCR-004-HOME-VIEW-CONFIRM.html">SCR-004-HOME-VIEW-CONFIRM</a> | 登録済みスロット | 永続化・通知・タイマー生成を禁止 | <a href="../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a>（preview） | 該当なし | <a href="../../../journeys/JRN-002-SLOT.html">JRN-002-SLOT</a> / <a href="../../../ids/FR-009A.html">FR-009A</a>, <a href="../../../ids/FR-009H.html">FR-009H</a> |</td>
+</tr>
+<tr id="L38">
+  <td class="line"><a href="#L38">38</a></td>
+  <td class="code"><a id="ACT-HOME-007--L38"></a><a id="ACT-HOME-007"></a>| <a href="../../../ids/ACT-HOME-007.html">ACT-HOME-007</a> | CSV取り込み | <a href="../../../screens/SCR-001-HOME.html">SCR-001-HOME</a> | Mac端末であること | `ProtocolPackage` 保存 + outbox追記 | <a href="../../../screens/SCR-012-MAC-IMPORT.html">SCR-012-MAC-IMPORT</a> -&gt; <a href="../../../screens/SCR-001-HOME.html">SCR-001-HOME</a> | 検証エラー一覧 | <a href="../../../journeys/JRN-001-CSV.html">JRN-001-CSV</a> / <a href="../../../ids/FR-020.html">FR-020</a>〜<a href="../../../ids/FR-024.html">FR-024</a> |</td>
+</tr>
+<tr id="L39">
+  <td class="line"><a href="#L39">39</a></td>
+  <td class="code"><a id="ACT-HOME-010--L39"></a><a id="ACT-HOME-010"></a>| <a href="../../../ids/ACT-HOME-010.html">ACT-HOME-010</a> | 記録一覧を開く | <a href="../../../screens/SCR-001-HOME.html">SCR-001-HOME</a> | なし | なし | <a href="../../../screens/SCR-008-HISTORY.html">SCR-008-HISTORY</a> | 該当なし | <a href="../../../journeys/JRN-008-HISTORY.html">JRN-008-HISTORY</a> / <a href="../../../ids/FR-006.html">FR-006</a> |</td>
+</tr>
+<tr id="L40">
+  <td class="line"><a href="#L40">40</a></td>
+  <td class="code"><a id="ACT-HOME-011--L40"></a><a id="ACT-HOME-011"></a>| <a href="../../../ids/ACT-HOME-011.html">ACT-HOME-011</a> | 手動同期 | <a href="../../../screens/SCR-001-HOME.html">SCR-001-HOME</a> | なし | `sync(push,pull)` 実行 | <a href="../../../screens/SCR-001-HOME.html">SCR-001-HOME</a> | 同期失敗バナー + 再試行 | <a href="../../../journeys/JRN-005-SYNC.html">JRN-005-SYNC</a> / <a href="../../../ids/FR-086.html">FR-086</a>, <a href="../../../ids/FR-088.html">FR-088</a> |</td>
+</tr>
+<tr id="L41">
+  <td class="line"><a href="#L41">41</a></td>
+  <td class="code"><a id="ACT-HISTORY-001--L41"></a><a id="ACT-HISTORY-001"></a>| <a href="../../../ids/ACT-HISTORY-001.html">ACT-HISTORY-001</a> | 写真詳細を開く | <a href="../../../screens/SCR-008-HISTORY.html">SCR-008-HISTORY</a> | 対象 `photoId` が存在する | なし | <a href="../../../screens/SCR-010-HISTORY-PHOTO.html">SCR-010-HISTORY-PHOTO</a> | 写真未登録文言 | <a href="../../../journeys/JRN-008-HISTORY.html">JRN-008-HISTORY</a> / <a href="../../../ids/FR-014.html">FR-014</a> |</td>
+</tr>
+<tr id="L42">
+  <td class="line"><a href="#L42">42</a></td>
+  <td class="code"><a id="ACT-SESSION-001--L42"></a><a id="ACT-SESSION-001"></a>| <a href="../../../ids/ACT-SESSION-001.html">ACT-SESSION-001</a> | 次へ | <a href="../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a> | 必須チェック完了かつ `record_event` 完了 | `currentStepId` 更新。必要時 `timer_event` 記録 | <a href="../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a> | ブロック理由表示 | <a href="../../../journeys/JRN-003-SESSION.html">JRN-003-SESSION</a> / <a href="../../../ids/FR-031.html">FR-031</a>〜<a href="../../../ids/FR-033.html">FR-033</a> |</td>
+</tr>
+<tr id="L43">
+  <td class="line"><a href="#L43">43</a></td>
+  <td class="code"><a id="ACT-SESSION-002--L43"></a><a id="ACT-SESSION-002"></a>| <a href="../../../ids/ACT-SESSION-002.html">ACT-SESSION-002</a> | 戻る | <a href="../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a> | 先頭ステップ以外 | 表示遷移のみ（再発火禁止） | <a href="../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a> | 該当なし | <a href="../../../journeys/JRN-003-SESSION.html">JRN-003-SESSION</a> / <a href="../../../ids/FR-039.html">FR-039</a>, <a href="../../../ids/FR-056.html">FR-056</a> |</td>
+</tr>
+<tr id="L44">
+  <td class="line"><a href="#L44">44</a></td>
+  <td class="code"><a id="ACT-SESSION-003--L44"></a><a id="ACT-SESSION-003"></a>| <a href="../../../ids/ACT-SESSION-003.html">ACT-SESSION-003</a> | 記録保存 | <a href="../../../screens/SCR-007-SESSION-RECORD.html">SCR-007-SESSION-RECORD</a> | `FC-*` 必須条件を満たす | `Record` 保存 + outbox追記 | <a href="../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a> | 入力不備エラー | <a href="../../../journeys/JRN-003-SESSION.html">JRN-003-SESSION</a> / <a href="../../../ids/FR-040.html">FR-040</a>〜<a href="../../../ids/FR-044D.html">FR-044D</a> |</td>
+</tr>
+<tr id="L45">
+  <td class="line"><a href="#L45">45</a></td>
+  <td class="code"><a id="ACT-SESSION-004--L45"></a><a id="ACT-SESSION-004"></a>| <a href="../../../ids/ACT-SESSION-004.html">ACT-SESSION-004</a> | 最終ステップ完了 | <a href="../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a> | 最終ステップ到達 | `Session.completed` + スロット更新 + 同期契機発火 | <a href="../../../screens/SCR-001-HOME.html">SCR-001-HOME</a> | 完了失敗エラー | <a href="../../../journeys/JRN-003-SESSION.html">JRN-003-SESSION</a> / <a href="../../../ids/FR-034.html">FR-034</a>, <a href="../../../ids/FR-080.html">FR-080</a> |</td>
+</tr>
+<tr id="L46">
+  <td class="line"><a href="#L46">46</a></td>
+  <td class="code"><a id="ACT-SESSION-006--L46"></a><a id="ACT-SESSION-006"></a>| <a href="../../../ids/ACT-SESSION-006.html">ACT-SESSION-006</a> | 非常中断 | <a href="../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a> | 確認ダイアログ承認 | `Session.aborted` + スロットを `未実施` へ戻す | <a href="../../../screens/SCR-001-HOME.html">SCR-001-HOME</a> | 中断失敗エラー | <a href="../../../journeys/JRN-004-ABORT.html">JRN-004-ABORT</a> / <a href="../../../ids/FR-039D.html">FR-039D</a>〜<a href="../../../ids/FR-039F.html">FR-039F</a> |</td>
+</tr>
+<tr id="L47">
+  <td class="line"><a href="#L47">47</a></td>
+  <td class="code"><a id="ACT-SYNC-001--L47"></a><a id="ACT-SYNC-001"></a>| <a href="../../../ids/ACT-SYNC-001.html">ACT-SYNC-001</a> | 自動同期（起動/復帰/完了） | <a href="../../../screens/SCR-011-SYNC-STATUS.html">SCR-011-SYNC-STATUS</a> | 同期契機到達 | push-&gt;pull、失敗時状態更新 | 現在画面維持 | 同期失敗表示 | <a href="../../../journeys/JRN-005-SYNC.html">JRN-005-SYNC</a> / <a href="../../../ids/FR-080.html">FR-080</a>〜<a href="../../../ids/FR-088.html">FR-088</a> |</td>
+</tr>
+<tr id="L48">
+  <td class="line"><a href="#L48">48</a></td>
+  <td class="code"><a id="ACT-ALARM-001--L48"></a><a id="ACT-ALARM-001"></a>| <a href="../../../ids/ACT-ALARM-001.html">ACT-ALARM-001</a> | ACK | <a href="../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a> | 未ACKジョブあり | 通知停止 + `acked_at` 記録 | <a href="../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a> | ACK失敗表示 | <a href="../../../journeys/JRN-007-ALARM.html">JRN-007-ALARM</a> / <a href="../../../ids/FR-053.html">FR-053</a>, <a href="../../../ids/FR-054.html">FR-054</a> |</td>
+</tr>
+<tr id="L49">
+  <td class="line"><a href="#L49">49</a></td>
+  <td class="code"><a id="ACT-EXIT-001--L49"></a><a id="ACT-EXIT-001"></a>| <a href="../../../ids/ACT-EXIT-001.html">ACT-EXIT-001</a> | 出口部写真登録 | <a href="../../../screens/SCR-005-HOME-SUMMARY.html">SCR-005-HOME-SUMMARY</a>, <a href="../../../screens/SCR-009-HISTORY-DETAIL.html">SCR-009-HISTORY-DETAIL</a> | iPhoneかつ対象 `summaryScope` 完了 | `payload.exit_site_photo` 部分更新 + photo保存 | 同一画面 | 端末制約/入力エラー | <a href="../../../journeys/JRN-009-EXITPHOTO.html">JRN-009-EXITPHOTO</a> / <a href="../../../ids/FR-042A.html">FR-042A</a>〜<a href="../../../ids/FR-042G.html">FR-042G</a> |</td>
+</tr>
+<tr id="L50">
+  <td class="line"><a href="#L50">50</a></td>
+  <td class="code"><a id="ACT-EXIT-002--L50"></a><a id="ACT-EXIT-002"></a>| <a href="../../../ids/ACT-EXIT-002.html">ACT-EXIT-002</a> | 出口部写真変更 | <a href="../../../screens/SCR-005-HOME-SUMMARY.html">SCR-005-HOME-SUMMARY</a>, <a href="../../../screens/SCR-009-HISTORY-DETAIL.html">SCR-009-HISTORY-DETAIL</a> | iPhone、既存写真あり | 既存1枚を置換（複数保持禁止） | 同一画面 | 保存エラー | <a href="../../../journeys/JRN-009-EXITPHOTO.html">JRN-009-EXITPHOTO</a> / <a href="../../../ids/FR-042E.html">FR-042E</a> |</td>
+</tr>
+<tr id="L51">
+  <td class="line"><a href="#L51">51</a></td>
+  <td class="code"><a id="ACT-EXIT-003--L51"></a><a id="ACT-EXIT-003"></a>| <a href="../../../ids/ACT-EXIT-003.html">ACT-EXIT-003</a> | 出口部写真削除 | <a href="../../../screens/SCR-005-HOME-SUMMARY.html">SCR-005-HOME-SUMMARY</a>, <a href="../../../screens/SCR-009-HISTORY-DETAIL.html">SCR-009-HISTORY-DETAIL</a> | iPhone、既存写真あり | `exit_site_photo=null` 保存 + tombstone | 同一画面 | 削除エラー | <a href="../../../journeys/JRN-009-EXITPHOTO.html">JRN-009-EXITPHOTO</a> / <a href="../../../ids/FR-042H.html">FR-042H</a> |</td>
+</tr>
+<tr id="L52">
+  <td class="line"><a href="#L52">52</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L53">
+  <td class="line"><a href="#L53">53</a></td>
+  <td class="code">## 5. 遷移ガード（固定）</td>
+</tr>
+<tr id="L54">
+  <td class="line"><a href="#L54">54</a></td>
+  <td class="code">1. `<a href="../../../ids/ACT-HOME-005.html">ACT-HOME-005</a>` は右側開始時に左側完了チェックを必須とします。</td>
+</tr>
+<tr id="L55">
+  <td class="line"><a href="#L55">55</a></td>
+  <td class="code">2. `<a href="../../../ids/ACT-SESSION-001.html">ACT-SESSION-001</a>` はチェック未完了または記録未完了時に必ず拒否します。</td>
+</tr>
+<tr id="L56">
+  <td class="line"><a href="#L56">56</a></td>
+  <td class="code">3. `<a href="../../../ids/ACT-HOME-006.html">ACT-HOME-006</a>` は閲覧専用であり、DB書き込みと通知ジョブ生成を禁止します。</td>
+</tr>
+<tr id="L57">
+  <td class="line"><a href="#L57">57</a></td>
+  <td class="code">4. `ACT-EXIT-*` はiPhoneのみ更新可能とし、Macは閲覧のみ許可します。</td>
+</tr>
+<tr id="L58">
+  <td class="line"><a href="#L58">58</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L59">
+  <td class="line"><a href="#L59">59</a></td>
+  <td class="code">## 6. 実装禁止事項（本書由来）</td>
+</tr>
+<tr id="L60">
+  <td class="line"><a href="#L60">60</a></td>
+  <td class="code">- `/capd/*` 本番ルートで `mock-data.ts` を状態正本として使用してはいけません。</td>
+</tr>
+<tr id="L61">
+  <td class="line"><a href="#L61">61</a></td>
+  <td class="code">- `ACT-*` 未定義の画面操作を実装してはいけません。</td>
+</tr>
+<tr id="L62">
+  <td class="line"><a href="#L62">62</a></td>
+  <td class="code">- ガード条件をUIのみで実装し、保存層で未検証のまま通過させてはいけません。</td>
+</tr>
+<tr id="L63">
+  <td class="line"><a href="#L63">63</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+  </table>
+</section>
+  </main>
+</body>
+</html>

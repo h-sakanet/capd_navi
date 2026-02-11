@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JRN-008-HISTORY 詳細</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f6f8fb; color: #1f2937; }
+    .top-nav { display: flex; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #d7deea; background: #ffffff; }
+    .top-nav a { color: #0f4acb; text-decoration: none; font-weight: 600; }
+    .top-nav a:hover { text-decoration: underline; }
+    main { max-width: 1180px; margin: 0 auto; padding: 24px 20px 40px; }
+    h1 { margin: 0 0 12px; font-size: 1.6rem; }
+    h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    .lead { margin: 0 0 18px; color: #4b5563; }
+    .card { background: #ffffff; border: 1px solid #d7deea; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+    ul { margin: 8px 0 0; padding-left: 1.2rem; }
+    ol { margin: 8px 0 0; padding-left: 1.4rem; }
+    li { margin: 4px 0; }
+    a { color: #0f4acb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #eef3ff; border-radius: 4px; padding: 1px 4px; }
+    .muted { color: #6b7280; font-size: 0.92rem; }
+    .source-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    .source-table td { border-bottom: 1px solid #e5e7eb; vertical-align: top; padding: 2px 8px; }
+    .source-table .line { width: 82px; text-align: right; color: #6b7280; background: #ffffff; }
+    .source-table .line a { color: #6b7280; }
+    .source-table .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; overflow-wrap: anywhere; }
+    .pill { display: inline-block; border: 1px solid #d7deea; border-radius: 999px; padding: 2px 8px; font-size: 0.78rem; color: #475569; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <nav class="top-nav"><a href="../index.html">HTML Index</a><a href="../../index.md">Markdown Index</a></nav>
+  <main>
+    <h1>JRN-008-HISTORY 詳細</h1>
+    <p class="lead">JRN-008-HISTORY 記録一覧閲覧と編集</p>
+    <section class="card">
+  <h2>対応FR</h2>
+<ul>
+<li><a href="../ids/FR-010.html"><code>FR-010</code></a> <span class="muted">- FR-010: 記録一覧画面で日々の手技記録を一覧表示します。</span></li>
+<li><a href="../ids/FR-011.html"><code>FR-011</code></a> <span class="muted">- FR-011: 記録一覧画面で詳細表示と編集導線を提供します。</span></li>
+<li><a href="../ids/FR-012.html"><code>FR-012</code></a> <span class="muted">- FR-012: 記録編集はLWWメタ（updatedAt, updatedByDeviceId, mutationId）を保持して競合解決可能な状態にします。</span></li>
+<li><a href="../ids/FR-013.html"><code>FR-013</code></a> <span class="muted">- FR-013: 記録一覧にはCAPDノート準拠項目（貯留時間、透析液濃度、排液量、注液量、排液時間、排液の確認、除水量、尿量、飲水量、体重、排便、血圧、出口部状態、備考）を表示します。</span></li>
+<li><a href="../ids/FR-014.html"><code>FR-014</code></a> <span class="muted">- FR-014: 写真はサムネイル固定表示ではなく、リンク押下で写真詳細画面へ遷移します。</span></li>
+<li><a href="../ids/FR-014A.html"><code>FR-014A</code></a> <span class="muted">- FR-014A: 記録一覧には既存写真列とは別に 出口部写真 列を追加し、未登録 / 表示 を切り替えます。</span></li>
+<li><a href="../ids/FR-015.html"><code>FR-015</code></a> <span class="muted">- FR-015: 交換ごとの除水量と1日の総除水量は、排液量 - 前回注液量 の差し引きで自動計算表示します。</span></li>
+<li><a href="../ids/FR-015A.html"><code>FR-015A</code></a> <span class="muted">- FR-015A: 初回交換（#1列）は前回注液量が存在しないため、除水量は 未計算 表示とします。</span></li>
+<li><a href="../ids/FR-015B.html"><code>FR-015B</code></a> <span class="muted">- FR-015B: 1日の総除水量は、計算可能な交換（#2列以降で前回注液量が存在する交換）のみを合算します。</span></li>
+<li><a href="../ids/FR-015C.html"><code>FR-015C</code></a> <span class="muted">- FR-015C: opening_infuse_weight_g（初期注液量）は v1 では空欄許容とし、除水量計算に使用しません。</span></li>
+<li><a href="../ids/FR-016.html"><code>FR-016</code></a> <span class="muted">- FR-016: 当日ノート表と記録一覧の交換列は #1〜#5 の5列固定とし、列位置は *_exchange_no で決定します。</span></li>
+<li><a href="../ids/FR-017.html"><code>FR-017</code></a> <span class="muted">- FR-017: 透析液濃度欄は、取り込みCSVのタイトル（例</span></li>
+<li><a href="../ids/FR-018.html"><code>FR-018</code></a> <span class="muted">- FR-018: record_event の値は record_exchange_no で列マッピングし、drain_weight_g は排液量、bag_weight_g は注液量、drain_appearance は排液の確認に表示します。</span></li>
+<li><a href="../ids/FR-019.html"><code>FR-019</code></a> <span class="muted">- FR-019: timer_event の値は timer_exchange_no で列マッピングし、timer_segment=dwell の start/end は貯留時間、timer_segment=drain の start/end は排液時間に表示します。</span></li>
+</ul>
+</section>
+<section class="card">
+  <h2>対応AT</h2>
+<ul>
+<li><a href="../ids/AT-UI-HOME-001.html"><code>AT-UI-HOME-001</code></a> <span class="muted">Home表示確認</span></li>
+</ul>
+</section>
+<section class="card">
+  <h2>画面と操作</h2>
+  <h3>SCR</h3>
+<ul>
+<li><a href="../screens/SCR-001-HOME.html"><code>SCR-001-HOME</code></a> <span class="muted">Home</span></li>
+<li><a href="../screens/SCR-008-HISTORY.html"><code>SCR-008-HISTORY</code></a> <span class="muted">記録一覧</span></li>
+<li><a href="../screens/SCR-009-HISTORY-DETAIL.html"><code>SCR-009-HISTORY-DETAIL</code></a> <span class="muted">記録詳細</span></li>
+<li><a href="../screens/SCR-010-HISTORY-PHOTO.html"><code>SCR-010-HISTORY-PHOTO</code></a> <span class="muted">写真詳細</span></li>
+</ul>
+  <h3>ACT</h3>
+<ul>
+<li><a href="../ids/ACT-HISTORY-001.html"><code>ACT-HISTORY-001</code></a> <span class="muted">写真詳細を開く</span></li>
+<li><a href="../ids/ACT-HOME-010.html"><code>ACT-HOME-010</code></a> <span class="muted">なし</span></li>
+</ul>
+</section>
+<section class="card">
+  <h2>定義位置</h2>
+<ul>
+<li><a href="../sources/docs/requirements/09_user_journeys.html#JRN-008-HISTORY"><code>docs/requirements/09_user_journeys.md:23</code></a> <span class="muted">| JRN-008-HISTORY | 記録一覧閲覧と編集 | Mac/iPhone | Homeから一覧へ遷移 | 直近30日記録を閲覧/編集できる | FR-010〜FR-019 | AT-UI-HOME-001 | Phase1 |</span></li>
+<li><a href="../sources/docs/requirements/09_user_journeys.html#JRN-008-HISTORY--L66"><code>docs/requirements/09_user_journeys.md:66</code></a> <span class="muted">### JRN-008-HISTORY 記録一覧閲覧と編集</span></li>
+<li><a href="../sources/docs/spec/10_journeys/journeys.html#JRN-008-HISTORY--L30"><code>docs/spec/10_journeys/journeys.md:30</code></a> <span class="muted">| JRN-008-HISTORY | 記録一覧閲覧と編集 | 履歴確認と編集 | SCR-008-HISTORY, SCR-009-HISTORY-DETAIL, SCR-010-HISTORY-PHOTO | 30日閲覧編集可能 | [link](./JRN-008-HISTORY.md) |</span></li>
+<li><a href="../sources/docs/spec/10_journeys/JRN-008-HISTORY.html#JRN-008-HISTORY--L1"><code>docs/spec/10_journeys/JRN-008-HISTORY.md:1</code></a> <span class="muted"># JRN-008-HISTORY</span></li>
+</ul>
+</section>
+<section class="card">
+  <h2>補助リンク</h2>
+  <ul><li><a href="../../journeys/JRN-008-HISTORY.md">JRN-008-HISTORY.md</a></li></ul>
+</section>
+  </main>
+</body>
+</html>

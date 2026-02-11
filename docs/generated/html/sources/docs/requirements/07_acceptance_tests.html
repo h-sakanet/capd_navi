@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>docs/requirements/07_acceptance_tests.md ソース表示</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f6f8fb; color: #1f2937; }
+    .top-nav { display: flex; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #d7deea; background: #ffffff; }
+    .top-nav a { color: #0f4acb; text-decoration: none; font-weight: 600; }
+    .top-nav a:hover { text-decoration: underline; }
+    main { max-width: 1180px; margin: 0 auto; padding: 24px 20px 40px; }
+    h1 { margin: 0 0 12px; font-size: 1.6rem; }
+    h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    .lead { margin: 0 0 18px; color: #4b5563; }
+    .card { background: #ffffff; border: 1px solid #d7deea; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+    ul { margin: 8px 0 0; padding-left: 1.2rem; }
+    ol { margin: 8px 0 0; padding-left: 1.4rem; }
+    li { margin: 4px 0; }
+    a { color: #0f4acb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #eef3ff; border-radius: 4px; padding: 1px 4px; }
+    .muted { color: #6b7280; font-size: 0.92rem; }
+    .source-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    .source-table td { border-bottom: 1px solid #e5e7eb; vertical-align: top; padding: 2px 8px; }
+    .source-table .line { width: 82px; text-align: right; color: #6b7280; background: #ffffff; }
+    .source-table .line a { color: #6b7280; }
+    .source-table .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; overflow-wrap: anywhere; }
+    .pill { display: inline-block; border: 1px solid #d7deea; border-radius: 999px; padding: 2px 8px; font-size: 0.78rem; color: #475569; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <nav class="top-nav"><a href="../../../index.html">HTML Index</a><a href="../../../../index.md">Markdown Index</a></nav>
+  <main>
+    <h1>docs/requirements/07_acceptance_tests.md ソース表示</h1>
+    <p class="lead">行番号とIDアンカー付きで参照できます。</p>
+    <section class="card">
+  <h2><code>docs/requirements/07_acceptance_tests.md</code></h2>
+  <table class="source-table">
+<tr id="L1">
+  <td class="line"><a href="#L1">1</a></td>
+  <td class="code"># 07. 受入テスト</td>
+</tr>
+<tr id="L2">
+  <td class="line"><a href="#L2">2</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L3">
+  <td class="line"><a href="#L3">3</a></td>
+  <td class="code">## 1. テスト方針</td>
+</tr>
+<tr id="L4">
+  <td class="line"><a href="#L4">4</a></td>
+  <td class="code">- 判定優先度は「安全制御」「記録完全性」「同期整合」「復旧性」です。</td>
+</tr>
+<tr id="L5">
+  <td class="line"><a href="#L5">5</a></td>
+  <td class="code">- 1件エラーで取り込み中止の原則を検証します。</td>
+</tr>
+<tr id="L6">
+  <td class="line"><a href="#L6">6</a></td>
+  <td class="code">- ローカル正本とクラウド共有の最終的整合が成立することを重点検証します。</td>
+</tr>
+<tr id="L7">
+  <td class="line"><a href="#L7">7</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L8">
+  <td class="line"><a href="#L8">8</a></td>
+  <td class="code">## 1.1 実行参照</td>
+</tr>
+<tr id="L9">
+  <td class="line"><a href="#L9">9</a></td>
+  <td class="code">- 動線起点は `09_user_journeys.md` の `JRN-*` を使用します。</td>
+</tr>
+<tr id="L10">
+  <td class="line"><a href="#L10">10</a></td>
+  <td class="code">- 画面遷移と操作は `10_screen_transition_and_actions.md` の `SCR-*` / `ACT-*` を使用します。</td>
+</tr>
+<tr id="L11">
+  <td class="line"><a href="#L11">11</a></td>
+  <td class="code">- 入力項目と表示順は `11_form_contracts.md` の `FC-*` を使用します。</td>
+</tr>
+<tr id="L12">
+  <td class="line"><a href="#L12">12</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L13">
+  <td class="line"><a href="#L13">13</a></td>
+  <td class="code">## 2. 必須シナリオ</td>
+</tr>
+<tr id="L14">
+  <td class="line"><a href="#L14">14</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L15">
+  <td class="line"><a href="#L15">15</a></td>
+  <td class="code">### 2.1 CSV取込（Mac）</td>
+</tr>
+<tr id="L16">
+  <td class="line"><a href="#L16">16</a></td>
+  <td class="code">| ID | 観点 | 前提 | 操作 | 期待結果 |</td>
+</tr>
+<tr id="L17">
+  <td class="line"><a href="#L17">17</a></td>
+  <td class="code">|---|---|---|---|---|</td>
+</tr>
+<tr id="L18">
+  <td class="line"><a href="#L18">18</a></td>
+  <td class="code"><a id="AT-CSV-001--L18"></a><a id="AT-CSV-001"></a>| <a href="../../../ids/AT-CSV-001.html">AT-CSV-001</a> | 正常取込 | 正常CSV v3 + 画像 | 取込実行 | 成功しテンプレート登録 |</td>
+</tr>
+<tr id="L19">
+  <td class="line"><a href="#L19">19</a></td>
+  <td class="code"><a id="AT-CSV-002--L19"></a><a id="AT-CSV-002"></a>| <a href="../../../ids/AT-CSV-002.html">AT-CSV-002</a> | 重複検出 | `step_id`重複CSV | 取込実行 | エラーで中止 |</td>
+</tr>
+<tr id="L20">
+  <td class="line"><a href="#L20">20</a></td>
+  <td class="code"><a id="AT-CSV-003--L20"></a><a id="AT-CSV-003"></a>| <a href="../../../ids/AT-CSV-003.html">AT-CSV-003</a> | 直列整合 | `next_step_id`不整合CSV | 取込実行 | エラーで中止 |</td>
+</tr>
+<tr id="L21">
+  <td class="line"><a href="#L21">21</a></td>
+  <td class="code"><a id="AT-CSV-004--L21"></a><a id="AT-CSV-004"></a>| <a href="../../../ids/AT-CSV-004.html">AT-CSV-004</a> | 画像存在 | 画像不足CSV | 取込実行 | エラーで中止 |</td>
+</tr>
+<tr id="L22">
+  <td class="line"><a href="#L22">22</a></td>
+  <td class="code"><a id="AT-CSV-005--L22"></a><a id="AT-CSV-005"></a>| <a href="../../../ids/AT-CSV-005.html">AT-CSV-005</a> | 警告検知 | `xx分`含有CSV | 取込実行 | 取込成功 + 警告表示 |</td>
+</tr>
+<tr id="L23">
+  <td class="line"><a href="#L23">23</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L24">
+  <td class="line"><a href="#L24">24</a></td>
+  <td class="code">### 2.2 進行制御</td>
+</tr>
+<tr id="L25">
+  <td class="line"><a href="#L25">25</a></td>
+  <td class="code">| ID | 観点 | 前提 | 操作 | 期待結果 |</td>
+</tr>
+<tr id="L26">
+  <td class="line"><a href="#L26">26</a></td>
+  <td class="code">|---|---|---|---|---|</td>
+</tr>
+<tr id="L27">
+  <td class="line"><a href="#L27">27</a></td>
+  <td class="code"><a id="AT-FLOW-001--L27"></a><a id="AT-FLOW-001"></a>| <a href="../../../ids/AT-FLOW-001.html">AT-FLOW-001</a> | 必須チェック | 必須チェックありステップ | 未チェックで次へ | 遷移不可 |</td>
+</tr>
+<tr id="L28">
+  <td class="line"><a href="#L28">28</a></td>
+  <td class="code"><a id="AT-FLOW-002--L28"></a><a id="AT-FLOW-002"></a>| <a href="../../../ids/AT-FLOW-002.html">AT-FLOW-002</a> | 記録ゲート | `record_event`ステップ | 未保存で次へ | 遷移不可 |</td>
+</tr>
+<tr id="L29">
+  <td class="line"><a href="#L29">29</a></td>
+  <td class="code"><a id="AT-FLOW-003--L29"></a><a id="AT-FLOW-003"></a>| <a href="../../../ids/AT-FLOW-003.html">AT-FLOW-003</a> | 直列遷移 | 通常ステップ | 次へ | `next_step_id`へ遷移 |</td>
+</tr>
+<tr id="L30">
+  <td class="line"><a href="#L30">30</a></td>
+  <td class="code"><a id="AT-FLOW-004--L30"></a><a id="AT-FLOW-004"></a>| <a href="../../../ids/AT-FLOW-004.html">AT-FLOW-004</a> | 端末内同時実行制限 | 同一端末に実行中セッションあり | 新規開始 | 開始不可 |</td>
+</tr>
+<tr id="L31">
+  <td class="line"><a href="#L31">31</a></td>
+  <td class="code"><a id="AT-FLOW-005--L31"></a><a id="AT-FLOW-005"></a>| <a href="../../../ids/AT-FLOW-005.html">AT-FLOW-005</a> | 左優先実行 | 右側スロット開始前に左側未実施あり | 右側スロット開始 | 開始不可 |</td>
+</tr>
+<tr id="L32">
+  <td class="line"><a href="#L32">32</a></td>
+  <td class="code"><a id="AT-FLOW-006--L32"></a><a id="AT-FLOW-006"></a>| <a href="../../../ids/AT-FLOW-006.html">AT-FLOW-006</a> | 予期せぬ離脱再開 | セッション進行中にアプリ離脱 | ホームで実施中スロットを選択 | 進行位置を保持して再開 |</td>
+</tr>
+<tr id="L33">
+  <td class="line"><a href="#L33">33</a></td>
+  <td class="code"><a id="AT-FLOW-007--L33"></a><a id="AT-FLOW-007"></a>| <a href="../../../ids/AT-FLOW-007.html">AT-FLOW-007</a> | 非常中断 | セッション進行中 | `•••`→中断→確認 | セッションが `aborted` で終了 |</td>
+</tr>
+<tr id="L34">
+  <td class="line"><a href="#L34">34</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L35">
+  <td class="line"><a href="#L35">35</a></td>
+  <td class="code">### 2.3 同期（最重要）</td>
+</tr>
+<tr id="L36">
+  <td class="line"><a href="#L36">36</a></td>
+  <td class="code">| ID | 観点 | 前提 | 操作 | 期待結果 |</td>
+</tr>
+<tr id="L37">
+  <td class="line"><a href="#L37">37</a></td>
+  <td class="code">|---|---|---|---|---|</td>
+</tr>
+<tr id="L38">
+  <td class="line"><a href="#L38">38</a></td>
+  <td class="code"><a id="AT-SYNC-001--L38"></a><a id="AT-SYNC-001"></a>| <a href="../../../ids/AT-SYNC-001.html">AT-SYNC-001</a> | 起動時pull復元 | 端末Aで未同期データあり | 端末Bを起動 | 未同期日付バンドルが復元される |</td>
+</tr>
+<tr id="L39">
+  <td class="line"><a href="#L39">39</a></td>
+  <td class="code"><a id="AT-SYNC-002--L39"></a><a id="AT-SYNC-002"></a>| <a href="../../../ids/AT-SYNC-002.html">AT-SYNC-002</a> | 完了時push反映 | 端末Aでセッション完了 | 同期実行後に端末Bを復帰 | 完了記録が端末Bへ反映される |</td>
+</tr>
+<tr id="L40">
+  <td class="line"><a href="#L40">40</a></td>
+  <td class="code"><a id="AT-SYNC-003--L40"></a><a id="AT-SYNC-003"></a>| <a href="../../../ids/AT-SYNC-003.html">AT-SYNC-003</a> | LWW内部適用 | 同一エンティティを2端末で更新 | 双方同期 | LWW比較キーで勝者が一意に決まり、データ整合が保たれる |</td>
+</tr>
+<tr id="L41">
+  <td class="line"><a href="#L41">41</a></td>
+  <td class="code"><a id="AT-SYNC-004--L41"></a><a id="AT-SYNC-004"></a>| <a href="../../../ids/AT-SYNC-004.html">AT-SYNC-004</a> | 同日同スロット競合 | 2端末が同日同スロットを更新 | 双方同期 | 重複セッションは保持され、スロットはLWW勝者に収束 |</td>
+</tr>
+<tr id="L42">
+  <td class="line"><a href="#L42">42</a></td>
+  <td class="code"><a id="AT-SYNC-005--L42"></a><a id="AT-SYNC-005"></a>| <a href="../../../ids/AT-SYNC-005.html">AT-SYNC-005</a> | 手動同期消し込み | outboxにpendingあり | 手動同期実行 | outboxが空になる |</td>
+</tr>
+<tr id="L43">
+  <td class="line"><a href="#L43">43</a></td>
+  <td class="code"><a id="AT-SYNC-006--L43"></a><a id="AT-SYNC-006"></a>| <a href="../../../ids/AT-SYNC-006.html">AT-SYNC-006</a> | 復帰時失敗導線 | ネットワーク失敗を注入 | アプリ復帰で同期実行 | 同期失敗バナー + 再試行導線が表示される |</td>
+</tr>
+<tr id="L44">
+  <td class="line"><a href="#L44">44</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L45">
+  <td class="line"><a href="#L45">45</a></td>
+  <td class="code">### 2.4 復旧</td>
+</tr>
+<tr id="L46">
+  <td class="line"><a href="#L46">46</a></td>
+  <td class="code">| ID | 観点 | 前提 | 操作 | 期待結果 |</td>
+</tr>
+<tr id="L47">
+  <td class="line"><a href="#L47">47</a></td>
+  <td class="code">|---|---|---|---|---|</td>
+</tr>
+<tr id="L48">
+  <td class="line"><a href="#L48">48</a></td>
+  <td class="code"><a id="AT-RECOVERY-001--L48"></a><a id="AT-RECOVERY-001"></a>| <a href="../../../ids/AT-RECOVERY-001.html">AT-RECOVERY-001</a> | DB消失復元 | iOS側IndexedDBを消去 | アプリ起動 | Blobsからフル復元できる |</td>
+</tr>
+<tr id="L49">
+  <td class="line"><a href="#L49">49</a></td>
+  <td class="code"><a id="AT-RECOVERY-002--L49"></a><a id="AT-RECOVERY-002"></a>| <a href="../../../ids/AT-RECOVERY-002.html">AT-RECOVERY-002</a> | クラウド欠損再シード | 端末ローカルに記録あり、Blobsの `index.json/days/photos` を欠損させる | 手動同期を実行 | `cloudState=missing` を検知し `syncMode=full_reseed` で再シード、ローカルデータを失わずクラウドが再構築される |</td>
+</tr>
+<tr id="L50">
+  <td class="line"><a href="#L50">50</a></td>
+  <td class="code"><a id="AT-RECOVERY-003--L50"></a><a id="AT-RECOVERY-003"></a>| <a href="../../../ids/AT-RECOVERY-003.html">AT-RECOVERY-003</a> | 再シード失敗時保全 | 端末ローカルに記録あり、`syncMode=full_reseed` を失敗注入 | 手動同期を実行 | `lastSyncStatus=failed` と再試行導線が表示され、ローカル記録とoutbox pendingが保持される |</td>
+</tr>
+<tr id="L51">
+  <td class="line"><a href="#L51">51</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L52">
+  <td class="line"><a href="#L52">52</a></td>
+  <td class="code">### 2.5 タイマー/アラーム</td>
+</tr>
+<tr id="L53">
+  <td class="line"><a href="#L53">53</a></td>
+  <td class="code">| ID | 観点 | 前提 | 操作 | 期待結果 |</td>
+</tr>
+<tr id="L54">
+  <td class="line"><a href="#L54">54</a></td>
+  <td class="code">|---|---|---|---|---|</td>
+</tr>
+<tr id="L55">
+  <td class="line"><a href="#L55">55</a></td>
+  <td class="code"><a id="AT-ALARM-001--L55"></a><a id="AT-ALARM-001"></a>| <a href="../../../ids/AT-ALARM-001.html">AT-ALARM-001</a> | T0通知 | タイマー終了時刻到達 | 待機 | Macローカル通知（音+バナー） + アプリ内アラート |</td>
+</tr>
+<tr id="L56">
+  <td class="line"><a href="#L56">56</a></td>
+  <td class="code"><a id="AT-ALARM-002--L56"></a><a id="AT-ALARM-002"></a>| <a href="../../../ids/AT-ALARM-002.html">AT-ALARM-002</a> | 段階再通知 | タイマー終了後未確認 | T+2分/T+5分以降経過 | 仕様どおり再通知 |</td>
+</tr>
+<tr id="L57">
+  <td class="line"><a href="#L57">57</a></td>
+  <td class="code"><a id="AT-ALARM-003--L57"></a><a id="AT-ALARM-003"></a>| <a href="../../../ids/AT-ALARM-003.html">AT-ALARM-003</a> | ACK停止 | Mac/iPhone通知中 | ACK実行 | 通知停止 + `acked_at` 記録 |</td>
+</tr>
+<tr id="L58">
+  <td class="line"><a href="#L58">58</a></td>
+  <td class="code"><a id="AT-ALARM-004--L58"></a><a id="AT-ALARM-004"></a>| <a href="../../../ids/AT-ALARM-004.html">AT-ALARM-004</a> | 見逃し状態 | タイマー終了後30分未ACK | 状態確認 | `status=missed` 永続化 + 警告継続 |</td>
+</tr>
+<tr id="L59">
+  <td class="line"><a href="#L59">59</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L60">
+  <td class="line"><a href="#L60">60</a></td>
+  <td class="code">### 2.6 写真容量/バックアップ</td>
+</tr>
+<tr id="L61">
+  <td class="line"><a href="#L61">61</a></td>
+  <td class="code">| ID | 観点 | 前提 | 操作 | 期待結果 |</td>
+</tr>
+<tr id="L62">
+  <td class="line"><a href="#L62">62</a></td>
+  <td class="code">|---|---|---|---|---|</td>
+</tr>
+<tr id="L63">
+  <td class="line"><a href="#L63">63</a></td>
+  <td class="code"><a id="AT-PHOTO-001--L63"></a><a id="AT-PHOTO-001"></a>| <a href="../../../ids/AT-PHOTO-001.html">AT-PHOTO-001</a> | 容量上限 | 写真総量 &gt; 1GB | 写真保存処理 | 古い順削除で0.95GB以下 |</td>
+</tr>
+<tr id="L64">
+  <td class="line"><a href="#L64">64</a></td>
+  <td class="code"><a id="AT-BACKUP-001--L64"></a><a id="AT-BACKUP-001"></a>| <a href="../../../ids/AT-BACKUP-001.html">AT-BACKUP-001</a> | 日次バックアップ | スケジュール有効 | 31日分経過 | 30日保持ポリシーで古い世代が削除 |</td>
+</tr>
+<tr id="L65">
+  <td class="line"><a href="#L65">65</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L66">
+  <td class="line"><a href="#L66">66</a></td>
+  <td class="code">### 2.7 API境界・保存形式</td>
+</tr>
+<tr id="L67">
+  <td class="line"><a href="#L67">67</a></td>
+  <td class="code">| ID | 観点 | 前提 | 操作 | 期待結果 |</td>
+</tr>
+<tr id="L68">
+  <td class="line"><a href="#L68">68</a></td>
+  <td class="code">|---|---|---|---|---|</td>
+</tr>
+<tr id="L69">
+  <td class="line"><a href="#L69">69</a></td>
+  <td class="code"><a id="AT-API-001--L69"></a><a id="AT-API-001"></a>| <a href="../../../ids/AT-API-001.html">AT-API-001</a> | 公開API最小化 | APIルーティング一覧取得可能 | ルート一覧確認 | 公開APIは `POST /sync/push` と `POST /sync/pull` のみ |</td>
+</tr>
+<tr id="L70">
+  <td class="line"><a href="#L70">70</a></td>
+  <td class="code"><a id="AT-API-002--L70"></a><a id="AT-API-002"></a>| <a href="../../../ids/AT-API-002.html">AT-API-002</a> | エクスポート廃止 | 画面導線あり | UI確認 | 手動エクスポート導線が表示されない |</td>
+</tr>
+<tr id="L71">
+  <td class="line"><a href="#L71">71</a></td>
+  <td class="code"><a id="AT-API-003--L71"></a><a id="AT-API-003"></a>| <a href="../../../ids/AT-API-003.html">AT-API-003</a> | CSVローカル完結 | MacでCSV取込操作可能 | 取込実行 | `POST /protocols/import-package` を呼ばずローカル処理で完了 |</td>
+</tr>
+<tr id="L72">
+  <td class="line"><a href="#L72">72</a></td>
+  <td class="code"><a id="AT-API-004--L72"></a><a id="AT-API-004"></a>| <a href="../../../ids/AT-API-004.html">AT-API-004</a> | 非暗号化キー | 同期済みデータあり | Blobキー確認 | `index.json`, `days/*.json`, `photos/*.jpg` で保存され `.enc` がない |</td>
+</tr>
+<tr id="L73">
+  <td class="line"><a href="#L73">73</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L74">
+  <td class="line"><a href="#L74">74</a></td>
+  <td class="code">### 2.8 プラットフォーム/スリープ</td>
+</tr>
+<tr id="L75">
+  <td class="line"><a href="#L75">75</a></td>
+  <td class="code">| ID | 観点 | 前提 | 操作 | 期待結果 |</td>
+</tr>
+<tr id="L76">
+  <td class="line"><a href="#L76">76</a></td>
+  <td class="code">|---|---|---|---|---|</td>
+</tr>
+<tr id="L77">
+  <td class="line"><a href="#L77">77</a></td>
+  <td class="code"><a id="AT-PLAT-001--L77"></a><a id="AT-PLAT-001"></a>| <a href="../../../ids/AT-PLAT-001.html">AT-PLAT-001</a> | iPhone利用 | iPhone Safari/PWA | ホームからセッション開始 | Webアプリとして利用可 |</td>
+</tr>
+<tr id="L78">
+  <td class="line"><a href="#L78">78</a></td>
+  <td class="code"><a id="AT-PLAT-002--L78"></a><a id="AT-PLAT-002"></a>| <a href="../../../ids/AT-PLAT-002.html">AT-PLAT-002</a> | Mac利用 | Macネイティブシェル | ホームを開く | 利用可 |</td>
+</tr>
+<tr id="L79">
+  <td class="line"><a href="#L79">79</a></td>
+  <td class="code"><a id="AT-SLEEP-001--L79"></a><a id="AT-SLEEP-001"></a>| <a href="../../../ids/AT-SLEEP-001.html">AT-SLEEP-001</a> | 状態表示 | セッション中 | ステップ表示 | スリープ抑止状態表示 |</td>
+</tr>
+<tr id="L80">
+  <td class="line"><a href="#L80">80</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L81">
+  <td class="line"><a href="#L81">81</a></td>
+  <td class="code">### 2.9 UIスパイク</td>
+</tr>
+<tr id="L82">
+  <td class="line"><a href="#L82">82</a></td>
+  <td class="code">| ID | 観点 | 前提 | 操作 | 期待結果 |</td>
+</tr>
+<tr id="L83">
+  <td class="line"><a href="#L83">83</a></td>
+  <td class="code">|---|---|---|---|---|</td>
+</tr>
+<tr id="L84">
+  <td class="line"><a href="#L84">84</a></td>
+  <td class="code"><a id="AT-UI-HOME-001--L84"></a><a id="AT-UI-HOME-001"></a>| <a href="../../../ids/AT-UI-HOME-001.html">AT-UI-HOME-001</a> | Home表示確認 | プレビュー画面あり | 画面確認 | A案確定仕様と一致 |</td>
+</tr>
+<tr id="L85">
+  <td class="line"><a href="#L85">85</a></td>
+  <td class="code"><a id="AT-UI-HOME-002--L85"></a><a id="AT-UI-HOME-002"></a>| <a href="../../../ids/AT-UI-HOME-002.html">AT-UI-HOME-002</a> | Home初期状態 | Home初回表示 | 画面確認 | #1〜#4が未登録(`+`) |</td>
+</tr>
+<tr id="L86">
+  <td class="line"><a href="#L86">86</a></td>
+  <td class="code"><a id="AT-UI-SESSION-001--L86"></a><a id="AT-UI-SESSION-001"></a>| <a href="../../../ids/AT-UI-SESSION-001.html">AT-UI-SESSION-001</a> | Session表示確認 | プレビュー画面あり | 画面確認 | A案確定仕様と一致 |</td>
+</tr>
+<tr id="L87">
+  <td class="line"><a href="#L87">87</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L88">
+  <td class="line"><a href="#L88">88</a></td>
+  <td class="code">### 2.10 出口部写真（`exit_site_photo`）</td>
+</tr>
+<tr id="L89">
+  <td class="line"><a href="#L89">89</a></td>
+  <td class="code">| ID | 観点 | 前提 | 操作 | 期待結果 |</td>
+</tr>
+<tr id="L90">
+  <td class="line"><a href="#L90">90</a></td>
+  <td class="code">|---|---|---|---|---|</td>
+</tr>
+<tr id="L91">
+  <td class="line"><a href="#L91">91</a></td>
+  <td class="code"><a id="AT-EXIT-001--L91"></a><a id="AT-EXIT-001"></a>| <a href="../../../ids/AT-EXIT-001.html">AT-EXIT-001</a> | 表示前提（未完了） | 当日 `first_of_day`/`both` 未完了 | ホーム全体サマリ/記録詳細を表示 | 出口部写真の操作行が表示されない |</td>
+</tr>
+<tr id="L92">
+  <td class="line"><a href="#L92">92</a></td>
+  <td class="code"><a id="AT-EXIT-002--L92"></a><a id="AT-EXIT-002"></a>| <a href="../../../ids/AT-EXIT-002.html">AT-EXIT-002</a> | 表示前提（完了後） | 当日 `first_of_day` 完了 | iPhoneホーム全体サマリを表示 | `登録` ボタンが表示される |</td>
+</tr>
+<tr id="L93">
+  <td class="line"><a href="#L93">93</a></td>
+  <td class="code"><a id="AT-EXIT-003--L93"></a><a id="AT-EXIT-003"></a>| <a href="../../../ids/AT-EXIT-003.html">AT-EXIT-003</a> | 両導線一貫性 | 対象レコードあり | iPhoneホームとiPhone記録詳細を表示 | 両導線で同じ写真状態を表示する |</td>
+</tr>
+<tr id="L94">
+  <td class="line"><a href="#L94">94</a></td>
+  <td class="code"><a id="AT-EXIT-004--L94"></a><a id="AT-EXIT-004"></a>| <a href="../../../ids/AT-EXIT-004.html">AT-EXIT-004</a> | 端末制約 | 同一日の記録あり | Macホーム/詳細を表示 | 閲覧のみで登録/変更/削除が表示されない |</td>
+</tr>
+<tr id="L95">
+  <td class="line"><a href="#L95">95</a></td>
+  <td class="code"><a id="AT-EXIT-005--L95"></a><a id="AT-EXIT-005"></a>| <a href="../../../ids/AT-EXIT-005.html">AT-EXIT-005</a> | 状態遷移（登録後） | 未登録状態 | iPhoneで写真登録 | 表示が `変更/削除` に切り替わる |</td>
+</tr>
+<tr id="L96">
+  <td class="line"><a href="#L96">96</a></td>
+  <td class="code"><a id="AT-EXIT-006--L96"></a><a id="AT-EXIT-006"></a>| <a href="../../../ids/AT-EXIT-006.html">AT-EXIT-006</a> | 1枚固定置換 | 既に1枚登録済み | iPhoneで `変更` を実行 | 写真が置換され、複数枚保持されない |</td>
+</tr>
+<tr id="L97">
+  <td class="line"><a href="#L97">97</a></td>
+  <td class="code"><a id="AT-EXIT-007--L97"></a><a id="AT-EXIT-007"></a>| <a href="../../../ids/AT-EXIT-007.html">AT-EXIT-007</a> | 削除挙動 | 登録済み | iPhoneで `削除` を実行 | `exit_site_photo=null` が保存され、未登録表示へ戻る |</td>
+</tr>
+<tr id="L98">
+  <td class="line"><a href="#L98">98</a></td>
+  <td class="code"><a id="AT-EXIT-008--L98"></a><a id="AT-EXIT-008"></a>| <a href="../../../ids/AT-EXIT-008.html">AT-EXIT-008</a> | 保存後表示 | 写真登録済み | 記録詳細を再表示 | 保存済み写真が表示できる |</td>
+</tr>
+<tr id="L99">
+  <td class="line"><a href="#L99">99</a></td>
+  <td class="code"><a id="AT-EXIT-009--L99"></a><a id="AT-EXIT-009"></a>| <a href="../../../ids/AT-EXIT-009.html">AT-EXIT-009</a> | 同期反映 | 端末Aで写真登録済み | 同期後に端末Bで表示 | 写真状態が端末Bへ反映される |</td>
+</tr>
+<tr id="L100">
+  <td class="line"><a href="#L100">100</a></td>
+  <td class="code"><a id="AT-EXIT-010--L100"></a><a id="AT-EXIT-010"></a>| <a href="../../../ids/AT-EXIT-010.html">AT-EXIT-010</a> | 部分更新競合 | Macで他サマリ項目更新、iPhoneで写真更新 | 双方同期 | `payload.exit_site_photo` のみ更新され、他項目が失われない |</td>
+</tr>
+<tr id="L101">
+  <td class="line"><a href="#L101">101</a></td>
+  <td class="code"><a id="AT-EXIT-011--L101"></a><a id="AT-EXIT-011"></a>| <a href="../../../ids/AT-EXIT-011.html">AT-EXIT-011</a> | `both` 対応 | 1日1回運用で `summaryScope=both` | iPhoneで写真登録 | `first_of_day` と同等に登録できる |</td>
+</tr>
+<tr id="L102">
+  <td class="line"><a href="#L102">102</a></td>
+  <td class="code"><a id="AT-EXIT-012--L102"></a><a id="AT-EXIT-012"></a>| <a href="../../../ids/AT-EXIT-012.html">AT-EXIT-012</a> | 容量制御共通化 | 写真総量が上限超過 | 追加写真を保存 | `drain` と同一ポリシーで古い順削除が実行される |</td>
+</tr>
+<tr id="L103">
+  <td class="line"><a href="#L103">103</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L104">
+  <td class="line"><a href="#L104">104</a></td>
+  <td class="code">## 3. 境界値テスト</td>
+</tr>
+<tr id="L105">
+  <td class="line"><a href="#L105">105</a></td>
+  <td class="code">- 必須チェック0件ステップで遷移可能か</td>
+</tr>
+<tr id="L106">
+  <td class="line"><a href="#L106">106</a></td>
+  <td class="code">- 最終ステップのみ `next_step_id` 空欄許容か</td>
+</tr>
+<tr id="L107">
+  <td class="line"><a href="#L107">107</a></td>
+  <td class="code">- セル内改行を含む `必須チェック` が正しく分割されるか</td>
+</tr>
+<tr id="L108">
+  <td class="line"><a href="#L108">108</a></td>
+  <td class="code">- 同一セッション内で複数 `alarm_id` が独立して再通知管理されるか</td>
+</tr>
+<tr id="L109">
+  <td class="line"><a href="#L109">109</a></td>
+  <td class="code">- 段階再通知（T+2分、T+5分以降3分間隔）がタイマーずれなく動作するか</td>
+</tr>
+<tr id="L110">
+  <td class="line"><a href="#L110">110</a></td>
+  <td class="code">- tombstone と upsert が同時到着した場合にLWWで一意決定できるか</td>
+</tr>
+<tr id="L111">
+  <td class="line"><a href="#L111">111</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L112">
+  <td class="line"><a href="#L112">112</a></td>
+  <td class="code">## 4. 回帰テスト観点</td>
+</tr>
+<tr id="L113">
+  <td class="line"><a href="#L113">113</a></td>
+  <td class="code">- CSVパーサ更新で既存v3が読めなくならないこと</td>
+</tr>
+<tr id="L114">
+  <td class="line"><a href="#L114">114</a></td>
+  <td class="code">- 記録モーダル変更時に進行ブロック条件が崩れないこと</td>
+</tr>
+<tr id="L115">
+  <td class="line"><a href="#L115">115</a></td>
+  <td class="code">- 版管理変更時にスナップショット再現性が維持されること</td>
+</tr>
+<tr id="L116">
+  <td class="line"><a href="#L116">116</a></td>
+  <td class="code">- 同期ロジック変更時にLWW規則が崩れないこと</td>
+</tr>
+<tr id="L117">
+  <td class="line"><a href="#L117">117</a></td>
+  <td class="code">- API最小化方針（`sync/push`, `sync/pull` のみ）が維持されること</td>
+</tr>
+<tr id="L118">
+  <td class="line"><a href="#L118">118</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+  </table>
+</section>
+  </main>
+</body>
+</html>

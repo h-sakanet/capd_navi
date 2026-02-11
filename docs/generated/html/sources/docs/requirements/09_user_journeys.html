@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>docs/requirements/09_user_journeys.md ソース表示</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f6f8fb; color: #1f2937; }
+    .top-nav { display: flex; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #d7deea; background: #ffffff; }
+    .top-nav a { color: #0f4acb; text-decoration: none; font-weight: 600; }
+    .top-nav a:hover { text-decoration: underline; }
+    main { max-width: 1180px; margin: 0 auto; padding: 24px 20px 40px; }
+    h1 { margin: 0 0 12px; font-size: 1.6rem; }
+    h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    .lead { margin: 0 0 18px; color: #4b5563; }
+    .card { background: #ffffff; border: 1px solid #d7deea; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+    ul { margin: 8px 0 0; padding-left: 1.2rem; }
+    ol { margin: 8px 0 0; padding-left: 1.4rem; }
+    li { margin: 4px 0; }
+    a { color: #0f4acb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #eef3ff; border-radius: 4px; padding: 1px 4px; }
+    .muted { color: #6b7280; font-size: 0.92rem; }
+    .source-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    .source-table td { border-bottom: 1px solid #e5e7eb; vertical-align: top; padding: 2px 8px; }
+    .source-table .line { width: 82px; text-align: right; color: #6b7280; background: #ffffff; }
+    .source-table .line a { color: #6b7280; }
+    .source-table .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; overflow-wrap: anywhere; }
+    .pill { display: inline-block; border: 1px solid #d7deea; border-radius: 999px; padding: 2px 8px; font-size: 0.78rem; color: #475569; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <nav class="top-nav"><a href="../../../index.html">HTML Index</a><a href="../../../../index.md">Markdown Index</a></nav>
+  <main>
+    <h1>docs/requirements/09_user_journeys.md ソース表示</h1>
+    <p class="lead">行番号とIDアンカー付きで参照できます。</p>
+    <section class="card">
+  <h2><code>docs/requirements/09_user_journeys.md</code></h2>
+  <table class="source-table">
+<tr id="L1">
+  <td class="line"><a href="#L1">1</a></td>
+  <td class="code"># 09. ユーザー動線定義（JRN）</td>
+</tr>
+<tr id="L2">
+  <td class="line"><a href="#L2">2</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L3">
+  <td class="line"><a href="#L3">3</a></td>
+  <td class="code">## 1. 目的</td>
+</tr>
+<tr id="L4">
+  <td class="line"><a href="#L4">4</a></td>
+  <td class="code">本書は「誰が、どの端末で、どの順序で、何を完了させるか」を固定するための動線正本です。  </td>
+</tr>
+<tr id="L5">
+  <td class="line"><a href="#L5">5</a></td>
+  <td class="code">実装担当は `JRN-*` を起点に、`SCR-*` / `ACT-*` / `FC-*` / `AT-*` を逆引きして着手します。</td>
+</tr>
+<tr id="L6">
+  <td class="line"><a href="#L6">6</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L7">
+  <td class="line"><a href="#L7">7</a></td>
+  <td class="code">## 2. ID規約</td>
+</tr>
+<tr id="L8">
+  <td class="line"><a href="#L8">8</a></td>
+  <td class="code">- 動線ID: `JRN-*`</td>
+</tr>
+<tr id="L9">
+  <td class="line"><a href="#L9">9</a></td>
+  <td class="code">- 画面ID: `SCR-*`（`10_screen_transition_and_actions.md`）</td>
+</tr>
+<tr id="L10">
+  <td class="line"><a href="#L10">10</a></td>
+  <td class="code">- 操作ID: `ACT-*`（`10_screen_transition_and_actions.md`）</td>
+</tr>
+<tr id="L11">
+  <td class="line"><a href="#L11">11</a></td>
+  <td class="code">- フォーム契約ID: `FC-*`（`11_form_contracts.md`）</td>
+</tr>
+<tr id="L12">
+  <td class="line"><a href="#L12">12</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L13">
+  <td class="line"><a href="#L13">13</a></td>
+  <td class="code">## 3. 動線一覧（実装対象）</td>
+</tr>
+<tr id="L14">
+  <td class="line"><a href="#L14">14</a></td>
+  <td class="code">| JRN ID | 動線名 | 主端末 | 開始条件 | 完了条件 | 対応FR | 対応AT | Phase |</td>
+</tr>
+<tr id="L15">
+  <td class="line"><a href="#L15">15</a></td>
+  <td class="code">|---|---|---|---|---|---|---|---|</td>
+</tr>
+<tr id="L16">
+  <td class="line"><a href="#L16">16</a></td>
+  <td class="code"><a id="JRN-001-CSV--L16"></a><a id="JRN-001-CSV"></a>| <a href="../../../journeys/JRN-001-CSV.html">JRN-001-CSV</a> | CSV取込（Mac） | Mac | Home表示済み、取込ディレクトリあり | テンプレート版が保存される | <a href="../../../ids/FR-020.html">FR-020</a>〜<a href="../../../ids/FR-024.html">FR-024</a>, <a href="../../../ids/FR-082A.html">FR-082A</a> | <a href="../../../ids/AT-CSV-001.html">AT-CSV-001</a>〜<a href="../../../ids/AT-CSV-004.html">AT-CSV-004</a>, <a href="../../../ids/AT-API-003.html">AT-API-003</a> | Phase1 |</td>
+</tr>
+<tr id="L17">
+  <td class="line"><a href="#L17">17</a></td>
+  <td class="code"><a id="JRN-002-SLOT--L17"></a><a id="JRN-002-SLOT"></a>| <a href="../../../journeys/JRN-002-SLOT.html">JRN-002-SLOT</a> | 当日スロット登録と開始 | Mac/iPhone | 当日4スロットが表示される | 対象スロットが `実施中` になる | <a href="../../../ids/FR-007.html">FR-007</a>〜<a href="../../../ids/FR-009H.html">FR-009H</a> | <a href="../../../ids/AT-FLOW-004.html">AT-FLOW-004</a>, <a href="../../../ids/AT-FLOW-005.html">AT-FLOW-005</a> | Phase1 |</td>
+</tr>
+<tr id="L18">
+  <td class="line"><a href="#L18">18</a></td>
+  <td class="code"><a id="JRN-003-SESSION--L18"></a><a id="JRN-003-SESSION"></a>| <a href="../../../journeys/JRN-003-SESSION.html">JRN-003-SESSION</a> | セッション進行と記録 | Mac/iPhone | 実施中セッションが存在する | 最終ステップ完了で `completed` になる | <a href="../../../ids/FR-030.html">FR-030</a>〜<a href="../../../ids/FR-044D.html">FR-044D</a> | <a href="../../../ids/AT-FLOW-001.html">AT-FLOW-001</a>〜<a href="../../../ids/AT-FLOW-003.html">AT-FLOW-003</a> | Phase1 |</td>
+</tr>
+<tr id="L19">
+  <td class="line"><a href="#L19">19</a></td>
+  <td class="code"><a id="JRN-004-ABORT--L19"></a><a id="JRN-004-ABORT"></a>| <a href="../../../journeys/JRN-004-ABORT.html">JRN-004-ABORT</a> | 非常中断と再開 | Mac/iPhone | セッション進行中 | 中断時は `未実施` に戻る、離脱時は再開できる | <a href="../../../ids/FR-009G.html">FR-009G</a>, <a href="../../../ids/FR-039D.html">FR-039D</a>〜<a href="../../../ids/FR-039G.html">FR-039G</a> | <a href="../../../ids/AT-FLOW-006.html">AT-FLOW-006</a>, <a href="../../../ids/AT-FLOW-007.html">AT-FLOW-007</a> | Phase1 |</td>
+</tr>
+<tr id="L20">
+  <td class="line"><a href="#L20">20</a></td>
+  <td class="code"><a id="JRN-005-SYNC--L20"></a><a id="JRN-005-SYNC"></a>| <a href="../../../journeys/JRN-005-SYNC.html">JRN-005-SYNC</a> | 同期と再試行 | Mac/iPhone | ローカル更新または手動同期要求あり | outboxが消し込まれ、同期状態が更新される | <a href="../../../ids/FR-080.html">FR-080</a>〜<a href="../../../ids/FR-089A.html">FR-089A</a> | <a href="../../../ids/AT-SYNC-001.html">AT-SYNC-001</a>〜<a href="../../../ids/AT-SYNC-006.html">AT-SYNC-006</a> | Phase1 |</td>
+</tr>
+<tr id="L21">
+  <td class="line"><a href="#L21">21</a></td>
+  <td class="code"><a id="JRN-006-RECOVERY--L21"></a><a id="JRN-006-RECOVERY"></a>| <a href="../../../journeys/JRN-006-RECOVERY.html">JRN-006-RECOVERY</a> | 復旧（DB消失/クラウド欠損） | Mac/iPhone | DB消失または `cloudState=missing` | ローカル正本を保持したまま復旧完了 | <a href="../../../ids/FR-087.html">FR-087</a>〜<a href="../../../ids/FR-087D.html">FR-087D</a> | <a href="../../../ids/AT-RECOVERY-001.html">AT-RECOVERY-001</a>〜<a href="../../../ids/AT-RECOVERY-003.html">AT-RECOVERY-003</a> | Phase1 |</td>
+</tr>
+<tr id="L22">
+  <td class="line"><a href="#L22">22</a></td>
+  <td class="code"><a id="JRN-007-ALARM--L22"></a><a id="JRN-007-ALARM"></a>| <a href="../../../journeys/JRN-007-ALARM.html">JRN-007-ALARM</a> | タイマー通知とACK | Mac/iPhone | `timer_event=end` 到達 | ACKで通知停止し `acked_at` 記録 | <a href="../../../ids/FR-050A.html">FR-050A</a>〜<a href="../../../ids/FR-058B.html">FR-058B</a> | <a href="../../../ids/AT-ALARM-001.html">AT-ALARM-001</a>〜<a href="../../../ids/AT-ALARM-004.html">AT-ALARM-004</a> | Phase1 |</td>
+</tr>
+<tr id="L23">
+  <td class="line"><a href="#L23">23</a></td>
+  <td class="code"><a id="JRN-008-HISTORY--L23"></a><a id="JRN-008-HISTORY"></a>| <a href="../../../journeys/JRN-008-HISTORY.html">JRN-008-HISTORY</a> | 記録一覧閲覧と編集 | Mac/iPhone | Homeから一覧へ遷移 | 直近30日記録を閲覧/編集できる | <a href="../../../ids/FR-010.html">FR-010</a>〜<a href="../../../ids/FR-019.html">FR-019</a> | <a href="../../../ids/AT-UI-HOME-001.html">AT-UI-HOME-001</a> | Phase1 |</td>
+</tr>
+<tr id="L24">
+  <td class="line"><a href="#L24">24</a></td>
+  <td class="code"><a id="JRN-009-EXITPHOTO--L24"></a><a id="JRN-009-EXITPHOTO"></a>| <a href="../../../journeys/JRN-009-EXITPHOTO.html">JRN-009-EXITPHOTO</a> | 出口部写真登録/変更/削除 | iPhone（更新）/Mac（閲覧） | `summaryScope=both` または `first_of_day` 完了 | `payload.exit_site_photo` が更新され同期される | <a href="../../../ids/FR-042A.html">FR-042A</a>〜<a href="../../../ids/FR-042H.html">FR-042H</a>, <a href="../../../ids/FR-089A.html">FR-089A</a> | <a href="../../../ids/AT-EXIT-001.html">AT-EXIT-001</a>〜<a href="../../../ids/AT-EXIT-012.html">AT-EXIT-012</a> | Phase2 |</td>
+</tr>
+<tr id="L25">
+  <td class="line"><a href="#L25">25</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L26">
+  <td class="line"><a href="#L26">26</a></td>
+  <td class="code">## 4. JRN詳細</td>
+</tr>
+<tr id="L27">
+  <td class="line"><a href="#L27">27</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L28">
+  <td class="line"><a href="#L28">28</a></td>
+  <td class="code"><a id="JRN-001-CSV--L28"></a>### <a href="../../../journeys/JRN-001-CSV.html">JRN-001-CSV</a> CSV取込（Mac）</td>
+</tr>
+<tr id="L29">
+  <td class="line"><a href="#L29">29</a></td>
+  <td class="code">1. `<a href="../../../screens/SCR-001-HOME.html">SCR-001-HOME</a>` で `<a href="../../../ids/ACT-HOME-007.html">ACT-HOME-007</a>`（CSV取り込み）を実行します。</td>
+</tr>
+<tr id="L30">
+  <td class="line"><a href="#L30">30</a></td>
+  <td class="code">2. `<a href="../../../screens/SCR-012-MAC-IMPORT.html">SCR-012-MAC-IMPORT</a>` でディレクトリを選択します。</td>
+</tr>
+<tr id="L31">
+  <td class="line"><a href="#L31">31</a></td>
+  <td class="code">3. `protocol.csv` と画像群の検証を行い、エラーが1件でもあれば中止します。</td>
+</tr>
+<tr id="L32">
+  <td class="line"><a href="#L32">32</a></td>
+  <td class="code">4. 正規化JSONをローカルへ保存し outbox へ追記します。</td>
+</tr>
+<tr id="L33">
+  <td class="line"><a href="#L33">33</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L34">
+  <td class="line"><a href="#L34">34</a></td>
+  <td class="code"><a id="JRN-002-SLOT--L34"></a>### <a href="../../../journeys/JRN-002-SLOT.html">JRN-002-SLOT</a> 当日スロット登録と開始</td>
+</tr>
+<tr id="L35">
+  <td class="line"><a href="#L35">35</a></td>
+  <td class="code">1. `<a href="../../../screens/SCR-001-HOME.html">SCR-001-HOME</a>` で空スロットの `<a href="../../../ids/ACT-HOME-001.html">ACT-HOME-001</a>`（`+`）を押します。</td>
+</tr>
+<tr id="L36">
+  <td class="line"><a href="#L36">36</a></td>
+  <td class="code">2. `<a href="../../../screens/SCR-002-HOME-SETUP.html">SCR-002-HOME-SETUP</a>` で `<a href="../../../ids/FC-SLOT-SETUP-001.html">FC-SLOT-SETUP-001</a>` を満たして保存します。</td>
+</tr>
+<tr id="L37">
+  <td class="line"><a href="#L37">37</a></td>
+  <td class="code">3. 登録済みカード本体の `<a href="../../../ids/ACT-HOME-005.html">ACT-HOME-005</a>` で開始確認へ進みます。</td>
+</tr>
+<tr id="L38">
+  <td class="line"><a href="#L38">38</a></td>
+  <td class="code">4. `<a href="../../../screens/SCR-003-HOME-START-CONFIRM.html">SCR-003-HOME-START-CONFIRM</a>` で `<a href="../../../ids/ACT-HOME-008.html">ACT-HOME-008</a>` を確定し `実施中` へ遷移します。</td>
+</tr>
+<tr id="L39">
+  <td class="line"><a href="#L39">39</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L40">
+  <td class="line"><a href="#L40">40</a></td>
+  <td class="code"><a id="JRN-003-SESSION--L40"></a>### <a href="../../../journeys/JRN-003-SESSION.html">JRN-003-SESSION</a> セッション進行と記録</td>
+</tr>
+<tr id="L41">
+  <td class="line"><a href="#L41">41</a></td>
+  <td class="code">1. `<a href="../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a>` で現在ステップを表示します。</td>
+</tr>
+<tr id="L42">
+  <td class="line"><a href="#L42">42</a></td>
+  <td class="code">2. 必須チェックがある場合は `<a href="../../../ids/ACT-SESSION-001.html">ACT-SESSION-001</a>` 実行前に完了します。</td>
+</tr>
+<tr id="L43">
+  <td class="line"><a href="#L43">43</a></td>
+  <td class="code">3. `record_event` がある場合は `<a href="../../../ids/ACT-SESSION-003.html">ACT-SESSION-003</a>` で記録保存します。</td>
+</tr>
+<tr id="L44">
+  <td class="line"><a href="#L44">44</a></td>
+  <td class="code">4. `<a href="../../../ids/ACT-SESSION-001.html">ACT-SESSION-001</a>` で `next_step_id` へ遷移し、最終ステップで完了処理を行います。</td>
+</tr>
+<tr id="L45">
+  <td class="line"><a href="#L45">45</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L46">
+  <td class="line"><a href="#L46">46</a></td>
+  <td class="code"><a id="JRN-004-ABORT--L46"></a>### <a href="../../../journeys/JRN-004-ABORT.html">JRN-004-ABORT</a> 非常中断と再開</td>
+</tr>
+<tr id="L47">
+  <td class="line"><a href="#L47">47</a></td>
+  <td class="code">1. 中断時は `<a href="../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a>` の `<a href="../../../ids/ACT-SESSION-006.html">ACT-SESSION-006</a>` を実行します。</td>
+</tr>
+<tr id="L48">
+  <td class="line"><a href="#L48">48</a></td>
+  <td class="code">2. セッションは `aborted` で終了し、対応スロットを `未実施` に戻します。</td>
+</tr>
+<tr id="L49">
+  <td class="line"><a href="#L49">49</a></td>
+  <td class="code">3. 予期せぬ離脱時は `active` 維持のまま `<a href="../../../screens/SCR-001-HOME.html">SCR-001-HOME</a>` から再開します。</td>
+</tr>
+<tr id="L50">
+  <td class="line"><a href="#L50">50</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L51">
+  <td class="line"><a href="#L51">51</a></td>
+  <td class="code"><a id="JRN-005-SYNC--L51"></a>### <a href="../../../journeys/JRN-005-SYNC.html">JRN-005-SYNC</a> 同期と再試行</td>
+</tr>
+<tr id="L52">
+  <td class="line"><a href="#L52">52</a></td>
+  <td class="code">1. `startup/resume/session_complete/manual` の契機で同期を開始します。</td>
+</tr>
+<tr id="L53">
+  <td class="line"><a href="#L53">53</a></td>
+  <td class="code">2. `push` 成功後に `pull` を実行し差分適用します。</td>
+</tr>
+<tr id="L54">
+  <td class="line"><a href="#L54">54</a></td>
+  <td class="code">3. 失敗時は `<a href="../../../screens/SCR-011-SYNC-STATUS.html">SCR-011-SYNC-STATUS</a>` に再試行導線を表示します。</td>
+</tr>
+<tr id="L55">
+  <td class="line"><a href="#L55">55</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L56">
+  <td class="line"><a href="#L56">56</a></td>
+  <td class="code"><a id="JRN-006-RECOVERY--L56"></a>### <a href="../../../journeys/JRN-006-RECOVERY.html">JRN-006-RECOVERY</a> 復旧（DB消失/クラウド欠損）</td>
+</tr>
+<tr id="L57">
+  <td class="line"><a href="#L57">57</a></td>
+  <td class="code">1. `<a href="../../../journeys/JRN-006-RECOVERY.html">JRN-006-RECOVERY</a>` では、DB消失時に `<a href="../../../ids/ACT-SYNC-001.html">ACT-SYNC-001</a>` の復旧処理として `restoreFromCloud` を実行します。</td>
+</tr>
+<tr id="L58">
+  <td class="line"><a href="#L58">58</a></td>
+  <td class="code">2. `pull` で `cloudState=missing` を検知した場合は `syncMode=full_reseed` を実行します。</td>
+</tr>
+<tr id="L59">
+  <td class="line"><a href="#L59">59</a></td>
+  <td class="code">3. 再シード後に再度 `pull` し `cloudState=ok` を確認して完了します。</td>
+</tr>
+<tr id="L60">
+  <td class="line"><a href="#L60">60</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L61">
+  <td class="line"><a href="#L61">61</a></td>
+  <td class="code"><a id="JRN-007-ALARM--L61"></a>### <a href="../../../journeys/JRN-007-ALARM.html">JRN-007-ALARM</a> タイマー通知とACK</td>
+</tr>
+<tr id="L62">
+  <td class="line"><a href="#L62">62</a></td>
+  <td class="code">1. `timer_event=end` かつ `timer_segment=dwell/drain` 到達で通知ジョブを生成します。</td>
+</tr>
+<tr id="L63">
+  <td class="line"><a href="#L63">63</a></td>
+  <td class="code">2. `T0`、`T+2分`、`T+5分以降3分` のルールで再通知します。</td>
+</tr>
+<tr id="L64">
+  <td class="line"><a href="#L64">64</a></td>
+  <td class="code">3. `<a href="../../../ids/ACT-ALARM-001.html">ACT-ALARM-001</a>` でACKした時点で通知停止し `acked_at` を保存します。</td>
+</tr>
+<tr id="L65">
+  <td class="line"><a href="#L65">65</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L66">
+  <td class="line"><a href="#L66">66</a></td>
+  <td class="code"><a id="JRN-008-HISTORY--L66"></a>### <a href="../../../journeys/JRN-008-HISTORY.html">JRN-008-HISTORY</a> 記録一覧閲覧と編集</td>
+</tr>
+<tr id="L67">
+  <td class="line"><a href="#L67">67</a></td>
+  <td class="code">1. `<a href="../../../screens/SCR-001-HOME.html">SCR-001-HOME</a>` から `<a href="../../../ids/ACT-HOME-010.html">ACT-HOME-010</a>` で記録一覧へ遷移します。</td>
+</tr>
+<tr id="L68">
+  <td class="line"><a href="#L68">68</a></td>
+  <td class="code">2. `<a href="../../../screens/SCR-008-HISTORY.html">SCR-008-HISTORY</a>` で30日範囲の一覧を確認します。</td>
+</tr>
+<tr id="L69">
+  <td class="line"><a href="#L69">69</a></td>
+  <td class="code">3. 写真リンクを押した場合は `<a href="../../../ids/ACT-HISTORY-001.html">ACT-HISTORY-001</a>` で `<a href="../../../screens/SCR-010-HISTORY-PHOTO.html">SCR-010-HISTORY-PHOTO</a>` を表示します。</td>
+</tr>
+<tr id="L70">
+  <td class="line"><a href="#L70">70</a></td>
+  <td class="code">4. 詳細表示で編集した項目はLWWメタ付きで保存します。</td>
+</tr>
+<tr id="L71">
+  <td class="line"><a href="#L71">71</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L72">
+  <td class="line"><a href="#L72">72</a></td>
+  <td class="code"><a id="JRN-009-EXITPHOTO--L72"></a>### <a href="../../../journeys/JRN-009-EXITPHOTO.html">JRN-009-EXITPHOTO</a> 出口部写真登録/変更/削除（Phase2）</td>
+</tr>
+<tr id="L73">
+  <td class="line"><a href="#L73">73</a></td>
+  <td class="code">1. 対象 `session_summary` の完了後、`<a href="../../../screens/SCR-005-HOME-SUMMARY.html">SCR-005-HOME-SUMMARY</a>` または `<a href="../../../screens/SCR-009-HISTORY-DETAIL.html">SCR-009-HISTORY-DETAIL</a>` に操作を表示します。</td>
+</tr>
+<tr id="L74">
+  <td class="line"><a href="#L74">74</a></td>
+  <td class="code">2. `<a href="../../../ids/ACT-EXIT-001.html">ACT-EXIT-001</a>/002/003` で登録・変更・削除します。</td>
+</tr>
+<tr id="L75">
+  <td class="line"><a href="#L75">75</a></td>
+  <td class="code">3. 保存は `patch_path=payload.exit_site_photo` の部分更新として同期します。</td>
+</tr>
+<tr id="L76">
+  <td class="line"><a href="#L76">76</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L77">
+  <td class="line"><a href="#L77">77</a></td>
+  <td class="code">## 5. 完了判定</td>
+</tr>
+<tr id="L78">
+  <td class="line"><a href="#L78">78</a></td>
+  <td class="code">- 実装タスクは、着手前に対象 `JRN-*` を明示します。</td>
+</tr>
+<tr id="L79">
+  <td class="line"><a href="#L79">79</a></td>
+  <td class="code">- `JRN-*` ごとに `AT-*` のPassを完了条件とします。</td>
+</tr>
+<tr id="L80">
+  <td class="line"><a href="#L80">80</a></td>
+  <td class="code">- `JRN-*` 未接続の画面追加・機能追加は禁止します。</td>
+</tr>
+<tr id="L81">
+  <td class="line"><a href="#L81">81</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L82">
+  <td class="line"><a href="#L82">82</a></td>
+  <td class="code">## 6. 動線可視化（Mermaid）</td>
+</tr>
+<tr id="L83">
+  <td class="line"><a href="#L83">83</a></td>
+  <td class="code">本図は `## 3` のメタ情報と `## 4` の手順を統合した参照図です。</td>
+</tr>
+<tr id="L84">
+  <td class="line"><a href="#L84">84</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L85">
+  <td class="line"><a href="#L85">85</a></td>
+  <td class="code">```mermaid</td>
+</tr>
+<tr id="L86">
+  <td class="line"><a href="#L86">86</a></td>
+  <td class="code">flowchart LR</td>
+</tr>
+<tr id="L87">
+  <td class="line"><a href="#L87">87</a></td>
+  <td class="code">  START[&quot;CAPD v1 ユーザー動線&quot;]</td>
+</tr>
+<tr id="L88">
+  <td class="line"><a href="#L88">88</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L89">
+  <td class="line"><a href="#L89">89</a></td>
+  <td class="code">  subgraph JRN001[&quot;<a href="../../../journeys/JRN-001-CSV.html">JRN-001-CSV</a> CSV取込（Mac）&quot;]</td>
+</tr>
+<tr id="L90">
+  <td class="line"><a href="#L90">90</a></td>
+  <td class="code">    J001_META[&quot;META: Mac / Home表示済み&amp;取込ディレクトリあり / テンプレート保存 / Phase1&lt;br/&gt;FR: <a href="../../../ids/FR-020.html">FR-020</a>〜<a href="../../../ids/FR-024.html">FR-024</a>, <a href="../../../ids/FR-082A.html">FR-082A</a>&lt;br/&gt;AT: <a href="../../../ids/AT-CSV-001.html">AT-CSV-001</a>〜<a href="../../../ids/AT-CSV-004.html">AT-CSV-004</a>, <a href="../../../ids/AT-API-003.html">AT-API-003</a>&quot;]</td>
+</tr>
+<tr id="L91">
+  <td class="line"><a href="#L91">91</a></td>
+  <td class="code">    J001_STEP1[&quot;<a href="../../../screens/SCR-001-HOME.html">SCR-001-HOME</a>で<a href="../../../ids/ACT-HOME-007.html">ACT-HOME-007</a>&quot;]</td>
+</tr>
+<tr id="L92">
+  <td class="line"><a href="#L92">92</a></td>
+  <td class="code">    J001_STEP2[&quot;<a href="../../../screens/SCR-012-MAC-IMPORT.html">SCR-012-MAC-IMPORT</a>でディレクトリ選択&quot;]</td>
+</tr>
+<tr id="L93">
+  <td class="line"><a href="#L93">93</a></td>
+  <td class="code">    J001_STEP3[&quot;protocol.csv+画像検証(エラーで中止)&quot;]</td>
+</tr>
+<tr id="L94">
+  <td class="line"><a href="#L94">94</a></td>
+  <td class="code">    J001_STEP4[&quot;正規化JSON保存+outbox追記&quot;]</td>
+</tr>
+<tr id="L95">
+  <td class="line"><a href="#L95">95</a></td>
+  <td class="code">    J001_META --&gt; J001_STEP1 --&gt; J001_STEP2 --&gt; J001_STEP3 --&gt; J001_STEP4</td>
+</tr>
+<tr id="L96">
+  <td class="line"><a href="#L96">96</a></td>
+  <td class="code">  end</td>
+</tr>
+<tr id="L97">
+  <td class="line"><a href="#L97">97</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L98">
+  <td class="line"><a href="#L98">98</a></td>
+  <td class="code">  subgraph JRN002[&quot;<a href="../../../journeys/JRN-002-SLOT.html">JRN-002-SLOT</a> 当日スロット登録と開始&quot;]</td>
+</tr>
+<tr id="L99">
+  <td class="line"><a href="#L99">99</a></td>
+  <td class="code">    J002_META[&quot;META: Mac/iPhone / 当日4スロット表示 / 実施中化 / Phase1&lt;br/&gt;FR: <a href="../../../ids/FR-007.html">FR-007</a>〜<a href="../../../ids/FR-009H.html">FR-009H</a>&lt;br/&gt;AT: <a href="../../../ids/AT-FLOW-004.html">AT-FLOW-004</a>, <a href="../../../ids/AT-FLOW-005.html">AT-FLOW-005</a>&quot;]</td>
+</tr>
+<tr id="L100">
+  <td class="line"><a href="#L100">100</a></td>
+  <td class="code">    J002_STEP1[&quot;<a href="../../../ids/ACT-HOME-001.html">ACT-HOME-001</a>(+)&quot;]</td>
+</tr>
+<tr id="L101">
+  <td class="line"><a href="#L101">101</a></td>
+  <td class="code">    J002_STEP2[&quot;<a href="../../../screens/SCR-002-HOME-SETUP.html">SCR-002-HOME-SETUP</a>で<a href="../../../ids/FC-SLOT-SETUP-001.html">FC-SLOT-SETUP-001</a>保存&quot;]</td>
+</tr>
+<tr id="L102">
+  <td class="line"><a href="#L102">102</a></td>
+  <td class="code">    J002_STEP3[&quot;<a href="../../../ids/ACT-HOME-005.html">ACT-HOME-005</a>&quot;]</td>
+</tr>
+<tr id="L103">
+  <td class="line"><a href="#L103">103</a></td>
+  <td class="code">    J002_STEP4[&quot;<a href="../../../screens/SCR-003-HOME-START-CONFIRM.html">SCR-003-HOME-START-CONFIRM</a>で<a href="../../../ids/ACT-HOME-008.html">ACT-HOME-008</a>&quot;]</td>
+</tr>
+<tr id="L104">
+  <td class="line"><a href="#L104">104</a></td>
+  <td class="code">    J002_META --&gt; J002_STEP1 --&gt; J002_STEP2 --&gt; J002_STEP3 --&gt; J002_STEP4</td>
+</tr>
+<tr id="L105">
+  <td class="line"><a href="#L105">105</a></td>
+  <td class="code">  end</td>
+</tr>
+<tr id="L106">
+  <td class="line"><a href="#L106">106</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L107">
+  <td class="line"><a href="#L107">107</a></td>
+  <td class="code">  subgraph JRN003[&quot;<a href="../../../journeys/JRN-003-SESSION.html">JRN-003-SESSION</a> セッション進行と記録&quot;]</td>
+</tr>
+<tr id="L108">
+  <td class="line"><a href="#L108">108</a></td>
+  <td class="code">    J003_META[&quot;META: Mac/iPhone / 実施中セッションあり / completed到達 / Phase1&lt;br/&gt;FR: <a href="../../../ids/FR-030.html">FR-030</a>〜<a href="../../../ids/FR-044D.html">FR-044D</a>&lt;br/&gt;AT: <a href="../../../ids/AT-FLOW-001.html">AT-FLOW-001</a>〜<a href="../../../ids/AT-FLOW-003.html">AT-FLOW-003</a>&quot;]</td>
+</tr>
+<tr id="L109">
+  <td class="line"><a href="#L109">109</a></td>
+  <td class="code">    J003_STEP1[&quot;<a href="../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a>表示&quot;]</td>
+</tr>
+<tr id="L110">
+  <td class="line"><a href="#L110">110</a></td>
+  <td class="code">    J003_STEP2[&quot;必要時チェック完了&quot;]</td>
+</tr>
+<tr id="L111">
+  <td class="line"><a href="#L111">111</a></td>
+  <td class="code">    J003_STEP3[&quot;必要時<a href="../../../ids/ACT-SESSION-003.html">ACT-SESSION-003</a>&quot;]</td>
+</tr>
+<tr id="L112">
+  <td class="line"><a href="#L112">112</a></td>
+  <td class="code">    J003_STEP4[&quot;<a href="../../../ids/ACT-SESSION-001.html">ACT-SESSION-001</a>でnext_step遷移&amp;最終完了&quot;]</td>
+</tr>
+<tr id="L113">
+  <td class="line"><a href="#L113">113</a></td>
+  <td class="code">    J003_META --&gt; J003_STEP1 --&gt; J003_STEP2 --&gt; J003_STEP3 --&gt; J003_STEP4</td>
+</tr>
+<tr id="L114">
+  <td class="line"><a href="#L114">114</a></td>
+  <td class="code">  end</td>
+</tr>
+<tr id="L115">
+  <td class="line"><a href="#L115">115</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L116">
+  <td class="line"><a href="#L116">116</a></td>
+  <td class="code">  subgraph JRN004[&quot;<a href="../../../journeys/JRN-004-ABORT.html">JRN-004-ABORT</a> 非常中断と再開&quot;]</td>
+</tr>
+<tr id="L117">
+  <td class="line"><a href="#L117">117</a></td>
+  <td class="code">    J004_META[&quot;META: Mac/iPhone / セッション進行中 / 中断=未実施戻し or 離脱再開 / Phase1&lt;br/&gt;FR: <a href="../../../ids/FR-009G.html">FR-009G</a>, <a href="../../../ids/FR-039D.html">FR-039D</a>〜<a href="../../../ids/FR-039G.html">FR-039G</a>&lt;br/&gt;AT: <a href="../../../ids/AT-FLOW-006.html">AT-FLOW-006</a>, <a href="../../../ids/AT-FLOW-007.html">AT-FLOW-007</a>&quot;]</td>
+</tr>
+<tr id="L118">
+  <td class="line"><a href="#L118">118</a></td>
+  <td class="code">    J004_STEP1[&quot;<a href="../../../ids/ACT-SESSION-006.html">ACT-SESSION-006</a>&quot;]</td>
+</tr>
+<tr id="L119">
+  <td class="line"><a href="#L119">119</a></td>
+  <td class="code">    J004_STEP2[&quot;aborted+未実施戻し&quot;]</td>
+</tr>
+<tr id="L120">
+  <td class="line"><a href="#L120">120</a></td>
+  <td class="code">    J004_STEP3[&quot;離脱時は<a href="../../../screens/SCR-001-HOME.html">SCR-001-HOME</a>から再開&quot;]</td>
+</tr>
+<tr id="L121">
+  <td class="line"><a href="#L121">121</a></td>
+  <td class="code">    J004_META --&gt; J004_STEP1 --&gt; J004_STEP2 --&gt; J004_STEP3</td>
+</tr>
+<tr id="L122">
+  <td class="line"><a href="#L122">122</a></td>
+  <td class="code">  end</td>
+</tr>
+<tr id="L123">
+  <td class="line"><a href="#L123">123</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L124">
+  <td class="line"><a href="#L124">124</a></td>
+  <td class="code">  subgraph JRN005[&quot;<a href="../../../journeys/JRN-005-SYNC.html">JRN-005-SYNC</a> 同期と再試行&quot;]</td>
+</tr>
+<tr id="L125">
+  <td class="line"><a href="#L125">125</a></td>
+  <td class="code">    J005_META[&quot;META: Mac/iPhone / ローカル更新or手動同期要求 / outbox消し込み+同期状態更新 / Phase1&lt;br/&gt;FR: <a href="../../../ids/FR-080.html">FR-080</a>〜<a href="../../../ids/FR-089A.html">FR-089A</a>&lt;br/&gt;AT: <a href="../../../ids/AT-SYNC-001.html">AT-SYNC-001</a>〜<a href="../../../ids/AT-SYNC-006.html">AT-SYNC-006</a>&quot;]</td>
+</tr>
+<tr id="L126">
+  <td class="line"><a href="#L126">126</a></td>
+  <td class="code">    J005_STEP1[&quot;startup/resume/session_complete/manualで開始&quot;]</td>
+</tr>
+<tr id="L127">
+  <td class="line"><a href="#L127">127</a></td>
+  <td class="code">    J005_STEP2[&quot;push成功後pull&quot;]</td>
+</tr>
+<tr id="L128">
+  <td class="line"><a href="#L128">128</a></td>
+  <td class="code">    J005_STEP3[&quot;失敗時<a href="../../../screens/SCR-011-SYNC-STATUS.html">SCR-011-SYNC-STATUS</a>再試行導線&quot;]</td>
+</tr>
+<tr id="L129">
+  <td class="line"><a href="#L129">129</a></td>
+  <td class="code">    J005_META --&gt; J005_STEP1 --&gt; J005_STEP2 --&gt; J005_STEP3</td>
+</tr>
+<tr id="L130">
+  <td class="line"><a href="#L130">130</a></td>
+  <td class="code">  end</td>
+</tr>
+<tr id="L131">
+  <td class="line"><a href="#L131">131</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L132">
+  <td class="line"><a href="#L132">132</a></td>
+  <td class="code">  subgraph JRN006[&quot;<a href="../../../journeys/JRN-006-RECOVERY.html">JRN-006-RECOVERY</a> 復旧（DB消失/クラウド欠損）&quot;]</td>
+</tr>
+<tr id="L133">
+  <td class="line"><a href="#L133">133</a></td>
+  <td class="code">    J006_META[&quot;META: Mac/iPhone / DB消失orcloudState=missing / ローカル正本維持で復旧完了 / Phase1&lt;br/&gt;FR: <a href="../../../ids/FR-087.html">FR-087</a>〜<a href="../../../ids/FR-087D.html">FR-087D</a>&lt;br/&gt;AT: <a href="../../../ids/AT-RECOVERY-001.html">AT-RECOVERY-001</a>〜<a href="../../../ids/AT-RECOVERY-003.html">AT-RECOVERY-003</a>&quot;]</td>
+</tr>
+<tr id="L134">
+  <td class="line"><a href="#L134">134</a></td>
+  <td class="code">    J006_STEP1[&quot;<a href="../../../ids/ACT-SYNC-001.html">ACT-SYNC-001</a>内restoreFromCloud&quot;]</td>
+</tr>
+<tr id="L135">
+  <td class="line"><a href="#L135">135</a></td>
+  <td class="code">    J006_STEP2[&quot;missing検知でfull_reseed&quot;]</td>
+</tr>
+<tr id="L136">
+  <td class="line"><a href="#L136">136</a></td>
+  <td class="code">    J006_STEP3[&quot;再pullでcloudState=ok確認&quot;]</td>
+</tr>
+<tr id="L137">
+  <td class="line"><a href="#L137">137</a></td>
+  <td class="code">    J006_META --&gt; J006_STEP1 --&gt; J006_STEP2 --&gt; J006_STEP3</td>
+</tr>
+<tr id="L138">
+  <td class="line"><a href="#L138">138</a></td>
+  <td class="code">  end</td>
+</tr>
+<tr id="L139">
+  <td class="line"><a href="#L139">139</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L140">
+  <td class="line"><a href="#L140">140</a></td>
+  <td class="code">  subgraph JRN007[&quot;<a href="../../../journeys/JRN-007-ALARM.html">JRN-007-ALARM</a> タイマー通知とACK&quot;]</td>
+</tr>
+<tr id="L141">
+  <td class="line"><a href="#L141">141</a></td>
+  <td class="code">    J007_META[&quot;META: Mac/iPhone / timer_event=end到達 / ACKで停止+acked_at記録 / Phase1&lt;br/&gt;FR: <a href="../../../ids/FR-050A.html">FR-050A</a>〜<a href="../../../ids/FR-058B.html">FR-058B</a>&lt;br/&gt;AT: <a href="../../../ids/AT-ALARM-001.html">AT-ALARM-001</a>〜<a href="../../../ids/AT-ALARM-004.html">AT-ALARM-004</a>&quot;]</td>
+</tr>
+<tr id="L142">
+  <td class="line"><a href="#L142">142</a></td>
+  <td class="code">    J007_STEP1[&quot;通知ジョブ生成&quot;]</td>
+</tr>
+<tr id="L143">
+  <td class="line"><a href="#L143">143</a></td>
+  <td class="code">    J007_STEP2[&quot;T0,T+2,T+5以降3分再通知&quot;]</td>
+</tr>
+<tr id="L144">
+  <td class="line"><a href="#L144">144</a></td>
+  <td class="code">    J007_STEP3[&quot;<a href="../../../ids/ACT-ALARM-001.html">ACT-ALARM-001</a>でACK保存&quot;]</td>
+</tr>
+<tr id="L145">
+  <td class="line"><a href="#L145">145</a></td>
+  <td class="code">    J007_META --&gt; J007_STEP1 --&gt; J007_STEP2 --&gt; J007_STEP3</td>
+</tr>
+<tr id="L146">
+  <td class="line"><a href="#L146">146</a></td>
+  <td class="code">  end</td>
+</tr>
+<tr id="L147">
+  <td class="line"><a href="#L147">147</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L148">
+  <td class="line"><a href="#L148">148</a></td>
+  <td class="code">  subgraph JRN008[&quot;<a href="../../../journeys/JRN-008-HISTORY.html">JRN-008-HISTORY</a> 記録一覧閲覧と編集&quot;]</td>
+</tr>
+<tr id="L149">
+  <td class="line"><a href="#L149">149</a></td>
+  <td class="code">    J008_META[&quot;META: Mac/iPhone / Homeから一覧遷移 / 直近30日閲覧編集 / Phase1&lt;br/&gt;FR: <a href="../../../ids/FR-010.html">FR-010</a>〜<a href="../../../ids/FR-019.html">FR-019</a>&lt;br/&gt;AT: <a href="../../../ids/AT-UI-HOME-001.html">AT-UI-HOME-001</a>&quot;]</td>
+</tr>
+<tr id="L150">
+  <td class="line"><a href="#L150">150</a></td>
+  <td class="code">    J008_STEP1[&quot;<a href="../../../ids/ACT-HOME-010.html">ACT-HOME-010</a>で<a href="../../../screens/SCR-008-HISTORY.html">SCR-008-HISTORY</a>&quot;]</td>
+</tr>
+<tr id="L151">
+  <td class="line"><a href="#L151">151</a></td>
+  <td class="code">    J008_STEP2[&quot;30日一覧確認&quot;]</td>
+</tr>
+<tr id="L152">
+  <td class="line"><a href="#L152">152</a></td>
+  <td class="code">    J008_STEP3[&quot;<a href="../../../ids/ACT-HISTORY-001.html">ACT-HISTORY-001</a>で<a href="../../../screens/SCR-010-HISTORY-PHOTO.html">SCR-010-HISTORY-PHOTO</a>&quot;]</td>
+</tr>
+<tr id="L153">
+  <td class="line"><a href="#L153">153</a></td>
+  <td class="code">    J008_STEP4[&quot;詳細編集をLWWメタで保存&quot;]</td>
+</tr>
+<tr id="L154">
+  <td class="line"><a href="#L154">154</a></td>
+  <td class="code">    J008_META --&gt; J008_STEP1 --&gt; J008_STEP2 --&gt; J008_STEP3 --&gt; J008_STEP4</td>
+</tr>
+<tr id="L155">
+  <td class="line"><a href="#L155">155</a></td>
+  <td class="code">  end</td>
+</tr>
+<tr id="L156">
+  <td class="line"><a href="#L156">156</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L157">
+  <td class="line"><a href="#L157">157</a></td>
+  <td class="code">  subgraph JRN009[&quot;<a href="../../../journeys/JRN-009-EXITPHOTO.html">JRN-009-EXITPHOTO</a> 出口部写真登録/変更/削除&quot;]</td>
+</tr>
+<tr id="L158">
+  <td class="line"><a href="#L158">158</a></td>
+  <td class="code">    J009_META[&quot;META: iPhone更新/Mac閲覧 / summaryScope完了 / exit_site_photo更新同期 / Phase2&lt;br/&gt;FR: <a href="../../../ids/FR-042A.html">FR-042A</a>〜<a href="../../../ids/FR-042H.html">FR-042H</a>, <a href="../../../ids/FR-089A.html">FR-089A</a>&lt;br/&gt;AT: <a href="../../../ids/AT-EXIT-001.html">AT-EXIT-001</a>〜<a href="../../../ids/AT-EXIT-012.html">AT-EXIT-012</a>&quot;]</td>
+</tr>
+<tr id="L159">
+  <td class="line"><a href="#L159">159</a></td>
+  <td class="code">    J009_STEP1[&quot;<a href="../../../screens/SCR-005-HOME-SUMMARY.html">SCR-005-HOME-SUMMARY</a> or <a href="../../../screens/SCR-009-HISTORY-DETAIL.html">SCR-009-HISTORY-DETAIL</a>表示&quot;]</td>
+</tr>
+<tr id="L160">
+  <td class="line"><a href="#L160">160</a></td>
+  <td class="code">    J009_STEP2[&quot;<a href="../../../ids/ACT-EXIT-001.html">ACT-EXIT-001</a>/002/003&quot;]</td>
+</tr>
+<tr id="L161">
+  <td class="line"><a href="#L161">161</a></td>
+  <td class="code">    J009_STEP3[&quot;patch_path=payload.exit_site_photoで同期&quot;]</td>
+</tr>
+<tr id="L162">
+  <td class="line"><a href="#L162">162</a></td>
+  <td class="code">    J009_META --&gt; J009_STEP1 --&gt; J009_STEP2 --&gt; J009_STEP3</td>
+</tr>
+<tr id="L163">
+  <td class="line"><a href="#L163">163</a></td>
+  <td class="code">  end</td>
+</tr>
+<tr id="L164">
+  <td class="line"><a href="#L164">164</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L165">
+  <td class="line"><a href="#L165">165</a></td>
+  <td class="code">  START --&gt; J001_META</td>
+</tr>
+<tr id="L166">
+  <td class="line"><a href="#L166">166</a></td>
+  <td class="code">  START --&gt; J002_META</td>
+</tr>
+<tr id="L167">
+  <td class="line"><a href="#L167">167</a></td>
+  <td class="code">  START --&gt; J003_META</td>
+</tr>
+<tr id="L168">
+  <td class="line"><a href="#L168">168</a></td>
+  <td class="code">  START --&gt; J004_META</td>
+</tr>
+<tr id="L169">
+  <td class="line"><a href="#L169">169</a></td>
+  <td class="code">  START --&gt; J005_META</td>
+</tr>
+<tr id="L170">
+  <td class="line"><a href="#L170">170</a></td>
+  <td class="code">  START --&gt; J006_META</td>
+</tr>
+<tr id="L171">
+  <td class="line"><a href="#L171">171</a></td>
+  <td class="code">  START --&gt; J007_META</td>
+</tr>
+<tr id="L172">
+  <td class="line"><a href="#L172">172</a></td>
+  <td class="code">  START --&gt; J008_META</td>
+</tr>
+<tr id="L173">
+  <td class="line"><a href="#L173">173</a></td>
+  <td class="code">  START --&gt; J009_META</td>
+</tr>
+<tr id="L174">
+  <td class="line"><a href="#L174">174</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L175">
+  <td class="line"><a href="#L175">175</a></td>
+  <td class="code">  classDef phase1 fill:#e8f5e9,stroke:#2e7d32,color:#1b5e20;</td>
+</tr>
+<tr id="L176">
+  <td class="line"><a href="#L176">176</a></td>
+  <td class="code">  classDef phase2 fill:#fff3e0,stroke:#ef6c00,color:#e65100;</td>
+</tr>
+<tr id="L177">
+  <td class="line"><a href="#L177">177</a></td>
+  <td class="code">  class J001_META,J002_META,J003_META,J004_META,J005_META,J006_META,J007_META,J008_META phase1;</td>
+</tr>
+<tr id="L178">
+  <td class="line"><a href="#L178">178</a></td>
+  <td class="code">  class J009_META phase2;</td>
+</tr>
+<tr id="L179">
+  <td class="line"><a href="#L179">179</a></td>
+  <td class="code">```</td>
+</tr>
+<tr id="L180">
+  <td class="line"><a href="#L180">180</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+  </table>
+</section>
+  </main>
+</body>
+</html>

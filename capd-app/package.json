@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "docs:map": "node ../scripts/docs-map.mjs",
+    "docs:map:check": "node ../scripts/docs-map.mjs --check"
   },
   "dependencies": {
     "@mynaui/icons": "^0.4.2",

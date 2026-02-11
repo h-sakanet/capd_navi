@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>test/specs/unit-spec.md ソース表示</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f6f8fb; color: #1f2937; }
+    .top-nav { display: flex; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #d7deea; background: #ffffff; }
+    .top-nav a { color: #0f4acb; text-decoration: none; font-weight: 600; }
+    .top-nav a:hover { text-decoration: underline; }
+    main { max-width: 1180px; margin: 0 auto; padding: 24px 20px 40px; }
+    h1 { margin: 0 0 12px; font-size: 1.6rem; }
+    h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    .lead { margin: 0 0 18px; color: #4b5563; }
+    .card { background: #ffffff; border: 1px solid #d7deea; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+    ul { margin: 8px 0 0; padding-left: 1.2rem; }
+    ol { margin: 8px 0 0; padding-left: 1.4rem; }
+    li { margin: 4px 0; }
+    a { color: #0f4acb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #eef3ff; border-radius: 4px; padding: 1px 4px; }
+    .muted { color: #6b7280; font-size: 0.92rem; }
+    .source-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    .source-table td { border-bottom: 1px solid #e5e7eb; vertical-align: top; padding: 2px 8px; }
+    .source-table .line { width: 82px; text-align: right; color: #6b7280; background: #ffffff; }
+    .source-table .line a { color: #6b7280; }
+    .source-table .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; overflow-wrap: anywhere; }
+    .pill { display: inline-block; border: 1px solid #d7deea; border-radius: 999px; padding: 2px 8px; font-size: 0.78rem; color: #475569; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <nav class="top-nav"><a href="../../../index.html">HTML Index</a><a href="../../../../index.md">Markdown Index</a></nav>
+  <main>
+    <h1>test/specs/unit-spec.md ソース表示</h1>
+    <p class="lead">行番号とIDアンカー付きで参照できます。</p>
+    <section class="card">
+  <h2><code>test/specs/unit-spec.md</code></h2>
+  <table class="source-table">
+<tr id="L1">
+  <td class="line"><a href="#L1">1</a></td>
+  <td class="code"># Unit Test Specification</td>
+</tr>
+<tr id="L2">
+  <td class="line"><a href="#L2">2</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L3">
+  <td class="line"><a href="#L3">3</a></td>
+  <td class="code">## 1. 目的</td>
+</tr>
+<tr id="L4">
+  <td class="line"><a href="#L4">4</a></td>
+  <td class="code">本書は、TDDで先行実装するUnitテストの正本です。  </td>
+</tr>
+<tr id="L5">
+  <td class="line"><a href="#L5">5</a></td>
+  <td class="code">対象は純粋ロジックとローカル永続化境界に限定し、UI描画差分は扱いません。</td>
+</tr>
+<tr id="L6">
+  <td class="line"><a href="#L6">6</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L7">
+  <td class="line"><a href="#L7">7</a></td>
+  <td class="code">## 2. 対象モジュール（固定）</td>
+</tr>
+<tr id="L8">
+  <td class="line"><a href="#L8">8</a></td>
+  <td class="code">1. `/Users/sakanet/capd_navi/capd-app/lib/protocol-csv.ts`</td>
+</tr>
+<tr id="L9">
+  <td class="line"><a href="#L9">9</a></td>
+  <td class="code">2. `/Users/sakanet/capd_navi/capd-app/components/capd/session-slot-store.ts`</td>
+</tr>
+<tr id="L10">
+  <td class="line"><a href="#L10">10</a></td>
+  <td class="code">3. `/Users/sakanet/capd_navi/capd-app/components/capd/mock-data.ts`</td>
+</tr>
+<tr id="L11">
+  <td class="line"><a href="#L11">11</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L12">
+  <td class="line"><a href="#L12">12</a></td>
+  <td class="code">実装順序:</td>
+</tr>
+<tr id="L13">
+  <td class="line"><a href="#L13">13</a></td>
+  <td class="code">1. `protocol-csv.ts`</td>
+</tr>
+<tr id="L14">
+  <td class="line"><a href="#L14">14</a></td>
+  <td class="code">2. `session-slot-store.ts`</td>
+</tr>
+<tr id="L15">
+  <td class="line"><a href="#L15">15</a></td>
+  <td class="code">3. `mock-data.ts`</td>
+</tr>
+<tr id="L16">
+  <td class="line"><a href="#L16">16</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L17">
+  <td class="line"><a href="#L17">17</a></td>
+  <td class="code">## 3. 共通ルール</td>
+</tr>
+<tr id="L18">
+  <td class="line"><a href="#L18">18</a></td>
+  <td class="code">- テストIDは `UT-*` を使用します。</td>
+</tr>
+<tr id="L19">
+  <td class="line"><a href="#L19">19</a></td>
+  <td class="code">- 1テスト1責務で記述します。</td>
+</tr>
+<tr id="L20">
+  <td class="line"><a href="#L20">20</a></td>
+  <td class="code">- `session-slot-store.ts` のテストでは `window.localStorage` をモックし、ケースごとに初期化します。</td>
+</tr>
+<tr id="L21">
+  <td class="line"><a href="#L21">21</a></td>
+  <td class="code">- エラーメッセージは現仕様の文言を厳密一致で検証します。</td>
+</tr>
+<tr id="L22">
+  <td class="line"><a href="#L22">22</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L23">
+  <td class="line"><a href="#L23">23</a></td>
+  <td class="code">## 4. テストケース一覧</td>
+</tr>
+<tr id="L24">
+  <td class="line"><a href="#L24">24</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L25">
+  <td class="line"><a href="#L25">25</a></td>
+  <td class="code">### 4.1 `protocol-csv.ts`</td>
+</tr>
+<tr id="L26">
+  <td class="line"><a href="#L26">26</a></td>
+  <td class="code">| テストID | 対象関数 | 入力/前提 | 期待結果 |</td>
+</tr>
+<tr id="L27">
+  <td class="line"><a href="#L27">27</a></td>
+  <td class="code">|---|---|---|---|</td>
+</tr>
+<tr id="L28">
+  <td class="line"><a href="#L28">28</a></td>
+  <td class="code"><a id="UT-CSV-001--L28"></a><a id="UT-CSV-001"></a>| <a href="../../../ids/UT-CSV-001.html">UT-CSV-001</a> | `parseProtocolCsv` | 正常CSV（`meta` + `step` 複数行） | `ProtocolStep[]` を返し、`sequenceNo` 昇順で整列される |</td>
+</tr>
+<tr id="L29">
+  <td class="line"><a href="#L29">29</a></td>
+  <td class="code"><a id="UT-CSV-002--L29"></a><a id="UT-CSV-002"></a>| <a href="../../../ids/UT-CSV-002.html">UT-CSV-002</a> | `parseProtocolCsv` | ヘッダー/データ不足（1行未満） | `Error(\&quot;CSVにヘッダー/データ行がありません。\&quot;)` |</td>
+</tr>
+<tr id="L30">
+  <td class="line"><a href="#L30">30</a></td>
+  <td class="code"><a id="UT-CSV-003--L30"></a><a id="UT-CSV-003"></a>| <a href="../../../ids/UT-CSV-003.html">UT-CSV-003</a> | `parseProtocolCsv` | `row_type` 列なし | `Error(\&quot;CSV v3の必須列 row_type がありません。\&quot;)` |</td>
+</tr>
+<tr id="L31">
+  <td class="line"><a href="#L31">31</a></td>
+  <td class="code"><a id="UT-CSV-004--L31"></a><a id="UT-CSV-004"></a>| <a href="../../../ids/UT-CSV-004.html">UT-CSV-004</a> | `parseProtocolCsv` | `meta` の必須キー欠落（`format_version` など） | `Error(\&quot;CSV v3の必須meta_keyが不足しています: &lt;key&gt;\&quot;)` |</td>
+</tr>
+<tr id="L32">
+  <td class="line"><a href="#L32">32</a></td>
+  <td class="code"><a id="UT-CSV-005--L32"></a><a id="UT-CSV-005"></a>| <a href="../../../ids/UT-CSV-005.html">UT-CSV-005</a> | `parseProtocolCsv` | `format_version != 3` | `Error(\&quot;format_versionは3のみ対応です。\&quot;)` |</td>
+</tr>
+<tr id="L33">
+  <td class="line"><a href="#L33">33</a></td>
+  <td class="code"><a id="UT-CSV-006--L33"></a><a id="UT-CSV-006"></a>| <a href="../../../ids/UT-CSV-006.html">UT-CSV-006</a> | `parseProtocolCsv` | `step` 行なし | `Error(\&quot;CSVにstep行がありません。\&quot;)` |</td>
+</tr>
+<tr id="L34">
+  <td class="line"><a href="#L34">34</a></td>
+  <td class="code"><a id="UT-CSV-007--L34"></a><a id="UT-CSV-007"></a>| <a href="../../../ids/UT-CSV-007.html">UT-CSV-007</a> | `parseProtocolCsv` | `必須チェック` に改行を含む値 | `requiredChecks` が改行分割され、空文字が除去される |</td>
+</tr>
+<tr id="L35">
+  <td class="line"><a href="#L35">35</a></td>
+  <td class="code"><a id="UT-CSV-008--L35"></a><a id="UT-CSV-008"></a>| <a href="../../../ids/UT-CSV-008.html">UT-CSV-008</a> | `parseProtocolCsv` | セル内エスケープ引用符（`\&quot;\&quot;`）含有 | 値が正しくデコードされる |</td>
+</tr>
+<tr id="L36">
+  <td class="line"><a href="#L36">36</a></td>
+  <td class="code"><a id="UT-CSV-009--L36"></a><a id="UT-CSV-009"></a>| <a href="../../../ids/UT-CSV-009.html">UT-CSV-009</a> | `parseProtocolCsv` | `alarm_duration_min` 空文字 | `alarmDurationMin === null` |</td>
+</tr>
+<tr id="L37">
+  <td class="line"><a href="#L37">37</a></td>
+  <td class="code"><a id="UT-CSV-010--L37"></a><a id="UT-CSV-010"></a>| <a href="../../../ids/UT-CSV-010.html">UT-CSV-010</a> | `parseProtocolCsv` | `alarm_duration_min` 非数値（例: `abc`） | `alarmDurationMin === 0`（現実装仕様） |</td>
+</tr>
+<tr id="L38">
+  <td class="line"><a href="#L38">38</a></td>
+  <td class="code"><a id="UT-CSV-011--L38"></a><a id="UT-CSV-011"></a>| <a href="../../../ids/UT-CSV-011.html">UT-CSV-011</a> | `parseProtocolCsv` | `step_id` 空の `step` 行を含む | 当該行は無視され、有効行のみ結果に含まれる |</td>
+</tr>
+<tr id="L39">
+  <td class="line"><a href="#L39">39</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L40">
+  <td class="line"><a href="#L40">40</a></td>
+  <td class="code">### 4.2 `session-slot-store.ts`</td>
+</tr>
+<tr id="L41">
+  <td class="line"><a href="#L41">41</a></td>
+  <td class="code">| テストID | 対象関数 | 入力/前提 | 期待結果 |</td>
+</tr>
+<tr id="L42">
+  <td class="line"><a href="#L42">42</a></td>
+  <td class="code">|---|---|---|---|</td>
+</tr>
+<tr id="L43">
+  <td class="line"><a href="#L43">43</a></td>
+  <td class="code"><a id="UT-SLOT-001--L43"></a><a id="UT-SLOT-001"></a>| <a href="../../../ids/UT-SLOT-001.html">UT-SLOT-001</a> | `readProcedureSlots` | localStorage未設定 | `defaultProcedureSlots` 相当（4要素、全`null`） |</td>
+</tr>
+<tr id="L44">
+  <td class="line"><a href="#L44">44</a></td>
+  <td class="code"><a id="UT-SLOT-002--L44"></a><a id="UT-SLOT-002"></a>| <a href="../../../ids/UT-SLOT-002.html">UT-SLOT-002</a> | `readProcedureSlots` | 不正JSON | 例外を投げず `defaultProcedureSlots` を返す |</td>
+</tr>
+<tr id="L45">
+  <td class="line"><a href="#L45">45</a></td>
+  <td class="code"><a id="UT-SLOT-003--L45"></a><a id="UT-SLOT-003"></a>| <a href="../../../ids/UT-SLOT-003.html">UT-SLOT-003</a> | `readProcedureSlots` | 配列長が4以外 | `defaultProcedureSlots` を返す |</td>
+</tr>
+<tr id="L46">
+  <td class="line"><a href="#L46">46</a></td>
+  <td class="code"><a id="UT-SLOT-004--L46"></a><a id="UT-SLOT-004"></a>| <a href="../../../ids/UT-SLOT-004.html">UT-SLOT-004</a> | `readProcedureSlots` | 要素の型不正を含む配列 | 不正要素は `null` に正規化される |</td>
+</tr>
+<tr id="L47">
+  <td class="line"><a href="#L47">47</a></td>
+  <td class="code"><a id="UT-SLOT-005--L47"></a><a id="UT-SLOT-005"></a>| <a href="../../../ids/UT-SLOT-005.html">UT-SLOT-005</a> | `writeProcedureSlots` + `readProcedureSlots` | 正常スロットを書き込み後に読み取り | 書き込み値が復元される |</td>
+</tr>
+<tr id="L48">
+  <td class="line"><a href="#L48">48</a></td>
+  <td class="code"><a id="UT-SLOT-006--L48"></a><a id="UT-SLOT-006"></a>| <a href="../../../ids/UT-SLOT-006.html">UT-SLOT-006</a> | `readActiveSession` | localStorage未設定 | `null` |</td>
+</tr>
+<tr id="L49">
+  <td class="line"><a href="#L49">49</a></td>
+  <td class="code"><a id="UT-SLOT-007--L49"></a><a id="UT-SLOT-007"></a>| <a href="../../../ids/UT-SLOT-007.html">UT-SLOT-007</a> | `readActiveSession` | `slotIndex` が範囲外（-1, 4, 999） | `null` |</td>
+</tr>
+<tr id="L50">
+  <td class="line"><a href="#L50">50</a></td>
+  <td class="code"><a id="UT-SLOT-008--L50"></a><a id="UT-SLOT-008"></a>| <a href="../../../ids/UT-SLOT-008.html">UT-SLOT-008</a> | `writeActiveSession` + `readActiveSession` | 正常値を書き込み後に読み取り | 同一内容が復元される |</td>
+</tr>
+<tr id="L51">
+  <td class="line"><a href="#L51">51</a></td>
+  <td class="code"><a id="UT-SLOT-009--L51"></a><a id="UT-SLOT-009"></a>| <a href="../../../ids/UT-SLOT-009.html">UT-SLOT-009</a> | `clearActiveSession` | active session あり | 削除後 `readActiveSession() === null` |</td>
+</tr>
+<tr id="L52">
+  <td class="line"><a href="#L52">52</a></td>
+  <td class="code"><a id="UT-SLOT-010--L52"></a><a id="UT-SLOT-010"></a>| <a href="../../../ids/UT-SLOT-010.html">UT-SLOT-010</a> | `createSessionId` | `slotIndex=0` | `ses_1_&lt;timestamp&gt;` 形式 |</td>
+</tr>
+<tr id="L53">
+  <td class="line"><a href="#L53">53</a></td>
+  <td class="code"><a id="UT-SLOT-011--L53"></a><a id="UT-SLOT-011"></a>| <a href="../../../ids/UT-SLOT-011.html">UT-SLOT-011</a> | `readProcedureSlots` | `window` 未定義（SSR相当） | 例外を投げず `defaultProcedureSlots` を返す |</td>
+</tr>
+<tr id="L54">
+  <td class="line"><a href="#L54">54</a></td>
+  <td class="code"><a id="UT-SLOT-012--L54"></a><a id="UT-SLOT-012"></a>| <a href="../../../ids/UT-SLOT-012.html">UT-SLOT-012</a> | `readActiveSession` | `window` 未定義（SSR相当） | `null` |</td>
+</tr>
+<tr id="L55">
+  <td class="line"><a href="#L55">55</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L56">
+  <td class="line"><a href="#L56">56</a></td>
+  <td class="code">### 4.3 `mock-data.ts`</td>
+</tr>
+<tr id="L57">
+  <td class="line"><a href="#L57">57</a></td>
+  <td class="code">| テストID | 対象関数 | 入力/前提 | 期待結果 |</td>
+</tr>
+<tr id="L58">
+  <td class="line"><a href="#L58">58</a></td>
+  <td class="code">|---|---|---|---|</td>
+</tr>
+<tr id="L59">
+  <td class="line"><a href="#L59">59</a></td>
+  <td class="code"><a id="UT-UF-001--L59"></a><a id="UT-UF-001"></a>| <a href="../../../ids/UT-UF-001.html">UT-UF-001</a> | `calculateExchangeUfG` | `exchangeIndex=0` | `null`（#1は未計算） |</td>
+</tr>
+<tr id="L60">
+  <td class="line"><a href="#L60">60</a></td>
+  <td class="code"><a id="UT-UF-002--L60"></a><a id="UT-UF-002"></a>| <a href="../../../ids/UT-UF-002.html">UT-UF-002</a> | `calculateExchangeUfG` | #2以降の正常データ | `drainWeightG - previousInfuseWeightG` |</td>
+</tr>
+<tr id="L61">
+  <td class="line"><a href="#L61">61</a></td>
+  <td class="code"><a id="UT-UF-003--L61"></a><a id="UT-UF-003"></a>| <a href="../../../ids/UT-UF-003.html">UT-UF-003</a> | `calculateExchangeUfG` | 範囲外index | `null` |</td>
+</tr>
+<tr id="L62">
+  <td class="line"><a href="#L62">62</a></td>
+  <td class="code"><a id="UT-UF-004--L62"></a><a id="UT-UF-004"></a>| <a href="../../../ids/UT-UF-004.html">UT-UF-004</a> | `calculateDailyUfTotalG` | 正常ノート | #1を除外したUF合計値 |</td>
+</tr>
+<tr id="L63">
+  <td class="line"><a href="#L63">63</a></td>
+  <td class="code"><a id="UT-UF-005--L63"></a><a id="UT-UF-005"></a>| <a href="../../../ids/UT-UF-005.html">UT-UF-005</a> | `calculateDailyDrainTotalG` | 正常ノート | `drainWeightG` 総和 |</td>
+</tr>
+<tr id="L64">
+  <td class="line"><a href="#L64">64</a></td>
+  <td class="code"><a id="UT-UF-006--L64"></a><a id="UT-UF-006"></a>| <a href="../../../ids/UT-UF-006.html">UT-UF-006</a> | `calculateDailyInfuseTotalG` | 正常ノート | `infuseWeightG` 総和 |</td>
+</tr>
+<tr id="L65">
+  <td class="line"><a href="#L65">65</a></td>
+  <td class="code"><a id="UT-UF-007--L65"></a><a id="UT-UF-007"></a>| <a href="../../../ids/UT-UF-007.html">UT-UF-007</a> | `findFirstPhotoId` | `photoId` あり | 最初の `photoId` を返す |</td>
+</tr>
+<tr id="L66">
+  <td class="line"><a href="#L66">66</a></td>
+  <td class="code"><a id="UT-UF-008--L66"></a><a id="UT-UF-008"></a>| <a href="../../../ids/UT-UF-008.html">UT-UF-008</a> | `findFirstPhotoId` | `photoId` なし | `null` |</td>
+</tr>
+<tr id="L67">
+  <td class="line"><a href="#L67">67</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L68">
+  <td class="line"><a href="#L68">68</a></td>
+  <td class="code">## 5. 必須fixture</td>
+</tr>
+<tr id="L69">
+  <td class="line"><a href="#L69">69</a></td>
+  <td class="code">基準ディレクトリを `/Users/sakanet/capd_navi/test/fixtures` に固定します。</td>
+</tr>
+<tr id="L70">
+  <td class="line"><a href="#L70">70</a></td>
+  <td class="code">- `fixtures/unit/protocol/valid-min.csv`</td>
+</tr>
+<tr id="L71">
+  <td class="line"><a href="#L71">71</a></td>
+  <td class="code">- `fixtures/unit/protocol/missing-row-type.csv`</td>
+</tr>
+<tr id="L72">
+  <td class="line"><a href="#L72">72</a></td>
+  <td class="code">- `fixtures/unit/protocol/missing-meta-format-version.csv`</td>
+</tr>
+<tr id="L73">
+  <td class="line"><a href="#L73">73</a></td>
+  <td class="code">- `fixtures/unit/protocol/invalid-format-version.csv`</td>
+</tr>
+<tr id="L74">
+  <td class="line"><a href="#L74">74</a></td>
+  <td class="code">- `fixtures/unit/protocol/no-step.csv`</td>
+</tr>
+<tr id="L75">
+  <td class="line"><a href="#L75">75</a></td>
+  <td class="code">- `fixtures/unit/protocol/multiline-required-checks.csv`</td>
+</tr>
+<tr id="L76">
+  <td class="line"><a href="#L76">76</a></td>
+  <td class="code">- `fixtures/unit/protocol/escaped-quotes.csv`</td>
+</tr>
+<tr id="L77">
+  <td class="line"><a href="#L77">77</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L78">
+  <td class="line"><a href="#L78">78</a></td>
+  <td class="code">fixtures は deterministic に固定し、テストケース間で共有する場合でも入力値の変更を禁止します。</td>
+</tr>
+<tr id="L79">
+  <td class="line"><a href="#L79">79</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L80">
+  <td class="line"><a href="#L80">80</a></td>
+  <td class="code">## 6. 実装上の注意</td>
+</tr>
+<tr id="L81">
+  <td class="line"><a href="#L81">81</a></td>
+  <td class="code">- `<a href="../../../ids/UT-CSV-010.html">UT-CSV-010</a>` は現行実装（非数値を0に変換）を仕様として固定しています。  </td>
+</tr>
+<tr id="L82">
+  <td class="line"><a href="#L82">82</a></td>
+  <td class="code">  仕様変更する場合は要件と本書を先に改訂してください。</td>
+</tr>
+<tr id="L83">
+  <td class="line"><a href="#L83">83</a></td>
+  <td class="code">- `session-slot-store.ts` は `isBrowser()` に依存するため、SSR相当テストでは `window` 未定義ケースも含めます。</td>
+</tr>
+<tr id="L84">
+  <td class="line"><a href="#L84">84</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+  </table>
+</section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>docs/spec/20_screens/SCR-001-HOME.md ソース表示</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f6f8fb; color: #1f2937; }
+    .top-nav { display: flex; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #d7deea; background: #ffffff; }
+    .top-nav a { color: #0f4acb; text-decoration: none; font-weight: 600; }
+    .top-nav a:hover { text-decoration: underline; }
+    main { max-width: 1180px; margin: 0 auto; padding: 24px 20px 40px; }
+    h1 { margin: 0 0 12px; font-size: 1.6rem; }
+    h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    .lead { margin: 0 0 18px; color: #4b5563; }
+    .card { background: #ffffff; border: 1px solid #d7deea; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+    ul { margin: 8px 0 0; padding-left: 1.2rem; }
+    ol { margin: 8px 0 0; padding-left: 1.4rem; }
+    li { margin: 4px 0; }
+    a { color: #0f4acb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #eef3ff; border-radius: 4px; padding: 1px 4px; }
+    .muted { color: #6b7280; font-size: 0.92rem; }
+    .source-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    .source-table td { border-bottom: 1px solid #e5e7eb; vertical-align: top; padding: 2px 8px; }
+    .source-table .line { width: 82px; text-align: right; color: #6b7280; background: #ffffff; }
+    .source-table .line a { color: #6b7280; }
+    .source-table .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; overflow-wrap: anywhere; }
+    .pill { display: inline-block; border: 1px solid #d7deea; border-radius: 999px; padding: 2px 8px; font-size: 0.78rem; color: #475569; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <nav class="top-nav"><a href="../../../../index.html">HTML Index</a><a href="../../../../../index.md">Markdown Index</a></nav>
+  <main>
+    <h1>docs/spec/20_screens/SCR-001-HOME.md ソース表示</h1>
+    <p class="lead">行番号とIDアンカー付きで参照できます。</p>
+    <section class="card">
+  <h2><code>docs/spec/20_screens/SCR-001-HOME.md</code></h2>
+  <table class="source-table">
+<tr id="L1">
+  <td class="line"><a href="#L1">1</a></td>
+  <td class="code"><a id="SCR-001-HOME--L1"></a># <a href="../../../../screens/SCR-001-HOME.html">SCR-001-HOME</a></td>
+</tr>
+<tr id="L2">
+  <td class="line"><a href="#L2">2</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L3">
+  <td class="line"><a href="#L3">3</a></td>
+  <td class="code">## 1. メタ情報</td>
+</tr>
+<tr id="L4">
+  <td class="line"><a href="#L4">4</a></td>
+  <td class="code">- SCR ID: <a href="../../../../screens/SCR-001-HOME.html">SCR-001-HOME</a></td>
+</tr>
+<tr id="L5">
+  <td class="line"><a href="#L5">5</a></td>
+  <td class="code">- 画面名: Home</td>
+</tr>
+<tr id="L6">
+  <td class="line"><a href="#L6">6</a></td>
+  <td class="code">- Route/I/F: `/capd/home`</td>
+</tr>
+<tr id="L7">
+  <td class="line"><a href="#L7">7</a></td>
+  <td class="code">- 主JRN: <a href="../../../../journeys/JRN-001-CSV.html">JRN-001-CSV</a>, <a href="../../../../journeys/JRN-002-SLOT.html">JRN-002-SLOT</a>, <a href="../../../../journeys/JRN-004-ABORT.html">JRN-004-ABORT</a>, <a href="../../../../journeys/JRN-005-SYNC.html">JRN-005-SYNC</a>, <a href="../../../../journeys/JRN-008-HISTORY.html">JRN-008-HISTORY</a></td>
+</tr>
+<tr id="L8">
+  <td class="line"><a href="#L8">8</a></td>
+  <td class="code">- Phase: Phase1</td>
+</tr>
+<tr id="L9">
+  <td class="line"><a href="#L9">9</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L10">
+  <td class="line"><a href="#L10">10</a></td>
+  <td class="code">## 2. 目的と責務境界</td>
+</tr>
+<tr id="L11">
+  <td class="line"><a href="#L11">11</a></td>
+  <td class="code">- この画面で決めること: 当日4スロット表示、開始/再開導線、CSV取込導線、記録一覧導線、当日ノート表示、手動同期導線。</td>
+</tr>
+<tr id="L12">
+  <td class="line"><a href="#L12">12</a></td>
+  <td class="code">- この画面で決めないこと: CSVパース規則、同期競合解決アルゴリズム、記録フォームの詳細入力仕様。</td>
+</tr>
+<tr id="L13">
+  <td class="line"><a href="#L13">13</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L14">
+  <td class="line"><a href="#L14">14</a></td>
+  <td class="code">## 3. UIワイヤー・レイアウト制約</td>
+</tr>
+<tr id="L15">
+  <td class="line"><a href="#L15">15</a></td>
+  <td class="code">- 参照: `../../../requirements/06_ui_wireframes_ab.md` 5章。</td>
+</tr>
+<tr id="L16">
+  <td class="line"><a href="#L16">16</a></td>
+  <td class="code">- 先頭に日付・曜日を表示し、4スロットと当日ノート表を同一パネルに配置します。</td>
+</tr>
+<tr id="L17">
+  <td class="line"><a href="#L17">17</a></td>
+  <td class="code">- 「手技開始通知は外部アラーム運用」の注記を固定表示します。</td>
+</tr>
+<tr id="L18">
+  <td class="line"><a href="#L18">18</a></td>
+  <td class="code">- 右上 `•••` メニューは `確認/編集` の2項目のみ許可します。</td>
+</tr>
+<tr id="L19">
+  <td class="line"><a href="#L19">19</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L20">
+  <td class="line"><a href="#L20">20</a></td>
+  <td class="code">## 4. UI要素一覧</td>
+</tr>
+<tr id="L21">
+  <td class="line"><a href="#L21">21</a></td>
+  <td class="code">| UI ID | 要素 | 表示条件 | 入力制約 | セレクタ方針 |</td>
+</tr>
+<tr id="L22">
+  <td class="line"><a href="#L22">22</a></td>
+  <td class="code">|---|---|---|---|---|</td>
+</tr>
+<tr id="L23">
+  <td class="line"><a href="#L23">23</a></td>
+  <td class="code"><a id="UI-001-HOME--L23"></a><a id="UI-001-HOME"></a>| <a href="../../../../ids/UI-001-HOME.html">UI-001-HOME</a> | 日付ヘッダ | 常時 | なし | role/heading |</td>
+</tr>
+<tr id="L24">
+  <td class="line"><a href="#L24">24</a></td>
+  <td class="code"><a id="UI-002-HOME--L24"></a><a id="UI-002-HOME"></a>| <a href="../../../../ids/UI-002-HOME.html">UI-002-HOME</a> | #1〜#4スロット状態 | 常時 | 4件固定 | data-testid |</td>
+</tr>
+<tr id="L25">
+  <td class="line"><a href="#L25">25</a></td>
+  <td class="code"><a id="UI-003-HOME--L25"></a><a id="UI-003-HOME"></a>| <a href="../../../../ids/UI-003-HOME.html">UI-003-HOME</a> | スロットカード本体 | `displayStatus != empty` | `実施済み` はタップ無効 | role/button + name |</td>
+</tr>
+<tr id="L26">
+  <td class="line"><a href="#L26">26</a></td>
+  <td class="code"><a id="UI-004-HOME--L26"></a><a id="UI-004-HOME"></a>| <a href="../../../../ids/UI-004-HOME.html">UI-004-HOME</a> | `•••` メニュー | `displayStatus != empty` | `確認/編集` のみ | role/menu |</td>
+</tr>
+<tr id="L27">
+  <td class="line"><a href="#L27">27</a></td>
+  <td class="code"><a id="UI-005-HOME--L27"></a><a id="UI-005-HOME"></a>| <a href="../../../../ids/UI-005-HOME.html">UI-005-HOME</a> | CSV取り込みボタン | 常時 | Macのみ有効 | role/button + name |</td>
+</tr>
+<tr id="L28">
+  <td class="line"><a href="#L28">28</a></td>
+  <td class="code"><a id="UI-006-HOME--L28"></a><a id="UI-006-HOME"></a>| <a href="../../../../ids/UI-006-HOME.html">UI-006-HOME</a> | 記録一覧ボタン | 常時 | なし | role/link + name |</td>
+</tr>
+<tr id="L29">
+  <td class="line"><a href="#L29">29</a></td>
+  <td class="code"><a id="UI-007-HOME--L29"></a><a id="UI-007-HOME"></a>| <a href="../../../../ids/UI-007-HOME.html">UI-007-HOME</a> | 手動同期ボタン | 常時 | なし | role/button + name |</td>
+</tr>
+<tr id="L30">
+  <td class="line"><a href="#L30">30</a></td>
+  <td class="code"><a id="UI-008-HOME--L30"></a><a id="UI-008-HOME"></a>| <a href="../../../../ids/UI-008-HOME.html">UI-008-HOME</a> | 当日ノート（貯留時間） | 記録あり | 読み取り専用 | role/table |</td>
+</tr>
+<tr id="L31">
+  <td class="line"><a href="#L31">31</a></td>
+  <td class="code"><a id="UI-009-HOME--L31"></a><a id="UI-009-HOME"></a>| <a href="../../../../ids/UI-009-HOME.html">UI-009-HOME</a> | 当日ノート（排液量/注液量/排液確認） | 記録あり | 読み取り専用 | role/table |</td>
+</tr>
+<tr id="L32">
+  <td class="line"><a href="#L32">32</a></td>
+  <td class="code"><a id="UI-010-HOME--L32"></a><a id="UI-010-HOME"></a>| <a href="../../../../ids/UI-010-HOME.html">UI-010-HOME</a> | 当日ノート（総除水量） | 計算可能交換あり | #2以降のみ合算 | role/status |</td>
+</tr>
+<tr id="L33">
+  <td class="line"><a href="#L33">33</a></td>
+  <td class="code"><a id="UI-011-HOME--L33"></a><a id="UI-011-HOME"></a>| <a href="../../../../ids/UI-011-HOME.html">UI-011-HOME</a> | 同期失敗バナー | `lastSyncStatus=failed` | 再試行導線を必須表示 | role/alert |</td>
+</tr>
+<tr id="L34">
+  <td class="line"><a href="#L34">34</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L35">
+  <td class="line"><a href="#L35">35</a></td>
+  <td class="code">## 5. 操作契約</td>
+</tr>
+<tr id="L36">
+  <td class="line"><a href="#L36">36</a></td>
+  <td class="code">| ACT ID | Guard | Side Effect | Success遷移 | Failure表示 |</td>
+</tr>
+<tr id="L37">
+  <td class="line"><a href="#L37">37</a></td>
+  <td class="code">|---|---|---|---|---|</td>
+</tr>
+<tr id="L38">
+  <td class="line"><a href="#L38">38</a></td>
+  <td class="code"><a id="ACT-HOME-001--L38"></a>| <a href="../../../../ids/ACT-HOME-001.html">ACT-HOME-001</a> | 進行中セッションなし | なし | <a href="../../../../screens/SCR-002-HOME-SETUP.html">SCR-002-HOME-SETUP</a> | 編集不可メッセージ |</td>
+</tr>
+<tr id="L39">
+  <td class="line"><a href="#L39">39</a></td>
+  <td class="code"><a id="ACT-HOME-003--L39"></a>| <a href="../../../../ids/ACT-HOME-003.html">ACT-HOME-003</a> | 対象スロット登録済み | なし | <a href="../../../../screens/SCR-004-HOME-VIEW-CONFIRM.html">SCR-004-HOME-VIEW-CONFIRM</a> | なし |</td>
+</tr>
+<tr id="L40">
+  <td class="line"><a href="#L40">40</a></td>
+  <td class="code"><a id="ACT-HOME-004--L40"></a>| <a href="../../../../ids/ACT-HOME-004.html">ACT-HOME-004</a> | `displayStatus!=completed` かつ進行中なし | なし | <a href="../../../../screens/SCR-002-HOME-SETUP.html">SCR-002-HOME-SETUP</a> | 編集不可メッセージ |</td>
+</tr>
+<tr id="L41">
+  <td class="line"><a href="#L41">41</a></td>
+  <td class="code"><a id="ACT-HOME-005--L41"></a>| <a href="../../../../ids/ACT-HOME-005.html">ACT-HOME-005</a> | 右側開始時に左側全完了 | なし（確認表示のみ） | <a href="../../../../screens/SCR-003-HOME-START-CONFIRM.html">SCR-003-HOME-START-CONFIRM</a> | 開始不可理由 |</td>
+</tr>
+<tr id="L42">
+  <td class="line"><a href="#L42">42</a></td>
+  <td class="code"><a id="ACT-HOME-007--L42"></a>| <a href="../../../../ids/ACT-HOME-007.html">ACT-HOME-007</a> | `platform=mac` | `ProtocolPackage` 保存 + outbox追記 | <a href="../../../../screens/SCR-012-MAC-IMPORT.html">SCR-012-MAC-IMPORT</a> -&gt; <a href="../../../../screens/SCR-001-HOME.html">SCR-001-HOME</a> | 検証エラー一覧 |</td>
+</tr>
+<tr id="L43">
+  <td class="line"><a href="#L43">43</a></td>
+  <td class="code"><a id="ACT-HOME-010--L43"></a>| <a href="../../../../ids/ACT-HOME-010.html">ACT-HOME-010</a> | なし | なし | <a href="../../../../screens/SCR-008-HISTORY.html">SCR-008-HISTORY</a> | なし |</td>
+</tr>
+<tr id="L44">
+  <td class="line"><a href="#L44">44</a></td>
+  <td class="code"><a id="ACT-HOME-011--L44"></a>| <a href="../../../../ids/ACT-HOME-011.html">ACT-HOME-011</a> | なし | `sync(push,pull)` 実行 | 同一画面維持 | 同期失敗バナー |</td>
+</tr>
+<tr id="L45">
+  <td class="line"><a href="#L45">45</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L46">
+  <td class="line"><a href="#L46">46</a></td>
+  <td class="code">## 6. データバインディング</td>
+</tr>
+<tr id="L47">
+  <td class="line"><a href="#L47">47</a></td>
+  <td class="code">| 区分 | Read | Write | Outbox | 反映タイミング |</td>
+</tr>
+<tr id="L48">
+  <td class="line"><a href="#L48">48</a></td>
+  <td class="code">|---|---|---|---|---|</td>
+</tr>
+<tr id="L49">
+  <td class="line"><a href="#L49">49</a></td>
+  <td class="code">| スロット表示 | `DailyProcedurePlan.dateLocal`, `slots[*].displayStatus`, `slots[*].protocolTitle` | - | - | on load / after sync |</td>
+</tr>
+<tr id="L50">
+  <td class="line"><a href="#L50">50</a></td>
+  <td class="code">| 開始確認起点 | `slots[n].displayStatus`, `activeSession` | - | - | on tap |</td>
+</tr>
+<tr id="L51">
+  <td class="line"><a href="#L51">51</a></td>
+  <td class="code">| CSV取込導線 | `platform` | `ProtocolPackage` | `protocol` | on import success |</td>
+</tr>
+<tr id="L52">
+  <td class="line"><a href="#L52">52</a></td>
+  <td class="code">| 当日ノート表示 | `Record(record_event, *_exchange_no)`, `timer_event` | - | - | on load / after save |</td>
+</tr>
+<tr id="L53">
+  <td class="line"><a href="#L53">53</a></td>
+  <td class="code">| 手動同期 | `SyncState` | `SyncState.lastSyncStatus` | push対象に応じる | on manual sync |</td>
+</tr>
+<tr id="L54">
+  <td class="line"><a href="#L54">54</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L55">
+  <td class="line"><a href="#L55">55</a></td>
+  <td class="code">## 7. バリデーション / エラー文言 / 空状態</td>
+</tr>
+<tr id="L56">
+  <td class="line"><a href="#L56">56</a></td>
+  <td class="code">- バリデーション:</td>
+</tr>
+<tr id="L57">
+  <td class="line"><a href="#L57">57</a></td>
+  <td class="code">  - 右側開始時は左側スロット全完了必須。</td>
+</tr>
+<tr id="L58">
+  <td class="line"><a href="#L58">58</a></td>
+  <td class="code">  - `実施済み` スロットは編集/削除不可。</td>
+</tr>
+<tr id="L59">
+  <td class="line"><a href="#L59">59</a></td>
+  <td class="code">  - 同一端末で進行中セッションがある間は全スロット編集不可。</td>
+</tr>
+<tr id="L60">
+  <td class="line"><a href="#L60">60</a></td>
+  <td class="code">- エラー文言（例）:</td>
+</tr>
+<tr id="L61">
+  <td class="line"><a href="#L61">61</a></td>
+  <td class="code">  - `実施中セッションがあるため編集できません。`</td>
+</tr>
+<tr id="L62">
+  <td class="line"><a href="#L62">62</a></td>
+  <td class="code">  - `右側スロットを開始するには左側の手技を完了してください。`</td>
+</tr>
+<tr id="L63">
+  <td class="line"><a href="#L63">63</a></td>
+  <td class="code">- 空状態:</td>
+</tr>
+<tr id="L64">
+  <td class="line"><a href="#L64">64</a></td>
+  <td class="code">  - 初期は #1〜#4 が `+`（未登録）表示。</td>
+</tr>
+<tr id="L65">
+  <td class="line"><a href="#L65">65</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L66">
+  <td class="line"><a href="#L66">66</a></td>
+  <td class="code">## 8. 権限・端末差分・フォールバック</td>
+</tr>
+<tr id="L67">
+  <td class="line"><a href="#L67">67</a></td>
+  <td class="code">- Mac: CSV取込可。出口部写真は閲覧のみ。</td>
+</tr>
+<tr id="L68">
+  <td class="line"><a href="#L68">68</a></td>
+  <td class="code">- iPhone: CSV取込不可（案内表示）。</td>
+</tr>
+<tr id="L69">
+  <td class="line"><a href="#L69">69</a></td>
+  <td class="code">- オフライン時はローカル表示を継続し、同期操作は失敗バナーへフォールバック。</td>
+</tr>
+<tr id="L70">
+  <td class="line"><a href="#L70">70</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L71">
+  <td class="line"><a href="#L71">71</a></td>
+  <td class="code">## 9. アクセシビリティ / キーボード</td>
+</tr>
+<tr id="L72">
+  <td class="line"><a href="#L72">72</a></td>
+  <td class="code">- 主要操作（`+`, 記録一覧, 手動同期）はキーボード操作可能にします。</td>
+</tr>
+<tr id="L73">
+  <td class="line"><a href="#L73">73</a></td>
+  <td class="code">- バナー/エラーは `role=alert` で読み上げます。</td>
+</tr>
+<tr id="L74">
+  <td class="line"><a href="#L74">74</a></td>
+  <td class="code">- スロット状態は視覚色だけでなく文言（未実施/実施中/実施済み）でも表現します。</td>
+</tr>
+<tr id="L75">
+  <td class="line"><a href="#L75">75</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L76">
+  <td class="line"><a href="#L76">76</a></td>
+  <td class="code">## 10. 受入条件（GWT）</td>
+</tr>
+<tr id="L77">
+  <td class="line"><a href="#L77">77</a></td>
+  <td class="code">- Given #1未完了で#2を開始しようとする</td>
+</tr>
+<tr id="L78">
+  <td class="line"><a href="#L78">78</a></td>
+  <td class="code">- When `<a href="../../../../ids/ACT-HOME-005.html">ACT-HOME-005</a>` を実行する</td>
+</tr>
+<tr id="L79">
+  <td class="line"><a href="#L79">79</a></td>
+  <td class="code">- Then 開始不可理由を表示し遷移しない</td>
+</tr>
+<tr id="L80">
+  <td class="line"><a href="#L80">80</a></td>
+  <td class="code">- Given outboxにpendingがある</td>
+</tr>
+<tr id="L81">
+  <td class="line"><a href="#L81">81</a></td>
+  <td class="code">- When `<a href="../../../../ids/ACT-HOME-011.html">ACT-HOME-011</a>` を実行する</td>
+</tr>
+<tr id="L82">
+  <td class="line"><a href="#L82">82</a></td>
+  <td class="code">- Then push/pull完了後に同期状態を更新する</td>
+</tr>
+<tr id="L83">
+  <td class="line"><a href="#L83">83</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L84">
+  <td class="line"><a href="#L84">84</a></td>
+  <td class="code">## 11. 参照リンク</td>
+</tr>
+<tr id="L85">
+  <td class="line"><a href="#L85">85</a></td>
+  <td class="code">- FR: <a href="../../../../ids/FR-004A.html">FR-004A</a>, <a href="../../../../ids/FR-005.html">FR-005</a>, <a href="../../../../ids/FR-005A.html">FR-005A</a>, <a href="../../../../ids/FR-006.html">FR-006</a>, <a href="../../../../ids/FR-007.html">FR-007</a>, <a href="../../../../ids/FR-008.html">FR-008</a>, <a href="../../../../ids/FR-009A.html">FR-009A</a>〜<a href="../../../../ids/FR-009H.html">FR-009H</a>, <a href="../../../../ids/FR-016.html">FR-016</a>, <a href="../../../../ids/FR-017.html">FR-017</a>, <a href="../../../../ids/FR-018.html">FR-018</a>, <a href="../../../../ids/FR-019.html">FR-019</a>, <a href="../../../../ids/FR-086.html">FR-086</a>, <a href="../../../../ids/FR-088.html">FR-088</a></td>
+</tr>
+<tr id="L86">
+  <td class="line"><a href="#L86">86</a></td>
+  <td class="code">- AT: <a href="../../../../ids/AT-FLOW-004.html">AT-FLOW-004</a>, <a href="../../../../ids/AT-FLOW-005.html">AT-FLOW-005</a>, <a href="../../../../ids/AT-FLOW-006.html">AT-FLOW-006</a>, <a href="../../../../ids/AT-SYNC-005.html">AT-SYNC-005</a>, <a href="../../../../ids/AT-SYNC-006.html">AT-SYNC-006</a></td>
+</tr>
+<tr id="L87">
+  <td class="line"><a href="#L87">87</a></td>
+  <td class="code">- E2E/UT/VR: <a href="../../../../ids/E2E-FLOW-001.html">E2E-FLOW-001</a>, <a href="../../../../ids/E2E-FLOW-002.html">E2E-FLOW-002</a>, <a href="../../../../ids/E2E-FLOW-003.html">E2E-FLOW-003</a>, <a href="../../../../ids/E2E-SYNC-002.html">E2E-SYNC-002</a>, <a href="../../../../ids/E2E-SYNC-006.html">E2E-SYNC-006</a>, <a href="../../../../ids/VR-HOME-001.html">VR-HOME-001</a>〜<a href="../../../../ids/VR-HOME-004.html">VR-HOME-004</a>（`../50_quality/test-link-index.md` 参照）</td>
+</tr>
+<tr id="L88">
+  <td class="line"><a href="#L88">88</a></td>
+  <td class="code">- CAP: `../30_capabilities/CAP-SYNC-001.md`, `../30_capabilities/CAP-SNAPSHOT-001.md`, `../30_capabilities/CAP-CSV-IMPORT-001.md`</td>
+</tr>
+<tr id="L89">
+  <td class="line"><a href="#L89">89</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+  </table>
+</section>
+  </main>
+</body>
+</html>

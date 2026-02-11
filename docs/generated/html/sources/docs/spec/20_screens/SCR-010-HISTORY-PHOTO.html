@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>docs/spec/20_screens/SCR-010-HISTORY-PHOTO.md ソース表示</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f6f8fb; color: #1f2937; }
+    .top-nav { display: flex; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #d7deea; background: #ffffff; }
+    .top-nav a { color: #0f4acb; text-decoration: none; font-weight: 600; }
+    .top-nav a:hover { text-decoration: underline; }
+    main { max-width: 1180px; margin: 0 auto; padding: 24px 20px 40px; }
+    h1 { margin: 0 0 12px; font-size: 1.6rem; }
+    h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    .lead { margin: 0 0 18px; color: #4b5563; }
+    .card { background: #ffffff; border: 1px solid #d7deea; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+    ul { margin: 8px 0 0; padding-left: 1.2rem; }
+    ol { margin: 8px 0 0; padding-left: 1.4rem; }
+    li { margin: 4px 0; }
+    a { color: #0f4acb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #eef3ff; border-radius: 4px; padding: 1px 4px; }
+    .muted { color: #6b7280; font-size: 0.92rem; }
+    .source-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    .source-table td { border-bottom: 1px solid #e5e7eb; vertical-align: top; padding: 2px 8px; }
+    .source-table .line { width: 82px; text-align: right; color: #6b7280; background: #ffffff; }
+    .source-table .line a { color: #6b7280; }
+    .source-table .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; overflow-wrap: anywhere; }
+    .pill { display: inline-block; border: 1px solid #d7deea; border-radius: 999px; padding: 2px 8px; font-size: 0.78rem; color: #475569; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <nav class="top-nav"><a href="../../../../index.html">HTML Index</a><a href="../../../../../index.md">Markdown Index</a></nav>
+  <main>
+    <h1>docs/spec/20_screens/SCR-010-HISTORY-PHOTO.md ソース表示</h1>
+    <p class="lead">行番号とIDアンカー付きで参照できます。</p>
+    <section class="card">
+  <h2><code>docs/spec/20_screens/SCR-010-HISTORY-PHOTO.md</code></h2>
+  <table class="source-table">
+<tr id="L1">
+  <td class="line"><a href="#L1">1</a></td>
+  <td class="code"><a id="SCR-010-HISTORY-PHOTO--L1"></a># <a href="../../../../screens/SCR-010-HISTORY-PHOTO.html">SCR-010-HISTORY-PHOTO</a></td>
+</tr>
+<tr id="L2">
+  <td class="line"><a href="#L2">2</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L3">
+  <td class="line"><a href="#L3">3</a></td>
+  <td class="code">## 1. メタ情報</td>
+</tr>
+<tr id="L4">
+  <td class="line"><a href="#L4">4</a></td>
+  <td class="code">- SCR ID: <a href="../../../../screens/SCR-010-HISTORY-PHOTO.html">SCR-010-HISTORY-PHOTO</a></td>
+</tr>
+<tr id="L5">
+  <td class="line"><a href="#L5">5</a></td>
+  <td class="code">- 画面名: 写真詳細</td>
+</tr>
+<tr id="L6">
+  <td class="line"><a href="#L6">6</a></td>
+  <td class="code">- Route/I/F: `/capd/history-photo/:photoId`</td>
+</tr>
+<tr id="L7">
+  <td class="line"><a href="#L7">7</a></td>
+  <td class="code">- 主JRN: <a href="../../../../journeys/JRN-008-HISTORY.html">JRN-008-HISTORY</a></td>
+</tr>
+<tr id="L8">
+  <td class="line"><a href="#L8">8</a></td>
+  <td class="code">- Phase: Phase1</td>
+</tr>
+<tr id="L9">
+  <td class="line"><a href="#L9">9</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L10">
+  <td class="line"><a href="#L10">10</a></td>
+  <td class="code">## 2. 目的と責務境界</td>
+</tr>
+<tr id="L11">
+  <td class="line"><a href="#L11">11</a></td>
+  <td class="code">- この画面で決めること: 写真単体の閲覧、撮影/登録情報の表示。</td>
+</tr>
+<tr id="L12">
+  <td class="line"><a href="#L12">12</a></td>
+  <td class="code">- この画面で決めないこと: 写真更新操作、削除操作、同期処理。</td>
+</tr>
+<tr id="L13">
+  <td class="line"><a href="#L13">13</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L14">
+  <td class="line"><a href="#L14">14</a></td>
+  <td class="code">## 3. UIワイヤー・レイアウト制約</td>
+</tr>
+<tr id="L15">
+  <td class="line"><a href="#L15">15</a></td>
+  <td class="code">- 参照: `../../../requirements/06_ui_wireframes_ab.md` 6章。</td>
+</tr>
+<tr id="L16">
+  <td class="line"><a href="#L16">16</a></td>
+  <td class="code">- 写真本体を主表示とし、メタ情報（photo kind, capturedAt）を補助表示。</td>
+</tr>
+<tr id="L17">
+  <td class="line"><a href="#L17">17</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L18">
+  <td class="line"><a href="#L18">18</a></td>
+  <td class="code">## 4. UI要素一覧</td>
+</tr>
+<tr id="L19">
+  <td class="line"><a href="#L19">19</a></td>
+  <td class="code">| UI ID | 要素 | 表示条件 | 入力制約 | セレクタ方針 |</td>
+</tr>
+<tr id="L20">
+  <td class="line"><a href="#L20">20</a></td>
+  <td class="code">|---|---|---|---|---|</td>
+</tr>
+<tr id="L21">
+  <td class="line"><a href="#L21">21</a></td>
+  <td class="code"><a id="UI-001-HISTORY-PHOTO--L21"></a><a id="UI-001-HISTORY-PHOTO"></a>| <a href="../../../../ids/UI-001-HISTORY-PHOTO.html">UI-001-HISTORY-PHOTO</a> | 写真表示領域 | `photoId` 有効 | 読み取り専用 | role/img |</td>
+</tr>
+<tr id="L22">
+  <td class="line"><a href="#L22">22</a></td>
+  <td class="code"><a id="UI-002-HISTORY-PHOTO--L22"></a><a id="UI-002-HISTORY-PHOTO"></a>| <a href="../../../../ids/UI-002-HISTORY-PHOTO.html">UI-002-HISTORY-PHOTO</a> | 写真メタ情報 | 写真あり | 読み取り専用 | role/status |</td>
+</tr>
+<tr id="L23">
+  <td class="line"><a href="#L23">23</a></td>
+  <td class="code"><a id="UI-003-HISTORY-PHOTO--L23"></a><a id="UI-003-HISTORY-PHOTO"></a>| <a href="../../../../ids/UI-003-HISTORY-PHOTO.html">UI-003-HISTORY-PHOTO</a> | 戻るリンク | 常時 | なし | role/link + name |</td>
+</tr>
+<tr id="L24">
+  <td class="line"><a href="#L24">24</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L25">
+  <td class="line"><a href="#L25">25</a></td>
+  <td class="code">## 5. 操作契約</td>
+</tr>
+<tr id="L26">
+  <td class="line"><a href="#L26">26</a></td>
+  <td class="code">| ACT ID | Guard | Side Effect | Success遷移 | Failure表示 |</td>
+</tr>
+<tr id="L27">
+  <td class="line"><a href="#L27">27</a></td>
+  <td class="code">|---|---|---|---|---|</td>
+</tr>
+<tr id="L28">
+  <td class="line"><a href="#L28">28</a></td>
+  <td class="code">| （なし） | - | - | - | - |</td>
+</tr>
+<tr id="L29">
+  <td class="line"><a href="#L29">29</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L30">
+  <td class="line"><a href="#L30">30</a></td>
+  <td class="code">- 本画面への遷移起点は `<a href="../../../../screens/SCR-008-HISTORY.html">SCR-008-HISTORY</a>.md` の `<a href="../../../../ids/ACT-HISTORY-001.html">ACT-HISTORY-001</a>` を一次仕様とします。</td>
+</tr>
+<tr id="L31">
+  <td class="line"><a href="#L31">31</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L32">
+  <td class="line"><a href="#L32">32</a></td>
+  <td class="code">## 6. データバインディング</td>
+</tr>
+<tr id="L33">
+  <td class="line"><a href="#L33">33</a></td>
+  <td class="code">| 区分 | Read | Write | Outbox | 反映タイミング |</td>
+</tr>
+<tr id="L34">
+  <td class="line"><a href="#L34">34</a></td>
+  <td class="code">|---|---|---|---|---|</td>
+</tr>
+<tr id="L35">
+  <td class="line"><a href="#L35">35</a></td>
+  <td class="code">| 写真本体 | `photoRefs`, `photos/{photoId}.jpg` | - | - | on load |</td>
+</tr>
+<tr id="L36">
+  <td class="line"><a href="#L36">36</a></td>
+  <td class="code">| 付随情報 | `photo_kind`, `captured_at` | - | - | on load |</td>
+</tr>
+<tr id="L37">
+  <td class="line"><a href="#L37">37</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L38">
+  <td class="line"><a href="#L38">38</a></td>
+  <td class="code">## 7. バリデーション / エラー文言 / 空状態</td>
+</tr>
+<tr id="L39">
+  <td class="line"><a href="#L39">39</a></td>
+  <td class="code">- バリデーション: `photoId` 必須。</td>
+</tr>
+<tr id="L40">
+  <td class="line"><a href="#L40">40</a></td>
+  <td class="code">- エラー文言: `写真が見つかりません。`</td>
+</tr>
+<tr id="L41">
+  <td class="line"><a href="#L41">41</a></td>
+  <td class="code">- 空状態: `表示できる写真がありません。`</td>
+</tr>
+<tr id="L42">
+  <td class="line"><a href="#L42">42</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L43">
+  <td class="line"><a href="#L43">43</a></td>
+  <td class="code">## 8. 権限・端末差分・フォールバック</td>
+</tr>
+<tr id="L44">
+  <td class="line"><a href="#L44">44</a></td>
+  <td class="code">- Mac/iPhoneともに閲覧可。</td>
+</tr>
+<tr id="L45">
+  <td class="line"><a href="#L45">45</a></td>
+  <td class="code">- オフラインで写真本体が未取得の場合は取得失敗表示。</td>
+</tr>
+<tr id="L46">
+  <td class="line"><a href="#L46">46</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L47">
+  <td class="line"><a href="#L47">47</a></td>
+  <td class="code">## 9. アクセシビリティ / キーボード</td>
+</tr>
+<tr id="L48">
+  <td class="line"><a href="#L48">48</a></td>
+  <td class="code">- 画像に代替テキストを設定。</td>
+</tr>
+<tr id="L49">
+  <td class="line"><a href="#L49">49</a></td>
+  <td class="code">- 戻るリンクを先頭フォーカス可能にします。</td>
+</tr>
+<tr id="L50">
+  <td class="line"><a href="#L50">50</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L51">
+  <td class="line"><a href="#L51">51</a></td>
+  <td class="code">## 10. 受入条件（GWT）</td>
+</tr>
+<tr id="L52">
+  <td class="line"><a href="#L52">52</a></td>
+  <td class="code">- Given 一覧に写真リンクがある</td>
+</tr>
+<tr id="L53">
+  <td class="line"><a href="#L53">53</a></td>
+  <td class="code">- When 詳細画面を開く</td>
+</tr>
+<tr id="L54">
+  <td class="line"><a href="#L54">54</a></td>
+  <td class="code">- Then 対応写真を表示する</td>
+</tr>
+<tr id="L55">
+  <td class="line"><a href="#L55">55</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L56">
+  <td class="line"><a href="#L56">56</a></td>
+  <td class="code">## 11. 参照リンク</td>
+</tr>
+<tr id="L57">
+  <td class="line"><a href="#L57">57</a></td>
+  <td class="code">- FR: <a href="../../../../ids/FR-014.html">FR-014</a>, <a href="../../../../ids/FR-014A.html">FR-014A</a>, <a href="../../../../ids/FR-090A.html">FR-090A</a></td>
+</tr>
+<tr id="L58">
+  <td class="line"><a href="#L58">58</a></td>
+  <td class="code">- AT: <a href="../../../../ids/AT-EXIT-008.html">AT-EXIT-008</a></td>
+</tr>
+<tr id="L59">
+  <td class="line"><a href="#L59">59</a></td>
+  <td class="code">- E2E/UT/VR: <a href="../../../../ids/E2E-EXIT-004.html">E2E-EXIT-004</a>, <a href="../../../../ids/VR-HISTORY-001.html">VR-HISTORY-001</a>, <a href="../../../../ids/VR-HISTORY-002.html">VR-HISTORY-002</a>（`../50_quality/test-link-index.md` 参照）</td>
+</tr>
+<tr id="L60">
+  <td class="line"><a href="#L60">60</a></td>
+  <td class="code">- CAP: `../30_capabilities/CAP-PHOTO-BACKUP-001.md`</td>
+</tr>
+<tr id="L61">
+  <td class="line"><a href="#L61">61</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+  </table>
+</section>
+  </main>
+</body>
+</html>

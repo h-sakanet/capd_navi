@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JRN-003-SESSION 詳細</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f6f8fb; color: #1f2937; }
+    .top-nav { display: flex; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #d7deea; background: #ffffff; }
+    .top-nav a { color: #0f4acb; text-decoration: none; font-weight: 600; }
+    .top-nav a:hover { text-decoration: underline; }
+    main { max-width: 1180px; margin: 0 auto; padding: 24px 20px 40px; }
+    h1 { margin: 0 0 12px; font-size: 1.6rem; }
+    h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    .lead { margin: 0 0 18px; color: #4b5563; }
+    .card { background: #ffffff; border: 1px solid #d7deea; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+    ul { margin: 8px 0 0; padding-left: 1.2rem; }
+    ol { margin: 8px 0 0; padding-left: 1.4rem; }
+    li { margin: 4px 0; }
+    a { color: #0f4acb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #eef3ff; border-radius: 4px; padding: 1px 4px; }
+    .muted { color: #6b7280; font-size: 0.92rem; }
+    .source-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    .source-table td { border-bottom: 1px solid #e5e7eb; vertical-align: top; padding: 2px 8px; }
+    .source-table .line { width: 82px; text-align: right; color: #6b7280; background: #ffffff; }
+    .source-table .line a { color: #6b7280; }
+    .source-table .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; overflow-wrap: anywhere; }
+    .pill { display: inline-block; border: 1px solid #d7deea; border-radius: 999px; padding: 2px 8px; font-size: 0.78rem; color: #475569; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <nav class="top-nav"><a href="../index.html">HTML Index</a><a href="../../index.md">Markdown Index</a></nav>
+  <main>
+    <h1>JRN-003-SESSION 詳細</h1>
+    <p class="lead">JRN-003-SESSION セッション進行と記録</p>
+    <section class="card">
+  <h2>対応FR</h2>
+<ul>
+<li><a href="../ids/FR-030.html"><code>FR-030</code></a> <span class="muted">- FR-030: 現在ステップのフェーズと状態を常時表示し、タイトルは通し番号付き（例</span></li>
+<li><a href="../ids/FR-031.html"><code>FR-031</code></a> <span class="muted">- FR-031: 必須チェック未完了時に次ステップ遷移を禁止します。</span></li>
+<li><a href="../ids/FR-032.html"><code>FR-032</code></a> <span class="muted">- FR-032: record_event 未完了時に次ステップ遷移を禁止します。</span></li>
+<li><a href="../ids/FR-033.html"><code>FR-033</code></a> <span class="muted">- FR-033: next_step_id に従い完全シリアルで遷移します。</span></li>
+<li><a href="../ids/FR-034.html"><code>FR-034</code></a> <span class="muted">- FR-034: 最終ステップ完了時にセッション完了状態へ遷移します。</span></li>
+<li><a href="../ids/FR-039.html"><code>FR-039</code></a> <span class="muted">- FR-039: セッション画面に「戻る」操作を提供し、直前ステップへ表示遷移できます。</span></li>
+<li><a href="../ids/FR-039A.html"><code>FR-039A</code></a> <span class="muted">- FR-039A: セッション画面の「戻る」と「次へ」は、iPhone/Macの双方で横並び・同幅で表示します。</span></li>
+<li><a href="../ids/FR-039C.html"><code>FR-039C</code></a> <span class="muted">- FR-039C: セッション画面のカルーセルは、左右ナビゲーションボタンを表示しません。</span></li>
+<li><a href="../ids/FR-040.html"><code>FR-040</code></a> <span class="muted">- FR-040: drain_appearance 入力モーダルを提供します。</span></li>
+<li><a href="../ids/FR-044D.html"><code>FR-044D</code></a> <span class="muted">- FR-044D: summaryScope が未指定または不正値でも保存拒否せず、summaryScope のみ破棄して他の妥当な入力値を保存します。</span></li>
+<li><a href="../ids/FR-071.html"><code>FR-071</code></a> <span class="muted">- FR-071: セッション開始時は SessionProtocolSnapshot をローカル同一トランザクションで保存し、保存失敗時は開始自体を失敗させます。</span></li>
+<li><a href="../ids/FR-072.html"><code>FR-072</code></a> <span class="muted">- FR-072: スナップショットには sourceProtocol(meta)、step定義本文（通し番号/タイトル/文言/必須チェック/timer/alarm/record）、画像 assetKey、assetManifest、snapshotHash を含めます。</span></li>
+<li><a href="../ids/FR-073.html"><code>FR-073</code></a> <span class="muted">- FR-073: セッション表示/再開時は開始時スナップショットを常に優先し、現行テンプレート版へフォールバックしません。</span></li>
+<li><a href="../ids/FR-074.html"><code>FR-074</code></a> <span class="muted">- FR-074: スナップショット欠落またはハッシュ不整合は整合性エラーとして扱い、セッション表示を停止します。</span></li>
+<li><a href="../ids/FR-075.html"><code>FR-075</code></a> <span class="muted">- FR-075: テンプレート新版の取り込み後も、開始済みセッションの表示内容は開始時スナップショットから変化しません。</span></li>
+</ul>
+</section>
+<section class="card">
+  <h2>対応AT</h2>
+<ul>
+<li><a href="../ids/AT-FLOW-001.html"><code>AT-FLOW-001</code></a> <span class="muted">必須チェック</span></li>
+<li><a href="../ids/AT-FLOW-002.html"><code>AT-FLOW-002</code></a> <span class="muted">記録ゲート</span></li>
+<li><a href="../ids/AT-FLOW-003.html"><code>AT-FLOW-003</code></a> <span class="muted">直列遷移</span></li>
+</ul>
+</section>
+<section class="card">
+  <h2>画面と操作</h2>
+  <h3>SCR</h3>
+<ul>
+<li><a href="../screens/SCR-006-SESSION.html"><code>SCR-006-SESSION</code></a> <span class="muted">Session</span></li>
+<li><a href="../screens/SCR-007-SESSION-RECORD.html"><code>SCR-007-SESSION-RECORD</code></a> <span class="muted">記録入力</span></li>
+<li><a href="../screens/SCR-009-HISTORY-DETAIL.html"><code>SCR-009-HISTORY-DETAIL</code></a> <span class="muted">記録詳細</span></li>
+</ul>
+  <h3>ACT</h3>
+<ul>
+<li><a href="../ids/ACT-SESSION-001.html"><code>ACT-SESSION-001</code></a> <span class="muted">次へ</span></li>
+<li><a href="../ids/ACT-SESSION-002.html"><code>ACT-SESSION-002</code></a> <span class="muted">戻る</span></li>
+<li><a href="../ids/ACT-SESSION-003.html"><code>ACT-SESSION-003</code></a> <span class="muted">記録保存</span></li>
+<li><a href="../ids/ACT-SESSION-004.html"><code>ACT-SESSION-004</code></a> <span class="muted">最終ステップ完了</span></li>
+</ul>
+</section>
+<section class="card">
+  <h2>定義位置</h2>
+<ul>
+<li><a href="../sources/docs/requirements/09_user_journeys.html#JRN-003-SESSION"><code>docs/requirements/09_user_journeys.md:18</code></a> <span class="muted">| JRN-003-SESSION | セッション進行と記録 | Mac/iPhone | 実施中セッションが存在する | 最終ステップ完了で `completed` になる | FR-030〜FR-044D | AT-FLOW-001〜AT-FLOW-003 | Phase1 |</span></li>
+<li><a href="../sources/docs/requirements/09_user_journeys.html#JRN-003-SESSION--L40"><code>docs/requirements/09_user_journeys.md:40</code></a> <span class="muted">### JRN-003-SESSION セッション進行と記録</span></li>
+<li><a href="../sources/docs/spec/10_journeys/journeys.html#JRN-003-SESSION--L25"><code>docs/spec/10_journeys/journeys.md:25</code></a> <span class="muted">| JRN-003-SESSION | セッション進行と記録 | 手技進行完了 | SCR-006-SESSION, SCR-007-SESSION-RECORD | completed 到達 | [link](./JRN-003-SESSION.md) |</span></li>
+<li><a href="../sources/docs/spec/10_journeys/JRN-003-SESSION.html#JRN-003-SESSION--L1"><code>docs/spec/10_journeys/JRN-003-SESSION.md:1</code></a> <span class="muted"># JRN-003-SESSION</span></li>
+</ul>
+</section>
+<section class="card">
+  <h2>補助リンク</h2>
+  <ul><li><a href="../../journeys/JRN-003-SESSION.md">JRN-003-SESSION.md</a></li></ul>
+</section>
+  </main>
+</body>
+</html>

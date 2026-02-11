@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>docs/spec/50_quality/traceability.md ソース表示</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f6f8fb; color: #1f2937; }
+    .top-nav { display: flex; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #d7deea; background: #ffffff; }
+    .top-nav a { color: #0f4acb; text-decoration: none; font-weight: 600; }
+    .top-nav a:hover { text-decoration: underline; }
+    main { max-width: 1180px; margin: 0 auto; padding: 24px 20px 40px; }
+    h1 { margin: 0 0 12px; font-size: 1.6rem; }
+    h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    .lead { margin: 0 0 18px; color: #4b5563; }
+    .card { background: #ffffff; border: 1px solid #d7deea; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+    ul { margin: 8px 0 0; padding-left: 1.2rem; }
+    ol { margin: 8px 0 0; padding-left: 1.4rem; }
+    li { margin: 4px 0; }
+    a { color: #0f4acb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #eef3ff; border-radius: 4px; padding: 1px 4px; }
+    .muted { color: #6b7280; font-size: 0.92rem; }
+    .source-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    .source-table td { border-bottom: 1px solid #e5e7eb; vertical-align: top; padding: 2px 8px; }
+    .source-table .line { width: 82px; text-align: right; color: #6b7280; background: #ffffff; }
+    .source-table .line a { color: #6b7280; }
+    .source-table .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; overflow-wrap: anywhere; }
+    .pill { display: inline-block; border: 1px solid #d7deea; border-radius: 999px; padding: 2px 8px; font-size: 0.78rem; color: #475569; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <nav class="top-nav"><a href="../../../../index.html">HTML Index</a><a href="../../../../../index.md">Markdown Index</a></nav>
+  <main>
+    <h1>docs/spec/50_quality/traceability.md ソース表示</h1>
+    <p class="lead">行番号とIDアンカー付きで参照できます。</p>
+    <section class="card">
+  <h2><code>docs/spec/50_quality/traceability.md</code></h2>
+  <table class="source-table">
+<tr id="L1">
+  <td class="line"><a href="#L1">1</a></td>
+  <td class="code"># Traceability Review View</td>
+</tr>
+<tr id="L2">
+  <td class="line"><a href="#L2">2</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L3">
+  <td class="line"><a href="#L3">3</a></td>
+  <td class="code">## 1. 目的</td>
+</tr>
+<tr id="L4">
+  <td class="line"><a href="#L4">4</a></td>
+  <td class="code">レビュー時に `JRN -&gt; SCR/CAP -&gt; FR -&gt; AT -&gt; Test` を1ページで辿れるようにします。</td>
+</tr>
+<tr id="L5">
+  <td class="line"><a href="#L5">5</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L6">
+  <td class="line"><a href="#L6">6</a></td>
+  <td class="code">## 2. トレース表（移行後）</td>
+</tr>
+<tr id="L7">
+  <td class="line"><a href="#L7">7</a></td>
+  <td class="code">| JRN | SCR/CAP | FR | AT | Test（実行正本） |</td>
+</tr>
+<tr id="L8">
+  <td class="line"><a href="#L8">8</a></td>
+  <td class="code">|---|---|---|---|---|</td>
+</tr>
+<tr id="L9">
+  <td class="line"><a href="#L9">9</a></td>
+  <td class="code">| <a href="../../../../journeys/JRN-001-CSV.html">JRN-001-CSV</a> | <a href="../../../../screens/SCR-001-HOME.html">SCR-001-HOME</a>, <a href="../../../../screens/SCR-012-MAC-IMPORT.html">SCR-012-MAC-IMPORT</a>, CAP-CSV-IMPORT-001 | <a href="../../../../ids/FR-020.html">FR-020</a>, <a href="../../../../ids/FR-021.html">FR-021</a>, <a href="../../../../ids/FR-022.html">FR-022</a>, <a href="../../../../ids/FR-023.html">FR-023</a>, <a href="../../../../ids/FR-024.html">FR-024</a>, <a href="../../../../ids/FR-070.html">FR-070</a>, <a href="../../../../ids/FR-082A.html">FR-082A</a> | <a href="../../../../ids/AT-CSV-001.html">AT-CSV-001</a>, <a href="../../../../ids/AT-CSV-002.html">AT-CSV-002</a>, <a href="../../../../ids/AT-CSV-003.html">AT-CSV-003</a>, <a href="../../../../ids/AT-CSV-004.html">AT-CSV-004</a>, <a href="../../../../ids/AT-API-003.html">AT-API-003</a> | <a href="../../../../ids/E2E-CSV-001.html">E2E-CSV-001</a>〜<a href="../../../../ids/E2E-CSV-004.html">E2E-CSV-004</a>, <a href="../../../../ids/E2E-API-002.html">E2E-API-002</a>, <a href="../../../../ids/UT-CSV-001.html">UT-CSV-001</a>〜<a href="../../../../ids/UT-CSV-011.html">UT-CSV-011</a> (`../../../test/specs/traceability-matrix.md`) |</td>
+</tr>
+<tr id="L10">
+  <td class="line"><a href="#L10">10</a></td>
+  <td class="code">| <a href="../../../../journeys/JRN-002-SLOT.html">JRN-002-SLOT</a> | <a href="../../../../screens/SCR-001-HOME.html">SCR-001-HOME</a>, <a href="../../../../screens/SCR-002-HOME-SETUP.html">SCR-002-HOME-SETUP</a>, <a href="../../../../screens/SCR-003-HOME-START-CONFIRM.html">SCR-003-HOME-START-CONFIRM</a>, <a href="../../../../screens/SCR-004-HOME-VIEW-CONFIRM.html">SCR-004-HOME-VIEW-CONFIRM</a> | <a href="../../../../ids/FR-007.html">FR-007</a>, <a href="../../../../ids/FR-008.html">FR-008</a>, <a href="../../../../ids/FR-009.html">FR-009</a>, <a href="../../../../ids/FR-009A.html">FR-009A</a>〜<a href="../../../../ids/FR-009H.html">FR-009H</a>, <a href="../../../../ids/FR-036.html">FR-036</a> | <a href="../../../../ids/AT-FLOW-004.html">AT-FLOW-004</a>, <a href="../../../../ids/AT-FLOW-005.html">AT-FLOW-005</a> | <a href="../../../../ids/E2E-FLOW-001.html">E2E-FLOW-001</a>〜<a href="../../../../ids/E2E-FLOW-002.html">E2E-FLOW-002</a>, <a href="../../../../ids/VR-HOME-001.html">VR-HOME-001</a>〜<a href="../../../../ids/VR-HOME-004.html">VR-HOME-004</a> (`../../../test/specs/traceability-matrix.md`) |</td>
+</tr>
+<tr id="L11">
+  <td class="line"><a href="#L11">11</a></td>
+  <td class="code">| <a href="../../../../journeys/JRN-003-SESSION.html">JRN-003-SESSION</a> | <a href="../../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a>, <a href="../../../../screens/SCR-007-SESSION-RECORD.html">SCR-007-SESSION-RECORD</a>, CAP-SNAPSHOT-001 | <a href="../../../../ids/FR-030.html">FR-030</a>〜<a href="../../../../ids/FR-034.html">FR-034</a>, <a href="../../../../ids/FR-039.html">FR-039</a>, <a href="../../../../ids/FR-039A.html">FR-039A</a>〜<a href="../../../../ids/FR-039C.html">FR-039C</a>, <a href="../../../../ids/FR-040.html">FR-040</a>〜<a href="../../../../ids/FR-044D.html">FR-044D</a>, <a href="../../../../ids/FR-071.html">FR-071</a>〜<a href="../../../../ids/FR-075.html">FR-075</a> | <a href="../../../../ids/AT-FLOW-001.html">AT-FLOW-001</a>, <a href="../../../../ids/AT-FLOW-002.html">AT-FLOW-002</a>, <a href="../../../../ids/AT-FLOW-003.html">AT-FLOW-003</a> | <a href="../../../../ids/E2E-FLOW-005.html">E2E-FLOW-005</a>〜<a href="../../../../ids/E2E-FLOW-007.html">E2E-FLOW-007</a>, <a href="../../../../ids/VR-SESSION-001.html">VR-SESSION-001</a>〜<a href="../../../../ids/VR-SESSION-003.html">VR-SESSION-003</a> (`../../../test/specs/traceability-matrix.md`) |</td>
+</tr>
+<tr id="L12">
+  <td class="line"><a href="#L12">12</a></td>
+  <td class="code">| <a href="../../../../journeys/JRN-004-ABORT.html">JRN-004-ABORT</a> | <a href="../../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a>, <a href="../../../../screens/SCR-001-HOME.html">SCR-001-HOME</a>, CAP-SNAPSHOT-001 | <a href="../../../../ids/FR-009G.html">FR-009G</a>, <a href="../../../../ids/FR-039D.html">FR-039D</a>, <a href="../../../../ids/FR-039E.html">FR-039E</a>, <a href="../../../../ids/FR-039F.html">FR-039F</a>, <a href="../../../../ids/FR-039G.html">FR-039G</a> | <a href="../../../../ids/AT-FLOW-006.html">AT-FLOW-006</a>, <a href="../../../../ids/AT-FLOW-007.html">AT-FLOW-007</a> | <a href="../../../../ids/E2E-FLOW-003.html">E2E-FLOW-003</a>〜<a href="../../../../ids/E2E-FLOW-004.html">E2E-FLOW-004</a>, <a href="../../../../ids/VR-SESSION-004.html">VR-SESSION-004</a> (`../../../test/specs/traceability-matrix.md`) |</td>
+</tr>
+<tr id="L13">
+  <td class="line"><a href="#L13">13</a></td>
+  <td class="code">| <a href="../../../../journeys/JRN-005-SYNC.html">JRN-005-SYNC</a> | <a href="../../../../screens/SCR-011-SYNC-STATUS.html">SCR-011-SYNC-STATUS</a>, <a href="../../../../screens/SCR-001-HOME.html">SCR-001-HOME</a>, CAP-SYNC-001 | <a href="../../../../ids/FR-080.html">FR-080</a>, <a href="../../../../ids/FR-081.html">FR-081</a>, <a href="../../../../ids/FR-082.html">FR-082</a>, <a href="../../../../ids/FR-082A.html">FR-082A</a>, <a href="../../../../ids/FR-083.html">FR-083</a>, <a href="../../../../ids/FR-084.html">FR-084</a>, <a href="../../../../ids/FR-085.html">FR-085</a>, <a href="../../../../ids/FR-086.html">FR-086</a>, <a href="../../../../ids/FR-088.html">FR-088</a>, <a href="../../../../ids/FR-089.html">FR-089</a>, <a href="../../../../ids/FR-089A.html">FR-089A</a> | <a href="../../../../ids/AT-SYNC-001.html">AT-SYNC-001</a>〜<a href="../../../../ids/AT-SYNC-006.html">AT-SYNC-006</a>, <a href="../../../../ids/AT-API-001.html">AT-API-001</a>, <a href="../../../../ids/AT-API-004.html">AT-API-004</a> | <a href="../../../../ids/E2E-SYNC-001.html">E2E-SYNC-001</a>〜<a href="../../../../ids/E2E-SYNC-006.html">E2E-SYNC-006</a>, <a href="../../../../ids/E2E-API-001.html">E2E-API-001</a>, <a href="../../../../ids/E2E-API-004.html">E2E-API-004</a> (`../../../test/specs/traceability-matrix.md`) |</td>
+</tr>
+<tr id="L14">
+  <td class="line"><a href="#L14">14</a></td>
+  <td class="code">| <a href="../../../../journeys/JRN-006-RECOVERY.html">JRN-006-RECOVERY</a> | <a href="../../../../screens/SCR-011-SYNC-STATUS.html">SCR-011-SYNC-STATUS</a>, CAP-RECOVERY-001 | <a href="../../../../ids/FR-087.html">FR-087</a>, <a href="../../../../ids/FR-087A.html">FR-087A</a>, <a href="../../../../ids/FR-087B.html">FR-087B</a>, <a href="../../../../ids/FR-087C.html">FR-087C</a>, <a href="../../../../ids/FR-087D.html">FR-087D</a>, <a href="../../../../ids/FR-088.html">FR-088</a> | <a href="../../../../ids/AT-RECOVERY-001.html">AT-RECOVERY-001</a>, <a href="../../../../ids/AT-RECOVERY-002.html">AT-RECOVERY-002</a>, <a href="../../../../ids/AT-RECOVERY-003.html">AT-RECOVERY-003</a> | <a href="../../../../ids/E2E-RECOVERY-001.html">E2E-RECOVERY-001</a>〜<a href="../../../../ids/E2E-RECOVERY-003.html">E2E-RECOVERY-003</a> (`../../../test/specs/traceability-matrix.md`) |</td>
+</tr>
+<tr id="L15">
+  <td class="line"><a href="#L15">15</a></td>
+  <td class="code">| <a href="../../../../journeys/JRN-007-ALARM.html">JRN-007-ALARM</a> | <a href="../../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a>, CAP-ALARM-001 | <a href="../../../../ids/FR-050.html">FR-050</a>, <a href="../../../../ids/FR-050A.html">FR-050A</a>〜<a href="../../../../ids/FR-050D.html">FR-050D</a>, <a href="../../../../ids/FR-051.html">FR-051</a>, <a href="../../../../ids/FR-052.html">FR-052</a>, <a href="../../../../ids/FR-052A.html">FR-052A</a>, <a href="../../../../ids/FR-052B.html">FR-052B</a>, <a href="../../../../ids/FR-053.html">FR-053</a>, <a href="../../../../ids/FR-054.html">FR-054</a>, <a href="../../../../ids/FR-055.html">FR-055</a>, <a href="../../../../ids/FR-055A.html">FR-055A</a>, <a href="../../../../ids/FR-055B.html">FR-055B</a>, <a href="../../../../ids/FR-056.html">FR-056</a>, <a href="../../../../ids/FR-057.html">FR-057</a>, <a href="../../../../ids/FR-057A.html">FR-057A</a>, <a href="../../../../ids/FR-058.html">FR-058</a>, <a href="../../../../ids/FR-058A.html">FR-058A</a>, <a href="../../../../ids/FR-058B.html">FR-058B</a> | <a href="../../../../ids/AT-ALARM-001.html">AT-ALARM-001</a>, <a href="../../../../ids/AT-ALARM-002.html">AT-ALARM-002</a>, <a href="../../../../ids/AT-ALARM-003.html">AT-ALARM-003</a>, <a href="../../../../ids/AT-ALARM-004.html">AT-ALARM-004</a> | <a href="../../../../ids/E2E-ALARM-001.html">E2E-ALARM-001</a>〜<a href="../../../../ids/E2E-ALARM-004.html">E2E-ALARM-004</a> (`../../../test/specs/traceability-matrix.md`) |</td>
+</tr>
+<tr id="L16">
+  <td class="line"><a href="#L16">16</a></td>
+  <td class="code">| <a href="../../../../journeys/JRN-008-HISTORY.html">JRN-008-HISTORY</a> | <a href="../../../../screens/SCR-008-HISTORY.html">SCR-008-HISTORY</a>, <a href="../../../../screens/SCR-009-HISTORY-DETAIL.html">SCR-009-HISTORY-DETAIL</a>, <a href="../../../../screens/SCR-010-HISTORY-PHOTO.html">SCR-010-HISTORY-PHOTO</a>, CAP-SNAPSHOT-001 | <a href="../../../../ids/FR-010.html">FR-010</a>, <a href="../../../../ids/FR-011.html">FR-011</a>, <a href="../../../../ids/FR-012.html">FR-012</a>, <a href="../../../../ids/FR-013.html">FR-013</a>, <a href="../../../../ids/FR-014.html">FR-014</a>, <a href="../../../../ids/FR-014A.html">FR-014A</a>, <a href="../../../../ids/FR-015.html">FR-015</a>, <a href="../../../../ids/FR-015A.html">FR-015A</a>, <a href="../../../../ids/FR-015B.html">FR-015B</a>, <a href="../../../../ids/FR-015C.html">FR-015C</a>, <a href="../../../../ids/FR-016.html">FR-016</a>, <a href="../../../../ids/FR-017.html">FR-017</a>, <a href="../../../../ids/FR-018.html">FR-018</a>, <a href="../../../../ids/FR-019.html">FR-019</a> | <a href="../../../../ids/AT-UI-HOME-001.html">AT-UI-HOME-001</a> | <a href="../../../../ids/VR-HISTORY-001.html">VR-HISTORY-001</a>, <a href="../../../../ids/VR-HISTORY-002.html">VR-HISTORY-002</a>, <a href="../../../../ids/UT-UF-001.html">UT-UF-001</a>〜<a href="../../../../ids/UT-UF-008.html">UT-UF-008</a> (`../../../test/specs/traceability-matrix.md`) |</td>
+</tr>
+<tr id="L17">
+  <td class="line"><a href="#L17">17</a></td>
+  <td class="code">| <a href="../../../../journeys/JRN-009-EXITPHOTO.html">JRN-009-EXITPHOTO</a> | <a href="../../../../screens/SCR-005-HOME-SUMMARY.html">SCR-005-HOME-SUMMARY</a>, <a href="../../../../screens/SCR-009-HISTORY-DETAIL.html">SCR-009-HISTORY-DETAIL</a>, <a href="../../../../screens/SCR-010-HISTORY-PHOTO.html">SCR-010-HISTORY-PHOTO</a>, CAP-PHOTO-BACKUP-001 | <a href="../../../../ids/FR-042A.html">FR-042A</a>, <a href="../../../../ids/FR-042B.html">FR-042B</a>, <a href="../../../../ids/FR-042C.html">FR-042C</a>, <a href="../../../../ids/FR-042D.html">FR-042D</a>, <a href="../../../../ids/FR-042E.html">FR-042E</a>, <a href="../../../../ids/FR-042F.html">FR-042F</a>, <a href="../../../../ids/FR-042G.html">FR-042G</a>, <a href="../../../../ids/FR-042H.html">FR-042H</a>, <a href="../../../../ids/FR-044C.html">FR-044C</a>, <a href="../../../../ids/FR-089A.html">FR-089A</a>, <a href="../../../../ids/FR-090.html">FR-090</a>, <a href="../../../../ids/FR-090A.html">FR-090A</a>, <a href="../../../../ids/FR-091.html">FR-091</a>, <a href="../../../../ids/FR-092.html">FR-092</a> | <a href="../../../../ids/AT-EXIT-001.html">AT-EXIT-001</a>〜<a href="../../../../ids/AT-EXIT-012.html">AT-EXIT-012</a>, <a href="../../../../ids/AT-PHOTO-001.html">AT-PHOTO-001</a>, <a href="../../../../ids/AT-BACKUP-001.html">AT-BACKUP-001</a> | <a href="../../../../ids/E2E-EXIT-001.html">E2E-EXIT-001</a>〜<a href="../../../../ids/E2E-EXIT-007.html">E2E-EXIT-007</a>, <a href="../../../../ids/E2E-PHOTO-001.html">E2E-PHOTO-001</a>, <a href="../../../../ids/E2E-BACKUP-001.html">E2E-BACKUP-001</a> (`../../../test/specs/traceability-matrix.md`) |</td>
+</tr>
+<tr id="L18">
+  <td class="line"><a href="#L18">18</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L19">
+  <td class="line"><a href="#L19">19</a></td>
+  <td class="code">## 3. 更新ルール</td>
+</tr>
+<tr id="L20">
+  <td class="line"><a href="#L20">20</a></td>
+  <td class="code">- `test/specs/traceability-matrix.md` を実行正本とし、本書はレビュー導線として同期更新します。</td>
+</tr>
+<tr id="L21">
+  <td class="line"><a href="#L21">21</a></td>
+  <td class="code">- 新規JRN/SCR/CAP追加時は、同一PRでFR/AT/Test接続を必須記載します。</td>
+</tr>
+<tr id="L22">
+  <td class="line"><a href="#L22">22</a></td>
+  <td class="code">- AT未接続のE2E追加、FR未接続のAT追加を禁止します。</td>
+</tr>
+<tr id="L23">
+  <td class="line"><a href="#L23">23</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+  </table>
+</section>
+  </main>
+</body>
+</html>

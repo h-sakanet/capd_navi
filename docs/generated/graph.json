@@ -1,0 +1,7553 @@
+{
+  "nodes": [
+    {
+      "id": "ACT-ALARM-001",
+      "type": "ACT",
+      "label": "ACT-ALARM-001 ACK"
+    },
+    {
+      "id": "ACT-EXIT-001",
+      "type": "ACT",
+      "label": "ACT-EXIT-001 出口部写真登録"
+    },
+    {
+      "id": "ACT-EXIT-002",
+      "type": "ACT",
+      "label": "ACT-EXIT-002 出口部写真変更"
+    },
+    {
+      "id": "ACT-EXIT-003",
+      "type": "ACT",
+      "label": "ACT-EXIT-003 出口部写真削除"
+    },
+    {
+      "id": "ACT-HISTORY-001",
+      "type": "ACT",
+      "label": "ACT-HISTORY-001 写真詳細を開く"
+    },
+    {
+      "id": "ACT-HOME-001",
+      "type": "ACT",
+      "label": "ACT-HOME-001 + で手技設定を開く"
+    },
+    {
+      "id": "ACT-HOME-002",
+      "type": "ACT",
+      "label": "ACT-HOME-002 手技設定を保存"
+    },
+    {
+      "id": "ACT-HOME-003",
+      "type": "ACT",
+      "label": "ACT-HOME-003 ••• > 確認"
+    },
+    {
+      "id": "ACT-HOME-004",
+      "type": "ACT",
+      "label": "ACT-HOME-004 ••• > 編集"
+    },
+    {
+      "id": "ACT-HOME-005",
+      "type": "ACT",
+      "label": "ACT-HOME-005 カード本体タップ"
+    },
+    {
+      "id": "ACT-HOME-006",
+      "type": "ACT",
+      "label": "ACT-HOME-006 確認モードで手順表示"
+    },
+    {
+      "id": "ACT-HOME-007",
+      "type": "ACT",
+      "label": "ACT-HOME-007 CSV取り込み"
+    },
+    {
+      "id": "ACT-HOME-008",
+      "type": "ACT",
+      "label": "ACT-HOME-008 開始/再開を確定"
+    },
+    {
+      "id": "ACT-HOME-010",
+      "type": "ACT",
+      "label": "ACT-HOME-010 なし"
+    },
+    {
+      "id": "ACT-HOME-011",
+      "type": "ACT",
+      "label": "ACT-HOME-011 なし"
+    },
+    {
+      "id": "ACT-SESSION-001",
+      "type": "ACT",
+      "label": "ACT-SESSION-001 次へ"
+    },
+    {
+      "id": "ACT-SESSION-002",
+      "type": "ACT",
+      "label": "ACT-SESSION-002 戻る"
+    },
+    {
+      "id": "ACT-SESSION-003",
+      "type": "ACT",
+      "label": "ACT-SESSION-003 記録保存"
+    },
+    {
+      "id": "ACT-SESSION-004",
+      "type": "ACT",
+      "label": "ACT-SESSION-004 最終ステップ完了"
+    },
+    {
+      "id": "ACT-SESSION-006",
+      "type": "ACT",
+      "label": "ACT-SESSION-006 非常中断"
+    },
+    {
+      "id": "ACT-SYNC-001",
+      "type": "ACT",
+      "label": "ACT-SYNC-001 自動同期（起動/復帰/完了）"
+    },
+    {
+      "id": "AT-ALARM-001",
+      "type": "AT",
+      "label": "AT-ALARM-001 T0通知"
+    },
+    {
+      "id": "AT-ALARM-002",
+      "type": "AT",
+      "label": "AT-ALARM-002 段階再通知"
+    },
+    {
+      "id": "AT-ALARM-003",
+      "type": "AT",
+      "label": "AT-ALARM-003 ACK停止"
+    },
+    {
+      "id": "AT-ALARM-004",
+      "type": "AT",
+      "label": "AT-ALARM-004 見逃し状態"
+    },
+    {
+      "id": "AT-API-001",
+      "type": "AT",
+      "label": "AT-API-001 公開API最小化"
+    },
+    {
+      "id": "AT-API-002",
+      "type": "AT",
+      "label": "AT-API-002 エクスポート廃止"
+    },
+    {
+      "id": "AT-API-003",
+      "type": "AT",
+      "label": "AT-API-003 CSVローカル完結"
+    },
+    {
+      "id": "AT-API-004",
+      "type": "AT",
+      "label": "AT-API-004 非暗号化キー"
+    },
+    {
+      "id": "AT-BACKUP-001",
+      "type": "AT",
+      "label": "AT-BACKUP-001 日次バックアップ"
+    },
+    {
+      "id": "AT-CSV-001",
+      "type": "AT",
+      "label": "AT-CSV-001 正常取込"
+    },
+    {
+      "id": "AT-CSV-002",
+      "type": "AT",
+      "label": "AT-CSV-002 重複検出"
+    },
+    {
+      "id": "AT-CSV-003",
+      "type": "AT",
+      "label": "AT-CSV-003 直列整合"
+    },
+    {
+      "id": "AT-CSV-004",
+      "type": "AT",
+      "label": "AT-CSV-004 画像存在"
+    },
+    {
+      "id": "AT-CSV-005",
+      "type": "AT",
+      "label": "AT-CSV-005 警告検知"
+    },
+    {
+      "id": "AT-EXIT-001",
+      "type": "AT",
+      "label": "AT-EXIT-001 表示前提（未完了）"
+    },
+    {
+      "id": "AT-EXIT-002",
+      "type": "AT",
+      "label": "AT-EXIT-002 表示前提（完了後）"
+    },
+    {
+      "id": "AT-EXIT-003",
+      "type": "AT",
+      "label": "AT-EXIT-003 両導線一貫性"
+    },
+    {
+      "id": "AT-EXIT-004",
+      "type": "AT",
+      "label": "AT-EXIT-004 端末制約"
+    },
+    {
+      "id": "AT-EXIT-005",
+      "type": "AT",
+      "label": "AT-EXIT-005 状態遷移（登録後）"
+    },
+    {
+      "id": "AT-EXIT-006",
+      "type": "AT",
+      "label": "AT-EXIT-006 1枚固定置換"
+    },
+    {
+      "id": "AT-EXIT-007",
+      "type": "AT",
+      "label": "AT-EXIT-007 削除挙動"
+    },
+    {
+      "id": "AT-EXIT-008",
+      "type": "AT",
+      "label": "AT-EXIT-008 保存後表示"
+    },
+    {
+      "id": "AT-EXIT-009",
+      "type": "AT",
+      "label": "AT-EXIT-009 同期反映"
+    },
+    {
+      "id": "AT-EXIT-010",
+      "type": "AT",
+      "label": "AT-EXIT-010 部分更新競合"
+    },
+    {
+      "id": "AT-EXIT-011",
+      "type": "AT",
+      "label": "AT-EXIT-011 both 対応"
+    },
+    {
+      "id": "AT-EXIT-012",
+      "type": "AT",
+      "label": "AT-EXIT-012 容量制御共通化"
+    },
+    {
+      "id": "AT-FLOW-001",
+      "type": "AT",
+      "label": "AT-FLOW-001 必須チェック"
+    },
+    {
+      "id": "AT-FLOW-002",
+      "type": "AT",
+      "label": "AT-FLOW-002 記録ゲート"
+    },
+    {
+      "id": "AT-FLOW-003",
+      "type": "AT",
+      "label": "AT-FLOW-003 直列遷移"
+    },
+    {
+      "id": "AT-FLOW-004",
+      "type": "AT",
+      "label": "AT-FLOW-004 端末内同時実行制限"
+    },
+    {
+      "id": "AT-FLOW-005",
+      "type": "AT",
+      "label": "AT-FLOW-005 左優先実行"
+    },
+    {
+      "id": "AT-FLOW-006",
+      "type": "AT",
+      "label": "AT-FLOW-006 予期せぬ離脱再開"
+    },
+    {
+      "id": "AT-FLOW-007",
+      "type": "AT",
+      "label": "AT-FLOW-007 非常中断"
+    },
+    {
+      "id": "AT-PHOTO-001",
+      "type": "AT",
+      "label": "AT-PHOTO-001 容量上限"
+    },
+    {
+      "id": "AT-PLAT-001",
+      "type": "AT",
+      "label": "AT-PLAT-001 iPhone利用"
+    },
+    {
+      "id": "AT-PLAT-002",
+      "type": "AT",
+      "label": "AT-PLAT-002 Mac利用"
+    },
+    {
+      "id": "AT-RECOVERY-001",
+      "type": "AT",
+      "label": "AT-RECOVERY-001 DB消失復元"
+    },
+    {
+      "id": "AT-RECOVERY-002",
+      "type": "AT",
+      "label": "AT-RECOVERY-002 クラウド欠損再シード"
+    },
+    {
+      "id": "AT-RECOVERY-003",
+      "type": "AT",
+      "label": "AT-RECOVERY-003 再シード失敗時保全"
+    },
+    {
+      "id": "AT-SLEEP-001",
+      "type": "AT",
+      "label": "AT-SLEEP-001 状態表示"
+    },
+    {
+      "id": "AT-SYNC-001",
+      "type": "AT",
+      "label": "AT-SYNC-001 起動時pull復元"
+    },
+    {
+      "id": "AT-SYNC-002",
+      "type": "AT",
+      "label": "AT-SYNC-002 完了時push反映"
+    },
+    {
+      "id": "AT-SYNC-003",
+      "type": "AT",
+      "label": "AT-SYNC-003 LWW内部適用"
+    },
+    {
+      "id": "AT-SYNC-004",
+      "type": "AT",
+      "label": "AT-SYNC-004 同日同スロット競合"
+    },
+    {
+      "id": "AT-SYNC-005",
+      "type": "AT",
+      "label": "AT-SYNC-005 手動同期消し込み"
+    },
+    {
+      "id": "AT-SYNC-006",
+      "type": "AT",
+      "label": "AT-SYNC-006 復帰時失敗導線"
+    },
+    {
+      "id": "AT-UI-HOME-001",
+      "type": "AT",
+      "label": "AT-UI-HOME-001 Home表示確認"
+    },
+    {
+      "id": "AT-UI-HOME-002",
+      "type": "AT",
+      "label": "AT-UI-HOME-002 Home初期状態"
+    },
+    {
+      "id": "AT-UI-SESSION-001",
+      "type": "AT",
+      "label": "AT-UI-SESSION-001 Session表示確認"
+    },
+    {
+      "id": "DATA:acked_at",
+      "type": "DATA",
+      "label": "acked_at"
+    },
+    {
+      "id": "DATA:activeSession",
+      "type": "DATA",
+      "label": "activeSession"
+    },
+    {
+      "id": "DATA:alarm_ack",
+      "type": "DATA",
+      "label": "alarm_ack"
+    },
+    {
+      "id": "DATA:AlarmDispatchJob.pendingAlarm",
+      "type": "DATA",
+      "label": "AlarmDispatchJob.pendingAlarm"
+    },
+    {
+      "id": "DATA:daily_plan",
+      "type": "DATA",
+      "label": "daily_plan"
+    },
+    {
+      "id": "DATA:dailyProcedurePlan",
+      "type": "DATA",
+      "label": "dailyProcedurePlan"
+    },
+    {
+      "id": "DATA:DailyProcedurePlan.dateLocal",
+      "type": "DATA",
+      "label": "DailyProcedurePlan.dateLocal"
+    },
+    {
+      "id": "DATA:DailyProcedurePlan.slots[*].displayStatus",
+      "type": "DATA",
+      "label": "DailyProcedurePlan.slots[*].displayStatus"
+    },
+    {
+      "id": "DATA:DayBundle.records",
+      "type": "DATA",
+      "label": "DayBundle.records"
+    },
+    {
+      "id": "DATA:FC-*",
+      "type": "DATA",
+      "label": "FC-*"
+    },
+    {
+      "id": "DATA:lastError",
+      "type": "DATA",
+      "label": "lastError"
+    },
+    {
+      "id": "DATA:lastSyncedAt",
+      "type": "DATA",
+      "label": "lastSyncedAt"
+    },
+    {
+      "id": "DATA:payload.exit_site_photo",
+      "type": "DATA",
+      "label": "payload.exit_site_photo"
+    },
+    {
+      "id": "DATA:photoRefs",
+      "type": "DATA",
+      "label": "photoRefs"
+    },
+    {
+      "id": "DATA:photos/*",
+      "type": "DATA",
+      "label": "photos/*"
+    },
+    {
+      "id": "DATA:platform",
+      "type": "DATA",
+      "label": "platform"
+    },
+    {
+      "id": "DATA:protocol",
+      "type": "DATA",
+      "label": "protocol"
+    },
+    {
+      "id": "DATA:ProtocolPackage",
+      "type": "DATA",
+      "label": "ProtocolPackage"
+    },
+    {
+      "id": "DATA:recommendedAtLocal",
+      "type": "DATA",
+      "label": "recommendedAtLocal"
+    },
+    {
+      "id": "DATA:record",
+      "type": "DATA",
+      "label": "record"
+    },
+    {
+      "id": "DATA:Record",
+      "type": "DATA",
+      "label": "Record"
+    },
+    {
+      "id": "DATA:record_exchange_no)",
+      "type": "DATA",
+      "label": "record_exchange_no)"
+    },
+    {
+      "id": "DATA:Record(record_event",
+      "type": "DATA",
+      "label": "Record(record_event"
+    },
+    {
+      "id": "DATA:Record(session_summary.payload.exit_site_photo)",
+      "type": "DATA",
+      "label": "Record(session_summary.payload.exit_site_photo)"
+    },
+    {
+      "id": "DATA:Record(timer_event",
+      "type": "DATA",
+      "label": "Record(timer_event"
+    },
+    {
+      "id": "DATA:record完了状態",
+      "type": "DATA",
+      "label": "record完了状態"
+    },
+    {
+      "id": "DATA:requiredChecks達成状態",
+      "type": "DATA",
+      "label": "requiredChecks達成状態"
+    },
+    {
+      "id": "DATA:session",
+      "type": "DATA",
+      "label": "session"
+    },
+    {
+      "id": "DATA:Session",
+      "type": "DATA",
+      "label": "Session"
+    },
+    {
+      "id": "DATA:session_progress",
+      "type": "DATA",
+      "label": "session_progress"
+    },
+    {
+      "id": "DATA:Session.currentStepId",
+      "type": "DATA",
+      "label": "Session.currentStepId"
+    },
+    {
+      "id": "DATA:Session.status=aborted",
+      "type": "DATA",
+      "label": "Session.status=aborted"
+    },
+    {
+      "id": "DATA:Session.status=active",
+      "type": "DATA",
+      "label": "Session.status=active"
+    },
+    {
+      "id": "DATA:SessionProtocolSnapshot.steps[*]",
+      "type": "DATA",
+      "label": "SessionProtocolSnapshot.steps[*]"
+    },
+    {
+      "id": "DATA:sessions",
+      "type": "DATA",
+      "label": "sessions"
+    },
+    {
+      "id": "DATA:slot.status=pending",
+      "type": "DATA",
+      "label": "slot.status=pending"
+    },
+    {
+      "id": "DATA:slots[*].protocolTitle",
+      "type": "DATA",
+      "label": "slots[*].protocolTitle"
+    },
+    {
+      "id": "DATA:slots[n]",
+      "type": "DATA",
+      "label": "slots[n]"
+    },
+    {
+      "id": "DATA:slots[n].displayStatus",
+      "type": "DATA",
+      "label": "slots[n].displayStatus"
+    },
+    {
+      "id": "DATA:steps[*].requiredChecks",
+      "type": "DATA",
+      "label": "steps[*].requiredChecks"
+    },
+    {
+      "id": "DATA:SyncState",
+      "type": "DATA",
+      "label": "SyncState"
+    },
+    {
+      "id": "DATA:SyncState.lastSyncStatus",
+      "type": "DATA",
+      "label": "SyncState.lastSyncStatus"
+    },
+    {
+      "id": "DATA:timer_exchange_no)",
+      "type": "DATA",
+      "label": "timer_exchange_no)"
+    },
+    {
+      "id": "E2E-ALARM-001",
+      "type": "E2E",
+      "label": "E2E-ALARM-001"
+    },
+    {
+      "id": "E2E-ALARM-002",
+      "type": "E2E",
+      "label": "E2E-ALARM-002"
+    },
+    {
+      "id": "E2E-ALARM-003",
+      "type": "E2E",
+      "label": "E2E-ALARM-003"
+    },
+    {
+      "id": "E2E-ALARM-004",
+      "type": "E2E",
+      "label": "E2E-ALARM-004"
+    },
+    {
+      "id": "E2E-API-001",
+      "type": "E2E",
+      "label": "E2E-API-001"
+    },
+    {
+      "id": "E2E-API-002",
+      "type": "E2E",
+      "label": "E2E-API-002"
+    },
+    {
+      "id": "E2E-API-003",
+      "type": "E2E",
+      "label": "E2E-API-003"
+    },
+    {
+      "id": "E2E-API-004",
+      "type": "E2E",
+      "label": "E2E-API-004"
+    },
+    {
+      "id": "E2E-BACKUP-001",
+      "type": "E2E",
+      "label": "E2E-BACKUP-001"
+    },
+    {
+      "id": "E2E-CSV-001",
+      "type": "E2E",
+      "label": "E2E-CSV-001"
+    },
+    {
+      "id": "E2E-CSV-002",
+      "type": "E2E",
+      "label": "E2E-CSV-002"
+    },
+    {
+      "id": "E2E-CSV-003",
+      "type": "E2E",
+      "label": "E2E-CSV-003"
+    },
+    {
+      "id": "E2E-CSV-004",
+      "type": "E2E",
+      "label": "E2E-CSV-004"
+    },
+    {
+      "id": "E2E-CSV-005",
+      "type": "E2E",
+      "label": "E2E-CSV-005"
+    },
+    {
+      "id": "E2E-EXIT-001",
+      "type": "E2E",
+      "label": "E2E-EXIT-001"
+    },
+    {
+      "id": "E2E-EXIT-002",
+      "type": "E2E",
+      "label": "E2E-EXIT-002"
+    },
+    {
+      "id": "E2E-EXIT-003",
+      "type": "E2E",
+      "label": "E2E-EXIT-003"
+    },
+    {
+      "id": "E2E-EXIT-004",
+      "type": "E2E",
+      "label": "E2E-EXIT-004"
+    },
+    {
+      "id": "E2E-EXIT-005",
+      "type": "E2E",
+      "label": "E2E-EXIT-005"
+    },
+    {
+      "id": "E2E-EXIT-006",
+      "type": "E2E",
+      "label": "E2E-EXIT-006"
+    },
+    {
+      "id": "E2E-EXIT-007",
+      "type": "E2E",
+      "label": "E2E-EXIT-007"
+    },
+    {
+      "id": "E2E-FLOW-001",
+      "type": "E2E",
+      "label": "E2E-FLOW-001"
+    },
+    {
+      "id": "E2E-FLOW-002",
+      "type": "E2E",
+      "label": "E2E-FLOW-002"
+    },
+    {
+      "id": "E2E-FLOW-003",
+      "type": "E2E",
+      "label": "E2E-FLOW-003"
+    },
+    {
+      "id": "E2E-FLOW-004",
+      "type": "E2E",
+      "label": "E2E-FLOW-004"
+    },
+    {
+      "id": "E2E-FLOW-005",
+      "type": "E2E",
+      "label": "E2E-FLOW-005"
+    },
+    {
+      "id": "E2E-FLOW-006",
+      "type": "E2E",
+      "label": "E2E-FLOW-006"
+    },
+    {
+      "id": "E2E-FLOW-007",
+      "type": "E2E",
+      "label": "E2E-FLOW-007"
+    },
+    {
+      "id": "E2E-PHOTO-001",
+      "type": "E2E",
+      "label": "E2E-PHOTO-001"
+    },
+    {
+      "id": "E2E-PLAT-001",
+      "type": "E2E",
+      "label": "E2E-PLAT-001"
+    },
+    {
+      "id": "E2E-PLAT-002",
+      "type": "E2E",
+      "label": "E2E-PLAT-002"
+    },
+    {
+      "id": "E2E-RECOVERY-001",
+      "type": "E2E",
+      "label": "E2E-RECOVERY-001"
+    },
+    {
+      "id": "E2E-RECOVERY-002",
+      "type": "E2E",
+      "label": "E2E-RECOVERY-002"
+    },
+    {
+      "id": "E2E-RECOVERY-003",
+      "type": "E2E",
+      "label": "E2E-RECOVERY-003"
+    },
+    {
+      "id": "E2E-SLEEP-001",
+      "type": "E2E",
+      "label": "E2E-SLEEP-001"
+    },
+    {
+      "id": "E2E-SYNC-001",
+      "type": "E2E",
+      "label": "E2E-SYNC-001"
+    },
+    {
+      "id": "E2E-SYNC-002",
+      "type": "E2E",
+      "label": "E2E-SYNC-002"
+    },
+    {
+      "id": "E2E-SYNC-003",
+      "type": "E2E",
+      "label": "E2E-SYNC-003"
+    },
+    {
+      "id": "E2E-SYNC-004",
+      "type": "E2E",
+      "label": "E2E-SYNC-004"
+    },
+    {
+      "id": "E2E-SYNC-005",
+      "type": "E2E",
+      "label": "E2E-SYNC-005"
+    },
+    {
+      "id": "E2E-SYNC-006",
+      "type": "E2E",
+      "label": "E2E-SYNC-006"
+    },
+    {
+      "id": "FC-BAG-WEIGHT-001",
+      "type": "FC",
+      "label": "FC-BAG-WEIGHT-001 注液量"
+    },
+    {
+      "id": "FC-DRAIN-APPEARANCE-001",
+      "type": "FC",
+      "label": "FC-DRAIN-APPEARANCE-001 排液の確認"
+    },
+    {
+      "id": "FC-DRAIN-WEIGHT-001",
+      "type": "FC",
+      "label": "FC-DRAIN-WEIGHT-001 排液量"
+    },
+    {
+      "id": "FC-SLOT-SETUP-001",
+      "type": "FC",
+      "label": "FC-SLOT-SETUP-001 手技設定"
+    },
+    {
+      "id": "FC-SUMMARY-001",
+      "type": "FC",
+      "label": "FC-SUMMARY-001 summaryScope=first_of_day"
+    },
+    {
+      "id": "FC-SUMMARY-002",
+      "type": "FC",
+      "label": "FC-SUMMARY-002 summaryScope=last_of_day"
+    },
+    {
+      "id": "FC-SUMMARY-003",
+      "type": "FC",
+      "label": "FC-SUMMARY-003 summaryScope=both"
+    },
+    {
+      "id": "FR-001",
+      "type": "FR",
+      "label": "- FR-001: 複数手技テンプレート一覧を表示します。"
+    },
+    {
+      "id": "FR-002",
+      "type": "FR",
+      "label": "- FR-002: テンプレートごとに名称、版、有効開始日を表示します。"
+    },
+    {
+      "id": "FR-003",
+      "type": "FR",
+      "label": "- FR-003: 選択した1手技でセッションを開始します。"
+    },
+    {
+      "id": "FR-004",
+      "type": "FR",
+      "label": "- FR-004: 手技開始通知は本アプリ対象外とし、Mac/iPhoneの時計アプリ等の外部アラームで運用します。"
+    },
+    {
+      "id": "FR-004A",
+      "type": "FR",
+      "label": "- FR-004A: ホームに「手技開始通知は外部アラーム運用」の注記を表示します。"
+    },
+    {
+      "id": "FR-005",
+      "type": "FR",
+      "label": "- FR-005: ホームには手技開始情報に加え、当日分のみCAPD記録ノート互換表を表示します（過去分は一覧画面で表示）。"
+    },
+    {
+      "id": "FR-005A",
+      "type": "FR",
+      "label": "- FR-005A: ホームAの先頭見出しは日付と曜日を表示し、手技スロットと当日ノート表は同一パネル内に配置します。"
+    },
+    {
+      "id": "FR-006",
+      "type": "FR",
+      "label": "- FR-006: ホームから「記録一覧」画面へ遷移できる導線を提供します。"
+    },
+    {
+      "id": "FR-007",
+      "type": "FR",
+      "label": "- FR-007: ホームAスパイクでは、1日あたり4件の手技スロットを横並びで表示します。"
+    },
+    {
+      "id": "FR-008",
+      "type": "FR",
+      "label": "- FR-008: 手技スロットの初期状態は「+ のみ表示」とし、+ 押下で手技設定モーダル（CSV選択、推奨実施時間）を開きます。"
+    },
+    {
+      "id": "FR-009",
+      "type": "FR",
+      "label": "- FR-009: 手技設定後は「カード本体タップ=開始」とし、開始前に「手技の開始」確認ダイアログを表示します。"
+    },
+    {
+      "id": "FR-009A",
+      "type": "FR",
+      "label": "- FR-009A: 右上 ••• メニューから「確認/編集」を開きます。確認モーダルは閲覧専用とし、ここからの「開始/再開」は手順表示のみ（確認モード）とします。確認モードでは記録保存、タイマー開始、通知ジョブ生成、アラーム設定、スロット/セッション状態更新、同期対象更新を行いません。"
+    },
+    {
+      "id": "FR-009B",
+      "type": "FR",
+      "label": "- FR-009B: 手技スロットの表示状態は 未登録(+) / 未実施 / 実施中 / 実施済み とします。実施済み のカード本体タップは無効化します。"
+    },
+    {
+      "id": "FR-009C",
+      "type": "FR",
+      "label": "- FR-009C: スロット登録時は、右隣スロットほど推奨実施時間が遅くなるように検証します（左から右へ厳密昇順、同時刻不可）。"
+    },
+    {
+      "id": "FR-009D",
+      "type": "FR",
+      "label": "- FR-009D: 右側スロットの開始時は、左側スロットがすべて 実施済み であることを必須条件にします（未登録/未実施が1件でもあれば開始不可）。"
+    },
+    {
+      "id": "FR-009E",
+      "type": "FR",
+      "label": "- FR-009E: 4スロット設定は dateLocal 単位でローカル永続化し、同期時に localRevision と cloudRevision を更新します。"
+    },
+    {
+      "id": "FR-009F",
+      "type": "FR",
+      "label": "- FR-009F: 実施済み スロットは編集/削除不可とします。同一端末で進行中セッションがある間は全スロット編集を禁止します。"
+    },
+    {
+      "id": "FR-009G",
+      "type": "FR",
+      "label": "- FR-009G: 実施中 スロットをタップした場合は新規開始せず、進行中セッションを再開します。"
+    },
+    {
+      "id": "FR-009H",
+      "type": "FR",
+      "label": "- FR-009H: 記録やタイマーを伴う実運用セッション開始/再開はカード本体タップ導線で実行し、••• > 確認 導線は閲覧専用（確認モード）とします。"
+    },
+    {
+      "id": "FR-010",
+      "type": "FR",
+      "label": "- FR-010: 記録一覧画面で日々の手技記録を一覧表示します。"
+    },
+    {
+      "id": "FR-011",
+      "type": "FR",
+      "label": "- FR-011: 記録一覧画面で詳細表示と編集導線を提供します。"
+    },
+    {
+      "id": "FR-012",
+      "type": "FR",
+      "label": "- FR-012: 記録編集はLWWメタ（updatedAt, updatedByDeviceId, mutationId）を保持して競合解決可能な状態にします。"
+    },
+    {
+      "id": "FR-013",
+      "type": "FR",
+      "label": "- FR-013: 記録一覧にはCAPDノート準拠項目（貯留時間、透析液濃度、排液量、注液量、排液時間、排液の確認、除水量、尿量、飲水量、体重、排便、血圧、出口部状態、備考）を表示します。"
+    },
+    {
+      "id": "FR-014",
+      "type": "FR",
+      "label": "- FR-014: 写真はサムネイル固定表示ではなく、リンク押下で写真詳細画面へ遷移します。"
+    },
+    {
+      "id": "FR-014A",
+      "type": "FR",
+      "label": "- FR-014A: 記録一覧には既存写真列とは別に 出口部写真 列を追加し、未登録 / 表示 を切り替えます。"
+    },
+    {
+      "id": "FR-015",
+      "type": "FR",
+      "label": "- FR-015: 交換ごとの除水量と1日の総除水量は、排液量 - 前回注液量 の差し引きで自動計算表示します。"
+    },
+    {
+      "id": "FR-015A",
+      "type": "FR",
+      "label": "- FR-015A: 初回交換（#1列）は前回注液量が存在しないため、除水量は 未計算 表示とします。"
+    },
+    {
+      "id": "FR-015B",
+      "type": "FR",
+      "label": "- FR-015B: 1日の総除水量は、計算可能な交換（#2列以降で前回注液量が存在する交換）のみを合算します。"
+    },
+    {
+      "id": "FR-015C",
+      "type": "FR",
+      "label": "- FR-015C: opening_infuse_weight_g（初期注液量）は v1 では空欄許容とし、除水量計算に使用しません。"
+    },
+    {
+      "id": "FR-016",
+      "type": "FR",
+      "label": "- FR-016: 当日ノート表と記録一覧の交換列は #1〜#5 の5列固定とし、列位置は *_exchange_no で決定します。"
+    },
+    {
+      "id": "FR-017",
+      "type": "FR",
+      "label": "- FR-017: 透析液濃度欄は、取り込みCSVのタイトル（例"
+    },
+    {
+      "id": "FR-018",
+      "type": "FR",
+      "label": "- FR-018: record_event の値は record_exchange_no で列マッピングし、drain_weight_g は排液量、bag_weight_g は注液量、drain_appearance は排液の確認に表示します。"
+    },
+    {
+      "id": "FR-019",
+      "type": "FR",
+      "label": "- FR-019: timer_event の値は timer_exchange_no で列マッピングし、timer_segment=dwell の start/end は貯留時間、timer_segment=drain の start/end は排液時間に表示します。"
+    },
+    {
+      "id": "FR-020",
+      "type": "FR",
+      "label": "- FR-020: MacネイティブシェルでCSV+画像ディレクトリを選択できます。"
+    },
+    {
+      "id": "FR-021",
+      "type": "FR",
+      "label": "- FR-021: CSV v3フォーマットのみ受け付けます。"
+    },
+    {
+      "id": "FR-022",
+      "type": "FR",
+      "label": "- FR-022: 検証エラー1件以上で取り込みを中止します。"
+    },
+    {
+      "id": "FR-023",
+      "type": "FR",
+      "label": "- FR-023: 警告は取り込み結果画面で一覧表示します。"
+    },
+    {
+      "id": "FR-024",
+      "type": "FR",
+      "label": "- FR-024: 画像相対パスを protocol.csv ディレクトリ基準で解決します。"
+    },
+    {
+      "id": "FR-030",
+      "type": "FR",
+      "label": "- FR-030: 現在ステップのフェーズと状態を常時表示し、タイトルは通し番号付き（例"
+    },
+    {
+      "id": "FR-031",
+      "type": "FR",
+      "label": "- FR-031: 必須チェック未完了時に次ステップ遷移を禁止します。"
+    },
+    {
+      "id": "FR-032",
+      "type": "FR",
+      "label": "- FR-032: record_event 未完了時に次ステップ遷移を禁止します。"
+    },
+    {
+      "id": "FR-033",
+      "type": "FR",
+      "label": "- FR-033: next_step_id に従い完全シリアルで遷移します。"
+    },
+    {
+      "id": "FR-034",
+      "type": "FR",
+      "label": "- FR-034: 最終ステップ完了時にセッション完了状態へ遷移します。"
+    },
+    {
+      "id": "FR-035",
+      "type": "FR",
+      "label": "- FR-035: セッション開始端末のみ進行更新できます。"
+    },
+    {
+      "id": "FR-036",
+      "type": "FR",
+      "label": "- FR-036: 同時実行セッションを端末ごとに1件へ制限します。"
+    },
+    {
+      "id": "FR-037",
+      "type": "FR",
+      "label": "- FR-037: セッション画面の手順画像は1"
+    },
+    {
+      "id": "FR-038",
+      "type": "FR",
+      "label": "- FR-038: セッション画面は iPhoneで1カラム、Macで2カラム表示に切り替えます。"
+    },
+    {
+      "id": "FR-039",
+      "type": "FR",
+      "label": "- FR-039: セッション画面に「戻る」操作を提供し、直前ステップへ表示遷移できます。"
+    },
+    {
+      "id": "FR-039A",
+      "type": "FR",
+      "label": "- FR-039A: セッション画面の「戻る」と「次へ」は、iPhone/Macの双方で横並び・同幅で表示します。"
+    },
+    {
+      "id": "FR-039B",
+      "type": "FR",
+      "label": "- FR-039B: 「次へ」「戻る」押下時、および Enter キーによる次ステップ遷移時は、メインパネルを左右スライドで遷移表示します。"
+    },
+    {
+      "id": "FR-039C",
+      "type": "FR",
+      "label": "- FR-039C: セッション画面のカルーセルは、左右ナビゲーションボタンを表示しません。"
+    },
+    {
+      "id": "FR-039D",
+      "type": "FR",
+      "label": "- FR-039D: セッション画面右上 ••• メニューに セッションを中断（非常用） を配置します。"
+    },
+    {
+      "id": "FR-039E",
+      "type": "FR",
+      "label": "- FR-039E: セッションを中断（非常用） は確認ダイアログを経て実行し、中断後はホームへ戻します。"
+    },
+    {
+      "id": "FR-039F",
+      "type": "FR",
+      "label": "- FR-039F: 明示中断時はセッションを aborted で終了し、対応スロットの表示状態を 未実施 へ戻します。"
+    },
+    {
+      "id": "FR-039G",
+      "type": "FR",
+      "label": "- FR-039G: ホームのスロットには 前回中断あり の表示を出しません（履歴は記録一覧で確認）。"
+    },
+    {
+      "id": "FR-040",
+      "type": "FR",
+      "label": "- FR-040: drain_appearance 入力モーダルを提供します。"
+    },
+    {
+      "id": "FR-041",
+      "type": "FR",
+      "label": "- FR-041: 見た目分類は 透明/やや混濁/混濁/血性/その他 を提供します。"
+    },
+    {
+      "id": "FR-042",
+      "type": "FR",
+      "label": "- FR-042: 廃液の記録写真（drain）は任意入力です。"
+    },
+    {
+      "id": "FR-042A",
+      "type": "FR",
+      "label": "- FR-042A: 出口部の記録写真（exit_site）は session_summary.payload.exit_site_photo に保存します（record_event は追加しません）。"
+    },
+    {
+      "id": "FR-042B",
+      "type": "FR",
+      "label": "- FR-042B: 出口部写真の対象レコードは当日 summaryScope=both を最優先し、次に summaryScope=first_of_day を採用します。同値時は completedAt 昇順、さらに同値時は recordId 昇順で決定します。"
+    },
+    {
+      "id": "FR-042C",
+      "type": "FR",
+      "label": "- FR-042C: 出口部写真の登録導線は、対象 session_summary の入力完了後に表示します。"
+    },
+    {
+      "id": "FR-042D",
+      "type": "FR",
+      "label": "- FR-042D: 出口部写真の操作導線は iPhoneホーム全体サマリ と iPhone記録詳細 の両方に表示します。Macは閲覧リンクのみ表示し、登録/変更/削除操作は許可しません。"
+    },
+    {
+      "id": "FR-042E",
+      "type": "FR",
+      "label": "- FR-042E: 出口部写真は1レコード1枚固定とし、登録後は 変更 と 削除 を許可します。"
+    },
+    {
+      "id": "FR-042F",
+      "type": "FR",
+      "label": "- FR-042F: 出口部写真の入力手段は iPhone の カメラ撮影 と ファイル選択 の両方を許可します。"
+    },
+    {
+      "id": "FR-042G",
+      "type": "FR",
+      "label": "- FR-042G: 出口部写真は任意入力であり、未登録でも手技完了を阻害しません。"
+    },
+    {
+      "id": "FR-042H",
+      "type": "FR",
+      "label": "- FR-042H: 出口部写真の削除時は session_summary.payload.exit_site_photo=null を保存し、対応画像は tombstone 化します。"
+    },
+    {
+      "id": "FR-043",
+      "type": "FR",
+      "label": "- FR-043: drain_weight_g と bag_weight_g を g単位で保存します。"
+    },
+    {
+      "id": "FR-044",
+      "type": "FR",
+      "label": "- FR-044: session_summary で以下を収集します。"
+    },
+    {
+      "id": "FR-044A",
+      "type": "FR",
+      "label": "- FR-044A: 同一日に1セッションのみ完了した場合は、最初/最後の両条件を同時適用し、必須項目をすべて満たす必要があります。"
+    },
+    {
+      "id": "FR-044B",
+      "type": "FR",
+      "label": "- FR-044B: 出口部状態は複数選択チェックボックスで入力し、語彙は 正常/赤み/痛み/はれ/かさぶた/じゅくじゅく/出血/膿 とします。追加の自由記述は備考欄に入力します。"
+    },
+    {
+      "id": "FR-044C",
+      "type": "FR",
+      "label": "- FR-044C: session_summary.summaryScope（first_of_day / last_of_day / both）は最終ステップ完了時にローカルで算出し、同期時に共有します。"
+    },
+    {
+      "id": "FR-044D",
+      "type": "FR",
+      "label": "- FR-044D: summaryScope が未指定または不正値でも保存拒否せず、summaryScope のみ破棄して他の妥当な入力値を保存します。"
+    },
+    {
+      "id": "FR-050",
+      "type": "FR",
+      "label": "- FR-050: timer_event と timer_segment から、CSV設定に従ってタイマー終了通知ジョブを生成します。"
+    },
+    {
+      "id": "FR-050A",
+      "type": "FR",
+      "label": "- FR-050A: 通知対象は timer_event=end の終了イベントとし、timer_segment=dwell/drain を同一ルールで扱います。"
+    },
+    {
+      "id": "FR-050B",
+      "type": "FR",
+      "label": "- FR-050B: 同一セッション内の通知ジョブは alarm_id 単位で独立管理します。"
+    },
+    {
+      "id": "FR-050C",
+      "type": "FR",
+      "label": "- FR-050C: 通知ジョブは最低限 alarm_id / segment / due_at / acked_at / attempt_no / status を保持します。"
+    },
+    {
+      "id": "FR-050D",
+      "type": "FR",
+      "label": "- FR-050D: pendingAlarm は未ACKジョブ（pending/notified/missed）から due_at 最小を優先して1件選択し、同値時は alarm_id 昇順を採用します。"
+    },
+    {
+      "id": "FR-051",
+      "type": "FR",
+      "label": "- FR-051: 終了時刻 T0 で Mac ローカル通知（音+バナー）を発火し、同時にアプリ内未確認アラートを固定表示します。"
+    },
+    {
+      "id": "FR-052",
+      "type": "FR",
+      "label": "- FR-052: 未確認時は段階再通知を行います。"
+    },
+    {
+      "id": "FR-052A",
+      "type": "FR",
+      "label": "- FR-052A: 再通知間隔は T+2分（iPhone補助通知1回 + Mac再通知）、T+5分以降（3分間隔でMac+iPhone再通知）とします。"
+    },
+    {
+      "id": "FR-052B",
+      "type": "FR",
+      "label": "- FR-052B: 段階再通知の対象は「貯留終了（dwell）」「廃液終了（drain）」に限定します。"
+    },
+    {
+      "id": "FR-053",
+      "type": "FR",
+      "label": "- FR-053: ACK時は Mac/iPhone の通知ジョブをすべて停止し、acked_at を記録します。"
+    },
+    {
+      "id": "FR-054",
+      "type": "FR",
+      "label": "- FR-054: アプリ内アラートは ACK まで継続表示し、通知再送も ACK まで継続します。"
+    },
+    {
+      "id": "FR-055",
+      "type": "FR",
+      "label": "- FR-055: 通知チャネルは Mac主チャネル固定 + iPhone補助 とします。"
+    },
+    {
+      "id": "FR-055A",
+      "type": "FR",
+      "label": "- FR-055A: iPhone未利用かつ離席想定時は「見逃し高リスク」警告を必須表示します。"
+    },
+    {
+      "id": "FR-055B",
+      "type": "FR",
+      "label": "- FR-055B: iPhone補助通知の利用可否は Push購読状態（登録/無効化）で管理します。"
+    },
+    {
+      "id": "FR-056",
+      "type": "FR",
+      "label": "- FR-056: 「戻る」操作、過去ステップ再表示、アプリ再開、通信リトライでは、timer_event(start/end)・record_event・通知ジョブ生成を再発火しません。"
+    },
+    {
+      "id": "FR-057",
+      "type": "FR",
+      "label": "- FR-057: 30秒テスト通知は手動実行とし、通知設定変更時・OS更新後・通知不調時に実施できること。"
+    },
+    {
+      "id": "FR-057A",
+      "type": "FR",
+      "label": "- FR-057A: 手動30秒テストに失敗した場合は、当日を「iPhone補助なし（Mac主導）」として扱います。"
+    },
+    {
+      "id": "FR-058",
+      "type": "FR",
+      "label": "- FR-058: T+30分 未確認時は status=missed を永続化し、「見逃し状態」を表示します。"
+    },
+    {
+      "id": "FR-058A",
+      "type": "FR",
+      "label": "- FR-058A: status=missed になった後も、ACKまで3分間隔の再通知を継続します。"
+    },
+    {
+      "id": "FR-058B",
+      "type": "FR",
+      "label": "- FR-058B: status=missed は ACK 成功時に acknowledged へ遷移し、通知停止と acked_at 記録を行います。"
+    },
+    {
+      "id": "FR-060",
+      "type": "FR",
+      "label": "- FR-060: 見た目分類ベースの簡易判定を行います。"
+    },
+    {
+      "id": "FR-061",
+      "type": "FR",
+      "label": "- FR-061: 異常時は警告表示のみ行います。"
+    },
+    {
+      "id": "FR-062",
+      "type": "FR",
+      "label": "- FR-062: 連絡ボタン等の導線はv1対象外とします。"
+    },
+    {
+      "id": "FR-070",
+      "type": "FR",
+      "label": "- FR-070: 新版取り込み後、テンプレート版として保存します。"
+    },
+    {
+      "id": "FR-071",
+      "type": "FR",
+      "label": "- FR-071: セッション開始時は SessionProtocolSnapshot をローカル同一トランザクションで保存し、保存失敗時は開始自体を失敗させます。"
+    },
+    {
+      "id": "FR-072",
+      "type": "FR",
+      "label": "- FR-072: スナップショットには sourceProtocol(meta)、step定義本文（通し番号/タイトル/文言/必須チェック/timer/alarm/record）、画像 assetKey、assetManifest、snapshotHash を含めます。"
+    },
+    {
+      "id": "FR-073",
+      "type": "FR",
+      "label": "- FR-073: セッション表示/再開時は開始時スナップショットを常に優先し、現行テンプレート版へフォールバックしません。"
+    },
+    {
+      "id": "FR-074",
+      "type": "FR",
+      "label": "- FR-074: スナップショット欠落またはハッシュ不整合は整合性エラーとして扱い、セッション表示を停止します。"
+    },
+    {
+      "id": "FR-075",
+      "type": "FR",
+      "label": "- FR-075: テンプレート新版の取り込み後も、開始済みセッションの表示内容は開始時スナップショットから変化しません。"
+    },
+    {
+      "id": "FR-080",
+      "type": "FR",
+      "label": "- FR-080: 同期は startup / resume / session_complete / manual の4契機で実行します。"
+    },
+    {
+      "id": "FR-081",
+      "type": "FR",
+      "label": "- FR-081: すべてのローカル更新は outbox に追記し、push成功時に消し込みます。"
+    },
+    {
+      "id": "FR-082",
+      "type": "FR",
+      "label": "- FR-082: 差分取得は cloudRevision と dayRefs に基づき実行します。"
+    },
+    {
+      "id": "FR-082A",
+      "type": "FR",
+      "label": "- FR-082A: 公開HTTP APIは POST /sync/push と POST /sync/pull のみとし、CSV取り込みはローカルI/F（ProtocolImportService.importFromDirectory）で実行します。"
+    },
+    {
+      "id": "FR-083",
+      "type": "FR",
+      "label": "- FR-083: 競合解決はエンティティ単位LWW（updatedAt, updatedByDeviceId, mutationId 降順）で固定します。"
+    },
+    {
+      "id": "FR-084",
+      "type": "FR",
+      "label": "- FR-084: tombstone（削除）もLWW同一ルールで解決します。"
+    },
+    {
+      "id": "FR-085",
+      "type": "FR",
+      "label": "- FR-085: 競合解決は内部適用のみとし、競合件数バナーや詳細一覧は提供しません。"
+    },
+    {
+      "id": "FR-086",
+      "type": "FR",
+      "label": "- FR-086: 手動同期ボタンを提供し、失敗時は再試行導線を表示します。"
+    },
+    {
+      "id": "FR-087",
+      "type": "FR",
+      "label": "- FR-087: IndexedDB消失検知時はクラウドからフルリストアを実行します。"
+    },
+    {
+      "id": "FR-087A",
+      "type": "FR",
+      "label": "- FR-087A: POST /sync/pull が cloudState=missing を返した場合、クラウド欠損と判定します。"
+    },
+    {
+      "id": "FR-087B",
+      "type": "FR",
+      "label": "- FR-087B: クラウド欠損判定時はローカルデータを正本として syncMode=full_reseed で全量再シードを実行し、ローカルデータは削除/初期化しません。"
+    },
+    {
+      "id": "FR-087C",
+      "type": "FR",
+      "label": "- FR-087C: 全量再シード成功後は再度 POST /sync/pull を実行し、cloudState=ok と cloudRevision 更新を確認して同期完了とします。"
+    },
+    {
+      "id": "FR-087D",
+      "type": "FR",
+      "label": "- FR-087D: 全量再シード失敗時はローカルデータを不変のまま保持し、lastSyncStatus=failed と再試行導線を表示します。"
+    },
+    {
+      "id": "FR-088",
+      "type": "FR",
+      "label": "- FR-088: 同期失敗時は直近同期状態（成功/失敗）を更新し、再試行導線を表示します。"
+    },
+    {
+      "id": "FR-089",
+      "type": "FR",
+      "label": "- FR-089: 120秒ポーリング は実装しません。"
+    },
+    {
+      "id": "FR-089A",
+      "type": "FR",
+      "label": "- FR-089A: session_summary.payload.exit_site_photo の更新は部分パッチ（patch_path=payload.exit_site_photo）で同期し、同一record内の他フィールドを上書きしません。"
+    },
+    {
+      "id": "FR-090",
+      "type": "FR",
+      "label": "- FR-090: 記録写真（drain / exit_site）はJPEG再圧縮して保存します（長辺1600px/quality 85）。"
+    },
+    {
+      "id": "FR-090A",
+      "type": "FR",
+      "label": "- FR-090A: 写真参照メタには photo_kind（drain / exit_site）を保持します。"
+    },
+    {
+      "id": "FR-091",
+      "type": "FR",
+      "label": "- FR-091: 写真総量は1GB上限とし、超過時は古い順削除します。"
+    },
+    {
+      "id": "FR-092",
+      "type": "FR",
+      "label": "- FR-092: 日次バックアップを1日1回実行し30日保持。"
+    },
+    {
+      "id": "FR-093",
+      "type": "FR",
+      "label": "- FR-093: 手動エクスポート機能は v1 対象外とします。"
+    },
+    {
+      "id": "FR-100",
+      "type": "FR",
+      "label": "- FR-100: アプリ内認証は行いません（公開URL運用）。"
+    },
+    {
+      "id": "FR-101",
+      "type": "FR",
+      "label": "- FR-101: オンライン接続は推奨とし、通信断中もローカル操作を継続可能とします。"
+    },
+    {
+      "id": "FR-102",
+      "type": "FR",
+      "label": "- FR-102: ローカル正本、クラウドは共有/バックアップ用途。"
+    },
+    {
+      "id": "FR-103",
+      "type": "FR",
+      "label": "- FR-103: iOSネイティブアプリ配布はv1対象外とします。"
+    },
+    {
+      "id": "FR-104",
+      "type": "FR",
+      "label": "- FR-104: 同期データはHTTPS通信を前提に扱い、端末側暗号化は v1 で実装しません。"
+    },
+    {
+      "id": "FR-105",
+      "type": "FR",
+      "label": "- FR-105: 公開URL運用リスクを受容し、URL管理手順（共有範囲制限・漏えい時の再発行）を運用要件とします。"
+    },
+    {
+      "id": "FR-106",
+      "type": "FR",
+      "label": "- FR-106: 機微データを扱う運用時は、将来版での暗号化再導入を前提にします（v1では非対応）。"
+    },
+    {
+      "id": "FR-109",
+      "type": "FR",
+      "label": "- FR-109: 提供形態は Web本体 + Mac薄型ネイティブシェル（WKWebView） で固定します。"
+    },
+    {
+      "id": "FR-110",
+      "type": "FR",
+      "label": "- FR-110: MacネイティブシェルはOS通知連携を提供します。"
+    },
+    {
+      "id": "FR-111",
+      "type": "FR",
+      "label": "- FR-111: Macネイティブシェルは画面スリープ抑止を提供します。"
+    },
+    {
+      "id": "FR-112",
+      "type": "FR",
+      "label": "- FR-112: iPhoneはPWA通知対応時のみOS通知を利用します。"
+    },
+    {
+      "id": "FR-113",
+      "type": "FR",
+      "label": "- FR-113: スリープ抑止が未対応/失敗の場合、注意表示と対処ガイダンスを表示します。"
+    },
+    {
+      "id": "FR-114",
+      "type": "FR",
+      "label": "- FR-114: Web UIコンポーネント基盤は shadcn/ui を採用します。"
+    },
+    {
+      "id": "FR-115",
+      "type": "FR",
+      "label": "- FR-115: Web UIのアイコンセットは MynaUI Icons（@mynaui/icons-react）を採用します。"
+    },
+    {
+      "id": "JRN-001-CSV",
+      "type": "JRN",
+      "label": "JRN-001-CSV CSV取込（Mac）"
+    },
+    {
+      "id": "JRN-002-SLOT",
+      "type": "JRN",
+      "label": "JRN-002-SLOT 当日スロット登録と開始"
+    },
+    {
+      "id": "JRN-003-SESSION",
+      "type": "JRN",
+      "label": "JRN-003-SESSION セッション進行と記録"
+    },
+    {
+      "id": "JRN-004-ABORT",
+      "type": "JRN",
+      "label": "JRN-004-ABORT 非常中断と再開"
+    },
+    {
+      "id": "JRN-005-SYNC",
+      "type": "JRN",
+      "label": "JRN-005-SYNC 同期と再試行"
+    },
+    {
+      "id": "JRN-006-RECOVERY",
+      "type": "JRN",
+      "label": "JRN-006-RECOVERY 復旧（DB消失/クラウド欠損）"
+    },
+    {
+      "id": "JRN-007-ALARM",
+      "type": "JRN",
+      "label": "JRN-007-ALARM タイマー通知とACK"
+    },
+    {
+      "id": "JRN-008-HISTORY",
+      "type": "JRN",
+      "label": "JRN-008-HISTORY 記録一覧閲覧と編集"
+    },
+    {
+      "id": "JRN-009-EXITPHOTO",
+      "type": "JRN",
+      "label": "JRN-009-EXITPHOTO 出口部写真登録/変更/削除"
+    },
+    {
+      "id": "NFR-001",
+      "type": "NFR",
+      "label": "- NFR-001: CSV取り込み結果はエラー/警告箇所を特定できること。"
+    },
+    {
+      "id": "NFR-002",
+      "type": "NFR",
+      "label": "- NFR-002: セッション再開時に最後の進行位置を復元できること。"
+    },
+    {
+      "id": "NFR-003",
+      "type": "NFR",
+      "label": "- NFR-003: 画面文言は日本語統一。"
+    },
+    {
+      "id": "NFR-004",
+      "type": "NFR",
+      "label": "- NFR-004: アラーム表示は通常ステップより高視認。"
+    },
+    {
+      "id": "NFR-005",
+      "type": "NFR",
+      "label": "- NFR-005: 同期失敗時は再試行導線を必須表示。"
+    },
+    {
+      "id": "SCR-001-HOME",
+      "type": "SCR",
+      "label": "SCR-001-HOME Home"
+    },
+    {
+      "id": "SCR-002-HOME-SETUP",
+      "type": "SCR",
+      "label": "SCR-002-HOME-SETUP スロット設定"
+    },
+    {
+      "id": "SCR-003-HOME-START-CONFIRM",
+      "type": "SCR",
+      "label": "SCR-003-HOME-START-CONFIRM 開始確認"
+    },
+    {
+      "id": "SCR-004-HOME-VIEW-CONFIRM",
+      "type": "SCR",
+      "label": "SCR-004-HOME-VIEW-CONFIRM 閲覧専用確認"
+    },
+    {
+      "id": "SCR-005-HOME-SUMMARY",
+      "type": "SCR",
+      "label": "SCR-005-HOME-SUMMARY 全体サマリ"
+    },
+    {
+      "id": "SCR-006-SESSION",
+      "type": "SCR",
+      "label": "SCR-006-SESSION Session"
+    },
+    {
+      "id": "SCR-007-SESSION-RECORD",
+      "type": "SCR",
+      "label": "SCR-007-SESSION-RECORD 記録入力"
+    },
+    {
+      "id": "SCR-008-HISTORY",
+      "type": "SCR",
+      "label": "SCR-008-HISTORY 記録一覧"
+    },
+    {
+      "id": "SCR-009-HISTORY-DETAIL",
+      "type": "SCR",
+      "label": "SCR-009-HISTORY-DETAIL 記録詳細"
+    },
+    {
+      "id": "SCR-010-HISTORY-PHOTO",
+      "type": "SCR",
+      "label": "SCR-010-HISTORY-PHOTO 写真詳細"
+    },
+    {
+      "id": "SCR-011-SYNC-STATUS",
+      "type": "SCR",
+      "label": "SCR-011-SYNC-STATUS 同期状態表示"
+    },
+    {
+      "id": "SCR-012-MAC-IMPORT",
+      "type": "SCR",
+      "label": "SCR-012-MAC-IMPORT CSV取込I/F"
+    },
+    {
+      "id": "UI-001-HISTORY",
+      "type": "UI",
+      "label": "UI-001-HISTORY 記録一覧テーブル"
+    },
+    {
+      "id": "UI-001-HISTORY-DETAIL",
+      "type": "UI",
+      "label": "UI-001-HISTORY-DETAIL サマリ詳細"
+    },
+    {
+      "id": "UI-001-HISTORY-PHOTO",
+      "type": "UI",
+      "label": "UI-001-HISTORY-PHOTO 写真表示領域"
+    },
+    {
+      "id": "UI-001-HOME",
+      "type": "UI",
+      "label": "UI-001-HOME 日付ヘッダ"
+    },
+    {
+      "id": "UI-001-HOME-SUMMARY",
+      "type": "UI",
+      "label": "UI-001-HOME-SUMMARY 全体サマリ表示"
+    },
+    {
+      "id": "UI-001-IMPORT",
+      "type": "UI",
+      "label": "UI-001-IMPORT ディレクトリ選択ボタン"
+    },
+    {
+      "id": "UI-001-RECORD",
+      "type": "UI",
+      "label": "UI-001-RECORD"
+    },
+    {
+      "id": "UI-001-SESSION",
+      "type": "UI",
+      "label": "UI-001-SESSION ステップタイトル/本文"
+    },
+    {
+      "id": "UI-001-SLOT-SETUP",
+      "type": "UI",
+      "label": "UI-001-SLOT-SETUP 手技選択（Select）"
+    },
+    {
+      "id": "UI-001-START-CONFIRM",
+      "type": "UI",
+      "label": "UI-001-START-CONFIRM 手技情報表示"
+    },
+    {
+      "id": "UI-001-SYNC",
+      "type": "UI",
+      "label": "UI-001-SYNC 同期状態表示"
+    },
+    {
+      "id": "UI-001-VIEW-CONFIRM",
+      "type": "UI",
+      "label": "UI-001-VIEW-CONFIRM 手技情報表示"
+    },
+    {
+      "id": "UI-002-HISTORY",
+      "type": "UI",
+      "label": "UI-002-HISTORY 写真詳細リンク"
+    },
+    {
+      "id": "UI-002-HISTORY-DETAIL",
+      "type": "UI",
+      "label": "UI-002-HISTORY-DETAIL 出口部写真登録ボタン"
+    },
+    {
+      "id": "UI-002-HISTORY-PHOTO",
+      "type": "UI",
+      "label": "UI-002-HISTORY-PHOTO 写真メタ情報"
+    },
+    {
+      "id": "UI-002-HOME",
+      "type": "UI",
+      "label": "UI-002-HOME #1〜#4スロット状態"
+    },
+    {
+      "id": "UI-002-HOME-SUMMARY",
+      "type": "UI",
+      "label": "UI-002-HOME-SUMMARY 出口部写真操作行"
+    },
+    {
+      "id": "UI-002-IMPORT",
+      "type": "UI",
+      "label": "UI-002-IMPORT 取込実行ボタン"
+    },
+    {
+      "id": "UI-002-RECORD",
+      "type": "UI",
+      "label": "UI-002-RECORD"
+    },
+    {
+      "id": "UI-002-SESSION",
+      "type": "UI",
+      "label": "UI-002-SESSION 必須チェック一覧"
+    },
+    {
+      "id": "UI-002-SLOT-SETUP",
+      "type": "UI",
+      "label": "UI-002-SLOT-SETUP 推奨実施時間（Time）"
+    },
+    {
+      "id": "UI-002-START-CONFIRM",
+      "type": "UI",
+      "label": "UI-002-START-CONFIRM 開始/再開ボタン"
+    },
+    {
+      "id": "UI-002-SYNC",
+      "type": "UI",
+      "label": "UI-002-SYNC 手動再試行ボタン"
+    },
+    {
+      "id": "UI-002-VIEW-CONFIRM",
+      "type": "UI",
+      "label": "UI-002-VIEW-CONFIRM 手順を表示（保存なし）ボタン"
+    },
+    {
+      "id": "UI-003-HISTORY",
+      "type": "UI",
+      "label": "UI-003-HISTORY 出口部写真列"
+    },
+    {
+      "id": "UI-003-HISTORY-DETAIL",
+      "type": "UI",
+      "label": "UI-003-HISTORY-DETAIL 出口部写真変更ボタン"
+    },
+    {
+      "id": "UI-003-HISTORY-PHOTO",
+      "type": "UI",
+      "label": "UI-003-HISTORY-PHOTO 戻るリンク"
+    },
+    {
+      "id": "UI-003-HOME",
+      "type": "UI",
+      "label": "UI-003-HOME スロットカード本体"
+    },
+    {
+      "id": "UI-003-HOME-SUMMARY",
+      "type": "UI",
+      "label": "UI-003-HOME-SUMMARY 写真登録ボタン"
+    },
+    {
+      "id": "UI-003-IMPORT",
+      "type": "UI",
+      "label": "UI-003-IMPORT 実行中表示"
+    },
+    {
+      "id": "UI-003-RECORD",
+      "type": "UI",
+      "label": "UI-003-RECORD"
+    },
+    {
+      "id": "UI-003-SESSION",
+      "type": "UI",
+      "label": "UI-003-SESSION 次へボタン"
+    },
+    {
+      "id": "UI-003-SLOT-SETUP",
+      "type": "UI",
+      "label": "UI-003-SLOT-SETUP 保存ボタン"
+    },
+    {
+      "id": "UI-003-START-CONFIRM",
+      "type": "UI",
+      "label": "UI-003-START-CONFIRM 開始不可理由"
+    },
+    {
+      "id": "UI-003-SYNC",
+      "type": "UI",
+      "label": "UI-003-SYNC 復旧進行表示"
+    },
+    {
+      "id": "UI-003-VIEW-CONFIRM",
+      "type": "UI",
+      "label": "UI-003-VIEW-CONFIRM 確認モード注意文"
+    },
+    {
+      "id": "UI-004-HISTORY-DETAIL",
+      "type": "UI",
+      "label": "UI-004-HISTORY-DETAIL 出口部写真削除ボタン"
+    },
+    {
+      "id": "UI-004-HOME",
+      "type": "UI",
+      "label": "UI-004-HOME ••• メニュー"
+    },
+    {
+      "id": "UI-004-HOME-SUMMARY",
+      "type": "UI",
+      "label": "UI-004-HOME-SUMMARY 写真変更ボタン"
+    },
+    {
+      "id": "UI-004-IMPORT",
+      "type": "UI",
+      "label": "UI-004-IMPORT 結果サマリ"
+    },
+    {
+      "id": "UI-004-RECORD",
+      "type": "UI",
+      "label": "UI-004-RECORD"
+    },
+    {
+      "id": "UI-004-SESSION",
+      "type": "UI",
+      "label": "UI-004-SESSION 記録入力導線"
+    },
+    {
+      "id": "UI-004-SLOT-SETUP",
+      "type": "UI",
+      "label": "UI-004-SLOT-SETUP エラー表示"
+    },
+    {
+      "id": "UI-005-HOME",
+      "type": "UI",
+      "label": "UI-005-HOME CSV取り込みボタン"
+    },
+    {
+      "id": "UI-005-HOME-SUMMARY",
+      "type": "UI",
+      "label": "UI-005-HOME-SUMMARY 写真削除ボタン"
+    },
+    {
+      "id": "UI-005-IMPORT",
+      "type": "UI",
+      "label": "UI-005-IMPORT エラー一覧"
+    },
+    {
+      "id": "UI-005-RECORD",
+      "type": "UI",
+      "label": "UI-005-RECORD 保存ボタン"
+    },
+    {
+      "id": "UI-005-SESSION",
+      "type": "UI",
+      "label": "UI-005-SESSION 非常中断メニュー"
+    },
+    {
+      "id": "UI-006-HOME",
+      "type": "UI",
+      "label": "UI-006-HOME 記録一覧ボタン"
+    },
+    {
+      "id": "UI-006-IMPORT",
+      "type": "UI",
+      "label": "UI-006-IMPORT 警告一覧"
+    },
+    {
+      "id": "UI-006-SESSION",
+      "type": "UI",
+      "label": "UI-006-SESSION アラームバナー/ACK"
+    },
+    {
+      "id": "UI-007-HOME",
+      "type": "UI",
+      "label": "UI-007-HOME 手動同期ボタン"
+    },
+    {
+      "id": "UI-007-SESSION",
+      "type": "UI",
+      "label": "UI-007-SESSION 戻るボタン"
+    },
+    {
+      "id": "UI-008-HOME",
+      "type": "UI",
+      "label": "UI-008-HOME 当日ノート（貯留時間）"
+    },
+    {
+      "id": "UI-009-HOME",
+      "type": "UI",
+      "label": "UI-009-HOME 当日ノート（排液量/注液量/排液確認）"
+    },
+    {
+      "id": "UI-010-HOME",
+      "type": "UI",
+      "label": "UI-010-HOME 当日ノート（総除水量）"
+    },
+    {
+      "id": "UI-011-HOME",
+      "type": "UI",
+      "label": "UI-011-HOME 同期失敗バナー"
+    },
+    {
+      "id": "UI-HISTORY-001",
+      "type": "UI",
+      "label": "UI-HISTORY-001"
+    },
+    {
+      "id": "UI-HISTORY-002",
+      "type": "UI",
+      "label": "UI-HISTORY-002"
+    },
+    {
+      "id": "UI-HOME-001",
+      "type": "UI",
+      "label": "UI-HOME-001"
+    },
+    {
+      "id": "UI-HOME-002",
+      "type": "UI",
+      "label": "UI-HOME-002"
+    },
+    {
+      "id": "UI-HOME-003",
+      "type": "UI",
+      "label": "UI-HOME-003"
+    },
+    {
+      "id": "UI-HOME-003A",
+      "type": "UI",
+      "label": "UI-HOME-003A"
+    },
+    {
+      "id": "UI-HOME-004",
+      "type": "UI",
+      "label": "UI-HOME-004"
+    },
+    {
+      "id": "UI-HOME-005",
+      "type": "UI",
+      "label": "UI-HOME-005"
+    },
+    {
+      "id": "UI-HOME-006",
+      "type": "UI",
+      "label": "UI-HOME-006"
+    },
+    {
+      "id": "UI-HOME-007",
+      "type": "UI",
+      "label": "UI-HOME-007"
+    },
+    {
+      "id": "UI-HOME-008",
+      "type": "UI",
+      "label": "UI-HOME-008"
+    },
+    {
+      "id": "UI-HOME-009",
+      "type": "UI",
+      "label": "UI-HOME-009"
+    },
+    {
+      "id": "UI-HOME-010",
+      "type": "UI",
+      "label": "UI-HOME-010"
+    },
+    {
+      "id": "UI-HOME-011",
+      "type": "UI",
+      "label": "UI-HOME-011"
+    },
+    {
+      "id": "UI-SESSION-001",
+      "type": "UI",
+      "label": "UI-SESSION-001"
+    },
+    {
+      "id": "UI-SESSION-002",
+      "type": "UI",
+      "label": "UI-SESSION-002"
+    },
+    {
+      "id": "UI-SESSION-003",
+      "type": "UI",
+      "label": "UI-SESSION-003"
+    },
+    {
+      "id": "UI-SESSION-004",
+      "type": "UI",
+      "label": "UI-SESSION-004"
+    },
+    {
+      "id": "UI-SESSION-005",
+      "type": "UI",
+      "label": "UI-SESSION-005"
+    },
+    {
+      "id": "UI-SESSION-006",
+      "type": "UI",
+      "label": "UI-SESSION-006"
+    },
+    {
+      "id": "UI-SYNC-001",
+      "type": "UI",
+      "label": "UI-SYNC-001"
+    },
+    {
+      "id": "UI-SYNC-002",
+      "type": "UI",
+      "label": "UI-SYNC-002"
+    },
+    {
+      "id": "UT-CSV-001",
+      "type": "UT",
+      "label": "UT-CSV-001 parseProtocolCsv"
+    },
+    {
+      "id": "UT-CSV-002",
+      "type": "UT",
+      "label": "UT-CSV-002 parseProtocolCsv"
+    },
+    {
+      "id": "UT-CSV-003",
+      "type": "UT",
+      "label": "UT-CSV-003 parseProtocolCsv"
+    },
+    {
+      "id": "UT-CSV-004",
+      "type": "UT",
+      "label": "UT-CSV-004 parseProtocolCsv"
+    },
+    {
+      "id": "UT-CSV-005",
+      "type": "UT",
+      "label": "UT-CSV-005 parseProtocolCsv"
+    },
+    {
+      "id": "UT-CSV-006",
+      "type": "UT",
+      "label": "UT-CSV-006 parseProtocolCsv"
+    },
+    {
+      "id": "UT-CSV-007",
+      "type": "UT",
+      "label": "UT-CSV-007 parseProtocolCsv"
+    },
+    {
+      "id": "UT-CSV-008",
+      "type": "UT",
+      "label": "UT-CSV-008 parseProtocolCsv"
+    },
+    {
+      "id": "UT-CSV-009",
+      "type": "UT",
+      "label": "UT-CSV-009 parseProtocolCsv"
+    },
+    {
+      "id": "UT-CSV-010",
+      "type": "UT",
+      "label": "UT-CSV-010 parseProtocolCsv"
+    },
+    {
+      "id": "UT-CSV-011",
+      "type": "UT",
+      "label": "UT-CSV-011 parseProtocolCsv"
+    },
+    {
+      "id": "UT-SLOT-001",
+      "type": "UT",
+      "label": "UT-SLOT-001 readProcedureSlots"
+    },
+    {
+      "id": "UT-SLOT-002",
+      "type": "UT",
+      "label": "UT-SLOT-002 readProcedureSlots"
+    },
+    {
+      "id": "UT-SLOT-003",
+      "type": "UT",
+      "label": "UT-SLOT-003 readProcedureSlots"
+    },
+    {
+      "id": "UT-SLOT-004",
+      "type": "UT",
+      "label": "UT-SLOT-004 readProcedureSlots"
+    },
+    {
+      "id": "UT-SLOT-005",
+      "type": "UT",
+      "label": "UT-SLOT-005 writeProcedureSlots + readProcedureSlots"
+    },
+    {
+      "id": "UT-SLOT-006",
+      "type": "UT",
+      "label": "UT-SLOT-006 readActiveSession"
+    },
+    {
+      "id": "UT-SLOT-007",
+      "type": "UT",
+      "label": "UT-SLOT-007 readActiveSession"
+    },
+    {
+      "id": "UT-SLOT-008",
+      "type": "UT",
+      "label": "UT-SLOT-008 writeActiveSession + readActiveSession"
+    },
+    {
+      "id": "UT-SLOT-009",
+      "type": "UT",
+      "label": "UT-SLOT-009 clearActiveSession"
+    },
+    {
+      "id": "UT-SLOT-010",
+      "type": "UT",
+      "label": "UT-SLOT-010 createSessionId"
+    },
+    {
+      "id": "UT-SLOT-011",
+      "type": "UT",
+      "label": "UT-SLOT-011 readProcedureSlots"
+    },
+    {
+      "id": "UT-SLOT-012",
+      "type": "UT",
+      "label": "UT-SLOT-012 readActiveSession"
+    },
+    {
+      "id": "UT-UF-001",
+      "type": "UT",
+      "label": "UT-UF-001 calculateExchangeUfG"
+    },
+    {
+      "id": "UT-UF-002",
+      "type": "UT",
+      "label": "UT-UF-002 calculateExchangeUfG"
+    },
+    {
+      "id": "UT-UF-003",
+      "type": "UT",
+      "label": "UT-UF-003 calculateExchangeUfG"
+    },
+    {
+      "id": "UT-UF-004",
+      "type": "UT",
+      "label": "UT-UF-004 calculateDailyUfTotalG"
+    },
+    {
+      "id": "UT-UF-005",
+      "type": "UT",
+      "label": "UT-UF-005 calculateDailyDrainTotalG"
+    },
+    {
+      "id": "UT-UF-006",
+      "type": "UT",
+      "label": "UT-UF-006 calculateDailyInfuseTotalG"
+    },
+    {
+      "id": "UT-UF-007",
+      "type": "UT",
+      "label": "UT-UF-007 findFirstPhotoId"
+    },
+    {
+      "id": "UT-UF-008",
+      "type": "UT",
+      "label": "UT-UF-008 findFirstPhotoId"
+    },
+    {
+      "id": "VR-HISTORY-001",
+      "type": "VR",
+      "label": "VR-HISTORY-001 History"
+    },
+    {
+      "id": "VR-HISTORY-002",
+      "type": "VR",
+      "label": "VR-HISTORY-002 History"
+    },
+    {
+      "id": "VR-HOME-001",
+      "type": "VR",
+      "label": "VR-HOME-001 Home"
+    },
+    {
+      "id": "VR-HOME-002",
+      "type": "VR",
+      "label": "VR-HOME-002 Home"
+    },
+    {
+      "id": "VR-HOME-003",
+      "type": "VR",
+      "label": "VR-HOME-003 Home"
+    },
+    {
+      "id": "VR-HOME-004",
+      "type": "VR",
+      "label": "VR-HOME-004 Home"
+    },
+    {
+      "id": "VR-SESSION-001",
+      "type": "VR",
+      "label": "VR-SESSION-001 Session"
+    },
+    {
+      "id": "VR-SESSION-002",
+      "type": "VR",
+      "label": "VR-SESSION-002 Session"
+    },
+    {
+      "id": "VR-SESSION-003",
+      "type": "VR",
+      "label": "VR-SESSION-003 Session"
+    },
+    {
+      "id": "VR-SESSION-004",
+      "type": "VR",
+      "label": "VR-SESSION-004 Session"
+    }
+  ],
+  "edges": [
+    {
+      "from": "ACT-ALARM-001",
+      "to": "FR-053",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-ALARM-001",
+      "to": "FR-054",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-ALARM-001",
+      "to": "SCR-006-SESSION",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-ALARM-001",
+      "to": "UI-SESSION-006",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-EXIT-001",
+      "to": "FR-042A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-EXIT-001",
+      "to": "FR-042G",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-EXIT-001",
+      "to": "SCR-005-HOME-SUMMARY",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-EXIT-001",
+      "to": "SCR-009-HISTORY-DETAIL",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-EXIT-001",
+      "to": "UI-HOME-011",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-EXIT-002",
+      "to": "FR-042E",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-EXIT-002",
+      "to": "SCR-005-HOME-SUMMARY",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-EXIT-002",
+      "to": "SCR-009-HISTORY-DETAIL",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-EXIT-002",
+      "to": "UI-HOME-011",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-EXIT-003",
+      "to": "FR-042H",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-EXIT-003",
+      "to": "SCR-005-HOME-SUMMARY",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-EXIT-003",
+      "to": "SCR-009-HISTORY-DETAIL",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-EXIT-003",
+      "to": "UI-HOME-011",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HISTORY-001",
+      "to": "FR-014",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HISTORY-001",
+      "to": "SCR-008-HISTORY",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HISTORY-001",
+      "to": "SCR-010-HISTORY-PHOTO",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HISTORY-001",
+      "to": "UI-HISTORY-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-001",
+      "to": "FR-009F",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-001",
+      "to": "SCR-001-HOME",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-001",
+      "to": "SCR-002-HOME-SETUP",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-002",
+      "to": "FR-009C",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-002",
+      "to": "FR-009E",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-002",
+      "to": "SCR-001-HOME",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-002",
+      "to": "SCR-002-HOME-SETUP",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-002",
+      "to": "UI-HOME-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-003",
+      "to": "FR-009A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-003",
+      "to": "FR-009H",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-003",
+      "to": "SCR-001-HOME",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-003",
+      "to": "SCR-004-HOME-VIEW-CONFIRM",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-004",
+      "to": "FR-009F",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-004",
+      "to": "SCR-001-HOME",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-004",
+      "to": "SCR-002-HOME-SETUP",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-005",
+      "to": "FR-009D",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-005",
+      "to": "FR-009G",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-005",
+      "to": "SCR-001-HOME",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-005",
+      "to": "SCR-003-HOME-START-CONFIRM",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-005",
+      "to": "UI-HOME-003A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-006",
+      "to": "FR-009A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-006",
+      "to": "FR-009H",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-006",
+      "to": "SCR-004-HOME-VIEW-CONFIRM",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-006",
+      "to": "SCR-006-SESSION",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-006",
+      "to": "UI-HOME-006",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-007",
+      "to": "FR-020",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-007",
+      "to": "FR-021",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-007",
+      "to": "FR-022",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-007",
+      "to": "FR-023",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-007",
+      "to": "FR-024",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-007",
+      "to": "SCR-001-HOME",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-007",
+      "to": "SCR-012-MAC-IMPORT",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-007",
+      "to": "UI-HOME-007",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-008",
+      "to": "FR-009",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-008",
+      "to": "FR-009G",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-008",
+      "to": "SCR-003-HOME-START-CONFIRM",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-008",
+      "to": "SCR-006-SESSION",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-008",
+      "to": "UI-HOME-005",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-010",
+      "to": "FR-006",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-010",
+      "to": "SCR-001-HOME",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-010",
+      "to": "SCR-008-HISTORY",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-010",
+      "to": "UI-HISTORY-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-011",
+      "to": "FR-086",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-011",
+      "to": "FR-088",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-011",
+      "to": "SCR-001-HOME",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-HOME-011",
+      "to": "UI-SYNC-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-001",
+      "to": "FR-031",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-001",
+      "to": "FR-032",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-001",
+      "to": "FR-033",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-001",
+      "to": "SCR-006-SESSION",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-001",
+      "to": "UI-SESSION-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-001",
+      "to": "UI-SESSION-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-002",
+      "to": "FR-039",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-002",
+      "to": "FR-056",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-002",
+      "to": "SCR-006-SESSION",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-003",
+      "to": "FR-040",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-003",
+      "to": "FR-044D",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-003",
+      "to": "SCR-006-SESSION",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-003",
+      "to": "SCR-007-SESSION-RECORD",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-003",
+      "to": "UI-SESSION-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-004",
+      "to": "FR-034",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-004",
+      "to": "FR-080",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-004",
+      "to": "SCR-001-HOME",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-004",
+      "to": "SCR-006-SESSION",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-006",
+      "to": "FR-039D",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-006",
+      "to": "FR-039F",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-006",
+      "to": "SCR-001-HOME",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-006",
+      "to": "SCR-006-SESSION",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SESSION-006",
+      "to": "UI-SESSION-005",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SYNC-001",
+      "to": "FR-080",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SYNC-001",
+      "to": "FR-081",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SYNC-001",
+      "to": "FR-082",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SYNC-001",
+      "to": "FR-083",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SYNC-001",
+      "to": "FR-084",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SYNC-001",
+      "to": "FR-085",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SYNC-001",
+      "to": "FR-086",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SYNC-001",
+      "to": "FR-087",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SYNC-001",
+      "to": "FR-088",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SYNC-001",
+      "to": "SCR-011-SYNC-STATUS",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "ACT-SYNC-001",
+      "to": "UI-SYNC-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "AT-ALARM-001",
+      "to": "E2E-ALARM-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-ALARM-002",
+      "to": "E2E-ALARM-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-ALARM-003",
+      "to": "E2E-ALARM-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-ALARM-004",
+      "to": "E2E-ALARM-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-API-001",
+      "to": "E2E-API-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-API-002",
+      "to": "E2E-API-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-API-003",
+      "to": "E2E-API-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-API-004",
+      "to": "E2E-API-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-BACKUP-001",
+      "to": "E2E-BACKUP-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-CSV-001",
+      "to": "E2E-CSV-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-CSV-001",
+      "to": "UT-CSV-001",
+      "reasons": [
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-CSV-002",
+      "to": "E2E-CSV-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-CSV-003",
+      "to": "E2E-CSV-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-CSV-004",
+      "to": "E2E-CSV-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-CSV-005",
+      "to": "E2E-CSV-005",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-CSV-005",
+      "to": "UT-CSV-007",
+      "reasons": [
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-EXIT-001",
+      "to": "E2E-EXIT-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-EXIT-002",
+      "to": "E2E-EXIT-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-EXIT-003",
+      "to": "E2E-EXIT-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-EXIT-004",
+      "to": "E2E-EXIT-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-EXIT-005",
+      "to": "E2E-EXIT-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-EXIT-006",
+      "to": "E2E-EXIT-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-EXIT-007",
+      "to": "E2E-EXIT-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-EXIT-008",
+      "to": "E2E-EXIT-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-EXIT-009",
+      "to": "E2E-EXIT-005",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-EXIT-010",
+      "to": "E2E-EXIT-005",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-EXIT-011",
+      "to": "E2E-EXIT-006",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-EXIT-012",
+      "to": "E2E-EXIT-007",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-FLOW-001",
+      "to": "E2E-FLOW-005",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-FLOW-002",
+      "to": "E2E-FLOW-006",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-FLOW-003",
+      "to": "E2E-FLOW-007",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-FLOW-004",
+      "to": "E2E-FLOW-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-FLOW-005",
+      "to": "E2E-FLOW-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-FLOW-006",
+      "to": "E2E-FLOW-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-FLOW-007",
+      "to": "E2E-FLOW-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-PHOTO-001",
+      "to": "E2E-PHOTO-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-PLAT-001",
+      "to": "E2E-PLAT-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-PLAT-002",
+      "to": "E2E-PLAT-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-RECOVERY-001",
+      "to": "E2E-RECOVERY-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-RECOVERY-002",
+      "to": "E2E-RECOVERY-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-RECOVERY-003",
+      "to": "E2E-RECOVERY-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-SLEEP-001",
+      "to": "E2E-SLEEP-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-SYNC-001",
+      "to": "E2E-SYNC-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-SYNC-002",
+      "to": "E2E-SYNC-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-SYNC-003",
+      "to": "E2E-SYNC-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-SYNC-004",
+      "to": "E2E-SYNC-005",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-SYNC-005",
+      "to": "E2E-SYNC-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-SYNC-006",
+      "to": "E2E-SYNC-006",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-UI-HOME-001",
+      "to": "VR-HOME-001",
+      "reasons": [
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-UI-HOME-002",
+      "to": "VR-HOME-004",
+      "reasons": [
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "AT-UI-SESSION-001",
+      "to": "VR-SESSION-001",
+      "reasons": [
+        "traceability-at-test"
+      ]
+    },
+    {
+      "from": "FC-BAG-WEIGHT-001",
+      "to": "AT-FLOW-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-BAG-WEIGHT-001",
+      "to": "FR-043",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-BAG-WEIGHT-001",
+      "to": "UI-003-RECORD",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-DRAIN-APPEARANCE-001",
+      "to": "AT-FLOW-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-DRAIN-APPEARANCE-001",
+      "to": "FR-040",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-DRAIN-APPEARANCE-001",
+      "to": "FR-041",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-DRAIN-APPEARANCE-001",
+      "to": "FR-042",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-DRAIN-APPEARANCE-001",
+      "to": "UI-001-RECORD",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-DRAIN-WEIGHT-001",
+      "to": "AT-FLOW-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-DRAIN-WEIGHT-001",
+      "to": "FR-043",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-DRAIN-WEIGHT-001",
+      "to": "UI-002-RECORD",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-SLOT-SETUP-001",
+      "to": "AT-FLOW-005",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-SLOT-SETUP-001",
+      "to": "FR-008",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-SLOT-SETUP-001",
+      "to": "FR-009C",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-SLOT-SETUP-001",
+      "to": "FR-009E",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-SUMMARY-001",
+      "to": "AT-EXIT-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-SUMMARY-001",
+      "to": "FR-044",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-SUMMARY-001",
+      "to": "FR-044B",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-SUMMARY-001",
+      "to": "FR-044C",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-SUMMARY-001",
+      "to": "UI-004-RECORD",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-SUMMARY-002",
+      "to": "AT-EXIT-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-SUMMARY-002",
+      "to": "FR-044",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-SUMMARY-002",
+      "to": "FR-044C",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-SUMMARY-002",
+      "to": "UI-004-RECORD",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-SUMMARY-003",
+      "to": "AT-EXIT-011",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-SUMMARY-003",
+      "to": "FR-044A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-SUMMARY-003",
+      "to": "FR-044C",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FC-SUMMARY-003",
+      "to": "UI-004-RECORD",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-005A",
+      "to": "AT-UI-HOME-001",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-005A",
+      "to": "VR-HOME-001",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-007",
+      "to": "AT-FLOW-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-007",
+      "to": "AT-FLOW-005",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-009A",
+      "to": "AT-UI-HOME-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-009A",
+      "to": "VR-HOME-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-009A",
+      "to": "VR-HOME-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-009A",
+      "to": "VR-HOME-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-009B",
+      "to": "AT-UI-HOME-001",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-009B",
+      "to": "VR-HOME-001",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-009B",
+      "to": "VR-HOME-002",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-009B",
+      "to": "VR-HOME-003",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-009D",
+      "to": "AT-FLOW-005",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-009D",
+      "to": "AT-UI-HOME-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-009D",
+      "to": "E2E-FLOW-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-009D",
+      "to": "VR-HOME-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-009E",
+      "to": "UT-SLOT-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-009E",
+      "to": "UT-SLOT-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-009E",
+      "to": "UT-SLOT-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-009E",
+      "to": "UT-SLOT-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-009E",
+      "to": "UT-SLOT-005",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-009E",
+      "to": "UT-SLOT-011",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-009E",
+      "to": "UT-SLOT-012",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-009F",
+      "to": "AT-FLOW-004",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-009F",
+      "to": "E2E-FLOW-002",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-009G",
+      "to": "AT-FLOW-006",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-009G",
+      "to": "AT-FLOW-007",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-009G",
+      "to": "E2E-FLOW-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-009G",
+      "to": "UT-SLOT-006",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-009G",
+      "to": "UT-SLOT-007",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-009G",
+      "to": "UT-SLOT-008",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-009G",
+      "to": "UT-SLOT-010",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-010",
+      "to": "AT-UI-HOME-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-010",
+      "to": "VR-HISTORY-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-010",
+      "to": "VR-HISTORY-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-013",
+      "to": "UT-UF-005",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-013",
+      "to": "UT-UF-006",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-013",
+      "to": "VR-HISTORY-001",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-013",
+      "to": "VR-HISTORY-002",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-014",
+      "to": "UT-UF-007",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-014",
+      "to": "UT-UF-008",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-014",
+      "to": "VR-HISTORY-001",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-014",
+      "to": "VR-HISTORY-002",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-015",
+      "to": "UT-UF-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-015",
+      "to": "UT-UF-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-015A",
+      "to": "UT-UF-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-015B",
+      "to": "UT-UF-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-020",
+      "to": "AT-API-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-020",
+      "to": "AT-CSV-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-020",
+      "to": "AT-CSV-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-020",
+      "to": "AT-CSV-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-020",
+      "to": "AT-CSV-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-020",
+      "to": "E2E-CSV-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-021",
+      "to": "AT-CSV-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-021",
+      "to": "E2E-CSV-001",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-021",
+      "to": "UT-CSV-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-021",
+      "to": "UT-CSV-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-021",
+      "to": "UT-CSV-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-021",
+      "to": "UT-CSV-005",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-021",
+      "to": "UT-CSV-008",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-021",
+      "to": "UT-CSV-009",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-021",
+      "to": "UT-CSV-010",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-022",
+      "to": "AT-CSV-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-022",
+      "to": "AT-CSV-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-022",
+      "to": "AT-CSV-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-022",
+      "to": "E2E-CSV-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-022",
+      "to": "E2E-CSV-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-022",
+      "to": "E2E-CSV-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-022",
+      "to": "UT-CSV-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-022",
+      "to": "UT-CSV-006",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-022",
+      "to": "UT-CSV-011",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-023",
+      "to": "AT-CSV-005",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-023",
+      "to": "E2E-CSV-005",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-023",
+      "to": "UT-CSV-007",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-024",
+      "to": "AT-CSV-004",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-024",
+      "to": "E2E-CSV-004",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-030",
+      "to": "AT-FLOW-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-030",
+      "to": "AT-FLOW-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-030",
+      "to": "AT-FLOW-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-030",
+      "to": "AT-UI-SESSION-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-030",
+      "to": "VR-SESSION-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-030",
+      "to": "VR-SESSION-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-031",
+      "to": "AT-FLOW-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-031",
+      "to": "E2E-FLOW-005",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-032",
+      "to": "AT-FLOW-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-032",
+      "to": "E2E-FLOW-006",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-032",
+      "to": "VR-SESSION-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-033",
+      "to": "AT-FLOW-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-033",
+      "to": "E2E-FLOW-007",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-036",
+      "to": "AT-FLOW-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-036",
+      "to": "E2E-FLOW-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-038",
+      "to": "AT-UI-SESSION-001",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-038",
+      "to": "VR-SESSION-001",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-038",
+      "to": "VR-SESSION-002",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-039D",
+      "to": "AT-FLOW-007",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-039D",
+      "to": "E2E-FLOW-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-039D",
+      "to": "VR-SESSION-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-039E",
+      "to": "AT-FLOW-007",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-039E",
+      "to": "E2E-FLOW-004",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-039E",
+      "to": "VR-SESSION-004",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-039F",
+      "to": "AT-FLOW-007",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-039F",
+      "to": "E2E-FLOW-004",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-039F",
+      "to": "UT-SLOT-009",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-042A",
+      "to": "AT-EXIT-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-042A",
+      "to": "AT-EXIT-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-042A",
+      "to": "AT-EXIT-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-042A",
+      "to": "AT-EXIT-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-042A",
+      "to": "AT-EXIT-005",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-042A",
+      "to": "AT-EXIT-006",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-042A",
+      "to": "AT-EXIT-007",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-042A",
+      "to": "AT-EXIT-008",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-042A",
+      "to": "AT-EXIT-009",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-042A",
+      "to": "AT-EXIT-010",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-042A",
+      "to": "AT-EXIT-011",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-042A",
+      "to": "AT-EXIT-012",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-042A",
+      "to": "E2E-EXIT-005",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-042B",
+      "to": "AT-EXIT-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-042B",
+      "to": "AT-EXIT-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-042B",
+      "to": "AT-EXIT-011",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-042B",
+      "to": "E2E-EXIT-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-042B",
+      "to": "E2E-EXIT-006",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-042C",
+      "to": "AT-EXIT-001",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-042C",
+      "to": "AT-EXIT-002",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-042C",
+      "to": "E2E-EXIT-001",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-042D",
+      "to": "AT-EXIT-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-042D",
+      "to": "AT-EXIT-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-042D",
+      "to": "E2E-EXIT-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-042D",
+      "to": "E2E-EXIT-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-042E",
+      "to": "AT-EXIT-005",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-042E",
+      "to": "AT-EXIT-006",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-042E",
+      "to": "AT-EXIT-007",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-042E",
+      "to": "AT-EXIT-008",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-042E",
+      "to": "E2E-EXIT-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-042H",
+      "to": "AT-EXIT-005",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-042H",
+      "to": "AT-EXIT-006",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-042H",
+      "to": "AT-EXIT-007",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-042H",
+      "to": "AT-EXIT-008",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-042H",
+      "to": "E2E-EXIT-004",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-044C",
+      "to": "AT-EXIT-011",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-044C",
+      "to": "E2E-EXIT-006",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-050A",
+      "to": "AT-ALARM-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-050A",
+      "to": "AT-ALARM-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-050A",
+      "to": "AT-ALARM-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-050A",
+      "to": "AT-ALARM-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-050A",
+      "to": "E2E-ALARM-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-051",
+      "to": "AT-ALARM-001",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-051",
+      "to": "E2E-ALARM-001",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-052A",
+      "to": "AT-ALARM-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-052A",
+      "to": "E2E-ALARM-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-052B",
+      "to": "AT-ALARM-002",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-052B",
+      "to": "E2E-ALARM-002",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-053",
+      "to": "AT-ALARM-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-053",
+      "to": "E2E-ALARM-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-054",
+      "to": "AT-ALARM-003",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-054",
+      "to": "E2E-ALARM-003",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-058",
+      "to": "AT-ALARM-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-058",
+      "to": "E2E-ALARM-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-058A",
+      "to": "AT-ALARM-004",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-058A",
+      "to": "E2E-ALARM-004",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-058B",
+      "to": "AT-ALARM-004",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-058B",
+      "to": "E2E-ALARM-004",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-080",
+      "to": "AT-SYNC-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-080",
+      "to": "AT-SYNC-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-080",
+      "to": "AT-SYNC-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-080",
+      "to": "AT-SYNC-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-080",
+      "to": "AT-SYNC-005",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-080",
+      "to": "AT-SYNC-006",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-080",
+      "to": "E2E-SYNC-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-080",
+      "to": "E2E-SYNC-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-081",
+      "to": "AT-SYNC-002",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-081",
+      "to": "AT-SYNC-005",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-081",
+      "to": "E2E-SYNC-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-081",
+      "to": "E2E-SYNC-003",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-082",
+      "to": "AT-SYNC-001",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-082",
+      "to": "E2E-SYNC-001",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-082A",
+      "to": "AT-API-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-082A",
+      "to": "AT-API-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-082A",
+      "to": "E2E-API-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-082A",
+      "to": "E2E-API-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-083",
+      "to": "AT-SYNC-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-083",
+      "to": "AT-SYNC-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-083",
+      "to": "E2E-SYNC-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-083",
+      "to": "E2E-SYNC-005",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-084",
+      "to": "AT-SYNC-004",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-084",
+      "to": "E2E-SYNC-005",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-086",
+      "to": "AT-SYNC-005",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-086",
+      "to": "E2E-SYNC-002",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-087",
+      "to": "AT-RECOVERY-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-087",
+      "to": "AT-RECOVERY-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-087",
+      "to": "AT-RECOVERY-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "FR-087",
+      "to": "E2E-RECOVERY-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-087A",
+      "to": "AT-RECOVERY-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-087A",
+      "to": "E2E-RECOVERY-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-087B",
+      "to": "AT-RECOVERY-002",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-087B",
+      "to": "E2E-RECOVERY-002",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-087C",
+      "to": "AT-RECOVERY-002",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-087C",
+      "to": "E2E-RECOVERY-002",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-087D",
+      "to": "AT-RECOVERY-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-087D",
+      "to": "E2E-RECOVERY-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-088",
+      "to": "AT-SYNC-006",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-088",
+      "to": "E2E-SYNC-006",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-089A",
+      "to": "AT-EXIT-009",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-089A",
+      "to": "AT-EXIT-010",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-089A",
+      "to": "E2E-EXIT-005",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-091",
+      "to": "AT-EXIT-012",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-091",
+      "to": "AT-PHOTO-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-091",
+      "to": "E2E-EXIT-007",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-091",
+      "to": "E2E-PHOTO-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-092",
+      "to": "AT-BACKUP-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-092",
+      "to": "E2E-BACKUP-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-093",
+      "to": "AT-API-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-093",
+      "to": "E2E-API-003",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-104",
+      "to": "AT-API-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-104",
+      "to": "E2E-API-004",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-109",
+      "to": "AT-PLAT-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-109",
+      "to": "AT-PLAT-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-109",
+      "to": "E2E-PLAT-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-109",
+      "to": "E2E-PLAT-002",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-110",
+      "to": "AT-PLAT-002",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-110",
+      "to": "E2E-PLAT-002",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-111",
+      "to": "AT-PLAT-002",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-111",
+      "to": "AT-SLEEP-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-111",
+      "to": "E2E-PLAT-002",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-111",
+      "to": "E2E-SLEEP-001",
+      "reasons": [
+        "line-cooccurrence",
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-112",
+      "to": "AT-PLAT-001",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-112",
+      "to": "E2E-PLAT-001",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "FR-113",
+      "to": "AT-SLEEP-001",
+      "reasons": [
+        "traceability-fr-at"
+      ]
+    },
+    {
+      "from": "FR-113",
+      "to": "E2E-SLEEP-001",
+      "reasons": [
+        "traceability-fr-test"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "ACT-HOME-007",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "AT-API-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "AT-CSV-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "AT-CSV-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "AT-CSV-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "AT-CSV-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "E2E-API-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "E2E-CSV-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "E2E-CSV-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "E2E-CSV-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "E2E-CSV-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "FR-020",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "FR-021",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "FR-022",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "FR-023",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "FR-024",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "FR-070",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "FR-082A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "SCR-001-HOME",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "SCR-012-MAC-IMPORT",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "UT-CSV-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "UT-CSV-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "UT-CSV-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "UT-CSV-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "UT-CSV-005",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "UT-CSV-006",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "UT-CSV-007",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "UT-CSV-008",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "UT-CSV-009",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "UT-CSV-010",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-001-CSV",
+      "to": "UT-CSV-011",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "ACT-HOME-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "ACT-HOME-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "ACT-HOME-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "ACT-HOME-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "ACT-HOME-005",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "ACT-HOME-006",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "ACT-HOME-008",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "AT-FLOW-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "AT-FLOW-005",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "E2E-FLOW-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "E2E-FLOW-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "FR-007",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "FR-008",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "FR-009",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "FR-009A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "FR-009H",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "FR-036",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "SCR-001-HOME",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "SCR-002-HOME-SETUP",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "SCR-003-HOME-START-CONFIRM",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "SCR-004-HOME-VIEW-CONFIRM",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "VR-HOME-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "VR-HOME-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "VR-HOME-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-002-SLOT",
+      "to": "VR-HOME-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "ACT-SESSION-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "ACT-SESSION-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "ACT-SESSION-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "ACT-SESSION-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "AT-FLOW-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "AT-FLOW-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "AT-FLOW-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "E2E-FLOW-005",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "E2E-FLOW-006",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "E2E-FLOW-007",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "FR-030",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "FR-031",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "FR-032",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "FR-033",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "FR-034",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "FR-039",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "FR-039A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "FR-039C",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "FR-040",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "FR-044D",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "FR-071",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "FR-072",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "FR-073",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "FR-074",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "FR-075",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "SCR-006-SESSION",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "SCR-007-SESSION-RECORD",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "SCR-009-HISTORY-DETAIL",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "VR-SESSION-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "VR-SESSION-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "VR-SESSION-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-004-ABORT",
+      "to": "ACT-SESSION-006",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-004-ABORT",
+      "to": "AT-FLOW-006",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-004-ABORT",
+      "to": "AT-FLOW-007",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-004-ABORT",
+      "to": "E2E-FLOW-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-004-ABORT",
+      "to": "E2E-FLOW-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-004-ABORT",
+      "to": "FR-009G",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-004-ABORT",
+      "to": "FR-039D",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-004-ABORT",
+      "to": "FR-039E",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-004-ABORT",
+      "to": "FR-039F",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-004-ABORT",
+      "to": "FR-039G",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-004-ABORT",
+      "to": "SCR-001-HOME",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-004-ABORT",
+      "to": "SCR-006-SESSION",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-004-ABORT",
+      "to": "VR-SESSION-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "ACT-HOME-011",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "ACT-SYNC-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "AT-API-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "AT-API-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "AT-SYNC-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "AT-SYNC-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "AT-SYNC-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "AT-SYNC-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "AT-SYNC-005",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "AT-SYNC-006",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "E2E-API-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "E2E-API-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "E2E-SYNC-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "E2E-SYNC-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "E2E-SYNC-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "E2E-SYNC-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "E2E-SYNC-005",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "E2E-SYNC-006",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "FR-080",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "FR-081",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "FR-082",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "FR-082A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "FR-083",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "FR-084",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "FR-085",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "FR-086",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "FR-088",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "FR-089",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "FR-089A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "SCR-001-HOME",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "SCR-011-SYNC-STATUS",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-006-RECOVERY",
+      "to": "ACT-SYNC-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-006-RECOVERY",
+      "to": "AT-RECOVERY-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-006-RECOVERY",
+      "to": "AT-RECOVERY-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-006-RECOVERY",
+      "to": "AT-RECOVERY-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-006-RECOVERY",
+      "to": "E2E-RECOVERY-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-006-RECOVERY",
+      "to": "E2E-RECOVERY-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-006-RECOVERY",
+      "to": "E2E-RECOVERY-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-006-RECOVERY",
+      "to": "FR-087",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-006-RECOVERY",
+      "to": "FR-087A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-006-RECOVERY",
+      "to": "FR-087B",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-006-RECOVERY",
+      "to": "FR-087C",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-006-RECOVERY",
+      "to": "FR-087D",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-006-RECOVERY",
+      "to": "FR-088",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-006-RECOVERY",
+      "to": "SCR-011-SYNC-STATUS",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "ACT-ALARM-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "AT-ALARM-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "AT-ALARM-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "AT-ALARM-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "AT-ALARM-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "E2E-ALARM-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "E2E-ALARM-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "E2E-ALARM-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "E2E-ALARM-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "FR-050",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "FR-050A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "FR-050D",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "FR-051",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "FR-052",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "FR-052A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "FR-052B",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "FR-053",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "FR-054",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "FR-055",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "FR-055A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "FR-055B",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "FR-056",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "FR-057",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "FR-057A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "FR-058",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "FR-058A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "FR-058B",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-007-ALARM",
+      "to": "SCR-006-SESSION",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "ACT-HISTORY-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "ACT-HOME-010",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "AT-UI-HOME-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "FR-010",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "FR-011",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "FR-012",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "FR-013",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "FR-014",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "FR-014A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "FR-015",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "FR-015A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "FR-015B",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "FR-015C",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "FR-016",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "FR-017",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "FR-018",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "FR-019",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "SCR-001-HOME",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "SCR-008-HISTORY",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "SCR-009-HISTORY-DETAIL",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "SCR-010-HISTORY-PHOTO",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "UT-UF-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "UT-UF-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "UT-UF-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "UT-UF-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "UT-UF-005",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "UT-UF-006",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "UT-UF-007",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "UT-UF-008",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "VR-HISTORY-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-008-HISTORY",
+      "to": "VR-HISTORY-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "ACT-EXIT-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "ACT-EXIT-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "ACT-EXIT-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "AT-BACKUP-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "AT-EXIT-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "AT-EXIT-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "AT-EXIT-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "AT-EXIT-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "AT-EXIT-005",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "AT-EXIT-006",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "AT-EXIT-007",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "AT-EXIT-008",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "AT-EXIT-009",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "AT-EXIT-010",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "AT-EXIT-011",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "AT-EXIT-012",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "AT-PHOTO-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "E2E-BACKUP-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "E2E-EXIT-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "E2E-EXIT-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "E2E-EXIT-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "E2E-EXIT-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "E2E-EXIT-005",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "E2E-EXIT-006",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "E2E-EXIT-007",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "E2E-PHOTO-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "FR-042A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "FR-042B",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "FR-042C",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "FR-042D",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "FR-042E",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "FR-042F",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "FR-042G",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "FR-042H",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "FR-044C",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "FR-089A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "FR-090",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "FR-090A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "FR-091",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "FR-092",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "SCR-005-HOME-SUMMARY",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "SCR-009-HISTORY-DETAIL",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-009-EXITPHOTO",
+      "to": "SCR-010-HISTORY-PHOTO",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "UI-HOME-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "UI-HOME-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "UI-HOME-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "UI-HOME-003A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "UI-HOME-007",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "UI-HOME-008",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "UI-HOME-009",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-002-HOME-SETUP",
+      "to": "FC-SLOT-SETUP-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-002-HOME-SETUP",
+      "to": "UI-HOME-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-003-HOME-START-CONFIRM",
+      "to": "UI-HOME-005",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-004-HOME-VIEW-CONFIRM",
+      "to": "UI-HOME-006",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-005-HOME-SUMMARY",
+      "to": "UI-HOME-010",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-005-HOME-SUMMARY",
+      "to": "UI-HOME-011",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "UI-SESSION-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "UI-SESSION-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "UI-SESSION-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "UI-SESSION-005",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "UI-SESSION-006",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-007-SESSION-RECORD",
+      "to": "FC-BAG-WEIGHT-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-007-SESSION-RECORD",
+      "to": "FC-DRAIN-APPEARANCE-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-007-SESSION-RECORD",
+      "to": "FC-DRAIN-WEIGHT-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-007-SESSION-RECORD",
+      "to": "FC-SUMMARY-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-007-SESSION-RECORD",
+      "to": "FC-SUMMARY-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-007-SESSION-RECORD",
+      "to": "FC-SUMMARY-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-007-SESSION-RECORD",
+      "to": "UI-SESSION-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-008-HISTORY",
+      "to": "UI-HISTORY-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-010-HISTORY-PHOTO",
+      "to": "UI-HISTORY-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-011-SYNC-STATUS",
+      "to": "UI-SYNC-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-011-SYNC-STATUS",
+      "to": "UI-SYNC-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "UI-HISTORY-001",
+      "to": "DATA:dailyProcedurePlan",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-HISTORY-001",
+      "to": "DATA:DayBundle.records",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-HISTORY-001",
+      "to": "DATA:record",
+      "reasons": [
+        "ui-outbox"
+      ]
+    },
+    {
+      "from": "UI-HISTORY-001",
+      "to": "DATA:Record",
+      "reasons": [
+        "ui-write"
+      ]
+    },
+    {
+      "from": "UI-HISTORY-001",
+      "to": "DATA:sessions",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-HISTORY-002",
+      "to": "DATA:photoRefs",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-HISTORY-002",
+      "to": "DATA:photos/*",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-HOME-001",
+      "to": "DATA:DailyProcedurePlan.dateLocal",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-HOME-002",
+      "to": "DATA:DailyProcedurePlan.slots[*].displayStatus",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-HOME-003",
+      "to": "DATA:recommendedAtLocal",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-HOME-003",
+      "to": "DATA:slots[*].protocolTitle",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-HOME-003A",
+      "to": "DATA:slots[n].displayStatus",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-HOME-004",
+      "to": "DATA:daily_plan",
+      "reasons": [
+        "ui-outbox"
+      ]
+    },
+    {
+      "from": "UI-HOME-004",
+      "to": "DATA:slots[n]",
+      "reasons": [
+        "ui-read",
+        "ui-write"
+      ]
+    },
+    {
+      "from": "UI-HOME-005",
+      "to": "DATA:activeSession",
+      "reasons": [
+        "ui-read",
+        "ui-write"
+      ]
+    },
+    {
+      "from": "UI-HOME-005",
+      "to": "DATA:session",
+      "reasons": [
+        "ui-outbox"
+      ]
+    },
+    {
+      "from": "UI-HOME-005",
+      "to": "DATA:Session",
+      "reasons": [
+        "ui-write"
+      ]
+    },
+    {
+      "from": "UI-HOME-005",
+      "to": "DATA:slots[n]",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-HOME-006",
+      "to": "DATA:slots[n]",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-HOME-007",
+      "to": "DATA:platform",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-HOME-007",
+      "to": "DATA:protocol",
+      "reasons": [
+        "ui-outbox"
+      ]
+    },
+    {
+      "from": "UI-HOME-007",
+      "to": "DATA:ProtocolPackage",
+      "reasons": [
+        "ui-write"
+      ]
+    },
+    {
+      "from": "UI-HOME-008",
+      "to": "DATA:Record(timer_event",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-HOME-008",
+      "to": "DATA:timer_exchange_no)",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-HOME-009",
+      "to": "DATA:record_exchange_no)",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-HOME-009",
+      "to": "DATA:Record(record_event",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-HOME-010",
+      "to": "DATA:Record",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-HOME-011",
+      "to": "DATA:payload.exit_site_photo",
+      "reasons": [
+        "ui-write"
+      ]
+    },
+    {
+      "from": "UI-HOME-011",
+      "to": "DATA:record",
+      "reasons": [
+        "ui-outbox"
+      ]
+    },
+    {
+      "from": "UI-HOME-011",
+      "to": "DATA:Record(session_summary.payload.exit_site_photo)",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-SESSION-001",
+      "to": "DATA:SessionProtocolSnapshot.steps[*]",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-SESSION-002",
+      "to": "DATA:steps[*].requiredChecks",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-SESSION-003",
+      "to": "DATA:record完了状態",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-SESSION-003",
+      "to": "DATA:requiredChecks達成状態",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-SESSION-003",
+      "to": "DATA:session_progress",
+      "reasons": [
+        "ui-outbox"
+      ]
+    },
+    {
+      "from": "UI-SESSION-003",
+      "to": "DATA:Session.currentStepId",
+      "reasons": [
+        "ui-write"
+      ]
+    },
+    {
+      "from": "UI-SESSION-004",
+      "to": "DATA:FC-*",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-SESSION-004",
+      "to": "DATA:record",
+      "reasons": [
+        "ui-outbox"
+      ]
+    },
+    {
+      "from": "UI-SESSION-004",
+      "to": "DATA:Record",
+      "reasons": [
+        "ui-write"
+      ]
+    },
+    {
+      "from": "UI-SESSION-005",
+      "to": "DATA:daily_plan",
+      "reasons": [
+        "ui-outbox"
+      ]
+    },
+    {
+      "from": "UI-SESSION-005",
+      "to": "DATA:session",
+      "reasons": [
+        "ui-outbox"
+      ]
+    },
+    {
+      "from": "UI-SESSION-005",
+      "to": "DATA:Session.status=aborted",
+      "reasons": [
+        "ui-write"
+      ]
+    },
+    {
+      "from": "UI-SESSION-005",
+      "to": "DATA:Session.status=active",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-SESSION-005",
+      "to": "DATA:slot.status=pending",
+      "reasons": [
+        "ui-write"
+      ]
+    },
+    {
+      "from": "UI-SESSION-006",
+      "to": "DATA:acked_at",
+      "reasons": [
+        "ui-write"
+      ]
+    },
+    {
+      "from": "UI-SESSION-006",
+      "to": "DATA:alarm_ack",
+      "reasons": [
+        "ui-outbox"
+      ]
+    },
+    {
+      "from": "UI-SESSION-006",
+      "to": "DATA:AlarmDispatchJob.pendingAlarm",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-SYNC-001",
+      "to": "DATA:lastError",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-SYNC-001",
+      "to": "DATA:lastSyncedAt",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-SYNC-001",
+      "to": "DATA:SyncState",
+      "reasons": [
+        "ui-write"
+      ]
+    },
+    {
+      "from": "UI-SYNC-001",
+      "to": "DATA:SyncState.lastSyncStatus",
+      "reasons": [
+        "ui-read"
+      ]
+    },
+    {
+      "from": "UI-SYNC-002",
+      "to": "DATA:SyncState.lastSyncStatus",
+      "reasons": [
+        "ui-read"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ドキュメント可視化インデックス（HTML）</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f6f8fb; color: #1f2937; }
+    .top-nav { display: flex; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #d7deea; background: #ffffff; }
+    .top-nav a { color: #0f4acb; text-decoration: none; font-weight: 600; }
+    .top-nav a:hover { text-decoration: underline; }
+    main { max-width: 1180px; margin: 0 auto; padding: 24px 20px 40px; }
+    h1 { margin: 0 0 12px; font-size: 1.6rem; }
+    h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    .lead { margin: 0 0 18px; color: #4b5563; }
+    .card { background: #ffffff; border: 1px solid #d7deea; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+    ul { margin: 8px 0 0; padding-left: 1.2rem; }
+    ol { margin: 8px 0 0; padding-left: 1.4rem; }
+    li { margin: 4px 0; }
+    a { color: #0f4acb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #eef3ff; border-radius: 4px; padding: 1px 4px; }
+    .muted { color: #6b7280; font-size: 0.92rem; }
+    .source-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    .source-table td { border-bottom: 1px solid #e5e7eb; vertical-align: top; padding: 2px 8px; }
+    .source-table .line { width: 82px; text-align: right; color: #6b7280; background: #ffffff; }
+    .source-table .line a { color: #6b7280; }
+    .source-table .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; overflow-wrap: anywhere; }
+    .pill { display: inline-block; border: 1px solid #d7deea; border-radius: 999px; padding: 2px 8px; font-size: 0.78rem; color: #475569; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <nav class="top-nav"><a href="./index.html">HTML Index</a><a href="../index.md">Markdown Index</a></nav>
+  <main>
+    <h1>ドキュメント可視化インデックス（HTML）</h1>
+    <p class="lead">JRN起点で FR / AT / 原文定義位置へ1クリックで遷移できます。</p>
+    <section class="card">
+  <h2>生成情報</h2>
+  <p><span class="pill">source: scripts/docs-map.mjs</span><span class="pill">generated: 2026-02-11T10:59:17.366Z</span><span class="pill">issues: 0</span></p>
+</section>
+<section class="card">
+  <h2>レビュー順</h2>
+  <ol>
+    <li><a href="../consistency-report.md">consistency-report.md</a> でP0/P1確認</li>
+    <li><a href="./journeys/JRN-001-CSV.html">JRN-001-CSV</a> など対象動線をHTMLで確認</li>
+    <li><a href="../traceability.md">traceability.md</a> で FR -&gt; AT -&gt; Test を確認</li>
+    <li><a href="./sources/docs/requirements/09_user_journeys.html">09_user_journeys.md</a> 原文で最終確認</li>
+  </ol>
+</section>
+<section class="card">
+  <h2>JRN-001-CSV クイックリンク</h2>
+<ul>
+<li><a href="./ids/FR-020.html"><code>FR-020</code></a> <span class="muted">- FR-020: MacネイティブシェルでCSV+画像ディレクトリを選択できます。</span></li>
+<li><a href="./ids/FR-021.html"><code>FR-021</code></a> <span class="muted">- FR-021: CSV v3フォーマットのみ受け付けます。</span></li>
+<li><a href="./ids/FR-022.html"><code>FR-022</code></a> <span class="muted">- FR-022: 検証エラー1件以上で取り込みを中止します。</span></li>
+<li><a href="./ids/FR-023.html"><code>FR-023</code></a> <span class="muted">- FR-023: 警告は取り込み結果画面で一覧表示します。</span></li>
+<li><a href="./ids/FR-024.html"><code>FR-024</code></a> <span class="muted">- FR-024: 画像相対パスを protocol.csv ディレクトリ基準で解決します。</span></li>
+<li><a href="./ids/FR-082A.html"><code>FR-082A</code></a> <span class="muted">- FR-082A: 公開HTTP APIは POST /sync/push と POST /sync/pull のみとし、CSV取り込みはローカルI/F（ProtocolImportService.importFromDirectory）で実行します。</span></li>
+<li><a href="./ids/AT-API-003.html"><code>AT-API-003</code></a> <span class="muted">CSVローカル完結</span></li>
+<li><a href="./ids/AT-CSV-001.html"><code>AT-CSV-001</code></a> <span class="muted">正常取込</span></li>
+<li><a href="./ids/AT-CSV-002.html"><code>AT-CSV-002</code></a> <span class="muted">重複検出</span></li>
+<li><a href="./ids/AT-CSV-003.html"><code>AT-CSV-003</code></a> <span class="muted">直列整合</span></li>
+<li><a href="./ids/AT-CSV-004.html"><code>AT-CSV-004</code></a> <span class="muted">画像存在</span></li>
+</ul>
+</section>
+<section class="card">
+  <h2>ジャーニー別（HTML）</h2>
+  <ul>
+<li><a href="./journeys/JRN-001-CSV.html"><code>JRN-001-CSV</code></a> <span class="muted">CSV取込（Mac）</span></li>
+<li><a href="./journeys/JRN-002-SLOT.html"><code>JRN-002-SLOT</code></a> <span class="muted">当日スロット登録と開始</span></li>
+<li><a href="./journeys/JRN-003-SESSION.html"><code>JRN-003-SESSION</code></a> <span class="muted">セッション進行と記録</span></li>
+<li><a href="./journeys/JRN-004-ABORT.html"><code>JRN-004-ABORT</code></a> <span class="muted">非常中断と再開</span></li>
+<li><a href="./journeys/JRN-005-SYNC.html"><code>JRN-005-SYNC</code></a> <span class="muted">同期と再試行</span></li>
+<li><a href="./journeys/JRN-006-RECOVERY.html"><code>JRN-006-RECOVERY</code></a> <span class="muted">復旧（DB消失/クラウド欠損）</span></li>
+<li><a href="./journeys/JRN-007-ALARM.html"><code>JRN-007-ALARM</code></a> <span class="muted">タイマー通知とACK</span></li>
+<li><a href="./journeys/JRN-008-HISTORY.html"><code>JRN-008-HISTORY</code></a> <span class="muted">記録一覧閲覧と編集</span></li>
+<li><a href="./journeys/JRN-009-EXITPHOTO.html"><code>JRN-009-EXITPHOTO</code></a> <span class="muted">出口部写真登録/変更/削除</span></li>
+  </ul>
+</section>
+<section class="card">
+  <h2>画面別（HTML）</h2>
+  <ul>
+<li><a href="./screens/SCR-001-HOME.html"><code>SCR-001-HOME</code></a> <span class="muted">Home</span></li>
+<li><a href="./screens/SCR-002-HOME-SETUP.html"><code>SCR-002-HOME-SETUP</code></a> <span class="muted">スロット設定</span></li>
+<li><a href="./screens/SCR-003-HOME-START-CONFIRM.html"><code>SCR-003-HOME-START-CONFIRM</code></a> <span class="muted">開始確認</span></li>
+<li><a href="./screens/SCR-004-HOME-VIEW-CONFIRM.html"><code>SCR-004-HOME-VIEW-CONFIRM</code></a> <span class="muted">閲覧専用確認</span></li>
+<li><a href="./screens/SCR-005-HOME-SUMMARY.html"><code>SCR-005-HOME-SUMMARY</code></a> <span class="muted">全体サマリ</span></li>
+<li><a href="./screens/SCR-006-SESSION.html"><code>SCR-006-SESSION</code></a> <span class="muted">Session</span></li>
+<li><a href="./screens/SCR-007-SESSION-RECORD.html"><code>SCR-007-SESSION-RECORD</code></a> <span class="muted">記録入力</span></li>
+<li><a href="./screens/SCR-008-HISTORY.html"><code>SCR-008-HISTORY</code></a> <span class="muted">記録一覧</span></li>
+<li><a href="./screens/SCR-009-HISTORY-DETAIL.html"><code>SCR-009-HISTORY-DETAIL</code></a> <span class="muted">記録詳細</span></li>
+<li><a href="./screens/SCR-010-HISTORY-PHOTO.html"><code>SCR-010-HISTORY-PHOTO</code></a> <span class="muted">写真詳細</span></li>
+<li><a href="./screens/SCR-011-SYNC-STATUS.html"><code>SCR-011-SYNC-STATUS</code></a> <span class="muted">同期状態表示</span></li>
+<li><a href="./screens/SCR-012-MAC-IMPORT.html"><code>SCR-012-MAC-IMPORT</code></a> <span class="muted">CSV取込I/F</span></li>
+  </ul>
+</section>
+<section class="card">
+  <h2>原文ドキュメント（HTML化）</h2>
+  <ul>
+    <li><a href="./sources/docs/requirements/05_functional_requirements.html"><code>docs/requirements/05_functional_requirements.md</code></a></li>
+    <li><a href="./sources/docs/requirements/07_acceptance_tests.html"><code>docs/requirements/07_acceptance_tests.md</code></a></li>
+    <li><a href="./sources/docs/requirements/09_user_journeys.html"><code>docs/requirements/09_user_journeys.md</code></a></li>
+    <li><a href="./sources/test/specs/traceability-matrix.html"><code>test/specs/traceability-matrix.md</code></a></li>
+  </ul>
+</section>
+  </main>
+</body>
+</html>
