@@ -1,5 +1,9 @@
 # 07. UIスパイク実施計画（A案確定）
 
+> 移行メモ（2026-02-11）: 本文の正本は `docs/spec/20_screens/screens_index.md` / `docs/spec/20_screens/SCR-001-HOME.md` / `docs/spec/20_screens/SCR-006-SESSION.md` / `docs/spec/20_screens/SCR-008-HISTORY.md` へ再構成済みです。  
+> 本書は旧体系参照用として残置し、更新は `docs/spec` 側を優先します。
+
+
 ## 1. 目的
 ホームとセッション実行のUIをA案で確定し、「記録一覧をホームから分離する構成」を固定します。  
 本ドキュメントは後工程の実装担当が迷わないための最終版です。

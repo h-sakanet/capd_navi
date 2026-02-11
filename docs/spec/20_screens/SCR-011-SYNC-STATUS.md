@@ -12,7 +12,19 @@
 - この画面で決めないこと: push/pullの内部処理、LWW比較実装。
 
 ## 3. UIワイヤー・レイアウト制約
-- 参照: `../../../requirements/12_ui_data_binding_matrix.md` の同期UI定義（本仕様では `UI-001-SYNC`, `UI-002-SYNC`）。
+```text
++------------------------------------------------+
+| 同期状態: 成功（2026-02-10 21:04）              |
+| outbox: 0 pending                               |
++------------------------------------------------+
+| 同期状態: 失敗                                   |
+| reason: timeout                                  |
+| [再試行]                                         |
++------------------------------------------------+
+| 復旧中: cloudState=missing -> full_reseed実行中 |
++------------------------------------------------+
+```
+
 - 状態は `success/failed` を明示表示。
 - 失敗時は再試行ボタンを必ず表示。
 
@@ -58,7 +70,30 @@
 - Then `full_reseed` 実行後に `cloudState=ok` 確認まで進む
 
 ## 11. 参照リンク
-- FR: FR-080〜FR-089A
+- Local FR: `SCR-011-SYNC-STATUS-FR-01` 〜 `SCR-011-SYNC-STATUS-FR-16`
+- 旧FR対応: FR-080〜FR-089A
 - AT: AT-SYNC-001〜AT-SYNC-006, AT-RECOVERY-001〜AT-RECOVERY-003
 - E2E/UT/VR: E2E-SYNC-001〜E2E-SYNC-006, E2E-RECOVERY-001〜E2E-RECOVERY-003（`../50_quality/test-link-index.md` 参照）
 - CAP: `../30_capabilities/CAP-SYNC-001.md`, `../30_capabilities/CAP-RECOVERY-001.md`
+
+## 12. 画面機能要件（ローカルID）
+
+- 採番規則: `<文書ID>-FR-yy`（yyはこの文書内連番）
+- 旧FR IDは括弧内に残し、移行トレーサビリティを保持します。
+
+- SCR-011-SYNC-STATUS-FR-01: (旧: FR-080) 同期は `startup` / `resume` / `session_complete` / `manual` の4契機で実行します。
+- SCR-011-SYNC-STATUS-FR-02: (旧: FR-081) すべてのローカル更新は `outbox` に追記し、push成功時に消し込みます。
+- SCR-011-SYNC-STATUS-FR-03: (旧: FR-082) 差分取得は `cloudRevision` と `dayRefs` に基づき実行します。
+- SCR-011-SYNC-STATUS-FR-04: (旧: FR-082A) 公開HTTP APIは `POST /sync/push` と `POST /sync/pull` のみとし、CSV取り込みはローカルI/F（`ProtocolImportService.importFromDirectory`）で実行します。
+- SCR-011-SYNC-STATUS-FR-05: (旧: FR-083) 競合解決はエンティティ単位LWW（`updatedAt`, `updatedByDeviceId`, `mutationId` 降順）で固定します。
+- SCR-011-SYNC-STATUS-FR-06: (旧: FR-084) tombstone（削除）もLWW同一ルールで解決します。
+- SCR-011-SYNC-STATUS-FR-07: (旧: FR-085) 競合解決は内部適用のみとし、競合件数バナーや詳細一覧は提供しません。
+- SCR-011-SYNC-STATUS-FR-08: (旧: FR-086) 手動同期ボタンを提供し、失敗時は再試行導線を表示します。
+- SCR-011-SYNC-STATUS-FR-09: (旧: FR-087) IndexedDB消失検知時はクラウドからフルリストアを実行します。
+- SCR-011-SYNC-STATUS-FR-10: (旧: FR-087A) `POST /sync/pull` が `cloudState=missing` を返した場合、クラウド欠損と判定します。
+- SCR-011-SYNC-STATUS-FR-11: (旧: FR-087B) クラウド欠損判定時はローカルデータを正本として `syncMode=full_reseed` で全量再シードを実行し、ローカルデータは削除/初期化しません。
+- SCR-011-SYNC-STATUS-FR-12: (旧: FR-087C) 全量再シード成功後は再度 `POST /sync/pull` を実行し、`cloudState=ok` と `cloudRevision` 更新を確認して同期完了とします。
+- SCR-011-SYNC-STATUS-FR-13: (旧: FR-087D) 全量再シード失敗時はローカルデータを不変のまま保持し、`lastSyncStatus=failed` と再試行導線を表示します。
+- SCR-011-SYNC-STATUS-FR-14: (旧: FR-088) 同期失敗時は直近同期状態（成功/失敗）を更新し、再試行導線を表示します。
+- SCR-011-SYNC-STATUS-FR-15: (旧: FR-089) `120秒ポーリング` は実装しません。
+- SCR-011-SYNC-STATUS-FR-16: (旧: FR-089A) `session_summary.payload.exit_site_photo` の更新は部分パッチ（`patch_path=payload.exit_site_photo`）で同期し、同一record内の他フィールドを上書きしません。

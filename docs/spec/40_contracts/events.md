@@ -25,5 +25,6 @@
 - 機微情報（自由記述本文など）はイベントpayloadに平文で入れません。
 
 ## 3. 参照元リンク
-- `../../../requirements/04_domain_model_and_interfaces.md`
-- `../../../design/05_notifications_sleep.md`
+- `./storage-model.md`
+- `./functional-requirements.md`
+- `../30_capabilities/CAP-ALARM-001.md`

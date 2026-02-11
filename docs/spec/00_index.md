@@ -20,16 +20,24 @@
 - `20_screens/screens_index.md`
 
 ## 5. 横断定義へのリンク
+- `35_interfaces/interfaces_index.md`
 - `30_capabilities/capabilities_index.md`
 - `40_contracts/types.md`
+- `40_contracts/architecture-overview.md`
+- `40_contracts/sync-conflict-policy.md`
+- `40_contracts/storage-model.md`
 - `40_contracts/state-machine.md`
 - `40_contracts/api.md`
 - `40_contracts/events.md`
 - `40_contracts/error-codes.md`
+- `40_contracts/functional-requirements.md`
 
 ## 6. 非機能仕様へのリンク
 - `45_nfr/non-functional.md`
 - `45_nfr/observability.md`
+- `45_nfr/risks-and-constraints.md`
+- `45_nfr/notifications-and-sleep-policy.md`
+- `45_nfr/photo-backup-policy.md`
 
 ## 7. 品質仕様へのリンク
 - `50_quality/acceptance_policy.md`
@@ -41,6 +49,9 @@
 - `60_templates/TEMPLATE_screen.md`
 - `60_templates/TEMPLATE_capability.md`
 - `60_templates/TEMPLATE_contract.md`
+- `90_decisions/ADR-001-stack-decision.md`
+- `90_decisions/ADR-002-review-findings-2026-02-10.md`
+- `90_decisions/ADR-003-implementation-handoff.md`
 - `99_migration/source_mapping.md`
 - `99_migration/deletion_gate.md`
 

@@ -1,5 +1,9 @@
 # 99. 実装セッション引き継ぎ要約
 
+> 移行メモ（2026-02-11）: 本文の正本は `docs/spec/90_decisions/ADR-003-implementation-handoff.md` / `docs/spec/00_index.md` へ再構成済みです。  
+> 本書は旧体系参照用として残置し、更新は `docs/spec` 側を優先します。
+
+
 ## 1. 実装固定事項
 - アーキテクチャ: 共通Web + Macネイティブシェル（WKWebView）
 - データ基盤: IndexedDB（端末正本） + Netlify Blobs（共有/バックアップ）

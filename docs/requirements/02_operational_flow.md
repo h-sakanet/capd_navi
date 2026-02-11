@@ -1,5 +1,9 @@
 # 02. 運用フロー
 
+> 移行メモ（2026-02-11）: 本文の正本は `docs/spec/10_journeys/journeys.md` / `docs/spec/20_screens/SCR-001-HOME.md` / `docs/spec/20_screens/SCR-006-SESSION.md` / `docs/spec/30_capabilities/CAP-SYNC-001.md` / `docs/spec/30_capabilities/CAP-RECOVERY-001.md` / `docs/spec/30_capabilities/CAP-ALARM-001.md` / `docs/spec/30_capabilities/CAP-PHOTO-BACKUP-001.md` / `docs/spec/40_contracts/state-machine.md` / `docs/spec/40_contracts/storage-model.md` へ再構成済みです。  
+> 本書は旧体系参照用として残置し、更新は `docs/spec` 側を優先します。
+
+
 ## 1. 日次運用の基本
 - 主端末は Mac ネイティブシェル（WKWebView）を利用します。
 - iPhone は代替端末として、手技確認・記録・履歴閲覧に利用します。

@@ -100,7 +100,7 @@
 </tr>
 <tr id="L16">
   <td class="line"><a href="#L16">16</a></td>
-  <td class="code">- CAP責務: CSV v3検証、画像存在検証、正規化JSON化、保存、outbox追記。</td>
+  <td class="code">- CAP責務: CSVフォーマット検証、画像存在検証、正規化JSON化、保存、outbox追記。</td>
 </tr>
 <tr id="L17">
   <td class="line"><a href="#L17">17</a></td>
@@ -112,7 +112,7 @@
 </tr>
 <tr id="L19">
   <td class="line"><a href="#L19">19</a></td>
-  <td class="code">- 入力モデル: CSV v3 + 画像ファイル群。</td>
+  <td class="code">- 入力モデル: CSV + 画像ファイル群。</td>
 </tr>
 <tr id="L20">
   <td class="line"><a href="#L20">20</a></td>
@@ -124,7 +124,7 @@
 </tr>
 <tr id="L22">
   <td class="line"><a href="#L22">22</a></td>
-  <td class="code">  - `format_version=3` 固定。</td>
+  <td class="code">  - `format_version` はサポート対象値であること。</td>
 </tr>
 <tr id="L23">
   <td class="line"><a href="#L23">23</a></td>
@@ -244,7 +244,7 @@
 </tr>
 <tr id="L52">
   <td class="line"><a href="#L52">52</a></td>
-  <td class="code">- Given 正常CSV v3と画像群がある</td>
+  <td class="code">- Given 正常CSVと画像群がある</td>
 </tr>
 <tr id="L53">
   <td class="line"><a href="#L53">53</a></td>
@@ -276,22 +276,78 @@
 </tr>
 <tr id="L60">
   <td class="line"><a href="#L60">60</a></td>
-  <td class="code">- FR: <a href="../../../../ids/FR-020.html">FR-020</a>, <a href="../../../../ids/FR-021.html">FR-021</a>, <a href="../../../../ids/FR-022.html">FR-022</a>, <a href="../../../../ids/FR-023.html">FR-023</a>, <a href="../../../../ids/FR-024.html">FR-024</a>, <a href="../../../../ids/FR-070.html">FR-070</a>, <a href="../../../../ids/FR-082A.html">FR-082A</a></td>
+  <td class="code">- Local FR: `CAP-CSV-IMPORT-001-FR-01` 〜 `CAP-CSV-IMPORT-001-FR-07`</td>
 </tr>
 <tr id="L61">
   <td class="line"><a href="#L61">61</a></td>
-  <td class="code">- AT: <a href="../../../../ids/AT-CSV-001.html">AT-CSV-001</a>, <a href="../../../../ids/AT-CSV-002.html">AT-CSV-002</a>, <a href="../../../../ids/AT-CSV-003.html">AT-CSV-003</a>, <a href="../../../../ids/AT-CSV-004.html">AT-CSV-004</a>, <a href="../../../../ids/AT-API-003.html">AT-API-003</a></td>
+  <td class="code">- 旧FR対応: <a href="../../../../ids/FR-020.html">FR-020</a>, <a href="../../../../ids/FR-021.html">FR-021</a>, <a href="../../../../ids/FR-022.html">FR-022</a>, <a href="../../../../ids/FR-023.html">FR-023</a>, <a href="../../../../ids/FR-024.html">FR-024</a>, <a href="../../../../ids/FR-070.html">FR-070</a>, <a href="../../../../ids/FR-082A.html">FR-082A</a></td>
 </tr>
 <tr id="L62">
   <td class="line"><a href="#L62">62</a></td>
-  <td class="code">- SCR: <a href="../../../../screens/SCR-001-HOME.html">SCR-001-HOME</a>, <a href="../../../../screens/SCR-012-MAC-IMPORT.html">SCR-012-MAC-IMPORT</a></td>
+  <td class="code">- AT: <a href="../../../../ids/AT-CSV-001.html">AT-CSV-001</a>, <a href="../../../../ids/AT-CSV-002.html">AT-CSV-002</a>, <a href="../../../../ids/AT-CSV-003.html">AT-CSV-003</a>, <a href="../../../../ids/AT-CSV-004.html">AT-CSV-004</a>, <a href="../../../../ids/AT-API-003.html">AT-API-003</a></td>
 </tr>
 <tr id="L63">
   <td class="line"><a href="#L63">63</a></td>
-  <td class="code">- JRN: <a href="../../../../journeys/JRN-001-CSV.html">JRN-001-CSV</a></td>
+  <td class="code">- SCR: <a href="../../../../screens/SCR-001-HOME.html">SCR-001-HOME</a>, <a href="../../../../screens/SCR-012-MAC-IMPORT.html">SCR-012-MAC-IMPORT</a></td>
 </tr>
 <tr id="L64">
   <td class="line"><a href="#L64">64</a></td>
+  <td class="code">- JRN: <a href="../../../../journeys/JRN-001-CSV.html">JRN-001-CSV</a></td>
+</tr>
+<tr id="L65">
+  <td class="line"><a href="#L65">65</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L66">
+  <td class="line"><a href="#L66">66</a></td>
+  <td class="code">## 11. 機能要件（ローカルID）</td>
+</tr>
+<tr id="L67">
+  <td class="line"><a href="#L67">67</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L68">
+  <td class="line"><a href="#L68">68</a></td>
+  <td class="code">- 採番規則: `&lt;文書ID&gt;-FR-yy`（yyはこの文書内連番）</td>
+</tr>
+<tr id="L69">
+  <td class="line"><a href="#L69">69</a></td>
+  <td class="code">- 旧FR IDは括弧内に残し、移行トレーサビリティを保持します。</td>
+</tr>
+<tr id="L70">
+  <td class="line"><a href="#L70">70</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L71">
+  <td class="line"><a href="#L71">71</a></td>
+  <td class="code">- CAP-CSV-IMPORT-001-FR-01: (旧: <a href="../../../../ids/FR-020.html">FR-020</a>) MacネイティブシェルでCSV+画像ディレクトリを選択できます。</td>
+</tr>
+<tr id="L72">
+  <td class="line"><a href="#L72">72</a></td>
+  <td class="code">- CAP-CSV-IMPORT-001-FR-02: (旧: <a href="../../../../ids/FR-021.html">FR-021</a>) CSVフォーマットがサポート対象である場合のみ受け付けます。</td>
+</tr>
+<tr id="L73">
+  <td class="line"><a href="#L73">73</a></td>
+  <td class="code">- CAP-CSV-IMPORT-001-FR-03: (旧: <a href="../../../../ids/FR-022.html">FR-022</a>) 検証エラー1件以上で取り込みを中止します。</td>
+</tr>
+<tr id="L74">
+  <td class="line"><a href="#L74">74</a></td>
+  <td class="code">- CAP-CSV-IMPORT-001-FR-04: (旧: <a href="../../../../ids/FR-023.html">FR-023</a>) 警告は取り込み結果画面で一覧表示します。</td>
+</tr>
+<tr id="L75">
+  <td class="line"><a href="#L75">75</a></td>
+  <td class="code">- CAP-CSV-IMPORT-001-FR-05: (旧: <a href="../../../../ids/FR-024.html">FR-024</a>) 画像相対パスを `protocol.csv` ディレクトリ基準で解決します。</td>
+</tr>
+<tr id="L76">
+  <td class="line"><a href="#L76">76</a></td>
+  <td class="code">- CAP-CSV-IMPORT-001-FR-06: (旧: <a href="../../../../ids/FR-070.html">FR-070</a>) 新版取り込み後、テンプレート版として保存します。</td>
+</tr>
+<tr id="L77">
+  <td class="line"><a href="#L77">77</a></td>
+  <td class="code">- CAP-CSV-IMPORT-001-FR-07: (旧: <a href="../../../../ids/FR-082A.html">FR-082A</a>) 公開HTTP APIは `POST /sync/push` と `POST /sync/pull` のみとし、CSV取り込みはローカルI/F（`ProtocolImportService.importFromDirectory`）で実行します。</td>
+</tr>
+<tr id="L78">
+  <td class="line"><a href="#L78">78</a></td>
   <td class="code">&nbsp;</td>
 </tr>
   </table>

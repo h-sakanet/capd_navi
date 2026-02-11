@@ -16,6 +16,7 @@
 - UI（移行互換）: `UI-[A-Z0-9-]+-\d{3}`
 - Form Contract: `FC-[A-Z0-9-]+-\d{3}`
 - Capability: `CAP-[A-Z0-9-]+-\d{3}`
+- Interface: `IF-[A-Z0-9-]+`
 - Requirement: `FR-\d{3}[A-Z]?`
 - Acceptance: `AT-[A-Z0-9-]+-\d{3}`
 - Test: `UT-*`, `E2E-*`, `VR-*`

@@ -155,5 +155,22 @@ export function parseProtocolCsv(csvText: string): ProtocolStep[] {
     throw new Error("CSVにstep行がありません。");
   }
 
+  const stepIdSet = new Set<string>();
+  for (const step of steps) {
+    if (stepIdSet.has(step.stepId)) {
+      throw new Error(`step_id が重複しています: ${step.stepId}`);
+    }
+    stepIdSet.add(step.stepId);
+  }
+
+  for (const step of steps) {
+    if (!step.nextStepId) {
+      continue;
+    }
+    if (!stepIdSet.has(step.nextStepId)) {
+      throw new Error(`next_step_id が未定義の step_id を参照しています: ${step.nextStepId}`);
+    }
+  }
+
   return steps;
 }

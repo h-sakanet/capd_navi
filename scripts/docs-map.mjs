@@ -112,6 +112,9 @@ function normalizeId(id) {
 }
 
 function getType(id) {
+  if (/^(?:SCR|CAP)-[A-Z0-9-]+-FR-\d{2,3}$/.test(id)) {
+    return "FR";
+  }
   if (id.startsWith("DATA:")) {
     return "DATA";
   }
@@ -158,7 +161,7 @@ function isValidId(id) {
     case "FC":
       return /^FC-[A-Z0-9-]+-\d{3}$/.test(id);
     case "FR":
-      return /^FR-\d{3}[A-Z]?$/.test(id);
+      return /^FR-\d{3}[A-Z]?$/.test(id) || /^(?:SCR|CAP)-[A-Z0-9-]+-FR-\d{2,3}$/.test(id);
     case "NFR":
       return /^NFR-\d{3}$/.test(id);
     case "AT":

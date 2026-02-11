@@ -236,22 +236,74 @@
 </tr>
 <tr id="L50">
   <td class="line"><a href="#L50">50</a></td>
-  <td class="code">- FR: <a href="../../../../ids/FR-087.html">FR-087</a>, <a href="../../../../ids/FR-087A.html">FR-087A</a>, <a href="../../../../ids/FR-087B.html">FR-087B</a>, <a href="../../../../ids/FR-087C.html">FR-087C</a>, <a href="../../../../ids/FR-087D.html">FR-087D</a>, <a href="../../../../ids/FR-088.html">FR-088</a></td>
+  <td class="code">- Local FR: `CAP-RECOVERY-001-FR-01` 〜 `CAP-RECOVERY-001-FR-06`</td>
 </tr>
 <tr id="L51">
   <td class="line"><a href="#L51">51</a></td>
-  <td class="code">- AT: <a href="../../../../ids/AT-RECOVERY-001.html">AT-RECOVERY-001</a>, <a href="../../../../ids/AT-RECOVERY-002.html">AT-RECOVERY-002</a>, <a href="../../../../ids/AT-RECOVERY-003.html">AT-RECOVERY-003</a></td>
+  <td class="code">- 旧FR対応: <a href="../../../../ids/FR-087.html">FR-087</a>, <a href="../../../../ids/FR-087A.html">FR-087A</a>, <a href="../../../../ids/FR-087B.html">FR-087B</a>, <a href="../../../../ids/FR-087C.html">FR-087C</a>, <a href="../../../../ids/FR-087D.html">FR-087D</a>, <a href="../../../../ids/FR-088.html">FR-088</a></td>
 </tr>
 <tr id="L52">
   <td class="line"><a href="#L52">52</a></td>
-  <td class="code">- SCR: <a href="../../../../screens/SCR-011-SYNC-STATUS.html">SCR-011-SYNC-STATUS</a></td>
+  <td class="code">- AT: <a href="../../../../ids/AT-RECOVERY-001.html">AT-RECOVERY-001</a>, <a href="../../../../ids/AT-RECOVERY-002.html">AT-RECOVERY-002</a>, <a href="../../../../ids/AT-RECOVERY-003.html">AT-RECOVERY-003</a></td>
 </tr>
 <tr id="L53">
   <td class="line"><a href="#L53">53</a></td>
-  <td class="code">- JRN: <a href="../../../../journeys/JRN-006-RECOVERY.html">JRN-006-RECOVERY</a></td>
+  <td class="code">- SCR: <a href="../../../../screens/SCR-011-SYNC-STATUS.html">SCR-011-SYNC-STATUS</a></td>
 </tr>
 <tr id="L54">
   <td class="line"><a href="#L54">54</a></td>
+  <td class="code">- JRN: <a href="../../../../journeys/JRN-006-RECOVERY.html">JRN-006-RECOVERY</a></td>
+</tr>
+<tr id="L55">
+  <td class="line"><a href="#L55">55</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L56">
+  <td class="line"><a href="#L56">56</a></td>
+  <td class="code">## 11. 機能要件（ローカルID）</td>
+</tr>
+<tr id="L57">
+  <td class="line"><a href="#L57">57</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L58">
+  <td class="line"><a href="#L58">58</a></td>
+  <td class="code">- 採番規則: `&lt;文書ID&gt;-FR-yy`（yyはこの文書内連番）</td>
+</tr>
+<tr id="L59">
+  <td class="line"><a href="#L59">59</a></td>
+  <td class="code">- 旧FR IDは括弧内に残し、移行トレーサビリティを保持します。</td>
+</tr>
+<tr id="L60">
+  <td class="line"><a href="#L60">60</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L61">
+  <td class="line"><a href="#L61">61</a></td>
+  <td class="code">- CAP-RECOVERY-001-FR-01: (旧: <a href="../../../../ids/FR-087.html">FR-087</a>) IndexedDB消失検知時はクラウドからフルリストアを実行します。</td>
+</tr>
+<tr id="L62">
+  <td class="line"><a href="#L62">62</a></td>
+  <td class="code">- CAP-RECOVERY-001-FR-02: (旧: <a href="../../../../ids/FR-087A.html">FR-087A</a>) `POST /sync/pull` が `cloudState=missing` を返した場合、クラウド欠損と判定します。</td>
+</tr>
+<tr id="L63">
+  <td class="line"><a href="#L63">63</a></td>
+  <td class="code">- CAP-RECOVERY-001-FR-03: (旧: <a href="../../../../ids/FR-087B.html">FR-087B</a>) クラウド欠損判定時はローカルデータを正本として `syncMode=full_reseed` で全量再シードを実行し、ローカルデータは削除/初期化しません。</td>
+</tr>
+<tr id="L64">
+  <td class="line"><a href="#L64">64</a></td>
+  <td class="code">- CAP-RECOVERY-001-FR-04: (旧: <a href="../../../../ids/FR-087C.html">FR-087C</a>) 全量再シード成功後は再度 `POST /sync/pull` を実行し、`cloudState=ok` と `cloudRevision` 更新を確認して同期完了とします。</td>
+</tr>
+<tr id="L65">
+  <td class="line"><a href="#L65">65</a></td>
+  <td class="code">- CAP-RECOVERY-001-FR-05: (旧: <a href="../../../../ids/FR-087D.html">FR-087D</a>) 全量再シード失敗時はローカルデータを不変のまま保持し、`lastSyncStatus=failed` と再試行導線を表示します。</td>
+</tr>
+<tr id="L66">
+  <td class="line"><a href="#L66">66</a></td>
+  <td class="code">- CAP-RECOVERY-001-FR-06: (旧: <a href="../../../../ids/FR-088.html">FR-088</a>) 同期失敗時は直近同期状態（成功/失敗）を更新し、再試行導線を表示します。</td>
+</tr>
+<tr id="L67">
+  <td class="line"><a href="#L67">67</a></td>
   <td class="code">&nbsp;</td>
 </tr>
   </table>

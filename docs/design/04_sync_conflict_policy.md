@@ -1,5 +1,9 @@
 # 04. データ同期と競合解決ポリシー
 
+> 移行メモ（2026-02-11）: 本文の正本は `docs/spec/40_contracts/sync-conflict-policy.md` / `docs/spec/30_capabilities/CAP-SYNC-001.md` / `docs/spec/30_capabilities/CAP-RECOVERY-001.md` へ再構成済みです。  
+> 本書は旧体系参照用として残置し、更新は `docs/spec` 側を優先します。
+
+
 ## 1. 目的
 Mac/iPhone 併用時に、ローカルファーストの操作性を維持しながら、Netlify Blobs 共有で最終的整合性を確保します。
 

@@ -1,5 +1,9 @@
 # 05. 通知・アラーム / 画面スリープ抑止設計
 
+> 移行メモ（2026-02-11）: 本文の正本は `docs/spec/45_nfr/notifications-and-sleep-policy.md` / `docs/spec/30_capabilities/CAP-ALARM-001.md` / `docs/spec/20_screens/SCR-006-SESSION.md` へ再構成済みです。  
+> 本書は旧体系参照用として残置し、更新は `docs/spec` 側を優先します。
+
+
 ## 1. 目的
 貯留/廃液の終了見逃しを減らし、ACKまで確実に追従する通知運用を実現します。
 

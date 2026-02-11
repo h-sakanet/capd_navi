@@ -30,5 +30,7 @@
 - `record_event`/必須チェック未完了時は `ACT-001-SESSION` を拒否。
 
 ## 5. 参照元リンク
-- `../../../design/11_state_machines.md`
-- `../../../requirements/10_screen_transition_and_actions.md`
+- `./functional-requirements.md`
+- `../10_journeys/journeys.md`
+- `../20_screens/SCR-006-SESSION.md`
+- `../20_screens/SCR-011-SYNC-STATUS.md`

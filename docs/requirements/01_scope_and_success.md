@@ -1,5 +1,9 @@
 # 01. スコープと成功基準
 
+> 移行メモ（2026-02-11）: 本文の正本は `docs/spec/01_governance.md` / `docs/spec/10_journeys/journeys.md` / `docs/spec/45_nfr/non-functional.md` / `docs/spec/50_quality/acceptance_policy.md` / `docs/spec/30_capabilities/CAP-PLATFORM-001.md` へ再構成済みです。  
+> 本書は旧体系参照用として残置し、更新は `docs/spec` 側を優先します。
+
+
 ## 1. プロダクト目的
 CAPD手技における操作ミス、手順スキップ、記録漏れを防止し、安全性と記録品質を維持できるアプリを提供します。
 

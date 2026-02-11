@@ -13,7 +13,19 @@
 - 出口部写真の更新導線は Phase2 で有効化します。
 
 ## 3. UIワイヤー・レイアウト制約
-- 参照: `../../../requirements/06_ui_wireframes_ab.md` 6.1。
+```text
++-----------------------------------------------+
+| 記録詳細（record_event=session_summary）        |
+| 血圧/体重/脈拍/体温                             |
+| 出口部状態 / 飲水量 / 尿量 / 排便回数           |
+| 症状メモ / 備考                                 |
++-----------------------------------------------+
+| 出口部写真（記録写真）                          |
+| 未登録: [登録]                                  |
+| 登録済み: [変更] [削除]                         |
++-----------------------------------------------+
+```
+
 - ホーム全体サマリと同じ `登録/変更/削除` 行を表示。
 - 両導線で同一レコード状態を表示し、文言差異を作らない。
 
@@ -63,7 +75,27 @@
 - Then 表示が `変更/削除` に切り替わる
 
 ## 11. 参照リンク
-- FR: FR-011, FR-012, FR-014A, FR-042A〜FR-042H, FR-044C, FR-089A
+- Local FR: `SCR-009-HISTORY-DETAIL-FR-01` 〜 `SCR-009-HISTORY-DETAIL-FR-13`
+- 旧FR対応: FR-011, FR-012, FR-014A, FR-042A〜FR-042H, FR-044C, FR-089A
 - AT: AT-EXIT-003〜AT-EXIT-010
 - E2E/UT/VR: E2E-EXIT-002〜E2E-EXIT-005（`../50_quality/test-link-index.md` 参照）
 - CAP: `../30_capabilities/CAP-PHOTO-BACKUP-001.md`, `../30_capabilities/CAP-SNAPSHOT-001.md`
+
+## 12. 画面機能要件（ローカルID）
+
+- 採番規則: `<文書ID>-FR-yy`（yyはこの文書内連番）
+- 旧FR IDは括弧内に残し、移行トレーサビリティを保持します。
+
+- SCR-009-HISTORY-DETAIL-FR-01: (旧: FR-011) 記録一覧画面で詳細表示と編集導線を提供します。
+- SCR-009-HISTORY-DETAIL-FR-02: (旧: FR-012) 記録編集はLWWメタ（`updatedAt`, `updatedByDeviceId`, `mutationId`）を保持して競合解決可能な状態にします。
+- SCR-009-HISTORY-DETAIL-FR-03: (旧: FR-014A) 記録一覧には既存写真列とは別に `出口部写真` 列を追加し、`未登録` / `表示` を切り替えます。
+- SCR-009-HISTORY-DETAIL-FR-04: (旧: FR-042A) 出口部の記録写真（`exit_site`）は `session_summary.payload.exit_site_photo` に保存します（`record_event` は追加しません）。
+- SCR-009-HISTORY-DETAIL-FR-05: (旧: FR-042B) 出口部写真の対象レコードは当日 `summaryScope=both` を最優先し、次に `summaryScope=first_of_day` を採用します。同値時は `completedAt` 昇順、さらに同値時は `recordId` 昇順で決定します。
+- SCR-009-HISTORY-DETAIL-FR-06: (旧: FR-042C) 出口部写真の登録導線は、対象 `session_summary` の入力完了後に表示します。
+- SCR-009-HISTORY-DETAIL-FR-07: (旧: FR-042D) 出口部写真の操作導線は `iPhoneホーム全体サマリ` と `iPhone記録詳細` の両方に表示します。Macは閲覧リンクのみ表示し、登録/変更/削除操作は許可しません。
+- SCR-009-HISTORY-DETAIL-FR-08: (旧: FR-042E) 出口部写真は1レコード1枚固定とし、登録後は `変更` と `削除` を許可します。
+- SCR-009-HISTORY-DETAIL-FR-09: (旧: FR-042F) 出口部写真の入力手段は iPhone の `カメラ撮影` と `ファイル選択` の両方を許可します。
+- SCR-009-HISTORY-DETAIL-FR-10: (旧: FR-042G) 出口部写真は任意入力であり、未登録でも手技完了を阻害しません。
+- SCR-009-HISTORY-DETAIL-FR-11: (旧: FR-042H) 出口部写真の削除時は `session_summary.payload.exit_site_photo=null` を保存し、対応画像は tombstone 化します。
+- SCR-009-HISTORY-DETAIL-FR-12: (旧: FR-044C) `session_summary.summaryScope`（`first_of_day` / `last_of_day` / `both`）は最終ステップ完了時にローカルで算出し、同期時に共有します。
+- SCR-009-HISTORY-DETAIL-FR-13: (旧: FR-089A) `session_summary.payload.exit_site_photo` の更新は部分パッチ（`patch_path=payload.exit_site_photo`）で同期し、同一record内の他フィールドを上書きしません。

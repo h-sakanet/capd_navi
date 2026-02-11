@@ -48,166 +48,182 @@
 </tr>
 <tr id="L3">
   <td class="line"><a href="#L3">3</a></td>
-  <td class="code">## 1. 候補比較</td>
+  <td class="code">&gt; 移行メモ（2026-02-11）: 本文の正本は `docs/spec/90_decisions/ADR-001-stack-decision.md` / `docs/spec/30_capabilities/CAP-PLATFORM-001.md` へ再構成済みです。  </td>
 </tr>
 <tr id="L4">
   <td class="line"><a href="#L4">4</a></td>
-  <td class="code">| 案 | 構成 | 長所 | 短所 |</td>
+  <td class="code">&gt; 本書は旧体系参照用として残置し、更新は `docs/spec` 側を優先します。</td>
 </tr>
 <tr id="L5">
   <td class="line"><a href="#L5">5</a></td>
-  <td class="code">|---|---|---|---|</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L6">
   <td class="line"><a href="#L6">6</a></td>
-  <td class="code">| A（採用） | Mac: SwiftUI+WKWebView / Web: Next.js / API: Netlify Functions（最小） / Local: IndexedDB / Shared: Netlify Blobs | ローカルファーストで軽量、Netlify中心運用、単一ユーザー要件に適合 | 厳密リアルタイム同期は弱い、競合は最終的整合 |</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L7">
   <td class="line"><a href="#L7">7</a></td>
-  <td class="code">| B | Mac同等 / Web+API+DB+Storage: Supabase中心 / FrontのみNetlify | DB/Storage統合が強い | Netlify中心方針から外れる |</td>
+  <td class="code">## 1. 候補比較</td>
 </tr>
 <tr id="L8">
   <td class="line"><a href="#L8">8</a></td>
-  <td class="code">| C | Mac同等 / Cloudflare Pages+Workers+D1+R2 | エッジ配信に強い | 初期実装と運用の学習コストが高い |</td>
+  <td class="code">| 案 | 構成 | 長所 | 短所 |</td>
 </tr>
 <tr id="L9">
   <td class="line"><a href="#L9">9</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">|---|---|---|---|</td>
 </tr>
 <tr id="L10">
   <td class="line"><a href="#L10">10</a></td>
-  <td class="code">## 2. 採用案</td>
+  <td class="code">| A（採用） | Mac: SwiftUI+WKWebView / Web: Next.js / API: Netlify Functions（最小） / Local: IndexedDB / Shared: Netlify Blobs | ローカルファーストで軽量、Netlify中心運用、単一ユーザー要件に適合 | 厳密リアルタイム同期は弱い、競合は最終的整合 |</td>
 </tr>
 <tr id="L11">
   <td class="line"><a href="#L11">11</a></td>
-  <td class="code">採用は案Aです。</td>
+  <td class="code">| B | Mac同等 / Web+API+DB+Storage: Supabase中心 / FrontのみNetlify | DB/Storage統合が強い | Netlify中心方針から外れる |</td>
 </tr>
 <tr id="L12">
   <td class="line"><a href="#L12">12</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">| C | Mac同等 / Cloudflare Pages+Workers+D1+R2 | エッジ配信に強い | 初期実装と運用の学習コストが高い |</td>
 </tr>
 <tr id="L13">
   <td class="line"><a href="#L13">13</a></td>
-  <td class="code">### 2.1 採用理由</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L14">
   <td class="line"><a href="#L14">14</a></td>
-  <td class="code">- 1日1〜4件、年間数百〜千数百件規模では RDB 運用が過剰になりやすく、ローカル正本の方が実装・運用コストを抑えられます。</td>
+  <td class="code">## 2. 採用案</td>
 </tr>
 <tr id="L15">
   <td class="line"><a href="#L15">15</a></td>
-  <td class="code">- 単一ユーザー・2端末・非リアルタイム同期という前提に対し、IndexedDB + Blobs の最終的整合で要件を満たせます。</td>
+  <td class="code">採用は案Aです。</td>
 </tr>
 <tr id="L16">
   <td class="line"><a href="#L16">16</a></td>
-  <td class="code">- Netlify Blobs を共有・バックアップ先として使うことで、Netlify中心の運用を維持できます。</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L17">
   <td class="line"><a href="#L17">17</a></td>
-  <td class="code">- 競合解決・同期契機・バックアップを明示ルール化することで、RDBなしでも再現可能な運用品質を担保できます。</td>
+  <td class="code">### 2.1 採用理由</td>
 </tr>
 <tr id="L18">
   <td class="line"><a href="#L18">18</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- 1日1〜4件、年間数百〜千数百件規模では RDB 運用が過剰になりやすく、ローカル正本の方が実装・運用コストを抑えられます。</td>
 </tr>
 <tr id="L19">
   <td class="line"><a href="#L19">19</a></td>
-  <td class="code">### 2.2 トレードオフ</td>
+  <td class="code">- 単一ユーザー・2端末・非リアルタイム同期という前提に対し、IndexedDB + Blobs の最終的整合で要件を満たせます。</td>
 </tr>
 <tr id="L20">
   <td class="line"><a href="#L20">20</a></td>
-  <td class="code">- 同一データを別端末で更新した場合、即時整合ではなく同期時の LWW 解決になります。</td>
+  <td class="code">- Netlify Blobs を共有・バックアップ先として使うことで、Netlify中心の運用を維持できます。</td>
 </tr>
 <tr id="L21">
   <td class="line"><a href="#L21">21</a></td>
-  <td class="code">- 端末ローカル消失（iOSストレージ回収）に備え、復元導線と同期運用の徹底が必要です。</td>
+  <td class="code">- 競合解決・同期契機・バックアップを明示ルール化することで、RDBなしでも再現可能な運用品質を担保できます。</td>
 </tr>
 <tr id="L22">
   <td class="line"><a href="#L22">22</a></td>
-  <td class="code">- 同期データを非暗号化で扱うため、HTTPS通信前提とURL管理手順の徹底が必要です。</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L23">
   <td class="line"><a href="#L23">23</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">### 2.2 トレードオフ</td>
 </tr>
 <tr id="L24">
   <td class="line"><a href="#L24">24</a></td>
-  <td class="code">## 3. 採用スタック詳細</td>
+  <td class="code">- 同一データを別端末で更新した場合、即時整合ではなく同期時の LWW 解決になります。</td>
 </tr>
 <tr id="L25">
   <td class="line"><a href="#L25">25</a></td>
-  <td class="code">- Mac: Swift, SwiftUI, WKWebView, UNUserNotificationCenter, IOPM Assertion</td>
+  <td class="code">- 端末ローカル消失（iOSストレージ回収）に備え、復元導線と同期運用の徹底が必要です。</td>
 </tr>
 <tr id="L26">
   <td class="line"><a href="#L26">26</a></td>
-  <td class="code">- Frontend: Next.js (App Router), TypeScript, Tailwind CSS, shadcn/ui</td>
+  <td class="code">- 同期データを非暗号化で扱うため、HTTPS通信前提とURL管理手順の徹底が必要です。</td>
 </tr>
 <tr id="L27">
   <td class="line"><a href="#L27">27</a></td>
-  <td class="code">- Local Store: IndexedDB（正本）</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L28">
   <td class="line"><a href="#L28">28</a></td>
-  <td class="code">- Sync/API: Netlify Functions（`/sync/pull`, `/sync/push`）</td>
+  <td class="code">## 3. 採用スタック詳細</td>
 </tr>
 <tr id="L29">
   <td class="line"><a href="#L29">29</a></td>
-  <td class="code">- Shared Storage: Netlify Blobs（`index.json`, `days/*.json`, `photos/*.jpg`）</td>
+  <td class="code">- Mac: Swift, SwiftUI, WKWebView, UNUserNotificationCenter, IOPM Assertion</td>
 </tr>
 <tr id="L30">
   <td class="line"><a href="#L30">30</a></td>
-  <td class="code">- Batch: Netlify Scheduled Functions（日次スナップショット保持）</td>
+  <td class="code">- Frontend: Next.js (App Router), TypeScript, Tailwind CSS, shadcn/ui</td>
 </tr>
 <tr id="L31">
   <td class="line"><a href="#L31">31</a></td>
-  <td class="code">- Hosting: Netlify</td>
+  <td class="code">- Local Store: IndexedDB（正本）</td>
 </tr>
 <tr id="L32">
   <td class="line"><a href="#L32">32</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- Sync/API: Netlify Functions（`/sync/pull`, `/sync/push`）</td>
 </tr>
 <tr id="L33">
   <td class="line"><a href="#L33">33</a></td>
-  <td class="code">## 4. バージョン方針</td>
+  <td class="code">- Shared Storage: Netlify Blobs（`index.json`, `days/*.json`, `photos/*.jpg`）</td>
 </tr>
 <tr id="L34">
   <td class="line"><a href="#L34">34</a></td>
-  <td class="code">- Node.js: LTS（20系以上）</td>
+  <td class="code">- Batch: Netlify Scheduled Functions（日次スナップショット保持）</td>
 </tr>
 <tr id="L35">
   <td class="line"><a href="#L35">35</a></td>
-  <td class="code">- TypeScript: 安定版</td>
+  <td class="code">- Hosting: Netlify</td>
 </tr>
 <tr id="L36">
   <td class="line"><a href="#L36">36</a></td>
-  <td class="code">- Next.js: 安定版（LTSポリシーに準拠）</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L37">
   <td class="line"><a href="#L37">37</a></td>
-  <td class="code">- Swift: Xcode安定版に準拠</td>
+  <td class="code">## 4. バージョン方針</td>
 </tr>
 <tr id="L38">
   <td class="line"><a href="#L38">38</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- Node.js: LTS（20系以上）</td>
 </tr>
 <tr id="L39">
   <td class="line"><a href="#L39">39</a></td>
-  <td class="code">## 5. 不採用理由（要約）</td>
+  <td class="code">- TypeScript: 安定版</td>
 </tr>
 <tr id="L40">
   <td class="line"><a href="#L40">40</a></td>
-  <td class="code">- Neon PostgreSQL + ORM 案: データ規模と運用体制に対して過剰で、構成複雑性が増加するため不採用</td>
+  <td class="code">- Next.js: 安定版（LTSポリシーに準拠）</td>
 </tr>
 <tr id="L41">
   <td class="line"><a href="#L41">41</a></td>
-  <td class="code">- Supabase案: DB統合は魅力だが、Netlify中心の運用一貫性を優先</td>
+  <td class="code">- Swift: Xcode安定版に準拠</td>
 </tr>
 <tr id="L42">
   <td class="line"><a href="#L42">42</a></td>
-  <td class="code">- Cloudflare案: 将来性はあるが初期実装・運用負荷が高い</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L43">
   <td class="line"><a href="#L43">43</a></td>
+  <td class="code">## 5. 不採用理由（要約）</td>
+</tr>
+<tr id="L44">
+  <td class="line"><a href="#L44">44</a></td>
+  <td class="code">- Neon PostgreSQL + ORM 案: データ規模と運用体制に対して過剰で、構成複雑性が増加するため不採用</td>
+</tr>
+<tr id="L45">
+  <td class="line"><a href="#L45">45</a></td>
+  <td class="code">- Supabase案: DB統合は魅力だが、Netlify中心の運用一貫性を優先</td>
+</tr>
+<tr id="L46">
+  <td class="line"><a href="#L46">46</a></td>
+  <td class="code">- Cloudflare案: 将来性はあるが初期実装・運用負荷が高い</td>
+</tr>
+<tr id="L47">
+  <td class="line"><a href="#L47">47</a></td>
   <td class="code">&nbsp;</td>
 </tr>
   </table>

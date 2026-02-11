@@ -244,22 +244,94 @@
 </tr>
 <tr id="L52">
   <td class="line"><a href="#L52">52</a></td>
-  <td class="code">- FR: <a href="../../../../ids/FR-080.html">FR-080</a>, <a href="../../../../ids/FR-081.html">FR-081</a>, <a href="../../../../ids/FR-082.html">FR-082</a>, <a href="../../../../ids/FR-082A.html">FR-082A</a>, <a href="../../../../ids/FR-083.html">FR-083</a>, <a href="../../../../ids/FR-084.html">FR-084</a>, <a href="../../../../ids/FR-085.html">FR-085</a>, <a href="../../../../ids/FR-086.html">FR-086</a>, <a href="../../../../ids/FR-088.html">FR-088</a>, <a href="../../../../ids/FR-089.html">FR-089</a>, <a href="../../../../ids/FR-089A.html">FR-089A</a></td>
+  <td class="code">- Local FR: `CAP-SYNC-001-FR-01` 〜 `CAP-SYNC-001-FR-11`</td>
 </tr>
 <tr id="L53">
   <td class="line"><a href="#L53">53</a></td>
-  <td class="code">- AT: <a href="../../../../ids/AT-SYNC-001.html">AT-SYNC-001</a>, <a href="../../../../ids/AT-SYNC-002.html">AT-SYNC-002</a>, <a href="../../../../ids/AT-SYNC-003.html">AT-SYNC-003</a>, <a href="../../../../ids/AT-SYNC-004.html">AT-SYNC-004</a>, <a href="../../../../ids/AT-SYNC-005.html">AT-SYNC-005</a>, <a href="../../../../ids/AT-SYNC-006.html">AT-SYNC-006</a>, <a href="../../../../ids/AT-API-001.html">AT-API-001</a>, <a href="../../../../ids/AT-API-004.html">AT-API-004</a></td>
+  <td class="code">- 旧FR対応: <a href="../../../../ids/FR-080.html">FR-080</a>, <a href="../../../../ids/FR-081.html">FR-081</a>, <a href="../../../../ids/FR-082.html">FR-082</a>, <a href="../../../../ids/FR-082A.html">FR-082A</a>, <a href="../../../../ids/FR-083.html">FR-083</a>, <a href="../../../../ids/FR-084.html">FR-084</a>, <a href="../../../../ids/FR-085.html">FR-085</a>, <a href="../../../../ids/FR-086.html">FR-086</a>, <a href="../../../../ids/FR-088.html">FR-088</a>, <a href="../../../../ids/FR-089.html">FR-089</a>, <a href="../../../../ids/FR-089A.html">FR-089A</a></td>
 </tr>
 <tr id="L54">
   <td class="line"><a href="#L54">54</a></td>
-  <td class="code">- SCR: <a href="../../../../screens/SCR-011-SYNC-STATUS.html">SCR-011-SYNC-STATUS</a>, <a href="../../../../screens/SCR-001-HOME.html">SCR-001-HOME</a></td>
+  <td class="code">- AT: <a href="../../../../ids/AT-SYNC-001.html">AT-SYNC-001</a>, <a href="../../../../ids/AT-SYNC-002.html">AT-SYNC-002</a>, <a href="../../../../ids/AT-SYNC-003.html">AT-SYNC-003</a>, <a href="../../../../ids/AT-SYNC-004.html">AT-SYNC-004</a>, <a href="../../../../ids/AT-SYNC-005.html">AT-SYNC-005</a>, <a href="../../../../ids/AT-SYNC-006.html">AT-SYNC-006</a>, <a href="../../../../ids/AT-API-001.html">AT-API-001</a>, <a href="../../../../ids/AT-API-004.html">AT-API-004</a></td>
 </tr>
 <tr id="L55">
   <td class="line"><a href="#L55">55</a></td>
-  <td class="code">- JRN: <a href="../../../../journeys/JRN-005-SYNC.html">JRN-005-SYNC</a></td>
+  <td class="code">- SCR: <a href="../../../../screens/SCR-011-SYNC-STATUS.html">SCR-011-SYNC-STATUS</a>, <a href="../../../../screens/SCR-001-HOME.html">SCR-001-HOME</a></td>
 </tr>
 <tr id="L56">
   <td class="line"><a href="#L56">56</a></td>
+  <td class="code">- JRN: <a href="../../../../journeys/JRN-005-SYNC.html">JRN-005-SYNC</a></td>
+</tr>
+<tr id="L57">
+  <td class="line"><a href="#L57">57</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L58">
+  <td class="line"><a href="#L58">58</a></td>
+  <td class="code">## 11. 機能要件（ローカルID）</td>
+</tr>
+<tr id="L59">
+  <td class="line"><a href="#L59">59</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L60">
+  <td class="line"><a href="#L60">60</a></td>
+  <td class="code">- 採番規則: `&lt;文書ID&gt;-FR-yy`（yyはこの文書内連番）</td>
+</tr>
+<tr id="L61">
+  <td class="line"><a href="#L61">61</a></td>
+  <td class="code">- 旧FR IDは括弧内に残し、移行トレーサビリティを保持します。</td>
+</tr>
+<tr id="L62">
+  <td class="line"><a href="#L62">62</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L63">
+  <td class="line"><a href="#L63">63</a></td>
+  <td class="code">- CAP-SYNC-001-FR-01: (旧: <a href="../../../../ids/FR-080.html">FR-080</a>) 同期は `startup` / `resume` / `session_complete` / `manual` の4契機で実行します。</td>
+</tr>
+<tr id="L64">
+  <td class="line"><a href="#L64">64</a></td>
+  <td class="code">- CAP-SYNC-001-FR-02: (旧: <a href="../../../../ids/FR-081.html">FR-081</a>) すべてのローカル更新は `outbox` に追記し、push成功時に消し込みます。</td>
+</tr>
+<tr id="L65">
+  <td class="line"><a href="#L65">65</a></td>
+  <td class="code">- CAP-SYNC-001-FR-03: (旧: <a href="../../../../ids/FR-082.html">FR-082</a>) 差分取得は `cloudRevision` と `dayRefs` に基づき実行します。</td>
+</tr>
+<tr id="L66">
+  <td class="line"><a href="#L66">66</a></td>
+  <td class="code">- CAP-SYNC-001-FR-04: (旧: <a href="../../../../ids/FR-082A.html">FR-082A</a>) 公開HTTP APIは `POST /sync/push` と `POST /sync/pull` のみとし、CSV取り込みはローカルI/F（`ProtocolImportService.importFromDirectory`）で実行します。</td>
+</tr>
+<tr id="L67">
+  <td class="line"><a href="#L67">67</a></td>
+  <td class="code">- CAP-SYNC-001-FR-05: (旧: <a href="../../../../ids/FR-083.html">FR-083</a>) 競合解決はエンティティ単位LWW（`updatedAt`, `updatedByDeviceId`, `mutationId` 降順）で固定します。</td>
+</tr>
+<tr id="L68">
+  <td class="line"><a href="#L68">68</a></td>
+  <td class="code">- CAP-SYNC-001-FR-06: (旧: <a href="../../../../ids/FR-084.html">FR-084</a>) tombstone（削除）もLWW同一ルールで解決します。</td>
+</tr>
+<tr id="L69">
+  <td class="line"><a href="#L69">69</a></td>
+  <td class="code">- CAP-SYNC-001-FR-07: (旧: <a href="../../../../ids/FR-085.html">FR-085</a>) 競合解決は内部適用のみとし、競合件数バナーや詳細一覧は提供しません。</td>
+</tr>
+<tr id="L70">
+  <td class="line"><a href="#L70">70</a></td>
+  <td class="code">- CAP-SYNC-001-FR-08: (旧: <a href="../../../../ids/FR-086.html">FR-086</a>) 手動同期ボタンを提供し、失敗時は再試行導線を表示します。</td>
+</tr>
+<tr id="L71">
+  <td class="line"><a href="#L71">71</a></td>
+  <td class="code">- CAP-SYNC-001-FR-09: (旧: <a href="../../../../ids/FR-088.html">FR-088</a>) 同期失敗時は直近同期状態（成功/失敗）を更新し、再試行導線を表示します。</td>
+</tr>
+<tr id="L72">
+  <td class="line"><a href="#L72">72</a></td>
+  <td class="code">- CAP-SYNC-001-FR-10: (旧: <a href="../../../../ids/FR-089.html">FR-089</a>) `120秒ポーリング` は実装しません。</td>
+</tr>
+<tr id="L73">
+  <td class="line"><a href="#L73">73</a></td>
+  <td class="code">- CAP-SYNC-001-FR-11: (旧: <a href="../../../../ids/FR-089A.html">FR-089A</a>) `session_summary.payload.exit_site_photo` の更新は部分パッチ（`patch_path=payload.exit_site_photo`）で同期し、同一record内の他フィールドを上書きしません。</td>
+</tr>
+<tr id="L74">
+  <td class="line"><a href="#L74">74</a></td>
   <td class="code">&nbsp;</td>
 </tr>
   </table>

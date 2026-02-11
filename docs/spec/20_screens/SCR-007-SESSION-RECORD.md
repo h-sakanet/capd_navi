@@ -12,7 +12,15 @@
 - この画面で決めないこと: ステップ遷移順序、通知再送、同期アルゴリズム。
 
 ## 3. UIワイヤー・レイアウト制約
-- 参照: `../../../requirements/11_form_contracts.md` 4章。
+```text
++------------------------------------------------+
+| 記録入力（record_event=*）                      |
+| フォーム本体: FC-* に従って動的表示             |
+| 例) 排液確認 / 排液量 / 注液量 / サマリ         |
+|                          [キャンセル] [保存]    |
++------------------------------------------------+
+```
+
 - `FC-*` 定義の表示順を変更しません。
 - `summaryScope=both` の11項目は固定順で表示します。
 
@@ -35,6 +43,60 @@
 |---|---|---|---|---|
 | フォーム表示 | `FC-*` 定義, `summaryScope` | - | - | on dialog open |
 | 保存 | 入力値 | `Record(record_event, payload)` | `record` 追記 | on save |
+
+### 6.1 フォーム契約（FC）詳細
+- 本画面で使用する `FC-*` の一次仕様はこの節を正とします。
+
+| FC ID | 条件 | 保存先 | 対応AT |
+|---|---|---|---|
+| FC-SUMMARY-001 | `summaryScope=first_of_day` | `Record(record_event=session_summary)` | AT-EXIT-002 |
+| FC-SUMMARY-002 | `summaryScope=last_of_day` | `Record(record_event=session_summary)` | AT-EXIT-001 |
+| FC-SUMMARY-003 | `summaryScope=both` | `Record(record_event=session_summary)` | AT-EXIT-011 |
+
+#### FC-SUMMARY-001 `summaryScope=first_of_day`
+- 必須項目:
+  - 血圧上
+  - 血圧下
+  - 体重
+  - 脈拍
+  - 体温
+  - 出口部状態（複数選択）
+- 表示順:
+  1. 血圧上（mmHg）
+  2. 血圧下（mmHg）
+  3. 体重（kg）
+  4. 脈拍（回/分）
+  5. 体温（℃）
+  6. 出口部状態（`正常/赤み/痛み/はれ/かさぶた/じゅくじゅく/出血/膿`）
+  7. 症状メモ（任意）
+  8. 備考（任意）
+
+#### FC-SUMMARY-002 `summaryScope=last_of_day`
+- 必須項目:
+  - 飲水量
+  - 尿量
+  - 排便回数
+- 表示順:
+  1. 飲水量（ml）
+  2. 尿量（ml）
+  3. 排便回数（回）
+  4. 症状メモ（任意）
+  5. 備考（任意）
+
+#### FC-SUMMARY-003 `summaryScope=both`
+- 必須項目: FC-SUMMARY-001 と FC-SUMMARY-002 の必須項目をすべて満たします。
+- 表示順（固定）:
+  1. 血圧上（mmHg）【必須】
+  2. 血圧下（mmHg）【必須】
+  3. 体重（kg）【必須】
+  4. 脈拍（回/分）【必須】
+  5. 体温（℃）【必須】
+  6. 出口部状態（複数選択）【必須】
+  7. 飲水量（ml）【必須】
+  8. 尿量（ml）【必須】
+  9. 排便回数（回）【必須】
+  10. 症状メモ（任意）
+  11. 備考（任意）
 
 ## 7. バリデーション / エラー文言 / 空状態
 - バリデーション:
@@ -59,7 +121,31 @@
 - Then ブロックされ本モーダル保存が必要になる
 
 ## 11. 参照リンク
-- FR: FR-040〜FR-044D, FR-042A〜FR-042H
+- Local FR: `SCR-007-SESSION-RECORD-FR-01` 〜 `SCR-007-SESSION-RECORD-FR-17`
+- 旧FR対応: FR-040〜FR-044D（FR-041, FR-043, FR-044A, FR-044B を含む）, FR-042A〜FR-042H
 - AT: AT-FLOW-002
 - E2E/UT/VR: E2E-FLOW-006, VR-SESSION-003（`../50_quality/test-link-index.md` 参照）
 - CAP: `../30_capabilities/CAP-SNAPSHOT-001.md`
+
+## 12. 画面機能要件（ローカルID）
+
+- 採番規則: `<文書ID>-FR-yy`（yyはこの文書内連番）
+- 旧FR IDは括弧内に残し、移行トレーサビリティを保持します。
+
+- SCR-007-SESSION-RECORD-FR-01: (旧: FR-040) `drain_appearance` 入力モーダルを提供します。
+- SCR-007-SESSION-RECORD-FR-02: (旧: FR-041) 見た目分類は `透明/やや混濁/混濁/血性/その他` を提供します。
+- SCR-007-SESSION-RECORD-FR-03: (旧: FR-042) 廃液の記録写真（`drain`）は任意入力です。
+- SCR-007-SESSION-RECORD-FR-04: (旧: FR-042A) 出口部の記録写真（`exit_site`）は `session_summary.payload.exit_site_photo` に保存します（`record_event` は追加しません）。
+- SCR-007-SESSION-RECORD-FR-05: (旧: FR-042B) 出口部写真の対象レコードは当日 `summaryScope=both` を最優先し、次に `summaryScope=first_of_day` を採用します。同値時は `completedAt` 昇順、さらに同値時は `recordId` 昇順で決定します。
+- SCR-007-SESSION-RECORD-FR-06: (旧: FR-042C) 出口部写真の登録導線は、対象 `session_summary` の入力完了後に表示します。
+- SCR-007-SESSION-RECORD-FR-07: (旧: FR-042D) 出口部写真の操作導線は `iPhoneホーム全体サマリ` と `iPhone記録詳細` の両方に表示します。Macは閲覧リンクのみ表示し、登録/変更/削除操作は許可しません。
+- SCR-007-SESSION-RECORD-FR-08: (旧: FR-042E) 出口部写真は1レコード1枚固定とし、登録後は `変更` と `削除` を許可します。
+- SCR-007-SESSION-RECORD-FR-09: (旧: FR-042F) 出口部写真の入力手段は iPhone の `カメラ撮影` と `ファイル選択` の両方を許可します。
+- SCR-007-SESSION-RECORD-FR-10: (旧: FR-042G) 出口部写真は任意入力であり、未登録でも手技完了を阻害しません。
+- SCR-007-SESSION-RECORD-FR-11: (旧: FR-042H) 出口部写真の削除時は `session_summary.payload.exit_site_photo=null` を保存し、対応画像は tombstone 化します。
+- SCR-007-SESSION-RECORD-FR-12: (旧: FR-043) `drain_weight_g` と `bag_weight_g` を g単位で保存します。
+- SCR-007-SESSION-RECORD-FR-13: (旧: FR-044) `session_summary` で以下を収集します。
+- SCR-007-SESSION-RECORD-FR-14: (旧: FR-044A) 同一日に1セッションのみ完了した場合は、最初/最後の両条件を同時適用し、必須項目をすべて満たす必要があります。
+- SCR-007-SESSION-RECORD-FR-15: (旧: FR-044B) 出口部状態は複数選択チェックボックスで入力し、語彙は `正常/赤み/痛み/はれ/かさぶた/じゅくじゅく/出血/膿` とします。追加の自由記述は備考欄に入力します。
+- SCR-007-SESSION-RECORD-FR-16: (旧: FR-044C) `session_summary.summaryScope`（`first_of_day` / `last_of_day` / `both`）は最終ステップ完了時にローカルで算出し、同期時に共有します。
+- SCR-007-SESSION-RECORD-FR-17: (旧: FR-044D) `summaryScope` が未指定または不正値でも保存拒否せず、`summaryScope` のみ破棄して他の妥当な入力値を保存します。

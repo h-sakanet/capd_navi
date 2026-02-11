@@ -1,5 +1,9 @@
 # CAPD設計ドキュメント
 
+> 移行メモ（2026-02-11）: 本文の正本は `docs/spec/00_index.md` / `docs/spec/99_migration/source_mapping.md` へ再構成済みです。  
+> 本書は旧体系参照用として残置し、更新は `docs/spec` 側を優先します。
+
+
 全体可視化の入口は `/Users/sakanet/capd_navi/docs/00_navigation.md` を参照してください。
 
 ## 読む順番

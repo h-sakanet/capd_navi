@@ -53,8 +53,16 @@ type RecordDraft = {
   note?: string;
 };
 
+type AlarmState = {
+  status: "active" | "acked" | "missed";
+  startedAtMs: number;
+  notifications: number;
+  ackedAtIso?: string;
+};
+
 const drainAppearanceOptions = ["透明", "やや混濁", "混濁", "血性", "その他"] as const;
 const exitSiteStatusOptions = ["正常", "赤み", "痛み", "はれ", "かさぶた", "じゅくじゅく", "出血", "膿"] as const;
+const ALARM_MINUTE_MS = Number(process.env.NEXT_PUBLIC_ALARM_MINUTE_MS ?? "60000");
 
 const recordEventLabel: Record<string, string> = {
   drain_appearance: "排液の確認",
@@ -188,6 +196,7 @@ function SessionPageContent() {
   const searchParams = useSearchParams();
   const sessionIdParam = searchParams.get("sessionId");
   const slotIndexParam = parseSlotIndex(searchParams.get("slot"));
+  const stepIdParam = searchParams.get("stepId");
 
   const [steps, setSteps] = useState<ProtocolStep[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -204,6 +213,7 @@ function SessionPageContent() {
   const [recordCompletedByStep, setRecordCompletedByStep] = useState<Record<string, boolean>>({});
   const [recordModalStepId, setRecordModalStepId] = useState<string | null>(null);
   const [recordModalError, setRecordModalError] = useState<string | null>(null);
+  const [alarmByStepId, setAlarmByStepId] = useState<Record<string, AlarmState>>({});
 
   useEffect(() => {
     const activeSession = readActiveSession();
@@ -251,9 +261,11 @@ function SessionPageContent() {
 
         const activeSession = readActiveSession();
         const targetStepId =
-          sessionContext && activeSession?.sessionId === sessionContext.sessionId
-            ? activeSession.currentStepId
-            : "step_021";
+          stepIdParam && parsedSteps.some((step) => step.stepId === stepIdParam)
+            ? stepIdParam
+            : sessionContext && activeSession?.sessionId === sessionContext.sessionId
+              ? activeSession.currentStepId
+              : "step_021";
 
         const initialIndex = parsedSteps.findIndex((step) => step.stepId === targetStepId);
         setSteps(parsedSteps);
@@ -279,7 +291,7 @@ function SessionPageContent() {
     return () => {
       cancelled = true;
     };
-  }, [sessionContext]);
+  }, [sessionContext, stepIdParam]);
 
   const stepIndexById = useMemo(() => {
     return new Map(steps.map((step, index) => [step.stepId, index]));
@@ -568,6 +580,92 @@ function SessionPageContent() {
     setRecordModalStepId(null);
   }, [recordModalDraft, recordModalStep]);
 
+  useEffect(() => {
+    if (!currentStep?.alarmId || !currentStep.alarmDurationMin) {
+      return;
+    }
+
+    const targetStepId = currentStep.stepId;
+    setAlarmByStepId((prev) => {
+      if (prev[targetStepId]) {
+        return prev;
+      }
+
+      return {
+        ...prev,
+        [targetStepId]: {
+          status: "active",
+          startedAtMs: Date.now(),
+          notifications: 1
+        }
+      };
+    });
+  }, [currentStep?.alarmDurationMin, currentStep?.alarmId, currentStep?.stepId]);
+
+  useEffect(() => {
+    if (!currentStep?.alarmId || !currentStep.alarmDurationMin) {
+      return;
+    }
+
+    const targetStepId = currentStep.stepId;
+    const minuteMs = Number.isFinite(ALARM_MINUTE_MS) && ALARM_MINUTE_MS > 0 ? ALARM_MINUTE_MS : 60_000;
+
+    const timerId = window.setInterval(() => {
+      setAlarmByStepId((prev) => {
+        const state = prev[targetStepId];
+        if (!state || state.status !== "active") {
+          return prev;
+        }
+
+        const elapsedMs = Date.now() - state.startedAtMs;
+        let nextNotifications = state.notifications;
+
+        if (elapsedMs >= minuteMs * 5) {
+          const additionalCycles = Math.floor((elapsedMs - minuteMs * 5) / (minuteMs * 3));
+          nextNotifications = Math.max(nextNotifications, 3 + additionalCycles);
+        } else if (elapsedMs >= minuteMs * 2) {
+          nextNotifications = Math.max(nextNotifications, 2);
+        }
+
+        const nextStatus = elapsedMs >= minuteMs * 30 ? "missed" : state.status;
+        if (nextNotifications === state.notifications && nextStatus === state.status) {
+          return prev;
+        }
+
+        return {
+          ...prev,
+          [targetStepId]: {
+            ...state,
+            notifications: nextNotifications,
+            status: nextStatus
+          }
+        };
+      });
+    }, 100);
+
+    return () => {
+      window.clearInterval(timerId);
+    };
+  }, [currentStep?.alarmDurationMin, currentStep?.alarmId, currentStep?.stepId]);
+
+  const acknowledgeAlarm = useCallback((stepId: string) => {
+    setAlarmByStepId((prev) => {
+      const state = prev[stepId];
+      if (!state || state.status !== "active") {
+        return prev;
+      }
+
+      return {
+        ...prev,
+        [stepId]: {
+          ...state,
+          status: "acked",
+          ackedAtIso: new Date().toISOString()
+        }
+      };
+    });
+  }, []);
+
   if (!steps.length) {
     return (
       <CapdShell>
@@ -598,6 +696,7 @@ function SessionPageContent() {
             const stepChecksCompleted = step.requiredChecks.every((checkItem) => stepChecks.has(checkItem));
             const stepRecordRequired = Boolean(step.recordEvent);
             const stepRecordCompleted = !stepRecordRequired || Boolean(recordCompletedByStep[step.stepId]);
+            const alarmState = alarmByStepId[step.stepId];
             const canAdvanceStep = stepChecksCompleted && stepRecordCompleted;
             const canFinish = !stepCanGoNext && Boolean(sessionContext);
             const stepBlockReason = !stepChecksCompleted
@@ -737,11 +836,34 @@ function SessionPageContent() {
                       ) : null}
 
                       {step.alarmId && step.alarmDurationMin ? (
-                        <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-900">
-                          <div className="flex items-center gap-2 font-medium">
-                            <Bell className="h-4 w-4" />
-                            {`待機アラーム: ${step.alarmDurationMin}分経過 [確認する]`}
-                          </div>
+                        <div
+                          data-testid={`alarm-${step.stepId}`}
+                          className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-900"
+                        >
+                          {alarmState?.status === "acked" ? (
+                            <div className="flex items-center gap-2 font-medium text-emerald-700">
+                              <Bell className="h-4 w-4" />
+                              {`アラーム確認済み (acked_at: ${alarmState.ackedAtIso ?? "-"})`}
+                            </div>
+                          ) : alarmState?.status === "missed" ? (
+                            <div className="flex items-center gap-2 font-medium">
+                              <Bell className="h-4 w-4" />
+                              アラーム未確認（missed）
+                            </div>
+                          ) : (
+                            <div className="flex flex-wrap items-center gap-2">
+                              <div className="flex items-center gap-2 font-medium">
+                                <Bell className="h-4 w-4" />
+                                {`待機アラーム: ${step.alarmDurationMin}分経過`}
+                              </div>
+                              <span className="text-xs" data-testid={`alarm-count-${step.stepId}`}>
+                                {`通知回数: ${alarmState?.notifications ?? 1}`}
+                              </span>
+                              <Button size="sm" variant="secondary" onClick={() => acknowledgeAlarm(step.stepId)}>
+                                確認する
+                              </Button>
+                            </div>
+                          )}
                         </div>
                       ) : null}
 

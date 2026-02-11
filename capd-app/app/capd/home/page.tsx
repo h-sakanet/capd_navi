@@ -34,7 +34,9 @@ export default function HomePage() {
               記録一覧を開く
             </Link>
           </Button>
-          <Button variant="outline">CSV取り込み(Mac)</Button>
+          <Button asChild variant="outline">
+            <Link href="/capd/import">CSV取り込み(Mac)</Link>
+          </Button>
         </CardContent>
       </Card>
     </CapdShell>

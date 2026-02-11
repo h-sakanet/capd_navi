@@ -4,7 +4,9 @@
 flowchart LR
   %% SCR-005-HOME-SUMMARY
   subgraph JRN["Journeys"]
-    N31["JRN-009-EXITPHOTO 出口部写真登録/変更/削除"]
+    N34["JRN-005-SYNC 同期と再試行"]
+    N35["JRN-008-HISTORY 記録一覧閲覧と編集"]
+    N36["JRN-009-EXITPHOTO 出口部写真登録/変更/削除"]
   end
   subgraph ACT["Actions"]
     N1["ACT-EXIT-001 出口部写真登録"]
@@ -12,13 +14,18 @@ flowchart LR
     N3["ACT-EXIT-003 出口部写真削除"]
   end
   subgraph SCR["Screens"]
-    N32["SCR-005-HOME-SUMMARY 全体サマリ"]
-    N33["SCR-009-HISTORY-DETAIL 記録詳細"]
-    N34["SCR-010-HISTORY-PHOTO 写真詳細"]
+    N37["SCR-005-HOME-SUMMARY 全体サマリ"]
+    N38["SCR-009-HISTORY-DETAIL 記録詳細"]
+    N39["SCR-010-HISTORY-PHOTO 写真詳細"]
+  end
+  subgraph FC["Forms"]
+    N31["FC-SUMMARY-001 summaryScope=first_of_day"]
+    N32["FC-SUMMARY-002 summaryScope=last_of_day"]
+    N33["FC-SUMMARY-003 summaryScope=both"]
   end
   subgraph UI["UI Elements"]
-    N35["UI-HOME-010"]
-    N36["UI-HOME-011"]
+    N40["UI-HOME-010"]
+    N41["UI-HOME-011"]
   end
   subgraph AT["Acceptance Tests"]
     N4["AT-BACKUP-001 日次バックアップ"]
@@ -53,15 +60,15 @@ flowchart LR
     N20["Record"]
     N21["Record(session_summary.payload.exit_site_photo)"]
   end
-  N1 --> N32
-  N1 --> N33
-  N1 --> N36
-  N2 --> N32
-  N2 --> N33
-  N2 --> N36
-  N3 --> N32
-  N3 --> N33
-  N3 --> N36
+  N1 --> N37
+  N1 --> N38
+  N1 --> N41
+  N2 --> N37
+  N2 --> N38
+  N2 --> N41
+  N3 --> N37
+  N3 --> N38
+  N3 --> N41
   N4 --> N22
   N5 --> N23
   N6 --> N23
@@ -76,40 +83,45 @@ flowchart LR
   N15 --> N28
   N16 --> N29
   N17 --> N30
-  N31 --> N1
-  N31 --> N2
-  N31 --> N3
-  N31 --> N4
-  N31 --> N5
   N31 --> N6
-  N31 --> N7
-  N31 --> N8
-  N31 --> N9
-  N31 --> N10
-  N31 --> N11
-  N31 --> N12
-  N31 --> N13
-  N31 --> N14
-  N31 --> N15
-  N31 --> N16
-  N31 --> N17
-  N31 --> N22
-  N31 --> N23
-  N31 --> N24
-  N31 --> N25
-  N31 --> N26
-  N31 --> N27
-  N31 --> N28
-  N31 --> N29
-  N31 --> N30
-  N31 --> N32
-  N31 --> N33
-  N31 --> N34
-  N32 --> N35
-  N32 --> N36
-  N35 --> N20
-  N36 --> N18
-  N36 --> N19
-  N36 --> N21
+  N32 --> N5
+  N33 --> N15
+  N35 --> N38
+  N35 --> N39
+  N36 --> N1
+  N36 --> N2
+  N36 --> N3
+  N36 --> N4
+  N36 --> N5
+  N36 --> N6
+  N36 --> N7
+  N36 --> N8
+  N36 --> N9
+  N36 --> N10
+  N36 --> N11
+  N36 --> N12
+  N36 --> N13
+  N36 --> N14
+  N36 --> N15
+  N36 --> N16
+  N36 --> N17
+  N36 --> N22
+  N36 --> N23
+  N36 --> N24
+  N36 --> N25
+  N36 --> N26
+  N36 --> N27
+  N36 --> N28
+  N36 --> N29
+  N36 --> N30
+  N36 --> N37
+  N36 --> N38
+  N36 --> N39
+  N37 --> N40
+  N37 --> N41
+  N40 --> N20
+  N41 --> N18
+  N41 --> N19
+  N41 --> N21
 ```
 

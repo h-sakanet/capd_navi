@@ -1,5 +1,9 @@
 # 11. 状態遷移設計（State Machine）
 
+> 移行メモ（2026-02-11）: 本文の正本は `docs/spec/40_contracts/state-machine.md` へ再構成済みです。  
+> 本書は旧体系参照用として残置し、更新は `docs/spec` 側を優先します。
+
+
 ## 1. 目的
 本書は、`slot/session/sync/alarm` の状態遷移をイベント単位で固定し、実装差分を防ぐための設計正本です。  
 要件は `docs/requirements/10_screen_transition_and_actions.md` と `docs/requirements/12_ui_data_binding_matrix.md` を参照します。

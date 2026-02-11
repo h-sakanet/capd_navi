@@ -12,7 +12,16 @@
 - この画面で決めないこと: 写真更新操作、削除操作、同期処理。
 
 ## 3. UIワイヤー・レイアウト制約
-- 参照: `../../../requirements/06_ui_wireframes_ab.md` 6章。
+```text
++-----------------------------------------------+
+| 写真詳細                                         |
+| [写真本体]                                      |
+| 種別: drain_photo / exit_site_photo             |
+| 撮影時刻: 2026-02-10T20:35:00+09:00            |
+|                    [記録一覧へ戻る]             |
++-----------------------------------------------+
+```
+
 - 写真本体を主表示とし、メタ情報（photo kind, capturedAt）を補助表示。
 
 ## 4. UI要素一覧
@@ -54,7 +63,17 @@
 - Then 対応写真を表示する
 
 ## 11. 参照リンク
-- FR: FR-014, FR-014A, FR-090A
+- Local FR: `SCR-010-HISTORY-PHOTO-FR-01` 〜 `SCR-010-HISTORY-PHOTO-FR-03`
+- 旧FR対応: FR-014, FR-014A, FR-090A
 - AT: AT-EXIT-008
 - E2E/UT/VR: E2E-EXIT-004, VR-HISTORY-001, VR-HISTORY-002（`../50_quality/test-link-index.md` 参照）
 - CAP: `../30_capabilities/CAP-PHOTO-BACKUP-001.md`
+
+## 12. 画面機能要件（ローカルID）
+
+- 採番規則: `<文書ID>-FR-yy`（yyはこの文書内連番）
+- 旧FR IDは括弧内に残し、移行トレーサビリティを保持します。
+
+- SCR-010-HISTORY-PHOTO-FR-01: (旧: FR-014) 写真はサムネイル固定表示ではなく、リンク押下で写真詳細画面へ遷移します。
+- SCR-010-HISTORY-PHOTO-FR-02: (旧: FR-014A) 記録一覧には既存写真列とは別に `出口部写真` 列を追加し、`未登録` / `表示` を切り替えます。
+- SCR-010-HISTORY-PHOTO-FR-03: (旧: FR-090A) 写真参照メタには `photo_kind`（`drain` / `exit_site`）を保持します。

@@ -80,7 +80,7 @@
 </tr>
 <tr id="L11">
   <td class="line"><a href="#L11">11</a></td>
-  <td class="code">- 非目的: セッション進行制御、CSV取込。</td>
+  <td class="code">- 非目的: セッション進行制御、CSV取込、手動エクスポート機能（<a href="../../../../ids/FR-093.html">FR-093</a>）。</td>
 </tr>
 <tr id="L12">
   <td class="line"><a href="#L12">12</a></td>
@@ -220,50 +220,138 @@
 </tr>
 <tr id="L46">
   <td class="line"><a href="#L46">46</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- バックアップ対象は `index.json`, `days/*.json`, `photos/*` の世代データとします。</td>
 </tr>
 <tr id="L47">
   <td class="line"><a href="#L47">47</a></td>
-  <td class="code">## 9. 受入条件（GWT）</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L48">
   <td class="line"><a href="#L48">48</a></td>
-  <td class="code">- Given 写真総量が1GBを超える</td>
+  <td class="code">## 9. 受入条件（GWT）</td>
 </tr>
 <tr id="L49">
   <td class="line"><a href="#L49">49</a></td>
-  <td class="code">- When 新規写真を保存する</td>
+  <td class="code">- Given 写真総量が1GBを超える</td>
 </tr>
 <tr id="L50">
   <td class="line"><a href="#L50">50</a></td>
-  <td class="code">- Then 古い順削除で0.95GB以下へ収束する</td>
+  <td class="code">- When 新規写真を保存する</td>
 </tr>
 <tr id="L51">
   <td class="line"><a href="#L51">51</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- Then 古い順削除で0.95GB以下へ収束する</td>
 </tr>
 <tr id="L52">
   <td class="line"><a href="#L52">52</a></td>
-  <td class="code">## 10. トレーサビリティ（FR, AT, SCR, JRN）</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L53">
   <td class="line"><a href="#L53">53</a></td>
-  <td class="code">- FR: <a href="../../../../ids/FR-042A.html">FR-042A</a>, <a href="../../../../ids/FR-042B.html">FR-042B</a>, <a href="../../../../ids/FR-042C.html">FR-042C</a>, <a href="../../../../ids/FR-042D.html">FR-042D</a>, <a href="../../../../ids/FR-042E.html">FR-042E</a>, <a href="../../../../ids/FR-042F.html">FR-042F</a>, <a href="../../../../ids/FR-042G.html">FR-042G</a>, <a href="../../../../ids/FR-042H.html">FR-042H</a>, <a href="../../../../ids/FR-089A.html">FR-089A</a>, <a href="../../../../ids/FR-090.html">FR-090</a>, <a href="../../../../ids/FR-090A.html">FR-090A</a>, <a href="../../../../ids/FR-091.html">FR-091</a>, <a href="../../../../ids/FR-092.html">FR-092</a></td>
+  <td class="code">## 10. トレーサビリティ（FR, AT, SCR, JRN）</td>
 </tr>
 <tr id="L54">
   <td class="line"><a href="#L54">54</a></td>
-  <td class="code">- AT: <a href="../../../../ids/AT-EXIT-001.html">AT-EXIT-001</a>〜<a href="../../../../ids/AT-EXIT-012.html">AT-EXIT-012</a>, <a href="../../../../ids/AT-PHOTO-001.html">AT-PHOTO-001</a>, <a href="../../../../ids/AT-BACKUP-001.html">AT-BACKUP-001</a></td>
+  <td class="code">- Local FR: `CAP-PHOTO-BACKUP-001-FR-01` 〜 `CAP-PHOTO-BACKUP-001-FR-14`</td>
 </tr>
 <tr id="L55">
   <td class="line"><a href="#L55">55</a></td>
-  <td class="code">- SCR: <a href="../../../../screens/SCR-005-HOME-SUMMARY.html">SCR-005-HOME-SUMMARY</a>, <a href="../../../../screens/SCR-009-HISTORY-DETAIL.html">SCR-009-HISTORY-DETAIL</a>, <a href="../../../../screens/SCR-010-HISTORY-PHOTO.html">SCR-010-HISTORY-PHOTO</a></td>
+  <td class="code">- 旧FR対応: <a href="../../../../ids/FR-042A.html">FR-042A</a>, <a href="../../../../ids/FR-042B.html">FR-042B</a>, <a href="../../../../ids/FR-042C.html">FR-042C</a>, <a href="../../../../ids/FR-042D.html">FR-042D</a>, <a href="../../../../ids/FR-042E.html">FR-042E</a>, <a href="../../../../ids/FR-042F.html">FR-042F</a>, <a href="../../../../ids/FR-042G.html">FR-042G</a>, <a href="../../../../ids/FR-042H.html">FR-042H</a>, <a href="../../../../ids/FR-089A.html">FR-089A</a>, <a href="../../../../ids/FR-090.html">FR-090</a>, <a href="../../../../ids/FR-090A.html">FR-090A</a>, <a href="../../../../ids/FR-091.html">FR-091</a>, <a href="../../../../ids/FR-092.html">FR-092</a>, <a href="../../../../ids/FR-093.html">FR-093</a></td>
 </tr>
 <tr id="L56">
   <td class="line"><a href="#L56">56</a></td>
-  <td class="code">- JRN: <a href="../../../../journeys/JRN-009-EXITPHOTO.html">JRN-009-EXITPHOTO</a></td>
+  <td class="code">- AT: <a href="../../../../ids/AT-EXIT-001.html">AT-EXIT-001</a>〜<a href="../../../../ids/AT-EXIT-012.html">AT-EXIT-012</a>, <a href="../../../../ids/AT-PHOTO-001.html">AT-PHOTO-001</a>, <a href="../../../../ids/AT-BACKUP-001.html">AT-BACKUP-001</a></td>
 </tr>
 <tr id="L57">
   <td class="line"><a href="#L57">57</a></td>
+  <td class="code">- SCR: <a href="../../../../screens/SCR-005-HOME-SUMMARY.html">SCR-005-HOME-SUMMARY</a>, <a href="../../../../screens/SCR-009-HISTORY-DETAIL.html">SCR-009-HISTORY-DETAIL</a>, <a href="../../../../screens/SCR-010-HISTORY-PHOTO.html">SCR-010-HISTORY-PHOTO</a></td>
+</tr>
+<tr id="L58">
+  <td class="line"><a href="#L58">58</a></td>
+  <td class="code">- JRN: <a href="../../../../journeys/JRN-009-EXITPHOTO.html">JRN-009-EXITPHOTO</a></td>
+</tr>
+<tr id="L59">
+  <td class="line"><a href="#L59">59</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L60">
+  <td class="line"><a href="#L60">60</a></td>
+  <td class="code">## 11. 機能要件（ローカルID）</td>
+</tr>
+<tr id="L61">
+  <td class="line"><a href="#L61">61</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L62">
+  <td class="line"><a href="#L62">62</a></td>
+  <td class="code">- 採番規則: `&lt;文書ID&gt;-FR-yy`（yyはこの文書内連番）</td>
+</tr>
+<tr id="L63">
+  <td class="line"><a href="#L63">63</a></td>
+  <td class="code">- 旧FR IDは括弧内に残し、移行トレーサビリティを保持します。</td>
+</tr>
+<tr id="L64">
+  <td class="line"><a href="#L64">64</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L65">
+  <td class="line"><a href="#L65">65</a></td>
+  <td class="code">- CAP-PHOTO-BACKUP-001-FR-01: (旧: <a href="../../../../ids/FR-042A.html">FR-042A</a>) 出口部の記録写真（`exit_site`）は `session_summary.payload.exit_site_photo` に保存します（`record_event` は追加しません）。</td>
+</tr>
+<tr id="L66">
+  <td class="line"><a href="#L66">66</a></td>
+  <td class="code">- CAP-PHOTO-BACKUP-001-FR-02: (旧: <a href="../../../../ids/FR-042B.html">FR-042B</a>) 出口部写真の対象レコードは当日 `summaryScope=both` を最優先し、次に `summaryScope=first_of_day` を採用します。同値時は `completedAt` 昇順、さらに同値時は `recordId` 昇順で決定します。</td>
+</tr>
+<tr id="L67">
+  <td class="line"><a href="#L67">67</a></td>
+  <td class="code">- CAP-PHOTO-BACKUP-001-FR-03: (旧: <a href="../../../../ids/FR-042C.html">FR-042C</a>) 出口部写真の登録導線は、対象 `session_summary` の入力完了後に表示します。</td>
+</tr>
+<tr id="L68">
+  <td class="line"><a href="#L68">68</a></td>
+  <td class="code">- CAP-PHOTO-BACKUP-001-FR-04: (旧: <a href="../../../../ids/FR-042D.html">FR-042D</a>) 出口部写真の操作導線は `iPhoneホーム全体サマリ` と `iPhone記録詳細` の両方に表示します。Macは閲覧リンクのみ表示し、登録/変更/削除操作は許可しません。</td>
+</tr>
+<tr id="L69">
+  <td class="line"><a href="#L69">69</a></td>
+  <td class="code">- CAP-PHOTO-BACKUP-001-FR-05: (旧: <a href="../../../../ids/FR-042E.html">FR-042E</a>) 出口部写真は1レコード1枚固定とし、登録後は `変更` と `削除` を許可します。</td>
+</tr>
+<tr id="L70">
+  <td class="line"><a href="#L70">70</a></td>
+  <td class="code">- CAP-PHOTO-BACKUP-001-FR-06: (旧: <a href="../../../../ids/FR-042F.html">FR-042F</a>) 出口部写真の入力手段は iPhone の `カメラ撮影` と `ファイル選択` の両方を許可します。</td>
+</tr>
+<tr id="L71">
+  <td class="line"><a href="#L71">71</a></td>
+  <td class="code">- CAP-PHOTO-BACKUP-001-FR-07: (旧: <a href="../../../../ids/FR-042G.html">FR-042G</a>) 出口部写真は任意入力であり、未登録でも手技完了を阻害しません。</td>
+</tr>
+<tr id="L72">
+  <td class="line"><a href="#L72">72</a></td>
+  <td class="code">- CAP-PHOTO-BACKUP-001-FR-08: (旧: <a href="../../../../ids/FR-042H.html">FR-042H</a>) 出口部写真の削除時は `session_summary.payload.exit_site_photo=null` を保存し、対応画像は tombstone 化します。</td>
+</tr>
+<tr id="L73">
+  <td class="line"><a href="#L73">73</a></td>
+  <td class="code">- CAP-PHOTO-BACKUP-001-FR-09: (旧: <a href="../../../../ids/FR-089A.html">FR-089A</a>) `session_summary.payload.exit_site_photo` の更新は部分パッチ（`patch_path=payload.exit_site_photo`）で同期し、同一record内の他フィールドを上書きしません。</td>
+</tr>
+<tr id="L74">
+  <td class="line"><a href="#L74">74</a></td>
+  <td class="code">- CAP-PHOTO-BACKUP-001-FR-10: (旧: <a href="../../../../ids/FR-090.html">FR-090</a>) 記録写真（`drain` / `exit_site`）はJPEG再圧縮して保存します（長辺1600px/quality 85）。</td>
+</tr>
+<tr id="L75">
+  <td class="line"><a href="#L75">75</a></td>
+  <td class="code">- CAP-PHOTO-BACKUP-001-FR-11: (旧: <a href="../../../../ids/FR-090A.html">FR-090A</a>) 写真参照メタには `photo_kind`（`drain` / `exit_site`）を保持します。</td>
+</tr>
+<tr id="L76">
+  <td class="line"><a href="#L76">76</a></td>
+  <td class="code">- CAP-PHOTO-BACKUP-001-FR-12: (旧: <a href="../../../../ids/FR-091.html">FR-091</a>) 写真総量は1GB上限とし、超過時は古い順削除します。</td>
+</tr>
+<tr id="L77">
+  <td class="line"><a href="#L77">77</a></td>
+  <td class="code">- CAP-PHOTO-BACKUP-001-FR-13: (旧: <a href="../../../../ids/FR-092.html">FR-092</a>) 日次バックアップを1日1回実行し、30日保持します。</td>
+</tr>
+<tr id="L78">
+  <td class="line"><a href="#L78">78</a></td>
+  <td class="code">- CAP-PHOTO-BACKUP-001-FR-14: (旧: <a href="../../../../ids/FR-093.html">FR-093</a>) 手動エクスポート機能は v1 対象外とします。</td>
+</tr>
+<tr id="L79">
+  <td class="line"><a href="#L79">79</a></td>
   <td class="code">&nbsp;</td>
 </tr>
   </table>

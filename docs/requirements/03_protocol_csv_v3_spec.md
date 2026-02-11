@@ -1,11 +1,14 @@
-# 03. 手技CSV v3仕様
+# 03. 手技CSV仕様
+
+> 移行メモ（2026-02-11）: protocol.csv の詳細I/F一次仕様は `docs/spec/35_interfaces/IF-001-PROTOCOL-CSV.md` へ移設済みです。  
+> 本書は旧体系参照用として残置し、更新は `docs/spec` 側を優先します。
 
 ## 1. 目的
 Googleスプレッドシートで編集したCSVを、Macから画像群と一緒に取り込み、画面描画用JSONへ正規化する仕様です。
 
 ## 2. 対応バージョン
-- 対応: v3のみ
-- 非対応: v2以前
+- 対応: `format_version` を持つCSV（サポート対象版）
+- 非対応: `format_version` 欠落または未サポート値
 
 ## 3. 取り込み単位（v1固定）
 - 取り込みは Mac ネイティブシェルからのみ実行します。
@@ -17,7 +20,7 @@ Googleスプレッドシートで編集したCSVを、Macから画像群と一�
 ```text
 protocol_package/
   protocol.csv
-  v3/
+  assets/
     handwash.png
     step_021.png
 ```
@@ -37,7 +40,7 @@ protocol_package/
 
 必須メタキー:
 
-- `format_version`（値は `3` 固定）
+- `format_version`（サポート対象版の識別子）
 - `protocol_id`
 - `protocol_name`
 - `protocol_version`
@@ -75,7 +78,7 @@ protocol_package/
 
 ## 7. 画像パス解決
 - `画像` 列は `protocol.csv` 配置ディレクトリ基準の相対パスです。
-- 版サブフォルダを含めることを推奨します（例: `v3/手洗い.png`）。
+- 版サブフォルダを含めることを推奨します（例: `assets/手洗い.png`）。
 - ファイル未存在は取り込みエラーです。
 - 取り込み後、画像はオブジェクトストレージへ保存され、配信URLへ変換して参照します。
 

@@ -96,119 +96,119 @@
 </tr>
 <tr id="L15">
   <td class="line"><a href="#L15">15</a></td>
-  <td class="code">- 参照: `../../../requirements/06_ui_wireframes_ab.md` 6章。</td>
+  <td class="code">```text</td>
 </tr>
 <tr id="L16">
   <td class="line"><a href="#L16">16</a></td>
-  <td class="code">- 表示列は `#1〜#5` 固定。</td>
+  <td class="code">+------------------------------------------------+</td>
 </tr>
 <tr id="L17">
   <td class="line"><a href="#L17">17</a></td>
-  <td class="code">- 写真はサムネイル固定表示ではなくリンク遷移。</td>
+  <td class="code">| 記録一覧                                         |</td>
 </tr>
 <tr id="L18">
   <td class="line"><a href="#L18">18</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">| 期間: [直近30日 v]  [検索]                      |</td>
 </tr>
 <tr id="L19">
   <td class="line"><a href="#L19">19</a></td>
-  <td class="code">## 4. UI要素一覧</td>
+  <td class="code">+------------------------------------------------+</td>
 </tr>
 <tr id="L20">
   <td class="line"><a href="#L20">20</a></td>
-  <td class="code">| UI ID | 要素 | 表示条件 | 入力制約 | セレクタ方針 |</td>
+  <td class="code">| 日付 | 透析液濃度(#1-#5) | 貯留時間(#1-#5)      |</td>
 </tr>
 <tr id="L21">
   <td class="line"><a href="#L21">21</a></td>
-  <td class="code">|---|---|---|---|---|</td>
+  <td class="code">| 排液量(#1-#5) | 注液量(#1-#5) | 排液確認(#1-#5) |</td>
 </tr>
 <tr id="L22">
   <td class="line"><a href="#L22">22</a></td>
-  <td class="code"><a id="UI-001-HISTORY--L22"></a><a id="UI-001-HISTORY"></a>| <a href="../../../../ids/UI-001-HISTORY.html">UI-001-HISTORY</a> | 記録一覧テーブル | 記録あり | 直近30日固定 | role/table |</td>
+  <td class="code">| 除水量(#1は未計算、#2以降は排液量-前回注液量)   |</td>
 </tr>
 <tr id="L23">
   <td class="line"><a href="#L23">23</a></td>
-  <td class="code"><a id="UI-002-HISTORY--L23"></a><a id="UI-002-HISTORY"></a>| <a href="../../../../ids/UI-002-HISTORY.html">UI-002-HISTORY</a> | 写真詳細リンク | `photoId` あり | 対象photo必須 | role/link |</td>
+  <td class="code">| 総除水量 | 尿量/飲水量 | 体重 | 血圧 | 写真     |</td>
 </tr>
 <tr id="L24">
   <td class="line"><a href="#L24">24</a></td>
-  <td class="code"><a id="UI-003-HISTORY--L24"></a><a id="UI-003-HISTORY"></a>| <a href="../../../../ids/UI-003-HISTORY.html">UI-003-HISTORY</a> | 出口部写真列 | 常時 | `未登録/表示` 切替 | role/cell |</td>
+  <td class="code">| 2026-02-09 | レギニュール1.5 | ... | ...        |</td>
 </tr>
 <tr id="L25">
   <td class="line"><a href="#L25">25</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">+------------------------------------------------+</td>
 </tr>
 <tr id="L26">
   <td class="line"><a href="#L26">26</a></td>
-  <td class="code">## 5. 操作契約</td>
+  <td class="code">| [ホームへ戻る]                                   |</td>
 </tr>
 <tr id="L27">
   <td class="line"><a href="#L27">27</a></td>
-  <td class="code">| ACT ID | Guard | Side Effect | Success遷移 | Failure表示 |</td>
+  <td class="code">+------------------------------------------------+</td>
 </tr>
 <tr id="L28">
   <td class="line"><a href="#L28">28</a></td>
-  <td class="code">|---|---|---|---|---|</td>
+  <td class="code">```</td>
 </tr>
 <tr id="L29">
   <td class="line"><a href="#L29">29</a></td>
-  <td class="code"><a id="ACT-HISTORY-001--L29"></a>| <a href="../../../../ids/ACT-HISTORY-001.html">ACT-HISTORY-001</a> | 対象`photoId`が存在 | なし | <a href="../../../../screens/SCR-010-HISTORY-PHOTO.html">SCR-010-HISTORY-PHOTO</a> | 写真未登録文言 |</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L30">
   <td class="line"><a href="#L30">30</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- 表示列は `#1〜#5` 固定。</td>
 </tr>
 <tr id="L31">
   <td class="line"><a href="#L31">31</a></td>
-  <td class="code">## 6. データバインディング</td>
+  <td class="code">- 写真はサムネイル固定表示ではなくリンク遷移。</td>
 </tr>
 <tr id="L32">
   <td class="line"><a href="#L32">32</a></td>
-  <td class="code">| 区分 | Read | Write | Outbox | 反映タイミング |</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L33">
   <td class="line"><a href="#L33">33</a></td>
-  <td class="code">|---|---|---|---|---|</td>
+  <td class="code">## 4. UI要素一覧</td>
 </tr>
 <tr id="L34">
   <td class="line"><a href="#L34">34</a></td>
-  <td class="code">| 一覧表示 | `DayBundle.records`, `sessions`, `dailyProcedurePlan` | - | - | on load |</td>
+  <td class="code">| UI ID | 要素 | 表示条件 | 入力制約 | セレクタ方針 |</td>
 </tr>
 <tr id="L35">
   <td class="line"><a href="#L35">35</a></td>
-  <td class="code">| 列表示 | `record_exchange_no`, `timer_exchange_no`, `summary` | - | - | on load |</td>
+  <td class="code">|---|---|---|---|---|</td>
 </tr>
 <tr id="L36">
   <td class="line"><a href="#L36">36</a></td>
-  <td class="code">| 写真リンク | `photoRefs`, `payload.exit_site_photo` | - | - | on click |</td>
+  <td class="code"><a id="UI-001-HISTORY--L36"></a><a id="UI-001-HISTORY"></a>| <a href="../../../../ids/UI-001-HISTORY.html">UI-001-HISTORY</a> | 記録一覧テーブル | 記録あり | 直近30日固定 | role/table |</td>
 </tr>
 <tr id="L37">
   <td class="line"><a href="#L37">37</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code"><a id="UI-002-HISTORY--L37"></a><a id="UI-002-HISTORY"></a>| <a href="../../../../ids/UI-002-HISTORY.html">UI-002-HISTORY</a> | 写真詳細リンク | `photoId` あり | 対象photo必須 | role/link |</td>
 </tr>
 <tr id="L38">
   <td class="line"><a href="#L38">38</a></td>
-  <td class="code">## 7. バリデーション / エラー文言 / 空状態</td>
+  <td class="code"><a id="UI-003-HISTORY--L38"></a><a id="UI-003-HISTORY"></a>| <a href="../../../../ids/UI-003-HISTORY.html">UI-003-HISTORY</a> | 出口部写真列 | 常時 | `未登録/表示` 切替 | role/cell |</td>
 </tr>
 <tr id="L39">
   <td class="line"><a href="#L39">39</a></td>
-  <td class="code">- バリデーション:</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L40">
   <td class="line"><a href="#L40">40</a></td>
-  <td class="code">  - `record_event` と `*_exchange_no` で列マッピング。</td>
+  <td class="code">## 5. 操作契約</td>
 </tr>
 <tr id="L41">
   <td class="line"><a href="#L41">41</a></td>
-  <td class="code">  - 除水量は `排液量 - 前回注液量`、#1は`未計算`。</td>
+  <td class="code">| ACT ID | Guard | Side Effect | Success遷移 | Failure表示 |</td>
 </tr>
 <tr id="L42">
   <td class="line"><a href="#L42">42</a></td>
-  <td class="code">- エラー文言: `写真が登録されていません。`</td>
+  <td class="code">|---|---|---|---|---|</td>
 </tr>
 <tr id="L43">
   <td class="line"><a href="#L43">43</a></td>
-  <td class="code">- 空状態: `表示できる記録がありません。`</td>
+  <td class="code"><a id="ACT-HISTORY-001--L43"></a>| <a href="../../../../ids/ACT-HISTORY-001.html">ACT-HISTORY-001</a> | 対象`photoId`が存在 | なし | <a href="../../../../screens/SCR-010-HISTORY-PHOTO.html">SCR-010-HISTORY-PHOTO</a> | 写真未登録文言 |</td>
 </tr>
 <tr id="L44">
   <td class="line"><a href="#L44">44</a></td>
@@ -216,78 +216,218 @@
 </tr>
 <tr id="L45">
   <td class="line"><a href="#L45">45</a></td>
-  <td class="code">## 8. 権限・端末差分・フォールバック</td>
+  <td class="code">## 6. データバインディング</td>
 </tr>
 <tr id="L46">
   <td class="line"><a href="#L46">46</a></td>
-  <td class="code">- Mac/iPhoneともに閲覧可。</td>
+  <td class="code">| 区分 | Read | Write | Outbox | 反映タイミング |</td>
 </tr>
 <tr id="L47">
   <td class="line"><a href="#L47">47</a></td>
-  <td class="code">- 編集導線は詳細画面で提供。</td>
+  <td class="code">|---|---|---|---|---|</td>
 </tr>
 <tr id="L48">
   <td class="line"><a href="#L48">48</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">| 一覧表示 | `DayBundle.records`, `sessions`, `dailyProcedurePlan` | - | - | on load |</td>
 </tr>
 <tr id="L49">
   <td class="line"><a href="#L49">49</a></td>
-  <td class="code">## 9. アクセシビリティ / キーボード</td>
+  <td class="code">| 列表示 | `record_exchange_no`, `timer_exchange_no`, `summary` | - | - | on load |</td>
 </tr>
 <tr id="L50">
   <td class="line"><a href="#L50">50</a></td>
-  <td class="code">- テーブルヘッダを明示し列意味を読み上げ可能にします。</td>
+  <td class="code">| 写真リンク | `photoRefs`, `payload.exit_site_photo` | - | - | on click |</td>
 </tr>
 <tr id="L51">
   <td class="line"><a href="#L51">51</a></td>
-  <td class="code">- 写真リンクはリンクテキストに状態（表示/未登録）を含めます。</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L52">
   <td class="line"><a href="#L52">52</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">## 7. バリデーション / エラー文言 / 空状態</td>
 </tr>
 <tr id="L53">
   <td class="line"><a href="#L53">53</a></td>
-  <td class="code">## 10. 受入条件（GWT）</td>
+  <td class="code">- バリデーション:</td>
 </tr>
 <tr id="L54">
   <td class="line"><a href="#L54">54</a></td>
-  <td class="code">- Given 写真リンク付き記録がある</td>
+  <td class="code">  - `record_event` と `*_exchange_no` で列マッピング。</td>
 </tr>
 <tr id="L55">
   <td class="line"><a href="#L55">55</a></td>
-  <td class="code">- When 写真詳細リンクを押下する</td>
+  <td class="code">  - 除水量は `排液量 - 前回注液量`、#1は`未計算`。</td>
 </tr>
 <tr id="L56">
   <td class="line"><a href="#L56">56</a></td>
-  <td class="code">- Then 写真詳細画面へ遷移する</td>
+  <td class="code">- エラー文言: `写真が登録されていません。`</td>
 </tr>
 <tr id="L57">
   <td class="line"><a href="#L57">57</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- 空状態: `表示できる記録がありません。`</td>
 </tr>
 <tr id="L58">
   <td class="line"><a href="#L58">58</a></td>
-  <td class="code">## 11. 参照リンク</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L59">
   <td class="line"><a href="#L59">59</a></td>
-  <td class="code">- FR: <a href="../../../../ids/FR-010.html">FR-010</a>〜<a href="../../../../ids/FR-019.html">FR-019</a>, <a href="../../../../ids/FR-014A.html">FR-014A</a>, <a href="../../../../ids/FR-015A.html">FR-015A</a>〜<a href="../../../../ids/FR-015C.html">FR-015C</a>, <a href="../../../../ids/FR-016.html">FR-016</a></td>
+  <td class="code">## 8. 権限・端末差分・フォールバック</td>
 </tr>
 <tr id="L60">
   <td class="line"><a href="#L60">60</a></td>
-  <td class="code">- AT: （<a href="../../../../journeys/JRN-008-HISTORY.html">JRN-008-HISTORY</a>で一括管理）</td>
+  <td class="code">- Mac/iPhoneともに閲覧可。</td>
 </tr>
 <tr id="L61">
   <td class="line"><a href="#L61">61</a></td>
-  <td class="code">- E2E/UT/VR: <a href="../../../../ids/E2E-EXIT-002.html">E2E-EXIT-002</a>, <a href="../../../../ids/VR-HISTORY-001.html">VR-HISTORY-001</a>, <a href="../../../../ids/VR-HISTORY-002.html">VR-HISTORY-002</a>（`../50_quality/test-link-index.md` 参照）</td>
+  <td class="code">- 編集導線は詳細画面で提供。</td>
 </tr>
 <tr id="L62">
   <td class="line"><a href="#L62">62</a></td>
-  <td class="code">- CAP: `../30_capabilities/CAP-SNAPSHOT-001.md`</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L63">
   <td class="line"><a href="#L63">63</a></td>
+  <td class="code">## 9. アクセシビリティ / キーボード</td>
+</tr>
+<tr id="L64">
+  <td class="line"><a href="#L64">64</a></td>
+  <td class="code">- テーブルヘッダを明示し列意味を読み上げ可能にします。</td>
+</tr>
+<tr id="L65">
+  <td class="line"><a href="#L65">65</a></td>
+  <td class="code">- 写真リンクはリンクテキストに状態（表示/未登録）を含めます。</td>
+</tr>
+<tr id="L66">
+  <td class="line"><a href="#L66">66</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L67">
+  <td class="line"><a href="#L67">67</a></td>
+  <td class="code">## 10. 受入条件（GWT）</td>
+</tr>
+<tr id="L68">
+  <td class="line"><a href="#L68">68</a></td>
+  <td class="code">- Given 写真リンク付き記録がある</td>
+</tr>
+<tr id="L69">
+  <td class="line"><a href="#L69">69</a></td>
+  <td class="code">- When 写真詳細リンクを押下する</td>
+</tr>
+<tr id="L70">
+  <td class="line"><a href="#L70">70</a></td>
+  <td class="code">- Then 写真詳細画面へ遷移する</td>
+</tr>
+<tr id="L71">
+  <td class="line"><a href="#L71">71</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L72">
+  <td class="line"><a href="#L72">72</a></td>
+  <td class="code">## 11. 参照リンク</td>
+</tr>
+<tr id="L73">
+  <td class="line"><a href="#L73">73</a></td>
+  <td class="code">- Local FR: `<a href="../../../../ids/SCR-008-HISTORY-FR-01.html">SCR-008-HISTORY-FR-01</a>` 〜 `<a href="../../../../ids/SCR-008-HISTORY-FR-14.html">SCR-008-HISTORY-FR-14</a>`</td>
+</tr>
+<tr id="L74">
+  <td class="line"><a href="#L74">74</a></td>
+  <td class="code">- 旧FR対応: <a href="../../../../ids/FR-010.html">FR-010</a>〜<a href="../../../../ids/FR-019.html">FR-019</a>, <a href="../../../../ids/FR-014A.html">FR-014A</a>, <a href="../../../../ids/FR-015A.html">FR-015A</a>〜<a href="../../../../ids/FR-015C.html">FR-015C</a>, <a href="../../../../ids/FR-016.html">FR-016</a></td>
+</tr>
+<tr id="L75">
+  <td class="line"><a href="#L75">75</a></td>
+  <td class="code">- AT: （<a href="../../../../journeys/JRN-008-HISTORY.html">JRN-008-HISTORY</a>で一括管理）</td>
+</tr>
+<tr id="L76">
+  <td class="line"><a href="#L76">76</a></td>
+  <td class="code">- E2E/UT/VR: <a href="../../../../ids/E2E-EXIT-002.html">E2E-EXIT-002</a>, <a href="../../../../ids/VR-HISTORY-001.html">VR-HISTORY-001</a>, <a href="../../../../ids/VR-HISTORY-002.html">VR-HISTORY-002</a>（`../50_quality/test-link-index.md` 参照）</td>
+</tr>
+<tr id="L77">
+  <td class="line"><a href="#L77">77</a></td>
+  <td class="code">- CAP: `../30_capabilities/CAP-SNAPSHOT-001.md`</td>
+</tr>
+<tr id="L78">
+  <td class="line"><a href="#L78">78</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L79">
+  <td class="line"><a href="#L79">79</a></td>
+  <td class="code">## 12. 画面機能要件（ローカルID）</td>
+</tr>
+<tr id="L80">
+  <td class="line"><a href="#L80">80</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L81">
+  <td class="line"><a href="#L81">81</a></td>
+  <td class="code">- 採番規則: `&lt;文書ID&gt;-FR-yy`（yyはこの文書内連番）</td>
+</tr>
+<tr id="L82">
+  <td class="line"><a href="#L82">82</a></td>
+  <td class="code">- 旧FR IDは括弧内に残し、移行トレーサビリティを保持します。</td>
+</tr>
+<tr id="L83">
+  <td class="line"><a href="#L83">83</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L84">
+  <td class="line"><a href="#L84">84</a></td>
+  <td class="code"><a id="SCR-008-HISTORY-FR-01--L84"></a><a id="SCR-008-HISTORY-FR-01"></a>- <a href="../../../../ids/SCR-008-HISTORY-FR-01.html">SCR-008-HISTORY-FR-01</a>: (旧: <a href="../../../../ids/FR-010.html">FR-010</a>) 記録一覧画面で日々の手技記録を一覧表示します。</td>
+</tr>
+<tr id="L85">
+  <td class="line"><a href="#L85">85</a></td>
+  <td class="code"><a id="SCR-008-HISTORY-FR-02--L85"></a><a id="SCR-008-HISTORY-FR-02"></a>- <a href="../../../../ids/SCR-008-HISTORY-FR-02.html">SCR-008-HISTORY-FR-02</a>: (旧: <a href="../../../../ids/FR-011.html">FR-011</a>) 記録一覧画面で詳細表示と編集導線を提供します。</td>
+</tr>
+<tr id="L86">
+  <td class="line"><a href="#L86">86</a></td>
+  <td class="code"><a id="SCR-008-HISTORY-FR-03--L86"></a><a id="SCR-008-HISTORY-FR-03"></a>- <a href="../../../../ids/SCR-008-HISTORY-FR-03.html">SCR-008-HISTORY-FR-03</a>: (旧: <a href="../../../../ids/FR-012.html">FR-012</a>) 記録編集はLWWメタ（`updatedAt`, `updatedByDeviceId`, `mutationId`）を保持して競合解決可能な状態にします。</td>
+</tr>
+<tr id="L87">
+  <td class="line"><a href="#L87">87</a></td>
+  <td class="code"><a id="SCR-008-HISTORY-FR-04--L87"></a><a id="SCR-008-HISTORY-FR-04"></a>- <a href="../../../../ids/SCR-008-HISTORY-FR-04.html">SCR-008-HISTORY-FR-04</a>: (旧: <a href="../../../../ids/FR-013.html">FR-013</a>) 記録一覧にはCAPDノート準拠項目（貯留時間、透析液濃度、排液量、注液量、排液時間、排液の確認、除水量、尿量、飲水量、体重、排便、血圧、出口部状態、備考）を表示します。</td>
+</tr>
+<tr id="L88">
+  <td class="line"><a href="#L88">88</a></td>
+  <td class="code"><a id="SCR-008-HISTORY-FR-05--L88"></a><a id="SCR-008-HISTORY-FR-05"></a>- <a href="../../../../ids/SCR-008-HISTORY-FR-05.html">SCR-008-HISTORY-FR-05</a>: (旧: <a href="../../../../ids/FR-014.html">FR-014</a>) 写真はサムネイル固定表示ではなく、リンク押下で写真詳細画面へ遷移します。</td>
+</tr>
+<tr id="L89">
+  <td class="line"><a href="#L89">89</a></td>
+  <td class="code"><a id="SCR-008-HISTORY-FR-06--L89"></a><a id="SCR-008-HISTORY-FR-06"></a>- <a href="../../../../ids/SCR-008-HISTORY-FR-06.html">SCR-008-HISTORY-FR-06</a>: (旧: <a href="../../../../ids/FR-014A.html">FR-014A</a>) 記録一覧には既存写真列とは別に `出口部写真` 列を追加し、`未登録` / `表示` を切り替えます。</td>
+</tr>
+<tr id="L90">
+  <td class="line"><a href="#L90">90</a></td>
+  <td class="code"><a id="SCR-008-HISTORY-FR-07--L90"></a><a id="SCR-008-HISTORY-FR-07"></a>- <a href="../../../../ids/SCR-008-HISTORY-FR-07.html">SCR-008-HISTORY-FR-07</a>: (旧: <a href="../../../../ids/FR-015.html">FR-015</a>) 交換ごとの除水量と1日の総除水量は、`排液量 - 前回注液量` の差し引きで自動計算表示します。</td>
+</tr>
+<tr id="L91">
+  <td class="line"><a href="#L91">91</a></td>
+  <td class="code"><a id="SCR-008-HISTORY-FR-08--L91"></a><a id="SCR-008-HISTORY-FR-08"></a>- <a href="../../../../ids/SCR-008-HISTORY-FR-08.html">SCR-008-HISTORY-FR-08</a>: (旧: <a href="../../../../ids/FR-015A.html">FR-015A</a>) 初回交換（#1列）は前回注液量が存在しないため、除水量は `未計算` 表示とします。</td>
+</tr>
+<tr id="L92">
+  <td class="line"><a href="#L92">92</a></td>
+  <td class="code"><a id="SCR-008-HISTORY-FR-09--L92"></a><a id="SCR-008-HISTORY-FR-09"></a>- <a href="../../../../ids/SCR-008-HISTORY-FR-09.html">SCR-008-HISTORY-FR-09</a>: (旧: <a href="../../../../ids/FR-015B.html">FR-015B</a>) 1日の総除水量は、計算可能な交換（#2列以降で前回注液量が存在する交換）のみを合算します。</td>
+</tr>
+<tr id="L93">
+  <td class="line"><a href="#L93">93</a></td>
+  <td class="code"><a id="SCR-008-HISTORY-FR-10--L93"></a><a id="SCR-008-HISTORY-FR-10"></a>- <a href="../../../../ids/SCR-008-HISTORY-FR-10.html">SCR-008-HISTORY-FR-10</a>: (旧: <a href="../../../../ids/FR-015C.html">FR-015C</a>) `opening_infuse_weight_g`（初期注液量）は v1 では空欄許容とし、除水量計算に使用しません。</td>
+</tr>
+<tr id="L94">
+  <td class="line"><a href="#L94">94</a></td>
+  <td class="code"><a id="SCR-008-HISTORY-FR-11--L94"></a><a id="SCR-008-HISTORY-FR-11"></a>- <a href="../../../../ids/SCR-008-HISTORY-FR-11.html">SCR-008-HISTORY-FR-11</a>: (旧: <a href="../../../../ids/FR-016.html">FR-016</a>) 当日ノート表と記録一覧の交換列は `#1〜#5` の5列固定とし、列位置は `*_exchange_no` で決定します。</td>
+</tr>
+<tr id="L95">
+  <td class="line"><a href="#L95">95</a></td>
+  <td class="code"><a id="SCR-008-HISTORY-FR-12--L95"></a><a id="SCR-008-HISTORY-FR-12"></a>- <a href="../../../../ids/SCR-008-HISTORY-FR-12.html">SCR-008-HISTORY-FR-12</a>: (旧: <a href="../../../../ids/FR-017.html">FR-017</a>) 透析液濃度欄は、取り込みCSVのタイトル（例: `レギニュール1.5`）を表示します。</td>
+</tr>
+<tr id="L96">
+  <td class="line"><a href="#L96">96</a></td>
+  <td class="code"><a id="SCR-008-HISTORY-FR-13--L96"></a><a id="SCR-008-HISTORY-FR-13"></a>- <a href="../../../../ids/SCR-008-HISTORY-FR-13.html">SCR-008-HISTORY-FR-13</a>: (旧: <a href="../../../../ids/FR-018.html">FR-018</a>) `record_event` の値は `record_exchange_no` で列マッピングし、`drain_weight_g` は排液量、`bag_weight_g` は注液量、`drain_appearance` は排液の確認に表示します。</td>
+</tr>
+<tr id="L97">
+  <td class="line"><a href="#L97">97</a></td>
+  <td class="code"><a id="SCR-008-HISTORY-FR-14--L97"></a><a id="SCR-008-HISTORY-FR-14"></a>- <a href="../../../../ids/SCR-008-HISTORY-FR-14.html">SCR-008-HISTORY-FR-14</a>: (旧: <a href="../../../../ids/FR-019.html">FR-019</a>) `timer_event` の値は `timer_exchange_no` で列マッピングし、`timer_segment=dwell` の `start/end` は貯留時間、`timer_segment=drain` の `start/end` は排液時間に表示します。</td>
+</tr>
+<tr id="L98">
+  <td class="line"><a href="#L98">98</a></td>
   <td class="code">&nbsp;</td>
 </tr>
   </table>

@@ -9,10 +9,10 @@
 ### 2.1 Unit
 | 要件ID | 受入ID | テストID | 対象 | 状態 | 備考 |
 |---|---|---|---|---|---|
-| FR-021 | AT-CSV-001 | UT-CSV-001 | `protocol-csv.ts` | Executable | 正常CSVの基本パース |
+| FR-021 | AT-CSV-001 | UT-CSV-001 | `protocol-csv.ts` | Implemented | `capd-app/tests/unit/protocol-csv.test.ts` |
 | FR-022 | - | UT-CSV-002 | `protocol-csv.ts` | Executable | ヘッダー/データ不足 |
 | FR-021 | - | UT-CSV-003 | `protocol-csv.ts` | Executable | `row_type` 必須列検証 |
-| FR-021 | - | UT-CSV-004 | `protocol-csv.ts` | Executable | 必須meta_key検証 |
+| FR-021 | - | UT-CSV-004 | `protocol-csv.ts` | Implemented | `capd-app/tests/unit/protocol-csv.test.ts` |
 | FR-021 | - | UT-CSV-005 | `protocol-csv.ts` | Executable | `format_version=3` 固定検証 |
 | FR-022 | - | UT-CSV-006 | `protocol-csv.ts` | Executable | step行欠落時の中止 |
 | FR-023 | AT-CSV-005 | UT-CSV-007 | `protocol-csv.ts` | Executable | 警告系入力（改行分割） |
@@ -58,7 +58,7 @@
 | FR-033 | AT-FLOW-003 | E2E-FLOW-007 | Session | Executable | `next_step_id` 遷移 |
 | FR-082A | AT-API-001 | E2E-API-001 | API境界 | Planned | Phase1必須（公開API最小化） |
 | FR-082A | AT-API-003 | E2E-API-002 | API境界 | Planned | Phase1必須（CSVローカル完結） |
-| FR-093 | AT-API-002 | E2E-API-003 | Home | Executable | 手動エクスポート非表示 |
+| FR-093 | AT-API-002 | E2E-API-003 | Home | Implemented | `capd-app/tests/e2e/home.smoke.spec.ts` |
 | FR-104 | AT-API-004 | E2E-API-004 | Blob保存形式 | Planned | Phase1必須（非暗号化キー形式） |
 | FR-080, FR-082 | AT-SYNC-001 | E2E-SYNC-001 | Sync | Planned | Phase1必須（起動時pull復元） |
 | FR-081, FR-086 | AT-SYNC-005 | E2E-SYNC-002 | Sync | Planned | Phase1必須（outbox消し込み） |
@@ -89,7 +89,7 @@
 ### 2.3 Visual Regression
 | 要件ID | 受入ID | テストID | 対象 | 状態 | 備考 |
 |---|---|---|---|---|---|
-| FR-009A, FR-009B, FR-005A | AT-UI-HOME-001 | VR-HOME-001 | Home | Executable | 初期表示 |
+| FR-009A, FR-009B, FR-005A | AT-UI-HOME-001 | VR-HOME-001 | Home | Implemented | `capd-app/tests/visual/home.visual.spec.ts` |
 | FR-009A, FR-009B | - | VR-HOME-002 | Home | Executable | スロット設定モーダル |
 | FR-009A, FR-009B | - | VR-HOME-003 | Home | Executable | 開始確認モーダル |
 | FR-009D | AT-UI-HOME-002 | VR-HOME-004 | Home | Executable | 開始不可表示 |

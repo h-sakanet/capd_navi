@@ -22,6 +22,16 @@ npm run docs:map
 npm run docs:map:check
 ```
 
+## テスト実行
+```bash
+cd /Users/sakanet/capd_navi/capd-app
+npm run test:unit
+npm run test:e2e
+npm run test:e2e:check
+npm run test:e2e:baseline
+npm run test:e2e:diff
+```
+
 主な生成物:
 - `/Users/sakanet/capd_navi/docs/generated/index.md`
 - `/Users/sakanet/capd_navi/docs/generated/html/index.html`（JRN起点のHTMLナビ入口）

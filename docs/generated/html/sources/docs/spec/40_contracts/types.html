@@ -100,94 +100,950 @@
 </tr>
 <tr id="L16">
   <td class="line"><a href="#L16">16</a></td>
-  <td class="code">| `SessionStatus` | `active`, `completed`, `aborted` | セッション状態 |</td>
+  <td class="code">| `DrainAppearanceCategory` | `透明`, `やや混濁`, `混濁`, `血性`, `その他` | 排液見た目分類 |</td>
 </tr>
 <tr id="L17">
   <td class="line"><a href="#L17">17</a></td>
-  <td class="code">| `DailyProcedureSlotStatus` | `empty`, `planned`, `completed` | 永続状態 |</td>
+  <td class="code">| `ExitSiteStatusCategory` | `正常`, `赤み`, `痛み`, `はれ`, `かさぶた`, `じゅくじゅく`, `出血`, `膿` | 出口部状態語彙 |</td>
 </tr>
 <tr id="L18">
   <td class="line"><a href="#L18">18</a></td>
-  <td class="code">| `DailyProcedureSlotDisplayStatus` | `empty`, `pending`, `in_progress`, `completed` | 画面表示状態 |</td>
+  <td class="code">| `ExchangeColumnNo` | `1`, `2`, `3`, `4`, `5` | 記録ノート交換列 |</td>
 </tr>
 <tr id="L19">
   <td class="line"><a href="#L19">19</a></td>
-  <td class="code">| `SessionSummaryScope` | `first_of_day`, `last_of_day`, `both` | サマリ対象 |</td>
+  <td class="code">| `SessionStatus` | `active`, `completed`, `aborted` | セッション状態 |</td>
 </tr>
 <tr id="L20">
   <td class="line"><a href="#L20">20</a></td>
-  <td class="code">| `AlarmDispatchStatus` | `pending`, `notified`, `acknowledged`, `missed` | アラーム状態 |</td>
+  <td class="code">| `DailyProcedureSlotStatus` | `empty`, `planned`, `completed` | 永続状態 |</td>
 </tr>
 <tr id="L21">
   <td class="line"><a href="#L21">21</a></td>
-  <td class="code">| `SyncTrigger` | `startup`, `resume`, `session_complete`, `manual` | 同期契機 |</td>
+  <td class="code">| `DailyProcedureSlotDisplayStatus` | `empty`, `pending`, `in_progress`, `completed` | 画面表示状態 |</td>
 </tr>
 <tr id="L22">
   <td class="line"><a href="#L22">22</a></td>
-  <td class="code">| `SyncMode` | `delta`, `full_reseed` | 同期モード |</td>
+  <td class="code">| `ProcedureSlotNo` | `1`, `2`, `3`, `4` | 当日4スロット番号 |</td>
 </tr>
 <tr id="L23">
   <td class="line"><a href="#L23">23</a></td>
-  <td class="code">| `PhotoKind` | `drain`, `exit_site` | 写真種別 |</td>
+  <td class="code">| `SnapshotSchemaVersion` | `1` | スナップショット版 |</td>
 </tr>
 <tr id="L24">
   <td class="line"><a href="#L24">24</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">| `WakeLockState` | `active`, `inactive`, `unsupported`, `failed` | スリープ抑止状態 |</td>
 </tr>
 <tr id="L25">
   <td class="line"><a href="#L25">25</a></td>
-  <td class="code">## 3. 不変条件（Invariants）</td>
+  <td class="code">| `SessionSummaryScope` | `first_of_day`, `last_of_day`, `both` | サマリ対象 |</td>
 </tr>
 <tr id="L26">
   <td class="line"><a href="#L26">26</a></td>
-  <td class="code">1. `record` のLWW比較キーは `(updatedAt, updatedByDeviceId, mutationId)` 降順。</td>
+  <td class="code">| `AlarmDispatchStatus` | `pending`, `notified`, `acknowledged`, `missed` | アラーム状態 |</td>
 </tr>
 <tr id="L27">
   <td class="line"><a href="#L27">27</a></td>
-  <td class="code">2. `session_summary.payload.exit_site_photo` の更新は `patch_path=payload.exit_site_photo` の部分パッチ。</td>
+  <td class="code">| `SyncTrigger` | `startup`, `resume`, `session_complete`, `manual` | 同期契機 |</td>
 </tr>
 <tr id="L28">
   <td class="line"><a href="#L28">28</a></td>
-  <td class="code">3. `SessionProtocolSnapshot` 保存失敗時はセッション開始失敗。</td>
+  <td class="code">| `SyncMode` | `delta`, `full_reseed` | 同期モード |</td>
 </tr>
 <tr id="L29">
   <td class="line"><a href="#L29">29</a></td>
-  <td class="code">4. `cloudState=missing` 判定時にローカルデータ削除を禁止。</td>
+  <td class="code">| `ConflictResolutionPolicy` | `lww_entity` | 競合解決方針 |</td>
 </tr>
 <tr id="L30">
   <td class="line"><a href="#L30">30</a></td>
-  <td class="code">5. Import失敗時はテンプレート保存を行わない。</td>
+  <td class="code">| `PhotoKind` | `drain`, `exit_site` | 写真種別 |</td>
 </tr>
 <tr id="L31">
   <td class="line"><a href="#L31">31</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">| `ProtocolImportMode` | `mac_directory` | 取込元モード（v1固定） |</td>
 </tr>
 <tr id="L32">
   <td class="line"><a href="#L32">32</a></td>
-  <td class="code">## 4. 参照元リンク</td>
+  <td class="code">| `ImportResultStatus` | `success`, `failed` | CSV取込結果 |</td>
 </tr>
 <tr id="L33">
   <td class="line"><a href="#L33">33</a></td>
-  <td class="code">- `../../../requirements/04_domain_model_and_interfaces.md`</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L34">
   <td class="line"><a href="#L34">34</a></td>
-  <td class="code">- `../../../design/04_sync_conflict_policy.md`</td>
+  <td class="code">## 3. 厳密型定義（抜粋）</td>
 </tr>
 <tr id="L35">
   <td class="line"><a href="#L35">35</a></td>
-  <td class="code">- `../30_capabilities/CAP-CSV-IMPORT-001.md`</td>
+  <td class="code">```ts</td>
 </tr>
 <tr id="L36">
   <td class="line"><a href="#L36">36</a></td>
-  <td class="code">- `../30_capabilities/CAP-SYNC-001.md`</td>
+  <td class="code">export interface ProtocolPackage {</td>
 </tr>
 <tr id="L37">
   <td class="line"><a href="#L37">37</a></td>
-  <td class="code">- `../30_capabilities/CAP-SNAPSHOT-001.md`</td>
+  <td class="code">  meta: {</td>
 </tr>
 <tr id="L38">
   <td class="line"><a href="#L38">38</a></td>
+  <td class="code">    formatVersion: number;</td>
+</tr>
+<tr id="L39">
+  <td class="line"><a href="#L39">39</a></td>
+  <td class="code">    protocolId: string;</td>
+</tr>
+<tr id="L40">
+  <td class="line"><a href="#L40">40</a></td>
+  <td class="code">    protocolName: string;</td>
+</tr>
+<tr id="L41">
+  <td class="line"><a href="#L41">41</a></td>
+  <td class="code">    protocolVersion: string;</td>
+</tr>
+<tr id="L42">
+  <td class="line"><a href="#L42">42</a></td>
+  <td class="code">    effectiveFromLocal: string;</td>
+</tr>
+<tr id="L43">
+  <td class="line"><a href="#L43">43</a></td>
+  <td class="code">  };</td>
+</tr>
+<tr id="L44">
+  <td class="line"><a href="#L44">44</a></td>
+  <td class="code">  steps: Array&lt;Record&lt;string, unknown&gt;&gt;;</td>
+</tr>
+<tr id="L45">
+  <td class="line"><a href="#L45">45</a></td>
+  <td class="code">  source: {</td>
+</tr>
+<tr id="L46">
+  <td class="line"><a href="#L46">46</a></td>
+  <td class="code">    importMode: &quot;mac_directory&quot;;</td>
+</tr>
+<tr id="L47">
+  <td class="line"><a href="#L47">47</a></td>
+  <td class="code">    basePath: string;</td>
+</tr>
+<tr id="L48">
+  <td class="line"><a href="#L48">48</a></td>
+  <td class="code">  };</td>
+</tr>
+<tr id="L49">
+  <td class="line"><a href="#L49">49</a></td>
+  <td class="code">  importedAt: string;</td>
+</tr>
+<tr id="L50">
+  <td class="line"><a href="#L50">50</a></td>
+  <td class="code">  validationReport: {</td>
+</tr>
+<tr id="L51">
+  <td class="line"><a href="#L51">51</a></td>
+  <td class="code">    errors: Array&lt;{ row?: number; field?: string; message: string }&gt;;</td>
+</tr>
+<tr id="L52">
+  <td class="line"><a href="#L52">52</a></td>
+  <td class="code">    warnings: Array&lt;{ row?: number; field?: string; message: string }&gt;;</td>
+</tr>
+<tr id="L53">
+  <td class="line"><a href="#L53">53</a></td>
+  <td class="code">  };</td>
+</tr>
+<tr id="L54">
+  <td class="line"><a href="#L54">54</a></td>
+  <td class="code">}</td>
+</tr>
+<tr id="L55">
+  <td class="line"><a href="#L55">55</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L56">
+  <td class="line"><a href="#L56">56</a></td>
+  <td class="code">export type ProcedureSlotNo = 1 | 2 | 3 | 4;</td>
+</tr>
+<tr id="L57">
+  <td class="line"><a href="#L57">57</a></td>
+  <td class="code">```</td>
+</tr>
+<tr id="L58">
+  <td class="line"><a href="#L58">58</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L59">
+  <td class="line"><a href="#L59">59</a></td>
+  <td class="code">### 3.1 データモデル型（移行補完）</td>
+</tr>
+<tr id="L60">
+  <td class="line"><a href="#L60">60</a></td>
+  <td class="code">```ts</td>
+</tr>
+<tr id="L61">
+  <td class="line"><a href="#L61">61</a></td>
+  <td class="code">export type ExchangeColumnNo = 1 | 2 | 3 | 4 | 5;</td>
+</tr>
+<tr id="L62">
+  <td class="line"><a href="#L62">62</a></td>
+  <td class="code">export type SnapshotSchemaVersion = 1;</td>
+</tr>
+<tr id="L63">
+  <td class="line"><a href="#L63">63</a></td>
+  <td class="code">export type WakeLockState = &quot;active&quot; | &quot;inactive&quot; | &quot;unsupported&quot; | &quot;failed&quot;;</td>
+</tr>
+<tr id="L64">
+  <td class="line"><a href="#L64">64</a></td>
+  <td class="code">export type ConflictResolutionPolicy = &quot;lww_entity&quot;;</td>
+</tr>
+<tr id="L65">
+  <td class="line"><a href="#L65">65</a></td>
+  <td class="code">export type DrainAppearanceCategory = &quot;透明&quot; | &quot;やや混濁&quot; | &quot;混濁&quot; | &quot;血性&quot; | &quot;その他&quot;;</td>
+</tr>
+<tr id="L66">
+  <td class="line"><a href="#L66">66</a></td>
+  <td class="code">export type ExitSiteStatusCategory = &quot;正常&quot; | &quot;赤み&quot; | &quot;痛み&quot; | &quot;はれ&quot; | &quot;かさぶた&quot; | &quot;じゅくじゅく&quot; | &quot;出血&quot; | &quot;膿&quot;;</td>
+</tr>
+<tr id="L67">
+  <td class="line"><a href="#L67">67</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L68">
+  <td class="line"><a href="#L68">68</a></td>
+  <td class="code">export interface LwwMeta {</td>
+</tr>
+<tr id="L69">
+  <td class="line"><a href="#L69">69</a></td>
+  <td class="code">  updatedAt: string;</td>
+</tr>
+<tr id="L70">
+  <td class="line"><a href="#L70">70</a></td>
+  <td class="code">  updatedByDeviceId: string;</td>
+</tr>
+<tr id="L71">
+  <td class="line"><a href="#L71">71</a></td>
+  <td class="code">  mutationId: string;</td>
+</tr>
+<tr id="L72">
+  <td class="line"><a href="#L72">72</a></td>
+  <td class="code">}</td>
+</tr>
+<tr id="L73">
+  <td class="line"><a href="#L73">73</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L74">
+  <td class="line"><a href="#L74">74</a></td>
+  <td class="code">export interface ExitSitePhotoMeta {</td>
+</tr>
+<tr id="L75">
+  <td class="line"><a href="#L75">75</a></td>
+  <td class="code">  photo_id: string;</td>
+</tr>
+<tr id="L76">
+  <td class="line"><a href="#L76">76</a></td>
+  <td class="code">  captured_at: string;</td>
+</tr>
+<tr id="L77">
+  <td class="line"><a href="#L77">77</a></td>
+  <td class="code">  uploaded_at: string;</td>
+</tr>
+<tr id="L78">
+  <td class="line"><a href="#L78">78</a></td>
+  <td class="code">  source_device_id: string;</td>
+</tr>
+<tr id="L79">
+  <td class="line"><a href="#L79">79</a></td>
+  <td class="code">}</td>
+</tr>
+<tr id="L80">
+  <td class="line"><a href="#L80">80</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L81">
+  <td class="line"><a href="#L81">81</a></td>
+  <td class="code">export interface SessionSummaryPayload {</td>
+</tr>
+<tr id="L82">
+  <td class="line"><a href="#L82">82</a></td>
+  <td class="code">  summaryScope?: &quot;first_of_day&quot; | &quot;last_of_day&quot; | &quot;both&quot;;</td>
+</tr>
+<tr id="L83">
+  <td class="line"><a href="#L83">83</a></td>
+  <td class="code">  bp_sys?: number;</td>
+</tr>
+<tr id="L84">
+  <td class="line"><a href="#L84">84</a></td>
+  <td class="code">  bp_dia?: number;</td>
+</tr>
+<tr id="L85">
+  <td class="line"><a href="#L85">85</a></td>
+  <td class="code">  body_weight_kg?: number;</td>
+</tr>
+<tr id="L86">
+  <td class="line"><a href="#L86">86</a></td>
+  <td class="code">  exit_site_statuses?: ExitSiteStatusCategory[];</td>
+</tr>
+<tr id="L87">
+  <td class="line"><a href="#L87">87</a></td>
+  <td class="code">  fluid_intake_ml?: number;</td>
+</tr>
+<tr id="L88">
+  <td class="line"><a href="#L88">88</a></td>
+  <td class="code">  urine_ml?: number;</td>
+</tr>
+<tr id="L89">
+  <td class="line"><a href="#L89">89</a></td>
+  <td class="code">  stool_count_per_day?: number;</td>
+</tr>
+<tr id="L90">
+  <td class="line"><a href="#L90">90</a></td>
+  <td class="code">  pulse?: number;</td>
+</tr>
+<tr id="L91">
+  <td class="line"><a href="#L91">91</a></td>
+  <td class="code">  body_temp_c?: number;</td>
+</tr>
+<tr id="L92">
+  <td class="line"><a href="#L92">92</a></td>
+  <td class="code">  symptom_memo?: string;</td>
+</tr>
+<tr id="L93">
+  <td class="line"><a href="#L93">93</a></td>
+  <td class="code">  note?: string;</td>
+</tr>
+<tr id="L94">
+  <td class="line"><a href="#L94">94</a></td>
+  <td class="code">  exit_site_photo?: ExitSitePhotoMeta | null;</td>
+</tr>
+<tr id="L95">
+  <td class="line"><a href="#L95">95</a></td>
+  <td class="code">}</td>
+</tr>
+<tr id="L96">
+  <td class="line"><a href="#L96">96</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L97">
+  <td class="line"><a href="#L97">97</a></td>
+  <td class="code">export type RecordPayload = SessionSummaryPayload | Record&lt;string, unknown&gt;;</td>
+</tr>
+<tr id="L98">
+  <td class="line"><a href="#L98">98</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L99">
+  <td class="line"><a href="#L99">99</a></td>
+  <td class="code">export interface DailyProcedureSlot extends LwwMeta {</td>
+</tr>
+<tr id="L100">
+  <td class="line"><a href="#L100">100</a></td>
+  <td class="code">  slotNo: ProcedureSlotNo;</td>
+</tr>
+<tr id="L101">
+  <td class="line"><a href="#L101">101</a></td>
+  <td class="code">  status: &quot;empty&quot; | &quot;planned&quot; | &quot;completed&quot;;</td>
+</tr>
+<tr id="L102">
+  <td class="line"><a href="#L102">102</a></td>
+  <td class="code">  displayStatus: &quot;empty&quot; | &quot;pending&quot; | &quot;in_progress&quot; | &quot;completed&quot;;</td>
+</tr>
+<tr id="L103">
+  <td class="line"><a href="#L103">103</a></td>
+  <td class="code">  protocolId: string | null;</td>
+</tr>
+<tr id="L104">
+  <td class="line"><a href="#L104">104</a></td>
+  <td class="code">  protocolTitle: string | null;</td>
+</tr>
+<tr id="L105">
+  <td class="line"><a href="#L105">105</a></td>
+  <td class="code">  recommendedAtLocal: string | null;</td>
+</tr>
+<tr id="L106">
+  <td class="line"><a href="#L106">106</a></td>
+  <td class="code">  activeSessionId: string | null;</td>
+</tr>
+<tr id="L107">
+  <td class="line"><a href="#L107">107</a></td>
+  <td class="code">  startBlocked: boolean;</td>
+</tr>
+<tr id="L108">
+  <td class="line"><a href="#L108">108</a></td>
+  <td class="code">  startBlockedReason?:</td>
+</tr>
+<tr id="L109">
+  <td class="line"><a href="#L109">109</a></td>
+  <td class="code">    | &quot;LEFT_SLOT_NOT_COMPLETED&quot;</td>
+</tr>
+<tr id="L110">
+  <td class="line"><a href="#L110">110</a></td>
+  <td class="code">    | &quot;SLOT_EMPTY&quot;</td>
+</tr>
+<tr id="L111">
+  <td class="line"><a href="#L111">111</a></td>
+  <td class="code">    | &quot;SLOT_ALREADY_COMPLETED&quot;</td>
+</tr>
+<tr id="L112">
+  <td class="line"><a href="#L112">112</a></td>
+  <td class="code">    | &quot;ACTIVE_SESSION_EXISTS&quot;</td>
+</tr>
+<tr id="L113">
+  <td class="line"><a href="#L113">113</a></td>
+  <td class="code">    | &quot;SLOT_IN_PROGRESS&quot;;</td>
+</tr>
+<tr id="L114">
+  <td class="line"><a href="#L114">114</a></td>
+  <td class="code">}</td>
+</tr>
+<tr id="L115">
+  <td class="line"><a href="#L115">115</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L116">
+  <td class="line"><a href="#L116">116</a></td>
+  <td class="code">export interface DailyProcedurePlan {</td>
+</tr>
+<tr id="L117">
+  <td class="line"><a href="#L117">117</a></td>
+  <td class="code">  dateLocal: string;</td>
+</tr>
+<tr id="L118">
+  <td class="line"><a href="#L118">118</a></td>
+  <td class="code">  localRevision: number;</td>
+</tr>
+<tr id="L119">
+  <td class="line"><a href="#L119">119</a></td>
+  <td class="code">  cloudRevision: number;</td>
+</tr>
+<tr id="L120">
+  <td class="line"><a href="#L120">120</a></td>
+  <td class="code">  slots: DailyProcedureSlot[];</td>
+</tr>
+<tr id="L121">
+  <td class="line"><a href="#L121">121</a></td>
+  <td class="code">}</td>
+</tr>
+<tr id="L122">
+  <td class="line"><a href="#L122">122</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L123">
+  <td class="line"><a href="#L123">123</a></td>
+  <td class="code">export interface Session extends LwwMeta {</td>
+</tr>
+<tr id="L124">
+  <td class="line"><a href="#L124">124</a></td>
+  <td class="code">  sessionId: string;</td>
+</tr>
+<tr id="L125">
+  <td class="line"><a href="#L125">125</a></td>
+  <td class="code">  slotNo: ProcedureSlotNo;</td>
+</tr>
+<tr id="L126">
+  <td class="line"><a href="#L126">126</a></td>
+  <td class="code">  scheduledDateLocal: string;</td>
+</tr>
+<tr id="L127">
+  <td class="line"><a href="#L127">127</a></td>
+  <td class="code">  protocolId: string;</td>
+</tr>
+<tr id="L128">
+  <td class="line"><a href="#L128">128</a></td>
+  <td class="code">  protocolVersion: string;</td>
+</tr>
+<tr id="L129">
+  <td class="line"><a href="#L129">129</a></td>
+  <td class="code">  status: &quot;active&quot; | &quot;completed&quot; | &quot;aborted&quot;;</td>
+</tr>
+<tr id="L130">
+  <td class="line"><a href="#L130">130</a></td>
+  <td class="code">  ownerDevice: { deviceId: string; platform: &quot;mac&quot; | &quot;iphone&quot; };</td>
+</tr>
+<tr id="L131">
+  <td class="line"><a href="#L131">131</a></td>
+  <td class="code">  currentStepId: string;</td>
+</tr>
+<tr id="L132">
+  <td class="line"><a href="#L132">132</a></td>
+  <td class="code">  startedAt: string;</td>
+</tr>
+<tr id="L133">
+  <td class="line"><a href="#L133">133</a></td>
+  <td class="code">  completedAt: string | null;</td>
+</tr>
+<tr id="L134">
+  <td class="line"><a href="#L134">134</a></td>
+  <td class="code">  abortedAt: string | null;</td>
+</tr>
+<tr id="L135">
+  <td class="line"><a href="#L135">135</a></td>
+  <td class="code">}</td>
+</tr>
+<tr id="L136">
+  <td class="line"><a href="#L136">136</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L137">
+  <td class="line"><a href="#L137">137</a></td>
+  <td class="code">export interface RecordEntity extends LwwMeta {</td>
+</tr>
+<tr id="L138">
+  <td class="line"><a href="#L138">138</a></td>
+  <td class="code">  recordId: string;</td>
+</tr>
+<tr id="L139">
+  <td class="line"><a href="#L139">139</a></td>
+  <td class="code">  sessionId: string;</td>
+</tr>
+<tr id="L140">
+  <td class="line"><a href="#L140">140</a></td>
+  <td class="code">  recordEvent: &quot;drain_appearance&quot; | &quot;drain_weight_g&quot; | &quot;bag_weight_g&quot; | &quot;session_summary&quot;;</td>
+</tr>
+<tr id="L141">
+  <td class="line"><a href="#L141">141</a></td>
+  <td class="code">  payload: RecordPayload;</td>
+</tr>
+<tr id="L142">
+  <td class="line"><a href="#L142">142</a></td>
+  <td class="code">  deleted: boolean;</td>
+</tr>
+<tr id="L143">
+  <td class="line"><a href="#L143">143</a></td>
+  <td class="code">}</td>
+</tr>
+<tr id="L144">
+  <td class="line"><a href="#L144">144</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L145">
+  <td class="line"><a href="#L145">145</a></td>
+  <td class="code">export interface SessionSnapshotStep {</td>
+</tr>
+<tr id="L146">
+  <td class="line"><a href="#L146">146</a></td>
+  <td class="code">  sequenceNo: number;</td>
+</tr>
+<tr id="L147">
+  <td class="line"><a href="#L147">147</a></td>
+  <td class="code">  stepId: string;</td>
+</tr>
+<tr id="L148">
+  <td class="line"><a href="#L148">148</a></td>
+  <td class="code">  nextStepId: string | null;</td>
+</tr>
+<tr id="L149">
+  <td class="line"><a href="#L149">149</a></td>
+  <td class="code">  phase: string;</td>
+</tr>
+<tr id="L150">
+  <td class="line"><a href="#L150">150</a></td>
+  <td class="code">  state: string;</td>
+</tr>
+<tr id="L151">
+  <td class="line"><a href="#L151">151</a></td>
+  <td class="code">  title: string;</td>
+</tr>
+<tr id="L152">
+  <td class="line"><a href="#L152">152</a></td>
+  <td class="code">  imageAssetKey: string | null;</td>
+</tr>
+<tr id="L153">
+  <td class="line"><a href="#L153">153</a></td>
+  <td class="code">  displayText: string | null;</td>
+</tr>
+<tr id="L154">
+  <td class="line"><a href="#L154">154</a></td>
+  <td class="code">  warningText: string | null;</td>
+</tr>
+<tr id="L155">
+  <td class="line"><a href="#L155">155</a></td>
+  <td class="code">  requiredChecks: string[];</td>
+</tr>
+<tr id="L156">
+  <td class="line"><a href="#L156">156</a></td>
+  <td class="code">  timerSpec: {</td>
+</tr>
+<tr id="L157">
+  <td class="line"><a href="#L157">157</a></td>
+  <td class="code">    timerId: string;</td>
+</tr>
+<tr id="L158">
+  <td class="line"><a href="#L158">158</a></td>
+  <td class="code">    timerEvent: &quot;start&quot; | &quot;end&quot;;</td>
+</tr>
+<tr id="L159">
+  <td class="line"><a href="#L159">159</a></td>
+  <td class="code">    timerExchangeNo?: ExchangeColumnNo;</td>
+</tr>
+<tr id="L160">
+  <td class="line"><a href="#L160">160</a></td>
+  <td class="code">    timerSegment?: &quot;dwell&quot; | &quot;drain&quot;;</td>
+</tr>
+<tr id="L161">
+  <td class="line"><a href="#L161">161</a></td>
+  <td class="code">  } | null;</td>
+</tr>
+<tr id="L162">
+  <td class="line"><a href="#L162">162</a></td>
+  <td class="code">  alarmSpec: {</td>
+</tr>
+<tr id="L163">
+  <td class="line"><a href="#L163">163</a></td>
+  <td class="code">    alarmId: string;</td>
+</tr>
+<tr id="L164">
+  <td class="line"><a href="#L164">164</a></td>
+  <td class="code">    segment: &quot;dwell&quot; | &quot;drain&quot;;</td>
+</tr>
+<tr id="L165">
+  <td class="line"><a href="#L165">165</a></td>
+  <td class="code">  } | null;</td>
+</tr>
+<tr id="L166">
+  <td class="line"><a href="#L166">166</a></td>
+  <td class="code">  recordSpec: {</td>
+</tr>
+<tr id="L167">
+  <td class="line"><a href="#L167">167</a></td>
+  <td class="code">    recordEvent: &quot;drain_appearance&quot; | &quot;drain_weight_g&quot; | &quot;bag_weight_g&quot; | &quot;session_summary&quot;;</td>
+</tr>
+<tr id="L168">
+  <td class="line"><a href="#L168">168</a></td>
+  <td class="code">    recordExchangeNo?: ExchangeColumnNo;</td>
+</tr>
+<tr id="L169">
+  <td class="line"><a href="#L169">169</a></td>
+  <td class="code">    recordUnit?: string;</td>
+</tr>
+<tr id="L170">
+  <td class="line"><a href="#L170">170</a></td>
+  <td class="code">  } | null;</td>
+</tr>
+<tr id="L171">
+  <td class="line"><a href="#L171">171</a></td>
+  <td class="code">}</td>
+</tr>
+<tr id="L172">
+  <td class="line"><a href="#L172">172</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L173">
+  <td class="line"><a href="#L173">173</a></td>
+  <td class="code">export interface SessionSnapshotAsset {</td>
+</tr>
+<tr id="L174">
+  <td class="line"><a href="#L174">174</a></td>
+  <td class="code">  assetKey: string;</td>
+</tr>
+<tr id="L175">
+  <td class="line"><a href="#L175">175</a></td>
+  <td class="code">  sourceRelativePath: string;</td>
+</tr>
+<tr id="L176">
+  <td class="line"><a href="#L176">176</a></td>
+  <td class="code">  contentSha256: string;</td>
+</tr>
+<tr id="L177">
+  <td class="line"><a href="#L177">177</a></td>
+  <td class="code">  sizeBytes: number;</td>
+</tr>
+<tr id="L178">
+  <td class="line"><a href="#L178">178</a></td>
+  <td class="code">}</td>
+</tr>
+<tr id="L179">
+  <td class="line"><a href="#L179">179</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L180">
+  <td class="line"><a href="#L180">180</a></td>
+  <td class="code">export interface SessionProtocolSnapshot {</td>
+</tr>
+<tr id="L181">
+  <td class="line"><a href="#L181">181</a></td>
+  <td class="code">  sessionId: string;</td>
+</tr>
+<tr id="L182">
+  <td class="line"><a href="#L182">182</a></td>
+  <td class="code">  snapshotSchemaVersion: SnapshotSchemaVersion;</td>
+</tr>
+<tr id="L183">
+  <td class="line"><a href="#L183">183</a></td>
+  <td class="code">  sourceProtocol: {</td>
+</tr>
+<tr id="L184">
+  <td class="line"><a href="#L184">184</a></td>
+  <td class="code">    protocolId: string;</td>
+</tr>
+<tr id="L185">
+  <td class="line"><a href="#L185">185</a></td>
+  <td class="code">    protocolVersion: string;</td>
+</tr>
+<tr id="L186">
+  <td class="line"><a href="#L186">186</a></td>
+  <td class="code">    importedAt: string;</td>
+</tr>
+<tr id="L187">
+  <td class="line"><a href="#L187">187</a></td>
+  <td class="code">  };</td>
+</tr>
+<tr id="L188">
+  <td class="line"><a href="#L188">188</a></td>
+  <td class="code">  steps: SessionSnapshotStep[];</td>
+</tr>
+<tr id="L189">
+  <td class="line"><a href="#L189">189</a></td>
+  <td class="code">  assetManifest: SessionSnapshotAsset[];</td>
+</tr>
+<tr id="L190">
+  <td class="line"><a href="#L190">190</a></td>
+  <td class="code">  snapshotHash: string;</td>
+</tr>
+<tr id="L191">
+  <td class="line"><a href="#L191">191</a></td>
+  <td class="code">  createdAt: string;</td>
+</tr>
+<tr id="L192">
+  <td class="line"><a href="#L192">192</a></td>
+  <td class="code">}</td>
+</tr>
+<tr id="L193">
+  <td class="line"><a href="#L193">193</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L194">
+  <td class="line"><a href="#L194">194</a></td>
+  <td class="code">export interface TombstoneRef extends LwwMeta {</td>
+</tr>
+<tr id="L195">
+  <td class="line"><a href="#L195">195</a></td>
+  <td class="code">  entityType: &quot;session&quot; | &quot;record&quot; | &quot;daily_slot&quot; | &quot;photo&quot;;</td>
+</tr>
+<tr id="L196">
+  <td class="line"><a href="#L196">196</a></td>
+  <td class="code">  entityId: string;</td>
+</tr>
+<tr id="L197">
+  <td class="line"><a href="#L197">197</a></td>
+  <td class="code">  deletedAt: string;</td>
+</tr>
+<tr id="L198">
+  <td class="line"><a href="#L198">198</a></td>
+  <td class="code">  deletedByDeviceId: string;</td>
+</tr>
+<tr id="L199">
+  <td class="line"><a href="#L199">199</a></td>
+  <td class="code">}</td>
+</tr>
+<tr id="L200">
+  <td class="line"><a href="#L200">200</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L201">
+  <td class="line"><a href="#L201">201</a></td>
+  <td class="code">export interface SyncManifest {</td>
+</tr>
+<tr id="L202">
+  <td class="line"><a href="#L202">202</a></td>
+  <td class="code">  cloudRevision: number;</td>
+</tr>
+<tr id="L203">
+  <td class="line"><a href="#L203">203</a></td>
+  <td class="code">  dayRefs: Array&lt;{ dateLocal: string; blobKey: string; sha256: string; updatedAt: string }&gt;;</td>
+</tr>
+<tr id="L204">
+  <td class="line"><a href="#L204">204</a></td>
+  <td class="code">  photoRefs: Array&lt;{ photoId: string; blobKey: string; photo_kind: &quot;drain&quot; | &quot;exit_site&quot;; sizeBytes: number; sha256: string; updatedAt: string }&gt;;</td>
+</tr>
+<tr id="L205">
+  <td class="line"><a href="#L205">205</a></td>
+  <td class="code">  tombstones: TombstoneRef[];</td>
+</tr>
+<tr id="L206">
+  <td class="line"><a href="#L206">206</a></td>
+  <td class="code">  integrityHash: string;</td>
+</tr>
+<tr id="L207">
+  <td class="line"><a href="#L207">207</a></td>
+  <td class="code">}</td>
+</tr>
+<tr id="L208">
+  <td class="line"><a href="#L208">208</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L209">
+  <td class="line"><a href="#L209">209</a></td>
+  <td class="code">export interface DayBundle extends LwwMeta {</td>
+</tr>
+<tr id="L210">
+  <td class="line"><a href="#L210">210</a></td>
+  <td class="code">  dateLocal: string;</td>
+</tr>
+<tr id="L211">
+  <td class="line"><a href="#L211">211</a></td>
+  <td class="code">  dailyProcedurePlan: DailyProcedurePlan;</td>
+</tr>
+<tr id="L212">
+  <td class="line"><a href="#L212">212</a></td>
+  <td class="code">  sessions: Session[];</td>
+</tr>
+<tr id="L213">
+  <td class="line"><a href="#L213">213</a></td>
+  <td class="code">  records: RecordEntity[];</td>
+</tr>
+<tr id="L214">
+  <td class="line"><a href="#L214">214</a></td>
+  <td class="code">  snapshotRefs: Array&lt;{ sessionId: string; snapshotHash: string }&gt;;</td>
+</tr>
+<tr id="L215">
+  <td class="line"><a href="#L215">215</a></td>
+  <td class="code">}</td>
+</tr>
+<tr id="L216">
+  <td class="line"><a href="#L216">216</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L217">
+  <td class="line"><a href="#L217">217</a></td>
+  <td class="code">export interface OutboxMutation {</td>
+</tr>
+<tr id="L218">
+  <td class="line"><a href="#L218">218</a></td>
+  <td class="code">  mutationId: string;</td>
+</tr>
+<tr id="L219">
+  <td class="line"><a href="#L219">219</a></td>
+  <td class="code">  deviceId: string;</td>
+</tr>
+<tr id="L220">
+  <td class="line"><a href="#L220">220</a></td>
+  <td class="code">  entityType: &quot;session&quot; | &quot;record&quot; | &quot;daily_slot&quot; | &quot;photo&quot; | &quot;tombstone&quot;;</td>
+</tr>
+<tr id="L221">
+  <td class="line"><a href="#L221">221</a></td>
+  <td class="code">  entityId: string;</td>
+</tr>
+<tr id="L222">
+  <td class="line"><a href="#L222">222</a></td>
+  <td class="code">  operation: &quot;upsert&quot; | &quot;delete&quot; | &quot;patch&quot;;</td>
+</tr>
+<tr id="L223">
+  <td class="line"><a href="#L223">223</a></td>
+  <td class="code">  patch_path?: &quot;payload.exit_site_photo&quot;;</td>
+</tr>
+<tr id="L224">
+  <td class="line"><a href="#L224">224</a></td>
+  <td class="code">  payload: Record&lt;string, unknown&gt;;</td>
+</tr>
+<tr id="L225">
+  <td class="line"><a href="#L225">225</a></td>
+  <td class="code">  updatedAt: string;</td>
+</tr>
+<tr id="L226">
+  <td class="line"><a href="#L226">226</a></td>
+  <td class="code">  retryCount: number;</td>
+</tr>
+<tr id="L227">
+  <td class="line"><a href="#L227">227</a></td>
+  <td class="code">  status: &quot;pending&quot; | &quot;acked&quot; | &quot;failed&quot;;</td>
+</tr>
+<tr id="L228">
+  <td class="line"><a href="#L228">228</a></td>
+  <td class="code">}</td>
+</tr>
+<tr id="L229">
+  <td class="line"><a href="#L229">229</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L230">
+  <td class="line"><a href="#L230">230</a></td>
+  <td class="code">export interface SyncState {</td>
+</tr>
+<tr id="L231">
+  <td class="line"><a href="#L231">231</a></td>
+  <td class="code">  deviceId: string;</td>
+</tr>
+<tr id="L232">
+  <td class="line"><a href="#L232">232</a></td>
+  <td class="code">  lastCloudRevision: number;</td>
+</tr>
+<tr id="L233">
+  <td class="line"><a href="#L233">233</a></td>
+  <td class="code">  lastSyncedAt?: string;</td>
+</tr>
+<tr id="L234">
+  <td class="line"><a href="#L234">234</a></td>
+  <td class="code">  lastSyncStatus: &quot;idle&quot; | &quot;success&quot; | &quot;failed&quot;;</td>
+</tr>
+<tr id="L235">
+  <td class="line"><a href="#L235">235</a></td>
+  <td class="code">  lastError?: string;</td>
+</tr>
+<tr id="L236">
+  <td class="line"><a href="#L236">236</a></td>
+  <td class="code">}</td>
+</tr>
+<tr id="L237">
+  <td class="line"><a href="#L237">237</a></td>
+  <td class="code">```</td>
+</tr>
+<tr id="L238">
+  <td class="line"><a href="#L238">238</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L239">
+  <td class="line"><a href="#L239">239</a></td>
+  <td class="code">## 4. 不変条件（Invariants）</td>
+</tr>
+<tr id="L240">
+  <td class="line"><a href="#L240">240</a></td>
+  <td class="code">1. `record` のLWW比較キーは `(updatedAt, updatedByDeviceId, mutationId)` 降順。</td>
+</tr>
+<tr id="L241">
+  <td class="line"><a href="#L241">241</a></td>
+  <td class="code">2. `session_summary.payload.exit_site_photo` の更新は `patch_path=payload.exit_site_photo` の部分パッチ。</td>
+</tr>
+<tr id="L242">
+  <td class="line"><a href="#L242">242</a></td>
+  <td class="code">3. `SessionProtocolSnapshot` 保存失敗時はセッション開始失敗。</td>
+</tr>
+<tr id="L243">
+  <td class="line"><a href="#L243">243</a></td>
+  <td class="code">4. `cloudState=missing` 判定時にローカルデータ削除を禁止。</td>
+</tr>
+<tr id="L244">
+  <td class="line"><a href="#L244">244</a></td>
+  <td class="code">5. Import失敗時はテンプレート保存を行わない。</td>
+</tr>
+<tr id="L245">
+  <td class="line"><a href="#L245">245</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L246">
+  <td class="line"><a href="#L246">246</a></td>
+  <td class="code">## 5. 参照元リンク</td>
+</tr>
+<tr id="L247">
+  <td class="line"><a href="#L247">247</a></td>
+  <td class="code">- `./storage-model.md`</td>
+</tr>
+<tr id="L248">
+  <td class="line"><a href="#L248">248</a></td>
+  <td class="code">- `./functional-requirements.md`</td>
+</tr>
+<tr id="L249">
+  <td class="line"><a href="#L249">249</a></td>
+  <td class="code">- `../30_capabilities/CAP-CSV-IMPORT-001.md`</td>
+</tr>
+<tr id="L250">
+  <td class="line"><a href="#L250">250</a></td>
+  <td class="code">- `../30_capabilities/CAP-SYNC-001.md`</td>
+</tr>
+<tr id="L251">
+  <td class="line"><a href="#L251">251</a></td>
+  <td class="code">- `../30_capabilities/CAP-SNAPSHOT-001.md`</td>
+</tr>
+<tr id="L252">
+  <td class="line"><a href="#L252">252</a></td>
   <td class="code">&nbsp;</td>
 </tr>
   </table>

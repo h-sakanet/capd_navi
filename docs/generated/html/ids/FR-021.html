@@ -43,9 +43,10 @@
   <h2>原文リンク</h2>
 <ul>
 <li><a href="../sources/docs/requirements/05_functional_requirements.html#FR-021"><code>docs/requirements/05_functional_requirements.md:42</code></a> <span class="muted">- FR-021: CSV v3フォーマットのみ受け付けます。</span></li>
-<li><a href="../sources/test/specs/traceability-matrix.html#FR-021--L12"><code>test/specs/traceability-matrix.md:12</code></a> <span class="muted">| FR-021 | AT-CSV-001 | UT-CSV-001 | `protocol-csv.ts` | Executable | 正常CSVの基本パース |</span></li>
+<li><a href="../sources/docs/spec/40_contracts/functional-requirements.html#FR-021--L54"><code>docs/spec/40_contracts/functional-requirements.md:54</code></a> <span class="muted">| FR-021 | `SCR-012-MAC-IMPORT-FR-02`&lt;br&gt;`CAP-CSV-IMPORT-001-FR-02` | `SCR-012-MAC-IMPORT.md` |</span></li>
+<li><a href="../sources/test/specs/traceability-matrix.html#FR-021--L12"><code>test/specs/traceability-matrix.md:12</code></a> <span class="muted">| FR-021 | AT-CSV-001 | UT-CSV-001 | `protocol-csv.ts` | Implemented | `capd-app/tests/unit/protocol-csv.test.ts` |</span></li>
 <li><a href="../sources/test/specs/traceability-matrix.html#FR-021--L14"><code>test/specs/traceability-matrix.md:14</code></a> <span class="muted">| FR-021 | - | UT-CSV-003 | `protocol-csv.ts` | Executable | `row_type` 必須列検証 |</span></li>
-<li><a href="../sources/test/specs/traceability-matrix.html#FR-021--L15"><code>test/specs/traceability-matrix.md:15</code></a> <span class="muted">| FR-021 | - | UT-CSV-004 | `protocol-csv.ts` | Executable | 必須meta_key検証 |</span></li>
+<li><a href="../sources/test/specs/traceability-matrix.html#FR-021--L15"><code>test/specs/traceability-matrix.md:15</code></a> <span class="muted">| FR-021 | - | UT-CSV-004 | `protocol-csv.ts` | Implemented | `capd-app/tests/unit/protocol-csv.test.ts` |</span></li>
 <li><a href="../sources/test/specs/traceability-matrix.html#FR-021--L16"><code>test/specs/traceability-matrix.md:16</code></a> <span class="muted">| FR-021 | - | UT-CSV-005 | `protocol-csv.ts` | Executable | `format_version=3` 固定検証 |</span></li>
 <li><a href="../sources/test/specs/traceability-matrix.html#FR-021--L19"><code>test/specs/traceability-matrix.md:19</code></a> <span class="muted">| FR-021 | - | UT-CSV-008 | `protocol-csv.ts` | Executable | エスケープ引用符復元 |</span></li>
 <li><a href="../sources/test/specs/traceability-matrix.html#FR-021--L20"><code>test/specs/traceability-matrix.md:20</code></a> <span class="muted">| FR-021 | - | UT-CSV-009 | `protocol-csv.ts` | Executable | `alarm_duration_min` 空欄 |</span></li>
@@ -76,6 +77,10 @@
 <li><a href="./UT-CSV-008.html"><code>UT-CSV-008</code></a> <span class="muted">parseProtocolCsv</span></li>
 <li><a href="./UT-CSV-009.html"><code>UT-CSV-009</code></a> <span class="muted">parseProtocolCsv</span></li>
 <li><a href="./UT-CSV-010.html"><code>UT-CSV-010</code></a> <span class="muted">parseProtocolCsv</span></li>
+</ul>
+<h3>SCR</h3>
+<ul>
+<li><a href="../screens/SCR-012-MAC-IMPORT.html"><code>SCR-012-MAC-IMPORT</code></a> <span class="muted">CSV取込I/F</span></li>
 </ul>
 <h3>ACT</h3>
 <ul>

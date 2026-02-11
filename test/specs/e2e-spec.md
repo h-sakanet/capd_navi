@@ -69,10 +69,10 @@
 ### 4.1 CSV取込（Mac）
 | E2E ID | 対応AT | 前提 | 操作 | 期待結果 | 優先度 | 状態 |
 |---|---|---|---|---|---|---|
-| E2E-CSV-001 | AT-CSV-001 | 正常CSV v3 + 画像 | 取込実行 | 成功しテンプレート登録 | P0 | Planned |
-| E2E-CSV-002 | AT-CSV-002 | `step_id` 重複CSV | 取込実行 | エラーで中止 | P0 | Planned |
-| E2E-CSV-003 | AT-CSV-003 | `next_step_id` 不整合CSV | 取込実行 | エラーで中止 | P0 | Planned |
-| E2E-CSV-004 | AT-CSV-004 | 画像不足CSV | 取込実行 | エラーで中止 | P0 | Planned |
+| E2E-CSV-001 | AT-CSV-001 | 正常CSV v3 + 画像 | 取込実行 | 成功しテンプレート登録 | P0 | Implemented |
+| E2E-CSV-002 | AT-CSV-002 | `step_id` 重複CSV | 取込実行 | エラーで中止 | P0 | Implemented |
+| E2E-CSV-003 | AT-CSV-003 | `next_step_id` 不整合CSV | 取込実行 | エラーで中止 | P0 | Implemented |
+| E2E-CSV-004 | AT-CSV-004 | 画像不足CSV | 取込実行 | エラーで中止 | P0 | Implemented |
 | E2E-CSV-005 | AT-CSV-005 | `xx分` を含むCSV | 取込実行 | 取込成功 + 警告表示 | P1 | Deferred |
 
 ### 4.2 Home / Flow
@@ -89,35 +89,35 @@
 ### 4.3 API境界
 | E2E ID | 対応AT | 前提 | 操作 | 期待結果 | 優先度 | 状態 |
 |---|---|---|---|---|---|---|
-| E2E-API-001 | AT-API-001 | ルート一覧取得可能 | ルーティング確認 | 公開APIが `sync/push`, `sync/pull` のみ | P0 | Planned |
-| E2E-API-002 | AT-API-003 | CSV取込導線あり | 取込実行 | `POST /protocols/import-package` を呼ばない | P0 | Planned |
-| E2E-API-003 | AT-API-002 | Home表示可能 | UI確認 | 手動エクスポート導線が表示されない | P0 | Executable |
-| E2E-API-004 | AT-API-004 | 同期済みデータあり | Blobキー確認 | `.enc` なしで保存 | P0 | Planned |
+| E2E-API-001 | AT-API-001 | ルート一覧取得可能 | ルーティング確認 | 公開APIが `sync/push`, `sync/pull` のみ | P0 | Implemented |
+| E2E-API-002 | AT-API-003 | CSV取込導線あり | 取込実行 | `POST /protocols/import-package` を呼ばない | P0 | Implemented |
+| E2E-API-003 | AT-API-002 | Home表示可能 | UI確認 | 手動エクスポート導線が表示されない | P0 | Implemented |
+| E2E-API-004 | AT-API-004 | 同期済みデータあり | Blobキー確認 | `.enc` なしで保存 | P0 | Implemented |
 
 ### 4.4 同期契約
 | E2E ID | 対応AT | 前提 | 操作 | 期待結果 | 優先度 | 状態 |
 |---|---|---|---|---|---|---|
-| E2E-SYNC-001 | AT-SYNC-001 | 端末Aに未同期データ | 端末B起動 | pull復元成立 | P0 | Planned |
-| E2E-SYNC-002 | AT-SYNC-005 | outbox pendingあり | 手動同期 | outbox消し込み | P0 | Planned |
-| E2E-SYNC-003 | AT-SYNC-002 | 端末Aでセッション完了 | 同期後に端末B復帰 | 完了記録が端末Bへ反映 | P0 | Planned |
-| E2E-SYNC-004 | AT-SYNC-003 | 同一エンティティを2端末更新 | 双方同期 | LWW勝者に一意収束 | P0 | Planned |
-| E2E-SYNC-005 | AT-SYNC-004 | 同日同スロットを2端末更新 | 双方同期 | 重複セッション保持 + スロット収束 | P0 | Planned |
-| E2E-SYNC-006 | AT-SYNC-006 | ネットワーク失敗注入 | アプリ復帰で同期実行 | 失敗バナー + 再試行導線表示 | P0 | Planned |
+| E2E-SYNC-001 | AT-SYNC-001 | 端末Aに未同期データ | 端末B起動 | pull復元成立 | P0 | Implemented |
+| E2E-SYNC-002 | AT-SYNC-005 | outbox pendingあり | 手動同期 | outbox消し込み | P0 | Implemented |
+| E2E-SYNC-003 | AT-SYNC-002 | 端末Aでセッション完了 | 同期後に端末B復帰 | 完了記録が端末Bへ反映 | P0 | Implemented |
+| E2E-SYNC-004 | AT-SYNC-003 | 同一エンティティを2端末更新 | 双方同期 | LWW勝者に一意収束 | P0 | Implemented |
+| E2E-SYNC-005 | AT-SYNC-004 | 同日同スロットを2端末更新 | 双方同期 | 重複セッション保持 + スロット収束 | P0 | Implemented |
+| E2E-SYNC-006 | AT-SYNC-006 | ネットワーク失敗注入 | アプリ復帰で同期実行 | 失敗バナー + 再試行導線表示 | P0 | Implemented |
 
 ### 4.5 復旧
 | E2E ID | 対応AT | 前提 | 操作 | 期待結果 | 優先度 | 状態 |
 |---|---|---|---|---|---|---|
-| E2E-RECOVERY-001 | AT-RECOVERY-001 | DB消去済み | 起動 | クラウドからフル復元 | P0 | Planned |
-| E2E-RECOVERY-002 | AT-RECOVERY-002 | Blobs欠損 | 手動同期 | `cloudState=missing` -> `full_reseed` 成功 | P0 | Planned |
-| E2E-RECOVERY-003 | AT-RECOVERY-003 | `full_reseed` 失敗注入 | 手動同期 | `failed` 状態表示 + ローカル保全 | P0 | Planned |
+| E2E-RECOVERY-001 | AT-RECOVERY-001 | DB消去済み | 起動 | クラウドからフル復元 | P0 | Implemented |
+| E2E-RECOVERY-002 | AT-RECOVERY-002 | Blobs欠損 | 手動同期 | `cloudState=missing` -> `full_reseed` 成功 | P0 | Implemented |
+| E2E-RECOVERY-003 | AT-RECOVERY-003 | `full_reseed` 失敗注入 | 手動同期 | `failed` 状態表示 + ローカル保全 | P0 | Implemented |
 
 ### 4.6 タイマー / アラーム
 | E2E ID | 対応AT | 前提 | 操作 | 期待結果 | 優先度 | 状態 |
 |---|---|---|---|---|---|---|
-| E2E-ALARM-001 | AT-ALARM-001 | タイマー終了時刻到達 | 待機 | Mac通知 + アプリ内アラート | P0 | Planned |
-| E2E-ALARM-002 | AT-ALARM-002 | 終了後未確認 | T+2分 / T+5分以降経過 | 段階再通知が仕様どおり動作 | P0 | Planned |
-| E2E-ALARM-003 | AT-ALARM-003 | 通知中 | ACK実行 | 通知停止 + `acked_at` 記録 | P0 | Planned |
-| E2E-ALARM-004 | AT-ALARM-004 | 終了後30分未ACK | 状態確認 | `status=missed` 永続化 + 警告継続 | P0 | Planned |
+| E2E-ALARM-001 | AT-ALARM-001 | タイマー終了時刻到達 | 待機 | Mac通知 + アプリ内アラート | P0 | Implemented |
+| E2E-ALARM-002 | AT-ALARM-002 | 終了後未確認 | T+2分 / T+5分以降経過 | 段階再通知が仕様どおり動作 | P0 | Implemented |
+| E2E-ALARM-003 | AT-ALARM-003 | 通知中 | ACK実行 | 通知停止 + `acked_at` 記録 | P0 | Implemented |
+| E2E-ALARM-004 | AT-ALARM-004 | 終了後30分未ACK | 状態確認 | `status=missed` 永続化 + 警告継続 | P0 | Implemented |
 
 ### 4.7 プラットフォーム / スリープ
 | E2E ID | 対応AT | 前提 | 操作 | 期待結果 | 優先度 | 状態 |

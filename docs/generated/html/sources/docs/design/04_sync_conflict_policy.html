@@ -48,11 +48,11 @@
 </tr>
 <tr id="L3">
   <td class="line"><a href="#L3">3</a></td>
-  <td class="code">## 1. 目的</td>
+  <td class="code">&gt; 移行メモ（2026-02-11）: 本文の正本は `docs/spec/40_contracts/sync-conflict-policy.md` / `docs/spec/30_capabilities/CAP-SYNC-001.md` / `docs/spec/30_capabilities/CAP-RECOVERY-001.md` へ再構成済みです。  </td>
 </tr>
 <tr id="L4">
   <td class="line"><a href="#L4">4</a></td>
-  <td class="code">Mac/iPhone 併用時に、ローカルファーストの操作性を維持しながら、Netlify Blobs 共有で最終的整合性を確保します。</td>
+  <td class="code">&gt; 本書は旧体系参照用として残置し、更新は `docs/spec` 側を優先します。</td>
 </tr>
 <tr id="L5">
   <td class="line"><a href="#L5">5</a></td>
@@ -60,247 +60,247 @@
 </tr>
 <tr id="L6">
   <td class="line"><a href="#L6">6</a></td>
-  <td class="code">## 2. 前提ルール</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L7">
   <td class="line"><a href="#L7">7</a></td>
-  <td class="code">- データ正本は各端末の IndexedDB</td>
+  <td class="code">## 1. 目的</td>
 </tr>
 <tr id="L8">
   <td class="line"><a href="#L8">8</a></td>
-  <td class="code">- クラウド（Netlify Blobs）は共有・復旧・バックアップ用途</td>
+  <td class="code">Mac/iPhone 併用時に、ローカルファーストの操作性を維持しながら、Netlify Blobs 共有で最終的整合性を確保します。</td>
 </tr>
 <tr id="L9">
   <td class="line"><a href="#L9">9</a></td>
-  <td class="code">- 同一端末内の `active` セッションは1件のみ</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L10">
   <td class="line"><a href="#L10">10</a></td>
-  <td class="code">- 端末間の同時進行は許容し、同期時に内部LWWで解決</td>
+  <td class="code">## 2. 前提ルール</td>
 </tr>
 <tr id="L11">
   <td class="line"><a href="#L11">11</a></td>
-  <td class="code">- 手技スナップショットは開始時固定、再開時は固定版のみ参照</td>
+  <td class="code">- データ正本は各端末の IndexedDB</td>
 </tr>
 <tr id="L12">
   <td class="line"><a href="#L12">12</a></td>
-  <td class="code">- 同期は起動/復帰、セッション完了、手動同期で実行（定期ポーリングなし）</td>
+  <td class="code">- クラウド（Netlify Blobs）は共有・復旧・バックアップ用途</td>
 </tr>
 <tr id="L13">
   <td class="line"><a href="#L13">13</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- 同一端末内の `active` セッションは1件のみ</td>
 </tr>
 <tr id="L14">
   <td class="line"><a href="#L14">14</a></td>
-  <td class="code">## 3. ストレージレイアウト</td>
+  <td class="code">- 端末間の同時進行は許容し、同期時に内部LWWで解決</td>
 </tr>
 <tr id="L15">
   <td class="line"><a href="#L15">15</a></td>
-  <td class="code">- `index.json`: 全体manifest（cloudRevision, dayRefs, photoRefs, tombstones, integrity hash）</td>
+  <td class="code">- 手技スナップショットは開始時固定、再開時は固定版のみ参照</td>
 </tr>
 <tr id="L16">
   <td class="line"><a href="#L16">16</a></td>
-  <td class="code">- `days/YYYY-MM-DD.json`: 当日スロット、当日セッション、当日記録</td>
+  <td class="code">- 同期は起動/復帰、セッション完了、手動同期で実行（定期ポーリングなし）</td>
 </tr>
 <tr id="L17">
   <td class="line"><a href="#L17">17</a></td>
-  <td class="code">- `photos/{photoId}.jpg`: 写真実体</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L18">
   <td class="line"><a href="#L18">18</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">## 3. ストレージレイアウト</td>
 </tr>
 <tr id="L19">
   <td class="line"><a href="#L19">19</a></td>
-  <td class="code">## 4. 同期モデル</td>
+  <td class="code">- `index.json`: 全体manifest（cloudRevision, dayRefs, photoRefs, tombstones, integrity hash）</td>
 </tr>
 <tr id="L20">
   <td class="line"><a href="#L20">20</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- `days/YYYY-MM-DD.json`: 当日スロット、当日セッション、当日記録</td>
 </tr>
 <tr id="L21">
   <td class="line"><a href="#L21">21</a></td>
-  <td class="code">### 4.1 同期トリガー</td>
+  <td class="code">- `photos/{photoId}.jpg`: 写真実体</td>
 </tr>
 <tr id="L22">
   <td class="line"><a href="#L22">22</a></td>
-  <td class="code">- `startup`: アプリ起動時</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L23">
   <td class="line"><a href="#L23">23</a></td>
-  <td class="code">- `resume`: バックグラウンド復帰時</td>
+  <td class="code">## 4. 同期モデル</td>
 </tr>
 <tr id="L24">
   <td class="line"><a href="#L24">24</a></td>
-  <td class="code">- `session_complete`: 最終ステップ完了時</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L25">
   <td class="line"><a href="#L25">25</a></td>
-  <td class="code">- `manual`: ユーザー明示の手動同期</td>
+  <td class="code">### 4.1 同期トリガー</td>
 </tr>
 <tr id="L26">
   <td class="line"><a href="#L26">26</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- `startup`: アプリ起動時</td>
 </tr>
 <tr id="L27">
   <td class="line"><a href="#L27">27</a></td>
-  <td class="code">### 4.2 同期手順</td>
+  <td class="code">- `resume`: バックグラウンド復帰時</td>
 </tr>
 <tr id="L28">
   <td class="line"><a href="#L28">28</a></td>
-  <td class="code">1. `push`: `outbox` 内 mutation を `POST /sync/push` で送信</td>
+  <td class="code">- `session_complete`: 最終ステップ完了時</td>
 </tr>
 <tr id="L29">
   <td class="line"><a href="#L29">29</a></td>
-  <td class="code">2. サーバーは mutation を検証し、Blobs に反映</td>
+  <td class="code">- `manual`: ユーザー明示の手動同期</td>
 </tr>
 <tr id="L30">
   <td class="line"><a href="#L30">30</a></td>
-  <td class="code">3. `pull`: 端末既知の `cloudRevision` 以降を `POST /sync/pull` で取得</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L31">
   <td class="line"><a href="#L31">31</a></td>
-  <td class="code">4. クライアントがLWWでローカルへ適用</td>
+  <td class="code">### 4.2 同期手順</td>
 </tr>
 <tr id="L32">
   <td class="line"><a href="#L32">32</a></td>
-  <td class="code">5. 適用結果に応じて同期状態（成功/失敗）を更新</td>
+  <td class="code">1. `push`: `outbox` 内 mutation を `POST /sync/push` で送信</td>
 </tr>
 <tr id="L33">
   <td class="line"><a href="#L33">33</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">2. サーバーは mutation を検証し、Blobs に反映</td>
 </tr>
 <tr id="L34">
   <td class="line"><a href="#L34">34</a></td>
-  <td class="code">### 4.3 クラウド欠損時の再シード</td>
+  <td class="code">3. `pull`: 端末既知の `cloudRevision` 以降を `POST /sync/pull` で取得</td>
 </tr>
 <tr id="L35">
   <td class="line"><a href="#L35">35</a></td>
-  <td class="code">`POST /sync/pull` が `cloudState=missing` を返した場合は、クラウド同期基盤の欠損として扱います。</td>
+  <td class="code">4. クライアントがLWWでローカルへ適用</td>
 </tr>
 <tr id="L36">
   <td class="line"><a href="#L36">36</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">5. 適用結果に応じて同期状態（成功/失敗）を更新</td>
 </tr>
 <tr id="L37">
   <td class="line"><a href="#L37">37</a></td>
-  <td class="code">`cloudState=missing` は以下のいずれかで返却します。</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L38">
   <td class="line"><a href="#L38">38</a></td>
-  <td class="code">- `index.json` 欠損</td>
+  <td class="code">### 4.3 クラウド欠損時の再シード</td>
 </tr>
 <tr id="L39">
   <td class="line"><a href="#L39">39</a></td>
-  <td class="code">- `index.json` の必須フィールド不正（`cloudRevision/dayRefs/photoRefs/tombstones/integrity`）</td>
+  <td class="code">`POST /sync/pull` が `cloudState=missing` を返した場合は、クラウド同期基盤の欠損として扱います。</td>
 </tr>
 <tr id="L40">
   <td class="line"><a href="#L40">40</a></td>
-  <td class="code">- `dayRefs` が参照する `days/*.json` の欠損</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L41">
   <td class="line"><a href="#L41">41</a></td>
-  <td class="code">- `photoRefs` が参照する `photos/*` の欠損</td>
+  <td class="code">`cloudState=missing` は以下のいずれかで返却します。</td>
 </tr>
 <tr id="L42">
   <td class="line"><a href="#L42">42</a></td>
-  <td class="code">- `integrity` 検証失敗（自動補正不能）</td>
+  <td class="code">- `index.json` 欠損</td>
 </tr>
 <tr id="L43">
   <td class="line"><a href="#L43">43</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- `index.json` の必須フィールド不正（`cloudRevision/dayRefs/photoRefs/tombstones/integrity`）</td>
 </tr>
 <tr id="L44">
   <td class="line"><a href="#L44">44</a></td>
-  <td class="code">1. クライアントはローカル全量（manifest/day/photo/tombstone）を組み立てる</td>
+  <td class="code">- `dayRefs` が参照する `days/*.json` の欠損</td>
 </tr>
 <tr id="L45">
   <td class="line"><a href="#L45">45</a></td>
-  <td class="code">2. `POST /sync/push` を `syncMode=full_reseed` で実行し、クラウド側を再シードする</td>
+  <td class="code">- `photoRefs` が参照する `photos/*` の欠損</td>
 </tr>
 <tr id="L46">
   <td class="line"><a href="#L46">46</a></td>
-  <td class="code">3. 再シード後に `POST /sync/pull` を再実行し、`cloudState=ok` を確認する</td>
+  <td class="code">- `integrity` 検証失敗（自動補正不能）</td>
 </tr>
 <tr id="L47">
   <td class="line"><a href="#L47">47</a></td>
-  <td class="code">4. 失敗時はローカルを変更せず `lastSyncStatus=failed` と再試行導線を表示する</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L48">
   <td class="line"><a href="#L48">48</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">1. クライアントはローカル全量（manifest/day/photo/tombstone）を組み立てる</td>
 </tr>
 <tr id="L49">
   <td class="line"><a href="#L49">49</a></td>
-  <td class="code">### 4.4 outbox</td>
+  <td class="code">2. `POST /sync/push` を `syncMode=full_reseed` で実行し、クラウド側を再シードする</td>
 </tr>
 <tr id="L50">
   <td class="line"><a href="#L50">50</a></td>
-  <td class="code">- すべてのローカル更新は `outbox` へ追記</td>
+  <td class="code">3. 再シード後に `POST /sync/pull` を再実行し、`cloudState=ok` を確認する</td>
 </tr>
 <tr id="L51">
   <td class="line"><a href="#L51">51</a></td>
-  <td class="code">- `mutationId` は端末内で一意（ULID推奨）</td>
+  <td class="code">4. 失敗時はローカルを変更せず `lastSyncStatus=failed` と再試行導線を表示する</td>
 </tr>
 <tr id="L52">
   <td class="line"><a href="#L52">52</a></td>
-  <td class="code">- `session_summary.payload.exit_site_photo` の更新は `operation=patch` + `patch_path=payload.exit_site_photo` を使用</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L53">
   <td class="line"><a href="#L53">53</a></td>
-  <td class="code">- push成功時に ack 済みとして削除</td>
+  <td class="code">### 4.4 outbox</td>
 </tr>
 <tr id="L54">
   <td class="line"><a href="#L54">54</a></td>
-  <td class="code">- push失敗時は保持し、次トリガーで再送</td>
+  <td class="code">- すべてのローカル更新は `outbox` へ追記</td>
 </tr>
 <tr id="L55">
   <td class="line"><a href="#L55">55</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- `mutationId` は端末内で一意（ULID推奨）</td>
 </tr>
 <tr id="L56">
   <td class="line"><a href="#L56">56</a></td>
-  <td class="code">## 5. 競合解決（内部LWW固定）</td>
+  <td class="code">- `session_summary.payload.exit_site_photo` の更新は `operation=patch` + `patch_path=payload.exit_site_photo` を使用</td>
 </tr>
 <tr id="L57">
   <td class="line"><a href="#L57">57</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- push成功時に ack 済みとして削除</td>
 </tr>
 <tr id="L58">
   <td class="line"><a href="#L58">58</a></td>
-  <td class="code">### 5.1 比較キー</td>
+  <td class="code">- push失敗時は保持し、次トリガーで再送</td>
 </tr>
 <tr id="L59">
   <td class="line"><a href="#L59">59</a></td>
-  <td class="code">エンティティ単位で以下を降順比較して勝者を決定します。</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L60">
   <td class="line"><a href="#L60">60</a></td>
-  <td class="code">1. `updatedAt`</td>
+  <td class="code">## 5. 競合解決（内部LWW固定）</td>
 </tr>
 <tr id="L61">
   <td class="line"><a href="#L61">61</a></td>
-  <td class="code">2. `updatedByDeviceId`</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L62">
   <td class="line"><a href="#L62">62</a></td>
-  <td class="code">3. `mutationId`</td>
+  <td class="code">### 5.1 比較キー</td>
 </tr>
 <tr id="L63">
   <td class="line"><a href="#L63">63</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">エンティティ単位で以下を降順比較して勝者を決定します。</td>
 </tr>
 <tr id="L64">
   <td class="line"><a href="#L64">64</a></td>
-  <td class="code">### 5.2 削除の扱い</td>
+  <td class="code">1. `updatedAt`</td>
 </tr>
 <tr id="L65">
   <td class="line"><a href="#L65">65</a></td>
-  <td class="code">- `deleted=true` を特別優先しません</td>
+  <td class="code">2. `updatedByDeviceId`</td>
 </tr>
 <tr id="L66">
   <td class="line"><a href="#L66">66</a></td>
-  <td class="code">- tombstone も同一比較キーで勝敗を決定します</td>
+  <td class="code">3. `mutationId`</td>
 </tr>
 <tr id="L67">
   <td class="line"><a href="#L67">67</a></td>
@@ -308,35 +308,35 @@
 </tr>
 <tr id="L68">
   <td class="line"><a href="#L68">68</a></td>
-  <td class="code">### 5.3 `session_summary.payload.exit_site_photo` の扱い</td>
+  <td class="code">### 5.2 削除の扱い</td>
 </tr>
 <tr id="L69">
   <td class="line"><a href="#L69">69</a></td>
-  <td class="code">- `record` への出口部写真更新は部分パッチ（`patch_path=payload.exit_site_photo`）として反映します。</td>
+  <td class="code">- `deleted=true` を特別優先しません</td>
 </tr>
 <tr id="L70">
   <td class="line"><a href="#L70">70</a></td>
-  <td class="code">- 競合時は `exit_site_photo` フィールドに対して同一比較キーでLWWを適用し、同一record内の他サマリ項目は上書きしません。</td>
+  <td class="code">- tombstone も同一比較キーで勝敗を決定します</td>
 </tr>
 <tr id="L71">
   <td class="line"><a href="#L71">71</a></td>
-  <td class="code">- 削除は `exit_site_photo=null` のパッチとして扱い、対応画像は `photo` tombstone で整合を取ります。</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L72">
   <td class="line"><a href="#L72">72</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">### 5.3 `session_summary.payload.exit_site_photo` の扱い</td>
 </tr>
 <tr id="L73">
   <td class="line"><a href="#L73">73</a></td>
-  <td class="code">### 5.4 ユーザー表示</td>
+  <td class="code">- `record` への出口部写真更新は部分パッチ（`patch_path=payload.exit_site_photo`）として反映します。</td>
 </tr>
 <tr id="L74">
   <td class="line"><a href="#L74">74</a></td>
-  <td class="code">- 競合件数バナーや競合詳細一覧は提供しません。</td>
+  <td class="code">- 競合時は `exit_site_photo` フィールドに対して同一比較キーでLWWを適用し、同一record内の他サマリ項目は上書きしません。</td>
 </tr>
 <tr id="L75">
   <td class="line"><a href="#L75">75</a></td>
-  <td class="code">- 競合は内部適用のみ行い、最終状態のみを表示します。</td>
+  <td class="code">- 削除は `exit_site_photo=null` のパッチとして扱い、対応画像は `photo` tombstone で整合を取ります。</td>
 </tr>
 <tr id="L76">
   <td class="line"><a href="#L76">76</a></td>
@@ -344,70 +344,86 @@
 </tr>
 <tr id="L77">
   <td class="line"><a href="#L77">77</a></td>
-  <td class="code">## 6. トゥームストーン方針</td>
+  <td class="code">### 5.4 ユーザー表示</td>
 </tr>
 <tr id="L78">
   <td class="line"><a href="#L78">78</a></td>
-  <td class="code">- 削除操作は物理削除せず tombstone として記録</td>
+  <td class="code">- 競合件数バナーや競合詳細一覧は提供しません。</td>
 </tr>
 <tr id="L79">
   <td class="line"><a href="#L79">79</a></td>
-  <td class="code">- tombstone は `entityType/entityId/deletedAt/deletedByDeviceId/mutationId` を保持</td>
+  <td class="code">- 競合は内部適用のみ行い、最終状態のみを表示します。</td>
 </tr>
 <tr id="L80">
   <td class="line"><a href="#L80">80</a></td>
-  <td class="code">- 30日保持後にGC対象とする</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L81">
   <td class="line"><a href="#L81">81</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">## 6. トゥームストーン方針</td>
 </tr>
 <tr id="L82">
   <td class="line"><a href="#L82">82</a></td>
-  <td class="code">## 7. 端末消失・復旧</td>
+  <td class="code">- 削除操作は物理削除せず tombstone として記録</td>
 </tr>
 <tr id="L83">
   <td class="line"><a href="#L83">83</a></td>
-  <td class="code">- 初回導線で `storage.persist()` を要求</td>
+  <td class="code">- tombstone は `entityType/entityId/deletedAt/deletedByDeviceId/mutationId` を保持</td>
 </tr>
 <tr id="L84">
   <td class="line"><a href="#L84">84</a></td>
-  <td class="code">- IndexedDB消失検知時は `POST /sync/pull` でフルリストア</td>
+  <td class="code">- 30日保持後にGC対象とする</td>
 </tr>
 <tr id="L85">
   <td class="line"><a href="#L85">85</a></td>
-  <td class="code">- クラウド欠損検知時はローカル正本から全量再シードし、ローカルデータは削除しない</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L86">
   <td class="line"><a href="#L86">86</a></td>
-  <td class="code">- 復旧不能時は復旧ガイダンス（確認手順、再同期手順）を表示</td>
+  <td class="code">## 7. 端末消失・復旧</td>
 </tr>
 <tr id="L87">
   <td class="line"><a href="#L87">87</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- 初回導線で `storage.persist()` を要求</td>
 </tr>
 <tr id="L88">
   <td class="line"><a href="#L88">88</a></td>
-  <td class="code">## 8. 障害時動作</td>
+  <td class="code">- IndexedDB消失検知時は `POST /sync/pull` でフルリストア</td>
 </tr>
 <tr id="L89">
   <td class="line"><a href="#L89">89</a></td>
-  <td class="code">- `push`/`pull` 失敗時は非同期バナーで再試行導線を提示</td>
+  <td class="code">- クラウド欠損検知時はローカル正本から全量再シードし、ローカルデータは削除しない</td>
 </tr>
 <tr id="L90">
   <td class="line"><a href="#L90">90</a></td>
-  <td class="code">- セッション進行はローカルで継続可能</td>
+  <td class="code">- 復旧不能時は復旧ガイダンス（確認手順、再同期手順）を表示</td>
 </tr>
 <tr id="L91">
   <td class="line"><a href="#L91">91</a></td>
-  <td class="code">- 次回トリガーまたは手動同期で再試行</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L92">
   <td class="line"><a href="#L92">92</a></td>
-  <td class="code">- 同時編集回避のため、更新前に手動同期を推奨</td>
+  <td class="code">## 8. 障害時動作</td>
 </tr>
 <tr id="L93">
   <td class="line"><a href="#L93">93</a></td>
+  <td class="code">- `push`/`pull` 失敗時は非同期バナーで再試行導線を提示</td>
+</tr>
+<tr id="L94">
+  <td class="line"><a href="#L94">94</a></td>
+  <td class="code">- セッション進行はローカルで継続可能</td>
+</tr>
+<tr id="L95">
+  <td class="line"><a href="#L95">95</a></td>
+  <td class="code">- 次回トリガーまたは手動同期で再試行</td>
+</tr>
+<tr id="L96">
+  <td class="line"><a href="#L96">96</a></td>
+  <td class="code">- 同時編集回避のため、更新前に手動同期を推奨</td>
+</tr>
+<tr id="L97">
+  <td class="line"><a href="#L97">97</a></td>
   <td class="code">&nbsp;</td>
 </tr>
   </table>

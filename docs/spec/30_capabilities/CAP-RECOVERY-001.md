@@ -47,7 +47,20 @@
 - Then ローカルを失わず `cloudState=ok` まで回復する
 
 ## 10. トレーサビリティ（FR, AT, SCR, JRN）
-- FR: FR-087, FR-087A, FR-087B, FR-087C, FR-087D, FR-088
+- Local FR: `CAP-RECOVERY-001-FR-01` 〜 `CAP-RECOVERY-001-FR-06`
+- 旧FR対応: FR-087, FR-087A, FR-087B, FR-087C, FR-087D, FR-088
 - AT: AT-RECOVERY-001, AT-RECOVERY-002, AT-RECOVERY-003
 - SCR: SCR-SYNC-STATUS-001
 - JRN: JRN-006-RECOVERY
+
+## 11. 機能要件（ローカルID）
+
+- 採番規則: `<文書ID>-FR-yy`（yyはこの文書内連番）
+- 旧FR IDは括弧内に残し、移行トレーサビリティを保持します。
+
+- CAP-RECOVERY-001-FR-01: (旧: FR-087) IndexedDB消失検知時はクラウドからフルリストアを実行します。
+- CAP-RECOVERY-001-FR-02: (旧: FR-087A) `POST /sync/pull` が `cloudState=missing` を返した場合、クラウド欠損と判定します。
+- CAP-RECOVERY-001-FR-03: (旧: FR-087B) クラウド欠損判定時はローカルデータを正本として `syncMode=full_reseed` で全量再シードを実行し、ローカルデータは削除/初期化しません。
+- CAP-RECOVERY-001-FR-04: (旧: FR-087C) 全量再シード成功後は再度 `POST /sync/pull` を実行し、`cloudState=ok` と `cloudRevision` 更新を確認して同期完了とします。
+- CAP-RECOVERY-001-FR-05: (旧: FR-087D) 全量再シード失敗時はローカルデータを不変のまま保持し、`lastSyncStatus=failed` と再試行導線を表示します。
+- CAP-RECOVERY-001-FR-06: (旧: FR-088) 同期失敗時は直近同期状態（成功/失敗）を更新し、再試行導線を表示します。

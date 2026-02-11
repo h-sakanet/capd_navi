@@ -1,5 +1,9 @@
 # 06. 写真保存・バックアップ設計
 
+> 移行メモ（2026-02-11）: 本文の正本は `docs/spec/45_nfr/photo-backup-policy.md` / `docs/spec/30_capabilities/CAP-PHOTO-BACKUP-001.md` / `docs/spec/40_contracts/storage-model.md` へ再構成済みです。  
+> 本書は旧体系参照用として残置し、更新は `docs/spec` 側を優先します。
+
+
 ## 1. 写真保存ポリシー
 
 ### 1.1 入力

@@ -13,13 +13,13 @@
 ## 3. 境界（対象画面あり/なし、責務分割）
 - 対象画面あり: `../20_screens/SCR-012-MAC-IMPORT.md`
 - 画面責務: ディレクトリ選択、実行トリガー、結果表示。
-- CAP責務: CSV v3検証、画像存在検証、正規化JSON化、保存、outbox追記。
+- CAP責務: CSVフォーマット検証、画像存在検証、正規化JSON化、保存、outbox追記。
 
 ## 4. ドメインモデルと不変条件
-- 入力モデル: CSV v3 + 画像ファイル群。
+- 入力モデル: CSV + 画像ファイル群。
 - 出力モデル: `ProtocolPackage`。
 - 不変条件:
-  - `format_version=3` 固定。
+  - `format_version` はサポート対象値であること。
   - `step_id` 一意。
   - `next_step_id` 整合。
   - 画像パスは `protocol.csv` 基準で解決。
@@ -49,7 +49,7 @@
 - 直近有効テンプレート版をローカル保持。
 
 ## 9. 受入条件（GWT）
-- Given 正常CSV v3と画像群がある
+- Given 正常CSVと画像群がある
 - When 取込実行する
 - Then テンプレート版が保存される
 - Given `step_id` 重複CSV
@@ -57,7 +57,21 @@
 - Then エラーで中止し保存しない
 
 ## 10. トレーサビリティ（FR, AT, SCR, JRN）
-- FR: FR-020, FR-021, FR-022, FR-023, FR-024, FR-070, FR-082A
+- Local FR: `CAP-CSV-IMPORT-001-FR-01` 〜 `CAP-CSV-IMPORT-001-FR-07`
+- 旧FR対応: FR-020, FR-021, FR-022, FR-023, FR-024, FR-070, FR-082A
 - AT: AT-CSV-001, AT-CSV-002, AT-CSV-003, AT-CSV-004, AT-API-003
 - SCR: SCR-HOME-001, SCR-MAC-IMPORT-001
 - JRN: JRN-001-CSV
+
+## 11. 機能要件（ローカルID）
+
+- 採番規則: `<文書ID>-FR-yy`（yyはこの文書内連番）
+- 旧FR IDは括弧内に残し、移行トレーサビリティを保持します。
+
+- CAP-CSV-IMPORT-001-FR-01: (旧: FR-020) MacネイティブシェルでCSV+画像ディレクトリを選択できます。
+- CAP-CSV-IMPORT-001-FR-02: (旧: FR-021) CSVフォーマットがサポート対象である場合のみ受け付けます。
+- CAP-CSV-IMPORT-001-FR-03: (旧: FR-022) 検証エラー1件以上で取り込みを中止します。
+- CAP-CSV-IMPORT-001-FR-04: (旧: FR-023) 警告は取り込み結果画面で一覧表示します。
+- CAP-CSV-IMPORT-001-FR-05: (旧: FR-024) 画像相対パスを `protocol.csv` ディレクトリ基準で解決します。
+- CAP-CSV-IMPORT-001-FR-06: (旧: FR-070) 新版取り込み後、テンプレート版として保存します。
+- CAP-CSV-IMPORT-001-FR-07: (旧: FR-082A) 公開HTTP APIは `POST /sync/push` と `POST /sync/pull` のみとし、CSV取り込みはローカルI/F（`ProtocolImportService.importFromDirectory`）で実行します。

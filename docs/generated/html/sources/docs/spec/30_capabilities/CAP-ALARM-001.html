@@ -240,22 +240,130 @@
 </tr>
 <tr id="L51">
   <td class="line"><a href="#L51">51</a></td>
-  <td class="code">- FR: <a href="../../../../ids/FR-050.html">FR-050</a>, <a href="../../../../ids/FR-050A.html">FR-050A</a>, <a href="../../../../ids/FR-050B.html">FR-050B</a>, <a href="../../../../ids/FR-050C.html">FR-050C</a>, <a href="../../../../ids/FR-050D.html">FR-050D</a>, <a href="../../../../ids/FR-051.html">FR-051</a>, <a href="../../../../ids/FR-052.html">FR-052</a>, <a href="../../../../ids/FR-052A.html">FR-052A</a>, <a href="../../../../ids/FR-052B.html">FR-052B</a>, <a href="../../../../ids/FR-053.html">FR-053</a>, <a href="../../../../ids/FR-054.html">FR-054</a>, <a href="../../../../ids/FR-055.html">FR-055</a>, <a href="../../../../ids/FR-055A.html">FR-055A</a>, <a href="../../../../ids/FR-055B.html">FR-055B</a>, <a href="../../../../ids/FR-056.html">FR-056</a>, <a href="../../../../ids/FR-057.html">FR-057</a>, <a href="../../../../ids/FR-057A.html">FR-057A</a>, <a href="../../../../ids/FR-058.html">FR-058</a>, <a href="../../../../ids/FR-058A.html">FR-058A</a>, <a href="../../../../ids/FR-058B.html">FR-058B</a></td>
+  <td class="code">- Local FR: `CAP-ALARM-001-FR-01` 〜 `CAP-ALARM-001-FR-20`</td>
 </tr>
 <tr id="L52">
   <td class="line"><a href="#L52">52</a></td>
-  <td class="code">- AT: <a href="../../../../ids/AT-ALARM-001.html">AT-ALARM-001</a>, <a href="../../../../ids/AT-ALARM-002.html">AT-ALARM-002</a>, <a href="../../../../ids/AT-ALARM-003.html">AT-ALARM-003</a>, <a href="../../../../ids/AT-ALARM-004.html">AT-ALARM-004</a></td>
+  <td class="code">- 旧FR対応: <a href="../../../../ids/FR-050.html">FR-050</a>, <a href="../../../../ids/FR-050A.html">FR-050A</a>, <a href="../../../../ids/FR-050B.html">FR-050B</a>, <a href="../../../../ids/FR-050C.html">FR-050C</a>, <a href="../../../../ids/FR-050D.html">FR-050D</a>, <a href="../../../../ids/FR-051.html">FR-051</a>, <a href="../../../../ids/FR-052.html">FR-052</a>, <a href="../../../../ids/FR-052A.html">FR-052A</a>, <a href="../../../../ids/FR-052B.html">FR-052B</a>, <a href="../../../../ids/FR-053.html">FR-053</a>, <a href="../../../../ids/FR-054.html">FR-054</a>, <a href="../../../../ids/FR-055.html">FR-055</a>, <a href="../../../../ids/FR-055A.html">FR-055A</a>, <a href="../../../../ids/FR-055B.html">FR-055B</a>, <a href="../../../../ids/FR-056.html">FR-056</a>, <a href="../../../../ids/FR-057.html">FR-057</a>, <a href="../../../../ids/FR-057A.html">FR-057A</a>, <a href="../../../../ids/FR-058.html">FR-058</a>, <a href="../../../../ids/FR-058A.html">FR-058A</a>, <a href="../../../../ids/FR-058B.html">FR-058B</a></td>
 </tr>
 <tr id="L53">
   <td class="line"><a href="#L53">53</a></td>
-  <td class="code">- SCR: <a href="../../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a></td>
+  <td class="code">- AT: <a href="../../../../ids/AT-ALARM-001.html">AT-ALARM-001</a>, <a href="../../../../ids/AT-ALARM-002.html">AT-ALARM-002</a>, <a href="../../../../ids/AT-ALARM-003.html">AT-ALARM-003</a>, <a href="../../../../ids/AT-ALARM-004.html">AT-ALARM-004</a></td>
 </tr>
 <tr id="L54">
   <td class="line"><a href="#L54">54</a></td>
-  <td class="code">- JRN: <a href="../../../../journeys/JRN-007-ALARM.html">JRN-007-ALARM</a></td>
+  <td class="code">- SCR: <a href="../../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a></td>
 </tr>
 <tr id="L55">
   <td class="line"><a href="#L55">55</a></td>
+  <td class="code">- JRN: <a href="../../../../journeys/JRN-007-ALARM.html">JRN-007-ALARM</a></td>
+</tr>
+<tr id="L56">
+  <td class="line"><a href="#L56">56</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L57">
+  <td class="line"><a href="#L57">57</a></td>
+  <td class="code">## 11. 機能要件（ローカルID）</td>
+</tr>
+<tr id="L58">
+  <td class="line"><a href="#L58">58</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L59">
+  <td class="line"><a href="#L59">59</a></td>
+  <td class="code">- 採番規則: `&lt;文書ID&gt;-FR-yy`（yyはこの文書内連番）</td>
+</tr>
+<tr id="L60">
+  <td class="line"><a href="#L60">60</a></td>
+  <td class="code">- 旧FR IDは括弧内に残し、移行トレーサビリティを保持します。</td>
+</tr>
+<tr id="L61">
+  <td class="line"><a href="#L61">61</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L62">
+  <td class="line"><a href="#L62">62</a></td>
+  <td class="code">- CAP-ALARM-001-FR-01: (旧: <a href="../../../../ids/FR-050.html">FR-050</a>) `timer_event` と `timer_segment` から、CSV設定に従ってタイマー終了通知ジョブを生成します。</td>
+</tr>
+<tr id="L63">
+  <td class="line"><a href="#L63">63</a></td>
+  <td class="code">- CAP-ALARM-001-FR-02: (旧: <a href="../../../../ids/FR-050A.html">FR-050A</a>) 通知対象は `timer_event=end` の終了イベントとし、`timer_segment=dwell/drain` を同一ルールで扱います。</td>
+</tr>
+<tr id="L64">
+  <td class="line"><a href="#L64">64</a></td>
+  <td class="code">- CAP-ALARM-001-FR-03: (旧: <a href="../../../../ids/FR-050B.html">FR-050B</a>) 同一セッション内の通知ジョブは `alarm_id` 単位で独立管理します。</td>
+</tr>
+<tr id="L65">
+  <td class="line"><a href="#L65">65</a></td>
+  <td class="code">- CAP-ALARM-001-FR-04: (旧: <a href="../../../../ids/FR-050C.html">FR-050C</a>) 通知ジョブは最低限 `alarm_id / segment / due_at / acked_at / attempt_no / status` を保持します。</td>
+</tr>
+<tr id="L66">
+  <td class="line"><a href="#L66">66</a></td>
+  <td class="code">- CAP-ALARM-001-FR-05: (旧: <a href="../../../../ids/FR-050D.html">FR-050D</a>) `pendingAlarm` は未ACKジョブ（`pending/notified/missed`）から `due_at` 最小を優先して1件選択し、同値時は `alarm_id` 昇順を採用します。</td>
+</tr>
+<tr id="L67">
+  <td class="line"><a href="#L67">67</a></td>
+  <td class="code">- CAP-ALARM-001-FR-06: (旧: <a href="../../../../ids/FR-051.html">FR-051</a>) 終了時刻 `T0` で Mac ローカル通知（音+バナー）を発火し、同時にアプリ内未確認アラートを固定表示します。</td>
+</tr>
+<tr id="L68">
+  <td class="line"><a href="#L68">68</a></td>
+  <td class="code">- CAP-ALARM-001-FR-07: (旧: <a href="../../../../ids/FR-052.html">FR-052</a>) 未確認時は段階再通知を行います。</td>
+</tr>
+<tr id="L69">
+  <td class="line"><a href="#L69">69</a></td>
+  <td class="code">- CAP-ALARM-001-FR-08: (旧: <a href="../../../../ids/FR-052A.html">FR-052A</a>) 再通知間隔は `T+2分`（iPhone補助通知1回 + Mac再通知）、`T+5分以降`（3分間隔でMac+iPhone再通知）とします。</td>
+</tr>
+<tr id="L70">
+  <td class="line"><a href="#L70">70</a></td>
+  <td class="code">- CAP-ALARM-001-FR-09: (旧: <a href="../../../../ids/FR-052B.html">FR-052B</a>) 段階再通知の対象は「貯留終了（`dwell`）」「廃液終了（`drain`）」に限定します。</td>
+</tr>
+<tr id="L71">
+  <td class="line"><a href="#L71">71</a></td>
+  <td class="code">- CAP-ALARM-001-FR-10: (旧: <a href="../../../../ids/FR-053.html">FR-053</a>) ACK時は Mac/iPhone の通知ジョブをすべて停止し、`acked_at` を記録します。</td>
+</tr>
+<tr id="L72">
+  <td class="line"><a href="#L72">72</a></td>
+  <td class="code">- CAP-ALARM-001-FR-11: (旧: <a href="../../../../ids/FR-054.html">FR-054</a>) アプリ内アラートは ACK まで継続表示し、通知再送も ACK まで継続します。</td>
+</tr>
+<tr id="L73">
+  <td class="line"><a href="#L73">73</a></td>
+  <td class="code">- CAP-ALARM-001-FR-12: (旧: <a href="../../../../ids/FR-055.html">FR-055</a>) 通知チャネルは `Mac主チャネル固定 + iPhone補助` とします。</td>
+</tr>
+<tr id="L74">
+  <td class="line"><a href="#L74">74</a></td>
+  <td class="code">- CAP-ALARM-001-FR-13: (旧: <a href="../../../../ids/FR-055A.html">FR-055A</a>) iPhone未利用かつ離席想定時は「見逃し高リスク」警告を必須表示します。</td>
+</tr>
+<tr id="L75">
+  <td class="line"><a href="#L75">75</a></td>
+  <td class="code">- CAP-ALARM-001-FR-14: (旧: <a href="../../../../ids/FR-055B.html">FR-055B</a>) iPhone補助通知の利用可否は Push購読状態（登録/無効化）で管理します。</td>
+</tr>
+<tr id="L76">
+  <td class="line"><a href="#L76">76</a></td>
+  <td class="code">- CAP-ALARM-001-FR-15: (旧: <a href="../../../../ids/FR-056.html">FR-056</a>) 「戻る」操作、過去ステップ再表示、アプリ再開、通信リトライでは、`timer_event(start/end)`・`record_event`・通知ジョブ生成を再発火しません。</td>
+</tr>
+<tr id="L77">
+  <td class="line"><a href="#L77">77</a></td>
+  <td class="code">- CAP-ALARM-001-FR-16: (旧: <a href="../../../../ids/FR-057.html">FR-057</a>) 30秒テスト通知は手動実行とし、通知設定変更時・OS更新後・通知不調時に実施できること。</td>
+</tr>
+<tr id="L78">
+  <td class="line"><a href="#L78">78</a></td>
+  <td class="code">- CAP-ALARM-001-FR-17: (旧: <a href="../../../../ids/FR-057A.html">FR-057A</a>) 手動30秒テストに失敗した場合は、当日を「iPhone補助なし（Mac主導）」として扱います。</td>
+</tr>
+<tr id="L79">
+  <td class="line"><a href="#L79">79</a></td>
+  <td class="code">- CAP-ALARM-001-FR-18: (旧: <a href="../../../../ids/FR-058.html">FR-058</a>) `T+30分` 未確認時は `status=missed` を永続化し、「見逃し状態」を表示します。</td>
+</tr>
+<tr id="L80">
+  <td class="line"><a href="#L80">80</a></td>
+  <td class="code">- CAP-ALARM-001-FR-19: (旧: <a href="../../../../ids/FR-058A.html">FR-058A</a>) `status=missed` になった後も、ACKまで3分間隔の再通知を継続します。</td>
+</tr>
+<tr id="L81">
+  <td class="line"><a href="#L81">81</a></td>
+  <td class="code">- CAP-ALARM-001-FR-20: (旧: <a href="../../../../ids/FR-058B.html">FR-058B</a>) `status=missed` は ACK 成功時に `acknowledged` へ遷移し、通知停止と `acked_at` 記録を行います。</td>
+</tr>
+<tr id="L82">
+  <td class="line"><a href="#L82">82</a></td>
   <td class="code">&nbsp;</td>
 </tr>
   </table>

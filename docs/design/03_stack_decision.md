@@ -1,5 +1,9 @@
 # 03. 技術スタック選定
 
+> 移行メモ（2026-02-11）: 本文の正本は `docs/spec/90_decisions/ADR-001-stack-decision.md` / `docs/spec/30_capabilities/CAP-PLATFORM-001.md` へ再構成済みです。  
+> 本書は旧体系参照用として残置し、更新は `docs/spec` 側を優先します。
+
+
 ## 1. 候補比較
 | 案 | 構成 | 長所 | 短所 |
 |---|---|---|---|

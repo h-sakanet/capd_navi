@@ -1,5 +1,9 @@
 # 01. アーキテクチャ概要
 
+> 移行メモ（2026-02-11）: 本文の正本は `docs/spec/40_contracts/architecture-overview.md` / `docs/spec/40_contracts/storage-model.md` / `docs/spec/40_contracts/api.md` へ再構成済みです。  
+> 本書は旧体系参照用として残置し、更新は `docs/spec` 側を優先します。
+
+
 ## 1. 目的
 CAPD v1 を「共通Web + Macネイティブシェル」で実装しつつ、データ基盤を `IndexedDB（端末正本） + Netlify Blobs（共有/バックアップ）` に固定します。
 

@@ -12,6 +12,20 @@
 - この画面で決めないこと: CSV仕様そのもの（列定義、バリデーション規則の意味）。
 
 ## 3. UIワイヤー・レイアウト制約
+```text
++------------------------------------------------+
+| CSV取込（Mac）                                  |
+| 取込対象: /Users/.../protocol-template-20260210 |
+| [ディレクトリ選択] [取込実行]                   |
+| 実行状態: idle / validating / failed / success  |
++------------------------------------------------+
+| 結果サマリ: step=42 timer=16 alarm=8 record=12  |
+| エラー一覧: row / column / message              |
+| 警告一覧: row / column / message                |
+|                              [Homeへ戻る]       |
++------------------------------------------------+
+```
+
 - 画面構成（固定）:
   1. 取込対象ディレクトリ表示領域
   2. 実行ボタン（取込実行）
@@ -45,9 +59,9 @@
 | 失敗時 | `errors[]`, `warnings[]` | - | - | on import failed |
 
 ## 7. バリデーション / エラー文言 / 空状態
-- バリデーション: `format_version=3`, `step_id` 重複禁止, `next_step_id` 整合, 画像存在。
+- バリデーション: `format_version` がサポート対象値, `step_id` 重複禁止, `next_step_id` 整合, 画像存在。
 - エラー文言（例）:
-  - `CSV v3の必須列 row_type がありません。`
+  - `CSVの必須列 row_type がありません。`
   - `step_id が重複しています。`
   - `画像ファイルが存在しません。`
 - 空状態:
@@ -63,7 +77,7 @@
 - エラー一覧はスクリーンリーダーで読めるテーブル構造にする。
 
 ## 10. 受入条件（GWT）
-- Given 正常CSV v3 + 画像群がある
+- Given 正常CSV + 画像群がある
 - When 取込実行する
 - Then 成功しテンプレート登録される
 - Given `step_id` 重複CSV
@@ -71,7 +85,20 @@
 - Then エラーで中止し一覧を表示する
 
 ## 11. 参照リンク
-- FR: FR-020, FR-021, FR-022, FR-023, FR-024, FR-082A
+- Local FR: `SCR-012-MAC-IMPORT-FR-01` 〜 `SCR-012-MAC-IMPORT-FR-06`
+- 旧FR対応: FR-020, FR-021, FR-022, FR-023, FR-024, FR-082A
 - AT: AT-CSV-001, AT-CSV-002, AT-CSV-003, AT-CSV-004, AT-API-003
 - E2E: E2E-CSV-001, E2E-CSV-002, E2E-CSV-003, E2E-CSV-004
 - CAP: `../30_capabilities/CAP-CSV-IMPORT-001.md`
+
+## 12. 画面機能要件（ローカルID）
+
+- 採番規則: `<文書ID>-FR-yy`（yyはこの文書内連番）
+- 旧FR IDは括弧内に残し、移行トレーサビリティを保持します。
+
+- SCR-012-MAC-IMPORT-FR-01: (旧: FR-020) MacネイティブシェルでCSV+画像ディレクトリを選択できます。
+- SCR-012-MAC-IMPORT-FR-02: (旧: FR-021) CSVフォーマットがサポート対象である場合のみ受け付けます。
+- SCR-012-MAC-IMPORT-FR-03: (旧: FR-022) 検証エラー1件以上で取り込みを中止します。
+- SCR-012-MAC-IMPORT-FR-04: (旧: FR-023) 警告は取り込み結果画面で一覧表示します。
+- SCR-012-MAC-IMPORT-FR-05: (旧: FR-024) 画像相対パスを `protocol.csv` ディレクトリ基準で解決します。
+- SCR-012-MAC-IMPORT-FR-06: (旧: FR-082A) 公開HTTP APIは `POST /sync/push` と `POST /sync/pull` のみとし、CSV取り込みはローカルI/F（`ProtocolImportService.importFromDirectory`）で実行します。

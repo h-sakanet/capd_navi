@@ -48,470 +48,486 @@
 </tr>
 <tr id="L3">
   <td class="line"><a href="#L3">3</a></td>
-  <td class="code">## 1. デザイン原則</td>
+  <td class="code">&gt; 移行メモ（2026-02-11）: 本文の正本は `docs/spec/20_screens/screens_index.md` / `docs/spec/45_nfr/non-functional.md` / `docs/spec/20_screens/<a href="../../../screens/SCR-001-HOME.html">SCR-001-HOME</a>.md` / `docs/spec/20_screens/<a href="../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a>.md` へ再構成済みです。  </td>
 </tr>
 <tr id="L4">
   <td class="line"><a href="#L4">4</a></td>
-  <td class="code">- 安全優先: 警告・アラームは常に最上位視認</td>
+  <td class="code">&gt; 本書は旧体系参照用として残置し、更新は `docs/spec` 側を優先します。</td>
 </tr>
 <tr id="L5">
   <td class="line"><a href="#L5">5</a></td>
-  <td class="code">- 誤操作抑止: ブロック条件は状態と理由を明示</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L6">
   <td class="line"><a href="#L6">6</a></td>
-  <td class="code">- 再開容易性: 現在地（フェーズ/状態/ステップ）を常時表示</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L7">
   <td class="line"><a href="#L7">7</a></td>
-  <td class="code">- 低負荷操作: 主要操作は親指到達域に配置</td>
+  <td class="code">## 1. デザイン原則</td>
 </tr>
 <tr id="L8">
   <td class="line"><a href="#L8">8</a></td>
-  <td class="code">- 一貫実装: コンポーネントは `shadcn/ui` を基盤に構成する</td>
+  <td class="code">- 安全優先: 警告・アラームは常に最上位視認</td>
 </tr>
 <tr id="L9">
   <td class="line"><a href="#L9">9</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- 誤操作抑止: ブロック条件は状態と理由を明示</td>
 </tr>
 <tr id="L10">
   <td class="line"><a href="#L10">10</a></td>
-  <td class="code">## 2. デザイントークン</td>
+  <td class="code">- 再開容易性: 現在地（フェーズ/状態/ステップ）を常時表示</td>
 </tr>
 <tr id="L11">
   <td class="line"><a href="#L11">11</a></td>
-  <td class="code">- トークン正本は `/Users/sakanet/capd_navi/capd-app/app/globals.css` の `:root` とします。差分がある場合は実装版を優先します。</td>
+  <td class="code">- 低負荷操作: 主要操作は親指到達域に配置</td>
 </tr>
 <tr id="L12">
   <td class="line"><a href="#L12">12</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- 一貫実装: コンポーネントは `shadcn/ui` を基盤に構成する</td>
 </tr>
 <tr id="L13">
   <td class="line"><a href="#L13">13</a></td>
-  <td class="code">### 2.1 カラー</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L14">
   <td class="line"><a href="#L14">14</a></td>
-  <td class="code">- `--color-bg`: `hsl(240 4.8% 95.9% / 0.3)`（ページ背景）</td>
+  <td class="code">## 2. デザイントークン</td>
 </tr>
 <tr id="L15">
   <td class="line"><a href="#L15">15</a></td>
-  <td class="code">- `--color-surface`: `hsl(0 0% 100%)`</td>
+  <td class="code">- トークン正本は `/Users/sakanet/capd_navi/capd-app/app/globals.css` の `:root` とします。差分がある場合は実装版を優先します。</td>
 </tr>
 <tr id="L16">
   <td class="line"><a href="#L16">16</a></td>
-  <td class="code">- `--color-text`: `hsl(240 10% 3.9%)`</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L17">
   <td class="line"><a href="#L17">17</a></td>
-  <td class="code">- `--color-primary`: `hsl(240 5.9% 10%)`</td>
+  <td class="code">### 2.1 カラー</td>
 </tr>
 <tr id="L18">
   <td class="line"><a href="#L18">18</a></td>
-  <td class="code">- `--color-warning`: `hsl(38 92% 50%)`（警告バナー等のセマンティック色）</td>
+  <td class="code">- `--color-bg`: `hsl(240 4.8% 95.9% / 0.3)`（ページ背景）</td>
 </tr>
 <tr id="L19">
   <td class="line"><a href="#L19">19</a></td>
-  <td class="code">- `--color-danger`: `hsl(0 84.2% 60.2%)`</td>
+  <td class="code">- `--color-surface`: `hsl(0 0% 100%)`</td>
 </tr>
 <tr id="L20">
   <td class="line"><a href="#L20">20</a></td>
-  <td class="code">- `--color-info`: `hsl(210 66% 42%)`（補助情報のセマンティック色）</td>
+  <td class="code">- `--color-text`: `hsl(240 10% 3.9%)`</td>
 </tr>
 <tr id="L21">
   <td class="line"><a href="#L21">21</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- `--color-primary`: `hsl(240 5.9% 10%)`</td>
 </tr>
 <tr id="L22">
   <td class="line"><a href="#L22">22</a></td>
-  <td class="code">### 2.2 余白</td>
+  <td class="code">- `--color-warning`: `hsl(38 92% 50%)`（警告バナー等のセマンティック色）</td>
 </tr>
 <tr id="L23">
   <td class="line"><a href="#L23">23</a></td>
-  <td class="code">- `--space-1`: 4px</td>
+  <td class="code">- `--color-danger`: `hsl(0 84.2% 60.2%)`</td>
 </tr>
 <tr id="L24">
   <td class="line"><a href="#L24">24</a></td>
-  <td class="code">- `--space-2`: 8px</td>
+  <td class="code">- `--color-info`: `hsl(210 66% 42%)`（補助情報のセマンティック色）</td>
 </tr>
 <tr id="L25">
   <td class="line"><a href="#L25">25</a></td>
-  <td class="code">- `--space-3`: 12px</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L26">
   <td class="line"><a href="#L26">26</a></td>
-  <td class="code">- `--space-4`: 16px</td>
+  <td class="code">### 2.2 余白</td>
 </tr>
 <tr id="L27">
   <td class="line"><a href="#L27">27</a></td>
-  <td class="code">- `--space-5`: 24px</td>
+  <td class="code">- `--space-1`: 4px</td>
 </tr>
 <tr id="L28">
   <td class="line"><a href="#L28">28</a></td>
-  <td class="code">- `--space-6`: 32px</td>
+  <td class="code">- `--space-2`: 8px</td>
 </tr>
 <tr id="L29">
   <td class="line"><a href="#L29">29</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- `--space-3`: 12px</td>
 </tr>
 <tr id="L30">
   <td class="line"><a href="#L30">30</a></td>
-  <td class="code">### 2.3 タイポ</td>
+  <td class="code">- `--space-4`: 16px</td>
 </tr>
 <tr id="L31">
   <td class="line"><a href="#L31">31</a></td>
-  <td class="code">- Font: `&quot;Inter&quot;, &quot;Hiragino Sans&quot;, &quot;Noto Sans JP&quot;, sans-serif`</td>
+  <td class="code">- `--space-5`: 24px</td>
 </tr>
 <tr id="L32">
   <td class="line"><a href="#L32">32</a></td>
-  <td class="code">- `--font-title`: 24px/700</td>
+  <td class="code">- `--space-6`: 32px</td>
 </tr>
 <tr id="L33">
   <td class="line"><a href="#L33">33</a></td>
-  <td class="code">- `--font-h2`: 20px/700</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L34">
   <td class="line"><a href="#L34">34</a></td>
-  <td class="code">- `--font-body`: 16px/500</td>
+  <td class="code">### 2.3 タイポ</td>
 </tr>
 <tr id="L35">
   <td class="line"><a href="#L35">35</a></td>
-  <td class="code">- `--font-caption`: 13px/500</td>
+  <td class="code">- Font: `&quot;Inter&quot;, &quot;Hiragino Sans&quot;, &quot;Noto Sans JP&quot;, sans-serif`</td>
 </tr>
 <tr id="L36">
   <td class="line"><a href="#L36">36</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- `--font-title`: 24px/700</td>
 </tr>
 <tr id="L37">
   <td class="line"><a href="#L37">37</a></td>
-  <td class="code">### 2.4 形状</td>
+  <td class="code">- `--font-h2`: 20px/700</td>
 </tr>
 <tr id="L38">
   <td class="line"><a href="#L38">38</a></td>
-  <td class="code">- `--radius-card`: `0.5rem`</td>
+  <td class="code">- `--font-body`: 16px/500</td>
 </tr>
 <tr id="L39">
   <td class="line"><a href="#L39">39</a></td>
-  <td class="code">- `--radius-button`: `0.5rem`</td>
+  <td class="code">- `--font-caption`: 13px/500</td>
 </tr>
 <tr id="L40">
   <td class="line"><a href="#L40">40</a></td>
-  <td class="code">- `--shadow-card`: `0 1px 2px rgba(0,0,0,0.05)`（`shadow-sm` 相当）</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L41">
   <td class="line"><a href="#L41">41</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">### 2.4 形状</td>
 </tr>
 <tr id="L42">
   <td class="line"><a href="#L42">42</a></td>
-  <td class="code">## 3. コンポーネント規約</td>
+  <td class="code">- `--radius-card`: `0.5rem`</td>
 </tr>
 <tr id="L43">
   <td class="line"><a href="#L43">43</a></td>
-  <td class="code">- Header: 画面タイトル + 同期状態を表示</td>
+  <td class="code">- `--radius-button`: `0.5rem`</td>
 </tr>
 <tr id="L44">
   <td class="line"><a href="#L44">44</a></td>
-  <td class="code">- StepCard: タイトル、画像、本文、警告帯を保持</td>
+  <td class="code">- `--shadow-card`: `0 1px 2px rgba(0,0,0,0.05)`（`shadow-sm` 相当）</td>
 </tr>
 <tr id="L45">
   <td class="line"><a href="#L45">45</a></td>
-  <td class="code">- WarningBand: 高コントラスト固定、画面上部優先</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L46">
   <td class="line"><a href="#L46">46</a></td>
-  <td class="code">- AlarmBanner: 確認操作まで非消去</td>
+  <td class="code">## 3. コンポーネント規約</td>
 </tr>
 <tr id="L47">
   <td class="line"><a href="#L47">47</a></td>
-  <td class="code">- CheckList: 必須完了前は遷移ボタンを無効化</td>
+  <td class="code">- Header: 画面タイトル + 同期状態を表示</td>
 </tr>
 <tr id="L48">
   <td class="line"><a href="#L48">48</a></td>
-  <td class="code">- RecordModal: 必須/任意ラベル明示</td>
+  <td class="code">- StepCard: タイトル、画像、本文、警告帯を保持</td>
 </tr>
 <tr id="L49">
   <td class="line"><a href="#L49">49</a></td>
-  <td class="code">- HistoryRow: 日付、テンプレート名、状態、編集導線を固定</td>
+  <td class="code">- WarningBand: 高コントラスト固定、画面上部優先</td>
 </tr>
 <tr id="L50">
   <td class="line"><a href="#L50">50</a></td>
-  <td class="code">- DailyProcedureSlot: `#1〜#4` 固定スロット。未登録時は中央 `+` のみ表示</td>
+  <td class="code">- AlarmBanner: 確認操作まで非消去</td>
 </tr>
 <tr id="L51">
   <td class="line"><a href="#L51">51</a></td>
-  <td class="code">- DailyProcedureSlotAction: 登録済みカードは本体タップを開始操作に固定し、右上 `•••` から補助操作（確認/編集）を開く</td>
+  <td class="code">- CheckList: 必須完了前は遷移ボタンを無効化</td>
 </tr>
 <tr id="L52">
   <td class="line"><a href="#L52">52</a></td>
-  <td class="code">- DailyProcedureSlotStatus: スロット表示は `未登録(+)` / `未実施` / `実施中` / `実施済み`。内部状態は `empty` / `planned(activeSessionId有無)` / `completed` に対応し、`実施中` は再開操作、`実施済み` は開始不可とする</td>
+  <td class="code">- RecordModal: 必須/任意ラベル明示</td>
 </tr>
 <tr id="L53">
   <td class="line"><a href="#L53">53</a></td>
-  <td class="code">- DailyProcedureSlotValidation: 推奨実施時間は左から右へ厳密昇順（同時刻不可）。右側スロット開始時は左側がすべて実施済みであること</td>
+  <td class="code">- HistoryRow: 日付、テンプレート名、状態、編集導線を固定</td>
 </tr>
 <tr id="L54">
   <td class="line"><a href="#L54">54</a></td>
-  <td class="code">- DailyCapdNoteTable: 当日分のみ、CAPD記録ノート互換レイアウト（交換列 `#1〜#5` + 日次サマリ）を表示</td>
+  <td class="code">- DailyProcedureSlot: `#1〜#4` 固定スロット。未登録時は中央 `+` のみ表示</td>
 </tr>
 <tr id="L55">
   <td class="line"><a href="#L55">55</a></td>
-  <td class="code">- DailyCapdNoteTableMapping: 記録系行は `record_exchange_no`、時間系行は `timer_exchange_no` で列決定する</td>
+  <td class="code">- DailyProcedureSlotAction: 登録済みカードは本体タップを開始操作に固定し、右上 `•••` から補助操作（確認/編集）を開く</td>
 </tr>
 <tr id="L56">
   <td class="line"><a href="#L56">56</a></td>
-  <td class="code">- DailyCapdNoteTableDensity: ノート表は縦方向を圧縮し、セル余白は `py-1.5` を基準とする</td>
+  <td class="code">- DailyProcedureSlotStatus: スロット表示は `未登録(+)` / `未実施` / `実施中` / `実施済み`。内部状態は `empty` / `planned(activeSessionId有無)` / `completed` に対応し、`実施中` は再開操作、`実施済み` は開始不可とする</td>
 </tr>
 <tr id="L57">
   <td class="line"><a href="#L57">57</a></td>
-  <td class="code">- DailyCapdNoteTableUFRules: 交換#1の除水量は `未計算`、交換#2以降は `排液量-前回注液量`、総除水量は計算可能分のみ合算</td>
+  <td class="code">- DailyProcedureSlotValidation: 推奨実施時間は左から右へ厳密昇順（同時刻不可）。右側スロット開始時は左側がすべて実施済みであること</td>
 </tr>
 <tr id="L58">
   <td class="line"><a href="#L58">58</a></td>
-  <td class="code">- ProcedureSetupModal: CSV選択、推奨実施時間を1モーダルで編集</td>
+  <td class="code">- DailyCapdNoteTable: 当日分のみ、CAPD記録ノート互換レイアウト（交換列 `#1〜#5` + 日次サマリ）を表示</td>
 </tr>
 <tr id="L59">
   <td class="line"><a href="#L59">59</a></td>
-  <td class="code">- ProcedureStartConfirmModal: 「手技の開始」確認用。開始確定前の確認用途</td>
+  <td class="code">- DailyCapdNoteTableMapping: 記録系行は `record_exchange_no`、時間系行は `timer_exchange_no` で列決定する</td>
 </tr>
 <tr id="L60">
   <td class="line"><a href="#L60">60</a></td>
-  <td class="code">- ProcedureConfirmModal: 手技内容の閲覧専用。確認モードの「開始/再開」は手順表示のみで、記録保存/タイマー開始/通知生成/状態更新/DB更新を行わない</td>
+  <td class="code">- DailyCapdNoteTableDensity: ノート表は縦方向を圧縮し、セル余白は `py-1.5` を基準とする</td>
 </tr>
 <tr id="L61">
   <td class="line"><a href="#L61">61</a></td>
-  <td class="code">- NotificationTestAction: 30秒通知テストは手動実行（通知設定変更時/OS更新後/通知不調時）とし、毎日必須運用にはしない</td>
+  <td class="code">- DailyCapdNoteTableUFRules: 交換#1の除水量は `未計算`、交換#2以降は `排液量-前回注液量`、総除水量は計算可能分のみ合算</td>
 </tr>
 <tr id="L62">
   <td class="line"><a href="#L62">62</a></td>
-  <td class="code">- SessionSummaryModal: 最初完了セッションでは血圧上/下・体重・脈拍・体温・出口部状態を必須にする。出口部状態は複数選択チェックボックス（`正常/赤み/痛み/はれ/かさぶた/じゅくじゅく/出血/膿`）で入力する</td>
+  <td class="code">- ProcedureSetupModal: CSV選択、推奨実施時間を1モーダルで編集</td>
 </tr>
 <tr id="L63">
   <td class="line"><a href="#L63">63</a></td>
-  <td class="code">- ExitSitePhotoAction: `session_summary.payload.exit_site_photo` を編集する操作行。表示状態は `未登録=登録`、`登録済み=変更/削除` とし、1枚固定で扱う</td>
+  <td class="code">- ProcedureStartConfirmModal: 「手技の開始」確認用。開始確定前の確認用途</td>
 </tr>
 <tr id="L64">
   <td class="line"><a href="#L64">64</a></td>
-  <td class="code">- ExitSitePhotoActionVisibility: 表示条件は当日 `summaryScope=both` または `summaryScope=first_of_day` の `session_summary` 入力完了後。対象レコードは `both` 優先、次に `first_of_day`、同値時は `completedAt` 昇順、さらに同値時は `recordId` 昇順で決定する</td>
+  <td class="code">- ProcedureConfirmModal: 手技内容の閲覧専用。確認モードの「開始/再開」は手順表示のみで、記録保存/タイマー開始/通知生成/状態更新/DB更新を行わない</td>
 </tr>
 <tr id="L65">
   <td class="line"><a href="#L65">65</a></td>
-  <td class="code">- ExitSitePhotoActionPlatform: iPhoneホーム全体サマリとiPhone記録詳細のみ `登録/変更/削除` を許可し、Macは閲覧のみ許可する</td>
+  <td class="code">- NotificationTestAction: 30秒通知テストは手動実行（通知設定変更時/OS更新後/通知不調時）とし、毎日必須運用にはしない</td>
 </tr>
 <tr id="L66">
   <td class="line"><a href="#L66">66</a></td>
-  <td class="code">- SessionStateBadge: Compact Badge（Pattern A）を採用。`お腹-独立=slate`、`お腹-接続=emerald`、`お腹→廃液バッグ=amber`、`お腹←透析液バッグ=sky` とする</td>
+  <td class="code">- SessionSummaryModal: 最初完了セッションでは血圧上/下・体重・脈拍・体温・出口部状態を必須にする。出口部状態は複数選択チェックボックス（`正常/赤み/痛み/はれ/かさぶた/じゅくじゅく/出血/膿`）で入力する</td>
 </tr>
 <tr id="L67">
   <td class="line"><a href="#L67">67</a></td>
-  <td class="code">- SessionStepTitle: タイトルは `#通し番号 + タイトル` 形式（例: `#21 お腹のチューブのクランプを開ける`）</td>
+  <td class="code">- ExitSitePhotoAction: `session_summary.payload.exit_site_photo` を編集する操作行。表示状態は `未登録=登録`、`登録済み=変更/削除` とし、1枚固定で扱う</td>
 </tr>
 <tr id="L68">
   <td class="line"><a href="#L68">68</a></td>
-  <td class="code">- SessionNavButtons: 「戻る」「次へ」はiPhone/Macとも横並び同幅で配置する</td>
+  <td class="code">- ExitSitePhotoActionVisibility: 表示条件は当日 `summaryScope=both` または `summaryScope=first_of_day` の `session_summary` 入力完了後。対象レコードは `both` 優先、次に `first_of_day`、同値時は `completedAt` 昇順、さらに同値時は `recordId` 昇順で決定する</td>
 </tr>
 <tr id="L69">
   <td class="line"><a href="#L69">69</a></td>
-  <td class="code">- SessionTransition: 「戻る/次へ/Enter(次へ)」時はメインパネルを左右スライド遷移させる</td>
+  <td class="code">- ExitSitePhotoActionPlatform: iPhoneホーム全体サマリとiPhone記録詳細のみ `登録/変更/削除` を許可し、Macは閲覧のみ許可する</td>
 </tr>
 <tr id="L70">
   <td class="line"><a href="#L70">70</a></td>
-  <td class="code">- SessionTransitionControls: カルーセルの左右ナビゲーションボタンは表示しない</td>
+  <td class="code">- SessionStateBadge: Compact Badge（Pattern A）を採用。`お腹-独立=slate`、`お腹-接続=emerald`、`お腹→廃液バッグ=amber`、`お腹←透析液バッグ=sky` とする</td>
 </tr>
 <tr id="L71">
   <td class="line"><a href="#L71">71</a></td>
-  <td class="code">- SessionEmergencyAbort: セッション右上 `•••` に `セッションを中断（非常用）` を配置し、確認ダイアログ後に実行する</td>
+  <td class="code">- SessionStepTitle: タイトルは `#通し番号 + タイトル` 形式（例: `#21 お腹のチューブのクランプを開ける`）</td>
 </tr>
 <tr id="L72">
   <td class="line"><a href="#L72">72</a></td>
-  <td class="code">- SessionEmergencyAbortResult: 非常中断後はホームへ戻し、該当スロットは `未実施` 表示へ戻す。ホーム上で `前回中断あり` バッジは表示しない</td>
+  <td class="code">- SessionNavButtons: 「戻る」「次へ」はiPhone/Macとも横並び同幅で配置する</td>
 </tr>
 <tr id="L73">
   <td class="line"><a href="#L73">73</a></td>
-  <td class="code">- 実装コンポーネント: `Card`, `Button`, `Badge`, `Dialog`, `Sheet`, `Table`, `Tabs`, `Alert`, `Separator` を優先利用</td>
+  <td class="code">- SessionTransition: 「戻る/次へ/Enter(次へ)」時はメインパネルを左右スライド遷移させる</td>
 </tr>
 <tr id="L74">
   <td class="line"><a href="#L74">74</a></td>
-  <td class="code">- アイコン: `MynaUI Icons`（`@mynaui/icons-react`）を使用し、画面内で他アイコンセットを混在させない</td>
+  <td class="code">- SessionTransitionControls: カルーセルの左右ナビゲーションボタンは表示しない</td>
 </tr>
 <tr id="L75">
   <td class="line"><a href="#L75">75</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- SessionEmergencyAbort: セッション右上 `•••` に `セッションを中断（非常用）` を配置し、確認ダイアログ後に実行する</td>
 </tr>
 <tr id="L76">
   <td class="line"><a href="#L76">76</a></td>
-  <td class="code">## 4. 状態規約</td>
+  <td class="code">- SessionEmergencyAbortResult: 非常中断後はホームへ戻し、該当スロットは `未実施` 表示へ戻す。ホーム上で `前回中断あり` バッジは表示しない</td>
 </tr>
 <tr id="L77">
   <td class="line"><a href="#L77">77</a></td>
-  <td class="code">- default: 通常</td>
+  <td class="code">- 実装コンポーネント: `Card`, `Button`, `Badge`, `Dialog`, `Sheet`, `Table`, `Tabs`, `Alert`, `Separator` を優先利用</td>
 </tr>
 <tr id="L78">
   <td class="line"><a href="#L78">78</a></td>
-  <td class="code">- empty: まだ手技未設定（`+` で登録可能）</td>
+  <td class="code">- アイコン: `MynaUI Icons`（`@mynaui/icons-react`）を使用し、画面内で他アイコンセットを混在させない</td>
 </tr>
 <tr id="L79">
   <td class="line"><a href="#L79">79</a></td>
-  <td class="code">- disabled: 条件未達で操作不可</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L80">
   <td class="line"><a href="#L80">80</a></td>
-  <td class="code">- error: 入力不正/送信失敗</td>
+  <td class="code">## 4. 状態規約</td>
 </tr>
 <tr id="L81">
   <td class="line"><a href="#L81">81</a></td>
-  <td class="code">- alarm: 待機終了通知中</td>
+  <td class="code">- default: 通常</td>
 </tr>
 <tr id="L82">
   <td class="line"><a href="#L82">82</a></td>
-  <td class="code">- unsupported: 端末機能未対応</td>
+  <td class="code">- empty: まだ手技未設定（`+` で登録可能）</td>
 </tr>
 <tr id="L83">
   <td class="line"><a href="#L83">83</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- disabled: 条件未達で操作不可</td>
 </tr>
 <tr id="L84">
   <td class="line"><a href="#L84">84</a></td>
-  <td class="code">## 5. 文言規約</td>
+  <td class="code">- error: 入力不正/送信失敗</td>
 </tr>
 <tr id="L85">
   <td class="line"><a href="#L85">85</a></td>
-  <td class="code">- 単位は数値直後に表示（例: `120 mmHg`, `500 g`）</td>
+  <td class="code">- alarm: 待機終了通知中</td>
 </tr>
 <tr id="L86">
   <td class="line"><a href="#L86">86</a></td>
-  <td class="code">- 除水量は `排液量 - 前回注液量` で自動計算し、`+/-` 符号付きで表示</td>
+  <td class="code">- unsupported: 端末機能未対応</td>
 </tr>
 <tr id="L87">
   <td class="line"><a href="#L87">87</a></td>
-  <td class="code">- 交換#1の除水量は `未計算` と表示し、総除水量は交換#2以降の計算可能分のみを合算する</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L88">
   <td class="line"><a href="#L88">88</a></td>
-  <td class="code">- 透析液濃度欄はCSVタイトル（例: `レギニュール1.5`）を表示する</td>
+  <td class="code">## 5. 文言規約</td>
 </tr>
 <tr id="L89">
   <td class="line"><a href="#L89">89</a></td>
-  <td class="code">- 貯留時間は `timer_segment=dwell` の `start-end`、排液時間は `timer_segment=drain` の `start-end` を表示する</td>
+  <td class="code">- 単位は数値直後に表示（例: `120 mmHg`, `500 g`）</td>
 </tr>
 <tr id="L90">
   <td class="line"><a href="#L90">90</a></td>
-  <td class="code">- 排液量/注液量/排液確認は `record_event`（`drain_weight_g` / `bag_weight_g` / `drain_appearance`）を表示する</td>
+  <td class="code">- 除水量は `排液量 - 前回注液量` で自動計算し、`+/-` 符号付きで表示</td>
 </tr>
 <tr id="L91">
   <td class="line"><a href="#L91">91</a></td>
-  <td class="code">- `手順画像` はセッション手順表示で使用する `imageAssetKey` 由来の正方形表示画像を指す</td>
+  <td class="code">- 交換#1の除水量は `未計算` と表示し、総除水量は交換#2以降の計算可能分のみを合算する</td>
 </tr>
 <tr id="L92">
   <td class="line"><a href="#L92">92</a></td>
-  <td class="code">- `記録写真` は記録データに紐づく写真を指し、`排液写真(drain)` と `出口部写真(exit_site)` を含む</td>
+  <td class="code">- 透析液濃度欄はCSVタイトル（例: `レギニュール1.5`）を表示する</td>
 </tr>
 <tr id="L93">
   <td class="line"><a href="#L93">93</a></td>
-  <td class="code">- セッション実行タイトルは `#通し番号 + タイトル` の形式で表示する</td>
+  <td class="code">- 貯留時間は `timer_segment=dwell` の `start-end`、排液時間は `timer_segment=drain` の `start-end` を表示する</td>
 </tr>
 <tr id="L94">
   <td class="line"><a href="#L94">94</a></td>
-  <td class="code">- 時刻は `YYYY-MM-DD HH:mm` 形式</td>
+  <td class="code">- 排液量/注液量/排液確認は `record_event`（`drain_weight_g` / `bag_weight_g` / `drain_appearance`）を表示する</td>
 </tr>
 <tr id="L95">
   <td class="line"><a href="#L95">95</a></td>
-  <td class="code">- 未入力は `未入力` で統一</td>
+  <td class="code">- `手順画像` はセッション手順表示で使用する `imageAssetKey` 由来の正方形表示画像を指す</td>
 </tr>
 <tr id="L96">
   <td class="line"><a href="#L96">96</a></td>
-  <td class="code">- ブロック理由はボタン直上に短文表示</td>
+  <td class="code">- `記録写真` は記録データに紐づく写真を指し、`排液写真(drain)` と `出口部写真(exit_site)` を含む</td>
 </tr>
 <tr id="L97">
   <td class="line"><a href="#L97">97</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- セッション実行タイトルは `#通し番号 + タイトル` の形式で表示する</td>
 </tr>
 <tr id="L98">
   <td class="line"><a href="#L98">98</a></td>
-  <td class="code">## 6. アクセシビリティ</td>
+  <td class="code">- 時刻は `YYYY-MM-DD HH:mm` 形式</td>
 </tr>
 <tr id="L99">
   <td class="line"><a href="#L99">99</a></td>
-  <td class="code">- 文字コントラスト比は4.5:1以上</td>
+  <td class="code">- 未入力は `未入力` で統一</td>
 </tr>
 <tr id="L100">
   <td class="line"><a href="#L100">100</a></td>
-  <td class="code">- 最小タップ領域は44x44px</td>
+  <td class="code">- ブロック理由はボタン直上に短文表示</td>
 </tr>
 <tr id="L101">
   <td class="line"><a href="#L101">101</a></td>
-  <td class="code">- 警告/アラームは色 + アイコン + 文言の3要素で表現</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L102">
   <td class="line"><a href="#L102">102</a></td>
-  <td class="code">- 主要UIに読み上げラベルを付与</td>
+  <td class="code">## 6. アクセシビリティ</td>
 </tr>
 <tr id="L103">
   <td class="line"><a href="#L103">103</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- 文字コントラスト比は4.5:1以上</td>
 </tr>
 <tr id="L104">
   <td class="line"><a href="#L104">104</a></td>
-  <td class="code">## 7. 端末差分規約</td>
+  <td class="code">- 最小タップ領域は44x44px</td>
 </tr>
 <tr id="L105">
   <td class="line"><a href="#L105">105</a></td>
-  <td class="code">- Mac shell: 左右余白を広く、情報密度を高める</td>
+  <td class="code">- 警告/アラームは色 + アイコン + 文言の3要素で表現</td>
 </tr>
 <tr id="L106">
   <td class="line"><a href="#L106">106</a></td>
-  <td class="code">- iPhone: 1カラム固定、主要操作を下部に寄せる</td>
+  <td class="code">- 主要UIに読み上げラベルを付与</td>
 </tr>
 <tr id="L107">
   <td class="line"><a href="#L107">107</a></td>
-  <td class="code">- 機能差（通知/スリープ）は状態バッジで明示する</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L108">
   <td class="line"><a href="#L108">108</a></td>
-  <td class="code">- セッション画面: iPhoneは1カラム、Macは2カラム固定</td>
+  <td class="code">## 7. 端末差分規約</td>
 </tr>
 <tr id="L109">
   <td class="line"><a href="#L109">109</a></td>
-  <td class="code">- セッション画像: 1:1正方形を必須とし、`object-fit: cover` で表示</td>
+  <td class="code">- Mac shell: 左右余白を広く、情報密度を高める</td>
 </tr>
 <tr id="L110">
   <td class="line"><a href="#L110">110</a></td>
-  <td class="code">- セッション操作ボタン: iPhone/Macとも「戻る」「次へ」を横並び同幅で表示する</td>
+  <td class="code">- iPhone: 1カラム固定、主要操作を下部に寄せる</td>
 </tr>
 <tr id="L111">
   <td class="line"><a href="#L111">111</a></td>
-  <td class="code">- 出口部写真操作: iPhoneのみ登録/変更/削除を表示し、Macは閲覧リンクのみ表示する</td>
+  <td class="code">- 機能差（通知/スリープ）は状態バッジで明示する</td>
 </tr>
 <tr id="L112">
   <td class="line"><a href="#L112">112</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- セッション画面: iPhoneは1カラム、Macは2カラム固定</td>
 </tr>
 <tr id="L113">
   <td class="line"><a href="#L113">113</a></td>
-  <td class="code">## 8. UI変更レビュー手順</td>
+  <td class="code">- セッション画像: 1:1正方形を必須とし、`object-fit: cover` で表示</td>
 </tr>
 <tr id="L114">
   <td class="line"><a href="#L114">114</a></td>
-  <td class="code">1. 変更対象コンポーネントを列挙</td>
+  <td class="code">- セッション操作ボタン: iPhone/Macとも「戻る」「次へ」を横並び同幅で表示する</td>
 </tr>
 <tr id="L115">
   <td class="line"><a href="#L115">115</a></td>
-  <td class="code">2. デザイントークン準拠を確認</td>
+  <td class="code">- 出口部写真操作: iPhoneのみ登録/変更/削除を表示し、Macは閲覧リンクのみ表示する</td>
 </tr>
 <tr id="L116">
   <td class="line"><a href="#L116">116</a></td>
-  <td class="code">3. A11yチェックを実施</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L117">
   <td class="line"><a href="#L117">117</a></td>
-  <td class="code">4. セッション画面で警告帯視認性を再確認</td>
+  <td class="code">## 8. UI変更レビュー手順</td>
 </tr>
 <tr id="L118">
   <td class="line"><a href="#L118">118</a></td>
-  <td class="code">5. スクリーンショットを添えてレビュー記録</td>
+  <td class="code">1. 変更対象コンポーネントを列挙</td>
 </tr>
 <tr id="L119">
   <td class="line"><a href="#L119">119</a></td>
+  <td class="code">2. デザイントークン準拠を確認</td>
+</tr>
+<tr id="L120">
+  <td class="line"><a href="#L120">120</a></td>
+  <td class="code">3. A11yチェックを実施</td>
+</tr>
+<tr id="L121">
+  <td class="line"><a href="#L121">121</a></td>
+  <td class="code">4. セッション画面で警告帯視認性を再確認</td>
+</tr>
+<tr id="L122">
+  <td class="line"><a href="#L122">122</a></td>
+  <td class="code">5. スクリーンショットを添えてレビュー記録</td>
+</tr>
+<tr id="L123">
+  <td class="line"><a href="#L123">123</a></td>
   <td class="code">&nbsp;</td>
 </tr>
   </table>

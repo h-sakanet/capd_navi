@@ -1168,7 +1168,7 @@
     {
       "id": "FR-050",
       "type": "FR",
-      "label": "- FR-050: timer_event と timer_segment から、CSV設定に従ってタイマー終了通知ジョブを生成します。"
+      "label": "FR-050 CAP-ALARM-001-FR-01"
     },
     {
       "id": "FR-050A",
@@ -1278,7 +1278,7 @@
     {
       "id": "FR-062",
       "type": "FR",
-      "label": "- FR-062: 連絡ボタン等の導線はv1対象外とします。"
+      "label": "FR-062 CAP-ABNORMAL-001-FR-03"
     },
     {
       "id": "FR-070",
@@ -1308,7 +1308,7 @@
     {
       "id": "FR-075",
       "type": "FR",
-      "label": "- FR-075: テンプレート新版の取り込み後も、開始済みセッションの表示内容は開始時スナップショットから変化しません。"
+      "label": "FR-075 CAP-SNAPSHOT-001-FR-12"
     },
     {
       "id": "FR-080",
@@ -1393,7 +1393,7 @@
     {
       "id": "FR-090",
       "type": "FR",
-      "label": "- FR-090: 記録写真（drain / exit_site）はJPEG再圧縮して保存します（長辺1600px/quality 85）。"
+      "label": "FR-090 CAP-PHOTO-BACKUP-001-FR-10"
     },
     {
       "id": "FR-090A",
@@ -1403,7 +1403,7 @@
     {
       "id": "FR-091",
       "type": "FR",
-      "label": "- FR-091: 写真総量は1GB上限とし、超過時は古い順削除します。"
+      "label": "FR-091 CAP-PHOTO-BACKUP-001-FR-12"
     },
     {
       "id": "FR-092",
@@ -1418,72 +1418,72 @@
     {
       "id": "FR-100",
       "type": "FR",
-      "label": "- FR-100: アプリ内認証は行いません（公開URL運用）。"
+      "label": "FR-100 CAP-PLATFORM-001-FR-01"
     },
     {
       "id": "FR-101",
       "type": "FR",
-      "label": "- FR-101: オンライン接続は推奨とし、通信断中もローカル操作を継続可能とします。"
+      "label": "FR-101 CAP-PLATFORM-001-FR-02"
     },
     {
       "id": "FR-102",
       "type": "FR",
-      "label": "- FR-102: ローカル正本、クラウドは共有/バックアップ用途。"
+      "label": "FR-102 CAP-PLATFORM-001-FR-03"
     },
     {
       "id": "FR-103",
       "type": "FR",
-      "label": "- FR-103: iOSネイティブアプリ配布はv1対象外とします。"
+      "label": "FR-103 CAP-PLATFORM-001-FR-04"
     },
     {
       "id": "FR-104",
       "type": "FR",
-      "label": "- FR-104: 同期データはHTTPS通信を前提に扱い、端末側暗号化は v1 で実装しません。"
+      "label": "FR-104 CAP-PLATFORM-001-FR-05"
     },
     {
       "id": "FR-105",
       "type": "FR",
-      "label": "- FR-105: 公開URL運用リスクを受容し、URL管理手順（共有範囲制限・漏えい時の再発行）を運用要件とします。"
+      "label": "FR-105 CAP-PLATFORM-001-FR-06"
     },
     {
       "id": "FR-106",
       "type": "FR",
-      "label": "- FR-106: 機微データを扱う運用時は、将来版での暗号化再導入を前提にします（v1では非対応）。"
+      "label": "FR-106 CAP-PLATFORM-001-FR-07"
     },
     {
       "id": "FR-109",
       "type": "FR",
-      "label": "- FR-109: 提供形態は Web本体 + Mac薄型ネイティブシェル（WKWebView） で固定します。"
+      "label": "FR-109 CAP-PLATFORM-001-FR-08"
     },
     {
       "id": "FR-110",
       "type": "FR",
-      "label": "- FR-110: MacネイティブシェルはOS通知連携を提供します。"
+      "label": "FR-110 CAP-PLATFORM-001-FR-09"
     },
     {
       "id": "FR-111",
       "type": "FR",
-      "label": "- FR-111: Macネイティブシェルは画面スリープ抑止を提供します。"
+      "label": "FR-111 CAP-PLATFORM-001-FR-10"
     },
     {
       "id": "FR-112",
       "type": "FR",
-      "label": "- FR-112: iPhoneはPWA通知対応時のみOS通知を利用します。"
+      "label": "FR-112 CAP-PLATFORM-001-FR-11"
     },
     {
       "id": "FR-113",
       "type": "FR",
-      "label": "- FR-113: スリープ抑止が未対応/失敗の場合、注意表示と対処ガイダンスを表示します。"
+      "label": "FR-113 CAP-PLATFORM-001-FR-12"
     },
     {
       "id": "FR-114",
       "type": "FR",
-      "label": "- FR-114: Web UIコンポーネント基盤は shadcn/ui を採用します。"
+      "label": "FR-114 CAP-PLATFORM-001-FR-13"
     },
     {
       "id": "FR-115",
       "type": "FR",
-      "label": "- FR-115: Web UIのアイコンセットは MynaUI Icons（@mynaui/icons-react）を採用します。"
+      "label": "FR-115 CAP-PLATFORM-001-FR-14"
     },
     {
       "id": "JRN-001-CSV",
@@ -1561,9 +1561,154 @@
       "label": "SCR-001-HOME Home"
     },
     {
+      "id": "SCR-001-HOME-FR-01",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-01: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-02",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-02: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-03",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-03: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-04",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-04: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-05",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-05: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-06",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-06: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-07",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-07: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-08",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-08: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-09",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-09: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-10",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-10: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-11",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-11: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-12",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-12: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-13",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-13: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-14",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-14: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-15",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-15: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-16",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-16: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-17",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-17: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-18",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-18: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-19",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-19: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-20",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-20: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-21",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-21: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-22",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-22: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-23",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-23: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-24",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-24: (旧"
+    },
+    {
+      "id": "SCR-001-HOME-FR-25",
+      "type": "FR",
+      "label": "- SCR-001-HOME-FR-25: (旧"
+    },
+    {
       "id": "SCR-002-HOME-SETUP",
       "type": "SCR",
       "label": "SCR-002-HOME-SETUP スロット設定"
+    },
+    {
+      "id": "SCR-002-HOME-SETUP-FR-01",
+      "type": "FR",
+      "label": "- SCR-002-HOME-SETUP-FR-01: (旧"
+    },
+    {
+      "id": "SCR-002-HOME-SETUP-FR-02",
+      "type": "FR",
+      "label": "- SCR-002-HOME-SETUP-FR-02: (旧"
+    },
+    {
+      "id": "SCR-002-HOME-SETUP-FR-03",
+      "type": "FR",
+      "label": "- SCR-002-HOME-SETUP-FR-03: (旧"
+    },
+    {
+      "id": "SCR-002-HOME-SETUP-FR-04",
+      "type": "FR",
+      "label": "- SCR-002-HOME-SETUP-FR-04: (旧"
     },
     {
       "id": "SCR-003-HOME-START-CONFIRM",
@@ -1571,9 +1716,39 @@
       "label": "SCR-003-HOME-START-CONFIRM 開始確認"
     },
     {
+      "id": "SCR-003-HOME-START-CONFIRM-FR-01",
+      "type": "FR",
+      "label": "- SCR-003-HOME-START-CONFIRM-FR-01: (旧"
+    },
+    {
+      "id": "SCR-003-HOME-START-CONFIRM-FR-02",
+      "type": "FR",
+      "label": "- SCR-003-HOME-START-CONFIRM-FR-02: (旧"
+    },
+    {
+      "id": "SCR-003-HOME-START-CONFIRM-FR-03",
+      "type": "FR",
+      "label": "- SCR-003-HOME-START-CONFIRM-FR-03: (旧"
+    },
+    {
       "id": "SCR-004-HOME-VIEW-CONFIRM",
       "type": "SCR",
       "label": "SCR-004-HOME-VIEW-CONFIRM 閲覧専用確認"
+    },
+    {
+      "id": "SCR-004-HOME-VIEW-CONFIRM-FR-01",
+      "type": "FR",
+      "label": "- SCR-004-HOME-VIEW-CONFIRM-FR-01: (旧"
+    },
+    {
+      "id": "SCR-004-HOME-VIEW-CONFIRM-FR-02",
+      "type": "FR",
+      "label": "- SCR-004-HOME-VIEW-CONFIRM-FR-02: (旧"
+    },
+    {
+      "id": "SCR-004-HOME-VIEW-CONFIRM-FR-03",
+      "type": "FR",
+      "label": "- SCR-004-HOME-VIEW-CONFIRM-FR-03: (旧"
     },
     {
       "id": "SCR-005-HOME-SUMMARY",
@@ -1581,9 +1756,284 @@
       "label": "SCR-005-HOME-SUMMARY 全体サマリ"
     },
     {
+      "id": "SCR-005-HOME-SUMMARY-FR-01",
+      "type": "FR",
+      "label": "- SCR-005-HOME-SUMMARY-FR-01: (旧"
+    },
+    {
+      "id": "SCR-005-HOME-SUMMARY-FR-02",
+      "type": "FR",
+      "label": "- SCR-005-HOME-SUMMARY-FR-02: (旧"
+    },
+    {
+      "id": "SCR-005-HOME-SUMMARY-FR-03",
+      "type": "FR",
+      "label": "- SCR-005-HOME-SUMMARY-FR-03: (旧"
+    },
+    {
+      "id": "SCR-005-HOME-SUMMARY-FR-04",
+      "type": "FR",
+      "label": "- SCR-005-HOME-SUMMARY-FR-04: (旧"
+    },
+    {
+      "id": "SCR-005-HOME-SUMMARY-FR-05",
+      "type": "FR",
+      "label": "- SCR-005-HOME-SUMMARY-FR-05: (旧"
+    },
+    {
+      "id": "SCR-005-HOME-SUMMARY-FR-06",
+      "type": "FR",
+      "label": "- SCR-005-HOME-SUMMARY-FR-06: (旧"
+    },
+    {
+      "id": "SCR-005-HOME-SUMMARY-FR-07",
+      "type": "FR",
+      "label": "- SCR-005-HOME-SUMMARY-FR-07: (旧"
+    },
+    {
+      "id": "SCR-005-HOME-SUMMARY-FR-08",
+      "type": "FR",
+      "label": "- SCR-005-HOME-SUMMARY-FR-08: (旧"
+    },
+    {
+      "id": "SCR-005-HOME-SUMMARY-FR-09",
+      "type": "FR",
+      "label": "- SCR-005-HOME-SUMMARY-FR-09: (旧"
+    },
+    {
+      "id": "SCR-005-HOME-SUMMARY-FR-10",
+      "type": "FR",
+      "label": "- SCR-005-HOME-SUMMARY-FR-10: (旧"
+    },
+    {
+      "id": "SCR-005-HOME-SUMMARY-FR-11",
+      "type": "FR",
+      "label": "- SCR-005-HOME-SUMMARY-FR-11: (旧"
+    },
+    {
+      "id": "SCR-005-HOME-SUMMARY-FR-12",
+      "type": "FR",
+      "label": "- SCR-005-HOME-SUMMARY-FR-12: (旧"
+    },
+    {
+      "id": "SCR-005-HOME-SUMMARY-FR-13",
+      "type": "FR",
+      "label": "- SCR-005-HOME-SUMMARY-FR-13: (旧"
+    },
+    {
+      "id": "SCR-005-HOME-SUMMARY-FR-14",
+      "type": "FR",
+      "label": "- SCR-005-HOME-SUMMARY-FR-14: (旧"
+    },
+    {
+      "id": "SCR-005-HOME-SUMMARY-FR-15",
+      "type": "FR",
+      "label": "- SCR-005-HOME-SUMMARY-FR-15: (旧"
+    },
+    {
       "id": "SCR-006-SESSION",
       "type": "SCR",
       "label": "SCR-006-SESSION Session"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-01",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-01: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-02",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-02: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-03",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-03: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-04",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-04: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-05",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-05: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-06",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-06: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-07",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-07: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-08",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-08: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-09",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-09: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-10",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-10: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-11",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-11: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-12",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-12: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-13",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-13: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-14",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-14: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-15",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-15: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-16",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-16: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-17",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-17: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-18",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-18: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-19",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-19: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-20",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-20: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-21",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-21: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-22",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-22: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-23",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-23: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-24",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-24: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-25",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-25: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-26",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-26: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-27",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-27: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-28",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-28: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-29",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-29: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-30",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-30: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-31",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-31: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-32",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-32: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-33",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-33: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-34",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-34: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-35",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-35: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-36",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-36: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-37",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-37: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-38",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-38: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-39",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-39: (旧"
+    },
+    {
+      "id": "SCR-006-SESSION-FR-40",
+      "type": "FR",
+      "label": "- SCR-006-SESSION-FR-40: (旧"
     },
     {
       "id": "SCR-007-SESSION-RECORD",
@@ -1591,9 +2041,164 @@
       "label": "SCR-007-SESSION-RECORD 記録入力"
     },
     {
+      "id": "SCR-007-SESSION-RECORD-FR-01",
+      "type": "FR",
+      "label": "- SCR-007-SESSION-RECORD-FR-01: (旧"
+    },
+    {
+      "id": "SCR-007-SESSION-RECORD-FR-02",
+      "type": "FR",
+      "label": "- SCR-007-SESSION-RECORD-FR-02: (旧"
+    },
+    {
+      "id": "SCR-007-SESSION-RECORD-FR-03",
+      "type": "FR",
+      "label": "- SCR-007-SESSION-RECORD-FR-03: (旧"
+    },
+    {
+      "id": "SCR-007-SESSION-RECORD-FR-04",
+      "type": "FR",
+      "label": "- SCR-007-SESSION-RECORD-FR-04: (旧"
+    },
+    {
+      "id": "SCR-007-SESSION-RECORD-FR-05",
+      "type": "FR",
+      "label": "- SCR-007-SESSION-RECORD-FR-05: (旧"
+    },
+    {
+      "id": "SCR-007-SESSION-RECORD-FR-06",
+      "type": "FR",
+      "label": "- SCR-007-SESSION-RECORD-FR-06: (旧"
+    },
+    {
+      "id": "SCR-007-SESSION-RECORD-FR-07",
+      "type": "FR",
+      "label": "- SCR-007-SESSION-RECORD-FR-07: (旧"
+    },
+    {
+      "id": "SCR-007-SESSION-RECORD-FR-08",
+      "type": "FR",
+      "label": "- SCR-007-SESSION-RECORD-FR-08: (旧"
+    },
+    {
+      "id": "SCR-007-SESSION-RECORD-FR-09",
+      "type": "FR",
+      "label": "- SCR-007-SESSION-RECORD-FR-09: (旧"
+    },
+    {
+      "id": "SCR-007-SESSION-RECORD-FR-10",
+      "type": "FR",
+      "label": "- SCR-007-SESSION-RECORD-FR-10: (旧"
+    },
+    {
+      "id": "SCR-007-SESSION-RECORD-FR-11",
+      "type": "FR",
+      "label": "- SCR-007-SESSION-RECORD-FR-11: (旧"
+    },
+    {
+      "id": "SCR-007-SESSION-RECORD-FR-12",
+      "type": "FR",
+      "label": "- SCR-007-SESSION-RECORD-FR-12: (旧"
+    },
+    {
+      "id": "SCR-007-SESSION-RECORD-FR-13",
+      "type": "FR",
+      "label": "- SCR-007-SESSION-RECORD-FR-13: (旧"
+    },
+    {
+      "id": "SCR-007-SESSION-RECORD-FR-14",
+      "type": "FR",
+      "label": "- SCR-007-SESSION-RECORD-FR-14: (旧"
+    },
+    {
+      "id": "SCR-007-SESSION-RECORD-FR-15",
+      "type": "FR",
+      "label": "- SCR-007-SESSION-RECORD-FR-15: (旧"
+    },
+    {
+      "id": "SCR-007-SESSION-RECORD-FR-16",
+      "type": "FR",
+      "label": "- SCR-007-SESSION-RECORD-FR-16: (旧"
+    },
+    {
+      "id": "SCR-007-SESSION-RECORD-FR-17",
+      "type": "FR",
+      "label": "- SCR-007-SESSION-RECORD-FR-17: (旧"
+    },
+    {
       "id": "SCR-008-HISTORY",
       "type": "SCR",
       "label": "SCR-008-HISTORY 記録一覧"
+    },
+    {
+      "id": "SCR-008-HISTORY-FR-01",
+      "type": "FR",
+      "label": "- SCR-008-HISTORY-FR-01: (旧"
+    },
+    {
+      "id": "SCR-008-HISTORY-FR-02",
+      "type": "FR",
+      "label": "- SCR-008-HISTORY-FR-02: (旧"
+    },
+    {
+      "id": "SCR-008-HISTORY-FR-03",
+      "type": "FR",
+      "label": "- SCR-008-HISTORY-FR-03: (旧"
+    },
+    {
+      "id": "SCR-008-HISTORY-FR-04",
+      "type": "FR",
+      "label": "- SCR-008-HISTORY-FR-04: (旧"
+    },
+    {
+      "id": "SCR-008-HISTORY-FR-05",
+      "type": "FR",
+      "label": "- SCR-008-HISTORY-FR-05: (旧"
+    },
+    {
+      "id": "SCR-008-HISTORY-FR-06",
+      "type": "FR",
+      "label": "- SCR-008-HISTORY-FR-06: (旧"
+    },
+    {
+      "id": "SCR-008-HISTORY-FR-07",
+      "type": "FR",
+      "label": "- SCR-008-HISTORY-FR-07: (旧"
+    },
+    {
+      "id": "SCR-008-HISTORY-FR-08",
+      "type": "FR",
+      "label": "- SCR-008-HISTORY-FR-08: (旧"
+    },
+    {
+      "id": "SCR-008-HISTORY-FR-09",
+      "type": "FR",
+      "label": "- SCR-008-HISTORY-FR-09: (旧"
+    },
+    {
+      "id": "SCR-008-HISTORY-FR-10",
+      "type": "FR",
+      "label": "- SCR-008-HISTORY-FR-10: (旧"
+    },
+    {
+      "id": "SCR-008-HISTORY-FR-11",
+      "type": "FR",
+      "label": "- SCR-008-HISTORY-FR-11: (旧"
+    },
+    {
+      "id": "SCR-008-HISTORY-FR-12",
+      "type": "FR",
+      "label": "- SCR-008-HISTORY-FR-12: (旧"
+    },
+    {
+      "id": "SCR-008-HISTORY-FR-13",
+      "type": "FR",
+      "label": "- SCR-008-HISTORY-FR-13: (旧"
+    },
+    {
+      "id": "SCR-008-HISTORY-FR-14",
+      "type": "FR",
+      "label": "- SCR-008-HISTORY-FR-14: (旧"
     },
     {
       "id": "SCR-009-HISTORY-DETAIL",
@@ -1601,9 +2206,89 @@
       "label": "SCR-009-HISTORY-DETAIL 記録詳細"
     },
     {
+      "id": "SCR-009-HISTORY-DETAIL-FR-01",
+      "type": "FR",
+      "label": "- SCR-009-HISTORY-DETAIL-FR-01: (旧"
+    },
+    {
+      "id": "SCR-009-HISTORY-DETAIL-FR-02",
+      "type": "FR",
+      "label": "- SCR-009-HISTORY-DETAIL-FR-02: (旧"
+    },
+    {
+      "id": "SCR-009-HISTORY-DETAIL-FR-03",
+      "type": "FR",
+      "label": "- SCR-009-HISTORY-DETAIL-FR-03: (旧"
+    },
+    {
+      "id": "SCR-009-HISTORY-DETAIL-FR-04",
+      "type": "FR",
+      "label": "- SCR-009-HISTORY-DETAIL-FR-04: (旧"
+    },
+    {
+      "id": "SCR-009-HISTORY-DETAIL-FR-05",
+      "type": "FR",
+      "label": "- SCR-009-HISTORY-DETAIL-FR-05: (旧"
+    },
+    {
+      "id": "SCR-009-HISTORY-DETAIL-FR-06",
+      "type": "FR",
+      "label": "- SCR-009-HISTORY-DETAIL-FR-06: (旧"
+    },
+    {
+      "id": "SCR-009-HISTORY-DETAIL-FR-07",
+      "type": "FR",
+      "label": "- SCR-009-HISTORY-DETAIL-FR-07: (旧"
+    },
+    {
+      "id": "SCR-009-HISTORY-DETAIL-FR-08",
+      "type": "FR",
+      "label": "- SCR-009-HISTORY-DETAIL-FR-08: (旧"
+    },
+    {
+      "id": "SCR-009-HISTORY-DETAIL-FR-09",
+      "type": "FR",
+      "label": "- SCR-009-HISTORY-DETAIL-FR-09: (旧"
+    },
+    {
+      "id": "SCR-009-HISTORY-DETAIL-FR-10",
+      "type": "FR",
+      "label": "- SCR-009-HISTORY-DETAIL-FR-10: (旧"
+    },
+    {
+      "id": "SCR-009-HISTORY-DETAIL-FR-11",
+      "type": "FR",
+      "label": "- SCR-009-HISTORY-DETAIL-FR-11: (旧"
+    },
+    {
+      "id": "SCR-009-HISTORY-DETAIL-FR-12",
+      "type": "FR",
+      "label": "- SCR-009-HISTORY-DETAIL-FR-12: (旧"
+    },
+    {
+      "id": "SCR-009-HISTORY-DETAIL-FR-13",
+      "type": "FR",
+      "label": "- SCR-009-HISTORY-DETAIL-FR-13: (旧"
+    },
+    {
       "id": "SCR-010-HISTORY-PHOTO",
       "type": "SCR",
       "label": "SCR-010-HISTORY-PHOTO 写真詳細"
+    },
+    {
+      "id": "SCR-010-HISTORY-PHOTO-FR-01",
+      "type": "FR",
+      "label": "- SCR-010-HISTORY-PHOTO-FR-01: (旧"
+    },
+    {
+      "id": "SCR-010-HISTORY-PHOTO-FR-02",
+      "type": "FR",
+      "label": "- SCR-010-HISTORY-PHOTO-FR-02: (旧"
+    },
+    {
+      "id": "SCR-010-HISTORY-PHOTO-FR-03",
+      "type": "FR",
+      "label": "- SCR-010-HISTORY-PHOTO-FR-03: (旧"
     },
     {
       "id": "SCR-011-SYNC-STATUS",
@@ -1611,9 +2296,119 @@
       "label": "SCR-011-SYNC-STATUS 同期状態表示"
     },
     {
+      "id": "SCR-011-SYNC-STATUS-FR-01",
+      "type": "FR",
+      "label": "- SCR-011-SYNC-STATUS-FR-01: (旧"
+    },
+    {
+      "id": "SCR-011-SYNC-STATUS-FR-02",
+      "type": "FR",
+      "label": "- SCR-011-SYNC-STATUS-FR-02: (旧"
+    },
+    {
+      "id": "SCR-011-SYNC-STATUS-FR-03",
+      "type": "FR",
+      "label": "- SCR-011-SYNC-STATUS-FR-03: (旧"
+    },
+    {
+      "id": "SCR-011-SYNC-STATUS-FR-04",
+      "type": "FR",
+      "label": "- SCR-011-SYNC-STATUS-FR-04: (旧"
+    },
+    {
+      "id": "SCR-011-SYNC-STATUS-FR-05",
+      "type": "FR",
+      "label": "- SCR-011-SYNC-STATUS-FR-05: (旧"
+    },
+    {
+      "id": "SCR-011-SYNC-STATUS-FR-06",
+      "type": "FR",
+      "label": "- SCR-011-SYNC-STATUS-FR-06: (旧"
+    },
+    {
+      "id": "SCR-011-SYNC-STATUS-FR-07",
+      "type": "FR",
+      "label": "- SCR-011-SYNC-STATUS-FR-07: (旧"
+    },
+    {
+      "id": "SCR-011-SYNC-STATUS-FR-08",
+      "type": "FR",
+      "label": "- SCR-011-SYNC-STATUS-FR-08: (旧"
+    },
+    {
+      "id": "SCR-011-SYNC-STATUS-FR-09",
+      "type": "FR",
+      "label": "- SCR-011-SYNC-STATUS-FR-09: (旧"
+    },
+    {
+      "id": "SCR-011-SYNC-STATUS-FR-10",
+      "type": "FR",
+      "label": "- SCR-011-SYNC-STATUS-FR-10: (旧"
+    },
+    {
+      "id": "SCR-011-SYNC-STATUS-FR-11",
+      "type": "FR",
+      "label": "- SCR-011-SYNC-STATUS-FR-11: (旧"
+    },
+    {
+      "id": "SCR-011-SYNC-STATUS-FR-12",
+      "type": "FR",
+      "label": "- SCR-011-SYNC-STATUS-FR-12: (旧"
+    },
+    {
+      "id": "SCR-011-SYNC-STATUS-FR-13",
+      "type": "FR",
+      "label": "- SCR-011-SYNC-STATUS-FR-13: (旧"
+    },
+    {
+      "id": "SCR-011-SYNC-STATUS-FR-14",
+      "type": "FR",
+      "label": "- SCR-011-SYNC-STATUS-FR-14: (旧"
+    },
+    {
+      "id": "SCR-011-SYNC-STATUS-FR-15",
+      "type": "FR",
+      "label": "- SCR-011-SYNC-STATUS-FR-15: (旧"
+    },
+    {
+      "id": "SCR-011-SYNC-STATUS-FR-16",
+      "type": "FR",
+      "label": "- SCR-011-SYNC-STATUS-FR-16: (旧"
+    },
+    {
       "id": "SCR-012-MAC-IMPORT",
       "type": "SCR",
       "label": "SCR-012-MAC-IMPORT CSV取込I/F"
+    },
+    {
+      "id": "SCR-012-MAC-IMPORT-FR-01",
+      "type": "FR",
+      "label": "- SCR-012-MAC-IMPORT-FR-01: (旧"
+    },
+    {
+      "id": "SCR-012-MAC-IMPORT-FR-02",
+      "type": "FR",
+      "label": "- SCR-012-MAC-IMPORT-FR-02: (旧"
+    },
+    {
+      "id": "SCR-012-MAC-IMPORT-FR-03",
+      "type": "FR",
+      "label": "- SCR-012-MAC-IMPORT-FR-03: (旧"
+    },
+    {
+      "id": "SCR-012-MAC-IMPORT-FR-04",
+      "type": "FR",
+      "label": "- SCR-012-MAC-IMPORT-FR-04: (旧"
+    },
+    {
+      "id": "SCR-012-MAC-IMPORT-FR-05",
+      "type": "FR",
+      "label": "- SCR-012-MAC-IMPORT-FR-05: (旧"
+    },
+    {
+      "id": "SCR-012-MAC-IMPORT-FR-06",
+      "type": "FR",
+      "label": "- SCR-012-MAC-IMPORT-FR-06: (旧"
     },
     {
       "id": "UI-001-HISTORY",
@@ -1733,7 +2528,7 @@
     {
       "id": "UI-002-VIEW-CONFIRM",
       "type": "UI",
-      "label": "UI-002-VIEW-CONFIRM 手順を表示（保存なし）ボタン"
+      "label": "UI-002-VIEW-CONFIRM 手順を確認（データ保存なし）ボタン"
     },
     {
       "id": "UI-003-HISTORY",
@@ -1861,6 +2656,11 @@
       "label": "UI-006-HOME 記録一覧ボタン"
     },
     {
+      "id": "UI-006-HOME-SUMMARY",
+      "type": "UI",
+      "label": "UI-006-HOME-SUMMARY 1日の総除水量"
+    },
+    {
       "id": "UI-006-IMPORT",
       "type": "UI",
       "label": "UI-006-IMPORT 警告一覧"
@@ -1899,6 +2699,11 @@
       "id": "UI-011-HOME",
       "type": "UI",
       "label": "UI-011-HOME 同期失敗バナー"
+    },
+    {
+      "id": "UI-012-HOME",
+      "type": "UI",
+      "label": "UI-012-HOME 当日ノート（排液写真）"
     },
     {
       "id": "UI-HISTORY-001",
@@ -5785,6 +6590,27 @@
     },
     {
       "from": "JRN-003-SESSION",
+      "to": "FR-060",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "FR-061",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
+      "to": "FR-062",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-003-SESSION",
       "to": "FR-071",
       "reasons": [
         "line-cooccurrence"
@@ -6157,6 +6983,13 @@
     {
       "from": "JRN-005-SYNC",
       "to": "SCR-001-HOME",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "JRN-005-SYNC",
+      "to": "SCR-006-SESSION",
       "reasons": [
         "line-cooccurrence"
       ]
@@ -6982,6 +7815,181 @@
     },
     {
       "from": "SCR-001-HOME",
+      "to": "FR-001",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-003",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-004A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-005",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-005A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-006",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-007",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-008",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-009A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-009B",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-009C",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-009D",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-009E",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-009F",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-009G",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-009H",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-016",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-017",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-018",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-019",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-042",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-086",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
+      "to": "FR-088",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-001-HOME",
       "to": "UI-HOME-001",
       "reasons": [
         "line-cooccurrence"
@@ -7045,6 +8053,13 @@
     },
     {
       "from": "SCR-003-HOME-START-CONFIRM",
+      "to": "FR-009",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-003-HOME-START-CONFIRM",
       "to": "UI-HOME-005",
       "reasons": [
         "line-cooccurrence"
@@ -7052,7 +8067,119 @@
     },
     {
       "from": "SCR-004-HOME-VIEW-CONFIRM",
+      "to": "FR-056",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-004-HOME-VIEW-CONFIRM",
       "to": "UI-HOME-006",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-005-HOME-SUMMARY",
+      "to": "FR-014A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-005-HOME-SUMMARY",
+      "to": "FR-015",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-005-HOME-SUMMARY",
+      "to": "FR-015A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-005-HOME-SUMMARY",
+      "to": "FR-015B",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-005-HOME-SUMMARY",
+      "to": "FR-042A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-005-HOME-SUMMARY",
+      "to": "FR-042B",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-005-HOME-SUMMARY",
+      "to": "FR-042C",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-005-HOME-SUMMARY",
+      "to": "FR-042D",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-005-HOME-SUMMARY",
+      "to": "FR-042E",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-005-HOME-SUMMARY",
+      "to": "FR-042F",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-005-HOME-SUMMARY",
+      "to": "FR-042G",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-005-HOME-SUMMARY",
+      "to": "FR-042H",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-005-HOME-SUMMARY",
+      "to": "FR-044C",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-005-HOME-SUMMARY",
+      "to": "FR-089A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-005-HOME-SUMMARY",
+      "to": "FR-090A",
       "reasons": [
         "line-cooccurrence"
       ]
@@ -7067,6 +8194,279 @@
     {
       "from": "SCR-005-HOME-SUMMARY",
       "to": "UI-HOME-011",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-030",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-031",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-032",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-033",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-034",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-035",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-036",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-037",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-038",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-039",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-039A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-039B",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-039C",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-039D",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-039E",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-039F",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-039G",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-050A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-050B",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-050C",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-050D",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-051",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-052",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-052A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-052B",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-053",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-054",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-055",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-055A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-055B",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-057",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-057A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-058",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-058A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-058B",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-071",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-072",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-073",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-006-SESSION",
+      "to": "FR-074",
       "reasons": [
         "line-cooccurrence"
       ]
@@ -7150,7 +8550,98 @@
     },
     {
       "from": "SCR-007-SESSION-RECORD",
+      "to": "FR-040",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-007-SESSION-RECORD",
+      "to": "FR-041",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-007-SESSION-RECORD",
+      "to": "FR-043",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-007-SESSION-RECORD",
+      "to": "FR-044",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-007-SESSION-RECORD",
+      "to": "FR-044A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-007-SESSION-RECORD",
+      "to": "FR-044B",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-007-SESSION-RECORD",
+      "to": "FR-044D",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-007-SESSION-RECORD",
       "to": "UI-SESSION-004",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-008-HISTORY",
+      "to": "FR-010",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-008-HISTORY",
+      "to": "FR-011",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-008-HISTORY",
+      "to": "FR-012",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-008-HISTORY",
+      "to": "FR-013",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-008-HISTORY",
+      "to": "FR-014",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-008-HISTORY",
+      "to": "FR-015C",
       "reasons": [
         "line-cooccurrence"
       ]
@@ -7171,6 +8662,97 @@
     },
     {
       "from": "SCR-011-SYNC-STATUS",
+      "to": "FR-080",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-011-SYNC-STATUS",
+      "to": "FR-081",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-011-SYNC-STATUS",
+      "to": "FR-082",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-011-SYNC-STATUS",
+      "to": "FR-082A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-011-SYNC-STATUS",
+      "to": "FR-083",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-011-SYNC-STATUS",
+      "to": "FR-084",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-011-SYNC-STATUS",
+      "to": "FR-085",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-011-SYNC-STATUS",
+      "to": "FR-087",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-011-SYNC-STATUS",
+      "to": "FR-087A",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-011-SYNC-STATUS",
+      "to": "FR-087B",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-011-SYNC-STATUS",
+      "to": "FR-087C",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-011-SYNC-STATUS",
+      "to": "FR-087D",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-011-SYNC-STATUS",
+      "to": "FR-089",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-011-SYNC-STATUS",
       "to": "UI-SYNC-001",
       "reasons": [
         "line-cooccurrence"
@@ -7179,6 +8761,41 @@
     {
       "from": "SCR-011-SYNC-STATUS",
       "to": "UI-SYNC-002",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-012-MAC-IMPORT",
+      "to": "FR-020",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-012-MAC-IMPORT",
+      "to": "FR-021",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-012-MAC-IMPORT",
+      "to": "FR-022",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-012-MAC-IMPORT",
+      "to": "FR-023",
+      "reasons": [
+        "line-cooccurrence"
+      ]
+    },
+    {
+      "from": "SCR-012-MAC-IMPORT",
+      "to": "FR-024",
       "reasons": [
         "line-cooccurrence"
       ]

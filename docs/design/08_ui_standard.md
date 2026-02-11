@@ -1,5 +1,9 @@
 # 08. UI標準（デザインルール/コンポーネント規約）
 
+> 移行メモ（2026-02-11）: 本文の正本は `docs/spec/20_screens/screens_index.md` / `docs/spec/45_nfr/non-functional.md` / `docs/spec/20_screens/SCR-001-HOME.md` / `docs/spec/20_screens/SCR-006-SESSION.md` へ再構成済みです。  
+> 本書は旧体系参照用として残置し、更新は `docs/spec` 側を優先します。
+
+
 ## 1. デザイン原則
 - 安全優先: 警告・アラームは常に最上位視認
 - 誤操作抑止: ブロック条件は状態と理由を明示

@@ -80,190 +80,270 @@
 </tr>
 <tr id="L11">
   <td class="line"><a href="#L11">11</a></td>
-  <td class="code">- 非目的: push/pull処理、写真バックアップポリシー。</td>
+  <td class="code">- 必要性: CSV再取込でテンプレートが更新されても、進行中/履歴セッションの表示内容が途中で変わる事故を防ぎます。</td>
 </tr>
 <tr id="L12">
   <td class="line"><a href="#L12">12</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- 非目的: push/pull処理、写真バックアップポリシー。</td>
 </tr>
 <tr id="L13">
   <td class="line"><a href="#L13">13</a></td>
-  <td class="code">## 3. 境界（対象画面あり/なし、責務分割）</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L14">
   <td class="line"><a href="#L14">14</a></td>
-  <td class="code">- 対象画面あり: `../20_screens/<a href="../../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a>.md`, `../20_screens/<a href="../../../../screens/SCR-007-SESSION-RECORD.html">SCR-007-SESSION-RECORD</a>.md`, `../20_screens/<a href="../../../../screens/SCR-009-HISTORY-DETAIL.html">SCR-009-HISTORY-DETAIL</a>.md`</td>
+  <td class="code">## 3. 境界（対象画面あり/なし、責務分割）</td>
 </tr>
 <tr id="L15">
   <td class="line"><a href="#L15">15</a></td>
-  <td class="code">- 画面責務: 入力収集と保存トリガー。</td>
+  <td class="code">- 対象画面あり: `../20_screens/<a href="../../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a>.md`, `../20_screens/<a href="../../../../screens/SCR-007-SESSION-RECORD.html">SCR-007-SESSION-RECORD</a>.md`, `../20_screens/<a href="../../../../screens/SCR-009-HISTORY-DETAIL.html">SCR-009-HISTORY-DETAIL</a>.md`</td>
 </tr>
 <tr id="L16">
   <td class="line"><a href="#L16">16</a></td>
-  <td class="code">- CAP責務: Snapshot生成、Record保存、LWWメタ管理、再開時復元。</td>
+  <td class="code">- 画面責務: 入力収集と保存トリガー。</td>
 </tr>
 <tr id="L17">
   <td class="line"><a href="#L17">17</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- CAP責務: Snapshot生成、Record保存、LWWメタ管理、再開時復元。</td>
 </tr>
 <tr id="L18">
   <td class="line"><a href="#L18">18</a></td>
-  <td class="code">## 4. ドメインモデルと不変条件</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L19">
   <td class="line"><a href="#L19">19</a></td>
-  <td class="code">- モデル: `SessionProtocolSnapshot`, `RecordEntity`, `LwwMeta`。</td>
+  <td class="code">## 4. ドメインモデルと不変条件</td>
 </tr>
 <tr id="L20">
   <td class="line"><a href="#L20">20</a></td>
-  <td class="code">- 不変条件:</td>
+  <td class="code">- モデル: `SessionProtocolSnapshot`, `RecordEntity`, `LwwMeta`。</td>
 </tr>
 <tr id="L21">
   <td class="line"><a href="#L21">21</a></td>
-  <td class="code">  - セッション開始時にスナップショットを同一トランザクションで保存。</td>
+  <td class="code">- 不変条件:</td>
 </tr>
 <tr id="L22">
   <td class="line"><a href="#L22">22</a></td>
-  <td class="code">  - 保存失敗時はセッション開始失敗。</td>
+  <td class="code">  - セッション開始時にスナップショットを同一トランザクションで保存。</td>
 </tr>
 <tr id="L23">
   <td class="line"><a href="#L23">23</a></td>
-  <td class="code">  - 再開時はスナップショットを優先しテンプレートへフォールバックしない。</td>
+  <td class="code">  - 保存失敗時はセッション開始失敗。</td>
 </tr>
 <tr id="L24">
   <td class="line"><a href="#L24">24</a></td>
-  <td class="code">  - `updatedAt/updatedByDeviceId/mutationId` を保存時に更新。</td>
+  <td class="code">  - 再開時はスナップショットを優先しテンプレートへフォールバックしない。</td>
 </tr>
 <tr id="L25">
   <td class="line"><a href="#L25">25</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">  - `updatedAt/updatedByDeviceId/mutationId` を保存時に更新。</td>
 </tr>
 <tr id="L26">
   <td class="line"><a href="#L26">26</a></td>
-  <td class="code">## 5. 入出力I/F（Service, API, Event）</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L27">
   <td class="line"><a href="#L27">27</a></td>
-  <td class="code">- Service: `SessionService.startSession`, `RecordService.saveRecord`, `RecordService.updateRecord`</td>
+  <td class="code">## 5. 入出力I/F（Service, API, Event）</td>
 </tr>
 <tr id="L28">
   <td class="line"><a href="#L28">28</a></td>
-  <td class="code">- 入力: session id, record payload, patch</td>
+  <td class="code">- Service: `SessionService.startSession`, `RecordService.saveRecord`, `RecordService.updateRecord`</td>
 </tr>
 <tr id="L29">
   <td class="line"><a href="#L29">29</a></td>
-  <td class="code">- 出力: snapshot hash, record id, updated meta</td>
+  <td class="code">- 入力: session id, record payload, patch</td>
 </tr>
 <tr id="L30">
   <td class="line"><a href="#L30">30</a></td>
-  <td class="code">- Event: `session.started`, `record.saved`, `snapshot.saved`</td>
+  <td class="code">- 出力: snapshot hash, record id, updated meta</td>
 </tr>
 <tr id="L31">
   <td class="line"><a href="#L31">31</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- Event: `session.started`, `record.saved`, `snapshot.saved`</td>
 </tr>
 <tr id="L32">
   <td class="line"><a href="#L32">32</a></td>
-  <td class="code">## 6. 状態遷移（正常 / 禁止 / 再試行 / 復旧）</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L33">
   <td class="line"><a href="#L33">33</a></td>
-  <td class="code">- 正常: `start -&gt; snapshot_saved -&gt; active -&gt; completed|aborted`</td>
+  <td class="code">## 6. 状態遷移（正常 / 禁止 / 再試行 / 復旧）</td>
 </tr>
 <tr id="L34">
   <td class="line"><a href="#L34">34</a></td>
-  <td class="code">- 禁止: `completed|aborted -&gt; active`</td>
+  <td class="code">- 正常: `start -&gt; snapshot_saved -&gt; active -&gt; completed|aborted`</td>
 </tr>
 <tr id="L35">
   <td class="line"><a href="#L35">35</a></td>
-  <td class="code">- 再試行: 保存I/O失敗時にローカル再試行</td>
+  <td class="code">- 禁止: `completed|aborted -&gt; active`</td>
 </tr>
 <tr id="L36">
   <td class="line"><a href="#L36">36</a></td>
-  <td class="code">- 復旧: 欠落/ハッシュ不整合時は表示停止して整合性エラー</td>
+  <td class="code">- 再試行: 保存I/O失敗時にローカル再試行</td>
 </tr>
 <tr id="L37">
   <td class="line"><a href="#L37">37</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- 復旧: 欠落/ハッシュ不整合時は表示停止して整合性エラー</td>
 </tr>
 <tr id="L38">
   <td class="line"><a href="#L38">38</a></td>
-  <td class="code">## 7. 失敗モードと回復方針</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L39">
   <td class="line"><a href="#L39">39</a></td>
-  <td class="code">- snapshot保存失敗: `SESSION_SNAPSHOT_CREATE_FAILED` で開始中止。</td>
+  <td class="code">## 7. 失敗モードと回復方針</td>
 </tr>
 <tr id="L40">
   <td class="line"><a href="#L40">40</a></td>
-  <td class="code">- record保存失敗: モーダルにエラー表示し再保存導線。</td>
+  <td class="code">- snapshot保存失敗: `SESSION_SNAPSHOT_CREATE_FAILED` で開始中止。</td>
 </tr>
 <tr id="L41">
   <td class="line"><a href="#L41">41</a></td>
-  <td class="code">- hash不整合: 当該セッション表示停止 + ガイダンス表示。</td>
+  <td class="code">- record保存失敗: モーダルにエラー表示し再保存導線。</td>
 </tr>
 <tr id="L42">
   <td class="line"><a href="#L42">42</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- hash不整合: 当該セッション表示停止 + ガイダンス表示。</td>
 </tr>
 <tr id="L43">
   <td class="line"><a href="#L43">43</a></td>
-  <td class="code">## 8. セキュリティ・監査・保持</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L44">
   <td class="line"><a href="#L44">44</a></td>
-  <td class="code">- 監査: 更新端末、更新時刻、対象フィールド。</td>
+  <td class="code">## 8. セキュリティ・監査・保持</td>
 </tr>
 <tr id="L45">
   <td class="line"><a href="#L45">45</a></td>
-  <td class="code">- 保持: 監査要件に沿って履歴を保持。</td>
+  <td class="code">- 監査: 更新端末、更新時刻、対象フィールド。</td>
 </tr>
 <tr id="L46">
   <td class="line"><a href="#L46">46</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- 保持: 監査要件に沿って履歴を保持。</td>
 </tr>
 <tr id="L47">
   <td class="line"><a href="#L47">47</a></td>
-  <td class="code">## 9. 受入条件（GWT）</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L48">
   <td class="line"><a href="#L48">48</a></td>
-  <td class="code">- Given セッション開始を実行する</td>
+  <td class="code">## 9. 受入条件（GWT）</td>
 </tr>
 <tr id="L49">
   <td class="line"><a href="#L49">49</a></td>
-  <td class="code">- When スナップショット保存に失敗する</td>
+  <td class="code">- Given セッション開始を実行する</td>
 </tr>
 <tr id="L50">
   <td class="line"><a href="#L50">50</a></td>
-  <td class="code">- Then セッション開始を失敗させる</td>
+  <td class="code">- When スナップショット保存に失敗する</td>
 </tr>
 <tr id="L51">
   <td class="line"><a href="#L51">51</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- Then セッション開始を失敗させる</td>
 </tr>
 <tr id="L52">
   <td class="line"><a href="#L52">52</a></td>
-  <td class="code">## 10. トレーサビリティ（FR, AT, SCR, JRN）</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L53">
   <td class="line"><a href="#L53">53</a></td>
-  <td class="code">- FR: <a href="../../../../ids/FR-012.html">FR-012</a>, <a href="../../../../ids/FR-031.html">FR-031</a>, <a href="../../../../ids/FR-032.html">FR-032</a>, <a href="../../../../ids/FR-033.html">FR-033</a>, <a href="../../../../ids/FR-034.html">FR-034</a>, <a href="../../../../ids/FR-044D.html">FR-044D</a>, <a href="../../../../ids/FR-070.html">FR-070</a>, <a href="../../../../ids/FR-071.html">FR-071</a>, <a href="../../../../ids/FR-072.html">FR-072</a>, <a href="../../../../ids/FR-073.html">FR-073</a>, <a href="../../../../ids/FR-074.html">FR-074</a>, <a href="../../../../ids/FR-075.html">FR-075</a></td>
+  <td class="code">## 10. トレーサビリティ（FR, AT, SCR, JRN）</td>
 </tr>
 <tr id="L54">
   <td class="line"><a href="#L54">54</a></td>
-  <td class="code">- AT: <a href="../../../../ids/AT-FLOW-001.html">AT-FLOW-001</a>, <a href="../../../../ids/AT-FLOW-002.html">AT-FLOW-002</a>, <a href="../../../../ids/AT-FLOW-003.html">AT-FLOW-003</a>, <a href="../../../../ids/AT-FLOW-006.html">AT-FLOW-006</a></td>
+  <td class="code">- Local FR: `CAP-SNAPSHOT-001-FR-01` 〜 `CAP-SNAPSHOT-001-FR-12`</td>
 </tr>
 <tr id="L55">
   <td class="line"><a href="#L55">55</a></td>
-  <td class="code">- SCR: <a href="../../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a>, <a href="../../../../screens/SCR-007-SESSION-RECORD.html">SCR-007-SESSION-RECORD</a>, <a href="../../../../screens/SCR-009-HISTORY-DETAIL.html">SCR-009-HISTORY-DETAIL</a></td>
+  <td class="code">- 旧FR対応: <a href="../../../../ids/FR-012.html">FR-012</a>, <a href="../../../../ids/FR-031.html">FR-031</a>, <a href="../../../../ids/FR-032.html">FR-032</a>, <a href="../../../../ids/FR-033.html">FR-033</a>, <a href="../../../../ids/FR-034.html">FR-034</a>, <a href="../../../../ids/FR-044D.html">FR-044D</a>, <a href="../../../../ids/FR-070.html">FR-070</a>, <a href="../../../../ids/FR-071.html">FR-071</a>, <a href="../../../../ids/FR-072.html">FR-072</a>, <a href="../../../../ids/FR-073.html">FR-073</a>, <a href="../../../../ids/FR-074.html">FR-074</a>, <a href="../../../../ids/FR-075.html">FR-075</a></td>
 </tr>
 <tr id="L56">
   <td class="line"><a href="#L56">56</a></td>
-  <td class="code">- JRN: <a href="../../../../journeys/JRN-003-SESSION.html">JRN-003-SESSION</a>, <a href="../../../../journeys/JRN-008-HISTORY.html">JRN-008-HISTORY</a></td>
+  <td class="code">- AT: <a href="../../../../ids/AT-FLOW-001.html">AT-FLOW-001</a>, <a href="../../../../ids/AT-FLOW-002.html">AT-FLOW-002</a>, <a href="../../../../ids/AT-FLOW-003.html">AT-FLOW-003</a>, <a href="../../../../ids/AT-FLOW-006.html">AT-FLOW-006</a></td>
 </tr>
 <tr id="L57">
   <td class="line"><a href="#L57">57</a></td>
+  <td class="code">- SCR: <a href="../../../../screens/SCR-006-SESSION.html">SCR-006-SESSION</a>, <a href="../../../../screens/SCR-007-SESSION-RECORD.html">SCR-007-SESSION-RECORD</a>, <a href="../../../../screens/SCR-009-HISTORY-DETAIL.html">SCR-009-HISTORY-DETAIL</a></td>
+</tr>
+<tr id="L58">
+  <td class="line"><a href="#L58">58</a></td>
+  <td class="code">- JRN: <a href="../../../../journeys/JRN-003-SESSION.html">JRN-003-SESSION</a>, <a href="../../../../journeys/JRN-008-HISTORY.html">JRN-008-HISTORY</a></td>
+</tr>
+<tr id="L59">
+  <td class="line"><a href="#L59">59</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L60">
+  <td class="line"><a href="#L60">60</a></td>
+  <td class="code">## 11. 機能要件（ローカルID）</td>
+</tr>
+<tr id="L61">
+  <td class="line"><a href="#L61">61</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L62">
+  <td class="line"><a href="#L62">62</a></td>
+  <td class="code">- 採番規則: `&lt;文書ID&gt;-FR-yy`（yyはこの文書内連番）</td>
+</tr>
+<tr id="L63">
+  <td class="line"><a href="#L63">63</a></td>
+  <td class="code">- 旧FR IDは括弧内に残し、移行トレーサビリティを保持します。</td>
+</tr>
+<tr id="L64">
+  <td class="line"><a href="#L64">64</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L65">
+  <td class="line"><a href="#L65">65</a></td>
+  <td class="code">- CAP-SNAPSHOT-001-FR-01: (旧: <a href="../../../../ids/FR-012.html">FR-012</a>) 記録編集はLWWメタ（`updatedAt`, `updatedByDeviceId`, `mutationId`）を保持して競合解決可能な状態にします。</td>
+</tr>
+<tr id="L66">
+  <td class="line"><a href="#L66">66</a></td>
+  <td class="code">- CAP-SNAPSHOT-001-FR-02: (旧: <a href="../../../../ids/FR-031.html">FR-031</a>) 必須チェック未完了時に次ステップ遷移を禁止します。</td>
+</tr>
+<tr id="L67">
+  <td class="line"><a href="#L67">67</a></td>
+  <td class="code">- CAP-SNAPSHOT-001-FR-03: (旧: <a href="../../../../ids/FR-032.html">FR-032</a>) `record_event` 未完了時に次ステップ遷移を禁止します。</td>
+</tr>
+<tr id="L68">
+  <td class="line"><a href="#L68">68</a></td>
+  <td class="code">- CAP-SNAPSHOT-001-FR-04: (旧: <a href="../../../../ids/FR-033.html">FR-033</a>) `next_step_id` に従い完全シリアルで遷移します。</td>
+</tr>
+<tr id="L69">
+  <td class="line"><a href="#L69">69</a></td>
+  <td class="code">- CAP-SNAPSHOT-001-FR-05: (旧: <a href="../../../../ids/FR-034.html">FR-034</a>) 最終ステップ完了時にセッション完了状態へ遷移します。</td>
+</tr>
+<tr id="L70">
+  <td class="line"><a href="#L70">70</a></td>
+  <td class="code">- CAP-SNAPSHOT-001-FR-06: (旧: <a href="../../../../ids/FR-044D.html">FR-044D</a>) `summaryScope` が未指定または不正値でも保存拒否せず、`summaryScope` のみ破棄して他の妥当な入力値を保存します。</td>
+</tr>
+<tr id="L71">
+  <td class="line"><a href="#L71">71</a></td>
+  <td class="code">- CAP-SNAPSHOT-001-FR-07: (旧: <a href="../../../../ids/FR-070.html">FR-070</a>) 新版取り込み後、テンプレート版として保存します。</td>
+</tr>
+<tr id="L72">
+  <td class="line"><a href="#L72">72</a></td>
+  <td class="code">- CAP-SNAPSHOT-001-FR-08: (旧: <a href="../../../../ids/FR-071.html">FR-071</a>) セッション開始時は `SessionProtocolSnapshot` をローカル同一トランザクションで保存し、保存失敗時は開始自体を失敗させます。</td>
+</tr>
+<tr id="L73">
+  <td class="line"><a href="#L73">73</a></td>
+  <td class="code">- CAP-SNAPSHOT-001-FR-09: (旧: <a href="../../../../ids/FR-072.html">FR-072</a>) スナップショットには `sourceProtocol(meta)`、step定義本文（通し番号/タイトル/文言/必須チェック/timer/alarm/record）、画像 `assetKey`、`assetManifest`、`snapshotHash` を含めます。</td>
+</tr>
+<tr id="L74">
+  <td class="line"><a href="#L74">74</a></td>
+  <td class="code">- CAP-SNAPSHOT-001-FR-10: (旧: <a href="../../../../ids/FR-073.html">FR-073</a>) セッション表示/再開時は開始時スナップショットを常に優先し、現行テンプレート版へフォールバックしません。</td>
+</tr>
+<tr id="L75">
+  <td class="line"><a href="#L75">75</a></td>
+  <td class="code">- CAP-SNAPSHOT-001-FR-11: (旧: <a href="../../../../ids/FR-074.html">FR-074</a>) スナップショット欠落またはハッシュ不整合は整合性エラーとして扱い、セッション表示を停止します。</td>
+</tr>
+<tr id="L76">
+  <td class="line"><a href="#L76">76</a></td>
+  <td class="code">- CAP-SNAPSHOT-001-FR-12: (旧: <a href="../../../../ids/FR-075.html">FR-075</a>) テンプレート新版の取り込み後も、開始済みセッションの表示内容は開始時スナップショットから変化しません。</td>
+</tr>
+<tr id="L77">
+  <td class="line"><a href="#L77">77</a></td>
   <td class="code">&nbsp;</td>
 </tr>
   </table>
