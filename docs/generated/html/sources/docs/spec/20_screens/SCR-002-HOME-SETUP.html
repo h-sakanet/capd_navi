@@ -40,7 +40,7 @@
   <table class="source-table">
 <tr id="L1">
   <td class="line"><a href="#L1">1</a></td>
-  <td class="code"><a id="SCR-002-HOME-SETUP--L1"></a># <a href="../../../../screens/SCR-002-HOME-SETUP.html">SCR-002-HOME-SETUP</a></td>
+  <td class="code"><a id="SCR-002-HOME-SETUP--L1"></a><a id="SCR-002-HOME-SETUP"></a># <a href="../../../../screens/SCR-002-HOME-SETUP.html">SCR-002-HOME-SETUP</a></td>
 </tr>
 <tr id="L2">
   <td class="line"><a href="#L2">2</a></td>
@@ -188,7 +188,7 @@
 </tr>
 <tr id="L38">
   <td class="line"><a href="#L38">38</a></td>
-  <td class="code"><a id="ACT-HOME-002--L38"></a>| <a href="../../../../ids/ACT-HOME-002.html">ACT-HOME-002</a> | `protocolId` と `recommendedAtLocal` が妥当 | `DailyProcedurePlan.slots[n]` 更新 | <a href="../../../../screens/SCR-001-HOME.html">SCR-001-HOME</a> | 時間順序違反エラー |</td>
+  <td class="code"><a id="ACT-HOME-002--L38"></a><a id="ACT-HOME-002"></a>| <a href="../../../../ids/ACT-HOME-002.html">ACT-HOME-002</a> | `protocolId` と `recommendedAtLocal` が妥当 | `DailyProcedurePlan.slots[n]` 更新 | <a href="../../../../screens/SCR-001-HOME.html">SCR-001-HOME</a> | 時間順序違反エラー |</td>
 </tr>
 <tr id="L39">
   <td class="line"><a href="#L39">39</a></td>
@@ -220,87 +220,87 @@
 </tr>
 <tr id="L46">
   <td class="line"><a href="#L46">46</a></td>
-  <td class="code">## 7. バリデーション / エラー文言 / 空状態</td>
+  <td class="code">### 6.1 フォーム契約（FC）定義</td>
 </tr>
 <tr id="L47">
   <td class="line"><a href="#L47">47</a></td>
-  <td class="code">- バリデーション:</td>
+  <td class="code">| FC ID | 主画面 | 対象フォーム | 保存先 | 対応AT |</td>
 </tr>
 <tr id="L48">
   <td class="line"><a href="#L48">48</a></td>
-  <td class="code">  - `protocolId` 必須。</td>
+  <td class="code">|---|---|---|---|---|</td>
 </tr>
 <tr id="L49">
   <td class="line"><a href="#L49">49</a></td>
-  <td class="code">  - 推奨実施時間は左から右へ厳密昇順（同時刻不可）。</td>
+  <td class="code"><a id="FC-SLOT-SETUP-001--L49"></a><a id="FC-SLOT-SETUP-001"></a>| <a href="../../../../ids/FC-SLOT-SETUP-001.html">FC-SLOT-SETUP-001</a> | <a href="../../../../screens/SCR-002-HOME-SETUP.html">SCR-002-HOME-SETUP</a> | 手技設定 | `DailyProcedurePlan.slots[n]` | <a href="../../../../ids/AT-FLOW-005.html">AT-FLOW-005</a> |</td>
 </tr>
 <tr id="L50">
   <td class="line"><a href="#L50">50</a></td>
-  <td class="code">- エラー文言:</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L51">
   <td class="line"><a href="#L51">51</a></td>
-  <td class="code">  - `推奨実施時間は左から右へ遅くなるように設定してください。`</td>
+  <td class="code">## 7. バリデーション / エラー文言 / 空状態</td>
 </tr>
 <tr id="L52">
   <td class="line"><a href="#L52">52</a></td>
-  <td class="code">- 空状態:</td>
+  <td class="code">- バリデーション:</td>
 </tr>
 <tr id="L53">
   <td class="line"><a href="#L53">53</a></td>
-  <td class="code">  - スロット未登録時は空フォームを表示。</td>
+  <td class="code">  - `protocolId` 必須。</td>
 </tr>
 <tr id="L54">
   <td class="line"><a href="#L54">54</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">  - 推奨実施時間は左から右へ厳密昇順（同時刻不可）。</td>
 </tr>
 <tr id="L55">
   <td class="line"><a href="#L55">55</a></td>
-  <td class="code">## 8. 権限・端末差分・フォールバック</td>
+  <td class="code">- エラー文言:</td>
 </tr>
 <tr id="L56">
   <td class="line"><a href="#L56">56</a></td>
-  <td class="code">- Mac/iPhoneともに表示可。</td>
+  <td class="code">  - `推奨実施時間は左から右へ遅くなるように設定してください。`</td>
 </tr>
 <tr id="L57">
   <td class="line"><a href="#L57">57</a></td>
-  <td class="code">- 進行中セッションがある場合は保存禁止（モーダルを閉じず理由を表示）。</td>
+  <td class="code">- 空状態:</td>
 </tr>
 <tr id="L58">
   <td class="line"><a href="#L58">58</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">  - スロット未登録時は空フォームを表示。</td>
 </tr>
 <tr id="L59">
   <td class="line"><a href="#L59">59</a></td>
-  <td class="code">## 9. アクセシビリティ / キーボード</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L60">
   <td class="line"><a href="#L60">60</a></td>
-  <td class="code">- Enterで保存、Escでキャンセル。</td>
+  <td class="code">## 8. 権限・端末差分・フォールバック</td>
 </tr>
 <tr id="L61">
   <td class="line"><a href="#L61">61</a></td>
-  <td class="code">- 最初のフォーカスは `CSV選択` に固定。</td>
+  <td class="code">- Mac/iPhoneともに表示可。</td>
 </tr>
 <tr id="L62">
   <td class="line"><a href="#L62">62</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- 進行中セッションがある場合は保存禁止（モーダルを閉じず理由を表示）。</td>
 </tr>
 <tr id="L63">
   <td class="line"><a href="#L63">63</a></td>
-  <td class="code">## 10. 受入条件（GWT）</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L64">
   <td class="line"><a href="#L64">64</a></td>
-  <td class="code">- Given #1=20:00, #2を19:00で登録する</td>
+  <td class="code">## 9. アクセシビリティ / キーボード</td>
 </tr>
 <tr id="L65">
   <td class="line"><a href="#L65">65</a></td>
-  <td class="code">- When 保存する</td>
+  <td class="code">- Enterで保存、Escでキャンセル。</td>
 </tr>
 <tr id="L66">
   <td class="line"><a href="#L66">66</a></td>
-  <td class="code">- Then 順序違反で保存されない</td>
+  <td class="code">- 最初のフォーカスは `CSV選択` に固定。</td>
 </tr>
 <tr id="L67">
   <td class="line"><a href="#L67">67</a></td>
@@ -308,47 +308,47 @@
 </tr>
 <tr id="L68">
   <td class="line"><a href="#L68">68</a></td>
-  <td class="code">## 11. 参照リンク</td>
+  <td class="code">## 10. 受入条件（GWT）</td>
 </tr>
 <tr id="L69">
   <td class="line"><a href="#L69">69</a></td>
-  <td class="code">- Local FR: `<a href="../../../../ids/SCR-002-HOME-SETUP-FR-01.html">SCR-002-HOME-SETUP-FR-01</a>` 〜 `<a href="../../../../ids/SCR-002-HOME-SETUP-FR-04.html">SCR-002-HOME-SETUP-FR-04</a>`</td>
+  <td class="code">- Given #1=20:00, #2を19:00で登録する</td>
 </tr>
 <tr id="L70">
   <td class="line"><a href="#L70">70</a></td>
-  <td class="code">- 旧FR対応: <a href="../../../../ids/FR-008.html">FR-008</a>, <a href="../../../../ids/FR-009C.html">FR-009C</a>, <a href="../../../../ids/FR-009E.html">FR-009E</a>, <a href="../../../../ids/FR-009F.html">FR-009F</a></td>
+  <td class="code">- When 保存する</td>
 </tr>
 <tr id="L71">
   <td class="line"><a href="#L71">71</a></td>
-  <td class="code">- AT: <a href="../../../../ids/AT-FLOW-005.html">AT-FLOW-005</a></td>
+  <td class="code">- Then 順序違反で保存されない</td>
 </tr>
 <tr id="L72">
   <td class="line"><a href="#L72">72</a></td>
-  <td class="code">- E2E/UT/VR: <a href="../../../../ids/E2E-FLOW-001.html">E2E-FLOW-001</a>, <a href="../../../../ids/UT-SLOT-001.html">UT-SLOT-001</a>〜<a href="../../../../ids/UT-SLOT-012.html">UT-SLOT-012</a>, <a href="../../../../ids/VR-HOME-002.html">VR-HOME-002</a>（`../50_quality/test-link-index.md` 参照）</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L73">
   <td class="line"><a href="#L73">73</a></td>
-  <td class="code">- CAP: `../30_capabilities/CAP-SYNC-001.md`</td>
+  <td class="code">## 11. 参照リンク</td>
 </tr>
 <tr id="L74">
   <td class="line"><a href="#L74">74</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- Local FR: `<a href="../../../../ids/SCR-002-HOME-SETUP-FR-01.html">SCR-002-HOME-SETUP-FR-01</a>` 〜 `<a href="../../../../ids/SCR-002-HOME-SETUP-FR-04.html">SCR-002-HOME-SETUP-FR-04</a>`</td>
 </tr>
 <tr id="L75">
   <td class="line"><a href="#L75">75</a></td>
-  <td class="code">## 12. 画面機能要件（ローカルID）</td>
+  <td class="code">- 旧FR対応: <a href="../../../../ids/FR-008.html">FR-008</a>, <a href="../../../../ids/FR-009C.html">FR-009C</a>, <a href="../../../../ids/FR-009E.html">FR-009E</a>, <a href="../../../../ids/FR-009F.html">FR-009F</a></td>
 </tr>
 <tr id="L76">
   <td class="line"><a href="#L76">76</a></td>
-  <td class="code">&nbsp;</td>
+  <td class="code">- AT: <a href="../../../../ids/AT-FLOW-005.html">AT-FLOW-005</a></td>
 </tr>
 <tr id="L77">
   <td class="line"><a href="#L77">77</a></td>
-  <td class="code">- 採番規則: `&lt;文書ID&gt;-FR-yy`（yyはこの文書内連番）</td>
+  <td class="code">- E2E/UT/VR: <a href="../../../../ids/E2E-FLOW-001.html">E2E-FLOW-001</a>, <a href="../../../../ids/UT-SLOT-001.html">UT-SLOT-001</a>〜<a href="../../../../ids/UT-SLOT-012.html">UT-SLOT-012</a>, <a href="../../../../ids/VR-HOME-002.html">VR-HOME-002</a>（`../50_quality/test-link-index.md` 参照）</td>
 </tr>
 <tr id="L78">
   <td class="line"><a href="#L78">78</a></td>
-  <td class="code">- 旧FR IDは括弧内に残し、移行トレーサビリティを保持します。</td>
+  <td class="code">- CAP: `../30_capabilities/CAP-SYNC-001.md`</td>
 </tr>
 <tr id="L79">
   <td class="line"><a href="#L79">79</a></td>
@@ -356,22 +356,42 @@
 </tr>
 <tr id="L80">
   <td class="line"><a href="#L80">80</a></td>
-  <td class="code"><a id="SCR-002-HOME-SETUP-FR-01--L80"></a><a id="SCR-002-HOME-SETUP-FR-01"></a>- <a href="../../../../ids/SCR-002-HOME-SETUP-FR-01.html">SCR-002-HOME-SETUP-FR-01</a>: (旧: <a href="../../../../ids/FR-008.html">FR-008</a>) 手技スロットの初期状態は「`+` のみ表示」とし、`+` 押下で手技設定モーダル（CSV選択、推奨実施時間）を開きます。</td>
+  <td class="code">## 12. 画面機能要件（ローカルID）</td>
 </tr>
 <tr id="L81">
   <td class="line"><a href="#L81">81</a></td>
-  <td class="code"><a id="SCR-002-HOME-SETUP-FR-02--L81"></a><a id="SCR-002-HOME-SETUP-FR-02"></a>- <a href="../../../../ids/SCR-002-HOME-SETUP-FR-02.html">SCR-002-HOME-SETUP-FR-02</a>: (旧: <a href="../../../../ids/FR-009C.html">FR-009C</a>) スロット登録時は、右隣スロットほど推奨実施時間が遅くなるように検証します（左から右へ厳密昇順、同時刻不可）。</td>
+  <td class="code">&nbsp;</td>
 </tr>
 <tr id="L82">
   <td class="line"><a href="#L82">82</a></td>
-  <td class="code"><a id="SCR-002-HOME-SETUP-FR-03--L82"></a><a id="SCR-002-HOME-SETUP-FR-03"></a>- <a href="../../../../ids/SCR-002-HOME-SETUP-FR-03.html">SCR-002-HOME-SETUP-FR-03</a>: (旧: <a href="../../../../ids/FR-009E.html">FR-009E</a>) 4スロット設定は `dateLocal` 単位でローカル永続化し、同期時に `localRevision` と `cloudRevision` を更新します。</td>
+  <td class="code">- 採番規則: `&lt;文書ID&gt;-FR-yy`（yyはこの文書内連番）</td>
 </tr>
 <tr id="L83">
   <td class="line"><a href="#L83">83</a></td>
-  <td class="code"><a id="SCR-002-HOME-SETUP-FR-04--L83"></a><a id="SCR-002-HOME-SETUP-FR-04"></a>- <a href="../../../../ids/SCR-002-HOME-SETUP-FR-04.html">SCR-002-HOME-SETUP-FR-04</a>: (旧: <a href="../../../../ids/FR-009F.html">FR-009F</a>) `実施済み` スロットは編集/削除不可とします。同一端末で進行中セッションがある間は全スロット編集を禁止します。</td>
+  <td class="code">- 旧FR IDは括弧内に残し、移行トレーサビリティを保持します。</td>
 </tr>
 <tr id="L84">
   <td class="line"><a href="#L84">84</a></td>
+  <td class="code">&nbsp;</td>
+</tr>
+<tr id="L85">
+  <td class="line"><a href="#L85">85</a></td>
+  <td class="code"><a id="SCR-002-HOME-SETUP-FR-01--L85"></a><a id="SCR-002-HOME-SETUP-FR-01"></a>- <a href="../../../../ids/SCR-002-HOME-SETUP-FR-01.html">SCR-002-HOME-SETUP-FR-01</a>: (旧: <a href="../../../../ids/FR-008.html">FR-008</a>) 手技スロットの初期状態は「`+` のみ表示」とし、`+` 押下で手技設定モーダル（CSV選択、推奨実施時間）を開きます。</td>
+</tr>
+<tr id="L86">
+  <td class="line"><a href="#L86">86</a></td>
+  <td class="code"><a id="SCR-002-HOME-SETUP-FR-02--L86"></a><a id="SCR-002-HOME-SETUP-FR-02"></a>- <a href="../../../../ids/SCR-002-HOME-SETUP-FR-02.html">SCR-002-HOME-SETUP-FR-02</a>: (旧: <a href="../../../../ids/FR-009C.html">FR-009C</a>) スロット登録時は、右隣スロットほど推奨実施時間が遅くなるように検証します（左から右へ厳密昇順、同時刻不可）。</td>
+</tr>
+<tr id="L87">
+  <td class="line"><a href="#L87">87</a></td>
+  <td class="code"><a id="SCR-002-HOME-SETUP-FR-03--L87"></a><a id="SCR-002-HOME-SETUP-FR-03"></a>- <a href="../../../../ids/SCR-002-HOME-SETUP-FR-03.html">SCR-002-HOME-SETUP-FR-03</a>: (旧: <a href="../../../../ids/FR-009E.html">FR-009E</a>) 4スロット設定は `dateLocal` 単位でローカル永続化し、同期時に `localRevision` と `cloudRevision` を更新します。</td>
+</tr>
+<tr id="L88">
+  <td class="line"><a href="#L88">88</a></td>
+  <td class="code"><a id="SCR-002-HOME-SETUP-FR-04--L88"></a><a id="SCR-002-HOME-SETUP-FR-04"></a>- <a href="../../../../ids/SCR-002-HOME-SETUP-FR-04.html">SCR-002-HOME-SETUP-FR-04</a>: (旧: <a href="../../../../ids/FR-009F.html">FR-009F</a>) `実施済み` スロットは編集/削除不可とします。同一端末で進行中セッションがある間は全スロット編集を禁止します。</td>
+</tr>
+<tr id="L89">
+  <td class="line"><a href="#L89">89</a></td>
   <td class="code">&nbsp;</td>
 </tr>
   </table>

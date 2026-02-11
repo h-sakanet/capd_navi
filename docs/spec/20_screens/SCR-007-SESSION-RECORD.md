@@ -36,7 +36,7 @@
 ## 5. 操作契約
 | ACT ID | Guard | Side Effect | Success遷移 | Failure表示 |
 |---|---|---|---|---|
-| ACT-003-SESSION | `FC-*` 必須条件充足 | `Record` 保存 + outbox追記 | SCR-006-SESSION | 入力不備エラー |
+| ACT-003-SESSION | `FC-*` 必須条件充足 | `Record` 保存 + outbox追記 | SCR-007-SESSION-RECORD -> SCR-006-SESSION | 入力不備エラー |
 
 ## 6. データバインディング
 | 区分 | Read | Write | Outbox | 反映タイミング |
@@ -47,11 +47,14 @@
 ### 6.1 フォーム契約（FC）詳細
 - 本画面で使用する `FC-*` の一次仕様はこの節を正とします。
 
-| FC ID | 条件 | 保存先 | 対応AT |
-|---|---|---|---|
-| FC-SUMMARY-001 | `summaryScope=first_of_day` | `Record(record_event=session_summary)` | AT-EXIT-002 |
-| FC-SUMMARY-002 | `summaryScope=last_of_day` | `Record(record_event=session_summary)` | AT-EXIT-001 |
-| FC-SUMMARY-003 | `summaryScope=both` | `Record(record_event=session_summary)` | AT-EXIT-011 |
+| FC ID | 主画面 | 条件 | 保存先 | 対応AT |
+|---|---|---|---|---|
+| FC-DRAIN-APPEARANCE-001 | SCR-007-SESSION-RECORD | `record_event=drain_appearance` | `Record(record_event=drain_appearance)` | AT-FLOW-002 |
+| FC-DRAIN-WEIGHT-001 | SCR-007-SESSION-RECORD | `record_event=drain_weight_g` | `Record(record_event=drain_weight_g)` | AT-FLOW-002 |
+| FC-BAG-WEIGHT-001 | SCR-007-SESSION-RECORD | `record_event=bag_weight_g` | `Record(record_event=bag_weight_g)` | AT-FLOW-002 |
+| FC-SUMMARY-001 | SCR-007-SESSION-RECORD | `summaryScope=first_of_day` | `Record(record_event=session_summary)` | AT-EXIT-002 |
+| FC-SUMMARY-002 | SCR-007-SESSION-RECORD | `summaryScope=last_of_day` | `Record(record_event=session_summary)` | AT-EXIT-001 |
+| FC-SUMMARY-003 | SCR-007-SESSION-RECORD | `summaryScope=both` | `Record(record_event=session_summary)` | AT-EXIT-011 |
 
 #### FC-SUMMARY-001 `summaryScope=first_of_day`
 - 必須項目:

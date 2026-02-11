@@ -13,6 +13,7 @@
 - Phase2対象ATはDeferred許可（着手時にPlannedへ変更）。
 
 ## 4. 参照
+- `./acceptance-test-catalog.md`
 - `../../../test/specs/traceability-matrix.md`
 - `../../../test/specs/e2e-spec.md`
 - `../../../test/specs/unit-spec.md`

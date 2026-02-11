@@ -1304,7 +1304,7 @@ function buildHtmlIndex(graph, issues) {
       ? `    <li><a href="${escapeHtml(featuredJourneyHref)}">${escapeHtml(featuredJourneyId)}</a> など対象動線をHTMLで確認</li>`
       : "    <li>対象動線をHTMLで確認</li>",
     `    <li><a href="${escapeHtml(getRelativeHref(pagePath, path.join(generatedRoot, "traceability.md")))}">traceability.md</a> で FR -&gt; AT -&gt; Test を確認</li>`,
-    `    <li><a href="${escapeHtml(getRelativeHref(pagePath, getSourceHtmlPath("docs/requirements/09_user_journeys.md")))}">09_user_journeys.md</a> 原文で最終確認</li>`,
+    `    <li><a href="${escapeHtml(getRelativeHref(pagePath, getSourceHtmlPath("docs/spec/10_journeys/journeys.md")))}">journeys.md</a> 原文で最終確認</li>`,
     "  </ol>",
     "</section>"
   ].join("\n");
@@ -1339,9 +1339,9 @@ function buildHtmlIndex(graph, issues) {
     "<section class=\"card\">",
     "  <h2>原文ドキュメント（HTML化）</h2>",
     "  <ul>",
-    `    <li><a href="${escapeHtml(getRelativeHref(pagePath, getSourceHtmlPath("docs/requirements/05_functional_requirements.md")))}"><code>docs/requirements/05_functional_requirements.md</code></a></li>`,
-    `    <li><a href="${escapeHtml(getRelativeHref(pagePath, getSourceHtmlPath("docs/requirements/07_acceptance_tests.md")))}"><code>docs/requirements/07_acceptance_tests.md</code></a></li>`,
-    `    <li><a href="${escapeHtml(getRelativeHref(pagePath, getSourceHtmlPath("docs/requirements/09_user_journeys.md")))}"><code>docs/requirements/09_user_journeys.md</code></a></li>`,
+    `    <li><a href="${escapeHtml(getRelativeHref(pagePath, getSourceHtmlPath("docs/spec/40_contracts/functional-requirements.md")))}"><code>docs/spec/40_contracts/functional-requirements.md</code></a></li>`,
+    `    <li><a href="${escapeHtml(getRelativeHref(pagePath, getSourceHtmlPath("docs/spec/50_quality/acceptance-test-catalog.md")))}"><code>docs/spec/50_quality/acceptance-test-catalog.md</code></a></li>`,
+    `    <li><a href="${escapeHtml(getRelativeHref(pagePath, getSourceHtmlPath("docs/spec/10_journeys/journeys.md")))}"><code>docs/spec/10_journeys/journeys.md</code></a></li>`,
     `    <li><a href="${escapeHtml(getRelativeHref(pagePath, getSourceHtmlPath("test/specs/traceability-matrix.md")))}"><code>test/specs/traceability-matrix.md</code></a></li>`,
     "  </ul>",
     "</section>"

@@ -42,7 +42,7 @@
 <section class="card">
   <h2>原文リンク</h2>
 <ul>
-<li><a href="../sources/docs/requirements/07_acceptance_tests.html#AT-RECOVERY-002"><code>docs/requirements/07_acceptance_tests.md:49</code></a> <span class="muted">| AT-RECOVERY-002 | クラウド欠損再シード | 端末ローカルに記録あり、Blobsの `index.json/days/photos` を欠損させる | 手動同期を実行 | `cloudState=missing` を検知し `syncMode=full_reseed` で再シード、ローカルデータを失わずクラウドが再構築される |</span></li>
+<li><a href="../sources/docs/spec/50_quality/acceptance-test-catalog.html#AT-RECOVERY-002"><code>docs/spec/50_quality/acceptance-test-catalog.md:49</code></a> <span class="muted">| AT-RECOVERY-002 | クラウド欠損再シード | 端末ローカルに記録あり、Blobsの `index.json/days/photos` を欠損させる | 手動同期を実行 | `cloudState=missing` を検知し `syncMode=full_reseed` で再シード、ローカルデータを失わずクラウドが再構築される |</span></li>
 </ul>
 </section>
 <section class="card">
@@ -53,10 +53,9 @@
 </ul>
 <h3>FR</h3>
 <ul>
-<li><a href="./FR-087.html"><code>FR-087</code></a> <span class="muted">- FR-087: IndexedDB消失検知時はクラウドからフルリストアを実行します。</span></li>
-<li><a href="./FR-087A.html"><code>FR-087A</code></a> <span class="muted">- FR-087A: POST /sync/pull が cloudState=missing を返した場合、クラウド欠損と判定します。</span></li>
-<li><a href="./FR-087B.html"><code>FR-087B</code></a> <span class="muted">- FR-087B: クラウド欠損判定時はローカルデータを正本として syncMode=full_reseed で全量再シードを実行し、ローカルデータは削除/初期化しません。</span></li>
-<li><a href="./FR-087C.html"><code>FR-087C</code></a> <span class="muted">- FR-087C: 全量再シード成功後は再度 POST /sync/pull を実行し、cloudState=ok と cloudRevision 更新を確認して同期完了とします。</span></li>
+<li><a href="./FR-087A.html"><code>FR-087A</code></a></li>
+<li><a href="./FR-087B.html"><code>FR-087B</code></a></li>
+<li><a href="./FR-087C.html"><code>FR-087C</code></a></li>
 </ul>
 <h3>E2E</h3>
 <ul>

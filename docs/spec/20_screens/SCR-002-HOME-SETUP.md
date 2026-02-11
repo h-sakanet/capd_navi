@@ -43,6 +43,11 @@
 | 編集初期値 | `DailyProcedurePlan.slots[n]` | - | - | on dialog open |
 | 保存 | `protocolId`, `recommendedAtLocal` | `DailyProcedurePlan.slots[n]` | `daily_plan` 追記 | on save |
 
+### 6.1 フォーム契約（FC）定義
+| FC ID | 主画面 | 対象フォーム | 保存先 | 対応AT |
+|---|---|---|---|---|
+| FC-SLOT-SETUP-001 | SCR-002-HOME-SETUP | 手技設定 | `DailyProcedurePlan.slots[n]` | AT-FLOW-005 |
+
 ## 7. バリデーション / エラー文言 / 空状態
 - バリデーション:
   - `protocolId` 必須。

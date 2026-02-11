@@ -4,144 +4,122 @@
 flowchart LR
   %% Journey -> Action -> Screen -> Form -> AT -> E2E
   subgraph JRN["Journeys"]
-    N162["JRN-001-CSV CSV取込（Mac）"]
-    N163["JRN-002-SLOT 当日スロット登録と開始"]
-    N164["JRN-003-SESSION セッション進行と記録"]
-    N165["JRN-004-ABORT 非常中断と再開"]
-    N166["JRN-005-SYNC 同期と再試行"]
-    N167["JRN-006-RECOVERY 復旧（DB消失/クラウド欠損）"]
-    N168["JRN-007-ALARM タイマー通知とACK"]
-    N169["JRN-008-HISTORY 記録一覧閲覧と編集"]
-    N170["JRN-009-EXITPHOTO 出口部写真登録/変更/削除"]
+    N119["JRN-001-CSV CSV取込（Mac）"]
+    N120["JRN-002-SLOT 当日スロット登録と開始"]
+    N121["JRN-003-SESSION セッション進行と記録"]
+    N122["JRN-004-ABORT 非常中断と再開"]
+    N123["JRN-005-SYNC 同期と再試行"]
+    N124["JRN-006-RECOVERY 復旧（DB消失/クラウド欠損）"]
+    N125["JRN-007-ALARM タイマー通知とACK"]
+    N126["JRN-008-HISTORY 記録一覧閲覧と編集"]
+    N127["JRN-009-EXITPHOTO 出口部写真登録/変更/削除"]
   end
   subgraph ACT["Actions"]
-    N1["ACT-ALARM-001 ACK"]
-    N2["ACT-EXIT-001 出口部写真登録"]
-    N3["ACT-EXIT-002 出口部写真変更"]
-    N4["ACT-EXIT-003 出口部写真削除"]
-    N5["ACT-HISTORY-001 写真詳細を開く"]
-    N6["ACT-HOME-001 + で手技設定を開く"]
-    N7["ACT-HOME-002 手技設定を保存"]
-    N8["ACT-HOME-003 ••• > 確認"]
-    N9["ACT-HOME-004 ••• > 編集"]
-    N10["ACT-HOME-005 カード本体タップ"]
-    N11["ACT-HOME-006 確認モードで手順表示"]
-    N12["ACT-HOME-007 CSV取り込み"]
-    N13["ACT-HOME-008 開始/再開を確定"]
+    N1["ACT-ALARM-001 未ACKジョブあり"]
+    N2["ACT-EXIT-001 iPhoneかつ対象summaryScope完了"]
+    N3["ACT-EXIT-002 iPhoneかつ既存写真あり"]
+    N4["ACT-EXIT-003 iPhoneかつ既存写真あり"]
+    N5["ACT-HISTORY-001 対象photoIdが存在"]
+    N6["ACT-HOME-001 進行中セッションなし"]
+    N7["ACT-HOME-002 protocolId と recommendedAtLocal が妥当"]
+    N8["ACT-HOME-003 ••• > 確認 かつ対象スロット登録済み"]
+    N9["ACT-HOME-004 ••• > 編集 かつdisplayStatus!=completed かつ進行中なし"]
+    N10["ACT-HOME-005 右側開始時に左側全完了"]
+    N11["ACT-HOME-006 対象スロット登録済み"]
+    N12["ACT-HOME-007 platform=mac"]
+    N13["ACT-HOME-008 開始不可条件に該当しない"]
     N14["ACT-HOME-010 なし"]
     N15["ACT-HOME-011 なし"]
-    N16["ACT-SESSION-001 次へ"]
-    N17["ACT-SESSION-002 戻る"]
-    N18["ACT-SESSION-003 記録保存"]
-    N19["ACT-SESSION-004 最終ステップ完了"]
-    N20["ACT-SESSION-006 非常中断"]
-    N21["ACT-SYNC-001 自動同期（起動/復帰/完了）"]
+    N16["ACT-SESSION-001 必須チェック完了かつrecord_event完了"]
+    N17["ACT-SESSION-002 先頭ステップ以外"]
+    N18["ACT-SESSION-003 FC-* 必須条件充足"]
+    N19["ACT-SESSION-004 最終ステップ到達"]
+    N20["ACT-SESSION-006 確認ダイアログ承認"]
+    N21["ACT-SYNC-001 startup/resume/session_complete/manual 契機"]
   end
   subgraph SCR["Screens"]
-    N171["SCR-001-HOME Home"]
-    N172["SCR-002-HOME-SETUP スロット設定"]
-    N173["SCR-003-HOME-START-CONFIRM 開始確認"]
-    N174["SCR-004-HOME-VIEW-CONFIRM 閲覧専用確認"]
-    N175["SCR-005-HOME-SUMMARY 全体サマリ"]
-    N176["SCR-006-SESSION Session"]
-    N177["SCR-007-SESSION-RECORD 記録入力"]
-    N178["SCR-008-HISTORY 記録一覧"]
-    N179["SCR-009-HISTORY-DETAIL 記録詳細"]
-    N180["SCR-010-HISTORY-PHOTO 写真詳細"]
-    N181["SCR-011-SYNC-STATUS 同期状態表示"]
-    N182["SCR-012-MAC-IMPORT CSV取込I/F"]
+    N128["SCR-001-HOME 手技開始ハブ"]
+    N129["SCR-002-HOME-SETUP スロット設定"]
+    N130["SCR-003-HOME-START-CONFIRM 開始確認"]
+    N131["SCR-004-HOME-VIEW-CONFIRM 閲覧専用確認"]
+    N132["SCR-005-HOME-SUMMARY 全体サマリ"]
+    N133["SCR-006-SESSION セッション進行"]
+    N134["SCR-007-SESSION-RECORD 記録入力"]
+    N135["SCR-008-HISTORY 記録一覧"]
+    N136["SCR-009-HISTORY-DETAIL 記録詳細"]
+    N137["SCR-010-HISTORY-PHOTO 写真詳細"]
+    N138["SCR-011-SYNC-STATUS 同期状態表示"]
+    N139["SCR-012-MAC-IMPORT CSV取込I/F"]
   end
   subgraph FC["Forms"]
-    N155["FC-BAG-WEIGHT-001 注液量"]
-    N156["FC-DRAIN-APPEARANCE-001 排液の確認"]
-    N157["FC-DRAIN-WEIGHT-001 排液量"]
-    N158["FC-SLOT-SETUP-001 手技設定"]
-    N159["FC-SUMMARY-001 summaryScope=first_of_day"]
-    N160["FC-SUMMARY-002 summaryScope=last_of_day"]
-    N161["FC-SUMMARY-003 summaryScope=both"]
+    N112["FC-BAG-WEIGHT-001"]
+    N113["FC-DRAIN-APPEARANCE-001"]
+    N114["FC-DRAIN-WEIGHT-001"]
+    N115["FC-SLOT-SETUP-001"]
+    N116["FC-SUMMARY-001"]
+    N117["FC-SUMMARY-002"]
+    N118["FC-SUMMARY-003"]
   end
   subgraph UI["UI Elements"]
-    N183["UI-001-HISTORY 記録一覧テーブル"]
-    N184["UI-001-HISTORY-DETAIL サマリ詳細"]
-    N185["UI-001-HISTORY-PHOTO 写真表示領域"]
-    N186["UI-001-HOME 日付ヘッダ"]
-    N187["UI-001-HOME-SUMMARY 全体サマリ表示"]
-    N188["UI-001-IMPORT ディレクトリ選択ボタン"]
-    N189["UI-001-RECORD"]
-    N190["UI-001-SESSION ステップタイトル/本文"]
-    N191["UI-001-SLOT-SETUP 手技選択（Select）"]
-    N192["UI-001-START-CONFIRM 手技情報表示"]
-    N193["UI-001-SYNC 同期状態表示"]
-    N194["UI-001-VIEW-CONFIRM 手技情報表示"]
-    N195["UI-002-HISTORY 写真詳細リンク"]
-    N196["UI-002-HISTORY-DETAIL 出口部写真登録ボタン"]
-    N197["UI-002-HISTORY-PHOTO 写真メタ情報"]
-    N198["UI-002-HOME #1〜#4スロット状態"]
-    N199["UI-002-HOME-SUMMARY 出口部写真操作行"]
-    N200["UI-002-IMPORT 取込実行ボタン"]
-    N201["UI-002-RECORD"]
-    N202["UI-002-SESSION 必須チェック一覧"]
-    N203["UI-002-SLOT-SETUP 推奨実施時間（Time）"]
-    N204["UI-002-START-CONFIRM 開始/再開ボタン"]
-    N205["UI-002-SYNC 手動再試行ボタン"]
-    N206["UI-002-VIEW-CONFIRM 手順を確認（データ保存なし）ボタン"]
-    N207["UI-003-HISTORY 出口部写真列"]
-    N208["UI-003-HISTORY-DETAIL 出口部写真変更ボタン"]
-    N209["UI-003-HISTORY-PHOTO 戻るリンク"]
-    N210["UI-003-HOME スロットカード本体"]
-    N211["UI-003-HOME-SUMMARY 写真登録ボタン"]
-    N212["UI-003-IMPORT 実行中表示"]
-    N213["UI-003-RECORD"]
-    N214["UI-003-SESSION 次へボタン"]
-    N215["UI-003-SLOT-SETUP 保存ボタン"]
-    N216["UI-003-START-CONFIRM 開始不可理由"]
-    N217["UI-003-SYNC 復旧進行表示"]
-    N218["UI-003-VIEW-CONFIRM 確認モード注意文"]
-    N219["UI-004-HISTORY-DETAIL 出口部写真削除ボタン"]
-    N220["UI-004-HOME ••• メニュー"]
-    N221["UI-004-HOME-SUMMARY 写真変更ボタン"]
-    N222["UI-004-IMPORT 結果サマリ"]
-    N223["UI-004-RECORD"]
-    N224["UI-004-SESSION 記録入力導線"]
-    N225["UI-004-SLOT-SETUP エラー表示"]
-    N226["UI-005-HOME CSV取り込みボタン"]
-    N227["UI-005-HOME-SUMMARY 写真削除ボタン"]
-    N228["UI-005-IMPORT エラー一覧"]
-    N229["UI-005-RECORD 保存ボタン"]
-    N230["UI-005-SESSION 非常中断メニュー"]
-    N231["UI-006-HOME 記録一覧ボタン"]
-    N232["UI-006-HOME-SUMMARY 1日の総除水量"]
-    N233["UI-006-IMPORT 警告一覧"]
-    N234["UI-006-SESSION アラームバナー/ACK"]
-    N235["UI-007-HOME 手動同期ボタン"]
-    N236["UI-007-SESSION 戻るボタン"]
-    N237["UI-008-HOME 当日ノート（貯留時間）"]
-    N238["UI-009-HOME 当日ノート（排液量/注液量/排液確認）"]
-    N239["UI-010-HOME 当日ノート（総除水量）"]
-    N240["UI-011-HOME 同期失敗バナー"]
-    N241["UI-012-HOME 当日ノート（排液写真）"]
-    N242["UI-HISTORY-001"]
-    N243["UI-HISTORY-002"]
-    N244["UI-HOME-001"]
-    N245["UI-HOME-002"]
-    N246["UI-HOME-003"]
-    N247["UI-HOME-003A"]
-    N248["UI-HOME-004"]
-    N249["UI-HOME-005"]
-    N250["UI-HOME-006"]
-    N251["UI-HOME-007"]
-    N252["UI-HOME-008"]
-    N253["UI-HOME-009"]
-    N254["UI-HOME-010"]
-    N255["UI-HOME-011"]
-    N256["UI-SESSION-001"]
-    N257["UI-SESSION-002"]
-    N258["UI-SESSION-003"]
-    N259["UI-SESSION-004"]
-    N260["UI-SESSION-005"]
-    N261["UI-SESSION-006"]
-    N262["UI-SYNC-001"]
-    N263["UI-SYNC-002"]
+    N140["UI-001-HISTORY 記録一覧テーブル"]
+    N141["UI-001-HISTORY-DETAIL サマリ詳細"]
+    N142["UI-001-HISTORY-PHOTO 写真表示領域"]
+    N143["UI-001-HOME 日付ヘッダ"]
+    N144["UI-001-HOME-SUMMARY 全体サマリ表示"]
+    N145["UI-001-IMPORT ディレクトリ選択ボタン"]
+    N146["UI-001-RECORD"]
+    N147["UI-001-SESSION ステップタイトル/本文"]
+    N148["UI-001-SLOT-SETUP 手技選択（Select）"]
+    N149["UI-001-START-CONFIRM 手技情報表示"]
+    N150["UI-001-SYNC 同期状態表示"]
+    N151["UI-001-VIEW-CONFIRM 手技情報表示"]
+    N152["UI-002-HISTORY 写真詳細リンク"]
+    N153["UI-002-HISTORY-DETAIL 出口部写真登録ボタン"]
+    N154["UI-002-HISTORY-PHOTO 写真メタ情報"]
+    N155["UI-002-HOME #1〜#4スロット状態"]
+    N156["UI-002-HOME-SUMMARY 出口部写真操作行"]
+    N157["UI-002-IMPORT 取込実行ボタン"]
+    N158["UI-002-RECORD"]
+    N159["UI-002-SESSION 必須チェック一覧"]
+    N160["UI-002-SLOT-SETUP 推奨実施時間（Time）"]
+    N161["UI-002-START-CONFIRM 開始/再開ボタン"]
+    N162["UI-002-SYNC 手動再試行ボタン"]
+    N163["UI-002-VIEW-CONFIRM 手順を確認（データ保存なし）ボタン"]
+    N164["UI-003-HISTORY 出口部写真列"]
+    N165["UI-003-HISTORY-DETAIL 出口部写真変更ボタン"]
+    N166["UI-003-HISTORY-PHOTO 戻るリンク"]
+    N167["UI-003-HOME スロットカード本体"]
+    N168["UI-003-HOME-SUMMARY 写真登録ボタン"]
+    N169["UI-003-IMPORT 実行中表示"]
+    N170["UI-003-RECORD"]
+    N171["UI-003-SESSION 次へボタン"]
+    N172["UI-003-SLOT-SETUP 保存ボタン"]
+    N173["UI-003-START-CONFIRM 開始不可理由"]
+    N174["UI-003-SYNC 復旧進行表示"]
+    N175["UI-003-VIEW-CONFIRM 確認モード注意文"]
+    N176["UI-004-HISTORY-DETAIL 出口部写真削除ボタン"]
+    N177["UI-004-HOME ••• メニュー"]
+    N178["UI-004-HOME-SUMMARY 写真変更ボタン"]
+    N179["UI-004-IMPORT 結果サマリ"]
+    N180["UI-004-RECORD"]
+    N181["UI-004-SESSION 記録入力導線"]
+    N182["UI-004-SLOT-SETUP エラー表示"]
+    N183["UI-005-HOME CSV取り込みボタン"]
+    N184["UI-005-HOME-SUMMARY 写真削除ボタン"]
+    N185["UI-005-IMPORT エラー一覧"]
+    N186["UI-005-RECORD 保存ボタン"]
+    N187["UI-005-SESSION 非常中断メニュー"]
+    N188["UI-006-HOME 記録一覧ボタン"]
+    N189["UI-006-HOME-SUMMARY 1日の総除水量"]
+    N190["UI-006-IMPORT 警告一覧"]
+    N191["UI-006-SESSION アラームバナー/ACK"]
+    N192["UI-007-HOME 手動同期ボタン"]
+    N193["UI-007-SESSION 戻るボタン"]
+    N194["UI-008-HOME 当日ノート（貯留時間）"]
+    N195["UI-009-HOME 当日ノート（排液量/注液量/排液確認）"]
+    N196["UI-010-HOME 当日ノート（総除水量）"]
+    N197["UI-011-HOME 同期失敗バナー"]
+    N198["UI-012-HOME 当日ノート（排液写真）"]
   end
   subgraph AT["Acceptance Tests"]
     N22["AT-ALARM-001 T0通知"]
@@ -195,409 +173,263 @@ flowchart LR
     N70["AT-UI-SESSION-001 Session表示確認"]
   end
   subgraph E2E["E2E Tests"]
-    N114["E2E-ALARM-001"]
-    N115["E2E-ALARM-002"]
-    N116["E2E-ALARM-003"]
-    N117["E2E-ALARM-004"]
-    N118["E2E-API-001"]
-    N119["E2E-API-002"]
-    N120["E2E-API-003"]
-    N121["E2E-API-004"]
-    N122["E2E-BACKUP-001"]
-    N123["E2E-CSV-001"]
-    N124["E2E-CSV-002"]
-    N125["E2E-CSV-003"]
-    N126["E2E-CSV-004"]
-    N127["E2E-CSV-005"]
-    N128["E2E-EXIT-001"]
-    N129["E2E-EXIT-002"]
-    N130["E2E-EXIT-003"]
-    N131["E2E-EXIT-004"]
-    N132["E2E-EXIT-005"]
-    N133["E2E-EXIT-006"]
-    N134["E2E-EXIT-007"]
-    N135["E2E-FLOW-001"]
-    N136["E2E-FLOW-002"]
-    N137["E2E-FLOW-003"]
-    N138["E2E-FLOW-004"]
-    N139["E2E-FLOW-005"]
-    N140["E2E-FLOW-006"]
-    N141["E2E-FLOW-007"]
-    N142["E2E-PHOTO-001"]
-    N143["E2E-PLAT-001"]
-    N144["E2E-PLAT-002"]
-    N145["E2E-RECOVERY-001"]
-    N146["E2E-RECOVERY-002"]
-    N147["E2E-RECOVERY-003"]
-    N148["E2E-SLEEP-001"]
-    N149["E2E-SYNC-001"]
-    N150["E2E-SYNC-002"]
-    N151["E2E-SYNC-003"]
-    N152["E2E-SYNC-004"]
-    N153["E2E-SYNC-005"]
-    N154["E2E-SYNC-006"]
+    N71["E2E-ALARM-001"]
+    N72["E2E-ALARM-002"]
+    N73["E2E-ALARM-003"]
+    N74["E2E-ALARM-004"]
+    N75["E2E-API-001"]
+    N76["E2E-API-002"]
+    N77["E2E-API-003"]
+    N78["E2E-API-004"]
+    N79["E2E-BACKUP-001"]
+    N80["E2E-CSV-001"]
+    N81["E2E-CSV-002"]
+    N82["E2E-CSV-003"]
+    N83["E2E-CSV-004"]
+    N84["E2E-CSV-005"]
+    N85["E2E-EXIT-001"]
+    N86["E2E-EXIT-002"]
+    N87["E2E-EXIT-003"]
+    N88["E2E-EXIT-004"]
+    N89["E2E-EXIT-005"]
+    N90["E2E-EXIT-006"]
+    N91["E2E-EXIT-007"]
+    N92["E2E-FLOW-001"]
+    N93["E2E-FLOW-002"]
+    N94["E2E-FLOW-003"]
+    N95["E2E-FLOW-004"]
+    N96["E2E-FLOW-005"]
+    N97["E2E-FLOW-006"]
+    N98["E2E-FLOW-007"]
+    N99["E2E-PHOTO-001"]
+    N100["E2E-PLAT-001"]
+    N101["E2E-PLAT-002"]
+    N102["E2E-RECOVERY-001"]
+    N103["E2E-RECOVERY-002"]
+    N104["E2E-RECOVERY-003"]
+    N105["E2E-SLEEP-001"]
+    N106["E2E-SYNC-001"]
+    N107["E2E-SYNC-002"]
+    N108["E2E-SYNC-003"]
+    N109["E2E-SYNC-004"]
+    N110["E2E-SYNC-005"]
+    N111["E2E-SYNC-006"]
   end
-  subgraph DATA["Data Paths"]
-    N71["acked_at"]
-    N72["activeSession"]
-    N73["alarm_ack"]
-    N74["AlarmDispatchJob.pendingAlarm"]
-    N75["daily_plan"]
-    N76["dailyProcedurePlan"]
-    N77["DailyProcedurePlan.dateLocal"]
-    N78["DailyProcedurePlan.slots[*].displayStatus"]
-    N79["DayBundle.records"]
-    N80["FC-*"]
-    N81["lastError"]
-    N82["lastSyncedAt"]
-    N83["payload.exit_site_photo"]
-    N84["photoRefs"]
-    N85["photos/*"]
-    N86["platform"]
-    N87["protocol"]
-    N88["ProtocolPackage"]
-    N89["recommendedAtLocal"]
-    N90["record"]
-    N91["Record"]
-    N92["record_exchange_no)"]
-    N93["Record(record_event"]
-    N94["Record(session_summary.payload.exit_site_photo)"]
-    N95["Record(timer_event"]
-    N96["record完了状態"]
-    N97["requiredChecks達成状態"]
-    N98["session"]
-    N99["Session"]
-    N100["session_progress"]
-    N101["Session.currentStepId"]
-    N102["Session.status=aborted"]
-    N103["Session.status=active"]
-    N104["SessionProtocolSnapshot.steps[*]"]
-    N105["sessions"]
-    N106["slot.status=pending"]
-    N107["slots[*].protocolTitle"]
-    N108["slots[n]"]
-    N109["slots[n].displayStatus"]
-    N110["steps[*].requiredChecks"]
-    N111["SyncState"]
-    N112["SyncState.lastSyncStatus"]
-    N113["timer_exchange_no)"]
-  end
-  N1 --> N176
-  N1 --> N261
-  N2 --> N175
-  N2 --> N179
-  N2 --> N255
-  N3 --> N175
-  N3 --> N179
-  N3 --> N255
-  N4 --> N175
-  N4 --> N179
-  N4 --> N255
-  N5 --> N178
-  N5 --> N180
-  N5 --> N243
-  N6 --> N171
-  N6 --> N172
-  N7 --> N171
-  N7 --> N172
-  N7 --> N248
-  N8 --> N171
-  N8 --> N174
-  N9 --> N171
-  N9 --> N172
-  N10 --> N171
-  N10 --> N173
-  N10 --> N247
-  N11 --> N174
-  N11 --> N176
-  N11 --> N250
-  N12 --> N171
-  N12 --> N182
-  N12 --> N251
-  N13 --> N173
-  N13 --> N176
-  N13 --> N249
-  N14 --> N171
-  N14 --> N178
-  N14 --> N242
-  N15 --> N171
-  N15 --> N263
-  N16 --> N176
-  N16 --> N257
-  N16 --> N258
-  N17 --> N176
-  N18 --> N176
-  N18 --> N177
-  N18 --> N259
-  N19 --> N171
-  N19 --> N176
-  N20 --> N171
-  N20 --> N176
-  N20 --> N260
-  N21 --> N181
-  N21 --> N262
-  N22 --> N114
-  N23 --> N115
-  N24 --> N116
-  N25 --> N117
-  N26 --> N118
-  N27 --> N120
-  N28 --> N119
-  N29 --> N121
-  N30 --> N122
-  N31 --> N123
-  N32 --> N124
-  N33 --> N125
-  N34 --> N126
-  N35 --> N127
-  N36 --> N128
-  N37 --> N128
-  N38 --> N129
-  N39 --> N130
-  N40 --> N131
-  N41 --> N131
-  N42 --> N131
-  N43 --> N131
-  N44 --> N132
-  N45 --> N132
-  N46 --> N133
-  N47 --> N134
-  N48 --> N139
-  N49 --> N140
-  N50 --> N141
-  N51 --> N136
-  N52 --> N135
-  N53 --> N137
-  N54 --> N138
-  N55 --> N142
-  N56 --> N143
-  N57 --> N144
-  N58 --> N145
-  N59 --> N146
-  N60 --> N147
-  N61 --> N148
-  N62 --> N149
-  N63 --> N151
-  N64 --> N152
-  N65 --> N153
-  N66 --> N150
-  N67 --> N154
-  N155 --> N49
-  N155 --> N213
-  N156 --> N49
-  N156 --> N189
-  N157 --> N49
-  N157 --> N201
-  N158 --> N52
-  N159 --> N37
-  N159 --> N223
-  N160 --> N36
-  N160 --> N223
-  N161 --> N46
-  N161 --> N223
-  N162 --> N12
-  N162 --> N28
-  N162 --> N31
-  N162 --> N32
-  N162 --> N33
-  N162 --> N34
-  N162 --> N119
-  N162 --> N123
-  N162 --> N124
-  N162 --> N125
-  N162 --> N126
-  N162 --> N171
-  N162 --> N182
-  N163 --> N6
-  N163 --> N7
-  N163 --> N8
-  N163 --> N9
-  N163 --> N10
-  N163 --> N11
-  N163 --> N13
-  N163 --> N51
-  N163 --> N52
-  N163 --> N135
-  N163 --> N136
-  N163 --> N171
-  N163 --> N172
-  N163 --> N173
-  N163 --> N174
-  N164 --> N16
-  N164 --> N17
-  N164 --> N18
-  N164 --> N19
-  N164 --> N48
-  N164 --> N49
-  N164 --> N50
-  N164 --> N139
-  N164 --> N140
-  N164 --> N141
-  N164 --> N176
-  N164 --> N177
-  N164 --> N179
-  N165 --> N20
-  N165 --> N53
-  N165 --> N54
-  N165 --> N137
-  N165 --> N138
-  N165 --> N171
-  N165 --> N176
-  N166 --> N15
-  N166 --> N21
-  N166 --> N26
-  N166 --> N29
-  N166 --> N62
-  N166 --> N63
-  N166 --> N64
-  N166 --> N65
-  N166 --> N66
-  N166 --> N67
-  N166 --> N118
-  N166 --> N121
-  N166 --> N149
-  N166 --> N150
-  N166 --> N151
-  N166 --> N152
-  N166 --> N153
-  N166 --> N154
-  N166 --> N171
-  N166 --> N176
-  N166 --> N181
-  N167 --> N21
-  N167 --> N58
-  N167 --> N59
-  N167 --> N60
-  N167 --> N145
-  N167 --> N146
-  N167 --> N147
-  N167 --> N181
-  N168 --> N1
-  N168 --> N22
-  N168 --> N23
-  N168 --> N24
-  N168 --> N25
-  N168 --> N114
-  N168 --> N115
-  N168 --> N116
-  N168 --> N117
-  N168 --> N176
-  N169 --> N5
-  N169 --> N14
-  N169 --> N68
-  N169 --> N171
-  N169 --> N178
-  N169 --> N179
-  N169 --> N180
-  N170 --> N2
-  N170 --> N3
-  N170 --> N4
-  N170 --> N30
-  N170 --> N36
-  N170 --> N37
-  N170 --> N38
-  N170 --> N39
-  N170 --> N40
-  N170 --> N41
-  N170 --> N42
-  N170 --> N43
-  N170 --> N44
-  N170 --> N45
-  N170 --> N46
-  N170 --> N47
-  N170 --> N55
-  N170 --> N122
-  N170 --> N128
-  N170 --> N129
-  N170 --> N130
-  N170 --> N131
-  N170 --> N132
-  N170 --> N133
-  N170 --> N134
-  N170 --> N142
-  N170 --> N175
-  N170 --> N179
-  N170 --> N180
-  N171 --> N244
-  N171 --> N245
-  N171 --> N246
-  N171 --> N247
-  N171 --> N251
-  N171 --> N252
-  N171 --> N253
-  N172 --> N158
-  N172 --> N248
-  N173 --> N249
-  N174 --> N250
-  N175 --> N254
-  N175 --> N255
-  N176 --> N256
-  N176 --> N257
-  N176 --> N258
-  N176 --> N260
-  N176 --> N261
-  N177 --> N155
-  N177 --> N156
-  N177 --> N157
-  N177 --> N159
-  N177 --> N160
-  N177 --> N161
-  N177 --> N259
-  N178 --> N242
-  N180 --> N243
-  N181 --> N262
-  N181 --> N263
-  N242 --> N76
-  N242 --> N79
-  N242 --> N90
-  N242 --> N91
-  N242 --> N105
-  N243 --> N84
-  N243 --> N85
-  N244 --> N77
-  N245 --> N78
-  N246 --> N89
-  N246 --> N107
-  N247 --> N109
-  N248 --> N75
-  N248 --> N108
-  N249 --> N72
-  N249 --> N98
-  N249 --> N99
-  N249 --> N108
-  N250 --> N108
-  N251 --> N86
-  N251 --> N87
-  N251 --> N88
-  N252 --> N95
-  N252 --> N113
-  N253 --> N92
-  N253 --> N93
-  N254 --> N91
-  N255 --> N83
-  N255 --> N90
-  N255 --> N94
-  N256 --> N104
-  N257 --> N110
-  N258 --> N96
-  N258 --> N97
-  N258 --> N100
-  N258 --> N101
-  N259 --> N80
-  N259 --> N90
-  N259 --> N91
-  N260 --> N75
-  N260 --> N98
-  N260 --> N102
-  N260 --> N103
-  N260 --> N106
-  N261 --> N71
-  N261 --> N73
-  N261 --> N74
-  N262 --> N81
-  N262 --> N82
-  N262 --> N111
-  N262 --> N112
-  N263 --> N112
+  N1 --> N133
+  N2 --> N132
+  N2 --> N136
+  N3 --> N132
+  N3 --> N136
+  N4 --> N132
+  N4 --> N136
+  N5 --> N135
+  N5 --> N137
+  N6 --> N129
+  N7 --> N128
+  N8 --> N131
+  N9 --> N129
+  N10 --> N130
+  N11 --> N133
+  N12 --> N128
+  N12 --> N139
+  N13 --> N133
+  N14 --> N135
+  N15 --> N128
+  N16 --> N133
+  N17 --> N133
+  N18 --> N133
+  N18 --> N134
+  N19 --> N128
+  N20 --> N128
+  N21 --> N138
+  N22 --> N71
+  N23 --> N72
+  N24 --> N73
+  N25 --> N74
+  N26 --> N75
+  N27 --> N77
+  N28 --> N76
+  N29 --> N78
+  N30 --> N79
+  N31 --> N80
+  N32 --> N81
+  N33 --> N82
+  N34 --> N83
+  N35 --> N84
+  N36 --> N85
+  N37 --> N85
+  N38 --> N86
+  N39 --> N87
+  N40 --> N88
+  N41 --> N88
+  N42 --> N88
+  N43 --> N88
+  N44 --> N89
+  N45 --> N89
+  N46 --> N90
+  N47 --> N91
+  N48 --> N96
+  N49 --> N97
+  N50 --> N98
+  N51 --> N93
+  N52 --> N92
+  N53 --> N94
+  N54 --> N95
+  N55 --> N99
+  N56 --> N100
+  N57 --> N101
+  N58 --> N102
+  N59 --> N103
+  N60 --> N104
+  N61 --> N105
+  N62 --> N106
+  N63 --> N108
+  N64 --> N109
+  N65 --> N110
+  N66 --> N107
+  N67 --> N111
+  N112 --> N49
+  N112 --> N170
+  N113 --> N49
+  N113 --> N146
+  N114 --> N49
+  N114 --> N158
+  N115 --> N52
+  N116 --> N37
+  N116 --> N180
+  N117 --> N36
+  N117 --> N180
+  N118 --> N46
+  N118 --> N180
+  N119 --> N12
+  N119 --> N28
+  N119 --> N31
+  N119 --> N32
+  N119 --> N33
+  N119 --> N34
+  N119 --> N76
+  N119 --> N80
+  N119 --> N81
+  N119 --> N82
+  N119 --> N83
+  N119 --> N128
+  N119 --> N139
+  N120 --> N6
+  N120 --> N7
+  N120 --> N8
+  N120 --> N9
+  N120 --> N10
+  N120 --> N11
+  N120 --> N13
+  N120 --> N51
+  N120 --> N52
+  N120 --> N92
+  N120 --> N93
+  N120 --> N128
+  N120 --> N129
+  N120 --> N130
+  N120 --> N131
+  N121 --> N16
+  N121 --> N17
+  N121 --> N18
+  N121 --> N19
+  N121 --> N48
+  N121 --> N49
+  N121 --> N50
+  N121 --> N96
+  N121 --> N97
+  N121 --> N98
+  N121 --> N133
+  N121 --> N134
+  N121 --> N136
+  N122 --> N20
+  N122 --> N53
+  N122 --> N54
+  N122 --> N94
+  N122 --> N95
+  N122 --> N128
+  N122 --> N133
+  N123 --> N15
+  N123 --> N21
+  N123 --> N26
+  N123 --> N29
+  N123 --> N62
+  N123 --> N63
+  N123 --> N64
+  N123 --> N65
+  N123 --> N66
+  N123 --> N67
+  N123 --> N75
+  N123 --> N78
+  N123 --> N106
+  N123 --> N107
+  N123 --> N108
+  N123 --> N109
+  N123 --> N110
+  N123 --> N111
+  N123 --> N128
+  N123 --> N133
+  N123 --> N138
+  N124 --> N21
+  N124 --> N58
+  N124 --> N59
+  N124 --> N60
+  N124 --> N102
+  N124 --> N103
+  N124 --> N104
+  N124 --> N138
+  N125 --> N1
+  N125 --> N22
+  N125 --> N23
+  N125 --> N24
+  N125 --> N25
+  N125 --> N71
+  N125 --> N72
+  N125 --> N73
+  N125 --> N74
+  N125 --> N133
+  N126 --> N5
+  N126 --> N14
+  N126 --> N68
+  N126 --> N128
+  N126 --> N135
+  N126 --> N136
+  N126 --> N137
+  N127 --> N2
+  N127 --> N3
+  N127 --> N4
+  N127 --> N30
+  N127 --> N36
+  N127 --> N37
+  N127 --> N38
+  N127 --> N39
+  N127 --> N40
+  N127 --> N41
+  N127 --> N42
+  N127 --> N43
+  N127 --> N44
+  N127 --> N45
+  N127 --> N46
+  N127 --> N47
+  N127 --> N55
+  N127 --> N79
+  N127 --> N85
+  N127 --> N86
+  N127 --> N87
+  N127 --> N88
+  N127 --> N89
+  N127 --> N90
+  N127 --> N91
+  N127 --> N99
+  N127 --> N132
+  N127 --> N136
+  N127 --> N137
+  N129 --> N115
+  N134 --> N112
+  N134 --> N113
+  N134 --> N114
+  N134 --> N116
+  N134 --> N117
+  N134 --> N118
 ```
 

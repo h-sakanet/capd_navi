@@ -38,11 +38,11 @@
     <section class="card">
   <h2>対応FR</h2>
 <ul>
-<li><a href="../ids/FR-009G.html"><code>FR-009G</code></a> <span class="muted">- FR-009G: 実施中 スロットをタップした場合は新規開始せず、進行中セッションを再開します。</span></li>
-<li><a href="../ids/FR-039D.html"><code>FR-039D</code></a> <span class="muted">- FR-039D: セッション画面右上 ••• メニューに セッションを中断（非常用） を配置します。</span></li>
-<li><a href="../ids/FR-039E.html"><code>FR-039E</code></a> <span class="muted">- FR-039E: セッションを中断（非常用） は確認ダイアログを経て実行し、中断後はホームへ戻します。</span></li>
-<li><a href="../ids/FR-039F.html"><code>FR-039F</code></a> <span class="muted">- FR-039F: 明示中断時はセッションを aborted で終了し、対応スロットの表示状態を 未実施 へ戻します。</span></li>
-<li><a href="../ids/FR-039G.html"><code>FR-039G</code></a> <span class="muted">- FR-039G: ホームのスロットには 前回中断あり の表示を出しません（履歴は記録一覧で確認）。</span></li>
+<li><a href="../ids/FR-009G.html"><code>FR-009G</code></a></li>
+<li><a href="../ids/FR-039D.html"><code>FR-039D</code></a></li>
+<li><a href="../ids/FR-039E.html"><code>FR-039E</code></a></li>
+<li><a href="../ids/FR-039F.html"><code>FR-039F</code></a></li>
+<li><a href="../ids/FR-039G.html"><code>FR-039G</code></a></li>
 </ul>
 </section>
 <section class="card">
@@ -56,20 +56,18 @@
   <h2>画面と操作</h2>
   <h3>SCR</h3>
 <ul>
-<li><a href="../screens/SCR-001-HOME.html"><code>SCR-001-HOME</code></a> <span class="muted">Home</span></li>
-<li><a href="../screens/SCR-006-SESSION.html"><code>SCR-006-SESSION</code></a> <span class="muted">Session</span></li>
+<li><a href="../screens/SCR-001-HOME.html"><code>SCR-001-HOME</code></a> <span class="muted">手技開始ハブ</span></li>
+<li><a href="../screens/SCR-006-SESSION.html"><code>SCR-006-SESSION</code></a> <span class="muted">セッション進行</span></li>
 </ul>
   <h3>ACT</h3>
 <ul>
-<li><a href="../ids/ACT-SESSION-006.html"><code>ACT-SESSION-006</code></a> <span class="muted">非常中断</span></li>
+<li><a href="../ids/ACT-SESSION-006.html"><code>ACT-SESSION-006</code></a> <span class="muted">確認ダイアログ承認</span></li>
 </ul>
 </section>
 <section class="card">
   <h2>定義位置</h2>
 <ul>
-<li><a href="../sources/docs/requirements/09_user_journeys.html#JRN-004-ABORT"><code>docs/requirements/09_user_journeys.md:19</code></a> <span class="muted">| JRN-004-ABORT | 非常中断と再開 | Mac/iPhone | セッション進行中 | 中断時は `未実施` に戻る、離脱時は再開できる | FR-009G, FR-039D〜FR-039G | AT-FLOW-006, AT-FLOW-007 | Phase1 |</span></li>
-<li><a href="../sources/docs/requirements/09_user_journeys.html#JRN-004-ABORT--L46"><code>docs/requirements/09_user_journeys.md:46</code></a> <span class="muted">### JRN-004-ABORT 非常中断と再開</span></li>
-<li><a href="../sources/docs/spec/10_journeys/journeys.html#JRN-004-ABORT--L26"><code>docs/spec/10_journeys/journeys.md:26</code></a> <span class="muted">| JRN-004-ABORT | 非常中断と再開 | 安全中断と復帰 | SCR-006-SESSION, SCR-001-HOME | aborted / 再開成立 | [link](./JRN-004-ABORT.md) |</span></li>
+<li><a href="../sources/docs/spec/10_journeys/journeys.html#JRN-004-ABORT"><code>docs/spec/10_journeys/journeys.md:26</code></a> <span class="muted">| JRN-004-ABORT | 非常中断と再開 | 安全中断と復帰 | SCR-006-SESSION, SCR-001-HOME | ACT-006-SESSION | aborted / 再開成立 | [link](./JRN-004-ABORT.md) |</span></li>
 <li><a href="../sources/docs/spec/10_journeys/JRN-004-ABORT.html#JRN-004-ABORT--L1"><code>docs/spec/10_journeys/JRN-004-ABORT.md:1</code></a> <span class="muted"># JRN-004-ABORT</span></li>
 </ul>
 </section>

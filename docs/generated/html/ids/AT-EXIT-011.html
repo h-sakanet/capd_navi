@@ -42,7 +42,7 @@
 <section class="card">
   <h2>原文リンク</h2>
 <ul>
-<li><a href="../sources/docs/requirements/07_acceptance_tests.html#AT-EXIT-011"><code>docs/requirements/07_acceptance_tests.md:101</code></a> <span class="muted">| AT-EXIT-011 | `both` 対応 | 1日1回運用で `summaryScope=both` | iPhoneで写真登録 | `first_of_day` と同等に登録できる |</span></li>
+<li><a href="../sources/docs/spec/50_quality/acceptance-test-catalog.html#AT-EXIT-011"><code>docs/spec/50_quality/acceptance-test-catalog.md:101</code></a> <span class="muted">| AT-EXIT-011 | `both` 対応 | 1日1回運用で `summaryScope=both` | iPhoneで写真登録 | `first_of_day` と同等に登録できる |</span></li>
 </ul>
 </section>
 <section class="card">
@@ -53,9 +53,8 @@
 </ul>
 <h3>FR</h3>
 <ul>
-<li><a href="./FR-042A.html"><code>FR-042A</code></a> <span class="muted">- FR-042A: 出口部の記録写真（exit_site）は session_summary.payload.exit_site_photo に保存します（record_event は追加しません）。</span></li>
-<li><a href="./FR-042B.html"><code>FR-042B</code></a> <span class="muted">- FR-042B: 出口部写真の対象レコードは当日 summaryScope=both を最優先し、次に summaryScope=first_of_day を採用します。同値時は completedAt 昇順、さらに同値時は recordId 昇順で決定します。</span></li>
-<li><a href="./FR-044C.html"><code>FR-044C</code></a> <span class="muted">- FR-044C: session_summary.summaryScope（first_of_day / last_of_day / both）は最終ステップ完了時にローカルで算出し、同期時に共有します。</span></li>
+<li><a href="./FR-042B.html"><code>FR-042B</code></a></li>
+<li><a href="./FR-044C.html"><code>FR-044C</code></a></li>
 </ul>
 <h3>E2E</h3>
 <ul>
@@ -63,7 +62,7 @@
 </ul>
 <h3>FC</h3>
 <ul>
-<li><a href="./FC-SUMMARY-003.html"><code>FC-SUMMARY-003</code></a> <span class="muted">summaryScope=both</span></li>
+<li><a href="./FC-SUMMARY-003.html"><code>FC-SUMMARY-003</code></a></li>
 </ul>
 </section>
   </main>

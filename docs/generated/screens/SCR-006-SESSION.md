@@ -4,42 +4,30 @@
 flowchart LR
   %% SCR-006-SESSION
   subgraph JRN["Journeys"]
-    N62["JRN-002-SLOT 当日スロット登録と開始"]
-    N63["JRN-003-SESSION セッション進行と記録"]
-    N64["JRN-004-ABORT 非常中断と再開"]
-    N65["JRN-005-SYNC 同期と再試行"]
-    N66["JRN-007-ALARM タイマー通知とACK"]
+    N48["JRN-002-SLOT 当日スロット登録と開始"]
+    N49["JRN-003-SESSION セッション進行と記録"]
+    N50["JRN-004-ABORT 非常中断と再開"]
+    N51["JRN-005-SYNC 同期と再試行"]
+    N52["JRN-007-ALARM タイマー通知とACK"]
   end
   subgraph ACT["Actions"]
-    N1["ACT-ALARM-001 ACK"]
-    N2["ACT-HOME-006 確認モードで手順表示"]
-    N3["ACT-HOME-008 開始/再開を確定"]
+    N1["ACT-ALARM-001 未ACKジョブあり"]
+    N2["ACT-HOME-006 対象スロット登録済み"]
+    N3["ACT-HOME-008 開始不可条件に該当しない"]
     N4["ACT-HOME-011 なし"]
-    N5["ACT-SESSION-001 次へ"]
-    N6["ACT-SESSION-002 戻る"]
-    N7["ACT-SESSION-003 記録保存"]
-    N8["ACT-SESSION-004 最終ステップ完了"]
-    N9["ACT-SESSION-006 非常中断"]
-    N10["ACT-SYNC-001 自動同期（起動/復帰/完了）"]
+    N5["ACT-SESSION-001 必須チェック完了かつrecord_event完了"]
+    N6["ACT-SESSION-002 先頭ステップ以外"]
+    N7["ACT-SESSION-003 FC-* 必須条件充足"]
+    N8["ACT-SESSION-004 最終ステップ到達"]
+    N9["ACT-SESSION-006 確認ダイアログ承認"]
+    N10["ACT-SYNC-001 startup/resume/session_complete/manual 契機"]
   end
   subgraph SCR["Screens"]
-    N67["SCR-001-HOME Home"]
-    N68["SCR-003-HOME-START-CONFIRM 開始確認"]
-    N69["SCR-004-HOME-VIEW-CONFIRM 閲覧専用確認"]
-    N70["SCR-006-SESSION Session"]
-    N71["SCR-007-SESSION-RECORD 記録入力"]
-    N72["SCR-009-HISTORY-DETAIL 記録詳細"]
-    N73["SCR-011-SYNC-STATUS 同期状態表示"]
-  end
-  subgraph UI["UI Elements"]
-    N74["UI-HOME-005"]
-    N75["UI-HOME-006"]
-    N76["UI-SESSION-001"]
-    N77["UI-SESSION-002"]
-    N78["UI-SESSION-003"]
-    N79["UI-SESSION-004"]
-    N80["UI-SESSION-005"]
-    N81["UI-SESSION-006"]
+    N53["SCR-001-HOME 手技開始ハブ"]
+    N54["SCR-006-SESSION セッション進行"]
+    N55["SCR-007-SESSION-RECORD 記録入力"]
+    N56["SCR-009-HISTORY-DETAIL 記録詳細"]
+    N57["SCR-011-SYNC-STATUS 同期状態表示"]
   end
   subgraph AT["Acceptance Tests"]
     N11["AT-ALARM-001 T0通知"]
@@ -63,161 +51,109 @@ flowchart LR
     N29["AT-UI-SESSION-001 Session表示確認"]
   end
   subgraph E2E["E2E Tests"]
-    N44["E2E-ALARM-001"]
-    N45["E2E-ALARM-002"]
-    N46["E2E-ALARM-003"]
-    N47["E2E-ALARM-004"]
-    N48["E2E-API-001"]
-    N49["E2E-API-004"]
-    N50["E2E-FLOW-002"]
-    N51["E2E-FLOW-003"]
-    N52["E2E-FLOW-004"]
-    N53["E2E-FLOW-005"]
-    N54["E2E-FLOW-006"]
-    N55["E2E-FLOW-007"]
-    N56["E2E-SYNC-001"]
-    N57["E2E-SYNC-002"]
-    N58["E2E-SYNC-003"]
-    N59["E2E-SYNC-004"]
-    N60["E2E-SYNC-005"]
-    N61["E2E-SYNC-006"]
+    N30["E2E-ALARM-001"]
+    N31["E2E-ALARM-002"]
+    N32["E2E-ALARM-003"]
+    N33["E2E-ALARM-004"]
+    N34["E2E-API-001"]
+    N35["E2E-API-004"]
+    N36["E2E-FLOW-002"]
+    N37["E2E-FLOW-003"]
+    N38["E2E-FLOW-004"]
+    N39["E2E-FLOW-005"]
+    N40["E2E-FLOW-006"]
+    N41["E2E-FLOW-007"]
+    N42["E2E-SYNC-001"]
+    N43["E2E-SYNC-002"]
+    N44["E2E-SYNC-003"]
+    N45["E2E-SYNC-004"]
+    N46["E2E-SYNC-005"]
+    N47["E2E-SYNC-006"]
   end
-  subgraph DATA["Data Paths"]
-    N30["acked_at"]
-    N31["alarm_ack"]
-    N32["AlarmDispatchJob.pendingAlarm"]
-    N33["daily_plan"]
-    N34["record完了状態"]
-    N35["requiredChecks達成状態"]
-    N36["session"]
-    N37["session_progress"]
-    N38["Session.currentStepId"]
-    N39["Session.status=aborted"]
-    N40["Session.status=active"]
-    N41["SessionProtocolSnapshot.steps[*]"]
-    N42["slot.status=pending"]
-    N43["steps[*].requiredChecks"]
-  end
-  N1 --> N70
-  N1 --> N81
-  N2 --> N69
-  N2 --> N70
-  N2 --> N75
-  N3 --> N68
-  N3 --> N70
-  N3 --> N74
-  N4 --> N67
-  N5 --> N70
-  N5 --> N77
-  N5 --> N78
-  N6 --> N70
-  N7 --> N70
-  N7 --> N71
-  N7 --> N79
-  N8 --> N67
-  N8 --> N70
-  N9 --> N67
-  N9 --> N70
-  N9 --> N80
-  N10 --> N73
-  N11 --> N44
-  N12 --> N45
-  N13 --> N46
-  N14 --> N47
-  N15 --> N48
-  N16 --> N49
-  N17 --> N53
-  N18 --> N54
-  N19 --> N55
-  N20 --> N50
-  N21 --> N51
-  N22 --> N52
-  N23 --> N56
-  N24 --> N58
-  N25 --> N59
-  N26 --> N60
-  N27 --> N57
-  N28 --> N61
-  N62 --> N2
-  N62 --> N3
-  N62 --> N20
-  N62 --> N50
-  N62 --> N67
-  N62 --> N68
-  N62 --> N69
-  N63 --> N5
-  N63 --> N6
-  N63 --> N7
-  N63 --> N8
-  N63 --> N17
-  N63 --> N18
-  N63 --> N19
-  N63 --> N53
-  N63 --> N54
-  N63 --> N55
-  N63 --> N70
-  N63 --> N71
-  N63 --> N72
-  N64 --> N9
-  N64 --> N21
-  N64 --> N22
-  N64 --> N51
-  N64 --> N52
-  N64 --> N67
-  N64 --> N70
-  N65 --> N4
-  N65 --> N10
-  N65 --> N15
-  N65 --> N16
-  N65 --> N23
-  N65 --> N24
-  N65 --> N25
-  N65 --> N26
-  N65 --> N27
-  N65 --> N28
-  N65 --> N48
-  N65 --> N49
-  N65 --> N56
-  N65 --> N57
-  N65 --> N58
-  N65 --> N59
-  N65 --> N60
-  N65 --> N61
-  N65 --> N67
-  N65 --> N70
-  N65 --> N73
-  N66 --> N1
-  N66 --> N11
-  N66 --> N12
-  N66 --> N13
-  N66 --> N14
-  N66 --> N44
-  N66 --> N45
-  N66 --> N46
-  N66 --> N47
-  N66 --> N70
-  N68 --> N74
-  N69 --> N75
-  N70 --> N76
-  N70 --> N77
-  N70 --> N78
-  N70 --> N80
-  N70 --> N81
-  N71 --> N79
-  N74 --> N36
-  N76 --> N41
-  N77 --> N43
-  N78 --> N34
-  N78 --> N35
-  N78 --> N37
-  N78 --> N38
-  N80 --> N33
-  N80 --> N36
-  N80 --> N39
-  N80 --> N40
-  N80 --> N42
-  N81 --> N30
-  N81 --> N31
-  N81 --> N32
+  N1 --> N54
+  N2 --> N54
+  N3 --> N54
+  N4 --> N53
+  N5 --> N54
+  N6 --> N54
+  N7 --> N54
+  N7 --> N55
+  N8 --> N53
+  N9 --> N53
+  N10 --> N57
+  N11 --> N30
+  N12 --> N31
+  N13 --> N32
+  N14 --> N33
+  N15 --> N34
+  N16 --> N35
+  N17 --> N39
+  N18 --> N40
+  N19 --> N41
+  N20 --> N36
+  N21 --> N37
+  N22 --> N38
+  N23 --> N42
+  N24 --> N44
+  N25 --> N45
+  N26 --> N46
+  N27 --> N43
+  N28 --> N47
+  N48 --> N2
+  N48 --> N3
+  N48 --> N20
+  N48 --> N36
+  N48 --> N53
+  N49 --> N5
+  N49 --> N6
+  N49 --> N7
+  N49 --> N8
+  N49 --> N17
+  N49 --> N18
+  N49 --> N19
+  N49 --> N39
+  N49 --> N40
+  N49 --> N41
+  N49 --> N54
+  N49 --> N55
+  N49 --> N56
+  N50 --> N9
+  N50 --> N21
+  N50 --> N22
+  N50 --> N37
+  N50 --> N38
+  N50 --> N53
+  N50 --> N54
+  N51 --> N4
+  N51 --> N10
+  N51 --> N15
+  N51 --> N16
+  N51 --> N23
+  N51 --> N24
+  N51 --> N25
+  N51 --> N26
+  N51 --> N27
+  N51 --> N28
+  N51 --> N34
+  N51 --> N35
+  N51 --> N42
+  N51 --> N43
+  N51 --> N44
+  N51 --> N45
+  N51 --> N46
+  N51 --> N47
+  N51 --> N53
+  N51 --> N54
+  N51 --> N57
+  N52 --> N1
+  N52 --> N11
+  N52 --> N12
+  N52 --> N13
+  N52 --> N14
+  N52 --> N30
+  N52 --> N31
+  N52 --> N32
+  N52 --> N33
+  N52 --> N54
 ```
 

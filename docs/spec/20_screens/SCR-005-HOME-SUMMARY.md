@@ -48,9 +48,9 @@
 ## 5. 操作契約
 | ACT ID | Guard | Side Effect | Success遷移 | Failure表示 |
 |---|---|---|---|---|
-| ACT-001-EXIT | iPhoneかつ対象`summaryScope`完了 | `payload.exit_site_photo` 部分更新 + photo保存 | 同一画面維持 | 端末制約/入力エラー |
-| ACT-002-EXIT | iPhoneかつ既存写真あり | 既存1枚を置換 | 同一画面維持 | 保存エラー |
-| ACT-003-EXIT | iPhoneかつ既存写真あり | `exit_site_photo=null` 保存 + tombstone | 同一画面維持 | 削除エラー |
+| ACT-001-EXIT | iPhoneかつ対象`summaryScope`完了 | `payload.exit_site_photo` 部分更新 + photo保存 | SCR-005-HOME-SUMMARY | 端末制約/入力エラー |
+| ACT-002-EXIT | iPhoneかつ既存写真あり | 既存1枚を置換 | SCR-005-HOME-SUMMARY | 保存エラー |
+| ACT-003-EXIT | iPhoneかつ既存写真あり | `exit_site_photo=null` 保存 + tombstone | SCR-005-HOME-SUMMARY | 削除エラー |
 
 ## 6. データバインディング
 | 区分 | Read | Write | Outbox | 反映タイミング |

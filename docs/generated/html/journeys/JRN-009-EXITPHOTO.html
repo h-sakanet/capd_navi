@@ -38,18 +38,18 @@
     <section class="card">
   <h2>対応FR</h2>
 <ul>
-<li><a href="../ids/FR-042A.html"><code>FR-042A</code></a> <span class="muted">- FR-042A: 出口部の記録写真（exit_site）は session_summary.payload.exit_site_photo に保存します（record_event は追加しません）。</span></li>
-<li><a href="../ids/FR-042B.html"><code>FR-042B</code></a> <span class="muted">- FR-042B: 出口部写真の対象レコードは当日 summaryScope=both を最優先し、次に summaryScope=first_of_day を採用します。同値時は completedAt 昇順、さらに同値時は recordId 昇順で決定します。</span></li>
-<li><a href="../ids/FR-042C.html"><code>FR-042C</code></a> <span class="muted">- FR-042C: 出口部写真の登録導線は、対象 session_summary の入力完了後に表示します。</span></li>
-<li><a href="../ids/FR-042D.html"><code>FR-042D</code></a> <span class="muted">- FR-042D: 出口部写真の操作導線は iPhoneホーム全体サマリ と iPhone記録詳細 の両方に表示します。Macは閲覧リンクのみ表示し、登録/変更/削除操作は許可しません。</span></li>
-<li><a href="../ids/FR-042E.html"><code>FR-042E</code></a> <span class="muted">- FR-042E: 出口部写真は1レコード1枚固定とし、登録後は 変更 と 削除 を許可します。</span></li>
-<li><a href="../ids/FR-042F.html"><code>FR-042F</code></a> <span class="muted">- FR-042F: 出口部写真の入力手段は iPhone の カメラ撮影 と ファイル選択 の両方を許可します。</span></li>
-<li><a href="../ids/FR-042G.html"><code>FR-042G</code></a> <span class="muted">- FR-042G: 出口部写真は任意入力であり、未登録でも手技完了を阻害しません。</span></li>
-<li><a href="../ids/FR-042H.html"><code>FR-042H</code></a> <span class="muted">- FR-042H: 出口部写真の削除時は session_summary.payload.exit_site_photo=null を保存し、対応画像は tombstone 化します。</span></li>
-<li><a href="../ids/FR-044C.html"><code>FR-044C</code></a> <span class="muted">- FR-044C: session_summary.summaryScope（first_of_day / last_of_day / both）は最終ステップ完了時にローカルで算出し、同期時に共有します。</span></li>
-<li><a href="../ids/FR-089A.html"><code>FR-089A</code></a> <span class="muted">- FR-089A: session_summary.payload.exit_site_photo の更新は部分パッチ（patch_path=payload.exit_site_photo）で同期し、同一record内の他フィールドを上書きしません。</span></li>
+<li><a href="../ids/FR-042A.html"><code>FR-042A</code></a></li>
+<li><a href="../ids/FR-042B.html"><code>FR-042B</code></a></li>
+<li><a href="../ids/FR-042C.html"><code>FR-042C</code></a></li>
+<li><a href="../ids/FR-042D.html"><code>FR-042D</code></a></li>
+<li><a href="../ids/FR-042E.html"><code>FR-042E</code></a></li>
+<li><a href="../ids/FR-042F.html"><code>FR-042F</code></a></li>
+<li><a href="../ids/FR-042G.html"><code>FR-042G</code></a></li>
+<li><a href="../ids/FR-042H.html"><code>FR-042H</code></a></li>
+<li><a href="../ids/FR-044C.html"><code>FR-044C</code></a></li>
+<li><a href="../ids/FR-089A.html"><code>FR-089A</code></a></li>
 <li><a href="../ids/FR-090.html"><code>FR-090</code></a> <span class="muted">CAP-PHOTO-BACKUP-001-FR-10</span></li>
-<li><a href="../ids/FR-090A.html"><code>FR-090A</code></a> <span class="muted">- FR-090A: 写真参照メタには photo_kind（drain / exit_site）を保持します。</span></li>
+<li><a href="../ids/FR-090A.html"><code>FR-090A</code></a></li>
 <li><a href="../ids/FR-091.html"><code>FR-091</code></a> <span class="muted">CAP-PHOTO-BACKUP-001-FR-12</span></li>
 <li><a href="../ids/FR-092.html"><code>FR-092</code></a> <span class="muted">- FR-092: 日次バックアップを1日1回実行し30日保持。</span></li>
 </ul>
@@ -83,17 +83,15 @@
 </ul>
   <h3>ACT</h3>
 <ul>
-<li><a href="../ids/ACT-EXIT-001.html"><code>ACT-EXIT-001</code></a> <span class="muted">出口部写真登録</span></li>
-<li><a href="../ids/ACT-EXIT-002.html"><code>ACT-EXIT-002</code></a> <span class="muted">出口部写真変更</span></li>
-<li><a href="../ids/ACT-EXIT-003.html"><code>ACT-EXIT-003</code></a> <span class="muted">出口部写真削除</span></li>
+<li><a href="../ids/ACT-EXIT-001.html"><code>ACT-EXIT-001</code></a> <span class="muted">iPhoneかつ対象summaryScope完了</span></li>
+<li><a href="../ids/ACT-EXIT-002.html"><code>ACT-EXIT-002</code></a> <span class="muted">iPhoneかつ既存写真あり</span></li>
+<li><a href="../ids/ACT-EXIT-003.html"><code>ACT-EXIT-003</code></a> <span class="muted">iPhoneかつ既存写真あり</span></li>
 </ul>
 </section>
 <section class="card">
   <h2>定義位置</h2>
 <ul>
-<li><a href="../sources/docs/requirements/09_user_journeys.html#JRN-009-EXITPHOTO"><code>docs/requirements/09_user_journeys.md:24</code></a> <span class="muted">| JRN-009-EXITPHOTO | 出口部写真登録/変更/削除 | iPhone（更新）/Mac（閲覧） | `summaryScope=both` または `first_of_day` 完了 | `payload.exit_site_photo` が更新され同期される | FR-042A〜FR-042H, FR-089A | AT-EXIT-...</span></li>
-<li><a href="../sources/docs/requirements/09_user_journeys.html#JRN-009-EXITPHOTO--L72"><code>docs/requirements/09_user_journeys.md:72</code></a> <span class="muted">### JRN-009-EXITPHOTO 出口部写真登録/変更/削除（Phase2）</span></li>
-<li><a href="../sources/docs/spec/10_journeys/journeys.html#JRN-009-EXITPHOTO--L31"><code>docs/spec/10_journeys/journeys.md:31</code></a> <span class="muted">| JRN-009-EXITPHOTO | 出口部写真登録/変更/削除 | 出口部写真運用 | SCR-005-HOME-SUMMARY, SCR-009-HISTORY-DETAIL, SCR-010-HISTORY-PHOTO | `exit_site_photo` 同期更新 | [link](./JRN-009-EXITPHOTO.md) |</span></li>
+<li><a href="../sources/docs/spec/10_journeys/journeys.html#JRN-009-EXITPHOTO"><code>docs/spec/10_journeys/journeys.md:31</code></a> <span class="muted">| JRN-009-EXITPHOTO | 出口部写真登録/変更/削除 | 出口部写真運用 | SCR-005-HOME-SUMMARY, SCR-009-HISTORY-DETAIL, SCR-010-HISTORY-PHOTO | ACT-001-EXIT, ACT-002-EXIT, ACT-003-EXIT | `exit_site_photo...</span></li>
 <li><a href="../sources/docs/spec/10_journeys/JRN-009-EXITPHOTO.html#JRN-009-EXITPHOTO--L1"><code>docs/spec/10_journeys/JRN-009-EXITPHOTO.md:1</code></a> <span class="muted"># JRN-009-EXITPHOTO</span></li>
 </ul>
 </section>

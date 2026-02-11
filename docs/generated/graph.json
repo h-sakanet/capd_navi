@@ -3,67 +3,67 @@
     {
       "id": "ACT-ALARM-001",
       "type": "ACT",
-      "label": "ACT-ALARM-001 ACK"
+      "label": "ACT-ALARM-001 未ACKジョブあり"
     },
     {
       "id": "ACT-EXIT-001",
       "type": "ACT",
-      "label": "ACT-EXIT-001 出口部写真登録"
+      "label": "ACT-EXIT-001 iPhoneかつ対象summaryScope完了"
     },
     {
       "id": "ACT-EXIT-002",
       "type": "ACT",
-      "label": "ACT-EXIT-002 出口部写真変更"
+      "label": "ACT-EXIT-002 iPhoneかつ既存写真あり"
     },
     {
       "id": "ACT-EXIT-003",
       "type": "ACT",
-      "label": "ACT-EXIT-003 出口部写真削除"
+      "label": "ACT-EXIT-003 iPhoneかつ既存写真あり"
     },
     {
       "id": "ACT-HISTORY-001",
       "type": "ACT",
-      "label": "ACT-HISTORY-001 写真詳細を開く"
+      "label": "ACT-HISTORY-001 対象photoIdが存在"
     },
     {
       "id": "ACT-HOME-001",
       "type": "ACT",
-      "label": "ACT-HOME-001 + で手技設定を開く"
+      "label": "ACT-HOME-001 進行中セッションなし"
     },
     {
       "id": "ACT-HOME-002",
       "type": "ACT",
-      "label": "ACT-HOME-002 手技設定を保存"
+      "label": "ACT-HOME-002 protocolId と recommendedAtLocal が妥当"
     },
     {
       "id": "ACT-HOME-003",
       "type": "ACT",
-      "label": "ACT-HOME-003 ••• > 確認"
+      "label": "ACT-HOME-003 ••• > 確認 かつ対象スロット登録済み"
     },
     {
       "id": "ACT-HOME-004",
       "type": "ACT",
-      "label": "ACT-HOME-004 ••• > 編集"
+      "label": "ACT-HOME-004 ••• > 編集 かつdisplayStatus!=completed かつ進行中なし"
     },
     {
       "id": "ACT-HOME-005",
       "type": "ACT",
-      "label": "ACT-HOME-005 カード本体タップ"
+      "label": "ACT-HOME-005 右側開始時に左側全完了"
     },
     {
       "id": "ACT-HOME-006",
       "type": "ACT",
-      "label": "ACT-HOME-006 確認モードで手順表示"
+      "label": "ACT-HOME-006 対象スロット登録済み"
     },
     {
       "id": "ACT-HOME-007",
       "type": "ACT",
-      "label": "ACT-HOME-007 CSV取り込み"
+      "label": "ACT-HOME-007 platform=mac"
     },
     {
       "id": "ACT-HOME-008",
       "type": "ACT",
-      "label": "ACT-HOME-008 開始/再開を確定"
+      "label": "ACT-HOME-008 開始不可条件に該当しない"
     },
     {
       "id": "ACT-HOME-010",
@@ -78,32 +78,32 @@
     {
       "id": "ACT-SESSION-001",
       "type": "ACT",
-      "label": "ACT-SESSION-001 次へ"
+      "label": "ACT-SESSION-001 必須チェック完了かつrecord_event完了"
     },
     {
       "id": "ACT-SESSION-002",
       "type": "ACT",
-      "label": "ACT-SESSION-002 戻る"
+      "label": "ACT-SESSION-002 先頭ステップ以外"
     },
     {
       "id": "ACT-SESSION-003",
       "type": "ACT",
-      "label": "ACT-SESSION-003 記録保存"
+      "label": "ACT-SESSION-003 FC-* 必須条件充足"
     },
     {
       "id": "ACT-SESSION-004",
       "type": "ACT",
-      "label": "ACT-SESSION-004 最終ステップ完了"
+      "label": "ACT-SESSION-004 最終ステップ到達"
     },
     {
       "id": "ACT-SESSION-006",
       "type": "ACT",
-      "label": "ACT-SESSION-006 非常中断"
+      "label": "ACT-SESSION-006 確認ダイアログ承認"
     },
     {
       "id": "ACT-SYNC-001",
       "type": "ACT",
-      "label": "ACT-SYNC-001 自動同期（起動/復帰/完了）"
+      "label": "ACT-SYNC-001 startup/resume/session_complete/manual 契機"
     },
     {
       "id": "AT-ALARM-001",
@@ -351,221 +351,6 @@
       "label": "AT-UI-SESSION-001 Session表示確認"
     },
     {
-      "id": "DATA:acked_at",
-      "type": "DATA",
-      "label": "acked_at"
-    },
-    {
-      "id": "DATA:activeSession",
-      "type": "DATA",
-      "label": "activeSession"
-    },
-    {
-      "id": "DATA:alarm_ack",
-      "type": "DATA",
-      "label": "alarm_ack"
-    },
-    {
-      "id": "DATA:AlarmDispatchJob.pendingAlarm",
-      "type": "DATA",
-      "label": "AlarmDispatchJob.pendingAlarm"
-    },
-    {
-      "id": "DATA:daily_plan",
-      "type": "DATA",
-      "label": "daily_plan"
-    },
-    {
-      "id": "DATA:dailyProcedurePlan",
-      "type": "DATA",
-      "label": "dailyProcedurePlan"
-    },
-    {
-      "id": "DATA:DailyProcedurePlan.dateLocal",
-      "type": "DATA",
-      "label": "DailyProcedurePlan.dateLocal"
-    },
-    {
-      "id": "DATA:DailyProcedurePlan.slots[*].displayStatus",
-      "type": "DATA",
-      "label": "DailyProcedurePlan.slots[*].displayStatus"
-    },
-    {
-      "id": "DATA:DayBundle.records",
-      "type": "DATA",
-      "label": "DayBundle.records"
-    },
-    {
-      "id": "DATA:FC-*",
-      "type": "DATA",
-      "label": "FC-*"
-    },
-    {
-      "id": "DATA:lastError",
-      "type": "DATA",
-      "label": "lastError"
-    },
-    {
-      "id": "DATA:lastSyncedAt",
-      "type": "DATA",
-      "label": "lastSyncedAt"
-    },
-    {
-      "id": "DATA:payload.exit_site_photo",
-      "type": "DATA",
-      "label": "payload.exit_site_photo"
-    },
-    {
-      "id": "DATA:photoRefs",
-      "type": "DATA",
-      "label": "photoRefs"
-    },
-    {
-      "id": "DATA:photos/*",
-      "type": "DATA",
-      "label": "photos/*"
-    },
-    {
-      "id": "DATA:platform",
-      "type": "DATA",
-      "label": "platform"
-    },
-    {
-      "id": "DATA:protocol",
-      "type": "DATA",
-      "label": "protocol"
-    },
-    {
-      "id": "DATA:ProtocolPackage",
-      "type": "DATA",
-      "label": "ProtocolPackage"
-    },
-    {
-      "id": "DATA:recommendedAtLocal",
-      "type": "DATA",
-      "label": "recommendedAtLocal"
-    },
-    {
-      "id": "DATA:record",
-      "type": "DATA",
-      "label": "record"
-    },
-    {
-      "id": "DATA:Record",
-      "type": "DATA",
-      "label": "Record"
-    },
-    {
-      "id": "DATA:record_exchange_no)",
-      "type": "DATA",
-      "label": "record_exchange_no)"
-    },
-    {
-      "id": "DATA:Record(record_event",
-      "type": "DATA",
-      "label": "Record(record_event"
-    },
-    {
-      "id": "DATA:Record(session_summary.payload.exit_site_photo)",
-      "type": "DATA",
-      "label": "Record(session_summary.payload.exit_site_photo)"
-    },
-    {
-      "id": "DATA:Record(timer_event",
-      "type": "DATA",
-      "label": "Record(timer_event"
-    },
-    {
-      "id": "DATA:record完了状態",
-      "type": "DATA",
-      "label": "record完了状態"
-    },
-    {
-      "id": "DATA:requiredChecks達成状態",
-      "type": "DATA",
-      "label": "requiredChecks達成状態"
-    },
-    {
-      "id": "DATA:session",
-      "type": "DATA",
-      "label": "session"
-    },
-    {
-      "id": "DATA:Session",
-      "type": "DATA",
-      "label": "Session"
-    },
-    {
-      "id": "DATA:session_progress",
-      "type": "DATA",
-      "label": "session_progress"
-    },
-    {
-      "id": "DATA:Session.currentStepId",
-      "type": "DATA",
-      "label": "Session.currentStepId"
-    },
-    {
-      "id": "DATA:Session.status=aborted",
-      "type": "DATA",
-      "label": "Session.status=aborted"
-    },
-    {
-      "id": "DATA:Session.status=active",
-      "type": "DATA",
-      "label": "Session.status=active"
-    },
-    {
-      "id": "DATA:SessionProtocolSnapshot.steps[*]",
-      "type": "DATA",
-      "label": "SessionProtocolSnapshot.steps[*]"
-    },
-    {
-      "id": "DATA:sessions",
-      "type": "DATA",
-      "label": "sessions"
-    },
-    {
-      "id": "DATA:slot.status=pending",
-      "type": "DATA",
-      "label": "slot.status=pending"
-    },
-    {
-      "id": "DATA:slots[*].protocolTitle",
-      "type": "DATA",
-      "label": "slots[*].protocolTitle"
-    },
-    {
-      "id": "DATA:slots[n]",
-      "type": "DATA",
-      "label": "slots[n]"
-    },
-    {
-      "id": "DATA:slots[n].displayStatus",
-      "type": "DATA",
-      "label": "slots[n].displayStatus"
-    },
-    {
-      "id": "DATA:steps[*].requiredChecks",
-      "type": "DATA",
-      "label": "steps[*].requiredChecks"
-    },
-    {
-      "id": "DATA:SyncState",
-      "type": "DATA",
-      "label": "SyncState"
-    },
-    {
-      "id": "DATA:SyncState.lastSyncStatus",
-      "type": "DATA",
-      "label": "SyncState.lastSyncStatus"
-    },
-    {
-      "id": "DATA:timer_exchange_no)",
-      "type": "DATA",
-      "label": "timer_exchange_no)"
-    },
-    {
       "id": "E2E-ALARM-001",
       "type": "E2E",
       "label": "E2E-ALARM-001"
@@ -773,397 +558,397 @@
     {
       "id": "FC-BAG-WEIGHT-001",
       "type": "FC",
-      "label": "FC-BAG-WEIGHT-001 注液量"
+      "label": "FC-BAG-WEIGHT-001"
     },
     {
       "id": "FC-DRAIN-APPEARANCE-001",
       "type": "FC",
-      "label": "FC-DRAIN-APPEARANCE-001 排液の確認"
+      "label": "FC-DRAIN-APPEARANCE-001"
     },
     {
       "id": "FC-DRAIN-WEIGHT-001",
       "type": "FC",
-      "label": "FC-DRAIN-WEIGHT-001 排液量"
+      "label": "FC-DRAIN-WEIGHT-001"
     },
     {
       "id": "FC-SLOT-SETUP-001",
       "type": "FC",
-      "label": "FC-SLOT-SETUP-001 手技設定"
+      "label": "FC-SLOT-SETUP-001"
     },
     {
       "id": "FC-SUMMARY-001",
       "type": "FC",
-      "label": "FC-SUMMARY-001 summaryScope=first_of_day"
+      "label": "FC-SUMMARY-001"
     },
     {
       "id": "FC-SUMMARY-002",
       "type": "FC",
-      "label": "FC-SUMMARY-002 summaryScope=last_of_day"
+      "label": "FC-SUMMARY-002"
     },
     {
       "id": "FC-SUMMARY-003",
       "type": "FC",
-      "label": "FC-SUMMARY-003 summaryScope=both"
+      "label": "FC-SUMMARY-003"
     },
     {
       "id": "FR-001",
       "type": "FR",
-      "label": "- FR-001: 複数手技テンプレート一覧を表示します。"
+      "label": "FR-001"
     },
     {
       "id": "FR-002",
       "type": "FR",
-      "label": "- FR-002: テンプレートごとに名称、版、有効開始日を表示します。"
+      "label": "FR-002"
     },
     {
       "id": "FR-003",
       "type": "FR",
-      "label": "- FR-003: 選択した1手技でセッションを開始します。"
+      "label": "FR-003"
     },
     {
       "id": "FR-004",
       "type": "FR",
-      "label": "- FR-004: 手技開始通知は本アプリ対象外とし、Mac/iPhoneの時計アプリ等の外部アラームで運用します。"
+      "label": "FR-004"
     },
     {
       "id": "FR-004A",
       "type": "FR",
-      "label": "- FR-004A: ホームに「手技開始通知は外部アラーム運用」の注記を表示します。"
+      "label": "FR-004A"
     },
     {
       "id": "FR-005",
       "type": "FR",
-      "label": "- FR-005: ホームには手技開始情報に加え、当日分のみCAPD記録ノート互換表を表示します（過去分は一覧画面で表示）。"
+      "label": "FR-005"
     },
     {
       "id": "FR-005A",
       "type": "FR",
-      "label": "- FR-005A: ホームAの先頭見出しは日付と曜日を表示し、手技スロットと当日ノート表は同一パネル内に配置します。"
+      "label": "FR-005A"
     },
     {
       "id": "FR-006",
       "type": "FR",
-      "label": "- FR-006: ホームから「記録一覧」画面へ遷移できる導線を提供します。"
+      "label": "FR-006"
     },
     {
       "id": "FR-007",
       "type": "FR",
-      "label": "- FR-007: ホームAスパイクでは、1日あたり4件の手技スロットを横並びで表示します。"
+      "label": "FR-007"
     },
     {
       "id": "FR-008",
       "type": "FR",
-      "label": "- FR-008: 手技スロットの初期状態は「+ のみ表示」とし、+ 押下で手技設定モーダル（CSV選択、推奨実施時間）を開きます。"
+      "label": "FR-008"
     },
     {
       "id": "FR-009",
       "type": "FR",
-      "label": "- FR-009: 手技設定後は「カード本体タップ=開始」とし、開始前に「手技の開始」確認ダイアログを表示します。"
+      "label": "FR-009"
     },
     {
       "id": "FR-009A",
       "type": "FR",
-      "label": "- FR-009A: 右上 ••• メニューから「確認/編集」を開きます。確認モーダルは閲覧専用とし、ここからの「開始/再開」は手順表示のみ（確認モード）とします。確認モードでは記録保存、タイマー開始、通知ジョブ生成、アラーム設定、スロット/セッション状態更新、同期対象更新を行いません。"
+      "label": "FR-009A"
     },
     {
       "id": "FR-009B",
       "type": "FR",
-      "label": "- FR-009B: 手技スロットの表示状態は 未登録(+) / 未実施 / 実施中 / 実施済み とします。実施済み のカード本体タップは無効化します。"
+      "label": "FR-009B"
     },
     {
       "id": "FR-009C",
       "type": "FR",
-      "label": "- FR-009C: スロット登録時は、右隣スロットほど推奨実施時間が遅くなるように検証します（左から右へ厳密昇順、同時刻不可）。"
+      "label": "FR-009C"
     },
     {
       "id": "FR-009D",
       "type": "FR",
-      "label": "- FR-009D: 右側スロットの開始時は、左側スロットがすべて 実施済み であることを必須条件にします（未登録/未実施が1件でもあれば開始不可）。"
+      "label": "FR-009D"
     },
     {
       "id": "FR-009E",
       "type": "FR",
-      "label": "- FR-009E: 4スロット設定は dateLocal 単位でローカル永続化し、同期時に localRevision と cloudRevision を更新します。"
+      "label": "FR-009E"
     },
     {
       "id": "FR-009F",
       "type": "FR",
-      "label": "- FR-009F: 実施済み スロットは編集/削除不可とします。同一端末で進行中セッションがある間は全スロット編集を禁止します。"
+      "label": "FR-009F"
     },
     {
       "id": "FR-009G",
       "type": "FR",
-      "label": "- FR-009G: 実施中 スロットをタップした場合は新規開始せず、進行中セッションを再開します。"
+      "label": "FR-009G"
     },
     {
       "id": "FR-009H",
       "type": "FR",
-      "label": "- FR-009H: 記録やタイマーを伴う実運用セッション開始/再開はカード本体タップ導線で実行し、••• > 確認 導線は閲覧専用（確認モード）とします。"
+      "label": "FR-009H"
     },
     {
       "id": "FR-010",
       "type": "FR",
-      "label": "- FR-010: 記録一覧画面で日々の手技記録を一覧表示します。"
+      "label": "FR-010"
     },
     {
       "id": "FR-011",
       "type": "FR",
-      "label": "- FR-011: 記録一覧画面で詳細表示と編集導線を提供します。"
+      "label": "FR-011"
     },
     {
       "id": "FR-012",
       "type": "FR",
-      "label": "- FR-012: 記録編集はLWWメタ（updatedAt, updatedByDeviceId, mutationId）を保持して競合解決可能な状態にします。"
+      "label": "FR-012"
     },
     {
       "id": "FR-013",
       "type": "FR",
-      "label": "- FR-013: 記録一覧にはCAPDノート準拠項目（貯留時間、透析液濃度、排液量、注液量、排液時間、排液の確認、除水量、尿量、飲水量、体重、排便、血圧、出口部状態、備考）を表示します。"
+      "label": "FR-013"
     },
     {
       "id": "FR-014",
       "type": "FR",
-      "label": "- FR-014: 写真はサムネイル固定表示ではなく、リンク押下で写真詳細画面へ遷移します。"
+      "label": "FR-014"
     },
     {
       "id": "FR-014A",
       "type": "FR",
-      "label": "- FR-014A: 記録一覧には既存写真列とは別に 出口部写真 列を追加し、未登録 / 表示 を切り替えます。"
+      "label": "FR-014A"
     },
     {
       "id": "FR-015",
       "type": "FR",
-      "label": "- FR-015: 交換ごとの除水量と1日の総除水量は、排液量 - 前回注液量 の差し引きで自動計算表示します。"
+      "label": "FR-015"
     },
     {
       "id": "FR-015A",
       "type": "FR",
-      "label": "- FR-015A: 初回交換（#1列）は前回注液量が存在しないため、除水量は 未計算 表示とします。"
+      "label": "FR-015A"
     },
     {
       "id": "FR-015B",
       "type": "FR",
-      "label": "- FR-015B: 1日の総除水量は、計算可能な交換（#2列以降で前回注液量が存在する交換）のみを合算します。"
+      "label": "FR-015B"
     },
     {
       "id": "FR-015C",
       "type": "FR",
-      "label": "- FR-015C: opening_infuse_weight_g（初期注液量）は v1 では空欄許容とし、除水量計算に使用しません。"
+      "label": "FR-015C"
     },
     {
       "id": "FR-016",
       "type": "FR",
-      "label": "- FR-016: 当日ノート表と記録一覧の交換列は #1〜#5 の5列固定とし、列位置は *_exchange_no で決定します。"
+      "label": "FR-016"
     },
     {
       "id": "FR-017",
       "type": "FR",
-      "label": "- FR-017: 透析液濃度欄は、取り込みCSVのタイトル（例"
+      "label": "FR-017"
     },
     {
       "id": "FR-018",
       "type": "FR",
-      "label": "- FR-018: record_event の値は record_exchange_no で列マッピングし、drain_weight_g は排液量、bag_weight_g は注液量、drain_appearance は排液の確認に表示します。"
+      "label": "FR-018"
     },
     {
       "id": "FR-019",
       "type": "FR",
-      "label": "- FR-019: timer_event の値は timer_exchange_no で列マッピングし、timer_segment=dwell の start/end は貯留時間、timer_segment=drain の start/end は排液時間に表示します。"
+      "label": "FR-019"
     },
     {
       "id": "FR-020",
       "type": "FR",
-      "label": "- FR-020: MacネイティブシェルでCSV+画像ディレクトリを選択できます。"
+      "label": "FR-020"
     },
     {
       "id": "FR-021",
       "type": "FR",
-      "label": "- FR-021: CSV v3フォーマットのみ受け付けます。"
+      "label": "FR-021"
     },
     {
       "id": "FR-022",
       "type": "FR",
-      "label": "- FR-022: 検証エラー1件以上で取り込みを中止します。"
+      "label": "FR-022"
     },
     {
       "id": "FR-023",
       "type": "FR",
-      "label": "- FR-023: 警告は取り込み結果画面で一覧表示します。"
+      "label": "FR-023"
     },
     {
       "id": "FR-024",
       "type": "FR",
-      "label": "- FR-024: 画像相対パスを protocol.csv ディレクトリ基準で解決します。"
+      "label": "FR-024"
     },
     {
       "id": "FR-030",
       "type": "FR",
-      "label": "- FR-030: 現在ステップのフェーズと状態を常時表示し、タイトルは通し番号付き（例"
+      "label": "FR-030"
     },
     {
       "id": "FR-031",
       "type": "FR",
-      "label": "- FR-031: 必須チェック未完了時に次ステップ遷移を禁止します。"
+      "label": "FR-031"
     },
     {
       "id": "FR-032",
       "type": "FR",
-      "label": "- FR-032: record_event 未完了時に次ステップ遷移を禁止します。"
+      "label": "FR-032"
     },
     {
       "id": "FR-033",
       "type": "FR",
-      "label": "- FR-033: next_step_id に従い完全シリアルで遷移します。"
+      "label": "FR-033"
     },
     {
       "id": "FR-034",
       "type": "FR",
-      "label": "- FR-034: 最終ステップ完了時にセッション完了状態へ遷移します。"
+      "label": "FR-034"
     },
     {
       "id": "FR-035",
       "type": "FR",
-      "label": "- FR-035: セッション開始端末のみ進行更新できます。"
+      "label": "FR-035"
     },
     {
       "id": "FR-036",
       "type": "FR",
-      "label": "- FR-036: 同時実行セッションを端末ごとに1件へ制限します。"
+      "label": "FR-036"
     },
     {
       "id": "FR-037",
       "type": "FR",
-      "label": "- FR-037: セッション画面の手順画像は1"
+      "label": "FR-037"
     },
     {
       "id": "FR-038",
       "type": "FR",
-      "label": "- FR-038: セッション画面は iPhoneで1カラム、Macで2カラム表示に切り替えます。"
+      "label": "FR-038"
     },
     {
       "id": "FR-039",
       "type": "FR",
-      "label": "- FR-039: セッション画面に「戻る」操作を提供し、直前ステップへ表示遷移できます。"
+      "label": "FR-039"
     },
     {
       "id": "FR-039A",
       "type": "FR",
-      "label": "- FR-039A: セッション画面の「戻る」と「次へ」は、iPhone/Macの双方で横並び・同幅で表示します。"
+      "label": "FR-039A"
     },
     {
       "id": "FR-039B",
       "type": "FR",
-      "label": "- FR-039B: 「次へ」「戻る」押下時、および Enter キーによる次ステップ遷移時は、メインパネルを左右スライドで遷移表示します。"
+      "label": "FR-039B"
     },
     {
       "id": "FR-039C",
       "type": "FR",
-      "label": "- FR-039C: セッション画面のカルーセルは、左右ナビゲーションボタンを表示しません。"
+      "label": "FR-039C"
     },
     {
       "id": "FR-039D",
       "type": "FR",
-      "label": "- FR-039D: セッション画面右上 ••• メニューに セッションを中断（非常用） を配置します。"
+      "label": "FR-039D"
     },
     {
       "id": "FR-039E",
       "type": "FR",
-      "label": "- FR-039E: セッションを中断（非常用） は確認ダイアログを経て実行し、中断後はホームへ戻します。"
+      "label": "FR-039E"
     },
     {
       "id": "FR-039F",
       "type": "FR",
-      "label": "- FR-039F: 明示中断時はセッションを aborted で終了し、対応スロットの表示状態を 未実施 へ戻します。"
+      "label": "FR-039F"
     },
     {
       "id": "FR-039G",
       "type": "FR",
-      "label": "- FR-039G: ホームのスロットには 前回中断あり の表示を出しません（履歴は記録一覧で確認）。"
+      "label": "FR-039G"
     },
     {
       "id": "FR-040",
       "type": "FR",
-      "label": "- FR-040: drain_appearance 入力モーダルを提供します。"
+      "label": "FR-040"
     },
     {
       "id": "FR-041",
       "type": "FR",
-      "label": "- FR-041: 見た目分類は 透明/やや混濁/混濁/血性/その他 を提供します。"
+      "label": "FR-041"
     },
     {
       "id": "FR-042",
       "type": "FR",
-      "label": "- FR-042: 廃液の記録写真（drain）は任意入力です。"
+      "label": "FR-042"
     },
     {
       "id": "FR-042A",
       "type": "FR",
-      "label": "- FR-042A: 出口部の記録写真（exit_site）は session_summary.payload.exit_site_photo に保存します（record_event は追加しません）。"
+      "label": "FR-042A"
     },
     {
       "id": "FR-042B",
       "type": "FR",
-      "label": "- FR-042B: 出口部写真の対象レコードは当日 summaryScope=both を最優先し、次に summaryScope=first_of_day を採用します。同値時は completedAt 昇順、さらに同値時は recordId 昇順で決定します。"
+      "label": "FR-042B"
     },
     {
       "id": "FR-042C",
       "type": "FR",
-      "label": "- FR-042C: 出口部写真の登録導線は、対象 session_summary の入力完了後に表示します。"
+      "label": "FR-042C"
     },
     {
       "id": "FR-042D",
       "type": "FR",
-      "label": "- FR-042D: 出口部写真の操作導線は iPhoneホーム全体サマリ と iPhone記録詳細 の両方に表示します。Macは閲覧リンクのみ表示し、登録/変更/削除操作は許可しません。"
+      "label": "FR-042D"
     },
     {
       "id": "FR-042E",
       "type": "FR",
-      "label": "- FR-042E: 出口部写真は1レコード1枚固定とし、登録後は 変更 と 削除 を許可します。"
+      "label": "FR-042E"
     },
     {
       "id": "FR-042F",
       "type": "FR",
-      "label": "- FR-042F: 出口部写真の入力手段は iPhone の カメラ撮影 と ファイル選択 の両方を許可します。"
+      "label": "FR-042F"
     },
     {
       "id": "FR-042G",
       "type": "FR",
-      "label": "- FR-042G: 出口部写真は任意入力であり、未登録でも手技完了を阻害しません。"
+      "label": "FR-042G"
     },
     {
       "id": "FR-042H",
       "type": "FR",
-      "label": "- FR-042H: 出口部写真の削除時は session_summary.payload.exit_site_photo=null を保存し、対応画像は tombstone 化します。"
+      "label": "FR-042H"
     },
     {
       "id": "FR-043",
       "type": "FR",
-      "label": "- FR-043: drain_weight_g と bag_weight_g を g単位で保存します。"
+      "label": "FR-043"
     },
     {
       "id": "FR-044",
       "type": "FR",
-      "label": "- FR-044: session_summary で以下を収集します。"
+      "label": "FR-044"
     },
     {
       "id": "FR-044A",
       "type": "FR",
-      "label": "- FR-044A: 同一日に1セッションのみ完了した場合は、最初/最後の両条件を同時適用し、必須項目をすべて満たす必要があります。"
+      "label": "FR-044A"
     },
     {
       "id": "FR-044B",
       "type": "FR",
-      "label": "- FR-044B: 出口部状態は複数選択チェックボックスで入力し、語彙は 正常/赤み/痛み/はれ/かさぶた/じゅくじゅく/出血/膿 とします。追加の自由記述は備考欄に入力します。"
+      "label": "FR-044B"
     },
     {
       "id": "FR-044C",
       "type": "FR",
-      "label": "- FR-044C: session_summary.summaryScope（first_of_day / last_of_day / both）は最終ステップ完了時にローカルで算出し、同期時に共有します。"
+      "label": "FR-044C"
     },
     {
       "id": "FR-044D",
       "type": "FR",
-      "label": "- FR-044D: summaryScope が未指定または不正値でも保存拒否せず、summaryScope のみ破棄して他の妥当な入力値を保存します。"
+      "label": "FR-044D"
     },
     {
       "id": "FR-050",
@@ -1173,107 +958,107 @@
     {
       "id": "FR-050A",
       "type": "FR",
-      "label": "- FR-050A: 通知対象は timer_event=end の終了イベントとし、timer_segment=dwell/drain を同一ルールで扱います。"
+      "label": "FR-050A"
     },
     {
       "id": "FR-050B",
       "type": "FR",
-      "label": "- FR-050B: 同一セッション内の通知ジョブは alarm_id 単位で独立管理します。"
+      "label": "FR-050B"
     },
     {
       "id": "FR-050C",
       "type": "FR",
-      "label": "- FR-050C: 通知ジョブは最低限 alarm_id / segment / due_at / acked_at / attempt_no / status を保持します。"
+      "label": "FR-050C"
     },
     {
       "id": "FR-050D",
       "type": "FR",
-      "label": "- FR-050D: pendingAlarm は未ACKジョブ（pending/notified/missed）から due_at 最小を優先して1件選択し、同値時は alarm_id 昇順を採用します。"
+      "label": "FR-050D"
     },
     {
       "id": "FR-051",
       "type": "FR",
-      "label": "- FR-051: 終了時刻 T0 で Mac ローカル通知（音+バナー）を発火し、同時にアプリ内未確認アラートを固定表示します。"
+      "label": "FR-051"
     },
     {
       "id": "FR-052",
       "type": "FR",
-      "label": "- FR-052: 未確認時は段階再通知を行います。"
+      "label": "FR-052"
     },
     {
       "id": "FR-052A",
       "type": "FR",
-      "label": "- FR-052A: 再通知間隔は T+2分（iPhone補助通知1回 + Mac再通知）、T+5分以降（3分間隔でMac+iPhone再通知）とします。"
+      "label": "FR-052A"
     },
     {
       "id": "FR-052B",
       "type": "FR",
-      "label": "- FR-052B: 段階再通知の対象は「貯留終了（dwell）」「廃液終了（drain）」に限定します。"
+      "label": "FR-052B"
     },
     {
       "id": "FR-053",
       "type": "FR",
-      "label": "- FR-053: ACK時は Mac/iPhone の通知ジョブをすべて停止し、acked_at を記録します。"
+      "label": "FR-053"
     },
     {
       "id": "FR-054",
       "type": "FR",
-      "label": "- FR-054: アプリ内アラートは ACK まで継続表示し、通知再送も ACK まで継続します。"
+      "label": "FR-054"
     },
     {
       "id": "FR-055",
       "type": "FR",
-      "label": "- FR-055: 通知チャネルは Mac主チャネル固定 + iPhone補助 とします。"
+      "label": "FR-055"
     },
     {
       "id": "FR-055A",
       "type": "FR",
-      "label": "- FR-055A: iPhone未利用かつ離席想定時は「見逃し高リスク」警告を必須表示します。"
+      "label": "FR-055A"
     },
     {
       "id": "FR-055B",
       "type": "FR",
-      "label": "- FR-055B: iPhone補助通知の利用可否は Push購読状態（登録/無効化）で管理します。"
+      "label": "FR-055B"
     },
     {
       "id": "FR-056",
       "type": "FR",
-      "label": "- FR-056: 「戻る」操作、過去ステップ再表示、アプリ再開、通信リトライでは、timer_event(start/end)・record_event・通知ジョブ生成を再発火しません。"
+      "label": "FR-056"
     },
     {
       "id": "FR-057",
       "type": "FR",
-      "label": "- FR-057: 30秒テスト通知は手動実行とし、通知設定変更時・OS更新後・通知不調時に実施できること。"
+      "label": "FR-057"
     },
     {
       "id": "FR-057A",
       "type": "FR",
-      "label": "- FR-057A: 手動30秒テストに失敗した場合は、当日を「iPhone補助なし（Mac主導）」として扱います。"
+      "label": "FR-057A"
     },
     {
       "id": "FR-058",
       "type": "FR",
-      "label": "- FR-058: T+30分 未確認時は status=missed を永続化し、「見逃し状態」を表示します。"
+      "label": "FR-058"
     },
     {
       "id": "FR-058A",
       "type": "FR",
-      "label": "- FR-058A: status=missed になった後も、ACKまで3分間隔の再通知を継続します。"
+      "label": "FR-058A"
     },
     {
       "id": "FR-058B",
       "type": "FR",
-      "label": "- FR-058B: status=missed は ACK 成功時に acknowledged へ遷移し、通知停止と acked_at 記録を行います。"
+      "label": "FR-058B"
     },
     {
       "id": "FR-060",
       "type": "FR",
-      "label": "- FR-060: 見た目分類ベースの簡易判定を行います。"
+      "label": "FR-060 CAP-ABNORMAL-001-FR-01"
     },
     {
       "id": "FR-061",
       "type": "FR",
-      "label": "- FR-061: 異常時は警告表示のみ行います。"
+      "label": "FR-061 CAP-ABNORMAL-001-FR-02"
     },
     {
       "id": "FR-062",
@@ -1283,27 +1068,27 @@
     {
       "id": "FR-070",
       "type": "FR",
-      "label": "- FR-070: 新版取り込み後、テンプレート版として保存します。"
+      "label": "FR-070 CAP-CSV-IMPORT-001-FR-06<br>CAP-SNAPSHOT-001-FR-07"
     },
     {
       "id": "FR-071",
       "type": "FR",
-      "label": "- FR-071: セッション開始時は SessionProtocolSnapshot をローカル同一トランザクションで保存し、保存失敗時は開始自体を失敗させます。"
+      "label": "FR-071"
     },
     {
       "id": "FR-072",
       "type": "FR",
-      "label": "- FR-072: スナップショットには sourceProtocol(meta)、step定義本文（通し番号/タイトル/文言/必須チェック/timer/alarm/record）、画像 assetKey、assetManifest、snapshotHash を含めます。"
+      "label": "FR-072"
     },
     {
       "id": "FR-073",
       "type": "FR",
-      "label": "- FR-073: セッション表示/再開時は開始時スナップショットを常に優先し、現行テンプレート版へフォールバックしません。"
+      "label": "FR-073"
     },
     {
       "id": "FR-074",
       "type": "FR",
-      "label": "- FR-074: スナップショット欠落またはハッシュ不整合は整合性エラーとして扱い、セッション表示を停止します。"
+      "label": "FR-074"
     },
     {
       "id": "FR-075",
@@ -1313,82 +1098,82 @@
     {
       "id": "FR-080",
       "type": "FR",
-      "label": "- FR-080: 同期は startup / resume / session_complete / manual の4契機で実行します。"
+      "label": "FR-080"
     },
     {
       "id": "FR-081",
       "type": "FR",
-      "label": "- FR-081: すべてのローカル更新は outbox に追記し、push成功時に消し込みます。"
+      "label": "FR-081"
     },
     {
       "id": "FR-082",
       "type": "FR",
-      "label": "- FR-082: 差分取得は cloudRevision と dayRefs に基づき実行します。"
+      "label": "FR-082"
     },
     {
       "id": "FR-082A",
       "type": "FR",
-      "label": "- FR-082A: 公開HTTP APIは POST /sync/push と POST /sync/pull のみとし、CSV取り込みはローカルI/F（ProtocolImportService.importFromDirectory）で実行します。"
+      "label": "FR-082A"
     },
     {
       "id": "FR-083",
       "type": "FR",
-      "label": "- FR-083: 競合解決はエンティティ単位LWW（updatedAt, updatedByDeviceId, mutationId 降順）で固定します。"
+      "label": "FR-083"
     },
     {
       "id": "FR-084",
       "type": "FR",
-      "label": "- FR-084: tombstone（削除）もLWW同一ルールで解決します。"
+      "label": "FR-084"
     },
     {
       "id": "FR-085",
       "type": "FR",
-      "label": "- FR-085: 競合解決は内部適用のみとし、競合件数バナーや詳細一覧は提供しません。"
+      "label": "FR-085"
     },
     {
       "id": "FR-086",
       "type": "FR",
-      "label": "- FR-086: 手動同期ボタンを提供し、失敗時は再試行導線を表示します。"
+      "label": "FR-086"
     },
     {
       "id": "FR-087",
       "type": "FR",
-      "label": "- FR-087: IndexedDB消失検知時はクラウドからフルリストアを実行します。"
+      "label": "FR-087"
     },
     {
       "id": "FR-087A",
       "type": "FR",
-      "label": "- FR-087A: POST /sync/pull が cloudState=missing を返した場合、クラウド欠損と判定します。"
+      "label": "FR-087A"
     },
     {
       "id": "FR-087B",
       "type": "FR",
-      "label": "- FR-087B: クラウド欠損判定時はローカルデータを正本として syncMode=full_reseed で全量再シードを実行し、ローカルデータは削除/初期化しません。"
+      "label": "FR-087B"
     },
     {
       "id": "FR-087C",
       "type": "FR",
-      "label": "- FR-087C: 全量再シード成功後は再度 POST /sync/pull を実行し、cloudState=ok と cloudRevision 更新を確認して同期完了とします。"
+      "label": "FR-087C"
     },
     {
       "id": "FR-087D",
       "type": "FR",
-      "label": "- FR-087D: 全量再シード失敗時はローカルデータを不変のまま保持し、lastSyncStatus=failed と再試行導線を表示します。"
+      "label": "FR-087D"
     },
     {
       "id": "FR-088",
       "type": "FR",
-      "label": "- FR-088: 同期失敗時は直近同期状態（成功/失敗）を更新し、再試行導線を表示します。"
+      "label": "FR-088"
     },
     {
       "id": "FR-089",
       "type": "FR",
-      "label": "- FR-089: 120秒ポーリング は実装しません。"
+      "label": "FR-089"
     },
     {
       "id": "FR-089A",
       "type": "FR",
-      "label": "- FR-089A: session_summary.payload.exit_site_photo の更新は部分パッチ（patch_path=payload.exit_site_photo）で同期し、同一record内の他フィールドを上書きしません。"
+      "label": "FR-089A"
     },
     {
       "id": "FR-090",
@@ -1398,7 +1183,7 @@
     {
       "id": "FR-090A",
       "type": "FR",
-      "label": "- FR-090A: 写真参照メタには photo_kind（drain / exit_site）を保持します。"
+      "label": "FR-090A"
     },
     {
       "id": "FR-091",
@@ -1413,7 +1198,7 @@
     {
       "id": "FR-093",
       "type": "FR",
-      "label": "- FR-093: 手動エクスポート機能は v1 対象外とします。"
+      "label": "FR-093 CAP-PHOTO-BACKUP-001-FR-14"
     },
     {
       "id": "FR-100",
@@ -1533,7 +1318,7 @@
     {
       "id": "NFR-001",
       "type": "NFR",
-      "label": "- NFR-001: CSV取り込み結果はエラー/警告箇所を特定できること。"
+      "label": "- NFR-001: CSV取込結果でエラー/警告箇所（行/列）を特定可能であること。"
     },
     {
       "id": "NFR-002",
@@ -1558,7 +1343,7 @@
     {
       "id": "SCR-001-HOME",
       "type": "SCR",
-      "label": "SCR-001-HOME Home"
+      "label": "SCR-001-HOME 手技開始ハブ"
     },
     {
       "id": "SCR-001-HOME-FR-01",
@@ -1833,7 +1618,7 @@
     {
       "id": "SCR-006-SESSION",
       "type": "SCR",
-      "label": "SCR-006-SESSION Session"
+      "label": "SCR-006-SESSION セッション進行"
     },
     {
       "id": "SCR-006-SESSION-FR-01",
@@ -2706,116 +2491,6 @@
       "label": "UI-012-HOME 当日ノート（排液写真）"
     },
     {
-      "id": "UI-HISTORY-001",
-      "type": "UI",
-      "label": "UI-HISTORY-001"
-    },
-    {
-      "id": "UI-HISTORY-002",
-      "type": "UI",
-      "label": "UI-HISTORY-002"
-    },
-    {
-      "id": "UI-HOME-001",
-      "type": "UI",
-      "label": "UI-HOME-001"
-    },
-    {
-      "id": "UI-HOME-002",
-      "type": "UI",
-      "label": "UI-HOME-002"
-    },
-    {
-      "id": "UI-HOME-003",
-      "type": "UI",
-      "label": "UI-HOME-003"
-    },
-    {
-      "id": "UI-HOME-003A",
-      "type": "UI",
-      "label": "UI-HOME-003A"
-    },
-    {
-      "id": "UI-HOME-004",
-      "type": "UI",
-      "label": "UI-HOME-004"
-    },
-    {
-      "id": "UI-HOME-005",
-      "type": "UI",
-      "label": "UI-HOME-005"
-    },
-    {
-      "id": "UI-HOME-006",
-      "type": "UI",
-      "label": "UI-HOME-006"
-    },
-    {
-      "id": "UI-HOME-007",
-      "type": "UI",
-      "label": "UI-HOME-007"
-    },
-    {
-      "id": "UI-HOME-008",
-      "type": "UI",
-      "label": "UI-HOME-008"
-    },
-    {
-      "id": "UI-HOME-009",
-      "type": "UI",
-      "label": "UI-HOME-009"
-    },
-    {
-      "id": "UI-HOME-010",
-      "type": "UI",
-      "label": "UI-HOME-010"
-    },
-    {
-      "id": "UI-HOME-011",
-      "type": "UI",
-      "label": "UI-HOME-011"
-    },
-    {
-      "id": "UI-SESSION-001",
-      "type": "UI",
-      "label": "UI-SESSION-001"
-    },
-    {
-      "id": "UI-SESSION-002",
-      "type": "UI",
-      "label": "UI-SESSION-002"
-    },
-    {
-      "id": "UI-SESSION-003",
-      "type": "UI",
-      "label": "UI-SESSION-003"
-    },
-    {
-      "id": "UI-SESSION-004",
-      "type": "UI",
-      "label": "UI-SESSION-004"
-    },
-    {
-      "id": "UI-SESSION-005",
-      "type": "UI",
-      "label": "UI-SESSION-005"
-    },
-    {
-      "id": "UI-SESSION-006",
-      "type": "UI",
-      "label": "UI-SESSION-006"
-    },
-    {
-      "id": "UI-SYNC-001",
-      "type": "UI",
-      "label": "UI-SYNC-001"
-    },
-    {
-      "id": "UI-SYNC-002",
-      "type": "UI",
-      "label": "UI-SYNC-002"
-    },
-    {
       "id": "UT-CSV-001",
       "type": "UT",
       "label": "UT-CSV-001 parseProtocolCsv"
@@ -3024,47 +2699,12 @@
   "edges": [
     {
       "from": "ACT-ALARM-001",
-      "to": "FR-053",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-ALARM-001",
-      "to": "FR-054",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-ALARM-001",
       "to": "SCR-006-SESSION",
       "reasons": [
         "line-cooccurrence"
       ]
     },
     {
-      "from": "ACT-ALARM-001",
-      "to": "UI-SESSION-006",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-EXIT-001",
-      "to": "FR-042A",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-EXIT-001",
-      "to": "FR-042G",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
       "from": "ACT-EXIT-001",
       "to": "SCR-005-HOME-SUMMARY",
       "reasons": [
@@ -3074,20 +2714,6 @@
     {
       "from": "ACT-EXIT-001",
       "to": "SCR-009-HISTORY-DETAIL",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-EXIT-001",
-      "to": "UI-HOME-011",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-EXIT-002",
-      "to": "FR-042E",
       "reasons": [
         "line-cooccurrence"
       ]
@@ -3107,20 +2733,6 @@
       ]
     },
     {
-      "from": "ACT-EXIT-002",
-      "to": "UI-HOME-011",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-EXIT-003",
-      "to": "FR-042H",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
       "from": "ACT-EXIT-003",
       "to": "SCR-005-HOME-SUMMARY",
       "reasons": [
@@ -3130,20 +2742,6 @@
     {
       "from": "ACT-EXIT-003",
       "to": "SCR-009-HISTORY-DETAIL",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-EXIT-003",
-      "to": "UI-HOME-011",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HISTORY-001",
-      "to": "FR-014",
       "reasons": [
         "line-cooccurrence"
       ]
@@ -3163,27 +2761,6 @@
       ]
     },
     {
-      "from": "ACT-HISTORY-001",
-      "to": "UI-HISTORY-002",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-001",
-      "to": "FR-009F",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-001",
-      "to": "SCR-001-HOME",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
       "from": "ACT-HOME-001",
       "to": "SCR-002-HOME-SETUP",
       "reasons": [
@@ -3192,55 +2769,6 @@
     },
     {
       "from": "ACT-HOME-002",
-      "to": "FR-009C",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-002",
-      "to": "FR-009E",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-002",
-      "to": "SCR-001-HOME",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-002",
-      "to": "SCR-002-HOME-SETUP",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-002",
-      "to": "UI-HOME-004",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-003",
-      "to": "FR-009A",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-003",
-      "to": "FR-009H",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-003",
       "to": "SCR-001-HOME",
       "reasons": [
         "line-cooccurrence"
@@ -3255,42 +2783,7 @@
     },
     {
       "from": "ACT-HOME-004",
-      "to": "FR-009F",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-004",
-      "to": "SCR-001-HOME",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-004",
       "to": "SCR-002-HOME-SETUP",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-005",
-      "to": "FR-009D",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-005",
-      "to": "FR-009G",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-005",
-      "to": "SCR-001-HOME",
       "reasons": [
         "line-cooccurrence"
       ]
@@ -3303,78 +2796,8 @@
       ]
     },
     {
-      "from": "ACT-HOME-005",
-      "to": "UI-HOME-003A",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-006",
-      "to": "FR-009A",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-006",
-      "to": "FR-009H",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-006",
-      "to": "SCR-004-HOME-VIEW-CONFIRM",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
       "from": "ACT-HOME-006",
       "to": "SCR-006-SESSION",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-006",
-      "to": "UI-HOME-006",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-007",
-      "to": "FR-020",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-007",
-      "to": "FR-021",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-007",
-      "to": "FR-022",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-007",
-      "to": "FR-023",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-007",
-      "to": "FR-024",
       "reasons": [
         "line-cooccurrence"
       ]
@@ -3394,57 +2817,8 @@
       ]
     },
     {
-      "from": "ACT-HOME-007",
-      "to": "UI-HOME-007",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-008",
-      "to": "FR-009",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-008",
-      "to": "FR-009G",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-008",
-      "to": "SCR-003-HOME-START-CONFIRM",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
       "from": "ACT-HOME-008",
       "to": "SCR-006-SESSION",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-008",
-      "to": "UI-HOME-005",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-010",
-      "to": "FR-006",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-010",
-      "to": "SCR-001-HOME",
       "reasons": [
         "line-cooccurrence"
       ]
@@ -3457,27 +2831,6 @@
       ]
     },
     {
-      "from": "ACT-HOME-010",
-      "to": "UI-HISTORY-001",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-011",
-      "to": "FR-086",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-HOME-011",
-      "to": "FR-088",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
       "from": "ACT-HOME-011",
       "to": "SCR-001-HOME",
       "reasons": [
@@ -3485,34 +2838,6 @@
       ]
     },
     {
-      "from": "ACT-HOME-011",
-      "to": "UI-SYNC-002",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SESSION-001",
-      "to": "FR-031",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SESSION-001",
-      "to": "FR-032",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SESSION-001",
-      "to": "FR-033",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
       "from": "ACT-SESSION-001",
       "to": "SCR-006-SESSION",
       "reasons": [
@@ -3520,50 +2845,8 @@
       ]
     },
     {
-      "from": "ACT-SESSION-001",
-      "to": "UI-SESSION-002",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SESSION-001",
-      "to": "UI-SESSION-003",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SESSION-002",
-      "to": "FR-039",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SESSION-002",
-      "to": "FR-056",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
       "from": "ACT-SESSION-002",
       "to": "SCR-006-SESSION",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SESSION-003",
-      "to": "FR-040",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SESSION-003",
-      "to": "FR-044D",
       "reasons": [
         "line-cooccurrence"
       ]
@@ -3583,27 +2866,6 @@
       ]
     },
     {
-      "from": "ACT-SESSION-003",
-      "to": "UI-SESSION-004",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SESSION-004",
-      "to": "FR-034",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SESSION-004",
-      "to": "FR-080",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
       "from": "ACT-SESSION-004",
       "to": "SCR-001-HOME",
       "reasons": [
@@ -3611,106 +2873,8 @@
       ]
     },
     {
-      "from": "ACT-SESSION-004",
-      "to": "SCR-006-SESSION",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SESSION-006",
-      "to": "FR-039D",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SESSION-006",
-      "to": "FR-039F",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
       "from": "ACT-SESSION-006",
       "to": "SCR-001-HOME",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SESSION-006",
-      "to": "SCR-006-SESSION",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SESSION-006",
-      "to": "UI-SESSION-005",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SYNC-001",
-      "to": "FR-080",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SYNC-001",
-      "to": "FR-081",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SYNC-001",
-      "to": "FR-082",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SYNC-001",
-      "to": "FR-083",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SYNC-001",
-      "to": "FR-084",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SYNC-001",
-      "to": "FR-085",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SYNC-001",
-      "to": "FR-086",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SYNC-001",
-      "to": "FR-087",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SYNC-001",
-      "to": "FR-088",
       "reasons": [
         "line-cooccurrence"
       ]
@@ -3718,13 +2882,6 @@
     {
       "from": "ACT-SYNC-001",
       "to": "SCR-011-SYNC-STATUS",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "ACT-SYNC-001",
-      "to": "UI-SYNC-001",
       "reasons": [
         "line-cooccurrence"
       ]
@@ -4141,13 +3298,6 @@
     },
     {
       "from": "FC-BAG-WEIGHT-001",
-      "to": "FR-043",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FC-BAG-WEIGHT-001",
       "to": "UI-003-RECORD",
       "reasons": [
         "line-cooccurrence"
@@ -4156,27 +3306,6 @@
     {
       "from": "FC-DRAIN-APPEARANCE-001",
       "to": "AT-FLOW-002",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FC-DRAIN-APPEARANCE-001",
-      "to": "FR-040",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FC-DRAIN-APPEARANCE-001",
-      "to": "FR-041",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FC-DRAIN-APPEARANCE-001",
-      "to": "FR-042",
       "reasons": [
         "line-cooccurrence"
       ]
@@ -4197,13 +3326,6 @@
     },
     {
       "from": "FC-DRAIN-WEIGHT-001",
-      "to": "FR-043",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FC-DRAIN-WEIGHT-001",
       "to": "UI-002-RECORD",
       "reasons": [
         "line-cooccurrence"
@@ -4217,50 +3339,8 @@
       ]
     },
     {
-      "from": "FC-SLOT-SETUP-001",
-      "to": "FR-008",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FC-SLOT-SETUP-001",
-      "to": "FR-009C",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FC-SLOT-SETUP-001",
-      "to": "FR-009E",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
       "from": "FC-SUMMARY-001",
       "to": "AT-EXIT-002",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FC-SUMMARY-001",
-      "to": "FR-044",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FC-SUMMARY-001",
-      "to": "FR-044B",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FC-SUMMARY-001",
-      "to": "FR-044C",
       "reasons": [
         "line-cooccurrence"
       ]
@@ -4281,20 +3361,6 @@
     },
     {
       "from": "FC-SUMMARY-002",
-      "to": "FR-044",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FC-SUMMARY-002",
-      "to": "FR-044C",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FC-SUMMARY-002",
       "to": "UI-004-RECORD",
       "reasons": [
         "line-cooccurrence"
@@ -4303,20 +3369,6 @@
     {
       "from": "FC-SUMMARY-003",
       "to": "AT-EXIT-011",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FC-SUMMARY-003",
-      "to": "FR-044A",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FC-SUMMARY-003",
-      "to": "FR-044C",
       "reasons": [
         "line-cooccurrence"
       ]
@@ -4340,20 +3392,6 @@
       "to": "VR-HOME-001",
       "reasons": [
         "traceability-fr-test"
-      ]
-    },
-    {
-      "from": "FR-007",
-      "to": "AT-FLOW-004",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-007",
-      "to": "AT-FLOW-005",
-      "reasons": [
-        "line-cooccurrence"
       ]
     },
     {
@@ -4528,13 +3566,6 @@
     },
     {
       "from": "FR-009G",
-      "to": "AT-FLOW-007",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-009G",
       "to": "E2E-FLOW-003",
       "reasons": [
         "line-cooccurrence",
@@ -4571,13 +3602,6 @@
       "reasons": [
         "line-cooccurrence",
         "traceability-fr-test"
-      ]
-    },
-    {
-      "from": "FR-010",
-      "to": "AT-UI-HOME-001",
-      "reasons": [
-        "line-cooccurrence"
       ]
     },
     {
@@ -4690,38 +3714,10 @@
     },
     {
       "from": "FR-020",
-      "to": "AT-API-003",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-020",
       "to": "AT-CSV-001",
       "reasons": [
         "line-cooccurrence",
         "traceability-fr-at"
-      ]
-    },
-    {
-      "from": "FR-020",
-      "to": "AT-CSV-002",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-020",
-      "to": "AT-CSV-003",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-020",
-      "to": "AT-CSV-004",
-      "reasons": [
-        "line-cooccurrence"
       ]
     },
     {
@@ -4915,27 +3911,6 @@
     },
     {
       "from": "FR-030",
-      "to": "AT-FLOW-001",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-030",
-      "to": "AT-FLOW-002",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-030",
-      "to": "AT-FLOW-003",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-030",
       "to": "AT-UI-SESSION-001",
       "reasons": [
         "line-cooccurrence",
@@ -5120,62 +4095,6 @@
     },
     {
       "from": "FR-042A",
-      "to": "AT-EXIT-001",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-042A",
-      "to": "AT-EXIT-002",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-042A",
-      "to": "AT-EXIT-003",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-042A",
-      "to": "AT-EXIT-004",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-042A",
-      "to": "AT-EXIT-005",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-042A",
-      "to": "AT-EXIT-006",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-042A",
-      "to": "AT-EXIT-007",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-042A",
-      "to": "AT-EXIT-008",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-042A",
       "to": "AT-EXIT-009",
       "reasons": [
         "line-cooccurrence",
@@ -5188,20 +4107,6 @@
       "reasons": [
         "line-cooccurrence",
         "traceability-fr-at"
-      ]
-    },
-    {
-      "from": "FR-042A",
-      "to": "AT-EXIT-011",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-042A",
-      "to": "AT-EXIT-012",
-      "reasons": [
-        "line-cooccurrence"
       ]
     },
     {
@@ -5404,27 +4309,6 @@
     },
     {
       "from": "FR-050A",
-      "to": "AT-ALARM-002",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-050A",
-      "to": "AT-ALARM-003",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-050A",
-      "to": "AT-ALARM-004",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-050A",
       "to": "E2E-ALARM-001",
       "reasons": [
         "line-cooccurrence",
@@ -5563,34 +4447,6 @@
       "reasons": [
         "line-cooccurrence",
         "traceability-fr-at"
-      ]
-    },
-    {
-      "from": "FR-080",
-      "to": "AT-SYNC-003",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-080",
-      "to": "AT-SYNC-004",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-080",
-      "to": "AT-SYNC-005",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-080",
-      "to": "AT-SYNC-006",
-      "reasons": [
-        "line-cooccurrence"
       ]
     },
     {
@@ -5751,20 +4607,6 @@
       "reasons": [
         "line-cooccurrence",
         "traceability-fr-at"
-      ]
-    },
-    {
-      "from": "FR-087",
-      "to": "AT-RECOVERY-002",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "FR-087",
-      "to": "AT-RECOVERY-003",
-      "reasons": [
-        "line-cooccurrence"
       ]
     },
     {
@@ -7989,64 +6831,8 @@
       ]
     },
     {
-      "from": "SCR-001-HOME",
-      "to": "UI-HOME-001",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "SCR-001-HOME",
-      "to": "UI-HOME-002",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "SCR-001-HOME",
-      "to": "UI-HOME-003",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "SCR-001-HOME",
-      "to": "UI-HOME-003A",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "SCR-001-HOME",
-      "to": "UI-HOME-007",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "SCR-001-HOME",
-      "to": "UI-HOME-008",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "SCR-001-HOME",
-      "to": "UI-HOME-009",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
       "from": "SCR-002-HOME-SETUP",
       "to": "FC-SLOT-SETUP-001",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "SCR-002-HOME-SETUP",
-      "to": "UI-HOME-004",
       "reasons": [
         "line-cooccurrence"
       ]
@@ -8059,22 +6845,8 @@
       ]
     },
     {
-      "from": "SCR-003-HOME-START-CONFIRM",
-      "to": "UI-HOME-005",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
       "from": "SCR-004-HOME-VIEW-CONFIRM",
       "to": "FR-056",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "SCR-004-HOME-VIEW-CONFIRM",
-      "to": "UI-HOME-006",
       "reasons": [
         "line-cooccurrence"
       ]
@@ -8180,20 +6952,6 @@
     {
       "from": "SCR-005-HOME-SUMMARY",
       "to": "FR-090A",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "SCR-005-HOME-SUMMARY",
-      "to": "UI-HOME-010",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "SCR-005-HOME-SUMMARY",
-      "to": "UI-HOME-011",
       "reasons": [
         "line-cooccurrence"
       ]
@@ -8472,41 +7230,6 @@
       ]
     },
     {
-      "from": "SCR-006-SESSION",
-      "to": "UI-SESSION-001",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "SCR-006-SESSION",
-      "to": "UI-SESSION-002",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "SCR-006-SESSION",
-      "to": "UI-SESSION-003",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "SCR-006-SESSION",
-      "to": "UI-SESSION-005",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "SCR-006-SESSION",
-      "to": "UI-SESSION-006",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
       "from": "SCR-007-SESSION-RECORD",
       "to": "FC-BAG-WEIGHT-001",
       "reasons": [
@@ -8598,13 +7321,6 @@
       ]
     },
     {
-      "from": "SCR-007-SESSION-RECORD",
-      "to": "UI-SESSION-004",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
       "from": "SCR-008-HISTORY",
       "to": "FR-010",
       "reasons": [
@@ -8642,20 +7358,6 @@
     {
       "from": "SCR-008-HISTORY",
       "to": "FR-015C",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "SCR-008-HISTORY",
-      "to": "UI-HISTORY-001",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "SCR-010-HISTORY-PHOTO",
-      "to": "UI-HISTORY-002",
       "reasons": [
         "line-cooccurrence"
       ]
@@ -8752,20 +7454,6 @@
       ]
     },
     {
-      "from": "SCR-011-SYNC-STATUS",
-      "to": "UI-SYNC-001",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "SCR-011-SYNC-STATUS",
-      "to": "UI-SYNC-002",
-      "reasons": [
-        "line-cooccurrence"
-      ]
-    },
-    {
       "from": "SCR-012-MAC-IMPORT",
       "to": "FR-020",
       "reasons": [
@@ -8798,372 +7486,6 @@
       "to": "FR-024",
       "reasons": [
         "line-cooccurrence"
-      ]
-    },
-    {
-      "from": "UI-HISTORY-001",
-      "to": "DATA:dailyProcedurePlan",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-HISTORY-001",
-      "to": "DATA:DayBundle.records",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-HISTORY-001",
-      "to": "DATA:record",
-      "reasons": [
-        "ui-outbox"
-      ]
-    },
-    {
-      "from": "UI-HISTORY-001",
-      "to": "DATA:Record",
-      "reasons": [
-        "ui-write"
-      ]
-    },
-    {
-      "from": "UI-HISTORY-001",
-      "to": "DATA:sessions",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-HISTORY-002",
-      "to": "DATA:photoRefs",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-HISTORY-002",
-      "to": "DATA:photos/*",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-HOME-001",
-      "to": "DATA:DailyProcedurePlan.dateLocal",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-HOME-002",
-      "to": "DATA:DailyProcedurePlan.slots[*].displayStatus",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-HOME-003",
-      "to": "DATA:recommendedAtLocal",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-HOME-003",
-      "to": "DATA:slots[*].protocolTitle",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-HOME-003A",
-      "to": "DATA:slots[n].displayStatus",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-HOME-004",
-      "to": "DATA:daily_plan",
-      "reasons": [
-        "ui-outbox"
-      ]
-    },
-    {
-      "from": "UI-HOME-004",
-      "to": "DATA:slots[n]",
-      "reasons": [
-        "ui-read",
-        "ui-write"
-      ]
-    },
-    {
-      "from": "UI-HOME-005",
-      "to": "DATA:activeSession",
-      "reasons": [
-        "ui-read",
-        "ui-write"
-      ]
-    },
-    {
-      "from": "UI-HOME-005",
-      "to": "DATA:session",
-      "reasons": [
-        "ui-outbox"
-      ]
-    },
-    {
-      "from": "UI-HOME-005",
-      "to": "DATA:Session",
-      "reasons": [
-        "ui-write"
-      ]
-    },
-    {
-      "from": "UI-HOME-005",
-      "to": "DATA:slots[n]",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-HOME-006",
-      "to": "DATA:slots[n]",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-HOME-007",
-      "to": "DATA:platform",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-HOME-007",
-      "to": "DATA:protocol",
-      "reasons": [
-        "ui-outbox"
-      ]
-    },
-    {
-      "from": "UI-HOME-007",
-      "to": "DATA:ProtocolPackage",
-      "reasons": [
-        "ui-write"
-      ]
-    },
-    {
-      "from": "UI-HOME-008",
-      "to": "DATA:Record(timer_event",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-HOME-008",
-      "to": "DATA:timer_exchange_no)",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-HOME-009",
-      "to": "DATA:record_exchange_no)",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-HOME-009",
-      "to": "DATA:Record(record_event",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-HOME-010",
-      "to": "DATA:Record",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-HOME-011",
-      "to": "DATA:payload.exit_site_photo",
-      "reasons": [
-        "ui-write"
-      ]
-    },
-    {
-      "from": "UI-HOME-011",
-      "to": "DATA:record",
-      "reasons": [
-        "ui-outbox"
-      ]
-    },
-    {
-      "from": "UI-HOME-011",
-      "to": "DATA:Record(session_summary.payload.exit_site_photo)",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-SESSION-001",
-      "to": "DATA:SessionProtocolSnapshot.steps[*]",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-SESSION-002",
-      "to": "DATA:steps[*].requiredChecks",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-SESSION-003",
-      "to": "DATA:record完了状態",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-SESSION-003",
-      "to": "DATA:requiredChecks達成状態",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-SESSION-003",
-      "to": "DATA:session_progress",
-      "reasons": [
-        "ui-outbox"
-      ]
-    },
-    {
-      "from": "UI-SESSION-003",
-      "to": "DATA:Session.currentStepId",
-      "reasons": [
-        "ui-write"
-      ]
-    },
-    {
-      "from": "UI-SESSION-004",
-      "to": "DATA:FC-*",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-SESSION-004",
-      "to": "DATA:record",
-      "reasons": [
-        "ui-outbox"
-      ]
-    },
-    {
-      "from": "UI-SESSION-004",
-      "to": "DATA:Record",
-      "reasons": [
-        "ui-write"
-      ]
-    },
-    {
-      "from": "UI-SESSION-005",
-      "to": "DATA:daily_plan",
-      "reasons": [
-        "ui-outbox"
-      ]
-    },
-    {
-      "from": "UI-SESSION-005",
-      "to": "DATA:session",
-      "reasons": [
-        "ui-outbox"
-      ]
-    },
-    {
-      "from": "UI-SESSION-005",
-      "to": "DATA:Session.status=aborted",
-      "reasons": [
-        "ui-write"
-      ]
-    },
-    {
-      "from": "UI-SESSION-005",
-      "to": "DATA:Session.status=active",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-SESSION-005",
-      "to": "DATA:slot.status=pending",
-      "reasons": [
-        "ui-write"
-      ]
-    },
-    {
-      "from": "UI-SESSION-006",
-      "to": "DATA:acked_at",
-      "reasons": [
-        "ui-write"
-      ]
-    },
-    {
-      "from": "UI-SESSION-006",
-      "to": "DATA:alarm_ack",
-      "reasons": [
-        "ui-outbox"
-      ]
-    },
-    {
-      "from": "UI-SESSION-006",
-      "to": "DATA:AlarmDispatchJob.pendingAlarm",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-SYNC-001",
-      "to": "DATA:lastError",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-SYNC-001",
-      "to": "DATA:lastSyncedAt",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-SYNC-001",
-      "to": "DATA:SyncState",
-      "reasons": [
-        "ui-write"
-      ]
-    },
-    {
-      "from": "UI-SYNC-001",
-      "to": "DATA:SyncState.lastSyncStatus",
-      "reasons": [
-        "ui-read"
-      ]
-    },
-    {
-      "from": "UI-SYNC-002",
-      "to": "DATA:SyncState.lastSyncStatus",
-      "reasons": [
-        "ui-read"
       ]
     }
   ]

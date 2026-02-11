@@ -38,17 +38,17 @@
     <section class="card">
   <h2>対応FR</h2>
 <ul>
-<li><a href="../ids/FR-080.html"><code>FR-080</code></a> <span class="muted">- FR-080: 同期は startup / resume / session_complete / manual の4契機で実行します。</span></li>
-<li><a href="../ids/FR-081.html"><code>FR-081</code></a> <span class="muted">- FR-081: すべてのローカル更新は outbox に追記し、push成功時に消し込みます。</span></li>
-<li><a href="../ids/FR-082.html"><code>FR-082</code></a> <span class="muted">- FR-082: 差分取得は cloudRevision と dayRefs に基づき実行します。</span></li>
-<li><a href="../ids/FR-082A.html"><code>FR-082A</code></a> <span class="muted">- FR-082A: 公開HTTP APIは POST /sync/push と POST /sync/pull のみとし、CSV取り込みはローカルI/F（ProtocolImportService.importFromDirectory）で実行します。</span></li>
-<li><a href="../ids/FR-083.html"><code>FR-083</code></a> <span class="muted">- FR-083: 競合解決はエンティティ単位LWW（updatedAt, updatedByDeviceId, mutationId 降順）で固定します。</span></li>
-<li><a href="../ids/FR-084.html"><code>FR-084</code></a> <span class="muted">- FR-084: tombstone（削除）もLWW同一ルールで解決します。</span></li>
-<li><a href="../ids/FR-085.html"><code>FR-085</code></a> <span class="muted">- FR-085: 競合解決は内部適用のみとし、競合件数バナーや詳細一覧は提供しません。</span></li>
-<li><a href="../ids/FR-086.html"><code>FR-086</code></a> <span class="muted">- FR-086: 手動同期ボタンを提供し、失敗時は再試行導線を表示します。</span></li>
-<li><a href="../ids/FR-088.html"><code>FR-088</code></a> <span class="muted">- FR-088: 同期失敗時は直近同期状態（成功/失敗）を更新し、再試行導線を表示します。</span></li>
-<li><a href="../ids/FR-089.html"><code>FR-089</code></a> <span class="muted">- FR-089: 120秒ポーリング は実装しません。</span></li>
-<li><a href="../ids/FR-089A.html"><code>FR-089A</code></a> <span class="muted">- FR-089A: session_summary.payload.exit_site_photo の更新は部分パッチ（patch_path=payload.exit_site_photo）で同期し、同一record内の他フィールドを上書きしません。</span></li>
+<li><a href="../ids/FR-080.html"><code>FR-080</code></a></li>
+<li><a href="../ids/FR-081.html"><code>FR-081</code></a></li>
+<li><a href="../ids/FR-082.html"><code>FR-082</code></a></li>
+<li><a href="../ids/FR-082A.html"><code>FR-082A</code></a></li>
+<li><a href="../ids/FR-083.html"><code>FR-083</code></a></li>
+<li><a href="../ids/FR-084.html"><code>FR-084</code></a></li>
+<li><a href="../ids/FR-085.html"><code>FR-085</code></a></li>
+<li><a href="../ids/FR-086.html"><code>FR-086</code></a></li>
+<li><a href="../ids/FR-088.html"><code>FR-088</code></a></li>
+<li><a href="../ids/FR-089.html"><code>FR-089</code></a></li>
+<li><a href="../ids/FR-089A.html"><code>FR-089A</code></a></li>
 </ul>
 </section>
 <section class="card">
@@ -68,22 +68,20 @@
   <h2>画面と操作</h2>
   <h3>SCR</h3>
 <ul>
-<li><a href="../screens/SCR-001-HOME.html"><code>SCR-001-HOME</code></a> <span class="muted">Home</span></li>
-<li><a href="../screens/SCR-006-SESSION.html"><code>SCR-006-SESSION</code></a> <span class="muted">Session</span></li>
+<li><a href="../screens/SCR-001-HOME.html"><code>SCR-001-HOME</code></a> <span class="muted">手技開始ハブ</span></li>
+<li><a href="../screens/SCR-006-SESSION.html"><code>SCR-006-SESSION</code></a> <span class="muted">セッション進行</span></li>
 <li><a href="../screens/SCR-011-SYNC-STATUS.html"><code>SCR-011-SYNC-STATUS</code></a> <span class="muted">同期状態表示</span></li>
 </ul>
   <h3>ACT</h3>
 <ul>
 <li><a href="../ids/ACT-HOME-011.html"><code>ACT-HOME-011</code></a> <span class="muted">なし</span></li>
-<li><a href="../ids/ACT-SYNC-001.html"><code>ACT-SYNC-001</code></a> <span class="muted">自動同期（起動/復帰/完了）</span></li>
+<li><a href="../ids/ACT-SYNC-001.html"><code>ACT-SYNC-001</code></a> <span class="muted">startup/resume/session_complete/manual 契機</span></li>
 </ul>
 </section>
 <section class="card">
   <h2>定義位置</h2>
 <ul>
-<li><a href="../sources/docs/requirements/09_user_journeys.html#JRN-005-SYNC"><code>docs/requirements/09_user_journeys.md:20</code></a> <span class="muted">| JRN-005-SYNC | 同期と再試行 | Mac/iPhone | ローカル更新または手動同期要求あり | outboxが消し込まれ、同期状態が更新される | FR-080〜FR-089A | AT-SYNC-001〜AT-SYNC-006 | Phase1 |</span></li>
-<li><a href="../sources/docs/requirements/09_user_journeys.html#JRN-005-SYNC--L51"><code>docs/requirements/09_user_journeys.md:51</code></a> <span class="muted">### JRN-005-SYNC 同期と再試行</span></li>
-<li><a href="../sources/docs/spec/10_journeys/journeys.html#JRN-005-SYNC--L27"><code>docs/spec/10_journeys/journeys.md:27</code></a> <span class="muted">| JRN-005-SYNC | 同期と再試行 | 端末間整合 | SCR-011-SYNC-STATUS, SCR-001-HOME | outbox消し込み | [link](./JRN-005-SYNC.md) |</span></li>
+<li><a href="../sources/docs/spec/10_journeys/journeys.html#JRN-005-SYNC"><code>docs/spec/10_journeys/journeys.md:27</code></a> <span class="muted">| JRN-005-SYNC | 同期と再試行 | 端末間整合 | SCR-011-SYNC-STATUS, SCR-001-HOME | ACT-001-SYNC, ACT-011-HOME | outbox消し込み | [link](./JRN-005-SYNC.md) |</span></li>
 <li><a href="../sources/docs/spec/10_journeys/JRN-005-SYNC.html#JRN-005-SYNC--L1"><code>docs/spec/10_journeys/JRN-005-SYNC.md:1</code></a> <span class="muted"># JRN-005-SYNC</span></li>
 </ul>
 </section>

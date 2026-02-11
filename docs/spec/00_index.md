@@ -41,6 +41,7 @@
 
 ## 7. 品質仕様へのリンク
 - `50_quality/acceptance_policy.md`
+- `50_quality/acceptance-test-catalog.md`
 - `50_quality/traceability.md`
 - `50_quality/test-link-index.md`
 

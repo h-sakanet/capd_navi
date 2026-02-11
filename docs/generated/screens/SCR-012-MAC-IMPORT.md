@@ -7,14 +7,11 @@ flowchart LR
     N14["JRN-001-CSV CSV取込（Mac）"]
   end
   subgraph ACT["Actions"]
-    N1["ACT-HOME-007 CSV取り込み"]
+    N1["ACT-HOME-007 platform=mac"]
   end
   subgraph SCR["Screens"]
-    N15["SCR-001-HOME Home"]
+    N15["SCR-001-HOME 手技開始ハブ"]
     N16["SCR-012-MAC-IMPORT CSV取込I/F"]
-  end
-  subgraph UI["UI Elements"]
-    N17["UI-HOME-007"]
   end
   subgraph AT["Acceptance Tests"]
     N2["AT-API-003 CSVローカル完結"]
@@ -34,7 +31,6 @@ flowchart LR
   end
   N1 --> N15
   N1 --> N16
-  N1 --> N17
   N2 --> N8
   N3 --> N9
   N4 --> N10
@@ -54,6 +50,5 @@ flowchart LR
   N14 --> N12
   N14 --> N15
   N14 --> N16
-  N15 --> N17
 ```
 

@@ -1,4 +1,4 @@
-# 07. 受入テスト
+# Acceptance Test Catalog
 
 ## 1. テスト方針
 - 判定優先度は「安全制御」「記録完全性」「同期整合」「復旧性」です。
@@ -6,9 +6,9 @@
 - ローカル正本とクラウド共有の最終的整合が成立することを重点検証します。
 
 ## 1.1 実行参照
-- 動線起点は `09_user_journeys.md` の `JRN-*` を使用します。
-- 画面遷移と操作は `10_screen_transition_and_actions.md` の `SCR-*` / `ACT-*` を使用します。
-- 入力項目と表示順は `11_form_contracts.md` の `FC-*` を使用します。
+- 動線起点は `../10_journeys/journeys.md` と `../10_journeys/JRN-*.md` を使用します。
+- 画面遷移と操作は `../20_screens/SCR-*.md` の `SCR-*` / `ACT-*` を使用します。
+- 入力項目と表示順は `../20_screens/SCR-002-HOME-SETUP.md` と `../20_screens/SCR-007-SESSION-RECORD.md` の `FC-*` を使用します。
 
 ## 2. 必須シナリオ
 

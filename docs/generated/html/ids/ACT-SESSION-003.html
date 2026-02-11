@@ -37,13 +37,12 @@
     <p class="lead">ACT ID</p>
     <section class="card">
   <h2>定義文（抜粋）</h2>
-  <p>ACT-SESSION-003 記録保存</p>
+  <p>ACT-SESSION-003 FC-* 必須条件充足</p>
 </section>
 <section class="card">
   <h2>原文リンク</h2>
 <ul>
-<li><a href="../sources/docs/requirements/10_screen_transition_and_actions.html#ACT-SESSION-003"><code>docs/requirements/10_screen_transition_and_actions.md:44</code></a> <span class="muted">| ACT-SESSION-003 | 記録保存 | SCR-007-SESSION-RECORD | `FC-*` 必須条件を満たす | `Record` 保存 + outbox追記 | SCR-006-SESSION | 入力不備エラー | JRN-003-SESSION / FR-040〜FR-044D |</span></li>
-<li><a href="../sources/docs/spec/20_screens/SCR-007-SESSION-RECORD.html#ACT-SESSION-003--L39"><code>docs/spec/20_screens/SCR-007-SESSION-RECORD.md:39</code></a> <span class="muted">| ACT-003-SESSION | `FC-*` 必須条件充足 | `Record` 保存 + outbox追記 | SCR-006-SESSION | 入力不備エラー |</span></li>
+<li><a href="../sources/docs/spec/20_screens/SCR-007-SESSION-RECORD.html#ACT-SESSION-003"><code>docs/spec/20_screens/SCR-007-SESSION-RECORD.md:39</code></a> <span class="muted">| ACT-003-SESSION | `FC-*` 必須条件充足 | `Record` 保存 + outbox追記 | SCR-007-SESSION-RECORD -&gt; SCR-006-SESSION | 入力不備エラー |</span></li>
 </ul>
 </section>
 <section class="card">
@@ -54,17 +53,8 @@
 </ul>
 <h3>SCR</h3>
 <ul>
-<li><a href="../screens/SCR-006-SESSION.html"><code>SCR-006-SESSION</code></a> <span class="muted">Session</span></li>
+<li><a href="../screens/SCR-006-SESSION.html"><code>SCR-006-SESSION</code></a> <span class="muted">セッション進行</span></li>
 <li><a href="../screens/SCR-007-SESSION-RECORD.html"><code>SCR-007-SESSION-RECORD</code></a> <span class="muted">記録入力</span></li>
-</ul>
-<h3>UI</h3>
-<ul>
-<li><a href="./UI-SESSION-004.html"><code>UI-SESSION-004</code></a></li>
-</ul>
-<h3>FR</h3>
-<ul>
-<li><a href="./FR-040.html"><code>FR-040</code></a> <span class="muted">- FR-040: drain_appearance 入力モーダルを提供します。</span></li>
-<li><a href="./FR-044D.html"><code>FR-044D</code></a> <span class="muted">- FR-044D: summaryScope が未指定または不正値でも保存拒否せず、summaryScope のみ破棄して他の妥当な入力値を保存します。</span></li>
 </ul>
 </section>
   </main>

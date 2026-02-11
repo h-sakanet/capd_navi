@@ -9,27 +9,24 @@ flowchart LR
     N42["JRN-009-EXITPHOTO 出口部写真登録/変更/削除"]
   end
   subgraph ACT["Actions"]
-    N1["ACT-EXIT-001 出口部写真登録"]
-    N2["ACT-EXIT-002 出口部写真変更"]
-    N3["ACT-EXIT-003 出口部写真削除"]
-    N4["ACT-HISTORY-001 写真詳細を開く"]
+    N1["ACT-EXIT-001 iPhoneかつ対象summaryScope完了"]
+    N2["ACT-EXIT-002 iPhoneかつ既存写真あり"]
+    N3["ACT-EXIT-003 iPhoneかつ既存写真あり"]
+    N4["ACT-HISTORY-001 対象photoIdが存在"]
     N5["ACT-HOME-010 なし"]
-    N6["ACT-SESSION-001 次へ"]
-    N7["ACT-SESSION-002 戻る"]
-    N8["ACT-SESSION-003 記録保存"]
-    N9["ACT-SESSION-004 最終ステップ完了"]
+    N6["ACT-SESSION-001 必須チェック完了かつrecord_event完了"]
+    N7["ACT-SESSION-002 先頭ステップ以外"]
+    N8["ACT-SESSION-003 FC-* 必須条件充足"]
+    N9["ACT-SESSION-004 最終ステップ到達"]
   end
   subgraph SCR["Screens"]
-    N43["SCR-001-HOME Home"]
+    N43["SCR-001-HOME 手技開始ハブ"]
     N44["SCR-005-HOME-SUMMARY 全体サマリ"]
-    N45["SCR-006-SESSION Session"]
+    N45["SCR-006-SESSION セッション進行"]
     N46["SCR-007-SESSION-RECORD 記録入力"]
     N47["SCR-008-HISTORY 記録一覧"]
     N48["SCR-009-HISTORY-DETAIL 記録詳細"]
     N49["SCR-010-HISTORY-PHOTO 写真詳細"]
-  end
-  subgraph UI["UI Elements"]
-    N50["UI-HOME-011"]
   end
   subgraph AT["Acceptance Tests"]
     N10["AT-BACKUP-001 日次バックアップ"]
@@ -67,23 +64,18 @@ flowchart LR
   end
   N1 --> N44
   N1 --> N48
-  N1 --> N50
   N2 --> N44
   N2 --> N48
-  N2 --> N50
   N3 --> N44
   N3 --> N48
-  N3 --> N50
   N4 --> N47
   N4 --> N49
-  N5 --> N43
   N5 --> N47
   N6 --> N45
   N7 --> N45
   N8 --> N45
   N8 --> N46
   N9 --> N43
-  N9 --> N45
   N10 --> N28
   N11 --> N29
   N12 --> N29
@@ -150,6 +142,5 @@ flowchart LR
   N42 --> N44
   N42 --> N48
   N42 --> N49
-  N44 --> N50
 ```
 

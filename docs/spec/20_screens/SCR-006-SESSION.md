@@ -46,11 +46,11 @@
 ## 5. 操作契約
 | ACT ID | Guard | Side Effect | Success遷移 | Failure表示 |
 |---|---|---|---|---|
-| ACT-001-SESSION | 必須チェック完了かつ`record_event`完了 | `currentStepId` 更新 | 同一画面で次ステップ表示 | ブロック理由表示 |
-| ACT-002-SESSION | 先頭ステップ以外 | 表示遷移のみ（再発火禁止） | 同一画面で前ステップ表示 | 該当なし |
+| ACT-001-SESSION | 必須チェック完了かつ`record_event`完了 | `currentStepId` 更新 | SCR-006-SESSION | ブロック理由表示 |
+| ACT-002-SESSION | 先頭ステップ以外 | 表示遷移のみ（再発火禁止） | SCR-006-SESSION | 該当なし |
 | ACT-004-SESSION | 最終ステップ到達 | `Session.completed` + スロット更新 + 同期契機 | SCR-001-HOME | 完了失敗エラー |
 | ACT-006-SESSION | 確認ダイアログ承認 | `Session.aborted` + スロットを`未実施`へ戻す | SCR-001-HOME | 中断失敗エラー |
-| ACT-001-ALARM | 未ACKジョブあり | 通知停止 + `acked_at` 記録 | 同一画面維持 | ACK失敗表示 |
+| ACT-001-ALARM | 未ACKジョブあり | 通知停止 + `acked_at` 記録 | SCR-006-SESSION | ACK失敗表示 |
 
 ## 6. データバインディング
 | 区分 | Read | Write | Outbox | 反映タイミング |

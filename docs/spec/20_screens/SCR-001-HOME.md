@@ -79,7 +79,7 @@
 | ACT-005-HOME | 右側開始時に左側全完了 | なし（確認表示のみ） | SCR-003-HOME-START-CONFIRM | 開始不可理由 |
 | ACT-007-HOME | `platform=mac` | `ProtocolPackage` 保存 + outbox追記 | SCR-012-MAC-IMPORT -> SCR-001-HOME | 検証エラー一覧 |
 | ACT-010-HOME | なし | なし | SCR-008-HISTORY | なし |
-| ACT-011-HOME | なし | `sync(push,pull)` 実行 | 同一画面維持 | 同期失敗バナー |
+| ACT-011-HOME | なし | `sync(push,pull)` 実行 | SCR-001-HOME | 同期失敗バナー |
 
 ## 6. データバインディング
 | 区分 | Read | Write | Outbox | 反映タイミング |

@@ -38,7 +38,7 @@
 ## 5. 操作契約
 | ACT ID | Guard | Side Effect | Success遷移 | Failure表示 |
 |---|---|---|---|---|
-| ACT-001-SYNC | `startup/resume/session_complete/manual` 契機 | push->pull。必要時 `full_reseed` | 現在画面維持 | 同期失敗表示 |
+| ACT-001-SYNC | `startup/resume/session_complete/manual` 契機 | push->pull。必要時 `full_reseed` | SCR-011-SYNC-STATUS | 同期失敗表示 |
 
 ## 6. データバインディング
 | 区分 | Read | Write | Outbox | 反映タイミング |

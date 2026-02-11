@@ -37,13 +37,12 @@
     <p class="lead">ACT ID</p>
     <section class="card">
   <h2>定義文（抜粋）</h2>
-  <p>ACT-SYNC-001 自動同期（起動/復帰/完了）</p>
+  <p>ACT-SYNC-001 startup/resume/session_complete/manual 契機</p>
 </section>
 <section class="card">
   <h2>原文リンク</h2>
 <ul>
-<li><a href="../sources/docs/requirements/10_screen_transition_and_actions.html#ACT-SYNC-001"><code>docs/requirements/10_screen_transition_and_actions.md:47</code></a> <span class="muted">| ACT-SYNC-001 | 自動同期（起動/復帰/完了） | SCR-011-SYNC-STATUS | 同期契機到達 | push-&gt;pull、失敗時状態更新 | 現在画面維持 | 同期失敗表示 | JRN-005-SYNC / FR-080〜FR-088 |</span></li>
-<li><a href="../sources/docs/spec/20_screens/SCR-011-SYNC-STATUS.html#ACT-SYNC-001--L41"><code>docs/spec/20_screens/SCR-011-SYNC-STATUS.md:41</code></a> <span class="muted">| ACT-001-SYNC | `startup/resume/session_complete/manual` 契機 | push-&gt;pull。必要時 `full_reseed` | 現在画面維持 | 同期失敗表示 |</span></li>
+<li><a href="../sources/docs/spec/20_screens/SCR-011-SYNC-STATUS.html#ACT-SYNC-001"><code>docs/spec/20_screens/SCR-011-SYNC-STATUS.md:41</code></a> <span class="muted">| ACT-001-SYNC | `startup/resume/session_complete/manual` 契機 | push-&gt;pull。必要時 `full_reseed` | SCR-011-SYNC-STATUS | 同期失敗表示 |</span></li>
 </ul>
 </section>
 <section class="card">
@@ -56,22 +55,6 @@
 <h3>SCR</h3>
 <ul>
 <li><a href="../screens/SCR-011-SYNC-STATUS.html"><code>SCR-011-SYNC-STATUS</code></a> <span class="muted">同期状態表示</span></li>
-</ul>
-<h3>UI</h3>
-<ul>
-<li><a href="./UI-SYNC-001.html"><code>UI-SYNC-001</code></a></li>
-</ul>
-<h3>FR</h3>
-<ul>
-<li><a href="./FR-080.html"><code>FR-080</code></a> <span class="muted">- FR-080: 同期は startup / resume / session_complete / manual の4契機で実行します。</span></li>
-<li><a href="./FR-081.html"><code>FR-081</code></a> <span class="muted">- FR-081: すべてのローカル更新は outbox に追記し、push成功時に消し込みます。</span></li>
-<li><a href="./FR-082.html"><code>FR-082</code></a> <span class="muted">- FR-082: 差分取得は cloudRevision と dayRefs に基づき実行します。</span></li>
-<li><a href="./FR-083.html"><code>FR-083</code></a> <span class="muted">- FR-083: 競合解決はエンティティ単位LWW（updatedAt, updatedByDeviceId, mutationId 降順）で固定します。</span></li>
-<li><a href="./FR-084.html"><code>FR-084</code></a> <span class="muted">- FR-084: tombstone（削除）もLWW同一ルールで解決します。</span></li>
-<li><a href="./FR-085.html"><code>FR-085</code></a> <span class="muted">- FR-085: 競合解決は内部適用のみとし、競合件数バナーや詳細一覧は提供しません。</span></li>
-<li><a href="./FR-086.html"><code>FR-086</code></a> <span class="muted">- FR-086: 手動同期ボタンを提供し、失敗時は再試行導線を表示します。</span></li>
-<li><a href="./FR-087.html"><code>FR-087</code></a> <span class="muted">- FR-087: IndexedDB消失検知時はクラウドからフルリストアを実行します。</span></li>
-<li><a href="./FR-088.html"><code>FR-088</code></a> <span class="muted">- FR-088: 同期失敗時は直近同期状態（成功/失敗）を更新し、再試行導線を表示します。</span></li>
 </ul>
 </section>
   </main>
