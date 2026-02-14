@@ -111,25 +111,19 @@ export function TodayCapdNoteTable({ dateLocal, note, onSave, disabled, title }:
 
     // Validation
     for (const ex of editingNote.exchanges) {
-      if (!validateTime(ex.dwellStart) && ex.dwellStart !== "") {
-        console.warn("Validation failed: dwellStart", ex.dwellStart);
-        alert(`項目 #${ex.exchangeNo} の貯留開始時間が不正です。HH:MM形式で入力してください。`);
-        return;
-      }
-      if (!validateTime(ex.dwellEnd) && ex.dwellEnd !== "") {
-        console.warn("Validation failed: dwellEnd", ex.dwellEnd);
-        alert(`項目 #${ex.exchangeNo} の貯留終了時間が不正です。HH:MM形式で入力してください。`);
-        return;
-      }
-      if (!validateTime(ex.drainStart) && ex.drainStart !== "") {
-        console.warn("Validation failed: drainStart", ex.drainStart);
-        alert(`項目 #${ex.exchangeNo} の排液開始時間が不正です。HH:MM形式で入力してください。`);
-        return;
-      }
-      if (!validateTime(ex.drainEnd) && ex.drainEnd !== "") {
-        console.warn("Validation failed: drainEnd", ex.drainEnd);
-        alert(`項目 #${ex.exchangeNo} の排液終了時間が不正です。HH:MM形式で入力してください。`);
-        return;
+      // Time format validations
+      const timeChecks: [string, string][] = [
+        [ex.dwellStart, "貯留開始時間"],
+        [ex.dwellEnd, "貯留終了時間"],
+        [ex.drainStart, "排液開始時間"],
+        [ex.drainEnd, "排液終了時間"],
+      ];
+      for (const [val, label] of timeChecks) {
+        if (val && !validateTime(val)) {
+          console.warn(`Validation failed: ${label}`, val);
+          alert(`項目 #${ex.exchangeNo} の${label}が不正です。HH:MM形式で入力してください。`);
+          return;
+        }
       }
 
       // Numeric validations
