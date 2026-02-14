@@ -21,9 +21,7 @@ export default function Page() {
           <Button asChild variant="secondary">
             <Link href="/capd">/capd を開く</Link>
           </Button>
-          <Button asChild variant="outline">
-            <Link href="/ui-preview">/ui-preview（参考）</Link>
-          </Button>
+
         </CardContent>
       </Card>
     </CapdShell>

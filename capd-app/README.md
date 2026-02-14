@@ -1,6 +1,6 @@
 # capd-app
 
-CAPD支援アプリの実装用 Next.js アプリです。UIスパイク資産（`/ui-preview`）は参照専用です。
+CAPD支援アプリの実装用 Next.js アプリです。
 
 ## 起動
 ```bash
@@ -13,7 +13,7 @@ npm run dev -- -p 5181
 - http://localhost:5181/capd/home
 - http://localhost:5181/capd/history-list
 - http://localhost:5181/capd/session
-- http://localhost:5181/ui-preview（参照専用案内）
+
 
 ## ドキュメント可視化
 ```bash
