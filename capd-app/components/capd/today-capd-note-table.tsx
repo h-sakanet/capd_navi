@@ -10,7 +10,7 @@ import { formatSigned } from "@/lib/format";
 import { saveHomeExchange, saveHomeSummary } from "@/lib/services/home-note-mutation";
 import { createEmptyHomeNote } from "@/lib/services/home-note-query";
 import { DrainAppearanceSelect, ExitSiteStatusCheckboxes } from "@/components/capd/capd-record-fields";
-import { validateTime } from "@/lib/capd-validation";
+import { validateTime, validateNonNegativeNumber, validatePositiveNumber } from "@/lib/capd-validation";
 
 type Props = {
   dateLocal: string;
@@ -132,42 +132,30 @@ export function TodayCapdNoteTable({ dateLocal, note, onSave, disabled, title }:
         return;
       }
 
-      // Numeric validations (positive numbers or zero)
-      if (ex.drainWeightG !== null && ex.drainWeightG < 0) {
-        alert(`項目 #${ex.exchangeNo} の排液量(g)は0以上の数値を入力してください。`);
-        return;
-      }
-      if (ex.bagWeightG !== null && ex.bagWeightG < 0) {
-        alert(`項目 #${ex.exchangeNo} の注液量(g)は0以上の数値を入力してください。`);
-        return;
+      // Numeric validations
+      const exchangeChecks: [number | null | undefined, string, typeof validateNonNegativeNumber][] = [
+        [ex.drainWeightG, `項目 #${ex.exchangeNo} の排液量(g)`, validateNonNegativeNumber],
+        [ex.bagWeightG, `項目 #${ex.exchangeNo} の注液量(g)`, validateNonNegativeNumber],
+      ];
+      for (const [val, label, checkFn] of exchangeChecks) {
+        const err = checkFn(val);
+        if (err) { alert(`${label}: ${err}`); return; }
       }
     }
 
     if (editingNote.summary) {
       const s = editingNote.summary;
-      if (s.bodyWeightKg !== null && s.bodyWeightKg <= 0) {
-        alert("体重は0より大きい数値を入力してください。");
-        return;
-      }
-      if (s.urineMl !== null && s.urineMl < 0) {
-        alert("尿量は0以上の数値を入力してください。");
-        return;
-      }
-      if (s.fluidIntakeMl !== null && s.fluidIntakeMl < 0) {
-        alert("飲水量は0以上の数値を入力してください。");
-        return;
-      }
-      if (s.stoolCountPerDay !== null && s.stoolCountPerDay < 0) {
-        alert("排便回数は0以上の数値を入力してください。");
-        return;
-      }
-      if (s.bpSys !== null && s.bpSys <= 0) {
-        alert("血圧(上)は0より大きい数値を入力してください。");
-        return;
-      }
-      if (s.bpDia !== null && s.bpDia <= 0) {
-        alert("血圧(下)は0より大きい数値を入力してください。");
-        return;
+      const summaryChecks: [number | null | undefined, string, typeof validateNonNegativeNumber][] = [
+        [s.bodyWeightKg, "体重", validatePositiveNumber],
+        [s.bpSys, "血圧(上)", validatePositiveNumber],
+        [s.bpDia, "血圧(下)", validatePositiveNumber],
+        [s.urineMl, "尿量", validateNonNegativeNumber],
+        [s.fluidIntakeMl, "飲水量", validateNonNegativeNumber],
+        [s.stoolCountPerDay, "排便回数", validateNonNegativeNumber],
+      ];
+      for (const [val, label, checkFn] of summaryChecks) {
+        const err = checkFn(val);
+        if (err) { alert(`${label}: ${err}`); return; }
       }
     }
 
