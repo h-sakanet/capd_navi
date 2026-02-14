@@ -16,16 +16,32 @@ import {
   clearActiveSession,
   readActiveSession,
   readProcedureSlots,
-  writeActiveSession,
-  writeProcedureSlots
+  writeActiveSession
 } from "@/components/capd/session-slot-store";
+import { readProtocolTemplateById } from "@/components/capd/protocol-template-store";
 import { CapdShell } from "@/components/capd/shell";
+import { DrainAppearanceSelect, ExitSiteStatusCheckboxes, NumericField } from "@/components/capd/capd-record-fields";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { type CarouselApi, Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { Checkbox } from "@/components/ui/checkbox";
+import {
+  abortSession,
+  acknowledgeAlarm,
+  advanceStep,
+  completeSession,
+  ensureStepEnterAlarm,
+  getLatestAlarmForStep,
+  isRecordSavedForStep,
+  loadSessionRuntime,
+  markAlarmMissed,
+  markAlarmNotified,
+  resolveSessionStepImage,
+  saveRecordForStep
+} from "@/lib/services/session-service";
+import type { AlarmDispatchJobEntity, SessionSnapshotStep } from "@/lib/storage/models";
 import { cn } from "@/lib/utils";
-import { parseProtocolCsv, type ProtocolStep } from "@/lib/protocol-csv";
+import { drainAppearanceOptions } from "@/lib/capd-constants";
+import { normalizeNumericInput, parsePositiveNumber } from "@/lib/capd-validation";
 
 type StateBadgeStyle = {
   icon: ComponentType<{ className?: string }>;
@@ -35,6 +51,8 @@ type StateBadgeStyle = {
 type SessionContext = {
   sessionId: string;
   slotIndex: number;
+  protocolId: string;
+  snapshotHash: string;
 };
 
 type RecordDraft = {
@@ -54,22 +72,15 @@ type RecordDraft = {
 };
 
 type AlarmState = {
+  jobId: string | null;
   status: "active" | "acked" | "missed";
   startedAtMs: number;
   notifications: number;
   ackedAtIso?: string;
 };
 
-const drainAppearanceOptions = ["透明", "やや混濁", "混濁", "血性", "その他"] as const;
-const exitSiteStatusOptions = ["正常", "赤み", "痛み", "はれ", "かさぶた", "じゅくじゅく", "出血", "膿"] as const;
+// 定数は @/lib/capd-constants から import
 const ALARM_MINUTE_MS = Number(process.env.NEXT_PUBLIC_ALARM_MINUTE_MS ?? "60000");
-
-const recordEventLabel: Record<string, string> = {
-  drain_appearance: "排液の確認",
-  drain_weight_g: "排液量",
-  bag_weight_g: "注液量",
-  session_summary: "セッションサマリ"
-};
 
 const stateBadgeByLabel: Record<string, StateBadgeStyle> = {
   "お腹-独立": {
@@ -90,14 +101,7 @@ const stateBadgeByLabel: Record<string, StateBadgeStyle> = {
   }
 };
 
-function encodePath(path: string): string {
-  return path
-    .split("/")
-    .map((segment) => encodeURIComponent(segment))
-    .join("/");
-}
-
-function formatStepTitle(step: ProtocolStep): string {
+function formatStepTitle(step: SessionSnapshotStep): string {
   const baseTitle = step.title || "読み込み中";
   return step.sequenceNo > 0 ? `#${step.sequenceNo} ${baseTitle}` : baseTitle;
 }
@@ -114,6 +118,13 @@ function isInteractiveTarget(target: EventTarget | null): boolean {
   return Boolean(target.closest("button, input, textarea, select, a, [role='button']"));
 }
 
+function isMacPlatform(): boolean {
+  if (typeof navigator === "undefined") {
+    return false;
+  }
+  return /mac/i.test(navigator.platform);
+}
+
 function parseSlotIndex(slotParam: string | null): number | null {
   const parsed = Number(slotParam);
   if (!Number.isInteger(parsed) || parsed < 1 || parsed > 4) {
@@ -125,7 +136,7 @@ function parseSlotIndex(slotParam: string | null): number | null {
 function createDefaultRecordDraft(recordEvent: string): RecordDraft {
   if (recordEvent === "drain_appearance") {
     return {
-      drainAppearance: "",
+      drainAppearance: "透明",
       note: "",
       exitSiteStatuses: []
     };
@@ -143,29 +154,88 @@ function createDefaultRecordDraft(recordEvent: string): RecordDraft {
     };
   }
   return {
-    bpSys: "",
-    bpDia: "",
-    bodyWeightKg: "",
-    pulse: "",
-    bodyTempC: "",
-    fluidIntakeMl: "",
-    urineMl: "",
-    stoolCountPerDay: "",
-    exitSiteStatuses: [],
+    bpSys: "130",
+    bpDia: "95",
+    pulse: "80",
+    bodyWeightKg: "60.0",
+    bodyTempC: "36.6",
+    fluidIntakeMl: "1500",
+    urineMl: "1500",
+    stoolCountPerDay: "1",
+    exitSiteStatuses: ["正常"],
     note: ""
   };
 }
 
-function parsePositiveNumber(value: string | undefined): number | null {
-  if (!value) {
+// parsePositiveNumber は @/lib/capd-validation から import
+
+function validateRecordDraft(
+  recordEvent: string,
+  recordDraft: RecordDraft,
+  options: {
+    showLeftSummaryFields: boolean;
+    showRightSummaryFields: boolean;
+  }
+): string | null {
+  if (recordEvent === "drain_appearance") {
+    if (!recordDraft.drainAppearance || !drainAppearanceOptions.some((option) => option === recordDraft.drainAppearance)) {
+      return "排液の確認を選択してください。";
+    }
     return null;
   }
-  const parsed = Number(value);
-  if (!Number.isFinite(parsed) || parsed <= 0) {
+
+  if (recordEvent === "drain_weight_g") {
+    if (parsePositiveNumber(recordDraft.drainWeightG) === null) {
+      return "排液量(g)を正しく入力してください。";
+    }
     return null;
   }
-  return parsed;
+
+  if (recordEvent === "bag_weight_g") {
+    if (parsePositiveNumber(recordDraft.bagWeightG) === null) {
+      return "注液量(g)を正しく入力してください。";
+    }
+    return null;
+  }
+
+  if (recordEvent !== "session_summary") {
+    return null;
+  }
+
+  if (options.showLeftSummaryFields) {
+    const requiredLeftFields = [
+      parsePositiveNumber(recordDraft.bpSys),
+      parsePositiveNumber(recordDraft.bpDia),
+      parsePositiveNumber(recordDraft.pulse),
+      parsePositiveNumber(recordDraft.bodyWeightKg),
+      parsePositiveNumber(recordDraft.bodyTempC)
+    ];
+    const hasAllLeftNumbers = requiredLeftFields.every((value) => value !== null);
+    if (!hasAllLeftNumbers) {
+      return "血圧/脈拍/体重/体温を入力してください。";
+    }
+  }
+
+  if (options.showRightSummaryFields) {
+    const requiredRightFields = [
+      parsePositiveNumber(recordDraft.fluidIntakeMl),
+      parsePositiveNumber(recordDraft.urineMl),
+      parsePositiveNumber(recordDraft.stoolCountPerDay)
+    ];
+    const hasAllRightNumbers = requiredRightFields.every((value) => value !== null);
+    if (!hasAllRightNumbers) {
+      return "飲水量/尿量/排便回数を入力してください。";
+    }
+  }
+
+  if (options.showLeftSummaryFields && !recordDraft.exitSiteStatuses.length) {
+    return "出口部状態を1つ以上選択してください。";
+  }
+
+  return null;
 }
+
+// normalizeNumericInput は @/lib/capd-validation から import
 
 function ModalShell({
   title,
@@ -191,133 +261,302 @@ function ModalShell({
   );
 }
 
+function toAlarmState(job: AlarmDispatchJobEntity): AlarmState {
+  return {
+    jobId: job.jobId,
+    status: job.status === "acknowledged" ? "acked" : job.status === "missed" ? "missed" : "active",
+    startedAtMs: new Date(job.createdAtIso).getTime(),
+    notifications: Math.max(1, job.attemptNo),
+    ackedAtIso: job.ackedAtIso ?? undefined
+  };
+}
+
+function supportsSelectionRange(input: HTMLInputElement): boolean {
+  return ["text", "search", "url", "tel", "password", "email"].includes(input.type);
+}
+
+function focusFirstRecordField(stepId: string): void {
+  const recordForm = document.querySelector<HTMLElement>(`[data-record-form-step-id="${stepId}"]`);
+  if (!recordForm) {
+    return;
+  }
+
+  const activeElement = document.activeElement as HTMLElement | null;
+  if (activeElement && recordForm.contains(activeElement)) {
+    return;
+  }
+
+  const firstField = recordForm.querySelector<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(
+    "input:not([type='checkbox']):not([disabled]), select:not([disabled]), textarea:not([disabled])"
+  );
+  if (!firstField) {
+    return;
+  }
+
+  firstField.focus();
+  if (firstField instanceof HTMLTextAreaElement) {
+    const cursor = firstField.value.length;
+    firstField.setSelectionRange(cursor, cursor);
+    return;
+  }
+
+  if (firstField instanceof HTMLInputElement && supportsSelectionRange(firstField)) {
+    const cursor = firstField.value.length;
+    firstField.setSelectionRange(cursor, cursor);
+  }
+}
+
 function SessionPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const sessionIdParam = searchParams.get("sessionId");
   const slotIndexParam = parseSlotIndex(searchParams.get("slot"));
   const stepIdParam = searchParams.get("stepId");
+  const modeParam = searchParams.get("mode");
 
-  const [steps, setSteps] = useState<ProtocolStep[]>([]);
+  const [steps, setSteps] = useState<SessionSnapshotStep[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [checkedByStep, setCheckedByStep] = useState<Record<string, string[]>>({});
-  const [imageLoadFailedByStep, setImageLoadFailedByStep] = useState<Record<string, boolean>>({});
+  const [stepImageSrc, setStepImageSrc] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const [sessionContext, setSessionContext] = useState<SessionContext | null>(null);
+  const [previewProtocolId, setPreviewProtocolId] = useState<string | null>(null);
+  const [isPreviewMode, setIsPreviewMode] = useState(false);
   const [isUtilityMenuOpen, setIsUtilityMenuOpen] = useState(false);
   const [isAbortDialogOpen, setIsAbortDialogOpen] = useState(false);
   const [abortConfirmText, setAbortConfirmText] = useState("");
+  const [slotBounds, setSlotBounds] = useState<{ leftmost: number | null; rightmost: number | null }>({
+    leftmost: null,
+    rightmost: null
+  });
   const [recordDraftByStep, setRecordDraftByStep] = useState<Record<string, RecordDraft>>({});
   const [recordCompletedByStep, setRecordCompletedByStep] = useState<Record<string, boolean>>({});
-  const [recordModalStepId, setRecordModalStepId] = useState<string | null>(null);
-  const [recordModalError, setRecordModalError] = useState<string | null>(null);
+  const [recordErrorByStep, setRecordErrorByStep] = useState<Record<string, string | null>>({});
   const [alarmByStepId, setAlarmByStepId] = useState<Record<string, AlarmState>>({});
-
-  useEffect(() => {
-    const activeSession = readActiveSession();
-
-    if (sessionIdParam && slotIndexParam !== null) {
-      const nextCurrentStepId = activeSession?.sessionId === sessionIdParam ? activeSession.currentStepId : "step_021";
-      writeActiveSession({
-        sessionId: sessionIdParam,
-        slotIndex: slotIndexParam,
-        currentStepId: nextCurrentStepId,
-        updatedAtIso: new Date().toISOString()
-      });
-      setSessionContext({ sessionId: sessionIdParam, slotIndex: slotIndexParam });
-      return;
-    }
-
-    if (activeSession) {
-      setSessionContext({ sessionId: activeSession.sessionId, slotIndex: activeSession.slotIndex });
-      return;
-    }
-
-    setSessionContext(null);
-  }, [sessionIdParam, slotIndexParam]);
 
   useEffect(() => {
     let cancelled = false;
 
-    async function loadProtocol() {
+    async function boot() {
       setLoading(true);
+      setError(null);
+
       try {
-        const response = await fetch("/protocols/session.csv", { cache: "no-store" });
-        if (!response.ok) {
-          throw new Error(`CSV読み込み失敗: ${response.status}`);
+        const activeSession = await readActiveSession();
+        const isPreview = modeParam === "preview";
+        setIsPreviewMode(isPreview);
+
+        if (isPreview) {
+          const protocolId = activeSession?.protocolId;
+          if (!protocolId) {
+            throw new Error("確認モードのテンプレートが見つかりません。");
+          }
+
+          const template = await readProtocolTemplateById(protocolId);
+          if (!template) {
+            throw new Error("テンプレートが見つかりません。CSVを再取り込みしてください。");
+          }
+
+          const previewSteps = template.steps.map((step) => ({
+            sequenceNo: step.sequenceNo,
+            stepId: step.stepId,
+            nextStepId: step.nextStepId,
+            phase: step.phase,
+            state: step.state,
+            title: step.title,
+            image: step.image,
+            displayText: step.displayText,
+            warningText: step.warningText,
+            requiredChecks: step.requiredChecks,
+            timerSpec:
+              step.timerId && (step.timerEvent === "start" || step.timerEvent === "end")
+                ? {
+                  timerId: step.timerId,
+                  timerEvent: step.timerEvent,
+                  timerExchangeNo: step.timerExchangeNo,
+                  timerSegment:
+                    step.timerSegment === "dwell" || step.timerSegment === "drain" ? step.timerSegment : ""
+                }
+                : null,
+            alarmSpec: step.alarmId
+              ? {
+                alarmId: step.alarmId,
+                alarmTrigger: step.alarmTrigger === "step_enter" ? "step_enter" : step.alarmTrigger === "timer_end" ? "timer_end" : "",
+                alarmDurationMin: step.alarmDurationMin,
+                alarmRelatedTimerId: step.alarmRelatedTimerId
+              }
+              : null,
+            recordSpec: step.recordEvent
+              ? {
+                recordEvent: step.recordEvent,
+                recordExchangeNo: step.recordExchangeNo,
+                recordUnit: step.recordUnit
+              }
+              : null
+          } satisfies SessionSnapshotStep));
+
+          if (cancelled) {
+            return;
+          }
+
+          setSessionContext(null);
+          setPreviewProtocolId(protocolId);
+          setSteps(previewSteps);
+          setCurrentIndex(0);
+          setRecordCompletedByStep({});
+          setRecordErrorByStep({});
+          setAlarmByStepId({});
+          setLoading(false);
+          return;
         }
 
-        const csvText = await response.text();
-        const parsedSteps = parseProtocolCsv(csvText);
-        if (!parsedSteps.length) {
-          throw new Error("CSVにstep行がありません。");
+        const resolvedSessionId = sessionIdParam ?? activeSession?.sessionId ?? null;
+        const resolvedSlotIndex = slotIndexParam ?? activeSession?.slotIndex ?? null;
+
+        if (!resolvedSessionId || resolvedSlotIndex === null) {
+          throw new Error("進行中セッションが見つかりません。");
         }
 
+        const runtime = await loadSessionRuntime(resolvedSessionId);
         if (cancelled) {
           return;
         }
 
-        const activeSession = readActiveSession();
-        const targetStepId =
-          stepIdParam && parsedSteps.some((step) => step.stepId === stepIdParam)
+        const currentStepId =
+          stepIdParam && runtime.snapshot.steps.some((step) => step.stepId === stepIdParam)
             ? stepIdParam
-            : sessionContext && activeSession?.sessionId === sessionContext.sessionId
-              ? activeSession.currentStepId
-              : "step_021";
+            : runtime.session.currentStepId;
+        const initialIndex = runtime.snapshot.steps.findIndex((step) => step.stepId === currentStepId);
 
-        const initialIndex = parsedSteps.findIndex((step) => step.stepId === targetStepId);
-        setSteps(parsedSteps);
+        setSessionContext({
+          sessionId: runtime.session.sessionId,
+          slotIndex: runtime.session.slotIndex,
+          protocolId: runtime.session.protocolId,
+          snapshotHash: runtime.session.snapshotHash
+        });
+        setPreviewProtocolId(null);
+        setSteps(runtime.snapshot.steps);
         setCurrentIndex(initialIndex >= 0 ? initialIndex : 0);
-        setError(null);
+        setRecordCompletedByStep(
+          runtime.records.reduce<Record<string, boolean>>((acc, record) => {
+            acc[record.stepId] = true;
+            return acc;
+          }, {})
+        );
+        setAlarmByStepId(
+          runtime.alarms.reduce<Record<string, AlarmState>>((acc, job) => {
+            acc[job.stepId] = toAlarmState(job);
+            return acc;
+          }, {})
+        );
+
+        await writeActiveSession({
+          sessionId: runtime.session.sessionId,
+          slotIndex: runtime.session.slotIndex,
+          currentStepId,
+          protocolId: runtime.session.protocolId,
+          snapshotHash: runtime.session.snapshotHash,
+          mode: "runtime",
+          updatedAtIso: new Date().toISOString()
+        });
+
+        setLoading(false);
       } catch (loadError) {
         if (cancelled) {
           return;
         }
-
         setSteps([]);
         setCurrentIndex(0);
-        setError(loadError instanceof Error ? loadError.message : "CSV読み込みに失敗しました。");
-      } finally {
-        if (!cancelled) {
-          setLoading(false);
-        }
+        setPreviewProtocolId(null);
+        setLoading(false);
+        setError(loadError instanceof Error ? loadError.message : "セッション読み込みに失敗しました。");
       }
     }
 
-    loadProtocol();
+    void boot();
 
     return () => {
       cancelled = true;
     };
-  }, [sessionContext, stepIdParam]);
+  }, [modeParam, sessionIdParam, slotIndexParam, stepIdParam]);
+
+  useEffect(() => {
+    async function loadBounds() {
+      const slots = await readProcedureSlots();
+      const configuredIndices = slots.flatMap((slot, index) => (slot ? [index] : []));
+      const activeSession = await readActiveSession();
+      const fallbackSlotIndex = sessionContext?.slotIndex ?? slotIndexParam ?? activeSession?.slotIndex ?? null;
+
+      if (!configuredIndices.length) {
+        setSlotBounds({
+          leftmost: fallbackSlotIndex,
+          rightmost: fallbackSlotIndex
+        });
+        return;
+      }
+
+      setSlotBounds({
+        leftmost: configuredIndices[0] ?? fallbackSlotIndex,
+        rightmost: configuredIndices[configuredIndices.length - 1] ?? fallbackSlotIndex
+      });
+    }
+
+    void loadBounds();
+  }, [sessionContext?.slotIndex, slotIndexParam]);
 
   const stepIndexById = useMemo(() => {
     return new Map(steps.map((step, index) => [step.stepId, index]));
   }, [steps]);
 
   const currentStep = useMemo(() => steps[currentIndex] ?? null, [steps, currentIndex]);
-
   const nextStepIndex = useMemo(() => {
     if (!currentStep?.nextStepId) {
       return -1;
     }
     return stepIndexById.get(currentStep.nextStepId) ?? -1;
   }, [currentStep?.nextStepId, stepIndexById]);
-  const recordModalStep = useMemo(
-    () => (recordModalStepId ? steps.find((step) => step.stepId === recordModalStepId) ?? null : null),
-    [recordModalStepId, steps]
-  );
-  const recordModalDraft = useMemo(() => {
-    if (!recordModalStep) {
-      return null;
-    }
-    return recordDraftByStep[recordModalStep.stepId] ?? createDefaultRecordDraft(recordModalStep.recordEvent);
-  }, [recordDraftByStep, recordModalStep]);
 
   const canGoNext = nextStepIndex >= 0;
   const canGoPrev = currentIndex > 0;
+  const imageProtocolId = sessionContext?.protocolId ?? previewProtocolId;
+
+  useEffect(() => {
+    let cancelled = false;
+    let objectUrl: string | null = null;
+
+    async function loadStepImage() {
+      setStepImageSrc(null);
+
+      if (!currentStep?.image || !imageProtocolId) {
+        return;
+      }
+
+      try {
+        const blob = await resolveSessionStepImage(imageProtocolId, currentStep.image);
+        if (cancelled || !blob) {
+          return;
+        }
+
+        objectUrl = URL.createObjectURL(blob);
+        setStepImageSrc(objectUrl);
+      } catch {
+        if (!cancelled) {
+          setStepImageSrc(null);
+        }
+      }
+    }
+
+    void loadStepImage();
+
+    return () => {
+      cancelled = true;
+      if (objectUrl) {
+        URL.revokeObjectURL(objectUrl);
+      }
+    };
+  }, [currentStep?.image, currentStep?.stepId, imageProtocolId]);
+
   const currentStepChecksCompleted = useMemo(() => {
     if (!currentStep) {
       return false;
@@ -325,159 +564,378 @@ function SessionPageContent() {
     const checked = new Set(checkedByStep[currentStep.stepId] ?? []);
     return currentStep.requiredChecks.every((item) => checked.has(item));
   }, [checkedByStep, currentStep]);
-  const currentStepRecordCompleted = useMemo(() => {
-    if (!currentStep?.recordEvent) {
+
+  const currentStepRecordReady = useMemo(() => {
+    if (!currentStep?.recordSpec?.recordEvent) {
       return true;
     }
-    return Boolean(recordCompletedByStep[currentStep.stepId]);
-  }, [currentStep, recordCompletedByStep]);
-  const canAdvanceCurrentStep = currentStepChecksCompleted && currentStepRecordCompleted;
+
+    const recordEvent = currentStep.recordSpec.recordEvent;
+    const recordDraft = recordDraftByStep[currentStep.stepId] ?? createDefaultRecordDraft(recordEvent);
+    let showLeftSummaryFields = true;
+    let showRightSummaryFields = true;
+
+    if (recordEvent === "session_summary") {
+      const resolvedCurrentSlotIndex = sessionContext?.slotIndex ?? slotIndexParam;
+      showLeftSummaryFields =
+        resolvedCurrentSlotIndex === null ||
+        slotBounds.leftmost === null ||
+        resolvedCurrentSlotIndex === slotBounds.leftmost;
+      showRightSummaryFields =
+        resolvedCurrentSlotIndex === null ||
+        slotBounds.rightmost === null ||
+        resolvedCurrentSlotIndex === slotBounds.rightmost;
+    }
+
+    return (
+      validateRecordDraft(recordEvent, recordDraft, {
+        showLeftSummaryFields,
+        showRightSummaryFields
+      }) === null
+    );
+  }, [currentStep, recordDraftByStep, sessionContext?.slotIndex, slotBounds.leftmost, slotBounds.rightmost, slotIndexParam]);
+
+  const canAdvanceCurrentStep = currentStepChecksCompleted && currentStepRecordReady;
 
   useEffect(() => {
-    if (!currentStep || !sessionContext) {
+    if (!currentStep || !sessionContext || isPreviewMode) {
       return;
     }
 
-    const activeSession = readActiveSession();
-    if (!activeSession || activeSession.sessionId !== sessionContext.sessionId) {
-      return;
+    async function syncStepId() {
+      if (!sessionContext) return;
+      const active = await readActiveSession();
+      if (!active || active.sessionId !== sessionContext.sessionId) {
+        return;
+      }
+
+      if (active.currentStepId === currentStep.stepId) {
+        return;
+      }
+
+      await writeActiveSession({
+        ...active,
+        currentStepId: currentStep.stepId,
+        updatedAtIso: new Date().toISOString()
+      });
     }
 
-    if (activeSession.currentStepId === currentStep.stepId) {
-      return;
-    }
-
-    writeActiveSession({
-      ...activeSession,
-      currentStepId: currentStep.stepId,
-      updatedAtIso: new Date().toISOString()
-    });
-  }, [currentStep, sessionContext]);
+    void syncStepId();
+  }, [currentStep, isPreviewMode, sessionContext]);
 
   useEffect(() => {
-    if (!carouselApi) {
+    if (!sessionContext || !currentStep || isPreviewMode || !currentStep.alarmSpec) {
       return;
     }
 
-    const onSelect = () => {
-      setCurrentIndex(carouselApi.selectedScrollSnap());
-    };
+    let cancelled = false;
+    const runtimeSessionId = sessionContext.sessionId;
 
-    onSelect();
-    carouselApi.on("select", onSelect);
-    carouselApi.on("reInit", onSelect);
+    async function syncStepEnterAlarm() {
+      const latest = await getLatestAlarmForStep(runtimeSessionId, currentStep.stepId);
+      if (cancelled) {
+        return;
+      }
+
+      if (latest) {
+        setAlarmByStepId((prev) => ({
+          ...prev,
+          [currentStep.stepId]: toAlarmState(latest)
+        }));
+        return;
+      }
+
+      const created = await ensureStepEnterAlarm({
+        sessionId: runtimeSessionId,
+        stepId: currentStep.stepId
+      });
+
+      if (!cancelled && created) {
+        setAlarmByStepId((prev) => ({
+          ...prev,
+          [currentStep.stepId]: toAlarmState(created)
+        }));
+      }
+    }
+
+    void syncStepEnterAlarm();
 
     return () => {
-      carouselApi.off("select", onSelect);
-      carouselApi.off("reInit", onSelect);
+      cancelled = true;
     };
-  }, [carouselApi]);
+  }, [currentStep, isPreviewMode, sessionContext]);
 
   useEffect(() => {
-    if (!carouselApi || !steps.length) {
+    if (!currentStep?.alarmSpec) {
       return;
     }
 
-    const safeIndex = Math.max(0, Math.min(currentIndex, steps.length - 1));
-    carouselApi.scrollTo(safeIndex, true);
-    setCurrentIndex(safeIndex);
-  }, [carouselApi, steps.length]);
-
-  useEffect(() => {
-    setIsUtilityMenuOpen(false);
-  }, [currentIndex]);
-
-  const handleNext = useCallback(() => {
-    if (nextStepIndex < 0) {
+    const stepId = currentStep.stepId;
+    const alarmState = alarmByStepId[stepId];
+    if (!alarmState || alarmState.status === "acked") {
       return;
     }
 
-    if (carouselApi) {
-      carouselApi.scrollTo(nextStepIndex);
+    const minuteMs = Number.isFinite(ALARM_MINUTE_MS) && ALARM_MINUTE_MS > 0 ? ALARM_MINUTE_MS : 60_000;
+
+    const timerId = window.setInterval(() => {
+      setAlarmByStepId((prev) => {
+        const state = prev[stepId];
+        if (!state || state.status === "acked") {
+          return prev;
+        }
+
+        const elapsedMs = Date.now() - state.startedAtMs;
+        let nextNotifications = state.notifications;
+
+        if (elapsedMs >= minuteMs * 5) {
+          const additionalCycles = Math.floor((elapsedMs - minuteMs * 5) / (minuteMs * 3));
+          nextNotifications = Math.max(nextNotifications, 3 + additionalCycles);
+        } else if (elapsedMs >= minuteMs * 2) {
+          nextNotifications = Math.max(nextNotifications, 2);
+        }
+
+        let nextStatus: AlarmState["status"] = state.status;
+        if (elapsedMs >= minuteMs * 30 && state.status === "active") {
+          nextStatus = "missed";
+        }
+
+        if (nextNotifications === state.notifications && nextStatus === state.status) {
+          return prev;
+        }
+
+        if (state.jobId && nextNotifications !== state.notifications) {
+          void markAlarmNotified(state.jobId, nextNotifications);
+        }
+        if (state.jobId && nextStatus === "missed" && state.status !== "missed") {
+          void markAlarmMissed(state.jobId);
+        }
+
+        return {
+          ...prev,
+          [stepId]: {
+            ...state,
+            notifications: nextNotifications,
+            status: nextStatus
+          }
+        };
+      });
+    }, 250);
+
+    return () => {
+      window.clearInterval(timerId);
+    };
+  }, [alarmByStepId, currentStep?.alarmSpec, currentStep?.stepId]);
+
+  const saveRecordInline = useCallback(async (step: SessionSnapshotStep): Promise<boolean> => {
+    if (!step.recordSpec) {
+      return true;
+    }
+
+    const recordEvent = step.recordSpec.recordEvent;
+    const recordDraft = recordDraftByStep[step.stepId] ?? createDefaultRecordDraft(recordEvent);
+    let showLeftSummaryFields = true;
+    let showRightSummaryFields = true;
+
+    if (recordEvent === "session_summary") {
+      const activeSession = await readActiveSession();
+      const activeSlotIndex = sessionContext?.slotIndex ?? slotIndexParam ?? activeSession?.slotIndex ?? null;
+      showLeftSummaryFields =
+        activeSlotIndex === null || slotBounds.leftmost === null || activeSlotIndex === slotBounds.leftmost;
+      showRightSummaryFields =
+        activeSlotIndex === null || slotBounds.rightmost === null || activeSlotIndex === slotBounds.rightmost;
+    }
+
+    const validationError = validateRecordDraft(recordEvent, recordDraft, {
+      showLeftSummaryFields,
+      showRightSummaryFields
+    });
+    if (validationError) {
+      setRecordErrorByStep((prev) => ({
+        ...prev,
+        [step.stepId]: validationError
+      }));
+      return false;
+    }
+
+    if (sessionContext && !isPreviewMode) {
+      const payload: Record<string, unknown> = {
+        ...recordDraft,
+        value:
+          parsePositiveNumber(recordDraft.drainWeightG) ??
+          parsePositiveNumber(recordDraft.bagWeightG) ??
+          null
+      };
+
+      if (recordEvent === "session_summary") {
+        if (!showLeftSummaryFields) {
+          delete payload.bpSys;
+          delete payload.bpDia;
+          delete payload.bodyWeightKg;
+          delete payload.pulse;
+          delete payload.bodyTempC;
+          delete payload.exitSiteStatuses;
+          delete payload.note;
+        }
+        if (!showRightSummaryFields) {
+          delete payload.fluidIntakeMl;
+          delete payload.urineMl;
+          delete payload.stoolCountPerDay;
+        }
+      }
+
+      await saveRecordForStep({
+        sessionId: sessionContext.sessionId,
+        stepId: step.stepId,
+        recordEvent: step.recordSpec.recordEvent,
+        recordExchangeNo: step.recordSpec.recordExchangeNo,
+        recordUnit: step.recordSpec.recordUnit,
+        payload
+      });
+      const saved = await isRecordSavedForStep(sessionContext.sessionId, step.stepId);
+      if (saved) {
+        setRecordCompletedByStep((prev) => ({
+          ...prev,
+          [step.stepId]: true
+        }));
+      }
+    } else {
+      setRecordCompletedByStep((prev) => ({
+        ...prev,
+        [step.stepId]: true
+      }));
+    }
+
+    setRecordErrorByStep((prev) => ({
+      ...prev,
+      [step.stepId]: null
+    }));
+
+    return true;
+  }, [isPreviewMode, recordDraftByStep, sessionContext, slotBounds.leftmost, slotBounds.rightmost, slotIndexParam]);
+
+  const handleNext = useCallback(async () => {
+    if (!currentStep || nextStepIndex < 0) {
       return;
+    }
+
+    if (currentStep.recordSpec) {
+      const saved = await saveRecordInline(currentStep);
+      if (!saved) {
+        return;
+      }
+    }
+
+    if (sessionContext && !isPreviewMode) {
+      const updated = await advanceStep({
+        sessionId: sessionContext.sessionId,
+        stepId: currentStep.stepId
+      });
+      await writeActiveSession({
+        sessionId: updated.sessionId,
+        slotIndex: updated.slotIndex,
+        currentStepId: updated.currentStepId,
+        protocolId: updated.protocolId,
+        snapshotHash: updated.snapshotHash,
+        mode: "runtime",
+        updatedAtIso: new Date().toISOString()
+      });
     }
 
     setCurrentIndex(nextStepIndex);
-  }, [carouselApi, nextStepIndex]);
+  }, [currentStep, isPreviewMode, nextStepIndex, saveRecordInline, sessionContext]);
 
   const handlePrev = useCallback(() => {
     if (!canGoPrev) {
       return;
     }
+    setCurrentIndex((value) => Math.max(value - 1, 0));
+  }, [canGoPrev]);
 
-    const prevIndex = Math.max(currentIndex - 1, 0);
-
-    if (carouselApi) {
-      carouselApi.scrollTo(prevIndex);
+  const handleCompleteSession = useCallback(async () => {
+    if (!sessionContext || isPreviewMode) {
+      router.push("/capd/home");
       return;
     }
 
-    setCurrentIndex(prevIndex);
-  }, [canGoPrev, carouselApi, currentIndex]);
-
-  const handleCompleteSession = useCallback(() => {
-    if (!sessionContext) {
-      return;
-    }
-
-    const slots = readProcedureSlots();
-    const targetSlot = slots[sessionContext.slotIndex];
-    if (targetSlot) {
-      slots[sessionContext.slotIndex] = { ...targetSlot, status: "実施済み" };
-      writeProcedureSlots(slots);
-    }
-
-    const activeSession = readActiveSession();
-    if (activeSession?.sessionId === sessionContext.sessionId) {
-      clearActiveSession();
-    }
-
+    await completeSession(sessionContext.sessionId);
+    await clearActiveSession();
     router.push("/capd/home");
-  }, [router, sessionContext]);
+  }, [isPreviewMode, router, sessionContext]);
 
-  const handleEmergencyAbort = useCallback(() => {
-    if (!sessionContext) {
+  const handleEmergencyAbort = useCallback(async () => {
+    if (!sessionContext || isPreviewMode) {
+      router.push("/capd/home");
       return;
     }
 
-    const slots = readProcedureSlots();
-    const targetSlot = slots[sessionContext.slotIndex];
-    if (targetSlot) {
-      slots[sessionContext.slotIndex] = { ...targetSlot, status: "未実施" };
-      writeProcedureSlots(slots);
-    }
-
-    const activeSession = readActiveSession();
-    if (activeSession?.sessionId === sessionContext.sessionId) {
-      clearActiveSession();
-    }
-
+    await abortSession(sessionContext.sessionId);
+    await clearActiveSession();
     setAbortConfirmText("");
     setIsAbortDialogOpen(false);
     router.push("/capd/home");
-  }, [router, sessionContext]);
+  }, [isPreviewMode, router, sessionContext]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key !== "Enter" || event.repeat || event.isComposing) {
+      if (event.repeat || event.isComposing) {
         return;
       }
       if (isInteractiveTarget(event.target)) {
         return;
       }
-      if (!canGoNext || !canAdvanceCurrentStep || loading || Boolean(error)) {
+
+      if (event.key === "Enter") {
+        if (!canGoNext || !canAdvanceCurrentStep || loading || Boolean(error)) {
+          return;
+        }
+
+        event.preventDefault();
+        void handleNext();
         return;
       }
 
-      event.preventDefault();
-      handleNext();
+      if ((event.key === " " || event.code === "Space") && isMacPlatform()) {
+        if (!currentStep || !currentStep.requiredChecks.length || loading || Boolean(error)) {
+          return;
+        }
+
+        event.preventDefault();
+        setCheckedByStep((prev) => {
+          const checked = new Set(prev[currentStep.stepId] ?? []);
+          const nextRequired = currentStep.requiredChecks.find((item) => !checked.has(item));
+          if (!nextRequired) {
+            return prev;
+          }
+
+          checked.add(nextRequired);
+          return {
+            ...prev,
+            [currentStep.stepId]: Array.from(checked)
+          };
+        });
+      }
     };
 
     window.addEventListener("keydown", onKeyDown);
     return () => {
       window.removeEventListener("keydown", onKeyDown);
     };
-  }, [canAdvanceCurrentStep, canGoNext, error, handleNext, loading]);
+  }, [canAdvanceCurrentStep, canGoNext, currentStep, error, handleNext, loading]);
+
+  useEffect(() => {
+    if (loading || error || !currentStep?.recordSpec?.recordEvent) {
+      return;
+    }
+
+    const rafId = window.requestAnimationFrame(() => {
+      focusFirstRecordField(currentStep.stepId);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(rafId);
+    };
+  }, [currentStep?.recordSpec?.recordEvent, currentStep?.stepId, error, loading]);
 
   const setCheckForStep = (stepId: string, checkLabel: string, nextChecked: boolean) => {
     setCheckedByStep((prev) => {
@@ -494,177 +952,53 @@ function SessionPageContent() {
     });
   };
 
-  const openRecordModal = useCallback((step: ProtocolStep) => {
-    setRecordDraftByStep((prev) => {
-      if (prev[step.stepId]) {
-        return prev;
-      }
-      return {
-        ...prev,
-        [step.stepId]: createDefaultRecordDraft(step.recordEvent)
-      };
-    });
-    setRecordModalError(null);
-    setRecordModalStepId(step.stepId);
-  }, []);
-
-  const closeRecordModal = useCallback(() => {
-    setRecordModalStepId(null);
-    setRecordModalError(null);
-  }, []);
-
   const updateRecordDraft = useCallback(
     (stepId: string, updater: (current: RecordDraft) => RecordDraft) => {
       setRecordDraftByStep((prev) => {
-        const stepRecordEvent = steps.find((step) => step.stepId === stepId)?.recordEvent ?? "session_summary";
+        const stepRecordEvent = steps.find((step) => step.stepId === stepId)?.recordSpec?.recordEvent ?? "session_summary";
         const current = prev[stepId] ?? createDefaultRecordDraft(stepRecordEvent);
         return {
           ...prev,
           [stepId]: updater(current)
         };
       });
+      setRecordErrorByStep((prev) => ({
+        ...prev,
+        [stepId]: null
+      }));
     },
     [steps]
   );
 
-  const saveRecordModal = useCallback(() => {
-    if (!recordModalStep || !recordModalDraft) {
-      return;
-    }
-
-    if (recordModalStep.recordEvent === "drain_appearance") {
-      if (
-        !recordModalDraft.drainAppearance ||
-        !drainAppearanceOptions.some((option) => option === recordModalDraft.drainAppearance)
-      ) {
-        setRecordModalError("排液の確認を選択してください。");
+  const acknowledgeStepAlarm = useCallback(
+    async (stepId: string) => {
+      const state = alarmByStepId[stepId];
+      if (!state) {
         return;
       }
-    } else if (recordModalStep.recordEvent === "drain_weight_g") {
-      if (parsePositiveNumber(recordModalDraft.drainWeightG) === null) {
-        setRecordModalError("排液量(g)を正しく入力してください。");
-        return;
-      }
-    } else if (recordModalStep.recordEvent === "bag_weight_g") {
-      if (parsePositiveNumber(recordModalDraft.bagWeightG) === null) {
-        setRecordModalError("注液量(g)を正しく入力してください。");
-        return;
-      }
-    } else if (recordModalStep.recordEvent === "session_summary") {
-      const requiredSummaryFields = [
-        parsePositiveNumber(recordModalDraft.bpSys),
-        parsePositiveNumber(recordModalDraft.bpDia),
-        parsePositiveNumber(recordModalDraft.bodyWeightKg),
-        parsePositiveNumber(recordModalDraft.pulse),
-        parsePositiveNumber(recordModalDraft.bodyTempC),
-        parsePositiveNumber(recordModalDraft.fluidIntakeMl),
-        parsePositiveNumber(recordModalDraft.urineMl),
-        parsePositiveNumber(recordModalDraft.stoolCountPerDay)
-      ];
-      const hasAllRequiredNumbers = requiredSummaryFields.every((value) => value !== null);
-      if (!hasAllRequiredNumbers) {
-        setRecordModalError("血圧/体重/脈拍/体温/飲水量/尿量/排便回数を入力してください。");
-        return;
-      }
-      if (!recordModalDraft.exitSiteStatuses.length) {
-        setRecordModalError("出口部状態を1つ以上選択してください。");
-        return;
-      }
-    }
 
-    setRecordCompletedByStep((prev) => ({
-      ...prev,
-      [recordModalStep.stepId]: true
-    }));
-    setRecordModalError(null);
-    setRecordModalStepId(null);
-  }, [recordModalDraft, recordModalStep]);
-
-  useEffect(() => {
-    if (!currentStep?.alarmId || !currentStep.alarmDurationMin) {
-      return;
-    }
-
-    const targetStepId = currentStep.stepId;
-    setAlarmByStepId((prev) => {
-      if (prev[targetStepId]) {
-        return prev;
-      }
-
-      return {
-        ...prev,
-        [targetStepId]: {
-          status: "active",
-          startedAtMs: Date.now(),
-          notifications: 1
+      if (state.jobId) {
+        const next = await acknowledgeAlarm(state.jobId);
+        if (next) {
+          setAlarmByStepId((prev) => ({
+            ...prev,
+            [stepId]: toAlarmState(next)
+          }));
+          return;
         }
-      };
-    });
-  }, [currentStep?.alarmDurationMin, currentStep?.alarmId, currentStep?.stepId]);
-
-  useEffect(() => {
-    if (!currentStep?.alarmId || !currentStep.alarmDurationMin) {
-      return;
-    }
-
-    const targetStepId = currentStep.stepId;
-    const minuteMs = Number.isFinite(ALARM_MINUTE_MS) && ALARM_MINUTE_MS > 0 ? ALARM_MINUTE_MS : 60_000;
-
-    const timerId = window.setInterval(() => {
-      setAlarmByStepId((prev) => {
-        const state = prev[targetStepId];
-        if (!state || state.status !== "active") {
-          return prev;
-        }
-
-        const elapsedMs = Date.now() - state.startedAtMs;
-        let nextNotifications = state.notifications;
-
-        if (elapsedMs >= minuteMs * 5) {
-          const additionalCycles = Math.floor((elapsedMs - minuteMs * 5) / (minuteMs * 3));
-          nextNotifications = Math.max(nextNotifications, 3 + additionalCycles);
-        } else if (elapsedMs >= minuteMs * 2) {
-          nextNotifications = Math.max(nextNotifications, 2);
-        }
-
-        const nextStatus = elapsedMs >= minuteMs * 30 ? "missed" : state.status;
-        if (nextNotifications === state.notifications && nextStatus === state.status) {
-          return prev;
-        }
-
-        return {
-          ...prev,
-          [targetStepId]: {
-            ...state,
-            notifications: nextNotifications,
-            status: nextStatus
-          }
-        };
-      });
-    }, 100);
-
-    return () => {
-      window.clearInterval(timerId);
-    };
-  }, [currentStep?.alarmDurationMin, currentStep?.alarmId, currentStep?.stepId]);
-
-  const acknowledgeAlarm = useCallback((stepId: string) => {
-    setAlarmByStepId((prev) => {
-      const state = prev[stepId];
-      if (!state || state.status !== "active") {
-        return prev;
       }
 
-      return {
+      setAlarmByStepId((prev) => ({
         ...prev,
         [stepId]: {
           ...state,
           status: "acked",
           ackedAtIso: new Date().toISOString()
         }
-      };
-    });
-  }, []);
+      }));
+    },
+    [alarmByStepId]
+  );
 
   if (!steps.length) {
     return (
@@ -674,542 +1008,402 @@ function SessionPageContent() {
             <h2 className="text-xl font-semibold tracking-tight">
               {loading ? "手順を読み込み中です" : "手順を表示できません"}
             </h2>
-            <p className="text-sm text-muted-foreground">{error ?? "CSVを読み込んでいます。"}</p>
+            <p className="text-sm text-muted-foreground">{error ?? "セッションを読み込んでいます。"}</p>
           </div>
         </section>
       </CapdShell>
     );
   }
 
+  const step = steps[currentIndex];
+  const stateBadgeStyle = stateBadgeByLabel[step.state] ?? null;
+  const stepChecks = new Set(checkedByStep[step.stepId] ?? []);
+  const stepCanGoNext = step.nextStepId ? stepIndexById.has(step.nextStepId) : false;
+  const stepCanGoPrev = currentIndex > 0;
+  const stepChecksCompleted = step.requiredChecks.every((checkItem) => stepChecks.has(checkItem));
+  const stepRecordRequired = Boolean(step.recordSpec?.recordEvent);
+  const stepRecordDraft = stepRecordRequired
+    ? recordDraftByStep[step.stepId] ?? createDefaultRecordDraft(step.recordSpec?.recordEvent ?? "")
+    : null;
+  const inlineRecordDraft = stepRecordDraft ?? createDefaultRecordDraft(step.recordSpec?.recordEvent ?? "");
+  const stepRecordError = recordErrorByStep[step.stepId];
+  const resolvedCurrentSlotIndex = sessionContext?.slotIndex ?? slotIndexParam;
+  const showSummaryLeftFields =
+    step.recordSpec?.recordEvent === "session_summary"
+      ? resolvedCurrentSlotIndex === null ||
+      slotBounds.leftmost === null ||
+      resolvedCurrentSlotIndex === slotBounds.leftmost
+      : false;
+  const showSummaryRightFields =
+    step.recordSpec?.recordEvent === "session_summary"
+      ? resolvedCurrentSlotIndex === null ||
+      slotBounds.rightmost === null ||
+      resolvedCurrentSlotIndex === slotBounds.rightmost
+      : false;
+  const stepRecordValidationError =
+    step.recordSpec?.recordEvent && stepRecordDraft
+      ? validateRecordDraft(step.recordSpec.recordEvent, stepRecordDraft, {
+        showLeftSummaryFields: showSummaryLeftFields,
+        showRightSummaryFields: showSummaryRightFields
+      })
+      : null;
+  const stepRecordReady = !stepRecordRequired || stepRecordValidationError === null;
+  const alarmState = alarmByStepId[step.stepId];
+  const canAdvanceStep = stepChecksCompleted && stepRecordReady;
+  const canFinish = !stepCanGoNext && Boolean(sessionContext || isPreviewMode);
+  const stepBlockReason = !stepChecksCompleted
+    ? "必須チェックを完了してください。"
+    : !stepRecordReady
+      ? "記録入力を完了してください。"
+      : null;
+
   return (
     <CapdShell>
-      <Carousel className="w-full" opts={{ watchDrag: false }} setApi={setCarouselApi}>
-        <CarouselContent className="-ml-2">
-          {steps.map((step, index) => {
-            const stateBadgeStyle = stateBadgeByLabel[step.state] ?? null;
-            const stepChecks = new Set(checkedByStep[step.stepId] ?? []);
-            const imageSrc = step.image ? `/protocols/images/${encodePath(step.image)}` : null;
-            const imageLoadFailed = Boolean(imageLoadFailedByStep[step.stepId]);
-            const stepCanGoNext = step.nextStepId ? stepIndexById.has(step.nextStepId) : false;
-            const stepCanGoPrev = index > 0;
-            const isCurrent = index === currentIndex;
-            const stepChecksCompleted = step.requiredChecks.every((checkItem) => stepChecks.has(checkItem));
-            const stepRecordRequired = Boolean(step.recordEvent);
-            const stepRecordCompleted = !stepRecordRequired || Boolean(recordCompletedByStep[step.stepId]);
-            const alarmState = alarmByStepId[step.stepId];
-            const canAdvanceStep = stepChecksCompleted && stepRecordCompleted;
-            const canFinish = !stepCanGoNext && Boolean(sessionContext);
-            const stepBlockReason = !stepChecksCompleted
-              ? "必須チェックを完了してください。"
-              : !stepRecordCompleted
-                ? "記録入力を完了してください。"
-                : null;
+      <section className="overflow-hidden rounded-xl border bg-card text-card-foreground shadow-sm">
+        <div className="grid gap-0 md:grid-cols-[minmax(0,1.35fr)_minmax(340px,1fr)]">
+          <div className="border-b p-3 md:border-b-0 md:p-5">
+            <div className="aspect-square w-full rounded-md border bg-muted p-4 text-sm text-muted-foreground">
+              {!loading && !error && stepImageSrc ? (
+                <img
+                  alt={step.title || "手順画像"}
+                  className="h-full w-full rounded-sm object-cover"
+                  src={stepImageSrc}
+                />
+              ) : (
+                <div className="flex h-full flex-col items-center justify-center gap-2 text-center">
+                  <p className="text-sm">正方形画像 (1:1) は未登録です</p>
+                  {step.image ? <p className="text-xs">画像: {step.image}</p> : null}
+                </div>
+              )}
+            </div>
+          </div>
 
-            return (
-              <CarouselItem key={step.stepId} className="pl-2">
-                <section className="overflow-hidden rounded-xl border bg-card text-card-foreground shadow-sm">
-                  <div className="grid gap-0 md:grid-cols-[minmax(0,1.35fr)_minmax(340px,1fr)]">
-                    <div className="border-b p-3 md:border-b-0 md:p-5">
-                      <div className="aspect-square w-full rounded-md border bg-muted p-4 text-sm text-muted-foreground">
-                        {!loading && !error && imageSrc && !imageLoadFailed ? (
-                          <img
-                            alt={step.title || "手順画像"}
-                            className="h-full w-full rounded-sm object-cover"
-                            src={imageSrc}
-                            onError={() => {
-                              setImageLoadFailedByStep((prev) => ({
-                                ...prev,
-                                [step.stepId]: true
-                              }));
-                            }}
-                          />
-                        ) : (
-                          <div className="flex h-full flex-col items-center justify-center gap-2 text-center">
-                            <p className="text-sm">正方形画像 (1:1) プレースホルダ</p>
-                            {step.image ? <p className="text-xs">画像: {step.image}</p> : null}
-                          </div>
-                        )}
-                      </div>
+          <div className="space-y-4 p-4 md:p-5">
+            <div className="flex items-start justify-between gap-2">
+              <div className="flex flex-wrap gap-2">
+                <Badge className="h-8 border-border px-3 text-xs font-semibold">{`フェーズ: ${step.phase || "-"}`}</Badge>
+                {stateBadgeStyle ? (
+                  <Badge
+                    variant="outline"
+                    className={cn("h-8 gap-1.5 border px-3 text-xs font-semibold", stateBadgeStyle.className)}
+                  >
+                    <stateBadgeStyle.icon className="h-3.5 w-3.5" />
+                    {step.state}
+                  </Badge>
+                ) : (
+                  <Badge variant="outline" className="h-8 px-3 text-xs font-semibold">
+                    {`状態: ${step.state || "-"}`}
+                  </Badge>
+                )}
+              </div>
+
+              {!isPreviewMode && sessionContext ? (
+                <div className="relative">
+                  <button
+                    type="button"
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-md text-sm text-muted-foreground hover:bg-muted"
+                    aria-label="セッション操作メニュー"
+                    aria-haspopup="menu"
+                    aria-expanded={isUtilityMenuOpen}
+                    onClick={() => setIsUtilityMenuOpen((current) => !current)}
+                  >
+                    •••
+                  </button>
+                  {isUtilityMenuOpen ? (
+                    <div className="absolute right-0 top-9 z-20 min-w-[190px] rounded-md border bg-background p-1 shadow-sm">
+                      <button
+                        type="button"
+                        className="w-full rounded-sm px-2 py-1 text-left text-sm text-destructive hover:bg-muted"
+                        onClick={() => {
+                          setIsUtilityMenuOpen(false);
+                          setIsAbortDialogOpen(true);
+                        }}
+                      >
+                        セッションを中断（非常用）
+                      </button>
                     </div>
+                  ) : null}
+                </div>
+              ) : null}
+            </div>
 
-                    <div className="space-y-4 p-4 md:p-5">
-                      <div className="flex items-start justify-between gap-2">
-                        <div className="flex flex-wrap gap-2">
-                          <Badge className="h-8 border-border px-3 text-xs font-semibold">{`フェーズ: ${step.phase || "-"}`}</Badge>
-                          {stateBadgeStyle ? (
-                            <Badge
-                              variant="outline"
-                              className={cn("h-8 gap-1.5 border px-3 text-xs font-semibold", stateBadgeStyle.className)}
-                            >
-                              <stateBadgeStyle.icon className="h-3.5 w-3.5" />
-                              {step.state}
-                            </Badge>
-                          ) : (
-                            <Badge variant="outline" className="h-8 px-3 text-xs font-semibold">
-                              {`状態: ${step.state || "-"}`}
-                            </Badge>
-                          )}
-                        </div>
+            <div className="space-y-1">
+              <h2 className="text-xl font-semibold tracking-tight">{formatStepTitle(step)}</h2>
+              {step.displayText ? <p className="whitespace-pre-line text-sm text-muted-foreground">{step.displayText}</p> : null}
+            </div>
 
-                        {isCurrent && sessionContext ? (
-                          <div className="relative">
-                            <button
-                              type="button"
-                              className="inline-flex h-8 w-8 items-center justify-center rounded-md text-sm text-muted-foreground hover:bg-muted"
-                              aria-label="セッション操作メニュー"
-                              aria-haspopup="menu"
-                              aria-expanded={isUtilityMenuOpen}
-                              onClick={() => setIsUtilityMenuOpen((current) => !current)}
-                            >
-                              •••
-                            </button>
-                            {isUtilityMenuOpen ? (
-                              <div className="absolute right-0 top-9 z-20 min-w-[190px] rounded-md border bg-background p-1 shadow-sm">
-                                <button
-                                  type="button"
-                                  className="w-full rounded-sm px-2 py-1 text-left text-sm text-destructive hover:bg-muted"
-                                  onClick={() => {
-                                    setIsUtilityMenuOpen(false);
-                                    setIsAbortDialogOpen(true);
-                                  }}
-                                >
-                                  セッションを中断（非常用）
-                                </button>
-                              </div>
-                            ) : null}
-                          </div>
+            {step.warningText ? (
+              <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+                <div className="flex items-center gap-2 font-medium">
+                  <DangerTriangle className="h-4 w-4" />
+                  {step.warningText}
+                </div>
+              </div>
+            ) : null}
+
+            {step.requiredChecks.length ? (
+              <div className="rounded-lg border p-4 text-sm">
+                <p className="font-medium">必須チェック</p>
+                <div className="mt-2 space-y-2">
+                  {step.requiredChecks.map((checkItem) => {
+                    const checked = stepChecks.has(checkItem);
+                    return (
+                      <label key={checkItem} className="flex items-start gap-2">
+                        <Checkbox
+                          checked={checked}
+                          className="mt-0.5"
+                          onCheckedChange={(nextChecked) => setCheckForStep(step.stepId, checkItem, nextChecked === true)}
+                        />
+                        <span className="leading-5">{checkItem}</span>
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : null}
+
+            {stepRecordRequired ? (
+              <div className="rounded-lg border p-4 text-sm">
+                <div className="space-y-3" data-record-form-step-id={step.stepId}>
+                  {step.recordSpec?.recordEvent === "drain_appearance" ? (
+                    <>
+                      <div className="space-y-1.5">
+                        <label className="text-sm font-medium" htmlFor={`record-drain-appearance-${step.stepId}`}>
+                          排液の確認
+                        </label>
+                        <DrainAppearanceSelect
+                          id={`record-drain-appearance-${step.stepId}`}
+                          value={inlineRecordDraft.drainAppearance ?? ""}
+                          onChange={(v) =>
+                            updateRecordDraft(step.stepId, (current) => ({
+                              ...current,
+                              drainAppearance: v
+                            }))
+                          }
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-sm font-medium" htmlFor={`record-drain-note-${step.stepId}`}>
+                          備考（任意）
+                        </label>
+                        <textarea
+                          id={`record-drain-note-${step.stepId}`}
+                          className="min-h-[88px] w-full rounded-md border bg-background px-3 py-2 text-sm"
+                          value={inlineRecordDraft.note ?? ""}
+                          onChange={(event) =>
+                            updateRecordDraft(step.stepId, (current) => ({
+                              ...current,
+                              note: event.target.value
+                            }))
+                          }
+                        />
+                      </div>
+                    </>
+                  ) : null}
+
+                  {step.recordSpec?.recordEvent === "drain_weight_g" ? (
+                    <NumericField
+                      label="排液量"
+                      unit="g"
+                      id={`record-drain-weight-${step.stepId}`}
+                      value={inlineRecordDraft.drainWeightG ?? ""}
+                      onChange={(v) =>
+                        updateRecordDraft(step.stepId, (current) => ({
+                          ...current,
+                          drainWeightG: v
+                        }))
+                      }
+                      min={0}
+                      inputClassName="h-9 w-full rounded-md border bg-background px-3 text-sm"
+                      className="space-y-1.5"
+                    />
+                  ) : null}
+
+                  {step.recordSpec?.recordEvent === "bag_weight_g" ? (
+                    <NumericField
+                      label="注液量"
+                      unit="g"
+                      id={`record-bag-weight-${step.stepId}`}
+                      value={inlineRecordDraft.bagWeightG ?? ""}
+                      onChange={(v) =>
+                        updateRecordDraft(step.stepId, (current) => ({
+                          ...current,
+                          bagWeightG: v
+                        }))
+                      }
+                      min={0}
+                      inputClassName="h-9 w-full rounded-md border bg-background px-3 text-sm"
+                      className="space-y-1.5"
+                    />
+                  ) : null}
+
+                  {step.recordSpec?.recordEvent === "session_summary" ? (
+                    <>
+                      <div className="grid gap-2 sm:grid-cols-2">
+                        {showSummaryLeftFields ? (
+                          <>
+                            <NumericField label="血圧上" unit="mmHg" id={`record-bp-sys-${step.stepId}`}
+                              value={inlineRecordDraft.bpSys ?? ""}
+                              onChange={(v) => updateRecordDraft(step.stepId, (c) => ({ ...c, bpSys: v }))} min={0} />
+                            <NumericField label="血圧下" unit="mmHg" id={`record-bp-dia-${step.stepId}`}
+                              value={inlineRecordDraft.bpDia ?? ""}
+                              onChange={(v) => updateRecordDraft(step.stepId, (c) => ({ ...c, bpDia: v }))} min={0} />
+                            <NumericField label="脈拍" unit="回/分" id={`record-pulse-${step.stepId}`}
+                              value={inlineRecordDraft.pulse ?? ""}
+                              onChange={(v) => updateRecordDraft(step.stepId, (c) => ({ ...c, pulse: v }))} min={0} />
+                            <NumericField label="体重" unit="kg" mode="decimal" step="0.1" id={`record-body-weight-${step.stepId}`}
+                              value={inlineRecordDraft.bodyWeightKg ?? ""}
+                              onChange={(v) => updateRecordDraft(step.stepId, (c) => ({ ...c, bodyWeightKg: v }))} min={0} />
+                            <NumericField label="体温" unit="℃" mode="decimal" step="0.1" id={`record-body-temp-${step.stepId}`}
+                              value={inlineRecordDraft.bodyTempC ?? ""}
+                              onChange={(v) => updateRecordDraft(step.stepId, (c) => ({ ...c, bodyTempC: v }))} min={0} />
+                          </>
+                        ) : null}
+                        {showSummaryRightFields ? (
+                          <>
+                            <NumericField label="飲水量" unit="ml" id={`record-fluid-intake-${step.stepId}`}
+                              value={inlineRecordDraft.fluidIntakeMl ?? ""}
+                              onChange={(v) => updateRecordDraft(step.stepId, (c) => ({ ...c, fluidIntakeMl: v }))} min={0} />
+                            <NumericField label="尿量" unit="ml" id={`record-urine-${step.stepId}`}
+                              value={inlineRecordDraft.urineMl ?? ""}
+                              onChange={(v) => updateRecordDraft(step.stepId, (c) => ({ ...c, urineMl: v }))} min={0} />
+                            <NumericField label="排便回数" unit="回" id={`record-stool-count-${step.stepId}`}
+                              value={inlineRecordDraft.stoolCountPerDay ?? ""}
+                              onChange={(v) => updateRecordDraft(step.stepId, (c) => ({ ...c, stoolCountPerDay: v }))} min={0} />
+                          </>
                         ) : null}
                       </div>
 
-                      <div className="space-y-1">
-                        <h2 className="text-xl font-semibold tracking-tight">{formatStepTitle(step)}</h2>
-                        <p className="whitespace-pre-line text-sm text-muted-foreground">
-                          {step.displayText || "CSVの表示テキストがここに表示されます。"}
-                        </p>
-                      </div>
-
-                      {step.warningText ? (
-                        <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
-                          <div className="flex items-center gap-2 font-medium">
-                            <DangerTriangle className="h-4 w-4" />
-                            {step.warningText}
-                          </div>
-                        </div>
-                      ) : null}
-
-                      {step.requiredChecks.length ? (
-                        <div className="rounded-lg border p-4 text-sm">
-                          <p className="font-medium">必須チェック</p>
-                          <div className="mt-2 space-y-2">
-                            {step.requiredChecks.map((checkItem) => {
-                              const checked = stepChecks.has(checkItem);
-                              return (
-                                <label key={checkItem} className="flex items-start gap-2">
-                                  <Checkbox
-                                    checked={checked}
-                                    className="mt-0.5"
-                                    onCheckedChange={(nextChecked) =>
-                                      setCheckForStep(step.stepId, checkItem, nextChecked === true)
-                                    }
-                                  />
-                                  <span className="leading-5">{checkItem}</span>
-                                </label>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      ) : null}
-
-                      {stepRecordRequired ? (
-                        <div className="rounded-lg border p-4 text-sm">
-                          <p className="font-medium">記録入力（必須）</p>
-                          <p className="mt-1 text-xs text-muted-foreground">{recordEventLabel[step.recordEvent] ?? step.recordEvent}</p>
-                          <div className="mt-3 flex items-center gap-2">
-                            <Button size="sm" variant={stepRecordCompleted ? "secondary" : "default"} onClick={() => openRecordModal(step)}>
-                              {stepRecordCompleted ? "記録を確認/編集" : "記録を入力"}
-                            </Button>
-                            <span className={cn("text-xs", stepRecordCompleted ? "text-emerald-700" : "text-muted-foreground")}>
-                              {stepRecordCompleted ? "入力済み" : "未入力"}
-                            </span>
-                          </div>
-                        </div>
-                      ) : null}
-
-                      {step.alarmId && step.alarmDurationMin ? (
-                        <div
-                          data-testid={`alarm-${step.stepId}`}
-                          className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-900"
-                        >
-                          {alarmState?.status === "acked" ? (
-                            <div className="flex items-center gap-2 font-medium text-emerald-700">
-                              <Bell className="h-4 w-4" />
-                              {`アラーム確認済み (acked_at: ${alarmState.ackedAtIso ?? "-"})`}
-                            </div>
-                          ) : alarmState?.status === "missed" ? (
-                            <div className="flex items-center gap-2 font-medium">
-                              <Bell className="h-4 w-4" />
-                              アラーム未確認（missed）
-                            </div>
-                          ) : (
-                            <div className="flex flex-wrap items-center gap-2">
-                              <div className="flex items-center gap-2 font-medium">
-                                <Bell className="h-4 w-4" />
-                                {`待機アラーム: ${step.alarmDurationMin}分経過`}
-                              </div>
-                              <span className="text-xs" data-testid={`alarm-count-${step.stepId}`}>
-                                {`通知回数: ${alarmState?.notifications ?? 1}`}
-                              </span>
-                              <Button size="sm" variant="secondary" onClick={() => acknowledgeAlarm(step.stepId)}>
-                                確認する
-                              </Button>
-                            </div>
-                          )}
-                        </div>
-                      ) : null}
-
-                      {error && isCurrent ? <p className="text-sm text-destructive">{error}</p> : null}
-                      {isCurrent && stepBlockReason ? <p className="text-sm text-destructive">{stepBlockReason}</p> : null}
-
-                      <div className="grid grid-cols-2 gap-2">
-                        <Button
-                          variant="outline"
-                          className="w-full"
-                          disabled={!isCurrent || !stepCanGoPrev || loading || Boolean(error)}
-                          onClick={handlePrev}
-                        >
-                          戻る
-                        </Button>
-                        <Button
-                          className="w-full"
-                          disabled={
-                            !isCurrent || loading || Boolean(error) || !canAdvanceStep || (!stepCanGoNext && !canFinish)
-                          }
-                          onClick={() => {
-                            if (stepCanGoNext) {
-                              handleNext();
-                              return;
-                            }
-                            handleCompleteSession();
-                          }}
-                        >
-                          {stepCanGoNext ? "次へ" : "この手順で終了"}
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-              </CarouselItem>
-            );
-          })}
-        </CarouselContent>
-      </Carousel>
-
-      {recordModalStep && recordModalDraft ? (
-        <ModalShell title={`${recordEventLabel[recordModalStep.recordEvent] ?? "記録入力"}`} onClose={closeRecordModal}>
-          <div className="space-y-4 px-5 py-4 text-sm">
-            {recordModalStep.recordEvent === "drain_appearance" ? (
-              <>
-                <div className="space-y-1.5">
-                  <label className="text-sm font-medium" htmlFor="record-drain-appearance">
-                    排液の確認
-                  </label>
-                  <select
-                    id="record-drain-appearance"
-                    className="h-9 w-full rounded-md border bg-background px-3 text-sm"
-                    value={recordModalDraft.drainAppearance ?? ""}
-                    onChange={(event) =>
-                      updateRecordDraft(recordModalStep.stepId, (current) => ({
-                        ...current,
-                        drainAppearance: event.target.value
-                      }))
-                    }
-                  >
-                    <option value="">選択してください</option>
-                    {drainAppearanceOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-sm font-medium" htmlFor="record-drain-note">
-                    備考（任意）
-                  </label>
-                  <textarea
-                    id="record-drain-note"
-                    className="min-h-[88px] w-full rounded-md border bg-background px-3 py-2 text-sm"
-                    value={recordModalDraft.note ?? ""}
-                    onChange={(event) =>
-                      updateRecordDraft(recordModalStep.stepId, (current) => ({
-                        ...current,
-                        note: event.target.value
-                      }))
-                    }
-                  />
-                </div>
-              </>
-            ) : null}
-
-            {recordModalStep.recordEvent === "drain_weight_g" ? (
-              <div className="space-y-1.5">
-                <label className="text-sm font-medium" htmlFor="record-drain-weight">
-                  排液量(g)
-                </label>
-                <input
-                  id="record-drain-weight"
-                  type="number"
-                  min={0}
-                  className="h-9 w-full rounded-md border bg-background px-3 text-sm"
-                  value={recordModalDraft.drainWeightG ?? ""}
-                  onChange={(event) =>
-                    updateRecordDraft(recordModalStep.stepId, (current) => ({
-                      ...current,
-                      drainWeightG: event.target.value
-                    }))
-                  }
-                />
-              </div>
-            ) : null}
-
-            {recordModalStep.recordEvent === "bag_weight_g" ? (
-              <div className="space-y-1.5">
-                <label className="text-sm font-medium" htmlFor="record-bag-weight">
-                  注液量(g)
-                </label>
-                <input
-                  id="record-bag-weight"
-                  type="number"
-                  min={0}
-                  className="h-9 w-full rounded-md border bg-background px-3 text-sm"
-                  value={recordModalDraft.bagWeightG ?? ""}
-                  onChange={(event) =>
-                    updateRecordDraft(recordModalStep.stepId, (current) => ({
-                      ...current,
-                      bagWeightG: event.target.value
-                    }))
-                  }
-                />
-              </div>
-            ) : null}
-
-            {recordModalStep.recordEvent === "session_summary" ? (
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="space-y-1.5">
-                  <label className="text-sm font-medium" htmlFor="summary-bp-sys">
-                    血圧上
-                  </label>
-                  <input
-                    id="summary-bp-sys"
-                    type="number"
-                    min={0}
-                    className="h-9 w-full rounded-md border bg-background px-3 text-sm"
-                    value={recordModalDraft.bpSys ?? ""}
-                    onChange={(event) =>
-                      updateRecordDraft(recordModalStep.stepId, (current) => ({ ...current, bpSys: event.target.value }))
-                    }
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-sm font-medium" htmlFor="summary-bp-dia">
-                    血圧下
-                  </label>
-                  <input
-                    id="summary-bp-dia"
-                    type="number"
-                    min={0}
-                    className="h-9 w-full rounded-md border bg-background px-3 text-sm"
-                    value={recordModalDraft.bpDia ?? ""}
-                    onChange={(event) =>
-                      updateRecordDraft(recordModalStep.stepId, (current) => ({ ...current, bpDia: event.target.value }))
-                    }
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-sm font-medium" htmlFor="summary-body-weight">
-                    体重(kg)
-                  </label>
-                  <input
-                    id="summary-body-weight"
-                    type="number"
-                    min={0}
-                    step="0.1"
-                    className="h-9 w-full rounded-md border bg-background px-3 text-sm"
-                    value={recordModalDraft.bodyWeightKg ?? ""}
-                    onChange={(event) =>
-                      updateRecordDraft(recordModalStep.stepId, (current) => ({
-                        ...current,
-                        bodyWeightKg: event.target.value
-                      }))
-                    }
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-sm font-medium" htmlFor="summary-pulse">
-                    脈拍
-                  </label>
-                  <input
-                    id="summary-pulse"
-                    type="number"
-                    min={0}
-                    className="h-9 w-full rounded-md border bg-background px-3 text-sm"
-                    value={recordModalDraft.pulse ?? ""}
-                    onChange={(event) =>
-                      updateRecordDraft(recordModalStep.stepId, (current) => ({ ...current, pulse: event.target.value }))
-                    }
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-sm font-medium" htmlFor="summary-body-temp">
-                    体温(°C)
-                  </label>
-                  <input
-                    id="summary-body-temp"
-                    type="number"
-                    min={0}
-                    step="0.1"
-                    className="h-9 w-full rounded-md border bg-background px-3 text-sm"
-                    value={recordModalDraft.bodyTempC ?? ""}
-                    onChange={(event) =>
-                      updateRecordDraft(recordModalStep.stepId, (current) => ({ ...current, bodyTempC: event.target.value }))
-                    }
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-sm font-medium" htmlFor="summary-fluid-intake">
-                    飲水量(ml)
-                  </label>
-                  <input
-                    id="summary-fluid-intake"
-                    type="number"
-                    min={0}
-                    className="h-9 w-full rounded-md border bg-background px-3 text-sm"
-                    value={recordModalDraft.fluidIntakeMl ?? ""}
-                    onChange={(event) =>
-                      updateRecordDraft(recordModalStep.stepId, (current) => ({
-                        ...current,
-                        fluidIntakeMl: event.target.value
-                      }))
-                    }
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-sm font-medium" htmlFor="summary-urine">
-                    尿量(ml)
-                  </label>
-                  <input
-                    id="summary-urine"
-                    type="number"
-                    min={0}
-                    className="h-9 w-full rounded-md border bg-background px-3 text-sm"
-                    value={recordModalDraft.urineMl ?? ""}
-                    onChange={(event) =>
-                      updateRecordDraft(recordModalStep.stepId, (current) => ({ ...current, urineMl: event.target.value }))
-                    }
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-sm font-medium" htmlFor="summary-stool">
-                    排便回数
-                  </label>
-                  <input
-                    id="summary-stool"
-                    type="number"
-                    min={0}
-                    className="h-9 w-full rounded-md border bg-background px-3 text-sm"
-                    value={recordModalDraft.stoolCountPerDay ?? ""}
-                    onChange={(event) =>
-                      updateRecordDraft(recordModalStep.stepId, (current) => ({
-                        ...current,
-                        stoolCountPerDay: event.target.value
-                      }))
-                    }
-                  />
-                </div>
-                <div className="space-y-2 md:col-span-2">
-                  <p className="text-sm font-medium">出口部状態（複数選択）</p>
-                  <div className="grid gap-2 sm:grid-cols-2">
-                    {exitSiteStatusOptions.map((option) => {
-                      const checked = recordModalDraft.exitSiteStatuses.includes(option);
-                      return (
-                        <label key={option} className="flex items-center gap-2">
-                          <Checkbox
-                            checked={checked}
-                            onCheckedChange={(nextChecked) =>
-                              updateRecordDraft(recordModalStep.stepId, (current) => {
-                                const nextValues = new Set(current.exitSiteStatuses);
-                                if (nextChecked === true) {
-                                  nextValues.add(option);
-                                } else {
-                                  nextValues.delete(option);
-                                }
-                                return {
+                      {showSummaryLeftFields ? (
+                        <>
+                          <fieldset className="space-y-2">
+                            <legend className="text-sm font-medium">出口部状態（1つ以上選択）</legend>
+                            <ExitSiteStatusCheckboxes
+                              value={inlineRecordDraft.exitSiteStatuses}
+                              onChange={(v) =>
+                                updateRecordDraft(step.stepId, (current) => ({
                                   ...current,
-                                  exitSiteStatuses: Array.from(nextValues)
-                                };
-                              })
-                            }
-                          />
-                          <span>{option}</span>
-                        </label>
-                      );
-                    })}
-                  </div>
-                </div>
-                <div className="space-y-1.5 md:col-span-2">
-                  <label className="text-sm font-medium" htmlFor="summary-note">
-                    備考（任意）
-                  </label>
-                  <textarea
-                    id="summary-note"
-                    className="min-h-[88px] w-full rounded-md border bg-background px-3 py-2 text-sm"
-                    value={recordModalDraft.note ?? ""}
-                    onChange={(event) =>
-                      updateRecordDraft(recordModalStep.stepId, (current) => ({ ...current, note: event.target.value }))
-                    }
-                  />
+                                  exitSiteStatuses: v
+                                }))
+                              }
+                              className="grid gap-2 sm:grid-cols-2"
+                            />
+                          </fieldset>
+
+                          <div className="space-y-1.5">
+                            <label className="text-sm font-medium" htmlFor={`record-summary-note-${step.stepId}`}>
+                              備考（任意）
+                            </label>
+                            <textarea
+                              id={`record-summary-note-${step.stepId}`}
+                              className="min-h-[88px] w-full rounded-md border bg-background px-3 py-2 text-sm"
+                              value={inlineRecordDraft.note ?? ""}
+                              onChange={(event) =>
+                                updateRecordDraft(step.stepId, (current) => ({
+                                  ...current,
+                                  note: event.target.value
+                                }))
+                              }
+                            />
+                          </div>
+                        </>
+                      ) : null}
+
+                      {!showSummaryLeftFields && !showSummaryRightFields ? (
+                        <p className="text-sm text-muted-foreground">このスロットではセッションサマリ入力項目はありません。</p>
+                      ) : null}
+                    </>
+                  ) : null}
+
+                  {stepRecordError ? <p className="text-sm text-destructive">{stepRecordError}</p> : null}
                 </div>
               </div>
             ) : null}
 
-            {recordModalError ? <p className="text-sm text-destructive">{recordModalError}</p> : null}
-          </div>
+            {step.alarmSpec && step.alarmSpec.alarmDurationMin ? (
+              <div data-testid={`alarm-${step.stepId}`} className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-900">
+                {alarmState?.status === "acked" ? (
+                  <div className="flex items-center gap-2 font-medium text-emerald-700">
+                    <Bell className="h-4 w-4" />
+                    {`アラーム確認済み (acked_at: ${alarmState.ackedAtIso ?? "-"})`}
+                  </div>
+                ) : alarmState?.status === "missed" ? (
+                  <div className="flex items-center gap-2 font-medium">
+                    <Bell className="h-4 w-4" />
+                    アラーム未確認（missed）
+                  </div>
+                ) : (
+                  <div className="flex flex-wrap items-center gap-2">
+                    <div className="flex items-center gap-2 font-medium">
+                      <Bell className="h-4 w-4" />
+                      {`待機アラーム: ${step.alarmSpec.alarmDurationMin}分経過`}
+                    </div>
+                    <span className="text-xs" data-testid={`alarm-count-${step.stepId}`}>
+                      {`通知回数: ${alarmState?.notifications ?? 1}`}
+                    </span>
+                    <Button size="sm" variant="secondary" onClick={() => void acknowledgeStepAlarm(step.stepId)}>
+                      確認する
+                    </Button>
+                  </div>
+                )}
+              </div>
+            ) : null}
 
-          <div className="flex justify-end gap-2 border-t px-5 py-4">
-            <Button variant="outline" onClick={closeRecordModal}>
-              閉じる
-            </Button>
-            <Button onClick={saveRecordModal}>保存</Button>
+            {error ? <p className="text-sm text-destructive">{error}</p> : null}
+            {stepBlockReason ? <p className="text-sm text-destructive">{stepBlockReason}</p> : null}
+
+            <div className="grid grid-cols-2 gap-2">
+              <Button
+                variant="outline"
+                className="w-full"
+                disabled={!stepCanGoPrev || loading || Boolean(error)}
+                onClick={handlePrev}
+              >
+                戻る
+              </Button>
+              <Button
+                className="w-full"
+                disabled={loading || Boolean(error) || !canAdvanceStep || (!stepCanGoNext && !canFinish)}
+                onClick={() => {
+                  if (stepCanGoNext) {
+                    void handleNext();
+                    return;
+                  }
+                  void handleCompleteSession();
+                }}
+              >
+                {stepCanGoNext ? "次へ" : "この手順で終了"}
+              </Button>
+            </div>
           </div>
-        </ModalShell>
-      ) : null}
+        </div>
+      </section>
 
       {isAbortDialogOpen ? (
         <ModalShell title="セッションを中断（非常用）" onClose={() => setIsAbortDialogOpen(false)}>
-          <div className="space-y-4 px-5 py-4">
-            <p className="text-sm text-muted-foreground">
-              この操作は非常手段です。中断するとセッションは `中断` として終了し、ホームで同スロットを未実施として再開できます。
+          <div className="space-y-4 px-5 py-4 text-sm">
+            <p className="text-muted-foreground">
+              中断後はホームへ戻り、このスロットは「未実施」に戻ります。確認のため「中断」と入力してください。
             </p>
-            <div className="space-y-1.5">
-              <label className="text-sm font-medium" htmlFor="abort-confirm-input">
-                確認のため「中断」と入力してください
-              </label>
+            <label className="space-y-1.5">
+              <span className="text-sm font-medium">確認のため「中断」と入力してください</span>
               <input
-                id="abort-confirm-input"
                 type="text"
                 className="h-9 w-full rounded-md border bg-background px-3 text-sm"
                 value={abortConfirmText}
                 onChange={(event) => setAbortConfirmText(event.target.value)}
-                placeholder="中断"
               />
-            </div>
+            </label>
           </div>
-
           <div className="flex justify-end gap-2 border-t px-5 py-4">
             <Button variant="outline" onClick={() => setIsAbortDialogOpen(false)}>
               キャンセル
             </Button>
-            <Button variant="destructive" disabled={abortConfirmText.trim() !== "中断"} onClick={handleEmergencyAbort}>
+            <Button
+              variant="destructive"
+              disabled={abortConfirmText.trim() !== "中断"}
+              onClick={() => void handleEmergencyAbort()}
+            >
               中断する
             </Button>
           </div>
@@ -1227,7 +1421,7 @@ export default function SessionPage() {
           <section className="overflow-hidden rounded-xl border bg-card text-card-foreground shadow-sm">
             <div className="space-y-2 p-5">
               <h2 className="text-xl font-semibold tracking-tight">手順を読み込み中です</h2>
-              <p className="text-sm text-muted-foreground">セッション情報を取得しています。</p>
+              <p className="text-sm text-muted-foreground">セッションを読み込んでいます。</p>
             </div>
           </section>
         </CapdShell>

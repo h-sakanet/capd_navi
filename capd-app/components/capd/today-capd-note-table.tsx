@@ -9,7 +9,8 @@ import { cn } from "@/lib/utils";
 import { formatSigned } from "@/lib/format";
 import { saveHomeExchange, saveHomeSummary } from "@/lib/services/home-note-mutation";
 import { createEmptyHomeNote } from "@/lib/services/home-note-query";
-import { Checkbox } from "@/components/ui/checkbox";
+import { DrainAppearanceSelect, ExitSiteStatusCheckboxes } from "@/components/capd/capd-record-fields";
+import { validateTime } from "@/lib/capd-validation";
 
 type Props = {
   dateLocal: string;
@@ -25,8 +26,7 @@ const headerColumnClass = "h-8 min-w-[124px] px-2 py-1 text-left text-sm whitesp
 const rowLabelClass = "sticky left-0 z-10 bg-background px-2 py-1.5 text-sm font-normal text-muted-foreground whitespace-nowrap shadow-[1px_0_0_hsl(var(--border))]";
 const rowValueClass = "px-2 py-1.5 text-sm font-semibold whitespace-nowrap";
 
-const drainAppearanceOptions = ["透明", "やや混濁", "混濁", "血性", "その他"] as const;
-const exitSiteStatusOptions = ["正常", "赤み", "痛み", "はれ", "かさぶた", "じゅくじゅく", "出血", "膿"] as const;
+// 定数は @/lib/capd-constants および @/lib/capd-validation から import
 
 function tableValueClass(value: string): string {
   return cn(rowValueClass, (value === "—" || value === "未計算") && "font-normal text-muted-foreground");
@@ -100,10 +100,7 @@ export function TodayCapdNoteTable({ dateLocal, note, onSave, disabled, title }:
     });
   };
 
-  const validateTime = (val: string) => {
-    if (!val) return true;
-    return /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(val);
-  };
+  // validateTime は @/lib/capd-validation から import
 
   const handleSave = async () => {
     console.log("handleSave called", { editingNote, note });
@@ -475,16 +472,11 @@ export function TodayCapdNoteTable({ dateLocal, note, onSave, disabled, title }:
                 return (
                   <TableCell key={`appearance-${columnNo}`} className={tableValueClass(value || "—")}>
                     {isEditing ? (
-                      <select
-                        className="h-7 w-full min-w-[100px] rounded-md border bg-background px-2 text-xs focus:outline-none focus:ring-1 focus:ring-ring"
+                      <DrainAppearanceSelect
                         value={value}
-                        onChange={(e: ChangeEvent<HTMLSelectElement>) => handleInputChange(columnNo, "drainAppearance", e.target.value)}
-                      >
-                        <option value="">選択してください</option>
-                        {drainAppearanceOptions.map((opt) => (
-                          <option key={opt} value={opt}>{opt}</option>
-                        ))}
-                      </select>
+                        onChange={(v) => handleInputChange(columnNo, "drainAppearance", v)}
+                        className="h-7 w-full min-w-[100px] rounded-md border bg-background px-2 text-xs focus:outline-none focus:ring-1 focus:ring-ring"
+                      />
                     ) : (
                       value || "—"
                     )}
@@ -626,38 +618,12 @@ export function TodayCapdNoteTable({ dateLocal, note, onSave, disabled, title }:
         <div className="space-y-1.5 md:col-span-2 xl:col-span-1">
           <p className="text-sm text-muted-foreground">出口部の状態</p>
           {isEditing ? (
-            <div className="grid grid-cols-2 gap-x-4 gap-y-2 rounded-md border p-3">
-              {exitSiteStatusOptions.map((opt) => {
-                const currentStatus = editingNote?.summary.exitSiteStatus || "";
-                const selectedList = currentStatus ? currentStatus.split(", ").filter(Boolean) : [];
-                const checked = selectedList.includes(opt);
-
-                return (
-                  <label key={opt} className="flex items-center gap-2 text-xs font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                    <Checkbox
-                      checked={checked}
-                      onCheckedChange={(nextChecked) => {
-                        const newList = new Set(selectedList);
-                        if (nextChecked === true) {
-                          // 「正常」を選択した場合、他の項目をクリアする
-                          if (opt === "正常") {
-                            newList.clear();
-                            newList.add("正常");
-                          } else {
-                            // 他の項目を選択した場合、「正常」を解除する
-                            newList.delete("正常");
-                            newList.add(opt);
-                          }
-                        } else {
-                          newList.delete(opt);
-                        }
-                        handleSummaryChange("exitSiteStatus", Array.from(newList).join(", "));
-                      }}
-                    />
-                    {opt}
-                  </label>
-                );
-              })}
+            <div className="rounded-md border p-3">
+              <ExitSiteStatusCheckboxes
+                value={(editingNote?.summary.exitSiteStatus || "").split(", ").filter(Boolean)}
+                onChange={(v) => handleSummaryChange("exitSiteStatus", v.join(", "))}
+                exclusiveNormal
+              />
             </div>
           ) : (
             <p className={summaryValueClass(editingNote?.summary.exitSiteStatus ?? note?.summary.exitSiteStatus)}>
