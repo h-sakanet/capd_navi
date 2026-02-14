@@ -6,6 +6,7 @@ import { type HomeNoteEntity, type HomeExchangeNote } from "@/lib/storage/models
 import { calculateHomeDailyUfTotal, calculateHomeExchangeUf } from "@/lib/services/home-note-calc";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
+import { formatSigned } from "@/lib/format";
 import { saveHomeExchange, saveHomeSummary } from "@/lib/services/home-note-mutation";
 import { createEmptyHomeNote } from "@/lib/services/home-note-query";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -31,12 +32,6 @@ function tableValueClass(value: string): string {
   return cn(rowValueClass, (value === "—" || value === "未計算") && "font-normal text-muted-foreground");
 }
 
-function formatSigned(value: number): string {
-  if (value > 0) {
-    return `+${value}`;
-  }
-  return `${value}`;
-}
 
 function summaryValueClass(value: any): string {
   const isEmpty = value === null || value === undefined || value === "" || value === "—" || value === "未計算";
