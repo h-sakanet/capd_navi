@@ -918,7 +918,41 @@ function SessionPageContent() {
         return;
       }
 
-      if ((event.key === " " || event.code === "Space") && isMacPlatform()) {
+      if (event.key === " " || event.code === "Space") {
+        // アラーム設定があるステップの場合のスペースキー挙動（プラットフォーム問わず有効）
+        if (currentStep.alarmSpec?.alarmDurationMin) {
+          const alarmState = alarmByStepId[currentStep.stepId];
+          // 確認済みでなければ制御する
+          if (alarmState && alarmState.status !== "acked") {
+            const durationMs = currentStep.alarmSpec.alarmDurationMin * 60 * 1000;
+            const elapsed = Math.max(0, Date.now() - alarmState.startedAtMs);
+            const isOvertime = elapsed >= durationMs;
+
+            if (isOvertime) {
+              // 鳴動中は停止
+              event.preventDefault();
+              void acknowledgeStepAlarm(currentStep.stepId);
+              return;
+            } else {
+              // 計測中は誤操作防止＆音声アンロック
+              event.preventDefault();
+              void alarmPlayer.unlock();
+              return;
+            }
+          }
+        }
+
+        const activeElement = document.activeElement;
+        // ButtonやInputにフォーカスがある場合は標準動作を優先
+        if (activeElement && (activeElement.tagName === "BUTTON" || activeElement.tagName === "INPUT" || activeElement.tagName === "TEXTAREA")) {
+          return;
+        }
+
+        // チェックボックスのトグルなどを防止（既存ロジック：Macのみ有効）
+        if (!isMacPlatform()) {
+          return;
+        }
+
         if (!currentStep || !currentStep.requiredChecks.length || loading || Boolean(error)) {
           return;
         }
@@ -1113,8 +1147,17 @@ function SessionPageContent() {
       <section className="overflow-hidden rounded-xl border bg-card text-card-foreground shadow-sm">
         <div className="grid gap-0 md:grid-cols-[minmax(0,1.35fr)_minmax(340px,1fr)]">
           <div className="border-b p-3 md:border-b-0 md:p-5">
-            <div className="aspect-square w-full rounded-md border bg-muted p-4 text-sm text-muted-foreground">
-              {!loading && !error && stepImageSrc ? (
+            <div className={cn("relative w-full rounded-md border bg-muted p-4 text-sm text-muted-foreground",
+              step.alarmSpec?.alarmDurationMin ? "aspect-auto min-h-[300px]" : "aspect-square"
+            )}>
+              {step.alarmSpec?.alarmDurationMin ? (
+                <SessionStepTimer
+                  startedAtMs={alarmState?.startedAtMs ?? Date.now()}
+                  durationMinutes={step.alarmSpec.alarmDurationMin}
+                  onAcknowledge={() => void acknowledgeStepAlarm(step.stepId)}
+                  className="h-full w-full border-0 bg-transparent shadow-none"
+                />
+              ) : !loading && !error && stepImageSrc ? (
                 <img
                   alt={step.title || "手順画像"}
                   className="h-full w-full rounded-sm object-cover"
@@ -1371,14 +1414,7 @@ function SessionPageContent() {
                     <Bell className="h-4 w-4" />
                     {`アラーム確認済み (acked_at: ${alarmState.ackedAtIso ? new Date(alarmState.ackedAtIso).toLocaleTimeString() : "-"})`}
                   </div>
-                ) : (
-                  <SessionStepTimer
-                    startedAtMs={alarmState?.startedAtMs ?? Date.now()}
-                    durationMinutes={step.alarmSpec.alarmDurationMin}
-                    onAcknowledge={() => void acknowledgeStepAlarm(step.stepId)}
-                    className="w-full"
-                  />
-                )}
+                ) : null}
               </div>
             ) : null}
 
