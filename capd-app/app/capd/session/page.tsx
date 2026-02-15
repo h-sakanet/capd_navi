@@ -23,6 +23,8 @@ import { CapdShell } from "@/components/capd/shell";
 import { DrainAppearanceSelect, ExitSiteStatusCheckboxes, NumericField } from "@/components/capd/capd-record-fields";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { SessionStepTimer } from "@/components/capd/session-step-timer";
+import { alarmPlayer } from "@/lib/utils/audio";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   acknowledgeAlarm,
@@ -829,6 +831,7 @@ function SessionPageContent() {
     if (!currentStep || nextStepIndex < 0) {
       return;
     }
+    void alarmPlayer.unlock();
 
     if (currentStep.recordSpec) {
       const saved = await saveRecordInline(currentStep);
@@ -860,6 +863,7 @@ function SessionPageContent() {
     if (!canGoPrev) {
       return;
     }
+    void alarmPlayer.unlock();
     setCurrentIndex((value) => Math.max(value - 1, 0));
   }, [canGoPrev]);
 
@@ -1361,30 +1365,19 @@ function SessionPageContent() {
             ) : null}
 
             {step.alarmSpec && step.alarmSpec.alarmDurationMin ? (
-              <div data-testid={`alarm-${step.stepId}`} className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-900">
+              <div data-testid={`alarm-${step.stepId}`} className="py-2">
                 {alarmState?.status === "acked" ? (
-                  <div className="flex items-center gap-2 font-medium text-emerald-700">
+                  <div className="flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 p-4 font-medium text-emerald-700">
                     <Bell className="h-4 w-4" />
-                    {`アラーム確認済み (acked_at: ${alarmState.ackedAtIso ?? "-"})`}
-                  </div>
-                ) : alarmState?.status === "missed" ? (
-                  <div className="flex items-center gap-2 font-medium">
-                    <Bell className="h-4 w-4" />
-                    アラーム未確認（missed）
+                    {`アラーム確認済み (acked_at: ${alarmState.ackedAtIso ? new Date(alarmState.ackedAtIso).toLocaleTimeString() : "-"})`}
                   </div>
                 ) : (
-                  <div className="flex flex-wrap items-center gap-2">
-                    <div className="flex items-center gap-2 font-medium">
-                      <Bell className="h-4 w-4" />
-                      {`待機アラーム: ${step.alarmSpec.alarmDurationMin}分経過`}
-                    </div>
-                    <span className="text-xs" data-testid={`alarm-count-${step.stepId}`}>
-                      {`通知回数: ${alarmState?.notifications ?? 1}`}
-                    </span>
-                    <Button size="sm" variant="secondary" onClick={() => void acknowledgeStepAlarm(step.stepId)}>
-                      確認する
-                    </Button>
-                  </div>
+                  <SessionStepTimer
+                    startedAtMs={alarmState?.startedAtMs ?? Date.now()}
+                    durationMinutes={step.alarmSpec.alarmDurationMin}
+                    onAcknowledge={() => void acknowledgeStepAlarm(step.stepId)}
+                    className="w-full"
+                  />
                 )}
               </div>
             ) : null}
