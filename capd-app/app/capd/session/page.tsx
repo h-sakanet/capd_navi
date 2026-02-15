@@ -275,7 +275,18 @@ function supportsSelectionRange(input: HTMLInputElement): boolean {
   return ["text", "search", "url", "tel", "password", "email"].includes(input.type);
 }
 
-function focusFirstRecordField(stepId: string): void {
+function focusFirstRecordField(stepId: string, recordEvent?: string): void {
+  // drain_appearance はデフォルト値のまま保存することが多いため、「次へ」ボタンにフォーカス
+  if (recordEvent === "drain_appearance") {
+    const nextBtn = document.querySelector<HTMLButtonElement>(
+      "[data-next-step-btn]"
+    );
+    if (nextBtn) {
+      nextBtn.focus();
+      return;
+    }
+  }
+
   const recordForm = document.querySelector<HTMLElement>(`[data-record-form-step-id="${stepId}"]`);
   if (!recordForm) {
     return;
@@ -929,7 +940,7 @@ function SessionPageContent() {
     }
 
     const rafId = window.requestAnimationFrame(() => {
-      focusFirstRecordField(currentStep.stepId);
+      focusFirstRecordField(currentStep.stepId, currentStep.recordSpec?.recordEvent);
     });
 
     return () => {
@@ -1166,39 +1177,21 @@ function SessionPageContent() {
               <div className="rounded-lg border p-4 text-sm">
                 <div className="space-y-3" data-record-form-step-id={step.stepId}>
                   {step.recordSpec?.recordEvent === "drain_appearance" ? (
-                    <>
-                      <div className="space-y-1.5">
-                        <label className="text-sm font-medium" htmlFor={`record-drain-appearance-${step.stepId}`}>
-                          排液の確認
-                        </label>
-                        <DrainAppearanceSelect
-                          id={`record-drain-appearance-${step.stepId}`}
-                          value={inlineRecordDraft.drainAppearance ?? ""}
-                          onChange={(v) =>
-                            updateRecordDraft(step.stepId, (current) => ({
-                              ...current,
-                              drainAppearance: v
-                            }))
-                          }
-                        />
-                      </div>
-                      <div className="space-y-1.5">
-                        <label className="text-sm font-medium" htmlFor={`record-drain-note-${step.stepId}`}>
-                          備考（任意）
-                        </label>
-                        <textarea
-                          id={`record-drain-note-${step.stepId}`}
-                          className="min-h-[88px] w-full rounded-md border bg-background px-3 py-2 text-sm"
-                          value={inlineRecordDraft.note ?? ""}
-                          onChange={(event) =>
-                            updateRecordDraft(step.stepId, (current) => ({
-                              ...current,
-                              note: event.target.value
-                            }))
-                          }
-                        />
-                      </div>
-                    </>
+                    <div className="space-y-1.5">
+                      <label className="text-sm font-medium" htmlFor={`record-drain-appearance-${step.stepId}`}>
+                        排液の確認
+                      </label>
+                      <DrainAppearanceSelect
+                        id={`record-drain-appearance-${step.stepId}`}
+                        value={inlineRecordDraft.drainAppearance ?? ""}
+                        onChange={(v) =>
+                          updateRecordDraft(step.stepId, (current) => ({
+                            ...current,
+                            drainAppearance: v
+                          }))
+                        }
+                      />
+                    </div>
                   ) : null}
 
                   {step.recordSpec?.recordEvent === "drain_weight_g" ? (
@@ -1362,6 +1355,7 @@ function SessionPageContent() {
                 戻る
               </Button>
               <Button
+                data-next-step-btn
                 className="w-full"
                 disabled={loading || Boolean(error) || !canAdvanceStep || (!stepCanGoNext && !canFinish)}
                 onClick={() => {
