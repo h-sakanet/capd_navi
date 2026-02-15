@@ -1142,6 +1142,9 @@ function SessionPageContent() {
       ? "記録入力を完了してください。"
       : null;
 
+  const stepEntryTimeRef = useRef<Record<string, number>>({});
+  const entryTime = step.alarmSpec ? (stepEntryTimeRef.current[step.stepId] ??= Date.now()) : Date.now();
+
   return (
     <CapdShell>
       <section className="overflow-hidden rounded-xl border bg-card text-card-foreground shadow-sm">
@@ -1150,7 +1153,7 @@ function SessionPageContent() {
             <div className="relative aspect-square w-full rounded-md border bg-muted p-4 text-sm text-muted-foreground">
               {step.alarmSpec?.alarmDurationMin ? (
                 <SessionStepTimer
-                  startedAtMs={alarmState?.startedAtMs ?? Date.now()}
+                  startedAtMs={alarmState?.startedAtMs ?? entryTime}
                   durationMinutes={step.alarmSpec.alarmDurationMin}
                   onAcknowledge={() => void acknowledgeStepAlarm(step.stepId)}
                   className="h-full w-full border-0 bg-transparent shadow-none"
