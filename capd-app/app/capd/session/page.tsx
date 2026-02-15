@@ -1279,6 +1279,7 @@ function SessionPageContent() {
                                   exitSiteStatuses: v
                                 }))
                               }
+                              exclusiveNormal
                               className="grid gap-2 sm:grid-cols-2"
                             />
                           </fieldset>
