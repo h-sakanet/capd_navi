@@ -9,10 +9,10 @@ import {
   upsertAlarmJob
 } from "@/lib/storage/alarm-job.repo";
 import { getProtocolAsset, getProtocolPackage } from "@/lib/storage/protocol.repo";
-import { deleteRecordsBySession, hasRecordForStep, listRecordsBySession, upsertRecord } from "@/lib/storage/record.repo";
+import { deleteRecordsByDateAndExchangeNo, deleteRecordsBySession, hasRecordForStep, listRecordsBySession, upsertRecord } from "@/lib/storage/record.repo";
 import { getSession, upsertSession } from "@/lib/storage/session.repo";
 import { getSessionSnapshot } from "@/lib/storage/snapshot.repo";
-import { addTimerEventIfAbsent, deleteTimerEventsBySession, listTimerEventsBySession } from "@/lib/storage/timer-event.repo";
+import { addTimerEventIfAbsent, deleteTimerEventsByDateAndExchangeNo, deleteTimerEventsBySession, listTimerEventsBySession } from "@/lib/storage/timer-event.repo";
 import type {
   AlarmDispatchJobEntity,
   ActiveSessionCache,
@@ -478,10 +478,19 @@ export async function cancelSession(sessionId: string): Promise<void> {
   if (!session) return;
 
   // そのセッションの全関連データを削除
+  // sessionIdでの削除に加えて、明示的に「その日のそのスロット(exchangeNo)」のデータも削除する
+  // これにより、もし古いセッションIDのゴミデータが残っていたり、手動入力データがあっても、
+  // 「キャンセル＝このスロットを白紙に戻す」というユーザーの意図通りにクリーンアップされる。
+  const exchangeNo = String(session.slotIndex + 1);
+  const dateLocal = session.dateLocal;
+
   await Promise.all([
     deleteRecordsBySession(sessionId),
     deleteTimerEventsBySession(sessionId),
-    deleteAlarmJobsBySession(sessionId)
+    deleteAlarmJobsBySession(sessionId),
+    // 日付とスロット番号指定での強制削除
+    deleteRecordsByDateAndExchangeNo(dateLocal, exchangeNo),
+    deleteTimerEventsByDateAndExchangeNo(dateLocal, exchangeNo)
   ]);
 
   const now = nowIso();

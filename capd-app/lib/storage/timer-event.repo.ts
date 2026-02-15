@@ -93,3 +93,17 @@ export async function deleteTimerEventsBySession(sessionId: string): Promise<voi
     }
   });
 }
+
+export async function deleteTimerEventsByDateAndExchangeNo(dateLocal: string, timerExchangeNo: string): Promise<void> {
+  await withTransaction("timer_events", "readwrite", async (transaction) => {
+    const store = transaction.objectStore("timer_events");
+    const index = store.index("by_date");
+    const rows = await requestToPromise(index.getAll(dateLocal));
+    for (const row of rows) {
+      const r = row as TimerEventEntity;
+      if (r.timerExchangeNo === timerExchangeNo) {
+        store.delete(r.eventId); // primary key is eventId
+      }
+    }
+  });
+}

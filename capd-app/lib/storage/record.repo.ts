@@ -89,3 +89,18 @@ export async function deleteRecordsBySession(sessionId: string): Promise<void> {
     }
   });
 }
+
+export async function deleteRecordsByDateAndExchangeNo(dateLocal: string, exchangeNo: string): Promise<void> {
+  await withTransaction("records", "readwrite", async (transaction) => {
+    const store = transaction.objectStore("records");
+    const index = store.index("by_date");
+    const rows = await requestToPromise(index.getAll(dateLocal));
+    for (const row of rows) {
+      // normalizeRecordを通さなくても row.recordExchangeNo はアクセス可能だが、念のため型安全に
+      const r = row as RecordEntity;
+      if (r.recordExchangeNo === exchangeNo) {
+        store.delete(r.recordId);
+      }
+    }
+  });
+}
