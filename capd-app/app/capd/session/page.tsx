@@ -1147,9 +1147,7 @@ function SessionPageContent() {
       <section className="overflow-hidden rounded-xl border bg-card text-card-foreground shadow-sm">
         <div className="grid gap-0 md:grid-cols-[minmax(0,1.35fr)_minmax(340px,1fr)]">
           <div className="border-b p-3 md:border-b-0 md:p-5">
-            <div className={cn("relative w-full rounded-md border bg-muted p-4 text-sm text-muted-foreground",
-              step.alarmSpec?.alarmDurationMin ? "aspect-auto min-h-[300px]" : "aspect-square"
-            )}>
+            <div className="relative aspect-square w-full rounded-md border bg-muted p-4 text-sm text-muted-foreground">
               {step.alarmSpec?.alarmDurationMin ? (
                 <SessionStepTimer
                   startedAtMs={alarmState?.startedAtMs ?? Date.now()}
