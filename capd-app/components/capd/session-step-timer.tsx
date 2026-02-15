@@ -32,7 +32,8 @@ export function SessionStepTimer({
         // 初回マウント時に現在時刻との差分を計算
         const update = () => {
             const now = Date.now();
-            const diff = now - startedAtMs;
+            // 未来の日付が渡された場合などに負にならないようにガード
+            const diff = Math.max(0, now - startedAtMs);
             setElapsedMs(diff);
 
             // アラーム発動条件: 時間経過 かつ まだ停止していない
@@ -110,13 +111,13 @@ export function SessionStepTimer({
         )}>
             <div className="space-y-1">
                 <h3 className={cn("text-sm font-medium", isOvertime ? "text-red-600" : "text-blue-600")}>
-                    {isOvertime ? "待機時間終了" : "待機中..."}
+                    {isOvertime ? "設定時間経過" : "残り時間"}
                 </h3>
                 <div className={cn("text-5xl font-bold tracking-tighter tabular-nums", isOvertime ? "text-red-600 animate-pulse" : "text-blue-900")}>
                     {isOvertime ? formatTime(elapsedMs - durationMs) : formatTime(remainingMs)}
                 </div>
                 <p className="text-xs text-muted-foreground">
-                    {isOvertime ? "経過時間" : `目標: ${durationMinutes}分`}
+                    {isOvertime ? "経過時間" : `設定時間: ${durationMinutes}分`}
                 </p>
             </div>
 
