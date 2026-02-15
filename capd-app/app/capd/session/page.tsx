@@ -339,6 +339,10 @@ function SessionPageContent() {
   const [isUtilityMenuOpen, setIsUtilityMenuOpen] = useState(false);
   const [isCancelDialogOpen, setIsCancelDialogOpen] = useState(false);
   const [cancelConfirmText, setCancelConfirmText] = useState("");
+  const isNavigatingRef = useRef(false);
+
+  // ステップ毎のタイマー開始時刻を保持（再レンダリング対策）
+  const stepEntryTimeRef = useRef<Record<string, number>>({});
   const [slotBounds, setSlotBounds] = useState<{ leftmost: number | null; rightmost: number | null }>({
     leftmost: null,
     rightmost: null
@@ -994,8 +998,7 @@ function SessionPageContent() {
     };
   }, [currentStep?.recordSpec?.recordEvent, currentStep?.stepId, error, loading]);
 
-  // --- Navigation guards: prevent reload / tab close during active session ---
-  const isNavigatingRef = useRef(false);
+
 
   // --- Navigation guards: prevent reload / tab close during active session ---
   useEffect(() => {
@@ -1142,7 +1145,6 @@ function SessionPageContent() {
       ? "記録入力を完了してください。"
       : null;
 
-  const stepEntryTimeRef = useRef<Record<string, number>>({});
   const entryTime = step.alarmSpec ? (stepEntryTimeRef.current[step.stepId] ??= Date.now()) : Date.now();
 
   return (
