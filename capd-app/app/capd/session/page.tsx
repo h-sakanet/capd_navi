@@ -865,18 +865,18 @@ function SessionPageContent() {
 
   const handleCompleteSession = useCallback(async () => {
     if (!sessionContext || isPreviewMode) {
-      router.push("/capd/home");
+      router.replace("/capd/home");
       return;
     }
 
     await completeSession(sessionContext.sessionId);
     await clearActiveSession();
-    router.push("/capd/home");
+    router.replace("/capd/home");
   }, [isPreviewMode, router, sessionContext]);
 
   const handleEmergencyAbort = useCallback(async () => {
     if (!sessionContext || isPreviewMode) {
-      router.push("/capd/home");
+      router.replace("/capd/home");
       return;
     }
 
@@ -884,7 +884,7 @@ function SessionPageContent() {
     await clearActiveSession();
     setAbortConfirmText("");
     setIsAbortDialogOpen(false);
-    router.push("/capd/home");
+    router.replace("/capd/home");
   }, [isPreviewMode, router, sessionContext]);
 
   useEffect(() => {
@@ -947,6 +947,29 @@ function SessionPageContent() {
       window.cancelAnimationFrame(rafId);
     };
   }, [currentStep?.recordSpec?.recordEvent, currentStep?.stepId, error, loading]);
+
+  // --- Navigation guards: prevent reload / tab close during active session ---
+  useEffect(() => {
+    if (!sessionContext || isPreviewMode) return;
+    const handler = (e: BeforeUnloadEvent) => {
+      e.preventDefault();
+    };
+    window.addEventListener("beforeunload", handler);
+    return () => window.removeEventListener("beforeunload", handler);
+  }, [sessionContext, isPreviewMode]);
+
+  // --- Navigation guards: prevent browser back / swipe-back during active session ---
+  useEffect(() => {
+    if (!sessionContext || isPreviewMode) return;
+    // Push a dummy history entry so the first "back" stays on this page
+    history.pushState({ sessionGuard: true }, "", location.href);
+    const handler = () => {
+      // Re-push to absorb the back navigation
+      history.pushState({ sessionGuard: true }, "", location.href);
+    };
+    window.addEventListener("popstate", handler);
+    return () => window.removeEventListener("popstate", handler);
+  }, [sessionContext, isPreviewMode]);
 
   const setCheckForStep = (stepId: string, checkLabel: string, nextChecked: boolean) => {
     setCheckedByStep((prev) => {
