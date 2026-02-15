@@ -82,3 +82,14 @@ export async function listTimerEventsByDate(dateLocal: string): Promise<TimerEve
       .sort((a, b) => a.occurredAtIso.localeCompare(b.occurredAtIso));
   });
 }
+
+export async function deleteTimerEventsBySession(sessionId: string): Promise<void> {
+  await withTransaction("timer_events", "readwrite", async (transaction) => {
+    const store = transaction.objectStore("timer_events");
+    const index = store.index("by_session");
+    const keys = await requestToPromise(index.getAllKeys(sessionId));
+    for (const key of keys) {
+      store.delete(key);
+    }
+  });
+}

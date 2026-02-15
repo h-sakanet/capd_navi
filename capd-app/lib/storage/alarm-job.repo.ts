@@ -92,3 +92,14 @@ export async function getAlarmJob(jobId: string): Promise<AlarmDispatchJobEntity
     return normalizeAlarmJob(row);
   });
 }
+
+export async function deleteAlarmJobsBySession(sessionId: string): Promise<void> {
+  await withTransaction("alarm_dispatch_jobs", "readwrite", async (transaction) => {
+    const store = transaction.objectStore("alarm_dispatch_jobs");
+    const index = store.index("by_session");
+    const keys = await requestToPromise(index.getAllKeys(sessionId));
+    for (const key of keys) {
+      store.delete(key);
+    }
+  });
+}

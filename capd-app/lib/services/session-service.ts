@@ -1,6 +1,7 @@
 import { requestToPromise, withTransaction } from "@/lib/storage/capd-db";
 import { patchTodaySlotStatus } from "@/lib/storage/daily-plan.repo";
 import {
+  deleteAlarmJobsBySession,
   findAlarmJobByDedupe,
   getAlarmJob,
   listAlarmJobsBySession,
@@ -11,7 +12,7 @@ import { getProtocolAsset, getProtocolPackage } from "@/lib/storage/protocol.rep
 import { deleteRecordsBySession, hasRecordForStep, listRecordsBySession, upsertRecord } from "@/lib/storage/record.repo";
 import { getSession, upsertSession } from "@/lib/storage/session.repo";
 import { getSessionSnapshot } from "@/lib/storage/snapshot.repo";
-import { addTimerEventIfAbsent, listTimerEventsBySession } from "@/lib/storage/timer-event.repo";
+import { addTimerEventIfAbsent, deleteTimerEventsBySession, listTimerEventsBySession } from "@/lib/storage/timer-event.repo";
 import type {
   AlarmDispatchJobEntity,
   ActiveSessionCache,
@@ -471,13 +472,17 @@ export async function abortSession(sessionId: string): Promise<void> {
   await patchTodaySlotStatus(session.slotIndex, "未実施");
 }
 
-/** セッションをキャンセルし、そのセッションの全レコードを削除する */
+/** セッションをキャンセルし、そのセッションの全関連データを削除する */
 export async function cancelSession(sessionId: string): Promise<void> {
   const session = await getSession(sessionId);
   if (!session) return;
 
-  // そのセッションの全レコードを削除
-  await deleteRecordsBySession(sessionId);
+  // そのセッションの全関連データを削除
+  await Promise.all([
+    deleteRecordsBySession(sessionId),
+    deleteTimerEventsBySession(sessionId),
+    deleteAlarmJobsBySession(sessionId)
+  ]);
 
   const now = nowIso();
   await upsertSession({
