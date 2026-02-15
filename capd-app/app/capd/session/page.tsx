@@ -10,7 +10,7 @@ import {
   X
 } from "@mynaui/icons-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense, type ComponentType, type ReactNode, useCallback, useEffect, useMemo, useState } from "react";
+import { Suspense, type ComponentType, type ReactNode, useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import {
   clearActiveSession,
@@ -864,6 +864,7 @@ function SessionPageContent() {
   }, [canGoPrev]);
 
   const handleCompleteSession = useCallback(async () => {
+    isNavigatingRef.current = true;
     if (!sessionContext || isPreviewMode) {
       window.location.href = "/capd/home";
       return;
@@ -875,11 +876,13 @@ function SessionPageContent() {
   }, [isPreviewMode, router, sessionContext]);
 
   const handlePause = useCallback(async () => {
+    isNavigatingRef.current = true;
     // 中断: セッションを active のまま、スロットも「実施中」のまま Home に戻る
     window.location.href = "/capd/home";
   }, [router]);
 
   const handleCancelSession = useCallback(async () => {
+    isNavigatingRef.current = true;
     if (!sessionContext || isPreviewMode) {
       window.location.href = "/capd/home";
       return;
@@ -954,9 +957,14 @@ function SessionPageContent() {
   }, [currentStep?.recordSpec?.recordEvent, currentStep?.stepId, error, loading]);
 
   // --- Navigation guards: prevent reload / tab close during active session ---
+  const isNavigatingRef = useRef(false);
+
+  // --- Navigation guards: prevent reload / tab close during active session ---
   useEffect(() => {
     if (!sessionContext || isPreviewMode) return;
     const handler = (e: BeforeUnloadEvent) => {
+      // 意図的な遷移（完了・中断・キャンセル）の場合はガードしない
+      if (isNavigatingRef.current) return;
       e.preventDefault();
     };
     window.addEventListener("beforeunload", handler);
