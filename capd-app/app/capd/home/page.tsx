@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Download, ListCheck } from "@mynaui/icons-react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { HomeProcedureBoard } from "@/components/capd/home-procedure-board";
 import { TodayCapdNoteTable } from "@/components/capd/today-capd-note-table";
@@ -33,17 +33,31 @@ export default function HomePage() {
   useEffect(() => {
     let cancelled = false;
 
-    async function loadNote() {
+    async function loadInitialNote() {
       const next = await readTodayHomeNote();
       if (!cancelled) {
         setNote(next);
       }
     }
 
-    void loadNote();
+    function handleVisibilityChange() {
+      if (document.visibilityState === "visible" && !cancelled) {
+        void loadInitialNote();
+      }
+    }
+
+    function handleFocus() {
+      if (!cancelled) void loadInitialNote();
+    }
+
+    void loadInitialNote();
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("focus", handleFocus);
 
     return () => {
       cancelled = true;
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("focus", handleFocus);
     };
   }, []);
 
@@ -64,10 +78,15 @@ export default function HomePage() {
 
   const [allCompleted, setAllCompleted] = useState(false);
 
-  async function loadNote() {
+  const loadNote = useCallback(async () => {
     const next = await readTodayHomeNote();
     setNote(next);
-  }
+  }, []);
+
+  const handleCompletionChange = useCallback((v: boolean) => {
+    setAllCompleted(v);
+    void loadNote();
+  }, [loadNote]);
 
   return (
     <CapdShell>
@@ -90,7 +109,7 @@ export default function HomePage() {
           </div>
         </CardHeader>
         <CardContent className="space-y-6 pt-0">
-          <HomeProcedureBoard onCompletionChange={setAllCompleted} />
+          <HomeProcedureBoard onCompletionChange={handleCompletionChange} />
           <TodayCapdNoteTable
             dateLocal={note?.dateLocal ?? fallbackDateLocal}
             note={note}

@@ -865,23 +865,23 @@ function SessionPageContent() {
 
   const handleCompleteSession = useCallback(async () => {
     if (!sessionContext || isPreviewMode) {
-      router.replace("/capd/home");
+      window.location.href = "/capd/home";
       return;
     }
 
     await completeSession(sessionContext.sessionId);
     await clearActiveSession();
-    router.replace("/capd/home");
+    window.location.href = "/capd/home";
   }, [isPreviewMode, router, sessionContext]);
 
   const handlePause = useCallback(async () => {
     // 中断: セッションを active のまま、スロットも「実施中」のまま Home に戻る
-    router.replace("/capd/home");
+    window.location.href = "/capd/home";
   }, [router]);
 
   const handleCancelSession = useCallback(async () => {
     if (!sessionContext || isPreviewMode) {
-      router.replace("/capd/home");
+      window.location.href = "/capd/home";
       return;
     }
 
@@ -889,7 +889,7 @@ function SessionPageContent() {
     await clearActiveSession();
     setCancelConfirmText("");
     setIsCancelDialogOpen(false);
-    router.replace("/capd/home");
+    window.location.href = "/capd/home";
   }, [isPreviewMode, router, sessionContext]);
 
   useEffect(() => {
