@@ -24,10 +24,10 @@ export default function HistoryPhotoPage({ params }: Props) {
           <CardTitle className="text-xl">写真詳細</CardTitle>
           <CardDescription>写真ID: {params.photoId}</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="aspect-square max-w-xl rounded-lg border bg-muted p-4 text-sm text-muted-foreground">
-            ここに撮影済み写真を表示します（プレビュー用プレースホルダ）。
-          </div>
+          <CardContent className="space-y-4">
+            <div className="aspect-square max-w-xl rounded-lg border bg-muted p-4 text-sm text-muted-foreground">
+            この写真はまだ表示できません。同期後に再度確認してください。
+            </div>
           <Button asChild variant="outline">
             <Link href="/capd/history-list">
               <ArrowLeft className="mr-2 h-4 w-4" />

@@ -22,6 +22,31 @@ export type ProtocolStep = {
   recordUnit: string;
 };
 
+const REQUIRED_HEADERS = [
+  "通し番号",
+  "step_id",
+  "next_step_id",
+  "フェーズ",
+  "状態",
+  "タイトル",
+  "画像",
+  "表示テキスト",
+  "警告テキスト",
+  "必須チェック",
+  "必須チェック数",
+  "timer_id",
+  "timer_event",
+  "timer_exchange_no",
+  "timer_segment",
+  "alarm_id",
+  "alarm_trigger",
+  "alarm_duration_min",
+  "alarm_related_timer_id",
+  "record_event",
+  "record_exchange_no",
+  "record_unit"
+] as const;
+
 function parseCsvMatrix(csvText: string): string[][] {
   const rows: string[][] = [];
   let row: string[] = [];
@@ -90,25 +115,15 @@ export function parseProtocolCsv(csvText: string): ProtocolStep[] {
   }
 
   const headers = matrix[0].map((header) => header.trim());
-  if (!headers.includes("row_type")) {
-    throw new Error("CSV v3の必須列 row_type がありません。");
+  const isHeaderValid =
+    headers.length === REQUIRED_HEADERS.length &&
+    REQUIRED_HEADERS.every((requiredHeader, index) => headers[index] === requiredHeader);
+  if (!isHeaderValid) {
+    throw new Error("CSVヘッダーが不正です。");
   }
 
   const records = matrix.slice(1).map((line) => toRecord(headers, line));
-  const metaRows = records.filter((record) => (record.row_type ?? "").trim() === "meta");
-  const metaMap = new Map(metaRows.map((record) => [(record.meta_key ?? "").trim(), (record.meta_value ?? "").trim()]));
-  const requiredMetaKeys = ["format_version", "protocol_id", "protocol_name", "protocol_version", "effective_from_local"];
-  for (const key of requiredMetaKeys) {
-    if (!metaMap.get(key)) {
-      throw new Error(`CSV v3の必須meta_keyが不足しています: ${key}`);
-    }
-  }
-  if (metaMap.get("format_version") !== "3") {
-    throw new Error("format_versionは3のみ対応です。");
-  }
-
   const steps: ProtocolStep[] = records
-    .filter((record) => (record.row_type ?? "").trim() === "step")
     .map((record) => {
       const stepId = (record.step_id ?? "").trim();
       if (!stepId) {

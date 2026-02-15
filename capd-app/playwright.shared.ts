@@ -18,7 +18,7 @@ export function createPlaywrightConfig(testDir: string, useScreenshotOnly: boole
       screenshot: useScreenshotOnly ? "only-on-failure" : "off"
     },
     webServer: {
-      command: `NEXT_PUBLIC_ALARM_MINUTE_MS=300 npm run dev -- -p ${PORT} --hostname 127.0.0.1`,
+      command: `NEXT_PUBLIC_ALARM_MINUTE_MS=300 NEXT_PUBLIC_ENABLE_STORAGE_ADMIN=true npm run dev -- -p ${PORT} --hostname 127.0.0.1`,
       url: `http://127.0.0.1:${PORT}`,
       timeout: 120_000,
       reuseExistingServer: true

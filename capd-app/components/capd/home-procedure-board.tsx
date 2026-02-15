@@ -5,14 +5,20 @@ import { useRouter } from "next/navigation";
 import { Plus, X } from "@mynaui/icons-react";
 
 import {
-  createSessionId,
+  clearActiveSession,
   defaultProcedureSlots,
   readActiveSession,
   readProcedureSlots,
+  readProcedureSlotsSource,
   writeActiveSession,
-  writeProcedureSlots,
+  writeProcedureSlotsSource,
   type ProcedureSlot
 } from "@/components/capd/session-slot-store";
+import {
+  hasLegacyProtocolTemplates,
+  readProtocolTemplates
+} from "@/components/capd/protocol-template-store";
+import { startSessionFromSlot } from "@/lib/services/session-service";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -21,14 +27,12 @@ type ProcedureForm = {
   recommendedTime: string;
 };
 
-const protocolCatalog = [
-  { id: "reguneal-15", label: "レギニュール1.5" },
-  { id: "night-drain-v12", label: "夜間排液 v1.2.0" },
-  { id: "morning-exchange-v101", label: "朝交換 v1.0.1" }
-] as const;
+type Props = {
+  onCompletionChange?: (allCompleted: boolean) => void;
+};
 
 const defaultForm: ProcedureForm = {
-  protocolId: protocolCatalog[0].id,
+  protocolId: "",
   recommendedTime: "20:00"
 };
 
@@ -74,55 +78,104 @@ function validateRecommendedOrder(slots: Array<ProcedureSlot | null>): string | 
   return null;
 }
 
-export function HomeProcedureBoard() {
+export function HomeProcedureBoard({ onCompletionChange }: Props) {
   const router = useRouter();
   const [slots, setSlots] = useState<Array<ProcedureSlot | null>>([...defaultProcedureSlots]);
+  const [protocolCatalog, setProtocolCatalog] = useState<Array<{ id: string; label: string }>>([]);
   const [storageReady, setStorageReady] = useState(false);
   const [editingSlotIndex, setEditingSlotIndex] = useState<number | null>(null);
   const [confirmSlotIndex, setConfirmSlotIndex] = useState<number | null>(null);
+  const [deletingSlotIndex, setDeletingSlotIndex] = useState<number | null>(null);
   const [confirmMode, setConfirmMode] = useState<"start" | "view">("view");
   const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
   const [form, setForm] = useState<ProcedureForm>(defaultForm);
   const [boardNotice, setBoardNotice] = useState<string | null>(null);
 
   const hasInProgressSlot = slots.some((slot) => slot?.status === "実施中");
+  const selectableProtocols = useMemo(() => {
+    const byId = new Map<string, { id: string; label: string }>();
+    for (const protocol of protocolCatalog) {
+      byId.set(protocol.id, protocol);
+    }
+    for (const slot of slots) {
+      if (slot && !byId.has(slot.protocolId)) {
+        byId.set(slot.protocolId, { id: slot.protocolId, label: slot.protocolLabel });
+      }
+    }
+    return Array.from(byId.values());
+  }, [protocolCatalog, slots]);
   const confirmSlot = useMemo(
     () => (confirmSlotIndex === null ? null : slots[confirmSlotIndex]),
     [confirmSlotIndex, slots]
   );
+  const deletingSlot = useMemo(
+    () => (deletingSlotIndex === null ? null : slots[deletingSlotIndex]),
+    [deletingSlotIndex, slots]
+  );
 
   useEffect(() => {
-    const persistedSlots = readProcedureSlots();
-    setSlots(persistedSlots);
-    setStorageReady(true);
+    let cancelled = false;
+
+    async function loadInitialState() {
+      const [templates, sourceSlots] = await Promise.all([readProtocolTemplates(), readProcedureSlotsSource()]);
+      if (cancelled) {
+        return;
+      }
+
+      setProtocolCatalog(
+        templates.map((template) => ({
+          id: template.protocolId,
+          label: template.protocolName
+        }))
+      );
+      setSlots(sourceSlots);
+      setStorageReady(true);
+
+      if (hasLegacyProtocolTemplates()) {
+        setBoardNotice("旧テンプレート形式を検出しました。CSVを再取り込みしてください。");
+      }
+    }
+
+    void loadInitialState();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   useEffect(() => {
     if (!storageReady) {
       return;
     }
-    writeProcedureSlots(slots);
-  }, [slots, storageReady]);
+    void writeProcedureSlotsSource(slots);
+
+    const allCompleted = slots.every((slot) => !slot || slot.status === "実施済み");
+    onCompletionChange?.(allCompleted);
+  }, [slots, storageReady, onCompletionChange]);
 
   useEffect(() => {
     if (!storageReady) {
       return;
     }
 
-    const activeSession = readActiveSession();
-    if (!activeSession) {
-      return;
+    async function syncActiveSession() {
+      const activeSession = await readActiveSession();
+      if (!activeSession || activeSession.mode === "preview") {
+        return;
+      }
+
+      setSlots((current) => {
+        const slot = current[activeSession.slotIndex];
+        if (!slot || slot.status === "実施中") {
+          return current;
+        }
+        const next = [...current];
+        next[activeSession.slotIndex] = { ...slot, status: "実施中" };
+        return next;
+      });
     }
 
-    setSlots((current) => {
-      const slot = current[activeSession.slotIndex];
-      if (!slot || slot.status === "実施中") {
-        return current;
-      }
-      const next = [...current];
-      next[activeSession.slotIndex] = { ...slot, status: "実施中" };
-      return next;
-    });
+    void syncActiveSession();
   }, [storageReady]);
 
   const openSetupModal = (slotIndex: number) => {
@@ -139,7 +192,14 @@ export function HomeProcedureBoard() {
         recommendedTime: currentSlot.recommendedTime
       });
     } else {
-      setForm(defaultForm);
+      if (!selectableProtocols.length) {
+        setBoardNotice("手技テンプレートがありません。CSV取り込み後に設定してください。");
+        return;
+      }
+      setForm({
+        ...defaultForm,
+        protocolId: selectableProtocols[0].id
+      });
     }
     setBoardNotice(null);
     setEditingSlotIndex(slotIndex);
@@ -154,7 +214,7 @@ export function HomeProcedureBoard() {
       return;
     }
 
-    const selectedProtocol = protocolCatalog.find((item) => item.id === form.protocolId);
+    const selectedProtocol = selectableProtocols.find((item) => item.id === form.protocolId);
     if (!selectedProtocol || !form.recommendedTime) {
       return;
     }
@@ -180,13 +240,55 @@ export function HomeProcedureBoard() {
   };
 
   const openStartConfirm = (slotIndex: number) => {
+    const targetSlot = slots[slotIndex];
+    if (!targetSlot) {
+      return;
+    }
+
+    if (hasInProgressSlot && targetSlot.status !== "実施中") {
+      setBoardNotice("実施中セッションがあるため開始できません。");
+      return;
+    }
+
     setOpenMenuIndex(null);
     setBoardNotice(null);
     setConfirmMode("start");
     setConfirmSlotIndex(slotIndex);
   };
 
-  const startOrResumeSession = () => {
+  const openDeleteConfirm = (slotIndex: number) => {
+    const targetSlot = slots[slotIndex];
+    if (!targetSlot) {
+      return;
+    }
+
+    if (hasInProgressSlot || targetSlot.status === "実施済み") {
+      return;
+    }
+
+    setOpenMenuIndex(null);
+    setBoardNotice(null);
+    setDeletingSlotIndex(slotIndex);
+  };
+
+  const deleteSlot = () => {
+    if (deletingSlotIndex === null) {
+      return;
+    }
+
+    const targetSlot = slots[deletingSlotIndex];
+    if (!targetSlot || hasInProgressSlot || targetSlot.status === "実施済み") {
+      setDeletingSlotIndex(null);
+      return;
+    }
+
+    const next = [...slots];
+    next[deletingSlotIndex] = null;
+    setSlots(next);
+    setDeletingSlotIndex(null);
+  };
+
+  const startOrResumeSession = async () => {
     if (confirmSlotIndex === null) {
       return;
     }
@@ -196,36 +298,66 @@ export function HomeProcedureBoard() {
       return;
     }
 
-    if (confirmMode === "view") {
+    if (hasInProgressSlot && targetSlot.status !== "実施中") {
+      setBoardNotice("実施中セッションがあるため開始できません。");
       setConfirmSlotIndex(null);
-      router.push("/capd/session?mode=preview");
       return;
     }
 
-    const currentActive = readActiveSession();
-    const isResume = targetSlot.status === "実施中";
-    const sessionId =
-      isResume && currentActive?.slotIndex === confirmSlotIndex
-        ? currentActive.sessionId
-        : createSessionId(confirmSlotIndex);
-    const currentStepId =
-      isResume && currentActive?.slotIndex === confirmSlotIndex ? currentActive.currentStepId : "step_021";
-
-    const nextSlots = [...slots];
-    if (targetSlot.status !== "実施中") {
-      nextSlots[confirmSlotIndex] = { ...targetSlot, status: "実施中" };
-      setSlots(nextSlots);
+    if (confirmMode === "view") {
+      setConfirmSlotIndex(null);
+      await writeActiveSession({
+        sessionId: "preview",
+        slotIndex: confirmSlotIndex,
+        currentStepId: "",
+        protocolId: targetSlot.protocolId,
+        snapshotHash: "",
+        mode: "preview",
+        updatedAtIso: new Date().toISOString()
+      });
+      router.push(`/capd/session?mode=preview&slot=${confirmSlotIndex + 1}`);
+      return;
     }
 
-    writeActiveSession({
-      sessionId,
-      slotIndex: confirmSlotIndex,
-      currentStepId,
-      updatedAtIso: new Date().toISOString()
-    });
+    try {
+      const currentActive = await readActiveSession();
+      const isResume =
+        targetSlot.status === "実施中" &&
+        currentActive?.slotIndex === confirmSlotIndex &&
+        currentActive.mode === "runtime";
 
-    setConfirmSlotIndex(null);
-    router.push(`/capd/session?slot=${confirmSlotIndex + 1}&sessionId=${encodeURIComponent(sessionId)}`);
+      if (isResume && currentActive) {
+        await writeActiveSession({
+          ...currentActive,
+          protocolId: currentActive.protocolId || targetSlot.protocolId,
+          mode: "runtime",
+          updatedAtIso: new Date().toISOString()
+        });
+        setConfirmSlotIndex(null);
+        router.push(`/capd/session?slot=${confirmSlotIndex + 1}&sessionId=${encodeURIComponent(currentActive.sessionId)}`);
+        return;
+      }
+
+      const activeSession = await startSessionFromSlot({
+        slotIndex: confirmSlotIndex,
+        protocolId: targetSlot.protocolId
+      });
+
+      const nextSlots = [...slots];
+      nextSlots[confirmSlotIndex] = {
+        ...targetSlot,
+        status: "実施中"
+      };
+      setSlots(nextSlots);
+
+      await writeActiveSession(activeSession);
+      setConfirmSlotIndex(null);
+      router.push(`/capd/session?slot=${confirmSlotIndex + 1}&sessionId=${encodeURIComponent(activeSession.sessionId)}`);
+    } catch (error) {
+      setBoardNotice(error instanceof Error ? error.message : "セッション開始に失敗しました。");
+      await clearActiveSession();
+      setConfirmSlotIndex(null);
+    }
   };
 
   return (
@@ -236,15 +368,16 @@ export function HomeProcedureBoard() {
             const blockedByLeft = !hasReadyLeftSlots(slots, index);
             const canStart = slot.status !== "実施済み" && !blockedByLeft;
             const isCompleted = slot.status === "実施済み";
+            const isEmphasized = slot.status === "未実施" || slot.status === "実施中";
+            const isMutatingDisabled = hasInProgressSlot || slot.status === "実施済み";
 
             return (
               <section
                 key={`slot-${index + 1}`}
                 className={cn(
                   "relative rounded-xl border px-3 py-2.5 transition-colors",
-                  canStart
-                    ? "bg-background hover:bg-muted/30 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                    : "cursor-default bg-muted/20"
+                  canStart ? "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring" : "cursor-default",
+                  isEmphasized ? "border-primary bg-primary text-primary-foreground hover:bg-primary/90" : "bg-muted/20"
                 )}
                 role={canStart ? "button" : undefined}
                 aria-disabled={!canStart}
@@ -255,6 +388,9 @@ export function HomeProcedureBoard() {
                     return;
                   }
                   if (!canStart) {
+                    if (hasInProgressSlot && slot.status !== "実施中") {
+                      setBoardNotice("実施中セッションがあるため開始できません。");
+                    }
                     return;
                   }
                   openStartConfirm(index);
@@ -267,6 +403,12 @@ export function HomeProcedureBoard() {
                     return;
                   }
                   event.preventDefault();
+                  if (!canStart) {
+                    if (hasInProgressSlot && slot.status !== "実施中") {
+                      setBoardNotice("実施中セッションがあるため開始できません。");
+                    }
+                    return;
+                  }
                   if (openMenuIndex !== null) {
                     setOpenMenuIndex(null);
                     return;
@@ -275,10 +417,17 @@ export function HomeProcedureBoard() {
                 }}
               >
                 <div className="flex items-start justify-between gap-2">
-                  <p className="text-xs font-medium text-muted-foreground">#{index + 1}.</p>
+                  <p className={cn("text-xs font-medium", isEmphasized ? "text-primary-foreground/80" : "text-muted-foreground")}>
+                    #{index + 1}.
+                  </p>
                   <button
                     type="button"
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-background text-sm leading-none text-muted-foreground hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50"
+                    className={cn(
+                      "inline-flex h-9 w-9 items-center justify-center rounded-md text-sm leading-none disabled:cursor-not-allowed disabled:opacity-50",
+                      isEmphasized
+                        ? "bg-primary text-primary-foreground hover:bg-primary"
+                        : "bg-background text-muted-foreground hover:bg-muted"
+                    )}
                     aria-label="その他操作"
                     aria-haspopup="menu"
                     aria-expanded={openMenuIndex === index}
@@ -294,10 +443,9 @@ export function HomeProcedureBoard() {
                 <div className="mt-1.5 space-y-1 text-sm">
                   <p className="font-semibold">{slot.protocolLabel}</p>
                   <p>ステータス：{slot.status}</p>
-                  <p className="text-muted-foreground">推奨実施 {slot.recommendedTime}</p>
-                  {blockedByLeft && !isCompleted ? (
-                    <p className="text-xs text-destructive">左側スロットを実施済みにすると開始できます。</p>
-                  ) : null}
+                  <p className={cn(isEmphasized ? "text-primary-foreground/80" : "text-muted-foreground")}>
+                    推奨実施 {slot.recommendedTime}
+                  </p>
                 </div>
 
                 {openMenuIndex === index && (
@@ -308,7 +456,7 @@ export function HomeProcedureBoard() {
                   >
                     <button
                       type="button"
-                      className="w-full rounded-sm px-2 py-1 text-left text-sm hover:bg-muted"
+                      className="w-full rounded-sm px-2 py-1 text-left text-sm text-foreground hover:bg-muted"
                       role="menuitem"
                       onClick={() => {
                         setOpenMenuIndex(null);
@@ -320,12 +468,21 @@ export function HomeProcedureBoard() {
                     </button>
                     <button
                       type="button"
-                      disabled={hasInProgressSlot || slot.status === "実施済み"}
-                      className="w-full rounded-sm px-2 py-1 text-left text-sm hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50"
+                      disabled={isMutatingDisabled}
+                      className="w-full rounded-sm px-2 py-1 text-left text-sm text-foreground hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50"
                       role="menuitem"
                       onClick={() => openSetupModal(index)}
                     >
                       編集
+                    </button>
+                    <button
+                      type="button"
+                      disabled={isMutatingDisabled}
+                      className="w-full rounded-sm px-2 py-1 text-left text-sm text-destructive hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50"
+                      role="menuitem"
+                      onClick={() => openDeleteConfirm(index)}
+                    >
+                      削除
                     </button>
                   </div>
                 )}
@@ -363,7 +520,7 @@ export function HomeProcedureBoard() {
                 value={form.protocolId}
                 onChange={(event) => setForm((current) => ({ ...current, protocolId: event.target.value }))}
               >
-                {protocolCatalog.map((item) => (
+                {selectableProtocols.map((item) => (
                   <option key={item.id} value={item.id}>
                     {item.label}
                   </option>
@@ -431,8 +588,28 @@ export function HomeProcedureBoard() {
             <Button variant="outline" onClick={() => setConfirmSlotIndex(null)}>
               閉じる
             </Button>
-            <Button onClick={startOrResumeSession}>
+            <Button onClick={() => void startOrResumeSession()}>
               {confirmMode === "view" ? "手順を表示（保存なし）" : confirmSlot.status === "実施中" ? "再開" : "開始"}
+            </Button>
+          </div>
+        </ModalShell>
+      )}
+
+      {deletingSlot && deletingSlotIndex !== null && (
+        <ModalShell title="スロット登録の削除" onClose={() => setDeletingSlotIndex(null)}>
+          <div className="space-y-4 px-5 py-4">
+            <p className="text-sm">
+              #{deletingSlotIndex + 1} の「{deletingSlot.protocolLabel}」を削除します。
+            </p>
+            <p className="text-sm text-muted-foreground">この操作は取り消せません。</p>
+          </div>
+
+          <div className="flex justify-end gap-2 border-t px-5 py-4">
+            <Button variant="outline" onClick={() => setDeletingSlotIndex(null)}>
+              キャンセル
+            </Button>
+            <Button variant="destructive" onClick={deleteSlot}>
+              削除する
             </Button>
           </div>
         </ModalShell>

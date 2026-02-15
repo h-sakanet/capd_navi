@@ -14,6 +14,7 @@
 | CAP-ABNORMAL-001 | 異常判定 | 排液見た目分類に基づく警告表示 | JRN-003-SESSION | SCR-SESSION-001, SCR-SESSION-RECORD-001 | Phase1 | [link](./CAP-ABNORMAL-001.md) |
 | CAP-PHOTO-BACKUP-001 | 写真同期/保持 | 出口部写真の更新・保持・同期 | JRN-009-EXITPHOTO | SCR-HOME-SUMMARY-001, SCR-HISTORY-PHOTO-001 | Phase2 | [link](./CAP-PHOTO-BACKUP-001.md) |
 | CAP-PLATFORM-001 | 提供形態/セキュリティ基盤 | 配布形態・接続・公開運用・UI基盤方針 | JRN-005-SYNC, JRN-007-ALARM | SCR-001-HOME, SCR-006-SESSION | Phase1 | [link](./CAP-PLATFORM-001.md) |
+| CAP-STORAGE-ADMIN-001 | ストレージ管理（開発/検証専用） | localStorage/IndexedDB の可視化・削除 | JRN-010-STORAGE-ADMIN | SCR-STORAGE-ADMIN-001 | Phase1 | [link](./CAP-STORAGE-ADMIN-001.md) |
 
 ## 3. 共通運用ルール
 - 画面固有のUI詳細は `../20_screens/SCR-*.md` だけで定義します。

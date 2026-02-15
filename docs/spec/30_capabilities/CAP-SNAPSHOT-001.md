@@ -70,7 +70,7 @@
 - CAP-SNAPSHOT-001-FR-06: (旧: FR-044D) `summaryScope` が未指定または不正値でも保存拒否せず、`summaryScope` のみ破棄して他の妥当な入力値を保存します。
 - CAP-SNAPSHOT-001-FR-07: (旧: FR-070) 新版取り込み後、テンプレート版として保存します。
 - CAP-SNAPSHOT-001-FR-08: (旧: FR-071) セッション開始時は `SessionProtocolSnapshot` をローカル同一トランザクションで保存し、保存失敗時は開始自体を失敗させます。
-- CAP-SNAPSHOT-001-FR-09: (旧: FR-072) スナップショットには `sourceProtocol(meta)`、step定義本文（通し番号/タイトル/文言/必須チェック/timer/alarm/record）、画像 `assetKey`、`assetManifest`、`snapshotHash` を含めます。
+- CAP-SNAPSHOT-001-FR-09: (旧: FR-072) スナップショットには `sourceProtocol(protocolName, importedAt)`、step定義本文（通し番号/タイトル/文言/必須チェック/timer/alarm/record）、画像 `assetKey`、`assetManifest`、`snapshotHash` を含めます。
 - CAP-SNAPSHOT-001-FR-10: (旧: FR-073) セッション表示/再開時は開始時スナップショットを常に優先し、現行テンプレート版へフォールバックしません。
 - CAP-SNAPSHOT-001-FR-11: (旧: FR-074) スナップショット欠落またはハッシュ不整合は整合性エラーとして扱い、セッション表示を停止します。
 - CAP-SNAPSHOT-001-FR-12: (旧: FR-075) テンプレート新版の取り込み後も、開始済みセッションの表示内容は開始時スナップショットから変化しません。

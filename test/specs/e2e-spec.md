@@ -20,11 +20,12 @@
   - `AT-PLAT-*`
   - `AT-SLEEP-*`
   - `AT-EXIT-*`
+  - `AT-DEV-STORAGE-*`
 
 ## 2.1 参照契約
-- 動線定義は `/Users/sakanet/capd_navi/docs/requirements/09_user_journeys.md`（`JRN-*`）を正本とします。
-- 画面遷移/操作は `/Users/sakanet/capd_navi/docs/requirements/10_screen_transition_and_actions.md`（`SCR-*`, `ACT-*`）を正本とします。
-- フォーム項目は `/Users/sakanet/capd_navi/docs/requirements/11_form_contracts.md`（`FC-*`）を正本とします。
+- 動線定義は `/Users/sakanet/capd_navi/docs/spec/10_journeys/*.md`（`JRN-*`）を正本とします。
+- 画面遷移/操作は `/Users/sakanet/capd_navi/docs/spec/20_screens/SCR-*.md`（`SCR-*`, `ACT-*`）を正本とします。
+- フォーム項目は `/Users/sakanet/capd_navi/docs/spec/20_screens/SCR-*.md` の `FC-*` を正本とします。
 
 ## 3. 共通実装ポリシー
 - テストIDは `E2E-*` を使用し、`AT-*` と1:1または1:Nで紐付けます。
@@ -33,6 +34,7 @@
 - テストデータは deterministic fixture を使用し、ランダム依存を禁止します。
 - 待機は `expect(...).toBeVisible()` 等の状態待機を使い、固定sleepを禁止します。
 - fixture の基準ディレクトリは `/Users/sakanet/capd_navi/test/fixtures` に固定します。
+- Session導線のseedは固定 `session.csv` ではなく、`protocol_packages/sessions/session_protocol_snapshots` をIndexedDBへ投入して検証します。
 
 ### 3.1 状態定義
 - `Planned`: ケース定義済み、テストコード未作成
@@ -43,6 +45,7 @@
 ### 3.2 実行ルール
 - `Executable` / `Implemented` は `test:e2e` 実行対象とし、`skip/disable` を禁止します。
 - `Deferred` は仕様とトレーサビリティで管理し、通常スイートには含めません。
+- `e2e-spec` と `traceability-matrix` の状態が衝突した場合、実行状態は `traceability-matrix` を正とします。
 
 ### 3.3 初回実装必須ゲート（Deferred禁止）
 初回実装では、以下のE2Eケースを必須対象とし `Deferred` を禁止します。
@@ -69,28 +72,30 @@
 ### 4.1 CSV取込（Mac）
 | E2E ID | 対応AT | 前提 | 操作 | 期待結果 | 優先度 | 状態 |
 |---|---|---|---|---|---|---|
-| E2E-CSV-001 | AT-CSV-001 | 正常CSV v3 + 画像 | 取込実行 | 成功しテンプレート登録 | P0 | Implemented |
-| E2E-CSV-002 | AT-CSV-002 | `step_id` 重複CSV | 取込実行 | エラーで中止 | P0 | Implemented |
-| E2E-CSV-003 | AT-CSV-003 | `next_step_id` 不整合CSV | 取込実行 | エラーで中止 | P0 | Implemented |
-| E2E-CSV-004 | AT-CSV-004 | 画像不足CSV | 取込実行 | エラーで中止 | P0 | Implemented |
+| E2E-CSV-001 | AT-CSV-001 | 正常CSV（固定ヘッダー） + 画像参照 | CSV選択 -> 画像フォルダ選択 -> 保存 | 成功し `protocol_packages` と `photo_meta` へ保存 | P0 | Implemented |
+| E2E-CSV-002 | AT-CSV-002 | `step_id` 重複CSV | CSVファイルを選択 | エラーで中止 | P0 | Implemented |
+| E2E-CSV-003 | AT-CSV-003 | `next_step_id` 不整合CSV | CSVファイルを選択 | エラーで中止 | P0 | Implemented |
+| E2E-CSV-004 | AT-CSV-004 | 画像不足CSV | CSV選択 -> 画像フォルダ選択 | 不足画像警告を表示し `保存` はdisabled | P0 | Implemented |
+| E2E-CSV-006 | AT-CSV-004 | 初回選択で画像不足、再選択で補完可能 | 画像フォルダを再選択 | 不足警告解消後に保存可能になる | P0 | Implemented |
 | E2E-CSV-005 | AT-CSV-005 | `xx分` を含むCSV | 取込実行 | 取込成功 + 警告表示 | P1 | Deferred |
 
 ### 4.2 Home / Flow
 | E2E ID | 対応AT | 前提 | 操作 | 期待結果 | 優先度 | 状態 |
 |---|---|---|---|---|---|---|
-| E2E-FLOW-001 | AT-FLOW-005 | #1未実施、#2登録済み | #2開始操作 | 開始不可メッセージ表示 | P0 | Executable |
-| E2E-FLOW-002 | AT-FLOW-004 | 実施中セッションあり | 別スロット開始 | 開始不可 | P0 | Executable |
-| E2E-FLOW-003 | AT-FLOW-006 | 実施中セッション保存済み | ホーム再表示 -> 該当スロット選択 | セッション再開 | P0 | Executable |
-| E2E-FLOW-004 | AT-FLOW-007 | セッション進行中 | `•••` -> 中断 -> 確認 | ホーム復帰 + `未実施` | P0 | Executable |
-| E2E-FLOW-005 | AT-FLOW-001 | 必須チェックあり | 未チェックで次へ | 遷移不可 | P0 | Executable |
-| E2E-FLOW-006 | AT-FLOW-002 | `record_event` ステップ | 未入力で次へ | 遷移不可 | P0 | Executable |
-| E2E-FLOW-007 | AT-FLOW-003 | 直列遷移可能なステップ構成 | 次へ | `next_step_id` のステップへ遷移 | P0 | Executable |
+| E2E-HOME-001 | AT-UI-HOME-002 | 初回表示（データ未投入） | Homeを表示 | #1〜#4が未登録（`+`）で表示される | P0 | Implemented |
+| E2E-FLOW-001 | AT-FLOW-005 | #1未実施、#2登録済み | #2開始操作 | 開始不可メッセージ表示 | P0 | Implemented |
+| E2E-FLOW-002 | AT-FLOW-004 | 実施中セッションあり | 別スロット開始 | 開始不可 | P0 | Implemented |
+| E2E-FLOW-003 | AT-FLOW-006 | 実施中セッション + snapshot保存済み | ホーム再表示 -> 該当スロット選択 | snapshot参照でセッション再開 | P0 | Implemented |
+| E2E-FLOW-004 | AT-FLOW-007 | セッション進行中 | `•••` -> 中断 -> 確認 | ホーム復帰 + `未実施` | P0 | Implemented |
+| E2E-FLOW-005 | AT-FLOW-001 | 必須チェックあり | 未チェックで次へ | 遷移不可 | P0 | Implemented |
+| E2E-FLOW-006 | AT-FLOW-002 | `record_event` ステップ | 未入力で次へ | 遷移不可 | P0 | Implemented |
+| E2E-FLOW-007 | AT-FLOW-003 | 直列遷移可能なsnapshot構成 | 次へ | `next_step_id` のステップへ遷移（固定CSV依存なし） | P0 | Implemented |
 
 ### 4.3 API境界
 | E2E ID | 対応AT | 前提 | 操作 | 期待結果 | 優先度 | 状態 |
 |---|---|---|---|---|---|---|
 | E2E-API-001 | AT-API-001 | ルート一覧取得可能 | ルーティング確認 | 公開APIが `sync/push`, `sync/pull` のみ | P0 | Implemented |
-| E2E-API-002 | AT-API-003 | CSV取込導線あり | 取込実行 | `POST /protocols/import-package` を呼ばない | P0 | Implemented |
+| E2E-API-002 | AT-API-003 | CSV取込導線あり | CSV選択後に保存 | `POST /protocols/import-package` を呼ばない | P0 | Implemented |
 | E2E-API-003 | AT-API-002 | Home表示可能 | UI確認 | 手動エクスポート導線が表示されない | P0 | Implemented |
 | E2E-API-004 | AT-API-004 | 同期済みデータあり | Blobキー確認 | `.enc` なしで保存 | P0 | Implemented |
 
@@ -114,7 +119,7 @@
 ### 4.6 タイマー / アラーム
 | E2E ID | 対応AT | 前提 | 操作 | 期待結果 | 優先度 | 状態 |
 |---|---|---|---|---|---|---|
-| E2E-ALARM-001 | AT-ALARM-001 | タイマー終了時刻到達 | 待機 | Mac通知 + アプリ内アラート | P0 | Implemented |
+| E2E-ALARM-001 | AT-ALARM-001 | `alarm_trigger=timer_end` または `step_enter` step | 待機/step遷移 | アプリ内アラート開始 | P0 | Implemented |
 | E2E-ALARM-002 | AT-ALARM-002 | 終了後未確認 | T+2分 / T+5分以降経過 | 段階再通知が仕様どおり動作 | P0 | Implemented |
 | E2E-ALARM-003 | AT-ALARM-003 | 通知中 | ACK実行 | 通知停止 + `acked_at` 記録 | P0 | Implemented |
 | E2E-ALARM-004 | AT-ALARM-004 | 終了後30分未ACK | 状態確認 | `status=missed` 永続化 + 警告継続 | P0 | Implemented |
@@ -142,6 +147,15 @@
 |---|---|---|---|---|---|---|
 | E2E-PHOTO-001 | AT-PHOTO-001 | 写真総量 > 1GB | 写真保存処理 | 古い順削除で0.95GB以下 | P1 | Deferred |
 | E2E-BACKUP-001 | AT-BACKUP-001 | バックアップスケジュール有効 | 31日分経過 | 30日保持ポリシー成立 | P1 | Deferred |
+
+### 4.10 ストレージ管理（開発/検証専用）
+| E2E ID | 対応AT | 前提 | 操作 | 期待結果 | 優先度 | 状態 |
+|---|---|---|---|---|---|---|
+| E2E-STORAGE-001 | AT-DEV-STORAGE-001 | `ENV=true` + 既存データあり | 管理画面表示 | 一覧と詳細プレビューが表示される | P1 | Implemented |
+| E2E-STORAGE-002 | AT-DEV-STORAGE-002 | localStorageキーあり | 対象を削除 | 指定キーのみ削除される | P1 | Implemented |
+| E2E-STORAGE-003 | AT-DEV-STORAGE-002 | IndexedDB storeにデータあり | 対象storeを削除 | storeの件数が0になる | P1 | Implemented |
+| E2E-STORAGE-004 | AT-DEV-STORAGE-003 | localStorage/IndexedDBにデータあり | 全削除実行 | 空状態が表示される | P1 | Implemented |
+| E2E-STORAGE-005 | AT-DEV-STORAGE-004 | `ENV=false` | 直アクセス | 404 になる | P1 | Implemented |
 
 ## 5. データ準備方針
 - `fixtures/e2e/home/`:

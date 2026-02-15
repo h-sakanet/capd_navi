@@ -13,6 +13,7 @@ flowchart LR
   SESSION --> RECORD[SCR-SESSION-RECORD-001]
   SESSION --> HOME
   HOME --> MAC_IMPORT[SCR-MAC-IMPORT-001]
+  DIRECT[Direct URL Access] --> STORAGE_ADMIN[SCR-STORAGE-ADMIN-001]
 ```
 
 ## 2. 画面一覧
@@ -30,6 +31,7 @@ flowchart LR
 | SCR-HISTORY-PHOTO-001 | 写真詳細 | History内遷移 | Historyへ戻る | JRN-008-HISTORY | [link](./SCR-010-HISTORY-PHOTO.md) |
 | SCR-SYNC-STATUS-001 | 同期状態表示 | Header/バナー | 同画面維持 | JRN-005-SYNC, JRN-006-RECOVERY | [link](./SCR-011-SYNC-STATUS.md) |
 | SCR-MAC-IMPORT-001 | CSV取込I/F | Home操作起点 | Homeへ戻る | JRN-001-CSV | [link](./SCR-012-MAC-IMPORT.md) |
+| SCR-STORAGE-ADMIN-001 | ストレージ管理（開発/検証専用） | `/capd/dev/storage-admin` 直アクセス | 同画面維持 | JRN-010-STORAGE-ADMIN | [link](./SCR-013-STORAGE-ADMIN.md) |
 
 ## 3. 共通UIコンポーネント
 - Modal/Dialog

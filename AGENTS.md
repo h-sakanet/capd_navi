@@ -2,7 +2,7 @@
 
 ## 1. 目的
 本ファイルは、CAPD支援アプリにおけるTDD（テスト駆動開発）の実行規約を固定するための運用文書です。  
-実装担当・試験担当は、本書と `/Users/sakanet/capd_navi/test/specs` を正本として扱います。
+実装担当・試験担当は、`/Users/sakanet/capd_navi/docs/spec`、本書、`/Users/sakanet/capd_navi/test/specs` を正本として扱います。
 
 ## 2. 適用範囲
 - 対象リポジトリ: `/Users/sakanet/capd_navi`
@@ -10,18 +10,21 @@
 - 対象レイヤー: Unit / E2E (Playwright) / Visual Regression (Playwright)
 
 ## 3. 必読ドキュメント
-- `/Users/sakanet/capd_navi/docs/requirements/05_functional_requirements.md`
-- `/Users/sakanet/capd_navi/docs/requirements/07_acceptance_tests.md`
-- `/Users/sakanet/capd_navi/docs/requirements/09_user_journeys.md`
-- `/Users/sakanet/capd_navi/docs/requirements/10_screen_transition_and_actions.md`
-- `/Users/sakanet/capd_navi/docs/requirements/11_form_contracts.md`
-- `/Users/sakanet/capd_navi/docs/requirements/12_ui_data_binding_matrix.md`
-- `/Users/sakanet/capd_navi/docs/design/04_sync_conflict_policy.md`
-- `/Users/sakanet/capd_navi/docs/design/11_state_machines.md`
+- `/Users/sakanet/capd_navi/docs/spec/00_index.md`
+- `/Users/sakanet/capd_navi/docs/spec/10_journeys/*`
+- `/Users/sakanet/capd_navi/docs/spec/20_screens/*`
+- `/Users/sakanet/capd_navi/docs/spec/30_capabilities/*`
+- `/Users/sakanet/capd_navi/docs/spec/35_interfaces/*`
+- `/Users/sakanet/capd_navi/docs/spec/40_contracts/*`
+- `/Users/sakanet/capd_navi/docs/spec/45_nfr/*`
+- `/Users/sakanet/capd_navi/docs/spec/50_quality/*`
 - `/Users/sakanet/capd_navi/test/specs/unit-spec.md`
 - `/Users/sakanet/capd_navi/test/specs/e2e-spec.md`
 - `/Users/sakanet/capd_navi/test/specs/visual-spec.md`
 - `/Users/sakanet/capd_navi/test/specs/traceability-matrix.md`
+
+補足:
+- 旧 `/Users/sakanet/capd_navi/docs/requirements/*` は互換参照に限定し、一次仕様判断には使用しません。
 
 ## 4. TDD運用原則（固定）
 1. Red: まず失敗するテストを最小単位で追加します。
@@ -73,6 +76,7 @@ TDD開始前ゲート:
 - `Executable` / `Implemented` のテストを `skip/disable` で回避してはいけません。
 - `Deferred` はテストコードを無理に作成せず、仕様書と `traceability-matrix` で管理します。
 - 依存条件が満たされたら `Deferred -> Executable` へ更新してから着手します。
+- `test/specs/e2e-spec.md` と `test/specs/traceability-matrix.md` の状態が衝突した場合、実行状態は `traceability-matrix` を正とします。
 
 ### 7.1 Phase1（初回実装必須・Deferred禁止）
 初回実装では、以下の受入IDに紐づくE2Eケースを必須実装対象とします。  
@@ -126,6 +130,7 @@ TDD開始前ゲート:
 - `AT-*` 未接続のE2Eケース追加
 - 7.1 のPhase1必須範囲を `Deferred` のまま放置すること
 - `/capd/*` 本番ルートで `mock-data.ts` を正本データとして利用すること
+- UIスパイク用の仮表示を `/capd/*` 本番ルートへ恒常表示すること（`SCR-004` の確認モード要件は除く）
 
 ## 11. 完了条件（DoD）
 - 変更対象のUnitテストがすべて通過していること

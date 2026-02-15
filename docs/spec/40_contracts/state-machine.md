@@ -1,36 +1,36 @@
 # State Machine Contract
 
-## 1. 状態一覧
-- Slot: `empty / pending / in_progress / completed`
-- Session: `active / completed / aborted`
-- Sync: `idle / syncing / full_reseeding / success / failed`
-- Alarm: `pending / notified / missed / acknowledged`
-- Import: `idle / validating / failed / succeeded_with_warnings / succeeded`
+## 1. 状態
+- Slot: `未実施 | 実施中 | 実施済み`
+- Session: `active | completed | aborted`
+- AlarmDispatchJob: `pending | notified | missed | acknowledged`
 
-## 2. イベント一覧
-- Slot: `registerSlot`, `editSlot`, `startSession`, `resumeSession`, `completeSession`, `abortSession`, `deleteSlot`
-- Session: `startSession`, `enterStep`, `completeStep`, `completeFinalStep`, `emergencyAbort`
-- Sync: `startup`, `resume`, `session_complete`, `manual`, `pull_missing`, `full_reseed_applied`, `retry`
-- Alarm: `timer_end`, `notify_t0`, `notify_retry`, `mark_missed`, `ack`
-- Import: `select_directory`, `validate_csv`, `save_template`
+## 2. セッション遷移
+- `startSession`: `none -> active`
+- `advanceStep`（ACT-001成功）: `active` のまま `currentStepId` 更新
+- `completeSession`: `active -> completed`
+- `abortSession`: `active -> aborted`
 
-## 3. 遷移表（禁止遷移含む）
-| 対象 | 許可遷移 | 禁止遷移 |
-|---|---|---|
-| Slot | `empty->pending->in_progress->completed`, `in_progress->pending(abort)` | `completed->pending/edit/delete` |
-| Session | `active->completed`, `active->aborted` | `completed|aborted->active` |
-| Sync | `idle->syncing->success|failed`, `syncing->full_reseeding->syncing` | `failed->success`（再試行なし） |
-| Alarm | `pending->notified->acknowledged`, `notified->missed->acknowledged` | `acknowledged` から再通知 |
-| Import | `idle->validating->succeeded|failed` | `failed->succeeded`（再検証なし） |
+禁止:
+- `completed|aborted -> active`
 
-## 4. 例外・リトライ・復旧
-- 同期失敗時は指数バックオフ再試行。
-- `cloudState=missing` は `full_reseed` 必須。
-- `missed` 後もACKまで3分間隔再通知を継続。
-- `record_event`/必須チェック未完了時は `ACT-001-SESSION` を拒否。
+## 3. タイマーイベント遷移
+- 発火契機: `advanceStep` 成功時のみ
+- 対象: 「現在step」の `timerSpec`
+- 重複防止: `dedupeKey` 一意
 
-## 5. 参照元リンク
-- `./functional-requirements.md`
-- `../10_journeys/journeys.md`
-- `../20_screens/SCR-006-SESSION.md`
-- `../20_screens/SCR-011-SYNC-STATUS.md`
+## 4. アラーム遷移
+- 生成契機:
+  - `alarm_trigger=timer_end`: `timer_event=end` 記録時
+  - `alarm_trigger=step_enter`: step初回表示時
+- 状態遷移:
+  - `pending -> notified -> acknowledged`
+  - `notified -> missed -> acknowledged`
+
+禁止:
+- `acknowledged` から再通知
+- 同一dedupeの再生成
+
+## 5. 復帰ルール
+- セッション再開時は snapshot を参照。
+- 戻る/再表示/再開では `timer_event` / `alarm` を再発火しない。

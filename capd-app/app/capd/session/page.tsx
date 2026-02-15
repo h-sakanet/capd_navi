@@ -25,9 +25,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
-  abortSession,
   acknowledgeAlarm,
   advanceStep,
+  cancelSession,
   completeSession,
   ensureStepEnterAlarm,
   getLatestAlarmForStep,
@@ -335,8 +335,8 @@ function SessionPageContent() {
   const [previewProtocolId, setPreviewProtocolId] = useState<string | null>(null);
   const [isPreviewMode, setIsPreviewMode] = useState(false);
   const [isUtilityMenuOpen, setIsUtilityMenuOpen] = useState(false);
-  const [isAbortDialogOpen, setIsAbortDialogOpen] = useState(false);
-  const [abortConfirmText, setAbortConfirmText] = useState("");
+  const [isCancelDialogOpen, setIsCancelDialogOpen] = useState(false);
+  const [cancelConfirmText, setCancelConfirmText] = useState("");
   const [slotBounds, setSlotBounds] = useState<{ leftmost: number | null; rightmost: number | null }>({
     leftmost: null,
     rightmost: null
@@ -874,16 +874,21 @@ function SessionPageContent() {
     router.replace("/capd/home");
   }, [isPreviewMode, router, sessionContext]);
 
-  const handleEmergencyAbort = useCallback(async () => {
+  const handlePause = useCallback(async () => {
+    // 中断: セッションを active のまま、スロットも「実施中」のまま Home に戻る
+    router.replace("/capd/home");
+  }, [router]);
+
+  const handleCancelSession = useCallback(async () => {
     if (!sessionContext || isPreviewMode) {
       router.replace("/capd/home");
       return;
     }
 
-    await abortSession(sessionContext.sessionId);
+    await cancelSession(sessionContext.sessionId);
     await clearActiveSession();
-    setAbortConfirmText("");
-    setIsAbortDialogOpen(false);
+    setCancelConfirmText("");
+    setIsCancelDialogOpen(false);
     router.replace("/capd/home");
   }, [isPreviewMode, router, sessionContext]);
 
@@ -1147,13 +1152,23 @@ function SessionPageContent() {
                     <div className="absolute right-0 top-9 z-20 min-w-[190px] rounded-md border bg-background p-1 shadow-sm">
                       <button
                         type="button"
+                        className="w-full rounded-sm px-2 py-1 text-left text-sm hover:bg-muted"
+                        onClick={() => {
+                          setIsUtilityMenuOpen(false);
+                          void handlePause();
+                        }}
+                      >
+                        中断（途中から再開可能）
+                      </button>
+                      <button
+                        type="button"
                         className="w-full rounded-sm px-2 py-1 text-left text-sm text-destructive hover:bg-muted"
                         onClick={() => {
                           setIsUtilityMenuOpen(false);
-                          setIsAbortDialogOpen(true);
+                          setIsCancelDialogOpen(true);
                         }}
                       >
-                        セッションを中断（非常用）
+                        キャンセル（保存せず終了）
                       </button>
                     </div>
                   ) : null}
@@ -1397,32 +1412,32 @@ function SessionPageContent() {
         </div>
       </section>
 
-      {isAbortDialogOpen ? (
-        <ModalShell title="セッションを中断（非常用）" onClose={() => setIsAbortDialogOpen(false)}>
+      {isCancelDialogOpen ? (
+        <ModalShell title="セッションをキャンセル" onClose={() => setIsCancelDialogOpen(false)}>
           <div className="space-y-4 px-5 py-4 text-sm">
             <p className="text-muted-foreground">
-              中断後はホームへ戻り、このスロットは「未実施」に戻ります。確認のため「中断」と入力してください。
+              このセッションの全ての入力データを削除し、スロットを「未実施」に戻します。この操作は取り消せません。
             </p>
             <label className="space-y-1.5">
-              <span className="text-sm font-medium">確認のため「中断」と入力してください</span>
+              <span className="text-sm font-medium">確認のため「キャンセル」と入力してください</span>
               <input
                 type="text"
                 className="h-9 w-full rounded-md border bg-background px-3 text-sm"
-                value={abortConfirmText}
-                onChange={(event) => setAbortConfirmText(event.target.value)}
+                value={cancelConfirmText}
+                onChange={(event) => setCancelConfirmText(event.target.value)}
               />
             </label>
           </div>
           <div className="flex justify-end gap-2 border-t px-5 py-4">
-            <Button variant="outline" onClick={() => setIsAbortDialogOpen(false)}>
-              キャンセル
+            <Button variant="outline" onClick={() => setIsCancelDialogOpen(false)}>
+              戻る
             </Button>
             <Button
               variant="destructive"
-              disabled={abortConfirmText.trim() !== "中断"}
-              onClick={() => void handleEmergencyAbort()}
+              disabled={cancelConfirmText.trim() !== "キャンセル"}
+              onClick={() => void handleCancelSession()}
             >
-              中断する
+              キャンセルする
             </Button>
           </div>
         </ModalShell>

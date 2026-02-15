@@ -29,6 +29,7 @@
 | JRN-007-ALARM | タイマー通知とACK | 見逃し防止 | SCR-SESSION-001 | ACT-001-ALARM | ACKで通知停止 | [link](./JRN-007-ALARM.md) |
 | JRN-008-HISTORY | 記録一覧閲覧と編集 | 履歴確認と編集 | SCR-HISTORY-001, SCR-HISTORY-DETAIL-001, SCR-HISTORY-PHOTO-001 | ACT-010-HOME, ACT-001-HISTORY | 30日閲覧編集可能 | [link](./JRN-008-HISTORY.md) |
 | JRN-009-EXITPHOTO | 出口部写真登録/変更/削除 | 出口部写真運用 | SCR-HOME-SUMMARY-001, SCR-HISTORY-DETAIL-001, SCR-HISTORY-PHOTO-001 | ACT-001-EXIT, ACT-002-EXIT, ACT-003-EXIT | `exit_site_photo` 同期更新 | [link](./JRN-009-EXITPHOTO.md) |
+| JRN-010-STORAGE-ADMIN | ストレージ管理（開発/検証専用） | テスト運用の初期化/可視化 | SCR-STORAGE-ADMIN-001 | ACT-001-STORAGE, ACT-002-STORAGE | 対象削除と全削除が成立 | [link](./JRN-010-STORAGE-ADMIN.md) |
 
 ## 2. 依存関係（前提ジャーニー）
 - JRN-002-SLOT は JRN-001-CSV のテンプレート取り込みを前提とします。

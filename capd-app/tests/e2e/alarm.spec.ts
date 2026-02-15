@@ -1,7 +1,15 @@
 import { expect, test, type Page } from "@playwright/test";
 
+import { seedRuntimeSession } from "./helpers/runtime-seed";
+
 async function openAlarmStep(page: Page) {
-  await page.goto("/capd/session?stepId=step_022");
+  await seedRuntimeSession(page, {
+    sessionId: "ses_alarm",
+    slotIndex: 0,
+    currentStepId: "step_022"
+  });
+
+  await page.goto("/capd/session?slot=1&sessionId=ses_alarm&stepId=step_022");
   await expect(page.getByTestId("alarm-step_022")).toBeVisible();
 }
 

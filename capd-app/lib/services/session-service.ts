@@ -8,7 +8,7 @@ import {
   upsertAlarmJob
 } from "@/lib/storage/alarm-job.repo";
 import { getProtocolAsset, getProtocolPackage } from "@/lib/storage/protocol.repo";
-import { hasRecordForStep, listRecordsBySession, upsertRecord } from "@/lib/storage/record.repo";
+import { deleteRecordsBySession, hasRecordForStep, listRecordsBySession, upsertRecord } from "@/lib/storage/record.repo";
 import { getSession, upsertSession } from "@/lib/storage/session.repo";
 import { getSessionSnapshot } from "@/lib/storage/snapshot.repo";
 import { addTimerEventIfAbsent, listTimerEventsBySession } from "@/lib/storage/timer-event.repo";
@@ -86,29 +86,29 @@ function toSnapshotStep(step: {
   const timerSegment = normalizeTimerSegment(step.timerSegment);
   const timerSpec = step.timerId && timerEvent
     ? {
-        timerId: step.timerId,
-        timerEvent,
-        timerExchangeNo: step.timerExchangeNo,
-        timerSegment
-      }
+      timerId: step.timerId,
+      timerEvent,
+      timerExchangeNo: step.timerExchangeNo,
+      timerSegment
+    }
     : null;
 
   const alarmTrigger = normalizeAlarmTrigger(step.alarmTrigger);
   const alarmSpec = step.alarmId
     ? {
-        alarmId: step.alarmId,
-        alarmTrigger,
-        alarmDurationMin: step.alarmDurationMin,
-        alarmRelatedTimerId: step.alarmRelatedTimerId
-      }
+      alarmId: step.alarmId,
+      alarmTrigger,
+      alarmDurationMin: step.alarmDurationMin,
+      alarmRelatedTimerId: step.alarmRelatedTimerId
+    }
     : null;
 
   const recordSpec = step.recordEvent
     ? {
-        recordEvent: step.recordEvent,
-        recordExchangeNo: step.recordExchangeNo,
-        recordUnit: step.recordUnit
-      }
+      recordEvent: step.recordEvent,
+      recordExchangeNo: step.recordExchangeNo,
+      recordUnit: step.recordUnit
+    }
     : null;
 
   return {
@@ -460,6 +460,24 @@ export async function abortSession(sessionId: string): Promise<void> {
   if (!session || session.status !== "active") {
     return;
   }
+
+  const now = nowIso();
+  await upsertSession({
+    ...session,
+    status: "aborted",
+    abortedAtIso: now,
+    updatedAtIso: now
+  });
+  await patchTodaySlotStatus(session.slotIndex, "未実施");
+}
+
+/** セッションをキャンセルし、そのセッションの全レコードを削除する */
+export async function cancelSession(sessionId: string): Promise<void> {
+  const session = await getSession(sessionId);
+  if (!session) return;
+
+  // そのセッションの全レコードを削除
+  await deleteRecordsBySession(sessionId);
 
   const now = nowIso();
   await upsertSession({

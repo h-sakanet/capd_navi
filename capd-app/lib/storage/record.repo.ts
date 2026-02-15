@@ -78,3 +78,14 @@ export async function hasRecordForStep(sessionId: string, stepId: string): Promi
 
   return records.length > 0;
 }
+
+export async function deleteRecordsBySession(sessionId: string): Promise<void> {
+  await withTransaction("records", "readwrite", async (transaction) => {
+    const store = transaction.objectStore("records");
+    const index = store.index("by_session");
+    const keys = await requestToPromise(index.getAllKeys(sessionId));
+    for (const key of keys) {
+      store.delete(key);
+    }
+  });
+}
